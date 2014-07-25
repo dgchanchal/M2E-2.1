@@ -1,0 +1,24 @@
+﻿<section class="content">
+                    
+<!--        <!-- START CUSTOM TABS -->        
+        <div class="container" ng-controller="showMessageTemplate">
+
+
+                 <div class="alert {{Header.className}} alert-dismissable">
+                                        <i class="fa {{Header.iconClassName}}"></i>
+                                        <b>Alert!</b> {{Header.message}}
+                                    </div> 
+                 <div class="error-page">
+                        <h2 class="headline text-info">{{Content.header1}}<br />{{Content.companyName}}</h2>
+                     <div class="error-content callout {{Content.contentClasstheme}}">
+                         <h3> <i class="{{Content.header2IconClassName}}"></i> {{Content.header2}}</h3>
+                         <div style="font-size: 17px">
+                             <div ng-show="RegisterContent">
+                                 Thank you for registering! A confirmation email has been sent to <span class="text-red">{{Content.email}}.</span> To continue, please click on the activation link we sent in confirmation email. This will confirm your email as your contact address. </div>
+                         </div>
+                          <div ng-show="ForgetPasswordContent">
+                                We've sent you an email to <span class="text-red">{{Content.email}}</span> that will allow you to reset your password quickly and easily</div>
+                         </div>
+                     </div><!-- /.error-content -->
+                    </div>
+    </section>

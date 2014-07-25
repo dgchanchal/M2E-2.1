@@ -1,0 +1,227 @@
+﻿@charset "utf-8";
+
+#ydn-footer {
+    width: 100%;
+    margin: 32px auto 0;
+    padding: 0 0 14px;
+    font-size: 93%;
+    color: #666;
+    overflow: hidden;
+}
+
+#ydn-footer .ydn-footer-content {
+    float: left;
+    margin-left: 12px;
+}
+
+#ydn-footer span, #ydn-footer .ydn-ext22 { float: right; }
+
+#ydn-footer span {
+    margin-right: 2px;
+    position: relative;
+    top: 2px;
+}
+
+#ydn-footer .ydn-ext22 { margin: 0 1px 7px 0; }
+
+#ydn-footer .ydn-ext22 li {
+    float: left;
+    margin-left: 6px;
+}
+
+#ydn-footer .ydn-ext22 li a {
+    display: block;
+    background: transparent url(https://s.yimg.com/zz/combo?oo/ydn//common/img/18x18icons-iHgxj87iGJCgCjT1fud-9A-.png) no-repeat scroll 0 0;
+    width: 22px;
+    height: 22px;
+    text-indent: -10000px;
+}
+
+#ydn-footer li.ydn-ext-fb22 a { background-position: 0 -1580px; }
+
+#ydn-footer li.ydn-ext-tw22 a { background-position: 0 -1820px; }
+
+#ydn-footer li.ydn-ext-fl22 a { background-position: 0 -1620px; }
+
+#ydn-footer li.ydn-ext-up22 a { background-position: 0 -1860px; }
+
+#ydn-footer li.ydn-ext-git22 a { background-position: 0 -1700px; }
+
+#ydn-footer li.ydn-ext-rss22 a { background-position: 0 -1780px; }
+
+
+.ydn-contact {
+    float: right;
+    color: #16387C;
+}
+
+.ydn-contact li { float: left; }
+
+.ydn-contact li.ydn-divider-left {
+    margin-left: 10px;
+    padding-left: 10px;
+}
+
+.ydn-contact li a {
+    text-decoration: none;
+    color: #16387C;
+}
+
+.ydn-contact li a:hover { text-decoration: underline; }
+
+.ydn-breadcrumb {
+    clear: both;
+    margin: 10px auto;
+    background: #FFF;
+    border: 1px solid #BBC5CD;
+    overflow: auto;
+    color: #333;
+    font: normal 12px Arial;
+}
+
+.ydn-breadcrumb li {
+    float: left;
+    padding: 4px 7px 4px 10px;
+}
+
+.ydn-breadcrumb li.ydn-separater { background: transparent url(https://s.yimg.com/zz/combo?oo/ydn//common/img/breadcrumb-arrow-Xn0F4jjP4YnajPUT-S-7gg-.gif) no-repeat 0 7px; }
+
+.ydn-breadcrumb li a {
+    color: #16387C;
+    text-decoration: none;
+}
+
+.ydn-breadcrumb li a:hover { text-decoration: underline; }
+
+#ft #ydn-footer .ydn-footer-row1:after, #ft #ydn-footer .ydn-footer-row2:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+#ft #ydn-footer .ydn-footer-row1 .ydn-breadcrumb {
+    clear: none;
+    float: left;
+    margin: 0;
+    background: 0;
+    border: 0;
+}
+
+#ft #ydn-footer .ydn-footer-row2 a, #ft #ydn-footer .ydn-footer-row2 a:hover { color: #888; }
+
+#ft #ydn-footer .ydn-footer-row1 li { color: #888; }
+
+#ft #ydn-footer { margin-bottom: 0; }
+
+#ft #ydn-footer .ydn-footer-row1 { padding: 0; }
+
+#ft #ydn-footer .ydn-footer-row2wrap {
+    margin-top: 6px;
+    padding: 9px 6px;
+    background: #f4f4f4;
+    background-image: -moz-linear-gradient(top, #f4f4f4 0, #fbfbfb 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f4f4f4), color-stop(1, #fbfbfb));
+    border-top: 1px solid #cbcbcb;
+}
+
+#ft #ydn-footer .ydn-footer-row2 .ydn-contact { float: left; margin-left: -35px; }
+
+#ft #ydn-footer .ydn-footer-row2 .ydn-footer-content {
+    float: right;
+    width: 285px;
+    text-align: right;
+}
+
+#ft #ydn-footer .ydn-breadcrumb .ydn-bc-first-item { padding-left: 0; }
+
+#ft #ydn-footer {
+    margin-top: 12px;
+    padding-bottom: 0;
+    padding-right: 0;
+}
+
+#ft #ydn-footer .ydn-footer-row2 .ydn-contact .ydn-divider-left { border-left: 1px solid #CCC; }
+
+#ft #ydn-footer .ydn-footer-row1 .ydn-breadcrumb li a, #ft #ydn-footer .ydn-footer-row1 span { font-size: 12px; }
+
+#ft #ydn-footer .ydn-footer-row1 span {
+    margin-top: 0;
+    width: 210px;
+    font-size: 11px;
+    text-align: right;
+}
+
+#ft #ydn-footer .ydn-footer-row2 ul li a, #ft #ydn-footer .ydn-footer-row2 div { font-size: 15px; }
+
+#ft #ydn-footer .ydn-footer-row1, #ft #ydn-footer .ydn-footer-row2 {
+    width: 950px;
+    margin: 0 auto;
+}
+
+#ft {
+    overflow: hidden;
+    margin: 0;
+}
+
+#ft #ydn-footer .ydn-breadcrumb .ydn-bc-first-item { padding-left: 0; }
+
+
+
+li { list-style: none; }
+#ft { clear: both; }
+#ydn-footer {
+    padding-top: 10px;
+    padding-bottom: 0;
+    margin-bottom: 5px;
+    padding-right: 10px
+}
+
+#ydn-footer .ydn-ext22 { margin: 0 1px 7px 0 }
+
+#ydn-footer span, #ydn-footer .ydn-ext22 { float: right }
+
+#ydn-footer span {
+    color: #888;
+    font-size: 85%;
+    padding-top: 4px
+}
+
+#ydn-footer .ydn-ext22 li {
+    float: left;
+    margin-left: 6px
+}
+
+#ydn-footer .ydn-ext22 li a {
+    background: url("https://s.yimg.com/oo/ydn-footer-sprite/sprite-footer.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 22px;
+    text-indent: -10000px;
+    width: 22px
+}
+
+#ydn-footer li.ydn-ext-fb22 a { background-position: 0 -30px }
+
+#ydn-footer li.ydn-ext-tw22 a { background-position: 0 -60px }
+
+#ydn-footer li.ydn-ext-fl22 a { background-position: 0 -90px }
+
+#ydn-footer li.ydn-ext-git22 a { background-position: 0 -120px }
+
+#ydn-footer li.ydn-ext-rss22 a { background-position: 0 -220px }                        
+
+#ydn-footer .ydn-ext22 { text-align: center }
+
+#ydn-footer .ydn-ext22, #ydn-footer span {
+float: none;
+margin: auto
+}
+
+#ydn-footer .ydn-ext22:after {
+content: "\0020";
+display: block;
+clear: both;
+overflow: hidden
+}
+

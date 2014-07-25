@@ -1,0 +1,24 @@
+﻿<section class="content">
+                    
+<!--        <!-- START CUSTOM TABS -->        
+        <div class="container" ng-controller="validateEmailTemplate">
+
+
+                 <div class="alert {{Header.className}} alert-dismissable">
+                                        <i class="fa {{Header.iconClassName}}"></i>
+                                        <b>Alert!</b> {{Header.message}}
+                                    </div> 
+                 <div class="error-page">
+                        <h2 class="headline text-info">{{Content.header1}}<br />{{Content.companyName}}</h2>
+                     <div class="error-content callout {{Content.contentClasstheme}}">
+                         <h3> <i class="{{Content.header2IconClassName}}"></i> {{Content.header2}}</h3>
+                         <p style="font-size: 17px">
+                             {{Content.message}}
+                             Please login into your account by <a href="#/login">clicking here</a><br />
+                             To get acquainted with the website, please go through the <a href="#/faq">FAQ</a><br /> page.
+                         </p>
+                     </div><!-- /.error-content -->
+                    </div>
+	    					
+	    	</div>
+    </section>

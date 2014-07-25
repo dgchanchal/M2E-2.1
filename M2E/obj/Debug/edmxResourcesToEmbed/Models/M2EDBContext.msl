@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="M2EModelStoreContainer" CdmEntityContainer="M2E">
+    <EntitySetMapping Name="ClientDetails">
+      <EntityTypeMapping TypeName="M2EModel.ClientDetail">
+        <MappingFragment StoreEntitySet="ClientDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CreateTemplateeditableInstructionsLists">
+      <EntityTypeMapping TypeName="M2EModel.CreateTemplateeditableInstructionsList">
+        <MappingFragment StoreEntitySet="CreateTemplateeditableInstructionsLists">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="verified" ColumnName="verified" />
+          <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
+          <ScalarProperty Name="assignTime" ColumnName="assignTime" />
+          <ScalarProperty Name="completedAt" ColumnName="completedAt" />
+          <ScalarProperty Name="referenceKey" ColumnName="referenceKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CreateTemplateListBoxQuestionsLists">
+      <EntityTypeMapping TypeName="M2EModel.CreateTemplateListBoxQuestionsList">
+        <MappingFragment StoreEntitySet="CreateTemplateListBoxQuestionsLists">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Options" ColumnName="Options" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="verified" ColumnName="verified" />
+          <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
+          <ScalarProperty Name="assignTime" ColumnName="assignTime" />
+          <ScalarProperty Name="completedAt" ColumnName="completedAt" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="referenceKey" ColumnName="referenceKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CreateTemplateMultipleQuestionsLists">
+      <EntityTypeMapping TypeName="M2EModel.CreateTemplateMultipleQuestionsList">
+        <MappingFragment StoreEntitySet="CreateTemplateMultipleQuestionsLists">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Options" ColumnName="Options" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="verified" ColumnName="verified" />
+          <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
+          <ScalarProperty Name="assignTime" ColumnName="assignTime" />
+          <ScalarProperty Name="completedAt" ColumnName="completedAt" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="referenceKey" ColumnName="referenceKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CreateTemplateQuestionInfoes">
+      <EntityTypeMapping TypeName="M2EModel.CreateTemplateQuestionInfo">
+        <MappingFragment StoreEntitySet="CreateTemplateQuestionInfoes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="visible" ColumnName="visible" />
+          <ScalarProperty Name="buttonText" ColumnName="buttonText" />
+          <ScalarProperty Name="referenceId" ColumnName="referenceId" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="completed" ColumnName="completed" />
+          <ScalarProperty Name="verified" ColumnName="verified" />
+          <ScalarProperty Name="creationTime" ColumnName="creationTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CreateTemplateSingleQuestionsLists">
+      <EntityTypeMapping TypeName="M2EModel.CreateTemplateSingleQuestionsList">
+        <MappingFragment StoreEntitySet="CreateTemplateSingleQuestionsLists">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Options" ColumnName="Options" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="verified" ColumnName="verified" />
+          <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
+          <ScalarProperty Name="assignTime" ColumnName="assignTime" />
+          <ScalarProperty Name="completedAt" ColumnName="completedAt" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="referenceKey" ColumnName="referenceKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CreateTemplateTextBoxQuestionsLists">
+      <EntityTypeMapping TypeName="M2EModel.CreateTemplateTextBoxQuestionsList">
+        <MappingFragment StoreEntitySet="CreateTemplateTextBoxQuestionsLists">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Options" ColumnName="Options" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="verified" ColumnName="verified" />
+          <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
+          <ScalarProperty Name="assignTime" ColumnName="assignTime" />
+          <ScalarProperty Name="completedAt" ColumnName="completedAt" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="referenceKey" ColumnName="referenceKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ForgetPasswords">
+      <EntityTypeMapping TypeName="M2EModel.ForgetPassword">
+        <MappingFragment StoreEntitySet="ForgetPasswords">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="guid" ColumnName="guid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobDatas">
+      <EntityTypeMapping TypeName="M2EModel.JobData">
+        <MappingFragment StoreEntitySet="JobDatas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="PostedBy" ColumnName="PostedBy" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LinkedInAuthApiDatas">
+      <EntityTypeMapping TypeName="M2EModel.LinkedInAuthApiData">
+        <MappingFragment StoreEntitySet="LinkedInAuthApiDatas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="oauth_Token" ColumnName="oauth_Token" />
+          <ScalarProperty Name="oauth_TokenSecret" ColumnName="oauth_TokenSecret" />
+          <ScalarProperty Name="oauth_verifier" ColumnName="oauth_verifier" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecommendedBies">
+      <EntityTypeMapping TypeName="M2EModel.RecommendedBy">
+        <MappingFragment StoreEntitySet="RecommendedBies">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RecommendedTo" ColumnName="RecommendedTo" />
+          <ScalarProperty Name="RecommendedFrom" ColumnName="RecommendedFrom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThirdPartyLogins">
+      <EntityTypeMapping TypeName="M2EModel.ThirdPartyLogin">
+        <MappingFragment StoreEntitySet="ThirdPartyLogins">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="FacebookId" ColumnName="FacebookId" />
+          <ScalarProperty Name="FacebookAccessToken" ColumnName="FacebookAccessToken" />
+          <ScalarProperty Name="GoogleId" ColumnName="GoogleId" />
+          <ScalarProperty Name="GoogleAccessToken" ColumnName="GoogleAccessToken" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserDetails">
+      <EntityTypeMapping TypeName="M2EModel.UserDetail">
+        <MappingFragment StoreEntitySet="UserDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserPageSettings">
+      <EntityTypeMapping TypeName="M2EModel.UserPageSetting">
+        <MappingFragment StoreEntitySet="UserPageSettings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="PageThemeColor" ColumnName="PageThemeColor" />
+          <ScalarProperty Name="LayoutWidth" ColumnName="LayoutWidth" />
+          <ScalarProperty Name="TopBar" ColumnName="TopBar" />
+          <ScalarProperty Name="SideBar" ColumnName="SideBar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRecommendations">
+      <EntityTypeMapping TypeName="M2EModel.UserRecommendation">
+        <MappingFragment StoreEntitySet="UserRecommendations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="TotalRecommendation" ColumnName="TotalRecommendation" />
+          <ScalarProperty Name="UsefulRecommendation" ColumnName="UsefulRecommendation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="M2EModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="guid" ColumnName="guid" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="Locked" ColumnName="Locked" />
+          <ScalarProperty Name="KeepMeSignedIn" ColumnName="KeepMeSignedIn" />
+          <ScalarProperty Name="RegistrationTime" ColumnName="RegistrationTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSkills">
+      <EntityTypeMapping TypeName="M2EModel.UserSkill">
+        <MappingFragment StoreEntitySet="UserSkills">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Skill" ColumnName="Skill" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ValidateUserKeys">
+      <EntityTypeMapping TypeName="M2EModel.ValidateUserKey">
+        <MappingFragment StoreEntitySet="ValidateUserKeys">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="guid" ColumnName="guid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

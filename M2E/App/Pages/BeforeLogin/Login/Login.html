@@ -1,0 +1,46 @@
+﻿<div id="login-box" class="form-box" ng-controller="beforeLoginSignInController">
+    <div class="header" data-i18n="signInTitle"></div>    
+    <form>
+        <div class="body bg-gray">
+           <ul class="alert alert-danger alert-dismissable"  ng-show="showHeaderErrors" style="margin-left: 0;">                                                                               
+               <li ng-show="HeaderAlert.visible">{{HeaderAlert.message}}</li>
+               <li ng-show="ForgetPasswordAlert.visible"><p>{{ForgetPasswordAlert.message}} <a href="#">Request a new one.</a></p></li>
+            </ul>
+            <div class="form-group">
+                <input type="text" ng-model="EmailId" id="LoginEmailId" data-i18n="beforeLoginLoginPageEmailIdText" placeholder="" class="form-control" name="emailid">
+            </div>
+            <div class="form-group">
+                <input type="password" ng-model="Password" id="LoginPasswordId" data-i18n="beforeLoginLoginPagePasswordText" placeholder="" class="form-control" name="password">
+            </div>          
+            <div class="form-group">
+                <input type="checkbox" ng-model="KeepMeSignedInCheckBox" name="remember_me"> Remember me
+            </div>
+        </div>
+        <div class="footer">
+                    <ul class="alert alert-danger alert-dismissable"  ng-show="showFooterErrors" style="margin-left: 0;">                                                                               
+                                <li ng-show="EmailIdAlert.visible">{{EmailIdAlert.message}}</li>
+                                <li ng-show="PasswordAlert.visible">{{PasswordAlert.message}}</li>
+                            </ul>                                                               
+            <button class="btn bg-olive btn-block" type="submit" ng-click="Login()">Sign me in</button>  
+                    
+            <p><a href="#/forgetpassword">I forgot my password</a></p>
+                    
+            <p>Register a new membership as<i class="fa fa-fw fa-long-arrow-right"></i><a class="text-center" href="#/signup/client">Client</a> or <a class="text-center" href="#/signup/user">User</a></p>
+        </div>
+    </form>
+
+    <div class="margin text-center">
+        <span>Sign in using social networks</span>
+        <br>
+        <button class="btn bg-light-blue btn-circle"><i class="fa fa-facebook"></i></button>
+        <button class="btn bg-aqua btn-circle"><i class="fa fa-twitter"></i></button>
+        <button class="btn bg-red btn-circle"><i class="fa fa-google-plus"></i></button>
+
+    </div>
+</div>
+
+<script>
+    $(function () {
+        window.madetoearn.i18nLocalizePage();
+    });
+</script>
