@@ -276,6 +276,8 @@
     <Content Include="App\js\jquery.min.js" />
     <Content Include="App\js\underscore-min.js" />
     <Content Include="App\Pages\BeforeLogin\ContactUs\contactus.html" />
+    <Content Include="App\Pages\PostLoginDM.js" />
+    <Content Include="App\Pages\PostLoginInit.js" />
     <Content Include="App\Pages\PreLoginInit.js" />
     <Content Include="App\Pages\BeforeLogin\ForgetPassword\forgetpassword.html" />
     <Content Include="App\Pages\BeforeLogin\ForgetPassword\forgetPasswordTemplate.js" />
