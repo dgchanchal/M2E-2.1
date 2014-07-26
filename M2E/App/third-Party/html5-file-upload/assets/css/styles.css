@@ -156,7 +156,7 @@ h1{
 	left:0;
 	height:100%;
 	width:100%;
-	background: url('../img/done.png') no-repeat center center rgba(255,255,255,0.5);
+	background: url('../../../../App/third-Party/html5-file-upload/assets/img/done.png') no-repeat center center rgba(255,255,255,0.5);
 	display: none;
 }
 

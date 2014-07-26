@@ -58,6 +58,12 @@ appRequire = require
             iCheck: {//used
                 deps: ["jquery"]
             },
+            filedrop: {//new
+                deps: ["jquery"]
+            },
+            fileDropScript: {//new
+                deps: ["jquery", "filedrop"]
+            },
             fancybox: {//new
                 deps: ["jquery"]
             },
@@ -68,22 +74,22 @@ appRequire = require
                 deps: ["jquery", "jquery_slimscroll", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTETree", "iCheck"]
             },            
             clientAfterLoginApp: { //new
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox", "fileDropScript"]
             },
             SessionManagement: { //used
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox", "fileDropScript"]
             },
             clientAfterLoginIndex: { //used
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox", "fileDropScript"]
             },
             clientAfterLoginCreateTemplate: { //used
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox", "fileDropScript"]
             },            
             clientAfterLoginEditTemplate: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox", "fileDropScript"]
             },
             clientAfterLoginEditPage: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox", "fileDropScript"]
             },
                         
         },
@@ -109,7 +115,9 @@ appRequire = require
             iCheck: "../../Template/AdminLTE-master/js/plugins/iCheck/icheck.min",
             angular_cookies: "../../App/js/angular-cookies",//used..
             configureBlockUI: "../../App/js/configureBlockUI",//used..
-            fancybox:"../../App/third-Party/fancybox/source/jquery.fancybox.js?v=2.1.5",//new
+            fancybox: "../../App/third-Party/fancybox/source/jquery.fancybox.js?v=2.1.5",//new
+            filedrop: "../../App/third-Party/html5-file-upload/assets/js/jquery.filedrop",
+            fileDropScript:"../../App/third-Party/html5-file-upload/assets/js/script",
             //==============================================================================================================
             // Application Related JS
             //==============================================================================================================
@@ -128,7 +136,8 @@ appRequire = require
 appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMessage", "jquery_cookie",
     "jquery_blockUI", "restangular", "moment", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTEApp","beforeLoginAdminLTETree",
     "jquery_slimscroll", "iCheck", "angular_cookies", "configureBlockUI", "fancybox", "clientAfterLoginApp", "SessionManagement",
-    "clientAfterLoginIndex", "clientAfterLoginCreateTemplate", "clientAfterLoginCookieService", "clientAfterLoginEditTemplate", "clientAfterLoginEditPage", "fancybox"
+    "clientAfterLoginIndex", "clientAfterLoginCreateTemplate", "clientAfterLoginCookieService", "clientAfterLoginEditTemplate", "clientAfterLoginEditPage", "fancybox", "filedrop",
+    "fileDropScript"
 ], function() {
     angular.bootstrap(document.getElementById("mainClient"), ["afterLoginClientApp"]);
 });
