@@ -6,6 +6,6 @@
 define(['angular'], function() {
 
     var dependances = ['restangular'];
-    var app = angular.module("afterLoginApp", dependances);
+    var app = angular.module("afterLoginClientApp", dependances);
     return app;
 });

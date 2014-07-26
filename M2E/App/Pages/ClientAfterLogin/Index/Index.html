@@ -52,7 +52,7 @@
                                         </tr>
                                         <tr ng-repeat="subTask in InProgressTaskList">
                                             <td>{{subTask.creationDate}}</td>
-                                            <td>{{subTask.title}}&nbsp<a href="#modal-TemplateDetail{{subTask.editId}}" role="button" data-toggle="modal">detail</a></td>
+                                            <td>{{subTask.title}}&nbsp<a ng-click="openTemplateEditPageWithId(subTask.editId)" role="button" data-toggle="modal">detail</a></td>
                                             <td>
                                                 <div class="progress xs">
                                                     <div style="width: 55%" class="progress-bar progress-bar-danger"></div>
@@ -63,37 +63,7 @@
                                         
                                     </tbody></table>
                                 </div><!-- /.box-body -->
-                                <div ng-repeat="subTask in InProgressTaskList" class="modal fade" id="modal-TemplateDetail{{subTask.editId}}" tabindex="-1" role="dialog" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button aria-hidden="true" id="closeModalPopup{{subTask.editId}}" data-dismiss="modal" class="close"
-                                                            type="button" style="display: block;">
-                                                        ×</button>
-                                                    <h3 id="H3">
-                                                        {{subTask.title}}</h3>
-                                                </div>
-                                                <form>
-                                                    <div class="modal-body">                            
-                                                        <div class="form-group">
-                                                            Total subTasks = 215<br/>
-                                                            Completed subTasks = 153<br/>
-                                                            Reviewed SubTasks = 103 <br/>
-                                                            Progress : 
-                                                            <div class="progress xs">
-                                                                <div class="progress-bar progress-bar-success" style="width: 55%"></div>
-                                                            </div>
-                                                        </div>                           
-                                                    </div>
-                                                    <div class="modal-footer clearfix">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard </button>
-                                                        <button ng-click="deleteTemplateEditPageWithId(subTask.editId)" id="{{subTask.editId}}" class="btn btn-danger"> Delete </button>
-                                                        <button ng-click="openTemplateEditPageWithId(subTask.editId)" id="{{subTask.editId}}" class="btn btn-info"> Edit </button>
-                                                    </div>
-                                                </form>
-                                            </div><!-- /.modal-content -->
-                                        </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->
+                                
                             </div>
                                 
                                 <div class="box-footer clearfix no-border">

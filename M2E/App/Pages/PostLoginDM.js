@@ -6,94 +6,86 @@
 appRequire = require
     .config({
         shim: {
-            underscore: {
+            underscore: { //used
                 exports: "_"
             },
-            angular: {
+            angular: {//used
                 exports: "angular",
                 deps: ["jquery"]
             },
-            moment: {
+            moment: {//used
                 deps: ["jquery"]
             },            
-            bootstrap: {
+            bootstrap: {//used
                 deps: ["jquery"]
             },
-            bootstrap_switch: {
+            bootstrap_switch: { //used
                 deps: ["jquery"]
             },
-            jquery: {
+            jquery: {//used
                 exports: "$"
-            },                        
-            jquery_cookie: {
+            },//         
+            jquery_cookie: {//used
                 deps: ["jquery"]
-            },
+            },            
             //m2ei18n: {
             //    deps: ["jquery"]
             //},
-            restangular: {
+            restangular: {//used
                 deps: ["angular", "underscore"]
             },
-            angular_cookies: {
+            angular_cookies: {//used
                 deps: ["angular"]
             },          
-            jquery_toastmessage: {
+            jquery_toastmessage: { //used
                 deps: ["jquery"]
             },
             toastMessage: {
                 deps: ["jquery_toastmessage"]
             },            
-            jquery_blockUI: {
+            jquery_blockUI: {//used
                 deps: ["jquery"]
             },
-            configureBlockUI: {
+            configureBlockUI: {//used
                 deps: ["jquery_blockUI"]
             },            
-            jquery_slimscroll: {
+            jquery_slimscroll: {//used
                 deps: ["jquery"]
             },            
-            beforeLoginAdminLTETree: {
+            beforeLoginAdminLTETree: {//used
                 deps: ["jquery"]
             },
-            iCheck: {
+            iCheck: {//used
                 deps: ["jquery"]
             },
-            beforeLoginAdminLTEApp: {
+            fancybox: {//new
+                deps: ["jquery"]
+            },
+            clientAfterLoginCookieService: {
+                deps: ["jquery", "jquery_cookie"]
+            },
+            beforeLoginAdminLTEApp: {//used
                 deps: ["jquery", "jquery_slimscroll", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTETree", "iCheck"]
             },            
-            beforeLoginApp: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
+            clientAfterLoginApp: { //new
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
             },
-            showMessageTemplate: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
+            SessionManagement: { //used
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
             },
-            beforeLoginIndex: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
+            clientAfterLoginIndex: { //used
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
             },
-            beforeLoginFAQ: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
-            },
-            beforeLoginLogin: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
-            },
-            beforeLoginCookieService: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "jquery_blockUI", "toastMessage"]
-            },
-            beforeLoginSignUpClient: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
-            },
-            beforeLoginSignUpUser: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
-            },
-            beforeLoginValidateEmail: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
-            },
-            beforeLoginForgetPassword: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
-            },
-            beforeLoginResetPassword: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
+            clientAfterLoginCreateTemplate: { //used
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
             },            
+            clientAfterLoginEditTemplate: {
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
+            },
+            clientAfterLoginEditPage: {
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
+            },
+                        
         },
         paths: {
             //==============================================================================================================
@@ -122,27 +114,21 @@ appRequire = require
             // Application Related JS
             //==============================================================================================================
             clientAfterLoginApp: ".././../App/Pages/ClientAfterLogin/Controller/clientAfterLoginApp",//changed..
-            beforeLoginIndex: "../../App/Pages/BeforeLogin/Index/index",
-            beforeLoginFAQ: "../../App/Pages/BeforeLogin/FAQ/FAQ",
-            beforeLoginLogin: "../../App/Pages/BeforeLogin/Login/Login",
-            beforeLoginCookieService: "../../../../App/Pages/BeforeLogin/Controller/common/CookieService",
-            beforeLoginSignUpClient: "../../App/Pages/BeforeLogin/SignUpClient/SignUpClient",
-            beforeLoginSignUpUser: "../../App/Pages/BeforeLogin/SignUpUser/SignUpUser",
-            beforeLoginValidateEmail: "../../App/Pages/BeforeLogin/validateEmail/validateEmail",
-            beforeLoginForgetPassword: "../../App/Pages/BeforeLogin/ForgetPassword/forgetPasswordTemplate",
-            beforeLoginResetPassword: "../../App/Pages/BeforeLogin/ResetPassword/resetpasswordTemplate",
-            showMessageTemplate: "../../App/Pages/BeforeLogin/ShowMessage/showMessageTemplate",
-            
-            
+            SessionManagement: "../../App/Pages/ClientAfterLogin/Controller/common/SessionManagement",//new
+            clientAfterLoginIndex: "../../App/Pages/ClientAfterLogin/index/index",//new
+            clientAfterLoginCreateTemplate: "../../App/Pages/ClientAfterLogin/CreateTemplate/CreateTemplate",//new
+            clientAfterLoginCookieService: "../../../../App/Pages/ClientAfterLogin/Controller/common/CookieServiceClientView",//used
+            clientAfterLoginEditTemplate: "../../App/Pages/ClientAfterLogin/EditTemplate/EditTemplate",//used
+            clientAfterLoginEditPage: "../../App/Pages/ClientAfterLogin/EditPage/editPage",//used
             
         },
         urlArgs: ""
     });
 
-appRequire(["jquery", "angular", "jquery_toastmessage", "toastMessage", "jquery_cookie",
-    "jquery_blockUI", "restangular", "moment", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTEApp",
-    "beforeLoginApp", "beforeLoginIndex", "beforeLoginFAQ", "beforeLoginLogin", "beforeLoginCookieService", "beforeLoginSignUpClient", "beforeLoginSignUpUser",
-    "beforeLoginValidateEmail", "beforeLoginForgetPassword", "beforeLoginResetPassword", "showMessageTemplate", "underscore", "iCheck", "angular_cookies"
+appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMessage", "jquery_cookie",
+    "jquery_blockUI", "restangular", "moment", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTEApp","beforeLoginAdminLTETree",
+    "jquery_slimscroll", "iCheck", "angular_cookies", "configureBlockUI", "fancybox", "clientAfterLoginApp", "SessionManagement",
+    "clientAfterLoginIndex", "clientAfterLoginCreateTemplate", "clientAfterLoginCookieService", "clientAfterLoginEditTemplate", "clientAfterLoginEditPage", "fancybox"
 ], function() {
-    angular.bootstrap(document.getElementById("main"), ["beforeLoginApp"]);
+    angular.bootstrap(document.getElementById("mainClient"), ["afterLoginClientApp"]);
 });

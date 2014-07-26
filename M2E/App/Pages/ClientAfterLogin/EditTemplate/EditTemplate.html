@@ -106,7 +106,7 @@
                                                    <div class="controls">
                                                           <div class="row">
                                                             <div class="col-lg-3 col-xs-6" ng-repeat="imgurImage in imgurImageTemplate">
-		                                                        <a  title="Personalized Title" data-fancybox-group="gallery" href="{{imgurImage.data.link}}" class="fancybox"><img alt="" src="{{imgurImage.data.link_s}}"></a><br /><span class="imgurImagesUploadManageClass" ng-click="DeleteEditImgurImageByIdFunction(imgurImage.data.id)">delete</span>&nbsp;&nbsp;<span class="imgurImagesUploadManageClass" style="color: blue;" id="<a class='fancybox' href='{{imgurImage.data.link}}' data-fancybox-group='gallery' title='Personalized Title'><img src='{{imgurImage.data.link_s}}' alt=''></a>" ng-click="copyToClipboard($event)">copy</span>
+		                                                        <a  title="Personalized Title" data-fancybox-group="gallery" href="{{imgurImage.data.link}}" class="fancybox"><img alt="" ng-src="{{imgurImage.data.link_s}}"></a><br /><span class="imgurImagesUploadManageClass" ng-click="DeleteEditImgurImageByIdFunction(imgurImage.data.id)">delete</span>&nbsp;&nbsp;<span class="imgurImagesUploadManageClass" style="color: blue;" id="<a class='fancybox' href='{{imgurImage.data.link}}' data-fancybox-group='gallery' title='Personalized Title'><img ng-src='{{imgurImage.data.link_s}}' alt=''></a>" ng-click="copyToClipboard($event)">copy</span>
 	                                                       </div>
                                                         </div>
                                                    </div>
