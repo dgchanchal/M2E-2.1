@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using log4net;
@@ -33,7 +34,7 @@ namespace M2E.Common.Logger
         {
             if (GALoggin && Convert.ToBoolean(ConfigurationManager.AppSettings["GAInfoLogging"]))
             {                
-                trackGoogleEvents("Logger-Info", "Info", message);               
+                TrackGoogleEvents("Logger-Info", "Info", message);               
             }
             else
             {
@@ -45,7 +46,7 @@ namespace M2E.Common.Logger
         {
             if (GALoggin)
             {
-                trackGoogleEvents("Logger-Error", message, ex.Message.ToString());
+                TrackGoogleEvents("Logger-Error", message, ex.Message.ToString(CultureInfo.InvariantCulture));
             }
             else
             {
@@ -57,7 +58,7 @@ namespace M2E.Common.Logger
         {
             if (GALoggin)
             {
-                trackGoogleEvents("Logger-Debug", message, ex.Message.ToString());
+                TrackGoogleEvents("Logger-Debug", message, ex.Message.ToString(CultureInfo.InvariantCulture));
             }
             else
             {
@@ -69,7 +70,7 @@ namespace M2E.Common.Logger
         {
             if (GALoggin)
             {
-                trackGoogleEvents("Logger-Fatal", message, ex.Message.ToString());
+                TrackGoogleEvents("Logger-Fatal", message, ex.Message.ToString(CultureInfo.InvariantCulture));
             }
             else
             {
@@ -77,11 +78,11 @@ namespace M2E.Common.Logger
             }              
         }
 
-        private void trackGoogleEvents(string Category, string Action, string Label)
+        private void TrackGoogleEvents(string category, string action, string label)
         {
             try
             {
-                asyncTrackGoogleEvents(Category, Action, Label); // to make it async call if required..
+                AsyncTrackGoogleEvents(category, action, label); // to make it async call if required..
             }
             catch (Exception ex)
             {
@@ -89,10 +90,11 @@ namespace M2E.Common.Logger
             }
             
         }
-        private void asyncTrackGoogleEvents(string Category, string Action, string Label)
+
+        public void AsyncTrackGoogleEvents(string category, string action, string label)
         {
-            GoogleEvent GoogleEvent = new GoogleEvent("MadeToEarn.com", Category, Action, Label, 1);
-            TrackingRequest requestEvent = new RequestFactory().BuildRequest(GoogleEvent);
+            var googleEvent = new GoogleEvent("MadeToEarn.com", category, action, label, 1);
+            var requestEvent = new RequestFactory().BuildRequest(googleEvent);
             GoogleTracking.FireTrackingEvent(requestEvent);
         }
     }
