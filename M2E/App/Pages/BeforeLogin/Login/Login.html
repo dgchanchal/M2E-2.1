@@ -2,7 +2,7 @@
     <div class="header" data-i18n="signInTitle"></div>    
     <form>
         <div class="body bg-gray">
-           <ul class="alert alert-danger alert-dismissable"  ng-show="showHeaderErrors" style="margin-left: 0;">                                                                               
+           <ul class="alert alert-{{HeaderAlert.classType}} alert-dismissable"  ng-show="showHeaderErrors" style="margin-left: 0;">                                                                               
                <li ng-show="HeaderAlert.visible">{{HeaderAlert.message}}</li>
                <li ng-show="ForgetPasswordAlert.visible"><p>{{ForgetPasswordAlert.message}} <a href="#">Request a new one.</a></p></li>
             </ul>
