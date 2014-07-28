@@ -6,6 +6,7 @@ define([appLocation.postLogin], function (app) {
                        when("/edit", { templateUrl: "../../App/Pages/ClientAfterLogin/EditPage/EditPage.html" }).
                        when("/createTemplate", { templateUrl: "../../App/Pages/ClientAfterLogin/CreateTemplate/CreateTemplate.html" }).
                        when("/editTemplate/:username/:templateid", { templateUrl: "../../App/Pages/ClientAfterLogin/EditTemplate/EditTemplate.html" }).
+                       when("/templateSample/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/TemplateSample/TemplateSample.html" }).
                        otherwise({ templateUrl: "../../Resource/templates/beforeLogin/contentView/404.html" });
 
     });
@@ -59,7 +60,7 @@ define([appLocation.postLogin], function (app) {
            },
            {
                value: "Survey", dropDownMenuShow: true, dropDownSubMenuClass: "dropdown-submenu", dropDownMenuClass: "dropdown-menu", dropDownSubMenuArrow: "dropdown", dropDownMenuList: [
-                 { value: "Product survey", link: "#/createTemplate" },
+                 { value: "Product survey", link: "#/templateSample/survey/productSurvey" },
                  { value: "User feedback survey", link: "#" },
                  { value: "Pools", link: "#" }
                ]

@@ -276,6 +276,7 @@
     <Content Include="App\js\jquery.min.js" />
     <Content Include="App\js\underscore-min.js" />
     <Content Include="App\Pages\BeforeLogin\ContactUs\contactus.html" />
+    <Content Include="App\Pages\ClientAfterLogin\TemplateSample\TemplateSample.html" />
     <Content Include="App\Pages\PostLoginDM.js" />
     <Content Include="App\Pages\PostLoginInit.js" />
     <Content Include="App\Pages\PreLoginInit.js" />
@@ -358,6 +359,13 @@
     <Content Include="App\third-Party\html5-file-upload\assets\img\tzine.png" />
     <Content Include="App\third-Party\html5-file-upload\assets\js\jquery.filedrop.js" />
     <Content Include="App\third-Party\html5-file-upload\assets\js\script.js" />
+    <Content Include="App\third-Party\html5-file-upload\img\background_tile_1.jpg" />
+    <Content Include="App\third-Party\html5-file-upload\img\background_tile_2.jpg" />
+    <Content Include="App\third-Party\html5-file-upload\img\background_tile_3.jpg" />
+    <Content Include="App\third-Party\html5-file-upload\img\blue_line.jpg" />
+    <Content Include="App\third-Party\html5-file-upload\img\done.png" />
+    <Content Include="App\third-Party\html5-file-upload\img\logo.jpg" />
+    <Content Include="App\third-Party\html5-file-upload\img\tzine.png" />
     <Content Include="App\third-Party\html5-file-upload\index.html" />
     <Content Include="App\third-Party\loadOver\loading.png" />
     <Content Include="App\third-Party\loadOver\loadover.css" />

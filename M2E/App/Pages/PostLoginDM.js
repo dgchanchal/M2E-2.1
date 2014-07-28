@@ -62,7 +62,7 @@ appRequire = require
                 deps: ["jquery"]
             },
             fileDropScript: {//new
-                deps: ["jquery", "filedrop"]
+                deps: ["jquery", "filedrop", "clientAfterLoginEditTemplate", "clientAfterLoginCreateTemplate"]
             },
             fancybox: {//new
                 deps: ["jquery"]
@@ -74,22 +74,22 @@ appRequire = require
                 deps: ["jquery", "jquery_slimscroll", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTETree", "iCheck"]
             },            
             clientAfterLoginApp: { //new
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox", "fileDropScript"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
             },
             SessionManagement: { //used
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox", "fileDropScript"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
             },
             clientAfterLoginIndex: { //used
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox", "fileDropScript"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
             },
             clientAfterLoginCreateTemplate: { //used
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox", "fileDropScript"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
             },            
             clientAfterLoginEditTemplate: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox", "fileDropScript"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
             },
             clientAfterLoginEditPage: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox", "fileDropScript"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
             },
                         
         },
