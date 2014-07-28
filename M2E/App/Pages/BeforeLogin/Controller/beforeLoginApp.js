@@ -19,13 +19,15 @@ define([appLocation.preLogin], function (app) {
                        when("/linkedinLogin/:userType", { templateUrl: "../../Resource/templates/beforeLogin/contentView/linkedinLogin.html" }).
                        when("/linkedinLogin", { templateUrl: "../../Resource/templates/beforeLogin/contentView/linkedinLogin.html" }).
                        when("/validate/:userName/:guid", { templateUrl: "../../App/Pages/BeforeLogin/validateEmail/validateEmail.html" }).
-                       when("/tnc", { templateUrl: "../../Resource/templates/beforeLogin/contentView/termsAndConditions.html" }).
+                       when("/tnc", { templateUrl: "../../App/Pages/BeforeLogin/TnC/TnC.html" }).
                        when("/404", { templateUrl: "../../Resource/templates/beforeLogin/contentView/404.html" }).
                        when("/AboutUs", { templateUrl: "../../App/Pages/BeforeLogin/AboutUs/AboutUs.html" }).
                        when("/contactus", { templateUrl: "../../App/Pages/BeforeLogin/ContactUs/contactus.html" }).
                        when("/showmessage/:code", { templateUrl: "../../App/Pages/BeforeLogin/ShowMessage/showmessage.html" }).
                        when("/forgetpassword", { templateUrl: "../../App/Pages/BeforeLogin/ForgetPassword/forgetPassword.html" }).
                        when("/resetpassword/:userName/:guid", { templateUrl: "../../App/Pages/BeforeLogin/ResetPassword/resetpassword.html" }).
+                       when("/UserDetails", { templateUrl: "../../App/Pages/BeforeLogin/UserMoreInfo/UserMoreInfo.html" }).
+                       when("/ClientDetails", { templateUrl: "../../App/Pages/BeforeLogin/ClientMoreInfo/ClientMoreInfo.html" }).
                        otherwise({ templateUrl: "../../Resource/templates/beforeLogin/contentView/404.html" });
 
     });
