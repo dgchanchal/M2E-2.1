@@ -29,9 +29,17 @@ define([appLocation.postLogin], function (app) {
         });
     });
 
+   
     app.controller('ClientAfterMasterPage', function ($scope, $http, $rootScope, CookieUtil) {
 
         _.defer(function () { $scope.$apply(); });
+
+        $scope.openTemplateSamplePageWithId = function (id) {
+            if (mobileDevice)
+                $('#sideBarMenuToggleButtonId').click();
+            //alert(id);
+            location.href = id;
+        }
 
         $scope.ClientCategoryList = [
        {
