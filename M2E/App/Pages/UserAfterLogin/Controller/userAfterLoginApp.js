@@ -31,6 +31,8 @@ define([appLocation.userPostLogin], function (app) {
 
     app.controller('UserAfterMasterPage', function ($scope, $http, $rootScope, CookieUtil) {
 
+        _.defer(function () { $scope.$apply(); });
+
         $scope.ClientCategoryList = [
        {
            MainCategory: "Category",

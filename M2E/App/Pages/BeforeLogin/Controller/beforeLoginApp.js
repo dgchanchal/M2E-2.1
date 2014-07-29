@@ -50,6 +50,9 @@ define([appLocation.preLogin], function (app) {
         });
     });
     app.controller('beforeLoginMasterPageController', function ($scope, $http, $rootScope, CookieUtil) {
+
+        _.defer(function () { $scope.$apply(); });
+
         $rootScope.logoImage = { url: logoImage };
         $('title').html("index"); //TODO: change the title so cann't be tracked in log
         $rootScope.beforeLoginFooterCopyRightInfo = {
