@@ -11,7 +11,7 @@ var appLocation = {
     'common': '../../App/CommonInit',
     'preLogin': '../../App/Pages/PreLoginInit',
     'postLogin': '../../App/Pages/PostLoginInit',
-    'validateEmail': '../../App//AccountVerificationInit'
+    'userPostLogin': '../../App/Pages/UserPostLoginInit'
 };
 
 var mobileDevice = detectmob();

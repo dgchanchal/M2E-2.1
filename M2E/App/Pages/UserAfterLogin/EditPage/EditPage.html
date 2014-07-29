@@ -1,0 +1,212 @@
+﻿<!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Dashboard
+                        <small>Control panel</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li class="active">Dashboard</li>
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">                   
+                    <!-- top row -->
+                    <div class="row">
+                        <div class="col-xs-12 connectedSortable">
+                            
+                        </div><!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+
+                    <!-- Main row -->
+                    <div class="row">
+                        <!-- Left col -->
+                        <section class="col-lg-12 connectedSortable">                            
+                           <div class="box box-color box-bordered">
+                <div class="box-title">
+                    <h3>
+                        <i class="icon-user"></i>Edit user profile
+                    </h3>
+                </div>
+                <div class="box-content nopadding" ng-controller="UserAfterLoginEditPage">
+                    <ul class="tabs tabs-inline tabs-top">
+                        <li class="active"><a href="#profile" data-toggle="tab"><i class="icon-user"></i>Profile</a>
+                        </li>
+                        <li class=""><a href="#notifications" data-toggle="tab"><i class="icon-bullhorn"></i>
+                            Notifications</a> </li>
+                        <li class=""><a href="#security" data-toggle="tab"><i class="icon-lock"></i>Security</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content padding tab-content-inline tab-content-bottom">
+                        <div class="tab-pane active" id="profile">
+                            <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                <div class="widget no-margin">                 
+                  <div class="widget-body">
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                        <div class="thumbnail">
+                          <img src="http://i.imgur.com/Y5DauNCm.jpg" alt="300x200">
+                          <br>
+                          <h4 class="center-align-text">UI Designer</h4>                          
+                          <p class="btn-stack center-align-text">
+                            <a class="btn btn-info" href="javascript:;" data-original-title="" title="">
+                              <i class="fa fa-twitter"></i>
+                            </a>
+                            <a class="btn btn-primary" href="javascript:;" data-original-title="" title="">
+                              <i class="fa fa-facebook"></i>
+                            </a>
+                            <a class="btn btn-danger" href="javascript:;" data-original-title="" title="">
+                              <i class="fa fa-google-plus"></i>
+                            </a>
+                            <a class="btn btn-success" href="javascript:;" data-original-title="" title="">
+                              <i class="fa fa-pinterest"></i>
+                            </a>
+                            <a class="btn btn-warning" href="javascript:;" data-original-title="" title="">
+                              <i class="fa fa-youtube"></i>
+                            </a>
+                          </p>
+                        </div>
+                        <br>
+                      </div>
+                      <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                        <form class="form-horizontal">                          
+                          <div ng-show="true">
+                              <div class="form-group">
+                                <label class="col-sm-3 control-label" for="emailId">Old Password</label>
+                                <div class="col-sm-9">
+                                  <input type="email" placeholder="Email ID" id="emailId" class="form-control">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="col-sm-3 control-label" for="inputPassword">New Password</label>
+                                <div class="col-sm-9">
+                                  <input type="password" placeholder="Password" id="inputPassword" class="form-control">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="col-sm-3 control-label" for="inputPassword1">Confirm Password</label>
+                                <div class="col-sm-9">
+                                  <input type="password" placeholder="Confirm Password" id="inputPassword1" class="form-control">
+                                </div>
+                              </div>
+                          </div>
+                          
+                          <br>
+                          <h5>
+                            Personal Information
+                          </h5>
+                          <hr>
+                          <div class="form-group">
+                            <label class="col-sm-3 control-label" for="userName">First Name</label>
+                            <div class="col-sm-9">
+                              <input type="text" placeholder="Name" id="userName" ng-model="clientDetailResponse.FirstName"  class="form-control">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-sm-3 control-label" for="location">Last Name</label>
+                            <div class="col-sm-9">
+                              <input type="text" placeholder="Location" id="location" ng-model="clientDetailResponse.LastName" class="form-control">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-sm-3 control-label" for="webUrl">Email Id</label>
+                            <div class="col-sm-9">
+                              <input type="text" placeholder="Website Url" id="webUrl" ng-model="clientDetailResponse.Username" class="form-control">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-sm-3 control-label" for="webUrl">About</label>
+                            <div class="col-sm-9">
+                              <textarea rows="5" class="form-control"></textarea>
+                            </div>
+                          </div>
+                          <div class="form-actions">
+                            <button class="btn btn-info pull-right" type="submit">
+                              Save changes
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                    </div>
+                        </div>
+                        <div class="tab-pane" id="notifications">
+                            <form action="#" class="form-horizontal ng-pristine ng-valid">
+                            <div class="control-group">
+                                <label for="asdf" class="control-label">
+                                    Email notifications</label>
+                                <div class="controls">
+                                    <label class="checkbox">
+                                        <input type="checkbox" name="asdf">
+                                        Send me security emails</label>
+                                    <label class="checkbox">
+                                        <input type="checkbox" name="asdf">
+                                        Send system emails</label>
+                                    <label class="checkbox">
+                                        <input type="checkbox" name="asdf">
+                                        Lorem ipsum dolor</label>
+                                    <label class="checkbox">
+                                        <input type="checkbox" name="asdf">
+                                        Minim veli</label>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="asdf" class="control-label">
+                                    Email for notifications</label>
+                                <div class="controls">
+                                    <select name="email" id="email">
+                                        <option value="1">asdf@blasdas.com</option>
+                                        <option value="2">johnDoe@asdasf.de</option>
+                                        <option value="3">janeDoe@janejanejane.net</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <input type="submit" class="btn btn-primary" value="Save">
+                                <input type="reset" class="btn" value="Discard changes">
+                            </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane" id="security">
+                            <form action="#" class="form-horizontal ng-pristine ng-valid">
+                            <div class="control-group">
+                                <label for="asdf" class="control-label">
+                                    Disable account for</label>
+                                <div class="controls">
+                                    <select name="email" id="email">
+                                        <option value="1">1 week</option>
+                                        <option value="2">2 weeks</option>
+                                        <option value="3">3 weeks</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="asdf" class="control-label">
+                                    Lock account?</label>
+                                <div class="controls">
+                                    <a href="/Locked/index/dcd232d3-3037-479b-ab94-5c950f2ecd85" class="btn btn-danger">Lock account now</a>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <input type="submit" class="btn btn-primary" value="Save">
+                                <input type="reset" class="btn" value="Discard changes">
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        </section><!-- /.Left col -->                        
+                    </div><!-- /.row (main row) -->
+
+                </section><!-- /.content -->
+         
+<script src="../../App/third-Party/toastmessage/js/jquery.toastmessage.js" type="text/javascript"></script>
+<script src="../../App/js/toastMessage.js" type="text/javascript"></script>   
+<script src="../../App/js/jquery.blockUI.js"></script>

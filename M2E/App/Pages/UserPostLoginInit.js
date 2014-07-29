@@ -1,11 +1,11 @@
 /**
  * Simple bootstrapper to load all the pre-requisite AngularJS dependencies needed by Login SPA [Single Page Application]
- * @class PostLoginInit
- * @module PostLogin
+ * @class userPostLoginInit
+ * @module userPostLogin
  */
 define(['angular'], function() {
 
     var dependances = ['restangular'];
-    var app = angular.module("afterLoginClientApp", dependances);
+    var app = angular.module("afterLoginUserApp", dependances);
     return app;
 });

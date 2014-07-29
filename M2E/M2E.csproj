@@ -136,6 +136,7 @@
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Encryption\AES.cs" />
     <Compile Include="Encryption\Encryption.cs" />
     <Compile Include="Global.asax.cs">
@@ -261,6 +262,7 @@
     <Content Include="App\js\angular.js" />
     <Content Include="App\js\angular.min.js" />
     <Content Include="App\js\configureBlockUI.js" />
+    <Content Include="App\js\domReady.js" />
     <Content Include="App\js\i18n\i18n_hi_in.js" />
     <Content Include="App\js\m2ei18n.js" />
     <Content Include="App\js\httpServices.js" />
@@ -277,6 +279,21 @@
     <Content Include="App\js\underscore-min.js" />
     <Content Include="App\Pages\BeforeLogin\ContactUs\contactus.html" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateSample\TemplateSample.html" />
+    <Content Include="App\Pages\UserAfterLogin\Controller\userAfterLoginApp.js" />
+    <Content Include="App\Pages\UserAfterLogin\Controller\common\CookieServiceUserView.js" />
+    <Content Include="App\Pages\UserAfterLogin\Controller\common\SessionManagement.js" />
+    <Content Include="App\Pages\UserAfterLogin\ShowTemplate\CreateTemplate.css" />
+    <Content Include="App\Pages\UserAfterLogin\ShowTemplate\CreateTemplate.html" />
+    <Content Include="App\Pages\UserAfterLogin\ShowTemplate\CreateTemplate.js" />
+    <Content Include="App\Pages\UserAfterLogin\EditPage\editPage.css" />
+    <Content Include="App\Pages\UserAfterLogin\EditPage\EditPage.html" />
+    <Content Include="App\Pages\UserAfterLogin\EditPage\editPage.js" />
+    <Content Include="App\Pages\UserAfterLogin\Index\index.css" />
+    <Content Include="App\Pages\UserAfterLogin\Index\Index.html" />
+    <Content Include="App\Pages\UserAfterLogin\Index\index.js" />
+    <Content Include="App\Pages\UserAfterLogin\TemplateSample\TemplateSample.html" />
+    <Content Include="App\Pages\UserPostLoginDM.js" />
+    <Content Include="App\Pages\UserPostLoginInit.js" />
     <Content Include="App\Pages\PostLoginDM.js" />
     <Content Include="App\Pages\PostLoginInit.js" />
     <Content Include="App\Pages\PreLoginInit.js" />
@@ -1019,6 +1036,7 @@
     <None Include="Template\AdminLTE-master\README.md" />
     <None Include="Views\Client\Index.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
