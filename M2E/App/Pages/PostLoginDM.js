@@ -61,8 +61,11 @@ appRequire = require
             filedrop: {//new
                 deps: ["jquery"]
             },
+            domReady: {//new
+                deps: ["jquery"]
+            },
             fileDropScript: {//new
-                deps: ["jquery", "filedrop", "clientAfterLoginEditTemplate", "clientAfterLoginCreateTemplate"]
+                deps: ["jquery", "filedrop", "clientAfterLoginEditTemplate", "clientAfterLoginCreateTemplate", "domReady"]
             },
             fancybox: {//new
                 deps: ["jquery"]
@@ -117,6 +120,7 @@ appRequire = require
             configureBlockUI: "../../App/js/configureBlockUI",//used..
             fancybox: "../../App/third-Party/fancybox/source/jquery.fancybox.js?v=2.1.5",//new
             filedrop: "../../App/third-Party/html5-file-upload/assets/js/jquery.filedrop",
+            domReady: "../../App/js/domReady",
             fileDropScript:"../../App/third-Party/html5-file-upload/assets/js/script",
             //==============================================================================================================
             // Application Related JS
@@ -137,7 +141,7 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "jquery_blockUI", "restangular", "moment", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTEApp","beforeLoginAdminLTETree",
     "jquery_slimscroll", "iCheck", "angular_cookies", "configureBlockUI", "fancybox", "clientAfterLoginApp", "SessionManagement",
     "clientAfterLoginIndex", "clientAfterLoginCreateTemplate", "clientAfterLoginCookieService", "clientAfterLoginEditTemplate", "clientAfterLoginEditPage", "fancybox", "filedrop",
-    "fileDropScript"
+    "fileDropScript", "domReady"
 ], function() {
     angular.bootstrap(document.getElementById("mainClient"), ["afterLoginClientApp"]);
 });
