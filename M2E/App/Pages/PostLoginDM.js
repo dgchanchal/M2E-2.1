@@ -36,9 +36,18 @@ appRequire = require
             },
             angular_cookies: {//used
                 deps: ["angular"]
-            },          
+            },         
             jquery_toastmessage: { //used
                 deps: ["jquery"]
+            },
+            wysihtml5: { //used
+                deps: ["jquery"]
+            },
+            prettify: { //used
+                deps: ["jquery"]
+            },
+            bootstrap_wysihtml5: { //used
+                deps: ["jquery","wysihtml5"]
             },
             toastMessage: {
                 deps: ["jquery_toastmessage"]
@@ -86,10 +95,10 @@ appRequire = require
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
             },
             clientAfterLoginCreateTemplate: { //used
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","wysihtml5","bootstrap_wysihtml5","prettify"]
             },            
             clientAfterLoginEditTemplate: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","wysihtml5","bootstrap_wysihtml5","prettify"]
             },
             clientAfterLoginEditPage: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
@@ -122,6 +131,9 @@ appRequire = require
             filedrop: "../../App/third-Party/html5-file-upload/assets/js/jquery.filedrop",
             domReady: "../../App/js/domReady",
             fileDropScript:"../../App/third-Party/html5-file-upload/assets/js/script",
+            wysihtml5:"../../App/third-Party/wysihtml5/lib/js/wysihtml5-0.3.0",
+            prettify:"../../App/third-Party/wysihtml5/lib/js/prettify",
+            bootstrap_wysihtml5:"../../App/third-Party/wysihtml5/src/bootstrap-wysihtml5",
             //==============================================================================================================
             // Application Related JS
             //==============================================================================================================
@@ -140,8 +152,8 @@ appRequire = require
 appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMessage", "jquery_cookie",
     "jquery_blockUI", "restangular", "moment", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTEApp","beforeLoginAdminLTETree",
     "jquery_slimscroll", "iCheck", "angular_cookies", "configureBlockUI", "fancybox", "clientAfterLoginApp", "SessionManagement",
-    "clientAfterLoginIndex", "clientAfterLoginCreateTemplate", "clientAfterLoginCookieService", "clientAfterLoginEditTemplate", "clientAfterLoginEditPage", "fancybox", "filedrop",
-    "fileDropScript", "domReady"
+    "clientAfterLoginIndex", "clientAfterLoginCreateTemplate", "clientAfterLoginCookieService", "clientAfterLoginEditTemplate", "clientAfterLoginEditPage", "fancybox", "filedrop","wysihtml5",
+    "fileDropScript", "domReady","prettify","bootstrap_wysihtml5"
 ], function() {
     angular.bootstrap(document.getElementById("mainClient"), ["afterLoginClientApp"]);
 });

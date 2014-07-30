@@ -40,6 +40,9 @@ appRequire = require
             jquery_toastmessage: { //used
                 deps: ["jquery"]
             },
+            wysihtml5: { //used
+                deps: ["jquery"]
+            },
             toastMessage: {
                 deps: ["jquery_toastmessage"]
             },            
@@ -119,6 +122,7 @@ appRequire = require
             filedrop: "../../App/third-Party/html5-file-upload/assets/js/jquery.filedrop",
             domReady: "../../App/js/domReady",
             fileDropScript:"../../App/third-Party/html5-file-upload/assets/js/script",
+            wysihtml5:"../../Template/AdminLTE-master/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min",
             //==============================================================================================================
             // Application Related JS
             //==============================================================================================================
@@ -136,7 +140,7 @@ appRequire = require
 appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMessage", "jquery_cookie",
     "jquery_blockUI", "restangular", "moment", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTEApp","beforeLoginAdminLTETree",
     "jquery_slimscroll", "iCheck", "angular_cookies", "configureBlockUI", "fancybox", "userAfterLoginApp", "SessionManagement",
-    "userAfterLoginIndex", "userAfterLoginShowTemplate", "userAfterLoginCookieService", "userAfterLoginEditPage", "fancybox", "filedrop",
+    "userAfterLoginIndex", "userAfterLoginShowTemplate", "userAfterLoginCookieService", "userAfterLoginEditPage", "fancybox", "filedrop","wysihtml5",
     "fileDropScript", "domReady"
 ], function() {
     angular.bootstrap(document.getElementById("mainUser"), ["afterLoginUserApp"]);

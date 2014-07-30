@@ -1,4 +1,5 @@
-﻿<!-- Content Header (Page header) -->
+﻿
+<!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
                         Dashboard
@@ -142,7 +143,7 @@
                     <form>
                         <div class="modal-body">                            
                             <div class="form-group">
-                                <textarea class="input-block-level form-control" style="height: 120px;"  id="AddInstructionsTextArea" name="textarea" placeholder="Add Instruction"></textarea> 
+                                <textarea class="input-block-level form-control textarea" style="height: 120px;"  id="AddInstructionsTextArea" name="textarea" placeholder="Add Instruction"></textarea> 
                             </div>                           
                         </div>
                         <div class="modal-footer clearfix">
@@ -168,8 +169,8 @@
                     <form>
                         <div class="modal-body">                            
                             <div>                                
-                                <textarea style="height: 120px;" class="input-block-level form-control" id="SingleQuestionTextBoxQuestionData" name="textarea" placeholder="Question (Single Answer)"></textarea><br />
-                                <textarea style="height: 120px;" class="input-block-level form-control" id="SingleQuestionTextBoxAnswerData" name="textarea" placeholder="Options must be separated by seme-color (ie. ;)"></textarea>                                                
+                                <textarea style="height: 120px;" class="input-block-level form-control textarea" id="SingleQuestionTextBoxQuestionData" name="textarea" placeholder="Question (Single Answer)"></textarea><br />
+                                <textarea style="height: 120px;" class="input-block-level form-control textarea" id="SingleQuestionTextBoxAnswerData" name="textarea" placeholder="Options must be separated by seme-color (ie. ;)"></textarea>                                                
                             </div>                 
 
                         </div>
@@ -198,8 +199,8 @@
                     <form>
                         <div class="modal-body">                            
                             <div>                                
-                                <textarea cstyle="height: 120px;" class="input-block-level form-control" id="MultipleQuestionTextBoxQuestionData" name="textarea" placeholder="Question (Multiple Answer)"></textarea><br />
-                                <textarea style="height: 120px;" class="input-block-level form-control" id="MultipleQuestionTextBoxAnswerData" name="textarea" placeholder="Options must be separated by seme-color (ie. ;)"></textarea>                       
+                                <textarea cstyle="height: 120px;" class="input-block-level form-control textarea" id="MultipleQuestionTextBoxQuestionData" name="textarea" placeholder="Question (Multiple Answer)"></textarea><br />
+                                <textarea style="height: 120px;" class="input-block-level form-control textarea" id="MultipleQuestionTextBoxAnswerData" name="textarea" placeholder="Options must be separated by seme-color (ie. ;)"></textarea>                       
                             </div>                 
 
                         </div>
@@ -229,7 +230,7 @@
                     <form>
                         <div class="modal-body">                            
                             <div>                                
-                                <textarea style="height: 120px;" class="input-block-level form-control" id="TextBoxQuestionTextBoxQuestionData" name="textarea" placeholder="Question (TextBox Answer)"></textarea>                               
+                                <textarea style="height: 120px;" class="input-block-level form-control textarea" id="TextBoxQuestionTextBoxQuestionData" name="textarea" placeholder="Question (TextBox Answer)"></textarea>                               
             
                             </div>                 
 
@@ -259,8 +260,8 @@
                     <form>
                         <div class="modal-body">                            
                             <div>                                
-                                <textarea style="height: 120px;" class="input-block-level form-control" id="ListBoxQuestionTextBoxQuestionData" name="textarea" placeholder="Question (ListBox Answer)"></textarea><br />
-                                <textarea style="height: 120px;" class="input-block-level form-control" id="ListBoxQuestionTextBoxAnswerData" name="textarea" placeholder="Options must be separated by seme-color (ie. ;)"></textarea>           
+                                <textarea style="height: 120px;" class="input-block-level form-control textarea" id="ListBoxQuestionTextBoxQuestionData" name="textarea" placeholder="Question (ListBox Answer)"></textarea><br />
+                                <textarea style="height: 120px;" class="input-block-level form-control textarea" id="ListBoxQuestionTextBoxAnswerData" name="textarea" placeholder="Options must be separated by seme-color (ie. ;)"></textarea>           
             
                             </div>                 
 
@@ -278,7 +279,11 @@
 </div><!-- /.modal -->
 
 
-<!-- Including the HTML5 Uploader plugin -->
-<script src="../../App/third-Party/html5-file-upload/assets/js/jquery.filedrop.js"></script>
-<!-- The main script file - html5 upload -->
 <script src="../../App/third-Party/html5-file-upload/assets/js/script.js"></script>
+<script>
+    $('.textarea').wysihtml5();
+</script>
+
+<script type="text/javascript" charset="utf-8">
+    $(prettyPrint);
+</script>
