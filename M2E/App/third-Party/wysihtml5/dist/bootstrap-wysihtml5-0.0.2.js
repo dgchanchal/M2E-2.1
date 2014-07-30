@@ -51,7 +51,7 @@
                       "<a href='#' class='btn btn-primary' data-dismiss='modal'>" + locale.link.insert + "</a>" +
                     "</div>" +
                   "</div>" +
-                  "<a class='btn' data-wysihtml5-command='createLink' title='" + locale.link.insert + "'><i class='icon-share'></i></a>" +
+                  "<a class='btn' data-wysihtml5-command='createLink' title='" + locale.link.insert + "'><i class='fa fa-fw fa-link'></i></a>" +
                 "</li>",
 
             "image":
@@ -69,7 +69,7 @@
                       "<a href='#' class='btn btn-primary' data-dismiss='modal'>" + locale.image.insert + "</a>" +
                     "</div>" +
                   "</div>" +
-                  "<a class='btn' data-wysihtml5-command='insertImage' title='" + locale.image.insert + "'><i class='icon-picture'></i></a>" +
+                  "<a class='btn' data-wysihtml5-command='insertImage' title='" + locale.image.insert + "'><i class='fa fa-fw fa-picture-o'></i></a>" +
                 "</li>",
 
             "html":

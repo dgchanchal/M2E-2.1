@@ -62,45 +62,115 @@
                                                <div class="control-group" ng-show="jobTemplate[0].visible">
                                                    <label for="textfield" class="control-label">
                                                         
-                                                       <a href="#modal-AddInstructions" role="button" class="btn btn-primary" data-toggle="modal">
+                                                       <a  role="button" class="btn btn-primary">
                                                        Add</a><b><small>Instructions</small></b></label>
                                                    <div class="controls">
                                                        <ul id="editableInstructionsListID">
                                
 
                                                        </ul>
+                                                      
+                                                            <div class="modal-body">                            
+                                                                <div class="form-group">
+                                                                    <textarea class="input-block-level form-control textarea" style="height: 120px;"  id="AddInstructionsTextArea" name="textarea" placeholder="Add Instruction"></textarea> 
+                                                                </div>                           
+                                                            </div>
+                                                            <div class="modal-footer clearfix">
+                                                                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard </button>
+
+                                                                <button ng-click="addEditableInstructions()" class="btn btn-primary pull-left"><i class="fa fa-envelope"></i> Submit </button>
+                                                            </div>
+                                                       
                                                    </div>
                                                </div>       
                                                <div class="control-group" ng-show="jobTemplate[1].visible">
                                                    <label for="textfield" class="control-label">
-                                                       <a href="#modal-AddSingleQuestions" role="button" class="btn btn-primary" data-toggle="modal">
+                                                       <a role="button" class="btn btn-primary">
                                                            Add</a><b><small>Question</small></b></label>
-                                                   <div class="controls" id="addSingleAnswerQuestionID">
-                                
+                                                   <div class="controls">
+                                                        <div id="addSingleAnswerQuestionID"></div>
+                                                         <div class="modal-body">                            
+                                                            <div>                                
+                                                                <textarea style="height: 120px;" class="input-block-level form-control textarea" id="SingleQuestionTextBoxQuestionData" name="textarea" placeholder="Question (Single Answer)"></textarea><br />
+                                                                <textarea style="height: 120px;" class="input-block-level form-control textarea" id="SingleQuestionTextBoxAnswerData" name="textarea" placeholder="Options must be separated by seme-color (ie. ;)"></textarea>                                                
+                                                            </div>                 
+
+                                                        </div>
+                                                        <div class="modal-footer clearfix">
+
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard </button>
+
+                                                            <button class="btn btn-primary" ng-click="InsertSingleQuestionRow()">
+                                                                    Submit</button> 
+                                                        </div>
                                                    </div>
+
                                                </div>
                                                <div class="control-group" ng-show="jobTemplate[2].visible">
                                                    <label for="textfield" class="control-label">
-                                                       <a href="#modal-AddMultipleQuestions" role="button" class="btn btn-primary" data-toggle="modal">
+                                                       <a role="button" class="btn btn-primary">
                                                            Add</a><b><small>Question with multi ans</small></b></label>
-                                                   <div class="controls" id="addMultipleAnswerQuestionID">
-                                
+                                                   <div class="controls">
+                                                        <div id="addMultipleAnswerQuestionID"></div>
+                                                        <div class="modal-body">                            
+                                                            <div>                                
+                                                                <textarea cstyle="height: 120px;" class="input-block-level form-control textarea" id="MultipleQuestionTextBoxQuestionData" name="textarea" placeholder="Question (Multiple Answer)"></textarea><br />
+                                                                <textarea style="height: 120px;" class="input-block-level form-control textarea" id="MultipleQuestionTextBoxAnswerData" name="textarea" placeholder="Options must be separated by seme-color (ie. ;)"></textarea>                       
+                                                            </div>                 
+
+                                                        </div>
+                                                        <div class="modal-footer clearfix">
+
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard </button>
+
+                                                            <button class="btn btn-primary" ng-click="InsertMultipleQuestionRow()">
+                                                                Submit</button>    
+                                                        </div>
                                                    </div>
                                                </div>
                                                <div class="control-group" ng-show="jobTemplate[3].visible">
                                                    <label for="textfield" class="control-label">
-                                                       <a href="#modal-AddTextBoxQuestions" role="button" class="btn btn-primary" data-toggle="modal">
+                                                       <a role="button" class="btn btn-primary" >
                                                            Add</a><b><small>Question with single line ans</small></b></label>                                                 
-                                                   <div class="controls" id="addTextBoxAnswerQuestionID">
-                                                       
+                                                   <div class="controls">
+                                                        <div id="addTextBoxAnswerQuestionID"></div>
+                                                       <div class="modal-body">                            
+                                                        <div>                                
+                                                            <textarea style="height: 120px;" class="input-block-level form-control textarea" id="TextBoxQuestionTextBoxQuestionData" name="textarea" placeholder="Question (TextBox Answer)"></textarea>                               
+            
+                                                        </div>                 
+
+                                                    </div>
+                                                    <div class="modal-footer clearfix">
+
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard </button>
+
+                                                        <button class="btn btn-primary" ng-click="InsertTextBoxQuestionRow()">
+                                                            Submit</button>    
+                                                    </div>
                                                    </div>
                                                </div>
                                                <div class="control-group" ng-show="jobTemplate[4].visible">
                                                    <label class="control-label">
-                                                       <a href="#modal-AddListBoxQuestions" role="button" class="btn btn-primary" data-toggle="modal">
+                                                       <a role="button" class="btn btn-primary">
                                                            Add</a><b><small>Question with list box ans</small></b></label>
-                                                   <div class="controls" id="addListBoxAnswerQuestionID">
-                                                       
+                                                   <div class="controls">
+                                                       <div id="addListBoxAnswerQuestionID"></div>
+                                                       <div class="modal-body">                            
+                                                        <div>                                
+                                                            <textarea style="height: 120px;" class="input-block-level form-control textarea" id="ListBoxQuestionTextBoxQuestionData" name="textarea" placeholder="Question (ListBox Answer)"></textarea><br />
+                                                            <textarea style="height: 120px;" class="input-block-level form-control textarea" id="ListBoxQuestionTextBoxAnswerData" name="textarea" placeholder="Options must be separated by seme-color (ie. ;)"></textarea>           
+            
+                                                        </div>                 
+
+                                                    </div>
+                                                    <div class="modal-footer clearfix">
+
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard </button>
+
+                                                        <button class="btn btn-primary" ng-click="InsertListBoxQuestionRow()">
+                                                            Submit</button>    
+                                                    </div>
                                                    </div>
                                                </div>                                               
                                                 <div class="control-group">
@@ -130,153 +200,6 @@
 
                 </section><!-- /.content -->
          
-<div class="modal fade" id="modal-AddInstructions" tabindex="-1" role="dialog" aria-hidden="true" ng-controller="createTemplateController">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button aria-hidden="true"id="addInstructionCloseButton" data-dismiss="modal" class="close"
-                                type="button" style="display: block;">
-                            ×</button>
-                        <h3 id="H3">
-                            Add New Instructions</h3>
-                    </div>
-                    <form>
-                        <div class="modal-body">                            
-                            <div class="form-group">
-                                <textarea class="input-block-level form-control textarea" style="height: 120px;"  id="AddInstructionsTextArea" name="textarea" placeholder="Add Instruction"></textarea> 
-                            </div>                           
-                        </div>
-                        <div class="modal-footer clearfix">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard </button>
-
-                            <button ng-click="addEditableInstructions()" class="btn btn-primary pull-left"><i class="fa fa-envelope"></i> Submit </button>
-                        </div>
-                    </form>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<div class="modal fade" id="modal-AddSingleQuestions" tabindex="-1" role="dialog" aria-hidden="true" ng-controller="createTemplateController">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button aria-hidden="true" id="addQuestionSingleAnswerCloseButton" data-dismiss="modal" class="close"
-                            type="button" style="display: block;">
-                            ×</button>
-                        <h3 id="H1">
-                            Add New Questions (Single Answer)</h3>
-                    </div>
-                    <form>
-                        <div class="modal-body">                            
-                            <div>                                
-                                <textarea style="height: 120px;" class="input-block-level form-control textarea" id="SingleQuestionTextBoxQuestionData" name="textarea" placeholder="Question (Single Answer)"></textarea><br />
-                                <textarea style="height: 120px;" class="input-block-level form-control textarea" id="SingleQuestionTextBoxAnswerData" name="textarea" placeholder="Options must be separated by seme-color (ie. ;)"></textarea>                                                
-                            </div>                 
-
-                        </div>
-                        <div class="modal-footer clearfix">
-
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard </button>
-
-                            <button class="btn btn-primary" ng-click="InsertSingleQuestionRow()">
-                                    Submit</button> 
-                        </div>
-                    </form>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<div class="modal fade" id="modal-AddMultipleQuestions" tabindex="-1" role="dialog" aria-hidden="true" ng-controller="createTemplateController">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button aria-hidden="true" id="addQuestionMultipleAnswerCloseButton" data-dismiss="modal" class="close"
-                                type="button" style="display: block;">
-                            ×</button>
-                        <h3 id="H2">
-                            Add New Questions (Multiple Answer)</h3>
-                    </div>
-                    <form>
-                        <div class="modal-body">                            
-                            <div>                                
-                                <textarea cstyle="height: 120px;" class="input-block-level form-control textarea" id="MultipleQuestionTextBoxQuestionData" name="textarea" placeholder="Question (Multiple Answer)"></textarea><br />
-                                <textarea style="height: 120px;" class="input-block-level form-control textarea" id="MultipleQuestionTextBoxAnswerData" name="textarea" placeholder="Options must be separated by seme-color (ie. ;)"></textarea>                       
-                            </div>                 
-
-                        </div>
-                        <div class="modal-footer clearfix">
-
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard </button>
-
-                            <button class="btn btn-primary" ng-click="InsertMultipleQuestionRow()">
-                                Submit</button>    
-                        </div>
-                    </form>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-
-<div class="modal fade" id="modal-AddTextBoxQuestions" tabindex="-1" role="dialog" aria-hidden="true" ng-controller="createTemplateController">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button aria-hidden="true" id="addQuestionTextBoxAnswerCloseButton" data-dismiss="modal" class="close"
-                                type="button" style="display: block;">
-                            ×</button>
-                        <h3 id="H4">
-                            Add New Questions (TextBox Answer)</h3>
-                    </div>
-                    <form>
-                        <div class="modal-body">                            
-                            <div>                                
-                                <textarea style="height: 120px;" class="input-block-level form-control textarea" id="TextBoxQuestionTextBoxQuestionData" name="textarea" placeholder="Question (TextBox Answer)"></textarea>                               
-            
-                            </div>                 
-
-                        </div>
-                        <div class="modal-footer clearfix">
-
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard </button>
-
-                            <button class="btn btn-primary" ng-click="InsertTextBoxQuestionRow()">
-                                Submit</button>    
-                        </div>
-                    </form>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<div class="modal fade" id="modal-AddListBoxQuestions" tabindex="-1" role="dialog" aria-hidden="true" ng-controller="createTemplateController">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button aria-hidden="true" id="addQuestionListBoxAnswerCloseButton" data-dismiss="modal" class="close"
-                                type="button" style="display: block;">
-                            ×</button>
-                        <h3 id="H5">
-                            Add New Questions (ListBox Answer)</h3>
-                    </div>
-                    <form>
-                        <div class="modal-body">                            
-                            <div>                                
-                                <textarea style="height: 120px;" class="input-block-level form-control textarea" id="ListBoxQuestionTextBoxQuestionData" name="textarea" placeholder="Question (ListBox Answer)"></textarea><br />
-                                <textarea style="height: 120px;" class="input-block-level form-control textarea" id="ListBoxQuestionTextBoxAnswerData" name="textarea" placeholder="Options must be separated by seme-color (ie. ;)"></textarea>           
-            
-                            </div>                 
-
-                        </div>
-                        <div class="modal-footer clearfix">
-
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard </button>
-
-                            <button class="btn btn-primary" ng-click="InsertListBoxQuestionRow()">
-                                Submit</button>    
-                        </div>
-                    </form>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 
 
 <script src="../../App/third-Party/html5-file-upload/assets/js/script.js"></script>

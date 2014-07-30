@@ -133,7 +133,7 @@ appRequire = require
             fileDropScript:"../../App/third-Party/html5-file-upload/assets/js/script",
             wysihtml5:"../../App/third-Party/wysihtml5/lib/js/wysihtml5-0.3.0",
             prettify:"../../App/third-Party/wysihtml5/lib/js/prettify",
-            bootstrap_wysihtml5:"../../App/third-Party/wysihtml5/src/bootstrap-wysihtml5",
+            bootstrap_wysihtml5:"../../Template/AdminLTE-master/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min",
             //==============================================================================================================
             // Application Related JS
             //==============================================================================================================
@@ -146,7 +146,7 @@ appRequire = require
             clientAfterLoginEditPage: "../../App/Pages/ClientAfterLogin/EditPage/editPage",//used
             
         },
-        urlArgs: ""
+        urlArgs: "123"
     });
 
 appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMessage", "jquery_cookie",

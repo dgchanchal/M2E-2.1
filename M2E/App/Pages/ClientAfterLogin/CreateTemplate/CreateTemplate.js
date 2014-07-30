@@ -89,7 +89,7 @@ define([appLocation.postLogin], function (app) {
                 var listBoxQuestionsOptionList = this.Options.split(';');
                 totalQuestionListBoxAnswerHtmlData += "<select name='Education' class='form-control'>";
                 for (var j = 0; j < listBoxQuestionsOptionList.length; j++) {
-                    totalQuestionListBoxAnswerHtmlData += "<option value='" + quesCount + "'>" + listBoxQuestionsOptionList[j] + "</option>";
+                    totalQuestionListBoxAnswerHtmlData += "<option value='" + j+1 + "'>" + listBoxQuestionsOptionList[j] + "</option>";
                 }
                 totalQuestionListBoxAnswerHtmlData += "</select>";
                 totalQuestionListBoxAnswerHtmlData += "</fieldset>";
@@ -363,7 +363,7 @@ define([appLocation.postLogin], function (app) {
                 var listBoxQuestionsOptionList = this.Options.split(';');
                 totalQuestionListBoxAnswerHtmlData += "<select name='Education' class='form-control'>";
                 for (var j = 0; j < listBoxQuestionsOptionList.length; j++) {
-                    totalQuestionListBoxAnswerHtmlData += "<option value='" + quesCount + "'>" + listBoxQuestionsOptionList[j] + "</option>";
+                    totalQuestionListBoxAnswerHtmlData += "<option value='" + j+1 + "'>" + listBoxQuestionsOptionList[j] + "</option>";
                 }
                 totalQuestionListBoxAnswerHtmlData += "</select>";
 
