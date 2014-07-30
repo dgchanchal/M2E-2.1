@@ -3,7 +3,8 @@ var googleAnalyticsAppID = "UA-51967607-1";
 var userSession = {
     username:"sumitchourasia91@gmail.com",
     listOfImgurImages:[],
-    keepMeSignedIn:false
+    keepMeSignedIn:false,
+    wysiHtml5UploadedImageUrlLink:[]
 };
 var ServerContextPah = "";
 

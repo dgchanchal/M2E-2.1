@@ -16,11 +16,11 @@ define([appLocation.postLogin], function (app) {
         var totalListBoxQuestionList = 0;
 
         $rootScope.jobTemplate = [
-                { type: "AddInstructions", title: "", visible: false, buttonText: "Add Instructions", editableInstructionsList: [{ Number: totalEditableInstruction, Text: "Instruction 1" }] },
-                { type: "AddSingleQuestionsList", title: "", visible: false, buttonText: "Add Ques. (single Ans.)", singleQuestionsList: [{ Number: totalSingleQuestionList, Question: "What is your gender ?", Options: "Male1;Female2" }] },
-                { type: "AddMultipleQuestionsList", title: "", visible: false, buttonText: "Add Ques. (Multiple Ans.)", multipleQuestionsList: [{ Number: totalMultipleQuestionList, Question: "What is your multiple gender ?", Options: "Malem1;Femalem2" }] },
-                { type: "AddTextBoxQuestionsList", title: "", visible: false, buttonText: "Add Ques. (TextBox Ans.)", textBoxQuestionsList: [{ Number: totalTextBoxQuestionList, Question: "Who won 2014 FIFA World cup ?", Options: "text" }] },
-                { type: "AddListBoxQuestionsList", title: "", visible: false, buttonText: "Add Ques. (ListBox Ans.)", listBoxQuestionsList: [{ Number: totalListBoxQuestionList, Question: "What is your multiple gender ?", Options: "Malem1;Femalem2" }] }
+                { type: "AddInstructions", title: "", visible: false, buttonText: "Add Instructions", editableInstructionsList: [{ Number: totalEditableInstruction, Text: "Instruction 1"}] },
+                { type: "AddSingleQuestionsList", title: "", visible: false, buttonText: "Add Ques. (single Ans.)", singleQuestionsList: [{ Number: totalSingleQuestionList, Question: "What is your gender ?", Options: "Male1;Female2"}] },
+                { type: "AddMultipleQuestionsList", title: "", visible: false, buttonText: "Add Ques. (Multiple Ans.)", multipleQuestionsList: [{ Number: totalMultipleQuestionList, Question: "What is your multiple gender ?", Options: "Malem1;Femalem2"}] },
+                { type: "AddTextBoxQuestionsList", title: "", visible: false, buttonText: "Add Ques. (TextBox Ans.)", textBoxQuestionsList: [{ Number: totalTextBoxQuestionList, Question: "Who won 2014 FIFA World cup ?", Options: "text"}] },
+                { type: "AddListBoxQuestionsList", title: "", visible: false, buttonText: "Add Ques. (ListBox Ans.)", listBoxQuestionsList: [{ Number: totalListBoxQuestionList, Question: "What is your multiple gender ?", Options: "Malem1;Femalem2"}] }
         ];
         loadTemplate();
 
@@ -89,7 +89,7 @@ define([appLocation.postLogin], function (app) {
                 var listBoxQuestionsOptionList = this.Options.split(';');
                 totalQuestionListBoxAnswerHtmlData += "<select name='Education' class='form-control'>";
                 for (var j = 0; j < listBoxQuestionsOptionList.length; j++) {
-                    totalQuestionListBoxAnswerHtmlData += "<option value='" + j+1 + "'>" + listBoxQuestionsOptionList[j] + "</option>";
+                    totalQuestionListBoxAnswerHtmlData += "<option value='" + j + 1 + "'>" + listBoxQuestionsOptionList[j] + "</option>";
                 }
                 totalQuestionListBoxAnswerHtmlData += "</select>";
                 totalQuestionListBoxAnswerHtmlData += "</fieldset>";
@@ -363,7 +363,7 @@ define([appLocation.postLogin], function (app) {
                 var listBoxQuestionsOptionList = this.Options.split(';');
                 totalQuestionListBoxAnswerHtmlData += "<select name='Education' class='form-control'>";
                 for (var j = 0; j < listBoxQuestionsOptionList.length; j++) {
-                    totalQuestionListBoxAnswerHtmlData += "<option value='" + j+1 + "'>" + listBoxQuestionsOptionList[j] + "</option>";
+                    totalQuestionListBoxAnswerHtmlData += "<option value='" + j + 1 + "'>" + listBoxQuestionsOptionList[j] + "</option>";
                 }
                 totalQuestionListBoxAnswerHtmlData += "</select>";
 
@@ -438,6 +438,10 @@ define([appLocation.postLogin], function (app) {
 
         }
 
+        $scope.convertAllWysiHtml5ImagesToFancyBoxLink = function () {
+            textToReplace = "src=\"../../Upload/Images/Tulips.jpg\" title=\"Image: ../../Upload/Images/Tulips.jpg\"";
+
+        }
 
     });
 
