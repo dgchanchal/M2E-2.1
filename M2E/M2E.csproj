@@ -281,6 +281,7 @@
     <Content Include="App\Pages\BeforeLogin\ContactUs\contactus.html" />
     <Content Include="App\Pages\BeforeLogin\TnC\TnC.html" />
     <Content Include="App\Pages\BeforeLogin\UserMoreInfo\UserMoreInfo.html" />
+    <Content Include="App\Pages\ClientAfterLogin\Controller\common\AngularFileUploadController.js" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateSample\TemplateSample.html" />
     <Content Include="App\Pages\UserAfterLogin\Controller\userAfterLoginApp.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\CookieServiceUserView.js" />
@@ -338,6 +339,37 @@
     <Content Include="App\Pages\ClientAfterLogin\Index\index.js" />
     <Content Include="App\Pages\PreLoginDM.js" />
     <Content Include="App\Property\m2eProperties.js" />
+    <Content Include="App\third-Party\angular-file-upload-master\.gitignore" />
+    <Content Include="App\third-Party\angular-file-upload-master\demo\src\com\df\angularfileupload\CORSFilter.java" />
+    <Content Include="App\third-Party\angular-file-upload-master\demo\src\com\df\angularfileupload\FileUpload.java" />
+    <Content Include="App\third-Party\angular-file-upload-master\demo\src\META-INF\jdoconfig.xml" />
+    <Content Include="App\third-Party\angular-file-upload-master\demo\src\META-INF\persistence.xml" />
+    <Content Include="App\third-Party\angular-file-upload-master\demo\war\common.css" />
+    <Content Include="App\third-Party\angular-file-upload-master\demo\war\crossdomain.xml" />
+    <Content Include="App\third-Party\angular-file-upload-master\demo\war\donate.html" />
+    <Content Include="App\third-Party\angular-file-upload-master\demo\war\favicon.ico" />
+    <Content Include="App\third-Party\angular-file-upload-master\demo\war\img\tea.jpg" />
+    <Content Include="App\third-Party\angular-file-upload-master\demo\war\img\tea.png" />
+    <Content Include="App\third-Party\angular-file-upload-master\demo\war\index.html" />
+    <Content Include="App\third-Party\angular-file-upload-master\demo\war\js\angular-file-upload-html5-shim.js" />
+    <Content Include="App\third-Party\angular-file-upload-master\demo\war\js\angular-file-upload-shim.js" />
+    <Content Include="App\third-Party\angular-file-upload-master\demo\war\js\angular-file-upload.js" />
+    <Content Include="App\third-Party\angular-file-upload-master\demo\war\js\FileAPI.flash.swf" />
+    <Content Include="App\third-Party\angular-file-upload-master\demo\war\js\FileAPI.js" />
+    <Content Include="App\third-Party\angular-file-upload-master\demo\war\js\FileAPI.min.js" />
+    <Content Include="App\third-Party\angular-file-upload-master\demo\war\js\upload.js" />
+    <Content Include="App\third-Party\angular-file-upload-master\demo\war\WEB-INF\appengine-web.xml" />
+    <Content Include="App\third-Party\angular-file-upload-master\demo\war\WEB-INF\web.xml" />
+    <Content Include="App\third-Party\angular-file-upload-master\dist\angular-file-upload-html5-shim.js" />
+    <Content Include="App\third-Party\angular-file-upload-master\dist\angular-file-upload-html5-shim.min.js" />
+    <Content Include="App\third-Party\angular-file-upload-master\dist\angular-file-upload-shim.js" />
+    <Content Include="App\third-Party\angular-file-upload-master\dist\angular-file-upload-shim.min.js" />
+    <Content Include="App\third-Party\angular-file-upload-master\dist\angular-file-upload.js" />
+    <Content Include="App\third-Party\angular-file-upload-master\dist\angular-file-upload.min.js" />
+    <Content Include="App\third-Party\angular-file-upload-master\dist\FileAPI.flash.swf" />
+    <Content Include="App\third-Party\angular-file-upload-master\dist\FileAPI.min.js" />
+    <Content Include="App\third-Party\angular-file-upload-master\Gruntfile.js" />
+    <Content Include="App\third-Party\angular-file-upload-master\nuget\NuGet.exe" />
     <Content Include="App\third-Party\wysihtml5\.gitignore" />
     <Content Include="App\third-Party\wysihtml5\.settings\.gitignore" />
     <Content Include="App\third-Party\wysihtml5\dist\bootstrap-wysihtml5-0.0.2.css" />
@@ -1042,6 +1074,15 @@
       <DependentUpon>M2EContext.edmx</DependentUpon>
       <LastGenOutput>M2EContext.cs</LastGenOutput>
     </Content>
+    <None Include="App\third-Party\angular-file-upload-master\demo\.classpath" />
+    <None Include="App\third-Party\angular-file-upload-master\demo\.project" />
+    <None Include="App\third-Party\angular-file-upload-master\demo\src\log4j.properties" />
+    <None Include="App\third-Party\angular-file-upload-master\demo\war\WEB-INF\logging.properties" />
+    <None Include="App\third-Party\angular-file-upload-master\LICENSE" />
+    <None Include="App\third-Party\angular-file-upload-master\nuget\build.bat" />
+    <None Include="App\third-Party\angular-file-upload-master\nuget\Package.nuspec" />
+    <None Include="App\third-Party\angular-file-upload-master\package.json" />
+    <None Include="App\third-Party\angular-file-upload-master\README.md" />
     <None Include="App\third-Party\wysihtml5\component.json" />
     <None Include="App\third-Party\wysihtml5\Gemfile" />
     <None Include="App\third-Party\wysihtml5\Gemfile.lock" />

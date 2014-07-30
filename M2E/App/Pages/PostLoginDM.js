@@ -76,6 +76,12 @@ appRequire = require
             fileDropScript: {//new
                 deps: ["jquery", "filedrop", "clientAfterLoginEditTemplate", "clientAfterLoginCreateTemplate", "domReady"]
             },
+            angularjs_fileUpload_shim: {//new
+                deps: ["jquery"]
+            },
+            angularjs_fileUpload: {//new
+                deps: ["jquery"]
+            },
             fancybox: {//new
                 deps: ["jquery"]
             },
@@ -95,13 +101,16 @@ appRequire = require
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
             },
             clientAfterLoginCreateTemplate: { //used
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","wysihtml5","bootstrap_wysihtml5","prettify"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","wysihtml5","bootstrap_wysihtml5","prettify","AngularFileUploadController"]
             },            
             clientAfterLoginEditTemplate: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","wysihtml5","bootstrap_wysihtml5","prettify"]
             },
             clientAfterLoginEditPage: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
+            },
+            AngularFileUploadController: {
+                deps: ["angularjs_fileUpload_shim","angularjs_fileUpload"]
             },
                         
         },
@@ -134,11 +143,15 @@ appRequire = require
             wysihtml5:"../../App/third-Party/wysihtml5/lib/js/wysihtml5-0.3.0",
             prettify:"../../App/third-Party/wysihtml5/lib/js/prettify",
             bootstrap_wysihtml5:"../../Template/AdminLTE-master/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min",
+            angularjs_fileUpload_shim:"../../App/third-Party/angular-file-upload-master/dist/angular-file-upload-shim.min",
+            angularjs_fileUpload:"../../App/third-Party/angular-file-upload-master/dist/angular-file-upload.min",
+
             //==============================================================================================================
             // Application Related JS
             //==============================================================================================================
             clientAfterLoginApp: ".././../App/Pages/ClientAfterLogin/Controller/clientAfterLoginApp",//changed..
             SessionManagement: "../../App/Pages/ClientAfterLogin/Controller/common/SessionManagement",//new
+            AngularFileUploadController: "../../App/Pages/ClientAfterLogin/Controller/common/AngularFileUploadController",//new
             clientAfterLoginIndex: "../../App/Pages/ClientAfterLogin/index/index",//new
             clientAfterLoginCreateTemplate: "../../App/Pages/ClientAfterLogin/CreateTemplate/CreateTemplate",//new
             clientAfterLoginCookieService: "../../../../App/Pages/ClientAfterLogin/Controller/common/CookieServiceClientView",//used
@@ -153,7 +166,7 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "jquery_blockUI", "restangular", "moment", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTEApp","beforeLoginAdminLTETree",
     "jquery_slimscroll", "iCheck", "angular_cookies", "configureBlockUI", "fancybox", "clientAfterLoginApp", "SessionManagement",
     "clientAfterLoginIndex", "clientAfterLoginCreateTemplate", "clientAfterLoginCookieService", "clientAfterLoginEditTemplate", "clientAfterLoginEditPage", "fancybox", "filedrop","wysihtml5",
-    "fileDropScript", "domReady","prettify","bootstrap_wysihtml5"
+    "fileDropScript", "domReady","prettify","bootstrap_wysihtml5","angularjs_fileUpload_shim","angularjs_fileUpload","AngularFileUploadController"
 ], function() {
     angular.bootstrap(document.getElementById("mainClient"), ["afterLoginClientApp"]);
 });

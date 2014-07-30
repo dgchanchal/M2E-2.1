@@ -35,7 +35,7 @@
                                            </h3>
                                        </div>
                                        <div class="box-content nopadding" ng-cloak>
-                                           <form class='form-horizontal form-bordered'>
+                                           <form class='form-horizontal form-bordered' ng-controller="AngularFileUploadController">
                                                <div class="control-group">                                                        
                                                    <a ng-click="addInstructionsRow()" role="button" class="btn"><i
                                                                                                                     class="icon-plus-sign"></i>{{jobTemplate[0].buttonText}}</a>
@@ -178,9 +178,17 @@
                                                        <a href="" role="button" class="btn btn-primary" data-toggle="modal">
                                                            Upload</a><b><small>Select from form input</small></b></label>
                                                    <div class="controls">
-                                                         <div id="dropbox">
-			<span class="message">Drop images here to upload.<br />Upload Relevant images if required <br /><i>(they will only be visible to you)</i></span>
-		</div> 
+                                                         <div ng-controller="AngularFileUploadController">
+                                                              <input type="text" ng-model="myModelObj">
+                                                              <input type="file" ng-file-select="onFileSelect($files)">
+                                                              <input type="file" ng-file-select="onFileSelect($files)" multiple accept="image/*">
+                                                              <div class="button" ng-file-select="onFileSelect($files)" data-multiple="true"></div>
+                                                              <div ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="optional-css-class-name-or-function"
+                                                                    ng-show="dropSupported">drop files here</div>
+                                                              <div ng-file-drop-available="dropSupported=true" 
+                                                                    ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
+                                                              <button ng-click="upload.abort()">Cancel Upload</button>
+                                                        </div>
                                                    </div>
                                                </div>
                                                <div class="form-actions">

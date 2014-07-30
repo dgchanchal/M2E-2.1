@@ -3,6 +3,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.IO;
 using M2E.Service.UploadImages;
+using System.Text;
 
 namespace M2E.Controllers
 {
@@ -29,6 +30,24 @@ namespace M2E.Controllers
             }
 
             return Json("All files have been successfully stored.");
+        }
+
+        [HttpPost]
+        public ContentResult UploadAngularFile(HttpPostedFileBase file)
+        {
+            var filename = Path.GetFileName(file.FileName);
+            const string rootfolder = @"~/Upload/Images/";
+            const string startingDir = rootfolder; //@"c:\Temp";
+            string filePath = Path.Combine(startingDir, file.FileName);
+
+            file.SaveAs(Server.MapPath(filePath));
+
+            return new ContentResult
+            {
+                ContentType = "text/plain",
+                Content = filename,
+                ContentEncoding = Encoding.UTF8
+            };
         }
 
         [HttpPost]        

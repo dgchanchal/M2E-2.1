@@ -8,6 +8,7 @@ using System.Xml.Linq;
 using System.IO;
 using Newtonsoft.Json;
 using M2E.Models.DataResponse;
+using System.Configuration;
 
 namespace M2E.Service.UploadImages
 {
@@ -27,7 +28,7 @@ namespace M2E.Service.UploadImages
                 {"description", "This is the caption of the image"}
             };
 
-                w.Headers.Add("Authorization", "Client-ID dac37a6b08b4974");
+                w.Headers.Add("Authorization", "Client-ID " + ConfigurationManager.AppSettings["ImgurClientId"]);
                 response = w.UploadValues("https://api.imgur.com/3/album/{0}", values);                
                 
             }
@@ -47,7 +48,7 @@ namespace M2E.Service.UploadImages
                 {"id", albumId}
                 
             };
-                w.Headers.Add("Authorization", "Client-ID dac37a6b08b4974");
+                w.Headers.Add("Authorization", "Client-ID "+ConfigurationManager.AppSettings["ImgurClientId"]);
                 byte[] response = w.UploadValues("https://api.imgur.com/3/album/{0}", values);
                 System.Text.Encoding enc = System.Text.Encoding.ASCII;
                 myString = enc.GetString(response);                
@@ -75,7 +76,7 @@ namespace M2E.Service.UploadImages
                         {"album", albumid}
                     };
 
-                    w.Headers.Add("Authorization", "Client-ID dac37a6b08b4974");
+                    w.Headers.Add("Authorization", "Client-ID " + ConfigurationManager.AppSettings["ImgurClientId"]);
                     byte[] response = w.UploadValues("https://api.imgur.com/3/upload", values);
                     
                     imgurImageResponseData = JsonConvert.DeserializeObject<imgurUploadImageResponse>(enc.GetString(response));                    
