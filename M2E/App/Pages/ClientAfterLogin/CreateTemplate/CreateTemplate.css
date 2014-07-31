@@ -540,3 +540,9 @@ button, input, select, textarea {
 }
 
 .wysihtml5-toolbar > li{list-style-type: none;display: inline-block;}
+
+IMG.MaxUploadedSmallSized
+{
+max-width: 200px;
+max-height: 200px;
+}

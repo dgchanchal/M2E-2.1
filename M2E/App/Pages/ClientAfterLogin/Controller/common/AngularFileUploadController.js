@@ -2,9 +2,11 @@
 define([appLocation.postLogin], function (app) {
 
     //getting user info..
-    app.controller('AngularFileUploadController', function ($scope,$rootScope, $upload) {
+    app.controller('AngularFileUploadController', function ($scope,$rootScope, $upload) {        
             $rootScope.wysiHTML5InputImageTextBoxId ="http://";
             $scope.onFileSelect = function($files) {
+            
+            startBlockUI('wait..', 3);
             //$files: an array of files selected, each file has name, size, and type.
             for (var i = 0; i < $files.length; i++) {
               var file = $files[i];
@@ -23,13 +25,14 @@ define([appLocation.postLogin], function (app) {
               }).progress(function(evt) {
                 console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
               }).success(function(data, status, headers, config) {
-                // file is uploaded successfully
-                console.log(data);
-                userSession.wysiHtml5UploadedInstructionsImageUrlLink.push(data.data);               
-                //$rootScope.wysiHTML5InputImageTextBoxId = "../../Upload/Images/"+data;                     
-                //$rootScope.wysiHTML5InputImageTextBoxId = data.data.link_s;
+                
+                stopBlockUI();
+                
+                userSession.wysiHtml5UploadedInstructionsImageUrlLink.push(data.data);
+                
+                
                 $(".bootstrap-wysihtml5-insert-image-url").val(data.data.link_s) 
-              });
+              });              
               //.error(...)
               //.then(success, error, progress); 
               // access or attach event listeners to the underlying XMLHttpRequest.

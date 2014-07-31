@@ -53,7 +53,7 @@ namespace M2E.Controllers
 
         [HttpPost]
         public ActionResult UploadAngularFileOnImgUr(HttpPostedFileBase file)
-        {
+        {            
             bool isDummy = false; 
             
 

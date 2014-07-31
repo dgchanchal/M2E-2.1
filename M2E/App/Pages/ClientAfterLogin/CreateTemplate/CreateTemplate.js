@@ -22,6 +22,7 @@ define([appLocation.postLogin], function (app) {
                 { type: "AddTextBoxQuestionsList", title: "", visible: false, buttonText: "Add Ques. (TextBox Ans.)", textBoxQuestionsList: [{ Number: totalTextBoxQuestionList, Question: "Who won 2014 FIFA World cup ?", Options: "text"}] },
                 { type: "AddListBoxQuestionsList", title: "", visible: false, buttonText: "Add Ques. (ListBox Ans.)", listBoxQuestionsList: [{ Number: totalListBoxQuestionList, Question: "What is your multiple gender ?", Options: "Malem1;Femalem2"}] }
         ];
+        userSession.wysiHtml5UploadedInstructionsImageUrlLink = [];
         loadTemplate();
 
 
@@ -140,7 +141,7 @@ define([appLocation.postLogin], function (app) {
                 var editableInstructionDataToBeAdded = { Number: totalEditableInstruction, Text: addEditableInstructionsFancyBoxInImages };
                 $rootScope.jobTemplate[0].editableInstructionsList.push(editableInstructionDataToBeAdded);
                 refreshInstructionList();
-                userSession.wysiHtml5UploadedInstructionsImageUrlLink = [];
+                //userSession.wysiHtml5UploadedInstructionsImageUrlLink = [];
                 $('#AddInstructionsTextArea').val("");
                 //$('#AddInstructionsTextArea').val(''); // TODO: clearing the text area not working
             } else {
@@ -151,32 +152,75 @@ define([appLocation.postLogin], function (app) {
 
         // single questions..
         $scope.InsertSingleQuestionRow = function () {
+
+            var addSingleQuestionQuestionsFancyBoxInImages = $('#SingleQuestionTextBoxQuestionData').val();
+            var addSingleQuestionOptionsFancyBoxInImages = $('#SingleQuestionTextBoxAnswerData').val();
+            //console.log(addFancyBoxInImages);
+            var i = 0;
+            $.each(userSession.wysiHtml5UploadedInstructionsImageUrlLink, function () {
+
+                addSingleQuestionQuestionsFancyBoxInImages = replaceImageWithFancyBoxImage(addSingleQuestionQuestionsFancyBoxInImages, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link_s, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link);
+                addSingleQuestionOptionsFancyBoxInImages = replaceImageWithFancyBoxImage(addSingleQuestionOptionsFancyBoxInImages, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link_s, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link);
+                i++;
+            });
             totalSingleQuestionList = totalSingleQuestionList + 1;
-            var singleQuestionsList = { Number: totalSingleQuestionList, Question: $('#SingleQuestionTextBoxQuestionData').val(), Options: $('#SingleQuestionTextBoxAnswerData').val() };
+            var singleQuestionsList = { Number: totalSingleQuestionList, Question: addSingleQuestionQuestionsFancyBoxInImages, Options: addSingleQuestionOptionsFancyBoxInImages };
             $rootScope.jobTemplate[1].singleQuestionsList.push(singleQuestionsList);
             refreshSingleQuestionsList();
         }
 
         // multiple questions..
         $scope.InsertMultipleQuestionRow = function () {
+            var addMultipleQuestionQuestionsFancyBoxInImages = $('#MultipleQuestionTextBoxQuestionData').val();
+            var addMultipleQuestionOptionsFancyBoxInImages = $('#MultipleQuestionTextBoxAnswerData').val();
+            //console.log(addFancyBoxInImages);
+            var i = 0;
+            $.each(userSession.wysiHtml5UploadedInstructionsImageUrlLink, function () {
+
+                addMultipleQuestionQuestionsFancyBoxInImages = replaceImageWithFancyBoxImage(addMultipleQuestionQuestionsFancyBoxInImages, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link_s, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link);
+                addMultipleQuestionOptionsFancyBoxInImages = replaceImageWithFancyBoxImage(addMultipleQuestionOptionsFancyBoxInImages, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link_s, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link);
+                i++;
+            });
+
             totalMultipleQuestionList = totalMultipleQuestionList + 1;
-            var multipleQuestionsList = { Number: totalMultipleQuestionList, Question: $('#MultipleQuestionTextBoxQuestionData').val(), Options: $('#MultipleQuestionTextBoxAnswerData').val() };
+            var multipleQuestionsList = { Number: totalMultipleQuestionList, Question: addMultipleQuestionQuestionsFancyBoxInImages, Options: addMultipleQuestionOptionsFancyBoxInImages };
             $rootScope.jobTemplate[2].multipleQuestionsList.push(multipleQuestionsList);
             refreshMultipleQuestionsList();
         }
 
         // listBox questions..
         $scope.InsertListBoxQuestionRow = function () {
+            var addListBoxQuestionQuestionsFancyBoxInImages = $('#ListBoxQuestionTextBoxQuestionData').val();
+            var addListBoxQuestionOptionsFancyBoxInImages = $('#ListBoxQuestionTextBoxAnswerData').val();
+            //console.log(addFancyBoxInImages);
+            var i = 0;
+            $.each(userSession.wysiHtml5UploadedInstructionsImageUrlLink, function () {
+
+                addListBoxQuestionQuestionsFancyBoxInImages = replaceImageWithFancyBoxImage(addListBoxQuestionQuestionsFancyBoxInImages, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link_s, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link);
+                addListBoxQuestionOptionsFancyBoxInImages = replaceImageWithFancyBoxImage(addListBoxQuestionOptionsFancyBoxInImages, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link_s, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link);
+                i++;
+            });
+
             totalListBoxQuestionList = totalListBoxQuestionList + 1;
-            var listBoxQuestionsList = { Number: totalListBoxQuestionList, Question: $('#ListBoxQuestionTextBoxQuestionData').val(), Options: $('#ListBoxQuestionTextBoxAnswerData').val() };
+            var listBoxQuestionsList = { Number: totalListBoxQuestionList, Question: addListBoxQuestionQuestionsFancyBoxInImages, Options: addListBoxQuestionOptionsFancyBoxInImages };
             $rootScope.jobTemplate[4].listBoxQuestionsList.push(listBoxQuestionsList);
             refreshListBoxQuestionsList();
         }
 
         // textbox questions..
         $scope.InsertTextBoxQuestionRow = function () {
+
+            var addTextBoxQuestionFancyBoxInImages = $('#TextBoxQuestionTextBoxQuestionData').val();            
+            //console.log(addFancyBoxInImages);
+            var i = 0;
+            $.each(userSession.wysiHtml5UploadedInstructionsImageUrlLink, function () {
+
+                addTextBoxQuestionFancyBoxInImages = replaceImageWithFancyBoxImage(addTextBoxQuestionFancyBoxInImages, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link_s, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link);                
+                i++;
+            });
+
             totalTextBoxQuestionList = totalTextBoxQuestionList + 1;
-            var textBoxQuestionsList = { Number: totalTextBoxQuestionList, Question: $('#TextBoxQuestionTextBoxQuestionData').val(), Options: "text" };
+            var textBoxQuestionsList = { Number: totalTextBoxQuestionList, Question: addTextBoxQuestionFancyBoxInImages, Options: "text" };
             $rootScope.jobTemplate[3].textBoxQuestionsList.push(textBoxQuestionsList);
             refreshTextBoxQuestionsList();
         }
@@ -334,6 +378,7 @@ define([appLocation.postLogin], function (app) {
             $('#addSingleAnswerQuestionID').html(totalQuestionSingleAnswerHtmlData);
             initAddQuestionSingleAnswerClass();
             $('#addQuestionSingleAnswerCloseButton').click();
+            $('.fancybox').fancybox();
         }
 
         function refreshMultipleQuestionsList() {
@@ -361,6 +406,7 @@ define([appLocation.postLogin], function (app) {
             $('#addMultipleAnswerQuestionID').html(totalQuestionMultipleAnswerHtmlData);
             initAddQuestionMultipleAnswerClass();
             $('#addQuestionMultipleAnswerCloseButton').click();
+            $('.fancybox').fancybox();
         }
 
         function refreshListBoxQuestionsList() {
@@ -386,6 +432,7 @@ define([appLocation.postLogin], function (app) {
             $('#addListBoxAnswerQuestionID').html(totalQuestionListBoxAnswerHtmlData);
             initAddQuestionListBoxAnswerClass();
             $('#addQuestionListBoxAnswerCloseButton').click();
+            $('.fancybox').fancybox();
         }
 
         function refreshTextBoxQuestionsList() {
@@ -408,6 +455,7 @@ define([appLocation.postLogin], function (app) {
             $('#addTextBoxAnswerQuestionID').html(totalQuestionTextBoxAnswerHtmlData);
             initAddQuestionTextBoxAnswerClass();
             $('#addQuestionTextBoxAnswerCloseButton').click();
+            $('.fancybox').fancybox();
         }
 
         $scope.enableFileDrop = function () {
