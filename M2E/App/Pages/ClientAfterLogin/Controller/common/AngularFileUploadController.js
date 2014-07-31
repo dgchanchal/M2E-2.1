@@ -25,7 +25,7 @@ define([appLocation.postLogin], function (app) {
               }).success(function(data, status, headers, config) {
                 // file is uploaded successfully
                 console.log(data);
-                $rootScope.wysiHTML5InputImageTextBoxId = "../../Upload/Images/"+data;                        
+                $rootScope.wysiHTML5InputImageTextBoxId = "../../Upload/Images/"+data;                      
               });
               //.error(...)
               //.then(success, error, progress); 

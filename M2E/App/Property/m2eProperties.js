@@ -27,3 +27,10 @@ function detectipad() {
 function detectAndroid() {
     return (navigator.userAgent.match(/Android/i) != null);
 }
+
+function replaceImageWithFancyBoxImage(text, smallImage, largeImage) {
+    text = text.replace("<img title=\"Image: " + smallImage + "\" src=\"" + smallImage + "\">", "<a class='fancybox' href='" + largeImage + "' data-fancybox-group='gallery' title='Personalized Title'><img src='" + smallImage + "' alt=''></a>");
+    text = text.replace("<img src=\"" + smallImage + "\" title=\"Image: " + smallImage + "\">", "<a class='fancybox' href='" + largeImage + "' data-fancybox-group='gallery' title='Personalized Title'><img src='" + smallImage + "' alt=''></a>");
+    text = text.replace("<img src=\"" + smallImage + "\">", "<a class='fancybox' href='" + largeImage + "' data-fancybox-group='gallery' title='Personalized Title'><img src='" + smallImage + "' alt=''></a>");
+    return text;
+}
