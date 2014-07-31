@@ -84,5 +84,44 @@ namespace M2E.Service.UploadImages
             }
             return imgurImageResponseData;
         }
+
+        public ImgurImageResponse UploadSingleImageToImgur(HttpPostedFileBase file, string albumid)
+        {
+            System.Text.Encoding enc = System.Text.Encoding.ASCII;
+            imgurUploadImageResponse imgurImageResponseData = new imgurUploadImageResponse();
+            var imgurImage = new ImgurImageResponse();
+                using (var w = new WebClient())
+                {
+                    byte[] binaryData;
+                    binaryData = new Byte[file.InputStream.Length];
+                    long bytesRead = file.InputStream.Read(binaryData, 0, (int)file.InputStream.Length);
+                    file.InputStream.Close();
+                    string base64String = System.Convert.ToBase64String(binaryData, 0, binaryData.Length);
+
+                    var values = new NameValueCollection
+                    {
+                        {"image",  base64String},
+                        {"album", albumid}
+                    };
+
+                    w.Headers.Add("Authorization", "Client-ID " + ConfigurationManager.AppSettings["ImgurClientId"]);
+                    byte[] response = w.UploadValues("https://api.imgur.com/3/upload", values);
+
+                    imgurImageResponseData = JsonConvert.DeserializeObject<imgurUploadImageResponse>(enc.GetString(response));
+                    
+                    
+                    imgurImage.data = new imgurData();
+                    if (imgurImageResponseData == null && imgurImageResponseData.data == null)
+                        return imgurImage;
+                    imgurImage.data.deletehash = imgurImageResponseData.data.deletehash;
+                    imgurImage.data.link = imgurImageResponseData.data.link;
+                    imgurImage.data.link_s = imgurImageResponseData.data.link.Split('/')[0] + "//" + imgurImageResponseData.data.link.Split('/')[2] + "/" + imgurImageResponseData.data.link.Split('/')[3].Split('.')[0] + 's' + "." + imgurImageResponseData.data.link.Split('/')[3].Split('.')[1];
+                    imgurImage.data.link_m = imgurImageResponseData.data.link.Split('/')[0] + "//" + imgurImageResponseData.data.link.Split('/')[2] + "/" + imgurImageResponseData.data.link.Split('/')[3].Split('.')[0] + 'm' + "." + imgurImageResponseData.data.link.Split('/')[3].Split('.')[1];
+                    imgurImage.data.link_l = imgurImageResponseData.data.link.Split('/')[0] + "//" + imgurImageResponseData.data.link.Split('/')[2] + "/" + imgurImageResponseData.data.link.Split('/')[3].Split('.')[0] + 'l' + "." + imgurImageResponseData.data.link.Split('/')[3].Split('.')[1];
+                    imgurImage.data.copyText = "";
+                }
+
+                return imgurImage;
+        }
     }
 }

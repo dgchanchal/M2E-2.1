@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using System.IO;
 using M2E.Service.UploadImages;
 using System.Text;
+using M2E.Models.DataResponse;
 
 namespace M2E.Controllers
 {
@@ -50,15 +51,37 @@ namespace M2E.Controllers
             };
         }
 
+        [HttpPost]
+        public ActionResult UploadAngularFileOnImgUr(HttpPostedFileBase file)
+        {
+            bool isDummy = true; 
+            
+
+            if (isDummy)
+            {
+                var dummyImgurImage = new ImgurImageResponse();
+                dummyImgurImage.data = new imgurData();
+                dummyImgurImage.data.link_s = "http://i.imgur.com/FdU2YRFs.jpg";
+                dummyImgurImage.data.link = "http://i.imgur.com/FdU2YRF.jpg";
+                return Json(dummyImgurImage);
+            }
+
+            const string albumid = "Xlh72LgTBw6Tzs1";
+            var imgurService = new imgurService();
+            var uploadedImagesId = imgurService.UploadSingleImageToImgur(file, albumid);
+
+            return Json(uploadedImagesId);
+        }
+
         [HttpPost]        
         public ActionResult UploadDropZoneFilesImgUr(IEnumerable<HttpPostedFileBase> files)
         {
-
+                       
             const string albumid = "Xlh72LgTBw6Tzs1";
 
             var imgurService = new imgurService();
             var uploadedImagesId = imgurService.UploadMultipleImagesToImgur(files, albumid);
-
+            
             return Json(uploadedImagesId);
         }
 

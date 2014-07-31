@@ -9,7 +9,7 @@ define([appLocation.postLogin], function (app) {
             for (var i = 0; i < $files.length; i++) {
               var file = $files[i];
               $scope.upload = $upload.upload({
-                url: '/Upload/UploadAngularFile', //upload.php script, node.js route, or servlet url
+                url: '/Upload/UploadAngularFileOnImgUr', //UploadAngularFileOnImgUr
                 //method: 'POST' or 'PUT',
                 //headers: {'header-key': 'header-value'},
                 //withCredentials: true,
@@ -25,7 +25,10 @@ define([appLocation.postLogin], function (app) {
               }).success(function(data, status, headers, config) {
                 // file is uploaded successfully
                 console.log(data);
-                $rootScope.wysiHTML5InputImageTextBoxId = "../../Upload/Images/"+data;                      
+                userSession.wysiHtml5UploadedInstructionsImageUrlLink.push(data.data);               
+                //$rootScope.wysiHTML5InputImageTextBoxId = "../../Upload/Images/"+data;                     
+                //$rootScope.wysiHTML5InputImageTextBoxId = data.data.link_s;
+                $(".bootstrap-wysihtml5-insert-image-url").val(data.data.link_s) 
               });
               //.error(...)
               //.then(success, error, progress); 

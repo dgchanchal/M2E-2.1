@@ -126,23 +126,22 @@ define([appLocation.postLogin], function (app) {
 
         $scope.addEditableInstructions = function () {
             if (($('#AddInstructionsTextArea').val() != "") && ($('#AddInstructionsTextArea').val() != null)) {
-                var addFancyBoxInImages = $('#AddInstructionsTextArea').val();
+                var addEditableInstructionsFancyBoxInImages = $('#AddInstructionsTextArea').val();
                 //console.log(addFancyBoxInImages);
-                $.each(userSession.wysiHtml5UploadedImageUrlLink, function () {
-                    //console.log("<img title=\"Image: " + this.orig + "\" src=\"" + this.orig + "\">");
-                    //console.log("<img src=\"" + this.orig + "\" title=\"Image: " + this.orig + "\">");
+                var i = 0;
+                $.each(userSession.wysiHtml5UploadedInstructionsImageUrlLink, function () {
 
-                    //addFancyBoxInImages = addFancyBoxInImages.replace("<img title=\"Image: " + this.orig + "\" src=\"" + this.orig + "\">", "<a class='fancybox' href='" + this.orig + "' data-fancybox-group='gallery' title='Personalized Title'><img src='" + this.orig + "' alt=''></a>");
-                    //addFancyBoxInImages = addFancyBoxInImages.replace("<img src=\"" + this.orig + "\" title=\"Image: " + this.orig + "\">", "<a class='fancybox' href='" + this.orig + "' data-fancybox-group='gallery' title='Personalized Title'><img src='" + this.orig + "' alt=''></a>");
-                    //addFancyBoxInImages = addFancyBoxInImages.replace("<img src=\"" + this.orig + "\">", "<a class='fancybox' href='" + this.orig + "' data-fancybox-group='gallery' title='Personalized Title'><img src='" + this.orig + "' alt=''></a>");
-                    addFancyBoxInImages = replaceImageWithFancyBoxImage(addFancyBoxInImages, this.orig, this.orig);
+                    addEditableInstructionsFancyBoxInImages = replaceImageWithFancyBoxImage(addEditableInstructionsFancyBoxInImages, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link_s, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link);
+                    i++;
                 });
 
                 //console.log(addFancyBoxInImages);
                 totalEditableInstruction = totalEditableInstruction + 1;
-                var editableInstructionDataToBeAdded = { Number: totalEditableInstruction, Text: addFancyBoxInImages };
+                var editableInstructionDataToBeAdded = { Number: totalEditableInstruction, Text: addEditableInstructionsFancyBoxInImages };
                 $rootScope.jobTemplate[0].editableInstructionsList.push(editableInstructionDataToBeAdded);
                 refreshInstructionList();
+                userSession.wysiHtml5UploadedInstructionsImageUrlLink = [];
+                $('#AddInstructionsTextArea').val("");
                 //$('#AddInstructionsTextArea').val(''); // TODO: clearing the text area not working
             } else {
                 showToastMessage("Warning", "Instruction Text Box cann't be empty");

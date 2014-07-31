@@ -4,7 +4,7 @@ var userSession = {
     username:"sumitchourasia91@gmail.com",
     listOfImgurImages:[],
     keepMeSignedIn:false,
-    wysiHtml5UploadedImageUrlLink:[]
+    wysiHtml5UploadedInstructionsImageUrlLink: []
 };
 var ServerContextPah = "";
 
@@ -29,6 +29,9 @@ function detectAndroid() {
 }
 
 function replaceImageWithFancyBoxImage(text, smallImage, largeImage) {
+    console.log(text);
+    console.log("<img src=\"" + smallImage + "\" title=\"Image: " + smallImage + "\">");
+
     text = text.replace("<img title=\"Image: " + smallImage + "\" src=\"" + smallImage + "\">", "<a class='fancybox' href='" + largeImage + "' data-fancybox-group='gallery' title='Personalized Title'><img src='" + smallImage + "' alt=''></a>");
     text = text.replace("<img src=\"" + smallImage + "\" title=\"Image: " + smallImage + "\">", "<a class='fancybox' href='" + largeImage + "' data-fancybox-group='gallery' title='Personalized Title'><img src='" + smallImage + "' alt=''></a>");
     text = text.replace("<img src=\"" + smallImage + "\">", "<a class='fancybox' href='" + largeImage + "' data-fancybox-group='gallery' title='Personalized Title'><img src='" + smallImage + "' alt=''></a>");
