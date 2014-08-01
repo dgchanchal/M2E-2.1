@@ -282,6 +282,8 @@
     <Content Include="App\Pages\BeforeLogin\TnC\TnC.html" />
     <Content Include="App\Pages\BeforeLogin\UserMoreInfo\UserMoreInfo.html" />
     <Content Include="App\Pages\ClientAfterLogin\Controller\common\AngularFileUploadController.js" />
+    <Content Include="App\Pages\ClientAfterLogin\TemplateInfo\TemplateInfo.html" />
+    <Content Include="App\Pages\ClientAfterLogin\TemplateInfo\TemplateInfo.js" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateSample\TemplateSample.html" />
     <Content Include="App\Pages\UserAfterLogin\Controller\userAfterLoginApp.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\CookieServiceUserView.js" />

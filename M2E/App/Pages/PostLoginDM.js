@@ -85,6 +85,12 @@ appRequire = require
             fancybox: {//new
                 deps: ["jquery"]
             },
+            morris_min: {//new
+                deps: ["jquery"]
+            },
+//            raphael_min: {//new
+//                deps: ["jquery"]
+//            },
             clientAfterLoginCookieService: {
                 deps: ["jquery", "jquery_cookie"]
             },
@@ -108,6 +114,9 @@ appRequire = require
             },
             clientAfterLoginEditPage: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
+            },
+            clientAfterLoginTemplateInfo: {
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","morris_min"]
             },
             AngularFileUploadController: {
                 deps: ["angularjs_fileUpload_shim","angularjs_fileUpload"]
@@ -145,7 +154,8 @@ appRequire = require
             bootstrap_wysihtml5:"../../Template/AdminLTE-master/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min",
             angularjs_fileUpload_shim:"../../App/third-Party/angular-file-upload-master/dist/angular-file-upload-shim.min",
             angularjs_fileUpload:"../../App/third-Party/angular-file-upload-master/dist/angular-file-upload.min",
-
+            morris_min:"../../Template/AdminLTE-master/js/plugins/morris/morris.min",
+            //raphael_min:"../../App/js/raphael-min",
             //==============================================================================================================
             // Application Related JS
             //==============================================================================================================
@@ -157,6 +167,7 @@ appRequire = require
             clientAfterLoginCookieService: "../../../../App/Pages/ClientAfterLogin/Controller/common/CookieServiceClientView",//used
             clientAfterLoginEditTemplate: "../../App/Pages/ClientAfterLogin/EditTemplate/EditTemplate",//used
             clientAfterLoginEditPage: "../../App/Pages/ClientAfterLogin/EditPage/editPage",//used
+            clientAfterLoginTemplateInfo: "../../App/Pages/ClientAfterLogin/TemplateInfo/TemplateInfo",//used
             
         },
         urlArgs: "123"
@@ -166,7 +177,8 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "jquery_blockUI", "restangular", "moment", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTEApp","beforeLoginAdminLTETree",
     "jquery_slimscroll", "iCheck", "angular_cookies", "configureBlockUI", "fancybox", "clientAfterLoginApp", "SessionManagement",
     "clientAfterLoginIndex", "clientAfterLoginCreateTemplate", "clientAfterLoginCookieService", "clientAfterLoginEditTemplate", "clientAfterLoginEditPage", "fancybox", "filedrop","wysihtml5",
-    "fileDropScript", "domReady","prettify","bootstrap_wysihtml5","angularjs_fileUpload_shim","angularjs_fileUpload","AngularFileUploadController"
+    "fileDropScript", "domReady","prettify","bootstrap_wysihtml5","angularjs_fileUpload_shim","angularjs_fileUpload","AngularFileUploadController","clientAfterLoginTemplateInfo",
+    "morris_min"
 ], function() {
     angular.bootstrap(document.getElementById("mainClient"), ["afterLoginClientApp"]);
 });
