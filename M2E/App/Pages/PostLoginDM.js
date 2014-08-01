@@ -91,6 +91,12 @@ appRequire = require
 //            raphael_min: {//new
 //                deps: ["jquery"]
 //            },
+//            angular_resource_min: {//new
+//                deps: ["jquery","angular"]
+//            },
+            ng_table: {//new
+                deps: ["jquery","angular"]
+            },
             clientAfterLoginCookieService: {
                 deps: ["jquery", "jquery_cookie"]
             },
@@ -104,7 +110,7 @@ appRequire = require
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
             },
             clientAfterLoginIndex: { //used
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","ng_table"]
             },
             clientAfterLoginCreateTemplate: { //used
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","wysihtml5","bootstrap_wysihtml5","prettify","AngularFileUploadController"]
@@ -156,6 +162,8 @@ appRequire = require
             angularjs_fileUpload:"../../App/third-Party/angular-file-upload-master/dist/angular-file-upload.min",
             morris_min:"../../Template/AdminLTE-master/js/plugins/morris/morris.min",
             //raphael_min:"../../App/js/raphael-min",
+            ng_table:"../../App/js/ng-table",
+            //angular_resource_min:"../../App/third-Party/ng-table-master/examples/js/angular-resource.min",
             //==============================================================================================================
             // Application Related JS
             //==============================================================================================================
@@ -178,7 +186,7 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "jquery_slimscroll", "iCheck", "angular_cookies", "configureBlockUI", "fancybox", "clientAfterLoginApp", "SessionManagement",
     "clientAfterLoginIndex", "clientAfterLoginCreateTemplate", "clientAfterLoginCookieService", "clientAfterLoginEditTemplate", "clientAfterLoginEditPage", "fancybox", "filedrop","wysihtml5",
     "fileDropScript", "domReady","prettify","bootstrap_wysihtml5","angularjs_fileUpload_shim","angularjs_fileUpload","AngularFileUploadController","clientAfterLoginTemplateInfo",
-    "morris_min"
+    "morris_min","ng_table"
 ], function() {
     angular.bootstrap(document.getElementById("mainClient"), ["afterLoginClientApp"]);
 });

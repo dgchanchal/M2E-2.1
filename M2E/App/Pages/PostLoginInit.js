@@ -5,7 +5,7 @@
  */
 define(['angular'], function() {
 
-    var dependances = ['restangular','angularFileUpload'];
+    var dependances = ['restangular', 'angularFileUpload', 'ngTable'];
     var app = angular.module("afterLoginClientApp", dependances);
     return app;
 });
