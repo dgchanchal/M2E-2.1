@@ -262,6 +262,7 @@
     <Content Include="App\js\angular.js" />
     <Content Include="App\js\angular.min.js" />
     <Content Include="App\js\configureBlockUI.js" />
+    <Content Include="App\js\raphael-min.js" />
     <Content Include="App\js\domReady.js" />
     <Content Include="App\js\i18n\i18n_hi_in.js" />
     <Content Include="App\js\m2ei18n.js" />

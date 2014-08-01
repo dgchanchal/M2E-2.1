@@ -45,14 +45,14 @@
                                 <div class="box-body no-padding" ng-cloak>
                                     <table class="table table-condensed">
                                         <tbody><tr>
-                                            <th style="width: 10px">#</th>
+                                            <!--<th style="width: 10px" ng-show="!isMobile">#</th>-->
                                             <th>Task</th>
                                             <th>Progress</th>
                                             <th style="width: 40px">Label</th>
                                         </tr>
                                         <tr ng-repeat="subTask in InProgressTaskList">
-                                            <td>{{subTask.creationDate}}</td>
-                                            <td>{{subTask.title}}&nbsp<a ng-click="openTemplateInfoPageWithId(subTask.editId)" role="button" data-toggle="modal">detail</a></td>
+                                            <!--<td ng-show="!isMobile">{{subTask.creationDate}}</td>-->
+                                            <td>{{subTask.title}}&nbsp <span><a  ng-click="openTemplateInfoPageWithId(subTask.editId)" role="button" data-toggle="modal">info</a></span> <span> <a ng-click="deleteTemplateEditPageWithId(subTask.editId)" role="button" data-toggle="modal"><font color="red">Delete </font></a> </span></td>
                                             <td>
                                                 <div class="progress xs">
                                                     <div style="width: 55%" class="progress-bar progress-bar-danger"></div>

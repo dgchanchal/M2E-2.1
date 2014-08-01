@@ -1,8 +1,12 @@
 'use strict';
-define([appLocation.postLogin], function(app) {
+define([appLocation.postLogin], function (app) {
 
     app.controller('ClientAfterLoginIndex', function ($scope, $http, $route, $rootScope, CookieUtil) {
         $scope.logoImage = { url: logoImage };
+        $scope.isMobile = false;
+        if (mobileDevice)
+            $scope.isMobile = true;
+
         $('title').html("index"); //TODO: change the title so cann't be tracked in log
 
         //$scope.InProgressTaskList = [{ showEllipse: true, title: "my first template", timeShowType: "info", showTime: "5 hours", editId: "", creationDate: "an 2014" },
