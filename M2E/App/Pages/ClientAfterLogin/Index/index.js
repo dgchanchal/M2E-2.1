@@ -41,6 +41,12 @@ define([appLocation.postLogin], function(app) {
             location.href = "#/editTemplate/edit/" + id;
         }
 
+        $scope.openTemplateInfoPageWithId = function (id) {
+            //$('#closeModalPopup' + id).click();
+            //alert(id);
+            location.href = "#/templateInfo/Survey/ProductSurvey/" + id;
+        }
+
         $scope.deleteTemplateEditPageWithId = function (id) {
             $('#closeModalPopup' + id).click();
             var url = ServerContextPah + '/Client/DeleteTemplateDetailById?username=' + userSession.username + '&id=' + id;

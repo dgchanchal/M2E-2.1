@@ -170,7 +170,7 @@ appRequire = require
             clientAfterLoginTemplateInfo: "../../App/Pages/ClientAfterLogin/TemplateInfo/TemplateInfo",//used
             
         },
-        urlArgs: "123"
+        urlArgs: ""
     });
 
 appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMessage", "jquery_cookie",

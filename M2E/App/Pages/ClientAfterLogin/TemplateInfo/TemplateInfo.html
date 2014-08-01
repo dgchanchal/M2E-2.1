@@ -1,13 +1,8 @@
 ﻿<!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <h1>
-                        Dashboard
-                        <small>Control panel</small>
-                    </h1>
-                    <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li class="active">Dashboard</li>
-                    </ol>
+                <section class="content-header" ng-controller="ClientAfterLoginTemplateInfo">
+                    <span><button class="btn btn-success btn-flat">Preview</button> </span>
+                        <span class="active"><button ng-click="openTemplateEditPageWithId(templateId)" class="btn btn-warning">Edit</button></span>
+                        <span class="active"><button ng-click="deleteTemplatePageWithId(templateId)" class="btn btn-danger">Delete</button></span>
                 </section>
 
                 <!-- Main content -->
@@ -30,23 +25,15 @@
                         <i class="icon-user"></i>Information
                     </h3>
                 </div>
-                <div class="box-content nopadding" ng-controller="ClientAfterLoginTemplateInfo">
-                    <ul class="tabs tabs-inline tabs-top">
-                        <li class="active"><a href="#profile" data-toggle="tab"><i class="icon-user"></i>Profile</a>
-                        </li>
-                        <li class=""><a href="#notifications" data-toggle="tab"><i class="icon-bullhorn"></i>
-                            Notifications</a> </li>
-                        <li class=""><a href="#security" data-toggle="tab"><i class="icon-lock"></i>Security</a>
-                        </li>
-                    </ul>
+                <div class="box-content nopadding" ng-controller="ClientAfterLoginTemplateInfo">                    
                     <div class="tab-content padding tab-content-inline tab-content-bottom">
-                        <div class="tab-pane active" id="profile">
+                        <div class="tab-pane active">
                              <div class="row">
                         <div class="col-md-6">
                             <!-- AREA CHART -->
                             <div class="box box-primary">
                                 <div class="box-header">
-                                    <h3 class="box-title">Area Chart</h3>
+                                    Completed Vs Reviewed
                                 </div>
                                 <div class="box-body chart-responsive">
                                     <div class="chart" id="revenue-chart" style="height: 300px;"></div>
@@ -56,7 +43,7 @@
                             <!-- DONUT CHART -->
                             <div class="box box-danger">
                                 <div class="box-header">
-                                    <h3 class="box-title">Donut Chart</h3>
+                                    Progress
                                 </div>
                                 <div class="box-body chart-responsive">
                                     <div class="chart" id="sales-chart" style="height: 300px; position: relative;"></div>
@@ -68,7 +55,7 @@
                             <!-- LINE CHART -->
                             <div class="box box-info">
                                 <div class="box-header">
-                                    <h3 class="box-title">Line Chart</h3>
+                                    Ratio : completed vs reviewed vs pending
                                 </div>
                                 <div class="box-body chart-responsive">
                                     <div class="chart" id="line-chart" style="height: 300px;"></div>
@@ -78,7 +65,7 @@
                             <!-- BAR CHART -->
                             <div class="box box-success">
                                 <div class="box-header">
-                                    <h3 class="box-title">Bar Chart</h3>
+                                    Task Breakups
                                 </div>
                                 <div class="box-body chart-responsive">
                                     <div class="chart" id="bar-chart" style="height: 300px;"></div>
@@ -87,70 +74,7 @@
 
                         </div><!-- /.col (RIGHT) -->
                     </div>
-                        </div>
-                        <div class="tab-pane" id="notifications">
-                            <form action="#" class="form-horizontal ng-pristine ng-valid">
-                            <div class="control-group">
-                                <label for="asdf" class="control-label">
-                                    Email notifications</label>
-                                <div class="controls">
-                                    <label class="checkbox">
-                                        <input type="checkbox" name="asdf">
-                                        Send me security emails</label>
-                                    <label class="checkbox">
-                                        <input type="checkbox" name="asdf">
-                                        Send system emails</label>
-                                    <label class="checkbox">
-                                        <input type="checkbox" name="asdf">
-                                        Lorem ipsum dolor</label>
-                                    <label class="checkbox">
-                                        <input type="checkbox" name="asdf">
-                                        Minim veli</label>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label for="asdf" class="control-label">
-                                    Email for notifications</label>
-                                <div class="controls">
-                                    <select name="email" id="email">
-                                        <option value="1">asdf@blasdas.com</option>
-                                        <option value="2">johnDoe@asdasf.de</option>
-                                        <option value="3">janeDoe@janejanejane.net</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-actions">
-                                <input type="submit" class="btn btn-primary" value="Save">
-                                <input type="reset" class="btn" value="Discard changes">
-                            </div>
-                            </form>
-                        </div>
-                        <div class="tab-pane" id="security">
-                            <form action="#" class="form-horizontal ng-pristine ng-valid">
-                            <div class="control-group">
-                                <label for="asdf" class="control-label">
-                                    Disable account for</label>
-                                <div class="controls">
-                                    <select name="email" id="email">
-                                        <option value="1">1 week</option>
-                                        <option value="2">2 weeks</option>
-                                        <option value="3">3 weeks</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label for="asdf" class="control-label">
-                                    Lock account?</label>
-                                <div class="controls">
-                                    <a href="/Locked/index/dcd232d3-3037-479b-ab94-5c950f2ecd85" class="btn btn-danger">Lock account now</a>
-                                </div>
-                            </div>
-                            <div class="form-actions">
-                                <input type="submit" class="btn btn-primary" value="Save">
-                                <input type="reset" class="btn" value="Discard changes">
-                            </div>
-                            </form>
-                        </div>
+                        </div>                        
                     </div>
                 </div>
             </div>

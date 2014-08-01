@@ -7,7 +7,7 @@ define([appLocation.postLogin], function (app) {
                        when("/createTemplate", { templateUrl: "../../App/Pages/ClientAfterLogin/CreateTemplate/CreateTemplate.html" }).
                        when("/editTemplate/:username/:templateid", { templateUrl: "../../App/Pages/ClientAfterLogin/EditTemplate/EditTemplate.html" }).
                        when("/templateSample/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/TemplateSample/TemplateSample.html" }).
-                       when("/templateInfo/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/TemplateInfo/TemplateInfo.html" }).
+                       when("/templateInfo/:type/:subType/:templateId", { templateUrl: "../../App/Pages/ClientAfterLogin/TemplateInfo/TemplateInfo.html" }).
                        otherwise({ templateUrl: "../../Resource/templates/beforeLogin/contentView/404.html" });
 
     });
