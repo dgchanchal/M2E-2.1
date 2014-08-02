@@ -44,6 +44,118 @@ window.madetoearn.i18n = {
                             "<p>If you feel like supporting us or just wanna say a hi, use the comment section below. Your voice will be a thrust for us to move forward. </p>" +
                             "<p>Thank You!</p>",
 
+    //beflore login Terms & Conditions page
+    "beforeLoginTermsAndCondPageContent": "<p>This is Made2earn</p>" +
+                            "<p>By visiting/registering on our website, you as a client or user agree to all terms and conditions laid down in terms of fair practices and current law in the country of India.</p>" +
+                            "<p>Anyone can access the services of the website, either earn or get their work done. But all payment related aspects will be strictly restricted to the prevailing law. For example if your earnings go beyond a limit set by our company, you will be required to submit Pan details for withdrawal of the money. </p>" +
+                            "<p>This website provides platform for citizens to outsource their talents as to monetize it. Also clients get access to labor at a fraction of cost, but at the same time retaining the quality.</p>" +
+                            "<p>Eligibility</p>" +
+                            "<p>•	All users should be at-least 18 years old to receive a payment from the company.</p>" +
+                            "<p>•	All transactions involving higher amounts( as set by the company) will require proper tax verification( not limited to PAN card alone)</p>" +
+                            "<p>•	You should not be banned/restricted by Indian Government to use our services.</p>" +
+                            "<p>•	All users and clients should abide to our code of conduct and terms & conditions.</p>" +
+                            "<p>•	You should not use this service as a way to trick people or get jobs/actions done that are prohibited by Indian law.</p>" +
+                            "<p>•	You should be proud to be an independent earner!</p>" +
+                            "<p>Privacy Concerns</p>" +
+                            "<p>•	By accessing/ registering on our website, you agree to all policies laid down by the website and should be aware that we form time to time change these policies to keep the website running.</p>" +
+                            "<p>•	Your email ID, name and phone numbers will be used for promotional/third party services for receiving monetary benefits. However you can always stop this by mailing us at help@madetoearn.com</p>" +
+                            "<p>•	We legitimately will be using your personal information to provide you with better suited jobs, decided by our algorithms.</p>" +
+                            "<p>Payments</p>" +
+                            "<p>•	All financial transactions will be dealt by the organization. We reserve all rights to withhold or even cancel the pay for a user at our discretion, provided he/she is not agreeing to our terms and conditions.</p>" + 
+                            "<p>•	Also the rates per job and the time schedule for payment can be varied at our sole discretion.</p>" +
+                            "<p>•	All trials in this regard will be dealt in the Banglore High court, India.</p>" +
+                            "<p>•	However our customer care support will try to solve any payment related issues without any partiality.</p>" +
+                            "<p>Disclaimer of warranties</p>" +
+                            "<p>This website shall not be liable to any damages, direct, indirect, incidental, and consequential caused due to usage of our website. </p>" +
+                            "<p>Third Party data usage</p>" +
+                            "<p>•	All third party services we use have a similar or even strong privacy policy. Your data will be handled with at-most caution. </p>" +
+                            "<p>•	Any damages- direct or indirect caused by the third parties won’t be our liability in any case.</p>" +
+                            "<p>Data Storage & encryption</p>" +
+                            "<p>•	All your data is stored in highly secured encrypted servers.</p>" +
+                            "<p>•	In-case of a security breach beyond our reach, we won’t be responsible for the resulting data misuse. However we will ensure that such activities never occur.</p>" +
+                            "<p>•	All our servers are maintained by third parties, which are highly secure. But any major misuse from their part won’t be our liability.</p>" +
+                            "<p>Fees and Services </p>" +
+                            "<p>•	This is defined by company and changes from time to time. Typically we take 10% of the total cost involved from the client. The user is never charged.</p>" +
+                            "<p>•	We are not responsible for nay conversion/processing charges that your bank/financial institution charges for any transaction with us.</p>" +
+                            "<p>•	For direct deposit of money to the user bank account, the user to furnish all details accurately. In-case he/she fails to do so we, will charge a 10% fee for all extra attempts to be done.</p>" +
+                            "<p>•	The fees to be paid by clients are described by Individuals within our company, concentrating on fair trade practices.</p>" +
+                            "<p>Promotion</p>" +
+                            "<p>•	We may display your logo, company name or details for promotion purposes. But all these actions will be informed to you through email. You are free to opt-out at any time from this action by just sending us an email.</p>" +
+                            "<p>Content</p>" +
+                            "<p>•	When you give us content, you grant us a non-exclusive, worldwide, perpetual, irrevocable, royalty-free, sub-licensable (through multiple tiers) right to exercise any and all copyright, trademark, publicity, and database rights (but no other rights) you have in the content, in any media known now or in the future.</p>" +
+                            "<p>•	Any serious infringement related aspects will be under the jurisdiction of supreme court of India and the Banglore High Court.</p>" +
+                            "<p>•	In-case the content hurts the sentiments of an entire community or a country, you can request us to take it down, but subject to mutual agreement.</p>" +
+                            "<p>Advertising</p>" +
+                            "<p>•	You are not supposed to advertise any services/website as a part of usage on this site. However promotion of company videos/ logo/ teaser can be done as a part of our paid services. But you should be a registered user and these facts should be clearly stated during the submission of work proposal.</p>" +
+                            "<p>•	Brand creation/promotion is accepted as a part of our paid services and should be stated clearly during submission of our work.</p>" +
+                            "<p>Right to review</p>" +
+                            "<p>•	We have unconditional rights to access/review all materials uploaded and written on our website by any party involved.</p>" +
+                            "<p>Fraud & illegal service prevention</p>" +
+                            "<p>•	The website reserves all rights, un-conditionally to take down any work/stop payments/ delete a user or client account without any notice, in-case we find any illegal activities associated with your account. However all hearing in this regard will be dealt in the Banglore high court, India.</p>" +
+                            "<p>•	We will be terminating a user/client account or payment if a law enforcement agency asks us to do so.</p>" +
+                            "<p>In-active accounts</p>" +
+                            "<p>•	All accounts inactive for at least 3 months will be taken down without any notice. You can reinstate the service by emailing at help@madetoearn.com</p>" +
+                            "<p>Disputes</p>" +
+                            "<p>•	As we try to ensure fair trade, any disputes that arise will be solved within the company. Any user/client can mail help@madetoearn.com to do so. We will get back to you in 24h and will try to resolve the issue.</p>" +
+                            "<p>•	If it involves a payment/law enforcement agency, this will be subjects to Indian law system.</p>" +
+                            "<p>No Insurance Or Warranty </p>" +
+                            "<p>•	We do not offer any form of insurance, or other Buyer or Seller protection. </p>" +
+                            "<p>This is Made2earn</p>" +
+                            "<p>By visiting/registering on our website, you as a client or user agree to all terms and conditions laid down in terms of fair practices and current law in the country of India.</p>" +
+                            "<p>Anyone can access the services of the website, either earn or get their work done. But all payment related aspects will be strictly restricted to the prevailing law. For example if your earnings go beyond a limit set by our company, you will be required to submit Pan details for withdrawal of the money. </p>" +
+                            "<p>This website provides platform for citizens to outsource their talents as to monetize it. Also clients get access to labor at a fraction of cost, but at the same time retaining the quality.</p>" +
+                            "<p>Eligibility</p>" +
+                            "<p>•	All users should be at-least 18 years old to receive a payment from the company.</p>" +
+                            "<p>•	All transactions involving higher amounts( as set by the company) will require proper tax verification( not limited to PAN card alone)</p>" +
+                            "<p>•	You should not be banned/restricted by Indian Government to use our services.</p>" +
+                            "<p>•	All users and clients should abide to our code of conduct and terms & conditions.</p>" +
+                            "<p>•	You should not use this service as a way to trick people or get jobs/actions done that are prohibited by Indian law.</p>" +
+                            "<p>•	You should be proud to be an independent earner!</p>" +
+                            "<p>Privacy Concerns</p>" +
+                            "<p>•	By accessing/ registering on our website, you agree to all policies laid down by the website and should be aware that we form time to time change these policies to keep the website running.</p>" +
+                            "<p>•	Your email ID, name and phone numbers will be used for promotional/third party services for receiving monetary benefits. However you can always stop this by mailing us at help@madetoearn.com</p>" +
+                            "<p>•	We legitimately will be using your personal information to provide you with better suited jobs, decided by our algorithms.</p>" +
+                            "<p>Payments</p>" +
+                            "<p>•	All financial transactions will be dealt by the organization. We reserve all rights to withhold or even cancel the pay for a user at our discretion, provided he/she is not agreeing to our terms and conditions. </p>" +
+                            "<p>•	Also the rates per job and the time schedule for payment can be varied at our sole discretion.</p>" +
+                            "<p>•	All trials in this regard will be dealt in the Banglore High court, India.</p>" +
+                            "<p>•	However our customer care support will try to solve any payment related issues without any partiality.</p>" +
+
+                            "<p>Disclaimer of warranties</p>" +
+                            "<p>This website shall not be liable to any damages, direct, indirect, incidental, and consequential caused due to usage of our website. </p>" +
+                            "<p>Third Party data usage</p>" +
+                            "<p>•	All third party services we use have a similar or even strong privacy policy. Your data will be handled with at-most caution.</p>" +
+                            "<p>•	Any damages- direct or indirect caused by the third parties won’t be our liability in any case.</p>" +
+                            "<p>Data Storage & encryption</p>" +
+                            "<p>•	All your data is stored in highly secured encrypted servers.</p>" +
+                            "<p>•	In-case of a security breach beyond our reach, we won’t be responsible for the resulting data misuse. However we will ensure that such activities never occur.</p>" +
+                            "<p>•	All our servers are maintained by third parties, which are highly secure. But any major misuse from their part won’t be our liability.</p>" +
+                            "<p>Fees and Services </p>" +
+                            "<p>•	This is defined by company and changes from time to time. Typically we take 10% of the total cost involved from the client. The user is never charged.</p>" +
+                            "<p>•	We are not responsible for nay conversion/processing charges that your bank/financial institution charges for any transaction with us.</p>" +
+                            "<p>•	For direct deposit of money to the user bank account, the user to furnish all details accurately. In-case he/she fails to do so we, will charge a 10% fee for all extra attempts to be done.</p>" +
+                            "<p>•	The fees to be paid by clients are described by Individuals within our company, concentrating on fair trade practices.</p>" +
+                            "<p>Promotion</p>" +
+                            "<p>•	We may display your logo, company name or details for promotion purposes. But all these actions will be informed to you through email. You are free to opt-out at any time from this action by just sending us an email.</p>" +
+                            "<p>Content</p>" +
+                            "<p>•	When you give us content, you grant us a non-exclusive, worldwide, perpetual, irrevocable, royalty-free, sub-licensable (through multiple tiers) right to exercise any and all copyright, trademark, publicity, and database rights (but no other rights) you have in the content, in any media known now or in the future.</p>" +
+                            "<p>•	Any serious infringement related aspects will be under the jurisdiction of supreme court of India and the Banglore High Court.</p>" +
+                            "<p>•	In-case the content hurts the sentiments of an entire community or a country, you can request us to take it down, but subject to mutual agreement.</p>" +
+                            "<p>Advertising</p>" +
+                            "<p>•	You are not supposed to advertise any services/website as a part of usage on this site. However promotion of company videos/ logo/ teaser can be done as a part of our paid services. But you should be a registered user and these facts should be clearly stated during the submission of work proposal.</p>" +
+                            "<p>•	Brand creation/promotion is accepted as a part of our paid services and should be stated clearly during submission of our work.</p>" +
+                            "<p>Right to review</p>" +
+                            "<p>•	We have unconditional rights to access/review all materials uploaded and written on our website by any party involved.</p>" +
+                            "<p>Fraud & illegal service prevention</p>" +
+                            "<p>•	The website reserves all rights, un-conditionally to take down any work/stop payments/ delete a user or client account without any notice, in-case we find any illegal activities associated with your account. However all hearing in this regard will be dealt in the Banglore high court, India.</p>" +
+                            "<p>•	We will be terminating a user/client account or payment if a law enforcement agency asks us to do so.</p>" +
+                            "<p>In-active accounts</p>" +
+                            "<p>•	All accounts inactive for at least 3 months will be taken down without any notice. You can reinstate the service by emailing at help@madetoearn.com</p>" +
+                            "<p>Disputes</p>" +
+                            "<p>•	As we try to ensure fair trade, any disputes that arise will be solved within the company. Any user/client can mail help@madetoearn.com to do so. We will get back to you in 24h and will try to resolve the issue.</p>" +
+                            "<p>•	If it involves a payment/law enforcement agency, this will be subjects to Indian law system.</p>" +
+                            "<p>No Insurance Or Warranty </p>" +
+                            "<p>•	We do not offer any form of insurance, or other Buyer or Seller protection.</P>",
     //signin page.
     "signInTitle": "SIGN IN",
     "beforeLoginLoginPageEmailIdText": "Email Id",
