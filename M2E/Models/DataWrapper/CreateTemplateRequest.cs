@@ -11,5 +11,6 @@ namespace M2E.Models.DataWrapper
     {
         public List<CreateTemplateQuestionInfoModel> Data { get; set; }
         public List<imgurUploadImageResponse> ImgurList { get; set; }
+        public TemplateInfoModel TemplateInfo { get; set; }
     }    
 }

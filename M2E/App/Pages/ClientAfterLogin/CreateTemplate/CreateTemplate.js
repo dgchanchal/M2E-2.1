@@ -197,7 +197,7 @@ define([appLocation.postLogin], function (app) {
         // listBox questions..
         $scope.InsertListBoxQuestionRow = function () {
             var addListBoxQuestionQuestionsFancyBoxInImages = $('#ListBoxQuestionTextBoxQuestionData').val();
-            var addListBoxQuestionOptionsFancyBoxInImages =   $('#ListBoxQuestionTextBoxAnswerData').val();
+            var addListBoxQuestionOptionsFancyBoxInImages = $('#ListBoxQuestionTextBoxAnswerData').val();
             //console.log(addFancyBoxInImages);
             var i = 0;
             $.each(userSession.wysiHtml5UploadedInstructionsImageUrlLink, function () {
@@ -480,7 +480,7 @@ define([appLocation.postLogin], function (app) {
 
         $scope.ClientCreateTemplateFunction = function () {
             $rootScope.jobTemplate[0].title = $('#createTemplateTitleText').val();
-            var clientCreateTemplateData = { Data: $rootScope.jobTemplate, ImgurList: userSession.listOfImgurImages };
+            var clientCreateTemplateData = { Data: $rootScope.jobTemplate, ImgurList: userSession.listOfImgurImages, TemplateInfo: { type: TemplateInfoModel.surveyType, subType: TemplateInfoModel.surveySubTypeProductSurvey} };
             //var currentTemplateId = new Date().getTime();
 
             var url = ServerContextPah + '/Client/CreateTemplate?username=' + userSession.username;

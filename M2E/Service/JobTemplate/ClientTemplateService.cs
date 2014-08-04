@@ -12,6 +12,7 @@ using M2E.Models.DataWrapper.CreateTemplate;
 using System.Data.Entity.Validation;
 using M2E.Service.JobTemplate.CommonMethods;
 using M2E.Session;
+using M2E.Models.DataWrapper;
 
 namespace M2E.Service.JobTemplate
 {
@@ -245,7 +246,7 @@ namespace M2E.Service.JobTemplate
             }
         }
 
-        public ResponseModel<string> CreateTemplate(List<CreateTemplateQuestionInfoModel> req,string username)
+        public ResponseModel<string> CreateTemplate(List<CreateTemplateQuestionInfoModel> req,string username,TemplateInfoModel TemplateInfo)
         {
             var response = new ResponseModel<string>();
 
@@ -267,7 +268,8 @@ namespace M2E.Service.JobTemplate
                 username = username,
                 title = req[0].title,
                 visible = "NA",
-                type = "NA",
+                type = TemplateInfo.type,
+                subType = TemplateInfo.subType,
                 creationTime = DateTime.Now.ToString(CultureInfo.InvariantCulture),
                 referenceId = refKey,
                 total = "NA",
@@ -310,6 +312,7 @@ namespace M2E.Service.JobTemplate
                 title = req[0].title,
                 visible = "NA",
                 type = "NA",
+                subType = "NA",
                 creationTime = DateTime.Now.ToString(CultureInfo.InvariantCulture),
                 referenceId = refKey,
                 total = "NA",

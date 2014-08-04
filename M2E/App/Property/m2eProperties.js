@@ -5,8 +5,14 @@ var userSession = {
     listOfImgurImages:[],
     keepMeSignedIn:false,
     wysiHtml5UploadedInstructionsImageUrlLink: [],
-    imgurImageTemplateModeratingPhotos :[]
+    imgurImageTemplateModeratingPhotos :[],    
 };
+var TemplateInfoModel = {
+        surveyType : "survey",
+        surveySubTypeProductSurvey : "productSurvey",
+        moderationType : "moderation",
+        moderationSubTypeModeratingPhotos : "moderatingPhotos"
+    };
 var ServerContextPah = "";
 
 var appLocation = {

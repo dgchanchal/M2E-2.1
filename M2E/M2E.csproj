@@ -185,6 +185,7 @@
     <Compile Include="Models\DataWrapper\LoginRequest.cs" />
     <Compile Include="Models\DataWrapper\RegisterationRequest.cs" />
     <Compile Include="Models\DataWrapper\ResetPasswordRequest.cs" />
+    <Compile Include="Models\DataWrapper\TemplateInfoModel.cs" />
     <Compile Include="Models\DataWrapper\ValidateAccountRequest.cs" />
     <Compile Include="Models\ForgetPassword.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>

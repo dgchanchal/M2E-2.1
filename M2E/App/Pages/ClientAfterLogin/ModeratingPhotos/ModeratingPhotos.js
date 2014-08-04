@@ -19,7 +19,10 @@ define([appLocation.postLogin], function (app) {
         $scope.imgurImageTemplateModeratingPhotos = userSession.imgurImageTemplateModeratingPhotos;
         $scope.jobTemplate = [
                 { type: "AddInstructions", title: "", visible: false, buttonText: "Add Instructions", editableInstructionsList: [{ Number: totalEditableInstruction, Text: "Instruction 1"}] },
-                { type: "AddSingleQuestionsList", title: "", visible: false, buttonText: "Add Query", singleQuestionsList: [{ Number: totalSingleQuestionList, Question: "Is this Image Obscene?", Options: "Yes;No"}] }
+                { type: "AddSingleQuestionsList", title: "", visible: false, buttonText: "Add Query", singleQuestionsList: [{ Number: totalSingleQuestionList, Question: "Is this Image Obscene?", Options: "Yes;No"}] },
+                { type: "AddMultipleQuestionsList", title: "", visible: false, buttonText: "Add Ques. (Multiple Ans.)", multipleQuestionsList: [{ Number: totalMultipleQuestionList, Question: "What is your multiple gender ?", Options: "Malem1;Femalem2"}] },
+                { type: "AddTextBoxQuestionsList", title: "", visible: false, buttonText: "Add Ques. (TextBox Ans.)", textBoxQuestionsList: [{ Number: totalTextBoxQuestionList, Question: "Who won 2014 FIFA World cup ?", Options: "text"}] },
+                { type: "AddListBoxQuestionsList", title: "", visible: false, buttonText: "Add Ques. (ListBox Ans.)", listBoxQuestionsList: [{ Number: totalListBoxQuestionList, Question: "What is your multiple gender ?", Options: "Malem1;Femalem2"}] }
         ];
 
         loadTemplate();
@@ -224,10 +227,10 @@ define([appLocation.postLogin], function (app) {
 
         $scope.ClientCreateModeratingPhotosFunction = function () {
             $scope.jobTemplate[0].title = $('#createTemplateTitleTextModeratingPhotos').val();
-            var clientCreateModeratingPhotosData = { Data: $scope.jobTemplate, ImgurList: userSession.imgurImageTemplateModeratingPhotos };
+            var clientCreateModeratingPhotosData = { Data: $scope.jobTemplate, ImgurList: userSession.imgurImageTemplateModeratingPhotos, TemplateInfo: { type: TemplateInfoModel.moderationType, subType: TemplateInfoModel.moderationSubTypeModeratingPhotos} };
             //var currentTemplateId = new Date().getTime();
 
-            var url = ServerContextPah + '/Client/CreateTemplateModeratingPhotos?username=' + userSession.username;
+            var url = ServerContextPah + '/Client/CreateTemplate?username=' + userSession.username;
             if (($('#createTemplateTitleTextModeratingPhotos').val() != "") && ($('#createTemplateTitleTextModeratingPhotos').val() != null)) {
                 startBlockUI('wait..', 3);
                 $http({
