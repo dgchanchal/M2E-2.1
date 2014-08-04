@@ -3446,3 +3446,8 @@ fieldset[disabled] .btn-vk.active {
   padding-left: 15px;
   padding-right: 15px;
 }
+
+.cursorPointer
+{
+    cursor:pointer;
+}
