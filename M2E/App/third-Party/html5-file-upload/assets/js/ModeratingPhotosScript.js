@@ -14,7 +14,11 @@ $(function () {
         uploadFinished: function (i, file, response) {
             $.data(file).addClass('done');
             userSession.imgurImageTemplateModeratingPhotos.push(response);
-            angular.element(document.getElementById('ModeratingPhotosViewAfterUploadId')).scope().refreshModeratingPhotosListDiv(); 
+            var scope = angular.element(document.getElementById("ModeratingPhotosViewAfterUploadId")).scope();
+            scope.$apply(function () {            
+                scope.refreshModeratingPhotosListDiv();
+            });
+            //angular.element(document.getElementById('ModeratingPhotosViewAfterUploadId')).scope().refreshModeratingPhotosListDiv(); 
             //console.log(userSession.listOfImgurImages);
         },
 
