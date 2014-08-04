@@ -49,7 +49,7 @@ define([appLocation.preLogin], function (app) {
             }
         });
     });
-    app.controller('beforeLoginMasterPageController', function ($scope, $http, $rootScope, CookieUtil) {
+    app.controller('beforeLoginMasterPageController', function ($scope,$location, $http, $rootScope, CookieUtil) {
 
         _.defer(function () { $scope.$apply(); });
 
@@ -65,6 +65,14 @@ define([appLocation.preLogin], function (app) {
             $rootScope.beforeLoginFooterCopyRightInfo.companyName = "M2E";
             $rootScope.beforeLoginFooterCopyRightInfo.TnC = "T&C";
         }
+
+        $scope.FAQscrollTo = function (id) {
+            //$anchorScroll();
+            //$location.hash(id);
+            $location.path('/faq');
+            $location.hash(id);
+        };
+
     });
 
     function loadjscssfile(filename, filetype) {

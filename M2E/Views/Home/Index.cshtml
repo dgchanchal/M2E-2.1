@@ -87,6 +87,7 @@
                                 <span>
                                             <button class="btn bg-light-blue btn-circle"><i class="fa fa-facebook"></i></button>
                                             <button class="btn bg-aqua btn-circle"><i class="fa fa-twitter"></i></button>
+                                            <button class="btn bg-red btn-circle"><i class="fa fa-linkedin"></i></button>
                                             <button class="btn bg-red btn-circle"><i class="fa fa-google-plus"></i></button>
                                             <button class="btn bg-red btn-circle"><i class="fa fa-youtube"></i></button>
                                 </span>
@@ -116,10 +117,10 @@
                                 </header>
                                 <ul class="list-links">
                                     <li><a href="#/AboutUs">About us</a></li>
-                                    <li><a href="#/tnc">Terms & Privacy</a></li>
                                     <li><a href="/">Home</a></li>
                                     <li><a href="#/faq">FAQs</a></li>
-                                    <li><a href="index?file=contact_us">Contact us</a></li>
+                                    <li><a href="#/contactus">Contact us</a></li>
+                                    <li><a href="#/tnc">Terms & Privacy</a></li>
                                 </ul>
                             </aside>
                         </div>
@@ -130,12 +131,12 @@
                                     <h4>FAQs</h4>
                                 </header>
                                 <ul class="list-links">
-                                    <li><a href="index?file=faq">Why should I use MadeToEarn?</a></li>
-                                    <li><a href="index?file=faq">How often can I use MadeToEarn?</a></li>
-                                    <li><a href="index?file=faq">Where is MadeToEarn available?</a></li>
-                                    <li><a href="index?file=faq">What is MP(Mechanical Person)?</a></li>
-                                    <li><a href="index?file=faq">How much capital is available for me?</a></li>
-                                    <li><a href="index?file=faq">How iIts different from other Sites?</a></li>
+                                    <li><a style="cursor: pointer;" ng-click="FAQscrollTo('HowToJoinM2E')">How can I join M2E?</a></li>
+                                    <li><a style="cursor: pointer;" ng-click="FAQscrollTo('HowDoIGetPaid')">How do I get paid?</a></li>
+                                    <li><a style="cursor: pointer;" ng-click="FAQscrollTo('CostToJoinM2E')">Does it cost to join M2E?</a></li>
+                                    <li><a style="cursor: pointer;" ng-click="FAQscrollTo('HowMuchICanEarnPerDay')">How much can I earn per day?</a></li>
+                                    <li><a style="cursor: pointer;" ng-click="FAQscrollTo('TrackingSystem')">Do you have a tracking system?</a></li>
+                                    <li><a style="cursor: pointer;" ng-click="FAQscrollTo('CustomerServiceNumber')">Do you have customer service number?</a></li>
                                 </ul>
                             </aside>
                         </div>
@@ -170,6 +171,11 @@
     background-color: #012447;
     color: #fff;
     padding: 20px 0;
+}
+ #page-footer_mobile {
+    background-color: #012447;
+    color: #fff;
+    padding: 30px 0;
 }
     #page-footer #footer-bottom .footer-inner {
     display: table;
@@ -237,10 +243,30 @@ ul.list-links {
     padding-left: 15px;
 }
 ul.list-links li {
-    padding: 2px;
+    padding: 0px;
  }
 
 #page-footer #footer-content a {
     color: #fff;
+}
+#page-footer a {
+    color: #fff !important;
+    font-size: 13px;
+}
+ul.list-links a {
+    display: inline-block;
+    left: 0;
+    padding: 6px 0;
+    position: relative;
+}
+a {
+    color: #01366a;
+    outline: medium none !important;
+    transition: all 0.3s ease 0s;
+}
+#page-footer 
+a:hover {
+    color: #0979cd !important;
+    left: 3px;
 }
 </style>
