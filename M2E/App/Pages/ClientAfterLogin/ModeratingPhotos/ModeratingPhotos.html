@@ -106,7 +106,7 @@
                                                    <div class="controls">
                                                           <div class="row">
                                                             <div class="col-lg-3 col-xs-6" ng-repeat="imgurImage in imgurImageTemplateModeratingPhotos">
-		                                                        <a  title="Personalized Title" data-fancybox-group="gallery" href="{{imgurImage.data.link}}" class="fancybox"><img class="MaxUploadedSmallSizedModeratingPhotos" alt="" ng-src="{{imgurImage.data.link}}"></a><br /><span class="imgurImagesUploadManageClass" ng-click="DeleteEditImgurImageByIdFunction(imgurImage.data.id)">delete</span>
+		                                                        <a  title="Personalized Title" data-fancybox-group="gallery" href="{{imgurImage.data.link}}" class="fancybox"><img class="MaxUploadedSmallSizedModeratingPhotos" alt="" ng-src="{{imgurImage.data.link_s}}"></a><br /><span class="imgurImagesUploadManageClass" ng-click="DeleteEditImgurImageByIdFunction(imgurImage.data.id)">delete</span>
 	                                                       </div>
                                                         </div>
                                                    </div>
@@ -123,7 +123,7 @@
                                                    </div>
                                                </div>
                                                <div class="form-actions">
-                                                   <button class="btn btn-primary" ng-click="ClientCreateTemplateFunction()">
+                                                   <button class="btn btn-primary" ng-click="ClientCreateModeratingPhotosFunction()">
                                                        Create</button>
                                                    <button type="button" class="btn">
                                                        Need More Info</button>

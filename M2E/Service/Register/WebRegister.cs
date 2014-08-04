@@ -18,7 +18,7 @@ namespace M2E.Service.Register
         private readonly M2EContext _db = new M2EContext();
 
         public ResponseModel<String> WebRegisterService(RegisterationRequest req, HttpRequestBase request)
-        {
+        {            
             var response = new ResponseModel<String>();
             if (_db.Users.Any(x => x.Username == req.Username))
             {

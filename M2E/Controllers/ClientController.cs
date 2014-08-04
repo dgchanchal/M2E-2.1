@@ -66,7 +66,22 @@ namespace M2E.Controllers
                 clientTemplate.ImgurImagesSaveToDatabaseWithTemplateId(imgurImageList, username, createTemplateResponse.Payload);
 
             return Json(createTemplateResponse);
-        }        
+        }
+
+        [HttpPost]
+        public JsonResult CreateTemplateModeratingPhotos(CreateTemplateRequest req)
+        {
+            var username = Request.QueryString["username"].ToString(CultureInfo.InvariantCulture);
+            var templateList = req.Data;
+            var clientTemplate = new ClientTemplateService();
+            //var createTemplateResponse = clientTemplate.CreateTemplate(templateList, username);
+            var imgurImageList = req.ImgurList;
+            //if (createTemplateResponse.Status != 200) return Json(createTemplateResponse);
+            //if (imgurImageList != null)
+                //clientTemplate.ImgurImagesSaveToDatabaseWithTemplateId(imgurImageList, username, createTemplateResponse.Payload);
+
+            return Json("200");
+        } 
 
         [HttpPost]
         public JsonResult CreateTemplateWithId(CreateTemplateRequest req)

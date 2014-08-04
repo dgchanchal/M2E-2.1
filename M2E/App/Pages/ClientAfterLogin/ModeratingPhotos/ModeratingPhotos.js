@@ -69,6 +69,22 @@ define([appLocation.postLogin], function (app) {
             $('.fancybox').fancybox();
         }
 
+        $scope.DeleteEditImgurImageByIdFunction = function (id) {
+            var i;
+            for (i = 0; i < userSession.imgurImageTemplateModeratingPhotos.length; i++) {
+                if (userSession.imgurImageTemplateModeratingPhotos[i].data.id == id) {
+                    break;
+                }
+            }
+            //console.log(userSession.imgurImageTemplateModeratingPhotos);
+            
+            userSession.imgurImageTemplateModeratingPhotos.splice(i, 1);
+            
+            //console.log(userSession.imgurImageTemplateModeratingPhotos);
+            $scope.imgurImageTemplateModeratingPhotos = userSession.imgurImageTemplateModeratingPhotos;
+            $('.fancybox').fancybox();
+        }
+
         $scope.addEditableInstructions = function () {
             if (($('#AddInstructionsTextAreaModeratingPhotos').val() != "") && ($('#AddInstructionsTextAreaModeratingPhotos').val() != null)) {
                 var addEditableInstructionsFancyBoxInImages = $('#AddInstructionsTextAreaModeratingPhotos').val();
@@ -204,6 +220,43 @@ define([appLocation.postLogin], function (app) {
             $('#addQuestionSingleAnswerCloseButtonModeratingPhotos').click();
             $('.fancybox').fancybox();
         }
+
+
+        $scope.ClientCreateModeratingPhotosFunction = function () {
+            $scope.jobTemplate[0].title = $('#createTemplateTitleTextModeratingPhotos').val();
+            var clientCreateModeratingPhotosData = { Data: $scope.jobTemplate, ImgurList: userSession.imgurImageTemplateModeratingPhotos };
+            //var currentTemplateId = new Date().getTime();
+
+            var url = ServerContextPah + '/Client/CreateTemplateModeratingPhotos?username=' + userSession.username;
+            if (($('#createTemplateTitleTextModeratingPhotos').val() != "") && ($('#createTemplateTitleTextModeratingPhotos').val() != null)) {
+                startBlockUI('wait..', 3);
+                $http({
+                    url: url,
+                    method: "POST",
+                    data: clientCreateModeratingPhotosData,
+                    headers: { 'Content-Type': 'application/json' }
+                }).success(function (data, status, headers, config) {
+                    //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
+                    stopBlockUI();
+                    userSession.imgurImageTemplateModeratingPhotos = [];
+                    //var id = data.Message.split('-')[1];
+                    //location.href = "#/editTemplate/edit/" + id;
+                    showToastMessage("Success", "Successfully Created");
+                }).error(function (data, status, headers, config) {
+
+                });
+            }
+            else {
+                showToastMessage("Error", "Title of the Template cann't be empty");
+            }
+
+        }
+
+        $scope.convertAllWysiHtml5ImagesToFancyBoxLink = function () {
+            textToReplace = "src=\"../../Upload/Images/Tulips.jpg\" title=\"Image: ../../Upload/Images/Tulips.jpg\"";
+
+        }
+
 
     });
 

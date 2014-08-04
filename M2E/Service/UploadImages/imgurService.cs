@@ -56,10 +56,11 @@ namespace M2E.Service.UploadImages
             return ("uploaded : " + myString);
         }
 
-        public imgurUploadImageResponse UploadMultipleImagesToImgur(IEnumerable<HttpPostedFileBase> files, string albumid)
-        {           
+        public ImgurImageResponse UploadMultipleImagesToImgur(IEnumerable<HttpPostedFileBase> files, string albumid)
+        {    
             System.Text.Encoding enc = System.Text.Encoding.ASCII;
             imgurUploadImageResponse imgurImageResponseData = new imgurUploadImageResponse();
+            var imgurImage = new ImgurImageResponse();
             foreach (HttpPostedFileBase file in files)
             {                
                 using (var w = new WebClient())
@@ -79,10 +80,20 @@ namespace M2E.Service.UploadImages
                     w.Headers.Add("Authorization", "Client-ID " + ConfigurationManager.AppSettings["ImgurClientId"]);
                     byte[] response = w.UploadValues("https://api.imgur.com/3/upload", values);
                     
-                    imgurImageResponseData = JsonConvert.DeserializeObject<imgurUploadImageResponse>(enc.GetString(response));                    
+                    imgurImageResponseData = JsonConvert.DeserializeObject<imgurUploadImageResponse>(enc.GetString(response));
+                    
+                    imgurImage.data = new imgurData();
+                    if (imgurImageResponseData == null && imgurImageResponseData.data == null)
+                        return imgurImage;
+                    imgurImage.data.deletehash = imgurImageResponseData.data.deletehash;
+                    imgurImage.data.link = imgurImageResponseData.data.link;
+                    imgurImage.data.link_s = imgurImageResponseData.data.link.Split('/')[0] + "//" + imgurImageResponseData.data.link.Split('/')[2] + "/" + imgurImageResponseData.data.link.Split('/')[3].Split('.')[0] + 's' + "." + imgurImageResponseData.data.link.Split('/')[3].Split('.')[1];
+                    imgurImage.data.link_m = imgurImageResponseData.data.link.Split('/')[0] + "//" + imgurImageResponseData.data.link.Split('/')[2] + "/" + imgurImageResponseData.data.link.Split('/')[3].Split('.')[0] + 'm' + "." + imgurImageResponseData.data.link.Split('/')[3].Split('.')[1];
+                    imgurImage.data.link_l = imgurImageResponseData.data.link.Split('/')[0] + "//" + imgurImageResponseData.data.link.Split('/')[2] + "/" + imgurImageResponseData.data.link.Split('/')[3].Split('.')[0] + 'l' + "." + imgurImageResponseData.data.link.Split('/')[3].Split('.')[1];
+                    imgurImage.data.copyText = "";
                 }
             }
-            return imgurImageResponseData;
+            return imgurImage;
         }
 
         public ImgurImageResponse UploadSingleImageToImgur(HttpPostedFileBase file, string albumid)

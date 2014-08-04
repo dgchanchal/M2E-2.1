@@ -5,260 +5,274 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="M2EModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-        <EntityContainer Name="M2EModelStoreContainer">
-          <EntitySet Name="ClientDetails" EntityType="M2EModel.Store.ClientDetails" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CreateTemplateeditableInstructionsLists" EntityType="M2EModel.Store.CreateTemplateeditableInstructionsLists" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CreateTemplateImgurImagesLists" EntityType="M2EModel.Store.CreateTemplateImgurImagesLists" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CreateTemplateListBoxQuestionsLists" EntityType="M2EModel.Store.CreateTemplateListBoxQuestionsLists" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CreateTemplateMultipleQuestionsLists" EntityType="M2EModel.Store.CreateTemplateMultipleQuestionsLists" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CreateTemplateQuestionInfoes" EntityType="M2EModel.Store.CreateTemplateQuestionInfoes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CreateTemplateSingleQuestionsLists" EntityType="M2EModel.Store.CreateTemplateSingleQuestionsLists" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CreateTemplateTextBoxQuestionsLists" EntityType="M2EModel.Store.CreateTemplateTextBoxQuestionsLists" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ForgetPasswords" EntityType="M2EModel.Store.ForgetPasswords" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="JobDatas" EntityType="M2EModel.Store.JobDatas" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="LinkedInAuthApiDatas" EntityType="M2EModel.Store.LinkedInAuthApiDatas" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="RecommendedBies" EntityType="M2EModel.Store.RecommendedBies" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ThirdPartyLogins" EntityType="M2EModel.Store.ThirdPartyLogins" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="UserDetails" EntityType="M2EModel.Store.UserDetails" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="UserPageSettings" EntityType="M2EModel.Store.UserPageSettings" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="UserRecommendations" EntityType="M2EModel.Store.UserRecommendations" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Users" EntityType="M2EModel.Store.Users" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="UserSkills" EntityType="M2EModel.Store.UserSkills" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ValidateUserKeys" EntityType="M2EModel.Store.ValidateUserKeys" store:Type="Tables" Schema="dbo" />
-        </EntityContainer>
-        <EntityType Name="ClientDetails">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="CompanyName" Type="nvarchar(max)" />
-          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="CreateTemplateeditableInstructionsLists">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="status" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="CreateTemplateImgurImagesLists">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="status" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="imgurId" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="imgurDeleteHash" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="imgurLink" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="CreateTemplateListBoxQuestionsLists">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Options" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="status" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="CreateTemplateMultipleQuestionsLists">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Options" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="status" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="CreateTemplateQuestionInfoes">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="type" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="visible" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="buttonText" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="referenceId" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="total" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="completed" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="creationTime" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="title" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="CreateTemplateSingleQuestionsLists">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Options" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="status" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="CreateTemplateTextBoxQuestionsLists">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Options" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="status" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ForgetPasswords">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="guid" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="JobDatas">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Category" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="SubCategory" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Data" Type="nvarchar(max)" />
-          <Property Name="PostedBy" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="StartDate" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="EndDate" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="LinkedInAuthApiDatas">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="oauth_Token" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="oauth_TokenSecret" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="oauth_verifier" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="RecommendedBies">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="RecommendedTo" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="RecommendedFrom" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ThirdPartyLogins">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="FacebookId" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="FacebookAccessToken" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="GoogleId" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="GoogleAccessToken" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="UserDetails">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Country" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="UserPageSettings">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="PageThemeColor" Type="nvarchar(max)" />
-          <Property Name="LayoutWidth" Type="nvarchar(max)" />
-          <Property Name="TopBar" Type="nvarchar(max)" />
-          <Property Name="SideBar" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="UserRecommendations">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="TotalRecommendation" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="UsefulRecommendation" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="isActive" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Source" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="guid" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="ImageUrl" Type="nvarchar(max)" />
-          <Property Name="gender" Type="nvarchar(max)" />
-          <Property Name="Locked" Type="nvarchar(max)" />
-          <Property Name="KeepMeSignedIn" Type="nvarchar(max)" />
-          <Property Name="RegistrationTime" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="UserSkills">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Skill" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Rating" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ValidateUserKeys">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="guid" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-      </Schema></edmx:StorageModels>
+  <EntityContainer Name="M2EModelStoreContainer">
+    <EntitySet Name="ClientDetails" EntityType="M2EModel.Store.ClientDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CreateTemplateeditableInstructionsLists" EntityType="M2EModel.Store.CreateTemplateeditableInstructionsLists" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CreateTemplateListBoxQuestionsLists" EntityType="M2EModel.Store.CreateTemplateListBoxQuestionsLists" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CreateTemplateMultipleQuestionsLists" EntityType="M2EModel.Store.CreateTemplateMultipleQuestionsLists" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CreateTemplateQuestionInfoes" EntityType="M2EModel.Store.CreateTemplateQuestionInfoes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CreateTemplateSingleQuestionsLists" EntityType="M2EModel.Store.CreateTemplateSingleQuestionsLists" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CreateTemplateTextBoxQuestionsLists" EntityType="M2EModel.Store.CreateTemplateTextBoxQuestionsLists" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ForgetPasswords" EntityType="M2EModel.Store.ForgetPasswords" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="JobDatas" EntityType="M2EModel.Store.JobDatas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LinkedInAuthApiDatas" EntityType="M2EModel.Store.LinkedInAuthApiDatas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RecommendedBies" EntityType="M2EModel.Store.RecommendedBies" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ThirdPartyLogins" EntityType="M2EModel.Store.ThirdPartyLogins" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserDetails" EntityType="M2EModel.Store.UserDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserPageSettings" EntityType="M2EModel.Store.UserPageSettings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserRecommendations" EntityType="M2EModel.Store.UserRecommendations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="M2EModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserSkills" EntityType="M2EModel.Store.UserSkills" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ValidateUserKeys" EntityType="M2EModel.Store.ValidateUserKeys" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CreateTemplateImgurImagesLists" EntityType="M2EModel.Store.CreateTemplateImgurImagesLists" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CreateTemplateModeratingImagesLists" EntityType="M2EModel.Store.CreateTemplateModeratingImagesLists" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="ClientDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CreateTemplateeditableInstructionsLists">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CreateTemplateListBoxQuestionsLists">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Options" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CreateTemplateMultipleQuestionsLists">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Options" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CreateTemplateQuestionInfoes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="visible" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="buttonText" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="referenceId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="total" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="completed" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="creationTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CreateTemplateSingleQuestionsLists">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Options" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CreateTemplateTextBoxQuestionsLists">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Options" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ForgetPasswords">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="guid" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JobDatas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Category" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SubCategory" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Data" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PostedBy" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="StartDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EndDate" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="LinkedInAuthApiDatas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="oauth_Token" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="oauth_TokenSecret" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="oauth_verifier" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RecommendedBies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RecommendedTo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RecommendedFrom" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ThirdPartyLogins">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FacebookId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FacebookAccessToken" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GoogleId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GoogleAccessToken" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Country" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserPageSettings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PageThemeColor" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="LayoutWidth" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="TopBar" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="SideBar" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="UserRecommendations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TotalRecommendation" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UsefulRecommendation" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="isActive" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Source" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="guid" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ImageUrl" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="gender" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Locked" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="KeepMeSignedIn" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="RegistrationTime" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="UserSkills">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Skill" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Rating" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ValidateUserKeys">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="guid" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CreateTemplateImgurImagesLists">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="imgurId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="imgurDeleteHash" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="imgurLink" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CreateTemplateModeratingImagesLists">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="deletehash" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="link" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="M2EModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -282,6 +296,7 @@
           <EntitySet Name="UserSkills" EntityType="M2EModel.UserSkill" />
           <EntitySet Name="ValidateUserKeys" EntityType="M2EModel.ValidateUserKey" />
           <EntitySet Name="CreateTemplateImgurImagesLists" EntityType="M2EModel.CreateTemplateImgurImagesList" />
+          <EntitySet Name="CreateTemplateModeratingImagesLists" EntityType="M2EModel.CreateTemplateModeratingImagesList" />
         </EntityContainer>
         <EntityType Name="ClientDetail">
           <Key>
@@ -514,6 +529,19 @@
           <Property Type="String" Name="imgurId" Nullable="false" />
           <Property Type="String" Name="imgurDeleteHash" Nullable="false" />
           <Property Type="String" Name="imgurLink" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CreateTemplateModeratingImagesList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="username" Nullable="false" />
+          <Property Type="String" Name="assignedTo" Nullable="false" />
+          <Property Type="String" Name="assignTime" Nullable="false" />
+          <Property Type="String" Name="completedAt" Nullable="false" />
+          <Property Type="String" Name="referenceKey" Nullable="false" />
+          <Property Type="String" Name="deletehash" Nullable="false" />
+          <Property Type="String" Name="link" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -772,6 +800,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CreateTemplateModeratingImagesLists">
+      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.CreateTemplateModeratingImagesList)">
+        <MappingFragment StoreEntitySet="CreateTemplateModeratingImagesLists">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
+          <ScalarProperty Name="assignTime" ColumnName="assignTime" />
+          <ScalarProperty Name="completedAt" ColumnName="completedAt" />
+          <ScalarProperty Name="referenceKey" ColumnName="referenceKey" />
+          <ScalarProperty Name="deletehash" ColumnName="deletehash" />
+          <ScalarProperty Name="link" ColumnName="link" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -797,7 +839,7 @@
         <EntityTypeShape EntityType="M2EModel.CreateTemplateeditableInstructionsList" Width="1.5" PointX="2.75" PointY="0.75" Height="2.9417936197916656" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.CreateTemplateListBoxQuestionsList" Width="1.5" PointX="4.75" PointY="0.75" Height="3.1340950520833335" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.CreateTemplateMultipleQuestionsList" Width="1.5" PointX="0.875" PointY="5.875" Height="3.1340950520833335" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.CreateTemplateQuestionInfo" Width="1.5" PointX="2.75" PointY="4.75" Height="3.1340950520833335" IsExpanded="true" />
+        <EntityTypeShape EntityType="M2EModel.CreateTemplateQuestionInfo" Width="1.5" PointX="4.875" PointY="8.375" Height="3.1340950520833335" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.CreateTemplateSingleQuestionsList" Width="1.5" PointX="4.75" PointY="4.75" Height="3.1340950520833317" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.CreateTemplateTextBoxQuestionsList" Width="1.5" PointX="6.75" PointY="0.75" Height="3.1340950520833317" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.ForgetPassword" Width="1.5" PointX="6.75" PointY="4.75" Height="1.5956835937499996" IsExpanded="true" />
@@ -812,6 +854,7 @@
         <EntityTypeShape EntityType="M2EModel.UserSkill" Width="1.5" PointX="10.75" PointY="5.75" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.ValidateUserKey" Width="1.5" PointX="10.75" PointY="8.75" Height="1.5956835937500031" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.CreateTemplateImgurImagesList" Width="1.5" PointX="0.875" PointY="2.5" Height="3.1340950520833326" />
+        <EntityTypeShape EntityType="M2EModel.CreateTemplateModeratingImagesList" Width="1.5" PointX="2.875" PointY="4.25" Height="2.5571907552083326" />
       </Diagram>
     </Diagrams>
   </Designer>

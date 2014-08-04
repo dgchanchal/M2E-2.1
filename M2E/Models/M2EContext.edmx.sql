@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/21/2014 18:24:49
--- Generated from EDMX file: F:\pcongo\trunk\M2E\M2E\Models\M2EContext.edmx
+-- Date Created: 08/04/2014 14:35:23
+-- Generated from EDMX file: F:\temp2\branches\M2E-2.0\M2E\Models\M2EContext.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -27,6 +27,9 @@ IF OBJECT_ID(N'[dbo].[ClientDetails]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[CreateTemplateeditableInstructionsLists]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CreateTemplateeditableInstructionsLists];
+GO
+IF OBJECT_ID(N'[dbo].[CreateTemplateImgurImagesLists]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[CreateTemplateImgurImagesLists];
 GO
 IF OBJECT_ID(N'[dbo].[CreateTemplateListBoxQuestionsLists]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CreateTemplateListBoxQuestionsLists];
@@ -313,6 +316,19 @@ CREATE TABLE [dbo].[CreateTemplateImgurImagesLists] (
 );
 GO
 
+-- Creating table 'CreateTemplateModeratingImagesLists'
+CREATE TABLE [dbo].[CreateTemplateModeratingImagesLists] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [username] nvarchar(max)  NOT NULL,
+    [assignedTo] nvarchar(max)  NOT NULL,
+    [assignTime] nvarchar(max)  NOT NULL,
+    [completedAt] nvarchar(max)  NOT NULL,
+    [referenceKey] nvarchar(max)  NOT NULL,
+    [deletehash] nvarchar(max)  NOT NULL,
+    [link] nvarchar(max)  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -428,6 +444,12 @@ GO
 -- Creating primary key on [Id] in table 'CreateTemplateImgurImagesLists'
 ALTER TABLE [dbo].[CreateTemplateImgurImagesLists]
 ADD CONSTRAINT [PK_CreateTemplateImgurImagesLists]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'CreateTemplateModeratingImagesLists'
+ALTER TABLE [dbo].[CreateTemplateModeratingImagesLists]
+ADD CONSTRAINT [PK_CreateTemplateModeratingImagesLists]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
