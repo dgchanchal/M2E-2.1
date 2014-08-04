@@ -121,7 +121,12 @@ appRequire = require
             AngularFileUploadController: {
                 deps: ["angularjs_fileUpload_shim","angularjs_fileUpload"]
             },
-                        
+             clientAfterLoginTemplateSample: {
+                deps: ["jquery","angular"]
+            },
+            ClientAfterLoginModeratingPhotos: {
+                deps: ["jquery","angular","filedrop"]
+            },        
         },
         paths: {
             //==============================================================================================================
@@ -169,6 +174,8 @@ appRequire = require
             clientAfterLoginEditTemplate: "../../App/Pages/ClientAfterLogin/EditTemplate/EditTemplate",//used
             clientAfterLoginTemplateInfo: "../../App/Pages/ClientAfterLogin/TemplateInfo/TemplateInfo",//used
             clientAfterLoginEditPage: "../../App/Pages/ClientAfterLogin/EditPage/editPage",//used
+            clientAfterLoginTemplateSample: "../../App/Pages/ClientAfterLogin/TemplateSample/TemplateSample",//used
+            ClientAfterLoginModeratingPhotos: "../../App/Pages/ClientAfterLogin/ModeratingPhotos/ModeratingPhotos",//used
             
         },
         urlArgs: "123"
@@ -179,7 +186,7 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "jquery_slimscroll", "iCheck", "angular_cookies", "configureBlockUI", "fancybox", "clientAfterLoginApp", "SessionManagement",
     "clientAfterLoginIndex", "clientAfterLoginCreateTemplate", "clientAfterLoginCookieService", "clientAfterLoginEditTemplate", "clientAfterLoginEditPage", "fancybox", "filedrop","wysihtml5",
     "fileDropScript", "domReady","prettify","bootstrap_wysihtml5","angularjs_fileUpload_shim","angularjs_fileUpload","AngularFileUploadController",
-    "clientAfterLoginTemplateInfo","ng_table"
+    "clientAfterLoginTemplateInfo","ng_table","clientAfterLoginTemplateSample","ClientAfterLoginModeratingPhotos"
 ], function() {
     angular.bootstrap(document.getElementById("mainClient"), ["afterLoginClientApp"]);
 });

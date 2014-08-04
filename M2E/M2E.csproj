@@ -262,6 +262,7 @@
     <Content Include="App\js\angular.js" />
     <Content Include="App\js\angular.min.js" />
     <Content Include="App\js\configureBlockUI.js" />
+    <Content Include="App\js\ng-table.js" />
     <Content Include="App\js\raphael-min.js" />
     <Content Include="App\js\domReady.js" />
     <Content Include="App\js\i18n\i18n_hi_in.js" />
@@ -283,8 +284,11 @@
     <Content Include="App\Pages\BeforeLogin\TnC\TnC.html" />
     <Content Include="App\Pages\BeforeLogin\UserMoreInfo\UserMoreInfo.html" />
     <Content Include="App\Pages\ClientAfterLogin\Controller\common\AngularFileUploadController.js" />
+    <Content Include="App\Pages\ClientAfterLogin\ModeratingPhotos\ModeratingPhotos.html" />
+    <Content Include="App\Pages\ClientAfterLogin\ModeratingPhotos\ModeratingPhotos.js" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateInfo\TemplateInfo.html" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateInfo\TemplateInfo.js" />
+    <Content Include="App\Pages\ClientAfterLogin\TemplateSample\TemplateSample.js" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateSample\TemplateSample.html" />
     <Content Include="App\Pages\UserAfterLogin\Controller\userAfterLoginApp.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\CookieServiceUserView.js" />
@@ -373,6 +377,7 @@
     <Content Include="App\third-Party\angular-file-upload-master\dist\FileAPI.min.js" />
     <Content Include="App\third-Party\angular-file-upload-master\Gruntfile.js" />
     <Content Include="App\third-Party\angular-file-upload-master\nuget\NuGet.exe" />
+    <Content Include="App\third-Party\html5-file-upload\assets\js\ModeratingPhotosScript.js" />
     <Content Include="App\third-Party\ng-table-master\.gitignore" />
     <Content Include="App\third-Party\ng-table-master\examples\app\app.js" />
     <Content Include="App\third-Party\ng-table-master\examples\app\main.js" />

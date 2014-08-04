@@ -4,7 +4,8 @@ var userSession = {
     username:"sumitchourasia91@gmail.com",
     listOfImgurImages:[],
     keepMeSignedIn:false,
-    wysiHtml5UploadedInstructionsImageUrlLink: []   
+    wysiHtml5UploadedInstructionsImageUrlLink: [],
+    imgurImageTemplateModeratingPhotos :[]
 };
 var ServerContextPah = "";
 
