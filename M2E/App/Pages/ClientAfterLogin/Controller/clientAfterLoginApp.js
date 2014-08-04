@@ -56,7 +56,7 @@ define([appLocation.postLogin], function (app) {
                { value: "Do Excel work", link: "#" },
                { value: "Find information", link: "#" },
                { value: "Post advertisements", link: "#" },
-               { value: "Transcription", link: "#" }
+               { value: "Transcription", link: "#/templateSample/dataEntry/transcription" }
                ]
            },
            {
@@ -81,7 +81,7 @@ define([appLocation.postLogin], function (app) {
            {
                value: "Moderation", dropDownMenuShow: true, dropDownSubMenuClass: "dropdown-submenu", dropDownMenuClass: "dropdown-menu", dropDownSubMenuArrow: "dropdown", dropDownMenuList: [
                  { value: "Moderating Ads", link: "#" },
-                 { value: "Moderating Photos", link: "#" },
+                 { value: "Moderating Photos", link: "#/templateSample/moderation/moderatingPhotos" },
                  { value: "Moderating Music", link: "#" },
                  { value: "Moderating Video", link: "#" }
                ]

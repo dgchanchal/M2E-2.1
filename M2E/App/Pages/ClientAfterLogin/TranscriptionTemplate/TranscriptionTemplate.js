@@ -136,7 +136,7 @@ define([appLocation.postLogin], function (app) {
 
         $scope.ClientCreateTranscriptionTemplateFunction = function () {
             $scope.jobTemplate[0].title = $('#createTemplateTitleTextTranscriptionTemplate').val();
-            console.log(userSession.imgurImageTranscriptionTemplate);
+            //console.log(userSession.imgurImageTranscriptionTemplate);
             var clientCreateTranscriptionTemplateData = { Data: $scope.jobTemplate, ImgurList: userSession.imgurImageTranscriptionTemplate, TemplateInfo: { type: TemplateInfoModel.dataEntryType, subType: TemplateInfoModel.dataEntrySubTypeTranscription} };
             //var currentTemplateId = new Date().getTime();
 

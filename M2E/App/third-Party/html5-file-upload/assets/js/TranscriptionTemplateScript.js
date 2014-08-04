@@ -18,7 +18,7 @@ $(function () {
             scope.$apply(function () {            
                 scope.refreshTranscriptionTemplateListDiv();
             });
-            console.log(userSession.imgurImageTranscriptionTemplate);
+            //console.log(userSession.imgurImageTranscriptionTemplate);
             //angular.element(document.getElementById('ModeratingPhotosViewAfterUploadId')).scope().refreshModeratingPhotosListDiv(); 
             //console.log(userSession.listOfImgurImages);
         },
