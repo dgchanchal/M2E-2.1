@@ -614,7 +614,7 @@ $(window).load(function() {
             /* Add margins to submenu elements to give it a tree look */
             menu.find("li > a").each(function() {
                 var pad = parseInt($(this).css("margin-left")) + 10;
-
+                pad = 10; // TODO: hardcoded value so side menu should not have left marget greater than 10
                 $(this).css({"margin-left": pad + "px"});
             });
 
