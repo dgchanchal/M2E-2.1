@@ -5,13 +5,16 @@ var userSession = {
     listOfImgurImages:[],
     keepMeSignedIn:false,
     wysiHtml5UploadedInstructionsImageUrlLink: [],
-    imgurImageTemplateModeratingPhotos :[],    
+    imgurImageTemplateModeratingPhotos :[],
+    imgurImageTranscriptionTemplate: [] 
 };
 var TemplateInfoModel = {
         surveyType : "survey",
         surveySubTypeProductSurvey : "productSurvey",
         moderationType : "moderation",
-        moderationSubTypeModeratingPhotos : "moderatingPhotos"
+        moderationSubTypeModeratingPhotos : "moderatingPhotos",
+        dataEntryType :"dataEntry",
+        dataEntrySubTypeTranscription:"Transcription"
     };
 var ServerContextPah = "";
 

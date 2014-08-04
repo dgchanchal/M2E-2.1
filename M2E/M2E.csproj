@@ -285,6 +285,8 @@
     <Content Include="App\Pages\BeforeLogin\TnC\TnC.html" />
     <Content Include="App\Pages\BeforeLogin\UserMoreInfo\UserMoreInfo.html" />
     <Content Include="App\Pages\ClientAfterLogin\Controller\common\AngularFileUploadController.js" />
+    <Content Include="App\Pages\ClientAfterLogin\TranscriptionTemplate\TranscriptionTemplate.html" />
+    <Content Include="App\Pages\ClientAfterLogin\TranscriptionTemplate\TranscriptionTemplate.js" />
     <Content Include="App\Pages\ClientAfterLogin\ModeratingPhotos\ModeratingPhotos.html" />
     <Content Include="App\Pages\ClientAfterLogin\ModeratingPhotos\ModeratingPhotos.js" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateInfo\TemplateInfo.html" />
@@ -378,6 +380,7 @@
     <Content Include="App\third-Party\angular-file-upload-master\dist\FileAPI.min.js" />
     <Content Include="App\third-Party\angular-file-upload-master\Gruntfile.js" />
     <Content Include="App\third-Party\angular-file-upload-master\nuget\NuGet.exe" />
+    <Content Include="App\third-Party\html5-file-upload\assets\js\TranscriptionTemplateScript.js" />
     <Content Include="App\third-Party\html5-file-upload\assets\js\ModeratingPhotosScript.js" />
     <Content Include="App\third-Party\ng-table-master\.gitignore" />
     <Content Include="App\third-Party\ng-table-master\examples\app\app.js" />
@@ -1254,7 +1257,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>5025</DevelopmentServerPort>
+          <DevelopmentServerPort>44168</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

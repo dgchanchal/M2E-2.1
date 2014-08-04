@@ -126,7 +126,10 @@ appRequire = require
             },
             ClientAfterLoginModeratingPhotos: {
                 deps: ["jquery","angular","filedrop"]
-            },        
+            },
+            ClientAfterLoginTranscriptionTemplate: {
+                deps: ["jquery","angular","filedrop"]
+            },      
         },
         paths: {
             //==============================================================================================================
@@ -176,6 +179,7 @@ appRequire = require
             clientAfterLoginEditPage: "../../App/Pages/ClientAfterLogin/EditPage/editPage",//used
             clientAfterLoginTemplateSample: "../../App/Pages/ClientAfterLogin/TemplateSample/TemplateSample",//used
             ClientAfterLoginModeratingPhotos: "../../App/Pages/ClientAfterLogin/ModeratingPhotos/ModeratingPhotos",//used
+            ClientAfterLoginTranscriptionTemplate: "../../App/Pages/ClientAfterLogin/TranscriptionTemplate/TranscriptionTemplate",//used
             
         },
         urlArgs: "123"
@@ -186,7 +190,7 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "jquery_slimscroll", "iCheck", "angular_cookies", "configureBlockUI", "fancybox", "clientAfterLoginApp", "SessionManagement",
     "clientAfterLoginIndex", "clientAfterLoginCreateTemplate", "clientAfterLoginCookieService", "clientAfterLoginEditTemplate", "clientAfterLoginEditPage", "fancybox", "filedrop","wysihtml5",
     "fileDropScript", "domReady","prettify","bootstrap_wysihtml5","angularjs_fileUpload_shim","angularjs_fileUpload","AngularFileUploadController",
-    "clientAfterLoginTemplateInfo","ng_table","clientAfterLoginTemplateSample","ClientAfterLoginModeratingPhotos"
+    "clientAfterLoginTemplateInfo","ng_table","clientAfterLoginTemplateSample","ClientAfterLoginModeratingPhotos","ClientAfterLoginTranscriptionTemplate"
 ], function() {
     angular.bootstrap(document.getElementById("mainClient"), ["afterLoginClientApp"]);
 });

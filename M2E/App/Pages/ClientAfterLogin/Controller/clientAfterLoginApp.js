@@ -9,6 +9,7 @@ define([appLocation.postLogin], function (app) {
                        when("/templateSample/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/TemplateSample/TemplateSample.html" }).
                        when("/templateInfo/:type/:subType/:templateId", { templateUrl: "../../App/Pages/ClientAfterLogin/TemplateInfo/TemplateInfo.html" }).
                        when("/moderatingPhotos", { templateUrl: "../../App/Pages/ClientAfterLogin/ModeratingPhotos/ModeratingPhotos.html" }).
+                       when("/transcriptionTemplate", { templateUrl: "../../App/Pages/ClientAfterLogin/TranscriptionTemplate/TranscriptionTemplate.html" }).
                        otherwise({ templateUrl: "../../Resource/templates/beforeLogin/contentView/404.html" });
 
     });

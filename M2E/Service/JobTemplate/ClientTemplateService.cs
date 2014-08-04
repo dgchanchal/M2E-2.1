@@ -569,7 +569,7 @@ namespace M2E.Service.JobTemplate
                     status = "open",
                     username = username,
                     verified = "No",
-                    imgurId = imageInfo.data.id,
+                    imgurId = imageInfo.data.id==null?"NA":imageInfo.data.id,
                     imgurDeleteHash = imageInfo.data.deletehash,
                     imgurLink = imageInfo.data.link
                 };

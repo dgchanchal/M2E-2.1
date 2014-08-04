@@ -12,7 +12,7 @@
                 </section>
 
                 <!-- Main content -->
-                <section class="content" ng-controller="ClientAfterLoginModeratingPhotos">                   
+                <section class="content" ng-controller="ClientAfterLoginTranscriptionTemplate">                   
                     <!-- top row -->
                     <div class="row">
                         <div class="col-xs-12 connectedSortable">
@@ -40,14 +40,13 @@
                                               <div class="control-group">                                                        
                                                    <a ng-click="addInstructionsRow()" role="button" class="btn"><i
                                                                                                                     class="icon-plus-sign"></i>{{jobTemplate[0].buttonText}}</a>
-                                                   
-                                                                                                                                                                  
+                                              
                                                </div>
                                                 
                                                <div class="control-group" style="">
                                                    <label class="control-label" for="textfield">
                                                        <b>Title</b></label>                                                 
-                                                   <div class="controls"><fieldset><div class="input-group"></div><input type="text" id="createTemplateTitleTextModeratingPhotos" placeholder="Enter Title for the Survey (compulsory)" value="" class="form-control"></fieldset></div>
+                                                   <div class="controls"><fieldset><div class="input-group"></div><input type="text" id="createTemplateTitleTextTranscriptionTemplate" placeholder="Enter Title for the Survey (compulsory)" value="" class="form-control"></fieldset></div>
                                                </div>
 
                                                <div class="control-group" ng-show="jobTemplate[0].visible">
@@ -56,14 +55,14 @@
                                                        <a  role="button" class="btn btn-primary">
                                                        Add</a><b><small>Instructions</small></b></label>
                                                    <div class="controls">
-                                                       <ul id="editableInstructionsListIDModeratingPhotos">
+                                                       <ul id="editableInstructionsListIDTranscriptionTemplate">
                                
 
                                                        </ul>
                                                       
                                                             <div class="modal-body">                            
                                                                 <div class="form-group">
-                                                                    <textarea class="input-block-level form-control textarea" style="height: 250px;"  id="AddInstructionsTextAreaModeratingPhotos" name="textarea" placeholder="Add Instruction"></textarea> 
+                                                                    <textarea class="input-block-level form-control textarea" style="height: 250px;"  id="AddInstructionsTextAreaTranscriptionTemplate" name="textarea" placeholder="Add Instruction"></textarea> 
                                                                 </div>                           
                                                             </div>
                                                             <div class="modal-footer clearfix">
@@ -73,37 +72,14 @@
                                                        
                                                    </div>
                                                </div>       
-                                               <div class="control-group" ng-show="jobTemplate[1].visible">
-                                                   <label for="textfield" class="control-label">
-                                                       <a role="button" class="btn btn-primary">
-                                                           Add</a><b><small>Query</small></b></label>
-                                                   <div class="controls">
-                                                        <div id="addSingleAnswerQuestionIDModeratingPhotos"></div>
-                                                         <div class="modal-body">                            
-                                                            <div>                                
-                                                                <textarea style="height: 250px;" class="input-block-level form-control textarea" id="SingleQuestionTextBoxQuestionDataModeratingPhotos" name="textarea" placeholder="Query (Ex. Is this Image Obscene?)"></textarea><br />
-                                                                <textarea style="height: 250px;" class="input-block-level form-control textarea" id="SingleQuestionTextBoxAnswerDataModeratingPhotos" name="textarea" placeholder="Writer all categories must be separated by semi-color (ie. YES;NO)"></textarea>                                                
-                                                            </div>                 
-
-                                                        </div>
-                                                        <div class="modal-footer clearfix">
-
-                                                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard </button>
-
-                                                            <button class="btn btn-primary" ng-click="InsertSingleQuestionRow()">
-                                                                    Submit</button> 
-                                                        </div>
-                                                   </div>
-
-                                               </div>
                                                 
-                                                <div class="control-group" id="ModeratingPhotosViewAfterUploadId">
+                                                <div class="control-group" id="TranscriptionTemplateViewAfterUploadId">
                                                    <label class="control-label">
-                                                       <a role="button" class="btn btn-primary" ng-click="refreshModeratingPhotosListDiv()">
+                                                       <a role="button" class="btn btn-primary" ng-click="refreshTranscriptionTemplateListDiv()">
                                                            Refresh</a><b><small>click refresh to see latest uploaded files.</small></b></label>
                                                    <div class="controls">
                                                           <div class="row">
-                                                            <div class="col-lg-3 col-xs-6" ng-repeat="imgurImage in imgurImageTemplateModeratingPhotos">
+                                                            <div class="col-lg-3 col-xs-6" ng-repeat="imgurImage in imgurImageTranscriptionTemplate">
 		                                                        <a  title="Personalized Title" data-fancybox-group="gallery" href="{{imgurImage.data.link}}" class="fancybox"><img class="MaxUploadedSmallSizedModeratingPhotos" alt="" ng-src="{{imgurImage.data.link_s}}"></a><br /><span class="imgurImagesUploadManageClass" ng-click="DeleteEditImgurImageByIdFunction(imgurImage.data.id)">delete</span>
 	                                                       </div>
                                                         </div>
@@ -121,7 +97,7 @@
                                                    </div>
                                                </div>
                                                <div class="form-actions">
-                                                   <button class="btn btn-primary" ng-click="ClientCreateModeratingPhotosFunction()">
+                                                   <button class="btn btn-primary" ng-click="ClientCreateTranscriptionTemplateFunction()">
                                                        Create</button>
                                                    <button type="button" class="btn">
                                                        Need More Info</button>
@@ -138,7 +114,7 @@
                 </section><!-- /.content -->
          
 <!-- The main script file - html5 upload -->
-<script src="../../App/third-Party/html5-file-upload/assets/js/ModeratingPhotosScript.js"></script>
+<script src="../../App/third-Party/html5-file-upload/assets/js/TranscriptionTemplateScript.js"></script>
 <script>
     $('.textarea').wysihtml5();
 </script>
