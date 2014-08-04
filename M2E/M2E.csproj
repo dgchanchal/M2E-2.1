@@ -156,9 +156,6 @@
     <Compile Include="Models\CreateTemplateListBoxQuestionsList.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CreateTemplateModeratingImagesList.cs">
-      <DependentUpon>M2EContext.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\CreateTemplateMultipleQuestionsList.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
