@@ -48,7 +48,7 @@ define([appLocation.postLogin], function (app) {
                 var singleQuestionsOptionList = this.Options.split(';');
                 
                 for (var j = 0; j < singleQuestionsOptionList.length; j++) {
-                    $scope.imgurImageTemplateModeratingPhotosImageTitleOptionsList += "&nbsp<a class='userInputOnModeratingPhotosWithId'>" + singleQuestionsOptionList[j] + "</a> &nbsp";
+                    $scope.imgurImageTemplateModeratingPhotosImageTitleOptionsList += "&nbsp<a class='userInputOnModeratingPhotosWithId cursorPointer'>" + singleQuestionsOptionList[j] + "</a> &nbsp";
                     totalQuestionSingleAnswerHtmlData += "<div class='radio'>";
                     totalQuestionSingleAnswerHtmlData += "<label>";
                     totalQuestionSingleAnswerHtmlData += "<input type='radio' value='" + quesCount + "' name='" + quesCount + "'>" + singleQuestionsOptionList[j] + "";
@@ -218,7 +218,7 @@ define([appLocation.postLogin], function (app) {
                 var singleQuestionsOptionList = this.Options.split(';');
 
                 for (var j = 0; j < singleQuestionsOptionList.length; j++) {
-                    $scope.imgurImageTemplateModeratingPhotosImageTitleOptionsList += "&nbsp<a class='userInputOnModeratingPhotosWithId'>" + singleQuestionsOptionList[j] + "</a>&nbsp";
+                    $scope.imgurImageTemplateModeratingPhotosImageTitleOptionsList += "&nbsp<a class='userInputOnModeratingPhotosWithId cursorPointer'>" + singleQuestionsOptionList[j] + "</a>&nbsp";
                     totalQuestionSingleAnswerHtmlData += "<div class='radio'>";
                     totalQuestionSingleAnswerHtmlData += "<label>";
                     totalQuestionSingleAnswerHtmlData += "<input type='radio' value='" + innerQuesCount + "' name='" + innerQuesCount + "'>" + singleQuestionsOptionList[j] + "";

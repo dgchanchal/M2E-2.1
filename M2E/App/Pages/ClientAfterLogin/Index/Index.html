@@ -36,7 +36,7 @@
                                     <table ng-table="tableParams" show-filter="true" class="table table-condensed">
                                         
                                         <tr ng-repeat="subTask in InProgressTaskList">                                            
-                                            <td data-title="'Task'" sortable="'title'">{{subTask.title}}&nbsp <span><a  ng-click="openTemplateInfoPageWithId(subTask.editId)" role="button" data-toggle="modal">info</a></span> <span> <a ng-click="deleteTemplateEditPageWithId(subTask.editId)" role="button" data-toggle="modal"><font color="red">Delete </font></a> </span></td>
+                                            <td data-title="'Task'" sortable="'title'">{{subTask.title}}&nbsp <span><a class="cursorPointer"  ng-click="openTemplateInfoPageWithId(subTask.editId)" role="button" data-toggle="modal">info</a></span> <span> <a class="cursorPointer" ng-click="deleteTemplateEditPageWithId(subTask.editId)" role="button" data-toggle="modal"><font color="red">Delete </font></a> </span></td>
                                             <td data-title="'Progress'">
                                                 <div class="progress xs">
                                                     <div style="width: 55%" class="progress-bar progress-bar-danger"></div>
