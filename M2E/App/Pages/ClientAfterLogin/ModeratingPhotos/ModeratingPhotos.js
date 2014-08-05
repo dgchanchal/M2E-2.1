@@ -68,7 +68,7 @@ define([appLocation.postLogin], function (app) {
         }
 
         $scope.refreshModeratingPhotosListDiv = function () {
-            $scope.imgurImageTemplateModeratingPhotos = userSession.imgurImageTemplateModeratingPhotos;
+            $scope.imgurImageTemplateModeratingPhotos = userSession.imgurImageTemplateModeratingPhotos;            
             $('.fancybox').fancybox();
         }
 
@@ -80,9 +80,9 @@ define([appLocation.postLogin], function (app) {
                 }
             }
             //console.log(userSession.imgurImageTemplateModeratingPhotos);
-            
+
             userSession.imgurImageTemplateModeratingPhotos.splice(i, 1);
-            
+
             //console.log(userSession.imgurImageTemplateModeratingPhotos);
             $scope.imgurImageTemplateModeratingPhotos = userSession.imgurImageTemplateModeratingPhotos;
             $('.fancybox').fancybox();
@@ -261,12 +261,12 @@ define([appLocation.postLogin], function (app) {
 
         }
 
-        $scope.convertAllWysiHtml5ImagesToFancyBoxLink = function () {
-            textToReplace = "src=\"../../Upload/Images/Tulips.jpg\" title=\"Image: ../../Upload/Images/Tulips.jpg\"";
-
-        }
-
-
     });
 
+});
+
+$(function () {
+    $(".userInputOnModeratingPhotosWithId").live("click", function () {
+        alert($(this).text());
+    });
 });
