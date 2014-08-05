@@ -117,6 +117,13 @@ define([appLocation.postLogin], function (app) {
             $('#addMultipleAnswerQuestionID').html(totalQuestionMultipleAnswerHtmlData);
             $('#addTextBoxAnswerQuestionID').html(totalQuestionTextBoxAnswerHtmlData);
             $('#addListBoxAnswerQuestionID').html(totalQuestionListBoxAnswerHtmlData);
+
+            $('#editableInstructionsListIDPreview').html(editableInstructions);
+            $('#addSingleAnswerQuestionIDPreview').html(totalQuestionSingleAnswerHtmlData);
+            $('#addMultipleAnswerQuestionIDPreview').html(totalQuestionMultipleAnswerHtmlData);
+            $('#addTextBoxAnswerQuestionIDPreview').html(totalQuestionTextBoxAnswerHtmlData);
+            $('#addListBoxAnswerQuestionIDPreview').html(totalQuestionListBoxAnswerHtmlData);
+
             initAddInstructionClass();
             initAddQuestionSingleAnswerClass();
             initAddQuestionMultipleAnswerClass();
@@ -357,8 +364,9 @@ define([appLocation.postLogin], function (app) {
                 editableInstructions += "</li>";
             });
             $('#editableInstructionsListID').html(editableInstructions);
+            $('#editableInstructionsListIDPreview').html(editableInstructions);
             initAddInstructionClass();
-            $('#addInstructionCloseButton').click();
+            //$('#addInstructionCloseButton').click();
             $('.fancybox').fancybox();
         }
 
@@ -385,8 +393,9 @@ define([appLocation.postLogin], function (app) {
                 innerQuesCount++;
             });
             $('#addSingleAnswerQuestionID').html(totalQuestionSingleAnswerHtmlData);
+            $('#addSingleAnswerQuestionIDPreview').html(totalQuestionSingleAnswerHtmlData);
             initAddQuestionSingleAnswerClass();
-            $('#addQuestionSingleAnswerCloseButton').click();
+            //$('#addQuestionSingleAnswerCloseButton').click();
             $('.fancybox').fancybox();
         }
 
@@ -413,8 +422,9 @@ define([appLocation.postLogin], function (app) {
                 innerQuesCount++;
             });
             $('#addMultipleAnswerQuestionID').html(totalQuestionMultipleAnswerHtmlData);
+            $('#addMultipleAnswerQuestionIDPreview').html(totalQuestionMultipleAnswerHtmlData);
             initAddQuestionMultipleAnswerClass();
-            $('#addQuestionMultipleAnswerCloseButton').click();
+            //$('#addQuestionMultipleAnswerCloseButton').click();
             $('.fancybox').fancybox();
         }
 
@@ -439,8 +449,9 @@ define([appLocation.postLogin], function (app) {
                 innerQuesCount++;
             });
             $('#addListBoxAnswerQuestionID').html(totalQuestionListBoxAnswerHtmlData);
+            $('#addListBoxAnswerQuestionIDPreview').html(totalQuestionListBoxAnswerHtmlData);
             initAddQuestionListBoxAnswerClass();
-            $('#addQuestionListBoxAnswerCloseButton').click();
+            //$('#addQuestionListBoxAnswerCloseButton').click();
             $('.fancybox').fancybox();
         }
 
@@ -462,8 +473,9 @@ define([appLocation.postLogin], function (app) {
                 innerQuesCount++;
             });
             $('#addTextBoxAnswerQuestionID').html(totalQuestionTextBoxAnswerHtmlData);
+            $('#addTextBoxAnswerQuestionIDPreview').html(totalQuestionTextBoxAnswerHtmlData);
             initAddQuestionTextBoxAnswerClass();
-            $('#addQuestionTextBoxAnswerCloseButton').click();
+            //$('#addQuestionTextBoxAnswerCloseButton').click();
             $('.fancybox').fancybox();
         }
 
