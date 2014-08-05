@@ -103,7 +103,7 @@
                                                    <div class="controls">
                                                           <div class="row">
                                                             <div class="col-lg-3 col-xs-6" ng-repeat="imgurImage in imgurImageTranscriptionTemplate">
-		                                                        <a  title="Personalized Title" data-fancybox-group="gallery" href="{{imgurImage.data.link}}" class="fancybox"><img class="MaxUploadedSmallSizedModeratingPhotos" alt="" ng-src="{{imgurImage.data.link_s}}"></a><br /><span class="imgurImagesUploadManageClass" ng-click="DeleteEditImgurImageByIdFunction(imgurImage.data.id)">delete</span>
+		                                                        <a  title="Personalized Title" data-fancybox-group="gallery" href="#TrancriptionFormShowExampleId" class="fancybox"><img class="MaxUploadedSmallSizedModeratingPhotos" alt="" ng-src="{{imgurImage.data.link_s}}"></a><br /><span class="imgurImagesUploadManageClass" ng-click="DeleteEditImgurImageByIdFunction(imgurImage.data.id)">delete</span>
 	                                                       </div>
                                                         </div>
                                                    </div>
@@ -136,6 +136,10 @@
 
                 </section><!-- /.content -->
          
+         <div id="TrancriptionFormShowExampleId" style="display:none">
+            fancybox div
+        </div>
+
 <!-- The main script file - html5 upload -->
 <script src="../../App/third-Party/html5-file-upload/assets/js/TranscriptionTemplateScript.js"></script>
 <script>
