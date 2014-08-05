@@ -19,7 +19,7 @@ define([appLocation.postLogin], function (app) {
         $scope.imgurImageTemplateModeratingPhotos = userSession.imgurImageTemplateModeratingPhotos;
         $scope.jobTemplate = [
                 { type: "AddInstructions", title: "", visible: false, buttonText: "Add Instructions", editableInstructionsList: [{ Number: totalEditableInstruction, Text: "Instruction 1"}] },
-                { type: "AddSingleQuestionsList", title: "", visible: false, buttonText: "Add Query", singleQuestionsList: [{ Number: totalSingleQuestionList, Question: "Is this Image Obscene?", Options: "Yes;No"}] },
+                { type: "AddSingleQuestionsList", title: "", visible: true, buttonText: "Add Query", singleQuestionsList: [{ Number: totalSingleQuestionList, Question: "Is this Image Obscene?", Options: "Yes;No"}] },
                 { type: "AddMultipleQuestionsList", title: "", visible: false, buttonText: "Add Ques. (Multiple Ans.)", multipleQuestionsList: [{ Number: totalMultipleQuestionList, Question: "What is your multiple gender ?", Options: "Malem1;Femalem2"}] },
                 { type: "AddTextBoxQuestionsList", title: "", visible: false, buttonText: "Add Ques. (TextBox Ans.)", textBoxQuestionsList: [{ Number: totalTextBoxQuestionList, Question: "Who won 2014 FIFA World cup ?", Options: "text"}] },
                 { type: "AddListBoxQuestionsList", title: "", visible: false, buttonText: "Add Ques. (ListBox Ans.)", listBoxQuestionsList: [{ Number: totalListBoxQuestionList, Question: "What is your multiple gender ?", Options: "Malem1;Femalem2"}] }
@@ -41,7 +41,7 @@ define([appLocation.postLogin], function (app) {
                 totalQuestionSingleAnswerHtmlData += "<fieldset>";
 
                 totalQuestionSingleAnswerHtmlData += "<label>";
-                totalQuestionSingleAnswerHtmlData += "<b>" + quesCount + ". " + this.Question + "</b><a style='cursor:pointer' class='addQuestionSingleAnswerClass' id='" + this.Number + "'><i class='fa fa-times'></i></a>";
+                totalQuestionSingleAnswerHtmlData += "<b>" + this.Question + "</b>";
                 totalQuestionSingleAnswerHtmlData += "</label>";
 
                 var singleQuestionsOptionList = this.Options.split(';');
@@ -118,22 +118,28 @@ define([appLocation.postLogin], function (app) {
         // single questions..
         $scope.InsertSingleQuestionRow = function () {
 
-            var addSingleQuestionQuestionsFancyBoxInImages = $('#SingleQuestionTextBoxQuestionDataModeratingPhotos').val();
-            var addSingleQuestionOptionsFancyBoxInImages = $('#SingleQuestionTextBoxAnswerDataModeratingPhotos').val();
-            //console.log(addFancyBoxInImages);
-            var i = 0;
-            $.each(userSession.wysiHtml5UploadedInstructionsImageUrlLink, function () {
 
-                addSingleQuestionQuestionsFancyBoxInImages = replaceImageWithFancyBoxImage(addSingleQuestionQuestionsFancyBoxInImages, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link_s, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link);
-                addSingleQuestionOptionsFancyBoxInImages = replaceImageWithFancyBoxImage(addSingleQuestionOptionsFancyBoxInImages, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link_s, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link);
-                i++;
-            });
-            totalSingleQuestionList = totalSingleQuestionList + 1;
-            var singleQuestionsList = { Number: totalSingleQuestionList, Question: addSingleQuestionQuestionsFancyBoxInImages, Options: addSingleQuestionOptionsFancyBoxInImages };
-            $scope.jobTemplate[1].singleQuestionsList[0] = (singleQuestionsList);
-            $('#SingleQuestionTextBoxQuestionDataModeratingPhotos').data("wysihtml5").editor.clear();
-            $('#SingleQuestionTextBoxAnswerDataModeratingPhotos').data("wysihtml5").editor.clear();
-            refreshSingleQuestionsList();
+            if (($('#SingleQuestionTextBoxQuestionDataModeratingPhotos').val() != "") && ($('#SingleQuestionTextBoxQuestionDataModeratingPhotos').val() != null)) {
+
+                var addSingleQuestionQuestionsFancyBoxInImages = $('#SingleQuestionTextBoxQuestionDataModeratingPhotos').val();
+                var addSingleQuestionOptionsFancyBoxInImages = $('#SingleQuestionTextBoxAnswerDataModeratingPhotos').val();
+                //console.log(addFancyBoxInImages);
+                var i = 0;
+                $.each(userSession.wysiHtml5UploadedInstructionsImageUrlLink, function () {
+
+                    addSingleQuestionQuestionsFancyBoxInImages = replaceImageWithFancyBoxImage(addSingleQuestionQuestionsFancyBoxInImages, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link_s, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link);
+                    addSingleQuestionOptionsFancyBoxInImages = replaceImageWithFancyBoxImage(addSingleQuestionOptionsFancyBoxInImages, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link_s, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link);
+                    i++;
+                });
+                totalSingleQuestionList = totalSingleQuestionList + 1;
+                var singleQuestionsList = { Number: totalSingleQuestionList, Question: addSingleQuestionQuestionsFancyBoxInImages, Options: addSingleQuestionOptionsFancyBoxInImages };
+                $scope.jobTemplate[1].singleQuestionsList[0] = (singleQuestionsList);
+                $('#SingleQuestionTextBoxQuestionDataModeratingPhotos').data("wysihtml5").editor.clear();
+                $('#SingleQuestionTextBoxAnswerDataModeratingPhotos').data("wysihtml5").editor.clear();
+                refreshSingleQuestionsList();
+            } else {
+                showToastMessage("Warning", "Images Category list input box cann't be empty");
+            }
         }
 
         $scope.addInstructionsRow = function () {
@@ -203,7 +209,7 @@ define([appLocation.postLogin], function (app) {
                 totalQuestionSingleAnswerHtmlData += "<fieldset>";
 
                 totalQuestionSingleAnswerHtmlData += "<label>";
-                totalQuestionSingleAnswerHtmlData += "<b>" + innerQuesCount + ". " + this.Question + "</b> <a style='cursor:pointer' class='addQuestionSingleAnswerClass' id='" + this.Number + "'><i class='fa fa-times'></i></a>";
+                totalQuestionSingleAnswerHtmlData += "<b>" + this.Question + "</b>";
                 totalQuestionSingleAnswerHtmlData += "</label>";
 
                 var singleQuestionsOptionList = this.Options.split(';');

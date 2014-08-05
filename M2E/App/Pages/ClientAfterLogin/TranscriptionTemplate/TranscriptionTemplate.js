@@ -21,7 +21,7 @@ define([appLocation.postLogin], function (app) {
                 { type: "AddInstructions", title: "", visible: false, buttonText: "Add Instructions", editableInstructionsList: [{ Number: totalEditableInstruction, Text: "Instruction 1"}] },
                 { type: "AddSingleQuestionsList", title: "", visible: false, buttonText: "Add Query", singleQuestionsList: [{ Number: totalSingleQuestionList, Question: "Is this Image Obscene?", Options: "Yes;No"}] },
                 { type: "AddMultipleQuestionsList", title: "", visible: false, buttonText: "Add Ques. (Multiple Ans.)", multipleQuestionsList: [{ Number: totalMultipleQuestionList, Question: "What is your multiple gender ?", Options: "Malem1;Femalem2"}] },
-                { type: "AddTextBoxQuestionsList", title: "", visible: false, buttonText: "Add Ques. (TextBox Ans.)", textBoxQuestionsList: [{ Number: totalTextBoxQuestionList, Question: "Who won 2014 FIFA World cup ?", Options: "text"}] },
+                { type: "AddTextBoxQuestionsList", title: "", visible: true, buttonText: "Add Ques. (TextBox Ans.)", textBoxQuestionsList: [{ Number: totalTextBoxQuestionList, Question: "s.no;item;quantity;price per item;total;discount;net payble amount", Options: "text"}] },
                 { type: "AddListBoxQuestionsList", title: "", visible: false, buttonText: "Add Ques. (ListBox Ans.)", listBoxQuestionsList: [{ Number: totalListBoxQuestionList, Question: "What is your multiple gender ?", Options: "Malem1;Femalem2"}] }
         ];
 
@@ -35,14 +35,35 @@ define([appLocation.postLogin], function (app) {
                 editableInstructions += "</li>";
             });
 
+            var quesCount = 1;
+            $.each($scope.jobTemplate[3].textBoxQuestionsList, function () {
 
+                var totalCategories = this.Question.split(';');
+                var textBoxCategories = "";
+                var widthPerc = 100 / totalCategories.length;
+                var categoriesCount = 0;
+                $.each(totalCategories, function () {
+                    textBoxCategories += "<input type='text' class='form-control' value='' placeholder='" + totalCategories[categoriesCount] + "' style='width: " + widthPerc + "%;'>";
+                    categoriesCount++;
+                });
+                totalQuestionTextBoxAnswerHtmlData += "<fieldset>";
+                totalQuestionTextBoxAnswerHtmlData += "<div class='input-group' style='width: 100%;'>";
+                //totalQuestionTextBoxAnswerHtmlData += "<label>";
+                totalQuestionTextBoxAnswerHtmlData += textBoxCategories + "";
+                //totalQuestionTextBoxAnswerHtmlData += "</label>";
+                totalQuestionTextBoxAnswerHtmlData += "</div>";
+
+                totalQuestionTextBoxAnswerHtmlData += "</fieldset>";
+                quesCount++;
+            });
 
 
 
             $('#editableInstructionsListIDTranscriptionTemplate').html(editableInstructions);
+            $('#addTextBoxAnswerQuestionIDTranscriptionTemplate').html(totalQuestionTextBoxAnswerHtmlData);
 
             initAddInstructionClass();
-
+            initAddQuestionTextBoxAnswerClass();
         }
 
         $scope.refreshTranscriptionTemplateListDiv = function () {
@@ -94,7 +115,27 @@ define([appLocation.postLogin], function (app) {
 
         }
 
+        // textbox questions..
+        $scope.InsertTextBoxQuestionRow = function () {
+            if (($('#TextBoxQuestionTextBoxTranscriptionTemplateCategoryData').val() != "") && ($('#TextBoxQuestionTextBoxTranscriptionTemplateCategoryData').val() != null)) {
+                var addTextBoxQuestionFancyBoxInImages = $('#TextBoxQuestionTextBoxTranscriptionTemplateCategoryData').val();
+                //            //console.log(addFancyBoxInImages);
+                //            var i = 0;
+                //            $.each(userSession.wysiHtml5UploadedInstructionsImageUrlLink, function () {
 
+                //                addTextBoxQuestionFancyBoxInImages = replaceImageWithFancyBoxImage(addTextBoxQuestionFancyBoxInImages, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link_s, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link);
+                //                i++;
+                //            });
+
+                //totalTextBoxQuestionList = totalTextBoxQuestionList + 1;
+                var textBoxQuestionsList = { Number: totalTextBoxQuestionList, Question: addTextBoxQuestionFancyBoxInImages, Options: "text" };
+                $scope.jobTemplate[3].textBoxQuestionsList[0] = (textBoxQuestionsList);
+                //            $('#TextBoxQuestionTextBoxQuestionData').data("wysihtml5").editor.clear();
+                refreshTextBoxQuestionsList();
+            } else {
+                showToastMessage("Warning", "Instruction Text Box cann't be empty");
+            }
+        }
 
         $scope.addInstructionsRow = function () {
             if ($scope.jobTemplate[0].visible == true) {
@@ -120,17 +161,62 @@ define([appLocation.postLogin], function (app) {
             });
         }
 
+        function initAddQuestionTextBoxAnswerClass() {
+            $('.addQuestionTextBoxAnswerClass').click(function () {
+                var i;
+                for (i = 0; i < $scope.jobTemplate[3].textBoxQuestionsList.length; i++) {
+                    if ($scope.jobTemplate[3].textBoxQuestionsList[i].Number == this.id) {
+                        break;
+                    }
+                }
+                $scope.jobTemplate[3].textBoxQuestionsList.splice(i, 1);
+                refreshTextBoxQuestionsList();
+            });
+        }
+
         function refreshInstructionList() {
             editableInstructions = "";
             $.each($scope.jobTemplate[0].editableInstructionsList, function () {
                 editableInstructions += "<li>";
-                editableInstructions += this.Text + "&nbsp;&nbsp<a style='cursor:pointer' class='addInstructionClass' id='" + this.Number + "'><i class='fa fa-times'></i></a>";
+                editableInstructions += this.Text + "&nbsp;&nbsp";
                 editableInstructions += "</li>";
             });
             $('#editableInstructionsListIDTranscriptionTemplate').html(editableInstructions);
             initAddInstructionClass();
             //$('#addInstructionCloseButtonModeratingPhotos').click();
             $('.fancybox').fancybox();
+        }
+
+        function refreshTextBoxQuestionsList() {
+            totalQuestionTextBoxAnswerHtmlData = "";
+            var innerQuesCount = 1;
+            $.each($scope.jobTemplate[3].textBoxQuestionsList, function () {
+
+                var totalCategories = this.Question.split(';');
+                var textBoxCategories = "";
+                var widthPerc = 100 / totalCategories.length;
+                //alert(widthPerc);
+                var categoriesCount = 0;
+                $.each(totalCategories, function () {
+                    textBoxCategories += "<input type='text' class='form-control' value='' placeholder='" + totalCategories[categoriesCount] + "' style='width: " + widthPerc + "%;'>";
+                    categoriesCount++;
+                });
+                totalQuestionTextBoxAnswerHtmlData += "<fieldset>";
+                totalQuestionTextBoxAnswerHtmlData += "<div class='input-group' style='width: 100%;'>";
+                //totalQuestionTextBoxAnswerHtmlData += "<label>";
+                totalQuestionTextBoxAnswerHtmlData += textBoxCategories + "<a style='cursor:pointer' class='addQuestionTextBoxAnswerClass' id='" + this.Number + "'><i class='fa fa-times'></i></a>";
+                //totalQuestionTextBoxAnswerHtmlData += "</label>";
+                totalQuestionTextBoxAnswerHtmlData += "</div>";
+
+                totalQuestionTextBoxAnswerHtmlData += "</fieldset>";
+
+
+            });
+            $('#addTextBoxAnswerQuestionIDTranscriptionTemplate').html(totalQuestionTextBoxAnswerHtmlData);
+            initAddQuestionTextBoxAnswerClass();
+            //$('#addQuestionTextBoxAnswerCloseButton').click();
+            //$('.fancybox').fancybox();
+
         }
 
 
