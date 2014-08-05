@@ -98,37 +98,37 @@ appRequire = require
                 deps: ["jquery", "jquery_slimscroll", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTETree", "iCheck"]
             },            
             clientAfterLoginApp: { //new
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","beforeLoginAdminLTEApp"]
             },
             SessionManagement: { //used
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","beforeLoginAdminLTEApp"]
             },
             clientAfterLoginIndex: { //used
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","ng_table"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","ng_table","beforeLoginAdminLTEApp"]
             },
             clientAfterLoginCreateTemplate: { //used
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","wysihtml5","bootstrap_wysihtml5","prettify","AngularFileUploadController"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","wysihtml5","bootstrap_wysihtml5","prettify","AngularFileUploadController","beforeLoginAdminLTEApp"]
             },            
             clientAfterLoginEditTemplate: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","wysihtml5","bootstrap_wysihtml5","prettify"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","wysihtml5","bootstrap_wysihtml5","prettify","beforeLoginAdminLTEApp"]
             },
             clientAfterLoginEditPage: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","beforeLoginAdminLTEApp"]
             },
             clientAfterLoginTemplateInfo: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","beforeLoginAdminLTEApp"]
             },
             AngularFileUploadController: {
-                deps: ["angularjs_fileUpload_shim","angularjs_fileUpload"]
+                deps: ["angularjs_fileUpload_shim","angularjs_fileUpload","beforeLoginAdminLTEApp"]
             },
              clientAfterLoginTemplateSample: {
                 deps: ["jquery","angular"]
             },
             ClientAfterLoginModeratingPhotos: {
-                deps: ["jquery","angular","filedrop"]
+                deps: ["jquery","angular","filedrop","beforeLoginAdminLTEApp"]
             },
             ClientAfterLoginTranscriptionTemplate: {
-                deps: ["jquery","angular","filedrop"]
+                deps: ["jquery","angular","filedrop","beforeLoginAdminLTEApp"]
             },      
         },
         paths: {
