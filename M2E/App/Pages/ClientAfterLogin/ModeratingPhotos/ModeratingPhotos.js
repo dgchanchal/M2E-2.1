@@ -17,9 +17,10 @@ define([appLocation.postLogin], function (app) {
         userSession.wysiHtml5UploadedInstructionsImageUrlLink = [];
         userSession.imgurImageTemplateModeratingPhotos = [];
         $scope.imgurImageTemplateModeratingPhotos = userSession.imgurImageTemplateModeratingPhotos;
+        $scope.imgurImageTemplateModeratingPhotosImageTitleOptionsList = "";
         $scope.jobTemplate = [
                 { type: "AddInstructions", title: "", visible: false, buttonText: "Add Instructions", editableInstructionsList: [{ Number: totalEditableInstruction, Text: "Instruction 1"}] },
-                { type: "AddSingleQuestionsList", title: "", visible: true, buttonText: "Add Query", singleQuestionsList: [{ Number: totalSingleQuestionList, Question: "Is this Image Obscene?", Options: "Yes;No"}] },
+                { type: "AddSingleQuestionsList", title: "", visible: true, buttonText: "Add Query", singleQuestionsList: [{ Number: totalSingleQuestionList, Question: "Is this Image Obscene (dynamic)?", Options: "Yes;No"}] },
                 { type: "AddMultipleQuestionsList", title: "", visible: false, buttonText: "Add Ques. (Multiple Ans.)", multipleQuestionsList: [{ Number: totalMultipleQuestionList, Question: "What is your multiple gender ?", Options: "Malem1;Femalem2"}] },
                 { type: "AddTextBoxQuestionsList", title: "", visible: false, buttonText: "Add Ques. (TextBox Ans.)", textBoxQuestionsList: [{ Number: totalTextBoxQuestionList, Question: "Who won 2014 FIFA World cup ?", Options: "text"}] },
                 { type: "AddListBoxQuestionsList", title: "", visible: false, buttonText: "Add Ques. (ListBox Ans.)", listBoxQuestionsList: [{ Number: totalListBoxQuestionList, Question: "What is your multiple gender ?", Options: "Malem1;Femalem2"}] }
@@ -45,7 +46,9 @@ define([appLocation.postLogin], function (app) {
                 totalQuestionSingleAnswerHtmlData += "</label>";
 
                 var singleQuestionsOptionList = this.Options.split(';');
+                
                 for (var j = 0; j < singleQuestionsOptionList.length; j++) {
+                    $scope.imgurImageTemplateModeratingPhotosImageTitleOptionsList += "&nbsp<a class='userInputOnModeratingPhotosWithId'>" + singleQuestionsOptionList[j] + "</a> &nbsp";
                     totalQuestionSingleAnswerHtmlData += "<div class='radio'>";
                     totalQuestionSingleAnswerHtmlData += "<label>";
                     totalQuestionSingleAnswerHtmlData += "<input type='radio' value='" + quesCount + "' name='" + quesCount + "'>" + singleQuestionsOptionList[j] + "";
@@ -68,7 +71,7 @@ define([appLocation.postLogin], function (app) {
         }
 
         $scope.refreshModeratingPhotosListDiv = function () {
-            $scope.imgurImageTemplateModeratingPhotos = userSession.imgurImageTemplateModeratingPhotos;            
+            $scope.imgurImageTemplateModeratingPhotos = userSession.imgurImageTemplateModeratingPhotos;
             $('.fancybox').fancybox();
         }
 
@@ -213,7 +216,9 @@ define([appLocation.postLogin], function (app) {
                 totalQuestionSingleAnswerHtmlData += "</label>";
 
                 var singleQuestionsOptionList = this.Options.split(';');
+
                 for (var j = 0; j < singleQuestionsOptionList.length; j++) {
+                    $scope.imgurImageTemplateModeratingPhotosImageTitleOptionsList += "&nbsp<a class='userInputOnModeratingPhotosWithId'>" + singleQuestionsOptionList[j] + "</a>&nbsp";
                     totalQuestionSingleAnswerHtmlData += "<div class='radio'>";
                     totalQuestionSingleAnswerHtmlData += "<label>";
                     totalQuestionSingleAnswerHtmlData += "<input type='radio' value='" + innerQuesCount + "' name='" + innerQuesCount + "'>" + singleQuestionsOptionList[j] + "";
