@@ -101,10 +101,10 @@ appRequire = require
                 deps: ["jquery", "jquery_cookie"]
             },
             beforeLoginAdminLTEApp: {//used
-                deps: ["jquery", "jquery_slimscroll", "bootstrap", "bootstrap_switch", "iCheck"]
+                deps: ["jquery", "jquery_slimscroll", "bootstrap", "bootstrap_switch", "iCheck","clientAfterLoginApp"]
             },            
             clientAfterLoginApp: { //new
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","beforeLoginAdminLTEApp"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
             },
             SessionManagement: { //used
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
