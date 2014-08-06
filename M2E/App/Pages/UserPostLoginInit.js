@@ -3,7 +3,7 @@
  * @class userPostLoginInit
  * @module userPostLogin
  */
-define(['angular'], function() {
+define(['angular','domReady'], function () {
 
     var dependances = ['restangular'];
     var app = angular.module("afterLoginUserApp", dependances);

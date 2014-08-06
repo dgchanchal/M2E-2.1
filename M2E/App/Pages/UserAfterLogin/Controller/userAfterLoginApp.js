@@ -62,7 +62,7 @@ define([appLocation.userPostLogin], function (app) {
            },
            {
                value: "Survey", dropDownMenuShow: true, dropDownSubMenuClass: "dropdown-submenu", dropDownMenuClass: "dropdown-menu", dropDownSubMenuArrow: "dropdown", dropDownMenuList: [
-                 { value: "Product survey", link: "#/templateSample/survey/productSurvey" },
+                 { value: "Product survey", link: "#/templateSample/test/okay" },
                  { value: "User feedback survey", link: "#" },
                  { value: "Pools", link: "#" }
                ]
