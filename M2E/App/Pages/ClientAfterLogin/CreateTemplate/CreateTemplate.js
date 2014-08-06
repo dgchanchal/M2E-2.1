@@ -128,7 +128,7 @@ define([appLocation.postLogin], function (app) {
             initAddQuestionSingleAnswerClass();
             initAddQuestionMultipleAnswerClass();
             initAddQuestionTextBoxAnswerClass();
-
+            initAddQuestionListBoxAnswerClass();
         }
 
 

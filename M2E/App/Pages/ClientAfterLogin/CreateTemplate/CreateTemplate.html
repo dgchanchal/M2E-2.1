@@ -169,7 +169,35 @@
                                                             Submit</button>    
                                                     </div>
                                                    </div>
-                                               </div>                                                                                               
+                                               </div>
+                                               <div class="control-group">
+                                                   <label class="control-label">
+                                                       <a role="button" class="btn btn-primary">
+                                                           Budget</a><b><small>Choose your budget</small></b></label>
+                                                   <div class="controls">                                                       
+                                                       <div class="modal-body">                            
+                                                                 <div class="row margin">
+                                                                    <div class="col-sm-9">
+                                                                       <input id="amountPerThread" type="text" name="amountPerThread" value="" />
+                                                                    </div>
+                                                                    <!--<div class="col-sm-3">
+                                                                       <input id="amountPerThreadTextBoxInput" type="text" name="amountPerThread" value="" />
+                                                                    </div>-->
+                                                                </div>
+                                                                <div class="row margin">
+                                                                    <div class="col-sm-9">
+                                                                       <input id="totalNumberOfThreads" type="text" name="totalNumberOfThreads" value="" />
+                                                                    </div>
+                                                                    <!--<div class="col-sm-3">
+                                                                       <input id="totalNumberOfThreadsTextBoxInput" type="text" name="amountPerThread" value="" />
+                                                                    </div>  -->                                                                
+                                                                </div> 
+                                                                <div id="sliderTotalAmountPayableCreateTemplate"></div>
+                                                                
+                                                    </div>
+                                                    
+                                                   </div>
+                                               </div>                                                                                            
                                                <div class="form-actions">
                                                    <button class="btn btn-primary" ng-click="ClientCreateTemplateFunction()">
                                                        Create</button>
@@ -269,3 +297,126 @@
 <script type="text/javascript" charset="utf-8">
     $(prettyPrint);
 </script>
+
+<script type="text/javascript">
+    $(function () {
+        /* BOOTSTRAP SLIDER */
+        var amountPerThread = 0.1;
+        var totalNumberOfThreads = 1;
+        $('.slider').slider();
+
+        /* ION SLIDER */
+        $("#range_1").ionRangeSlider({
+            min: 0,
+            max: 5000,
+            from: 1000,
+            to: 4000,
+            type: 'double',
+            step: 1,
+            prefix: "$",
+            prettify: false,
+            hasGrid: true
+        });
+        $("#range_2").ionRangeSlider();
+
+        $("#range_5").ionRangeSlider({
+            min: 0,
+            max: 10,
+            type: 'single',
+            step: 0.1,
+            postfix: " mm",
+            prettify: false,
+            hasGrid: true
+        });
+        $("#range_6").ionRangeSlider({
+            min: -50,
+            max: 50,
+            from: 0,
+            type: 'single',
+            step: 1,
+            postfix: "°",
+            prettify: false,
+            hasGrid: true
+        });
+
+        $("#amountPerThread").ionRangeSlider({
+            min: 0.05,
+            max: 10,
+            type: "single",
+            step: 0.05,
+            prefix: "$ ",
+            postfix: " per thread",
+            onChange: function (obj) {
+
+                amountPerThread = obj["fromNumber"];
+                $('#amountPerThreadTextBoxInput').val(amountPerThread);
+                $("#sliderTotalAmountPayableCreateTemplate").html("Total Amount Payable : $ <br>" + roundOffDecimal((amountPerThread * totalNumberOfThreads), 2) + "</br>");
+            },
+            onLoad: function (obj) {
+                //
+            },
+            from: 0.1,
+            hideMinMax: true
+            //hideFromTo: false
+        });
+
+        var lastValueTotalAmountPayable = '';
+        $("#amountPerThreadTextBoxInput").on('change keyup paste mouseup', function () {
+            if ($(this).val() != lastValueTotalAmountPayable) {
+                lastValueTotalAmountPayable = $(this).val();
+                console.log(lastValueTotalAmountPayable);
+                $("#someID").ionRangeSlider("update", {                    
+                    from: lastValueTotalAmountPayable                       // change default FROM setting                    
+                });
+            }
+        });
+
+        $("#totalNumberOfThreads").ionRangeSlider({
+            min: 1,
+            max: 10000,
+            type: "single",
+            step: 1,
+            prefix: "",
+            postfix: " threads",
+            onChange: function (obj) {
+                var t = "";
+                //                for (var prop in obj) {
+                //                    console.log(obj);
+                //                    t += prop + ": " + obj[prop] + "\r\n";
+                //                }
+                totalNumberOfThreads = obj["fromNumber"];
+                $("#sliderTotalAmountPayableCreateTemplate").html("Total Amount Payable : $ <br>" + roundOffDecimal((amountPerThread * totalNumberOfThreads),2) + "</br>");
+            },
+            onLoad: function (obj) {
+                //
+            },
+            //from: 0.05,
+            hideMinMax: true
+            //hideFromTo: false
+        });
+        $("#range_3").ionRangeSlider({
+            type: "double",
+            postfix: " miles",
+            step: 10000,
+            from: 25000000,
+            to: 35000000,
+            onChange: function (obj) {
+                var t = "";
+                for (var prop in obj) {
+                    t += prop + ": " + obj[prop] + "\r\n";
+                }
+                $("#result").html(t);
+            },
+            onLoad: function (obj) {
+                //
+            }
+        });
+    });
+
+    function roundOffDecimal(num, digit) {
+        (Math.round(num * 100) / 100).toString() //-> "1.1"
+        num.toFixed(digit)
+        //console.log(num);
+        return num;
+    }
+        </script>

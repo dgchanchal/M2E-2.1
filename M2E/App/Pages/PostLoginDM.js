@@ -91,6 +91,12 @@ appRequire = require
             ng_table: {//new
                 deps: ["jquery","angular"]
             },
+             ion_rangeSlider_min: {//new
+                deps: ["jquery"]
+            },
+             bootstrap_slider: {//new
+                deps: ["jquery"]
+            },
             clientAfterLoginCookieService: {
                 deps: ["jquery", "jquery_cookie"]
             },
@@ -107,7 +113,7 @@ appRequire = require
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","ng_table"]
             },
             clientAfterLoginCreateTemplate: { //used
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","wysihtml5","bootstrap_wysihtml5","prettify","AngularFileUploadController"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","wysihtml5","bootstrap_wysihtml5","prettify","AngularFileUploadController","ion_rangeSlider_min","bootstrap_slider"]
             },            
             clientAfterLoginEditTemplate: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","wysihtml5","bootstrap_wysihtml5","prettify"]
@@ -163,6 +169,8 @@ appRequire = require
             angularjs_fileUpload_shim:"../../App/third-Party/angular-file-upload-master/dist/angular-file-upload-shim.min",
             angularjs_fileUpload:"../../App/third-Party/angular-file-upload-master/dist/angular-file-upload.min",
             ng_table:"../../App/third-Party/ng-table-master/ng-table",
+            ion_rangeSlider_min:"../../Template/AdminLTE-master/js/plugins/ionslider/ion.rangeSlider.min",
+            bootstrap_slider:"../../Template/AdminLTE-master/js/plugins/bootstrap-slider/bootstrap-slider",
             //morris_min: "../../Template/AdminLTE-master/js/plugins/morris/morris.min",//used
 
             //==============================================================================================================
@@ -190,7 +198,8 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "jquery_slimscroll", "iCheck", "angular_cookies", "configureBlockUI", "fancybox", "clientAfterLoginApp", "SessionManagement",
     "clientAfterLoginIndex", "clientAfterLoginCreateTemplate", "clientAfterLoginCookieService", "clientAfterLoginEditTemplate", "clientAfterLoginEditPage", "fancybox", "filedrop","wysihtml5",
     "fileDropScript", "domReady","prettify","bootstrap_wysihtml5","angularjs_fileUpload_shim","angularjs_fileUpload","AngularFileUploadController",
-    "clientAfterLoginTemplateInfo","ng_table","clientAfterLoginTemplateSample","ClientAfterLoginModeratingPhotos","ClientAfterLoginTranscriptionTemplate"
+    "clientAfterLoginTemplateInfo","ng_table","clientAfterLoginTemplateSample","ClientAfterLoginModeratingPhotos","ClientAfterLoginTranscriptionTemplate",
+    "bootstrap_slider","ion_rangeSlider_min"
 ], function() {
     angular.bootstrap(document.getElementById("mainClient"), ["afterLoginClientApp"]);
 });
