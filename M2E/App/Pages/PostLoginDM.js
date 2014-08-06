@@ -61,9 +61,9 @@ appRequire = require
             jquery_slimscroll: {//used
                 deps: ["jquery"]
             },            
-            beforeLoginAdminLTETree: {//used
-                deps: ["jquery"]
-            },
+//            beforeLoginAdminLTETree: {//used
+//                deps: ["jquery"]
+//            },
             iCheck: {//used
                 deps: ["jquery"]
             },
@@ -95,7 +95,7 @@ appRequire = require
                 deps: ["jquery", "jquery_cookie"]
             },
             beforeLoginAdminLTEApp: {//used
-                deps: ["jquery", "jquery_slimscroll", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTETree", "iCheck"]
+                deps: ["jquery", "jquery_slimscroll", "bootstrap", "bootstrap_switch", "iCheck"]
             },            
             clientAfterLoginApp: { //new
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","beforeLoginAdminLTEApp"]
@@ -148,7 +148,7 @@ appRequire = require
             bootstrap: "../../Template/AdminLTE-master/js/bootstrap.min",//used
             bootstrap_switch: "../../Template/AdminLTE-master/js/bootstrap-switch",
             beforeLoginAdminLTEApp: "../../Template/AdminLTE-master/js/AdminLTE/app",//used
-            beforeLoginAdminLTETree: "../../Template/AdminLTE-master/js/AdminLTE/tree",//used
+            //beforeLoginAdminLTETree: "../../Template/AdminLTE-master/js/AdminLTE/tree",//used
             jquery_slimscroll: "../../Template/AdminLTE-master/js/plugins/slimScroll/jquery.slimscroll",
             iCheck: "../../Template/AdminLTE-master/js/plugins/iCheck/icheck.min",
             angular_cookies: "../../App/js/angular-cookies",//used..
@@ -186,7 +186,7 @@ appRequire = require
     });
 
 appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMessage", "jquery_cookie",
-    "jquery_blockUI", "restangular", "moment", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTEApp","beforeLoginAdminLTETree",
+    "jquery_blockUI", "restangular", "moment", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTEApp",
     "jquery_slimscroll", "iCheck", "angular_cookies", "configureBlockUI", "fancybox", "clientAfterLoginApp", "SessionManagement",
     "clientAfterLoginIndex", "clientAfterLoginCreateTemplate", "clientAfterLoginCookieService", "clientAfterLoginEditTemplate", "clientAfterLoginEditPage", "fancybox", "filedrop","wysihtml5",
     "fileDropScript", "domReady","prettify","bootstrap_wysihtml5","angularjs_fileUpload_shim","angularjs_fileUpload","AngularFileUploadController",
