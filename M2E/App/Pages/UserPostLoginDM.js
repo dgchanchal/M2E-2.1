@@ -94,6 +94,9 @@ appRequire = require
             userAfterLoginEditPage: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox"]
             },
+            userAfterLoginTemplateSample: {
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox"]
+            }
                         
         },
         paths: {
@@ -132,6 +135,7 @@ appRequire = require
             userAfterLoginShowTemplate: "../../App/Pages/UserAfterLogin/ShowTemplate/ShowTemplate",//new
             userAfterLoginCookieService: "../../../../App/Pages/UserAfterLogin/Controller/common/CookieServiceUserView",//used            
             userAfterLoginEditPage: "../../App/Pages/UserAfterLogin/EditPage/editPage",//used
+            userAfterLoginTemplateSample: "../../App/Pages/UserAfterLogin/TemplateSample/TemplateSample",//used
             
         },
         urlArgs: ""
@@ -141,7 +145,7 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "jquery_blockUI", "restangular", "moment", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTEApp","beforeLoginAdminLTETree",
     "jquery_slimscroll", "iCheck", "angular_cookies", "configureBlockUI", "fancybox", "userAfterLoginApp", "SessionManagement",
     "userAfterLoginIndex", "userAfterLoginShowTemplate", "userAfterLoginCookieService", "userAfterLoginEditPage", "fancybox", "filedrop","wysihtml5",
-    "fileDropScript", "domReady"
+    "fileDropScript", "domReady","userAfterLoginTemplateSample"
 ], function() {
     angular.bootstrap(document.getElementById("mainUser"), ["afterLoginUserApp"]);
 });

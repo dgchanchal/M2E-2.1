@@ -14,7 +14,7 @@ define([appLocation.postLogin], function (app) {
         var totalMultipleQuestionList = 0;
         var totalTextBoxQuestionList = 0;
         var totalListBoxQuestionList = 0;
-
+        
         $rootScope.jobTemplate = [
                 { type: "AddInstructions", title: "", visible: false, buttonText: "Add Instructions", editableInstructionsList: [{ Number: totalEditableInstruction, Text: "Instruction 1"}] },
                 { type: "AddSingleQuestionsList", title: "", visible: false, buttonText: "Add Ques. (single Ans.)", singleQuestionsList: [{ Number: totalSingleQuestionList, Question: "What is your gender ?", Options: "Male1;Female2"}] },
@@ -129,6 +129,7 @@ define([appLocation.postLogin], function (app) {
             initAddQuestionMultipleAnswerClass();
             initAddQuestionTextBoxAnswerClass();
             initAddQuestionListBoxAnswerClass();
+            refreshComponentsAfterEdit();
         }
 
 
@@ -367,7 +368,7 @@ define([appLocation.postLogin], function (app) {
             $('#editableInstructionsListIDPreview').html(editableInstructions);
             initAddInstructionClass();
             //$('#addInstructionCloseButton').click();
-            $('.fancybox').fancybox();
+            refreshComponentsAfterEdit();
         }
 
         function refreshSingleQuestionsList() {
@@ -396,7 +397,7 @@ define([appLocation.postLogin], function (app) {
             $('#addSingleAnswerQuestionIDPreview').html(totalQuestionSingleAnswerHtmlData);
             initAddQuestionSingleAnswerClass();
             //$('#addQuestionSingleAnswerCloseButton').click();
-            $('.fancybox').fancybox();
+            refreshComponentsAfterEdit();
         }
 
         function refreshMultipleQuestionsList() {
@@ -425,7 +426,7 @@ define([appLocation.postLogin], function (app) {
             $('#addMultipleAnswerQuestionIDPreview').html(totalQuestionMultipleAnswerHtmlData);
             initAddQuestionMultipleAnswerClass();
             //$('#addQuestionMultipleAnswerCloseButton').click();
-            $('.fancybox').fancybox();
+            refreshComponentsAfterEdit();
         }
 
         function refreshListBoxQuestionsList() {
@@ -452,7 +453,7 @@ define([appLocation.postLogin], function (app) {
             $('#addListBoxAnswerQuestionIDPreview').html(totalQuestionListBoxAnswerHtmlData);
             initAddQuestionListBoxAnswerClass();
             //$('#addQuestionListBoxAnswerCloseButton').click();
-            $('.fancybox').fancybox();
+            refreshComponentsAfterEdit();
         }
 
         function refreshTextBoxQuestionsList() {
@@ -476,7 +477,7 @@ define([appLocation.postLogin], function (app) {
             $('#addTextBoxAnswerQuestionIDPreview').html(totalQuestionTextBoxAnswerHtmlData);
             initAddQuestionTextBoxAnswerClass();
             //$('#addQuestionTextBoxAnswerCloseButton').click();
-            $('.fancybox').fancybox();
+            refreshComponentsAfterEdit();
         }
 
         $scope.enableFileDrop = function () {
@@ -525,6 +526,16 @@ define([appLocation.postLogin], function (app) {
 
         }
 
+        function refreshComponentsAfterEdit() {
+            refreshCheckboxAndRadioButton();
+            $('.fancybox').fancybox();
+        }
+        function refreshCheckboxAndRadioButton() {
+            $("input[type='checkbox'], input[type='radio']").iCheck({
+                checkboxClass: 'icheckbox_minimal',
+                radioClass: 'iradio_minimal'
+            });
+        }
     });
 
 
