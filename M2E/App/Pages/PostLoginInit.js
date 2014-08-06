@@ -3,7 +3,7 @@
  * @class PostLoginInit
  * @module PostLogin
  */
-define(['angular'], function() {
+define(['angular','domReady'], function() {
 
     var dependances = ['restangular', 'angularFileUpload', 'ngTable'];
     var app = angular.module("afterLoginClientApp", dependances);
