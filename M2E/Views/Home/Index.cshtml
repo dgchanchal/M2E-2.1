@@ -28,6 +28,79 @@
         <script src="../../App/js/m2ei18n.js"></script>
         <script src="../../App/js/googleAnalytics.js"></script>
         
+		<script src="../../App/js/jquery.signalR-1.0.1.min.js" type="text/javascript"></script>
+		<script src="signalr/hubs" type="text/javascript"></script>
+		<script type="text/javascript">
+			$(function () {
+				// Proxy created on the fly          
+				var chat = $.connection.signalRHub;
+
+				// Get the user name and store it to prepend to messages.
+				//$('#displayname').val(prompt('Enter your name:', ''));
+
+				// Declare a function on the chat hub so the server can invoke it          
+				chat.client.sendMessage = function (name, message) {
+					var encodedName = $('<div />').text(name).html();
+					var encodedMsg = $('<div />').text(message).html();
+					$('#messages').append('<li>' + encodedName + 
+						':  ' + encodedMsg + '</li>');
+						showToastMessage("Success", name + ": sent Message - "+message);
+				};
+
+				// Start the connection
+				$.connection.hub.start().done(function () {
+					$("#send").click(function () {
+						// Call the chat method on the server
+						chat.server.send($('#displayname').val(), $('#msg').val());
+					});
+				});
+			});
+
+			$(function () {
+
+				$("#sendControls2").hide("fast");
+
+				// Proxy created on the fly
+
+				var notificationHub = $.connection.signalRHub;
+
+				// Declare a function on the hub so the server can invoke it
+
+				notificationHub.client.addMessage = function (message) {
+
+				$("#messages2").append("<li>" + message + "</li>");
+
+				};
+
+				// Start the connection
+
+				$.connection.hub.start().done(function () {
+
+				$("#register2").click(function () {
+
+				// Register client.
+
+				notificationHub.server.registerClient($("#user2").val());
+
+				$("#registration2").hide("fast");
+
+				$("#sendControls2").show("fast");
+
+				});
+
+				$("#send2").click(function () {
+
+				// Call the method on the server
+
+				notificationHub.server.addNotification($("#msg2").val(), $("#toUsr2").val());
+
+				});
+
+				});
+
+			});
+		</script>
+
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -77,6 +150,48 @@
             </div>
         </div>*@
         
+		<div>
+	username <input type="text" id="displayname" />
+	message <input type="text" id="msg" />
+	<input type="button" id="send" value="Send" />
+	
+	<ul id="messages">
+	</ul>
+	</div>
+
+	<hr/>
+	<div>
+
+	<div id="registration2">
+
+	<label>Username: </label>
+
+	<input type="text" id="user2" />
+
+	<input type="button" id="register2" value="Register" /><br />
+
+	</div>
+
+	<div id="sendControls2">
+
+	<label>To (Username): </label>
+
+	<input type="text" id="toUsr2" /><br />
+
+	<label>Message (Username): </label>
+
+	<input type="text" id="msg2" />
+
+	<input type="button" id="send2" value="Send" />
+
+	</div>
+
+	<ul id="messages2">
+
+	</ul>
+
+	</div>
+
         <footer id="page-footer">
             <!-- footer-top -->
             <section id="footer-content" class="middleFooterBackground">
