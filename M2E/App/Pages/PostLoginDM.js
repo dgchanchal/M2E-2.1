@@ -61,9 +61,9 @@ appRequire = require
             jquery_slimscroll: {//used
                 deps: ["jquery"]
             },            
-//            beforeLoginAdminLTETree: {//used
-//                deps: ["jquery"]
-//            },
+            beforeLoginAdminLTETree: {//used
+               deps: ["jquery"]
+            },
             iCheck: {//used
                 deps: ["jquery"]
             },
@@ -101,7 +101,7 @@ appRequire = require
                 deps: ["jquery", "jquery_cookie"]
             },
             beforeLoginAdminLTEApp: {//used
-                deps: ["jquery", "jquery_slimscroll", "bootstrap", "bootstrap_switch", "iCheck","clientAfterLoginApp"]
+                deps: ["jquery", "jquery_slimscroll", "bootstrap", "bootstrap_switch", "iCheck","clientAfterLoginApp","beforeLoginAdminLTETree","domReady"]
             },            
             clientAfterLoginApp: { //new
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
@@ -154,7 +154,7 @@ appRequire = require
             bootstrap: "../../Template/AdminLTE-master/js/bootstrap.min",//used
             bootstrap_switch: "../../Template/AdminLTE-master/js/bootstrap-switch",
             beforeLoginAdminLTEApp: "../../Template/AdminLTE-master/js/AdminLTE/app",//used
-            //beforeLoginAdminLTETree: "../../Template/AdminLTE-master/js/AdminLTE/tree",//used
+            beforeLoginAdminLTETree: "../../Template/AdminLTE-master/js/AdminLTE/tree",//used
             jquery_slimscroll: "../../Template/AdminLTE-master/js/plugins/slimScroll/jquery.slimscroll",
             iCheck: "../../Template/AdminLTE-master/js/plugins/iCheck/icheck.min",
             angular_cookies: "../../App/js/angular-cookies",//used..
