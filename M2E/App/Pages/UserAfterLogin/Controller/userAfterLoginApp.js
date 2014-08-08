@@ -21,7 +21,9 @@ define([appLocation.userPostLogin], function (app) {
                 UTMZV: CookieUtil.getUTMZV()
             }
 
-            SessionManagementUtil.isValidSession(headerSessionData);
+            //SessionManagementUtil.isValidSession(headerSessionData);
+            /* Sidebar tree view */
+            $(".sidebar .treeview").tree();
 
             gaWeb("BeforeLogin-Page Visited", "Page Visited", next);
             var path = next.split('#');
