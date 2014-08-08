@@ -284,6 +284,7 @@
     <Content Include="App\js\angular.js" />
     <Content Include="App\js\angular.min.js" />
     <Content Include="App\js\configureBlockUI.js" />
+    <Content Include="App\Pages\BeforeLogin\Controller\singleRControllerBeforeLogin.js" />
     <Content Include="App\js\jquery.signalR-1.0.1.js" />
     <Content Include="App\js\jquery.signalR-1.0.1.min.js" />
     <Content Include="App\js\jquery.signalR-2.1.1.js" />

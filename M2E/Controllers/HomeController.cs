@@ -2,6 +2,8 @@
 using System.Web.Mvc;
 using System.Reflection;
 using M2E.Common.Logger;
+using M2E.signalRPushNotifications;
+using Microsoft.AspNet.SignalR;
 
 namespace M2E.Controllers
 {
@@ -21,5 +23,18 @@ namespace M2E.Controllers
             return View();
         }
 
+        public ActionResult updateBeforeLoginUserProjectDetailsService()
+        {
+            var SignalRHub = new SignalRHub();
+            string totalProjects = "152";
+            string successRate = "94.2";
+            string totalUsers = "3854";
+            string projectCategories = "37";
+            var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRHub>();
+            hubContext.Clients.All.updateBeforeLoginUserProjectDetails(totalProjects, successRate,totalUsers,projectCategories);
+            //sendMessage
+            //SignalRHub.updateBeforeLoginUserProjectDetails(totalProjects, successRate,totalUsers,projectCategories);
+            return Json("success", JsonRequestBehavior.AllowGet);
+        }
     }
 }

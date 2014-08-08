@@ -4,7 +4,7 @@
     <section class="content">
                     
         <!-- START CUSTOM TABS -->        
-        <div class="container">
+        <div class="container" id="beforeLoginIndexControllerId" ng-controller="beforeLoginIndex">
             <h2 class="page-header" data-i18n="beforeLoginIndexPageM2EText"></h2>
             <div class="row">                       
                 <div class="col-md-6">
@@ -174,7 +174,7 @@
                             <div class="small-box bg-aqua">
                                 <div class="inner">
                                     <h3>
-                                        150
+                                        <span ng-bind="totalProjects"></span>
                                     </h3>
                                     <p>
                                         Total Projects
@@ -193,7 +193,7 @@
                             <div class="small-box bg-green">
                                 <div class="inner">
                                     <h3>
-                                        93<sup style="font-size: 20px">%</sup>
+                                        <span ng-bind="successRate"></span><sup style="font-size: 20px">%</sup>
                                     </h3>
                                     <p>
                                         Success Rate
@@ -212,7 +212,7 @@
                             <div class="small-box bg-yellow">
                                 <div class="inner">
                                     <h3>
-                                        3754
+                                        <span ng-bind="totalUsers"></span>
                                     </h3>
                                     <p>
                                         Users
@@ -231,7 +231,7 @@
                             <div class="small-box bg-red">
                                 <div class="inner">
                                     <h3>
-                                        35
+                                        <span ng-bind="projectCategories"></span>
                                     </h3>
                                     <p>
                                         Project Categories

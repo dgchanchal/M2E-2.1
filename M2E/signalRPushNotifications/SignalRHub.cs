@@ -42,5 +42,10 @@ namespace M2E.signalRPushNotifications
         {
             Clients.All.sendMessage(name, message);
         }
+
+        //public void updateBeforeLoginUserProjectDetails(string totalProjects, string successRate,string totalUsers,string projectCategories)
+        //{
+        //    Clients.All.sendMessage(totalProjects, successRate, totalUsers, projectCategories);
+        //}
     }
 }
