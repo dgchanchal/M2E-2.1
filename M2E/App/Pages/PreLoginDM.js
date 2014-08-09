@@ -5,8 +5,8 @@
  */
 appRequire = require
     .config({
-        shim: {
-            waitSeconds: 200,
+        waitSeconds: 200,
+        shim: {            
             underscore: {
                 exports: "_"
             },
