@@ -284,6 +284,7 @@
     <Content Include="App\js\angular.js" />
     <Content Include="App\js\angular.min.js" />
     <Content Include="App\js\configureBlockUI.js" />
+    <Content Include="App\js\dragend.js" />
     <Content Include="App\Pages\BeforeLogin\Controller\singleRControllerBeforeLogin.js" />
     <Content Include="App\js\jquery.signalR-1.0.1.js" />
     <Content Include="App\js\jquery.signalR-1.0.1.min.js" />
@@ -323,6 +324,7 @@
     <Content Include="App\Pages\UserAfterLogin\Controller\userAfterLoginApp.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\CookieServiceUserView.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\SessionManagement.js" />
+    <Content Include="App\Pages\UserAfterLogin\MobileSlide\MobileSlide.html" />
     <Content Include="App\Pages\UserAfterLogin\ShowTemplate\CreateTemplate.css" />
     <Content Include="App\Pages\UserAfterLogin\ShowTemplate\ShowTemplate.html" />
     <Content Include="App\Pages\UserAfterLogin\ShowTemplate\ShowTemplate.js" />

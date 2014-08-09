@@ -1,0 +1,201 @@
+﻿                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Take the Survey
+                        <small>Template page</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Survey</a></li>
+                        <li class="active">We will take your few moment.</li>
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                    <h4 class="page-header">
+                        Survey
+                        <small>Be honest and get paid.</small>
+                    </h4>
+                    <!-- Small boxes (Stat box) -->
+                    <div class="row">
+                     
+			            <section class="col-lg-12 connectedSortable">                            
+                           <div class="box box-color box-bordered">
+                <div class="box-title">
+                    <h3>
+                        <i class="icon-user"></i>Survey
+                    </h3>
+                </div>
+                <div class="box-content nopadding" ng-controller="UserAfterLoginTemplateSample">
+                   
+                    <div class="tab-content padding tab-content-inline tab-content-bottom">
+                        <div class="tab-pane active">
+                            <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                <div class="widget no-margin">                 
+                  <div class="widget-body">
+                    <div class="row">
+                                              
+                          <div id="demo">
+                            <ul>
+                              <li class="first dragend-page"></li>
+                              <li class="dragend-page"></li>
+                              <li class="middle dragend-page"></li>
+                              <li class="dragend-page"></li>
+                              <li class="last dragend-page"></li>
+                            </ul>
+                          </div>
+                          
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+                    </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+                        </section><!-- /.Left col --> 
+			
+			
+			
+	
+		
+                    </div><!-- /.row -->
+                                                        
+
+                </section><!-- /.content -->            
+
+        
+<script>
+
+    $(function () {
+        $("#demo").dragend({
+            afterInitialize: function () {
+                this.container.style.visibility = "visible";
+            },
+            onSwipeEnd: function () {
+                var first = this.pages[0],
+                    last = this.pages[this.pages.length - 1];
+
+                $(".prev, .next").removeClass("deactivated");
+                $(".nav li").removeClass("active");
+
+                if (first === this.activeElement) {
+                    $(".prev").addClass("deactivated");
+                };
+
+                if (last === this.activeElement) {
+                    $(".next").addClass("deactivated");
+                }
+
+                $(".nav li").eq(this.page).addClass("active");
+
+            }
+        });
+
+        $(".prev").click(function () {
+            $("#demo").dragend("right");
+        });
+
+        $(".next").click(function () {
+            $("#demo").dragend("left");
+        });
+
+        $(".nav").click(function() {
+            var page = $(event.target).data("page");
+
+            $("#demo").dragend({
+                scrollToPage: page
+            });
+
+            $(event.target).addClass("active");
+
+        });
+
+    });
+
+</script>
+
+<style type="text/css">
+   
+
+  
+    #demo {
+      width: 100%;
+      height: 400px;
+      visibility: hidden;
+      margin: 10px auto 0;
+      background: #457;
+      cursor: hand;
+      cursor: -moz-grab;
+      cursor: -webkit-grab;
+      cursor: grab;
+    }
+
+    #demo li.first {
+      background: #577;
+    }
+
+    #demo li.middle {
+      background: #1e8;
+    }
+
+    #demo li.last {
+      background: #e8b;
+    }
+
+    #dragend {
+      position: absolute;
+      bottom: 50px;
+      right: 50px;
+      background: #345;
+      padding: 18px;
+      color: #fff;
+      border-radius: 3px;
+      width: 150px;
+      font-size: 15px;
+    }
+
+    #dragend h1 {
+      font-size: 15px;
+      font-weight: normal;
+      margin-bottom: 12px;
+    }
+
+    #dragend a {
+      text-decoration: underline;
+      color: #fff
+    }
+
+    .button {
+      height: 0;
+      width: 0;
+      position: absolute;
+      top: 250px;
+      left: 50%;
+      cursor: pointer;
+      border-style: solid;
+    }
+
+    .button.deactivated {
+      opacity: 0.2;
+      cursor: default;
+    }
+
+    .prev {
+      margin-left: -320px;
+      border-width: 50px 50px 50px 0;
+      border-color: transparent #333 transparent transparent;
+    }
+
+    .next {
+      margin-left: 270px;
+      border-width: 50px 0 50px 50px;
+      border-color: transparent transparent transparent #333;
+    }
+
+    
+  </style>
