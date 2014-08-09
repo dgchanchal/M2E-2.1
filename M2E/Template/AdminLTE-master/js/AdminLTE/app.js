@@ -15,9 +15,10 @@ $(function() {
     "use strict";
 
     //Enable sidebar toggle
-    $("[data-toggle='offcanvas']").click(function(e) {
+    $("[data-toggle='offcanvas']").unbind('click').click(function(e) {
+        console.log("inside data-toggle-offcanvas function sidemenu");
         e.preventDefault();
-
+        
         //If window is small enough, enable sidebar push menu
         if ($(window).width() <= 992) {
             $('.row-offcanvas').toggleClass('active');
