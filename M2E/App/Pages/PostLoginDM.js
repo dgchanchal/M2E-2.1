@@ -5,6 +5,7 @@
  */
 appRequire = require
     .config({
+        waitSeconds: 200,
         shim: {
             underscore: { //used
                 exports: "_"
@@ -77,10 +78,10 @@ appRequire = require
                 deps: ["jquery", "filedrop", "clientAfterLoginEditTemplate", "clientAfterLoginCreateTemplate", "domReady"]
             },
             angularjs_fileUpload_shim: {//new
-                deps: ["jquery"]
+                deps: ["angular", "jquery"]
             },
             angularjs_fileUpload: {//new
-                deps: ["jquery"]
+                deps: ["angular", "jquery"]
             },
 //            morris_min: {//new
 //                deps: ["jquery"]

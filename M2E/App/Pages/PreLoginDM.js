@@ -6,6 +6,7 @@
 appRequire = require
     .config({
         shim: {
+            waitSeconds: 200,
             underscore: {
                 exports: "_"
             },
@@ -13,9 +14,9 @@ appRequire = require
                 exports: "angular",
                 deps: ["jquery"]
             },
-            moment: {
-                deps: ["jquery"]
-            },            
+            //moment: {
+            //    deps: ["jquery"]
+            //},            
             bootstrap: {
                 deps: ["jquery"]
             },
@@ -52,15 +53,15 @@ appRequire = require
             jquery_slimscroll: {
                 deps: ["jquery"]
             },            
-            beforeLoginAdminLTETree: {
-                deps: ["jquery"]
-            },
-            iCheck: {
-                deps: ["jquery"]
-            },
-            beforeLoginAdminLTEApp: {
-                deps: ["jquery", "jquery_slimscroll", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTETree", "iCheck"]
-            },            
+            //beforeLoginAdminLTETree: {
+            //    deps: ["jquery"]
+            //},
+            //iCheck: {
+            //    deps: ["jquery"]
+            //},
+            //beforeLoginAdminLTEApp: {
+            //    deps: ["jquery", "jquery_slimscroll", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTETree", "iCheck"]
+            //},            
             beforeLoginApp: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
             },
@@ -108,13 +109,13 @@ appRequire = require
             jquery_cookie: "../../App/js/jquery.cookie",
             jquery_blockUI: "../../App/js/jquery.blockUI",                 
             restangular: "../../App/js/restangular.min",           
-            moment: "../../App/js/moment.min",            
+            //moment: "../../App/js/moment.min",            
             bootstrap: "../../Template/AdminLTE-master/js/bootstrap.min",
             bootstrap_switch: "../../Template/AdminLTE-master/js/bootstrap-switch",
-            beforeLoginAdminLTEApp: "../../Template/AdminLTE-master/js/AdminLTE/app",
-            beforeLoginAdminLTETree: "../../Template/AdminLTE-master/js/AdminLTE/tree",
+            //beforeLoginAdminLTEApp: "../../Template/AdminLTE-master/js/AdminLTE/app",
+            //beforeLoginAdminLTETree: "../../Template/AdminLTE-master/js/AdminLTE/tree",
             jquery_slimscroll: "../../Template/AdminLTE-master/js/plugins/slimScroll/jquery.slimscroll",
-            iCheck: "../../Template/AdminLTE-master/js/plugins/iCheck/icheck.min",
+            //iCheck: "../../Template/AdminLTE-master/js/plugins/iCheck/icheck.min",
             angular_cookies: "../../App/js/angular-cookies",
             configureBlockUI: "../../App/js/configureBlockUI",
 
@@ -140,9 +141,9 @@ appRequire = require
     });
 
 appRequire(["jquery", "angular", "jquery_toastmessage", "toastMessage", "jquery_cookie",
-    "jquery_blockUI", "restangular", "moment", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTEApp",
+    "jquery_blockUI", "restangular", "bootstrap", "bootstrap_switch", //"beforeLoginAdminLTEApp", "moment","iCheck",
     "beforeLoginApp", "beforeLoginIndex", "beforeLoginFAQ", "beforeLoginLogin", "beforeLoginCookieService", "beforeLoginSignUpClient", "beforeLoginSignUpUser",
-    "beforeLoginValidateEmail", "beforeLoginForgetPassword", "beforeLoginResetPassword", "showMessageTemplate", "underscore", "iCheck", "angular_cookies"
+    "beforeLoginValidateEmail", "beforeLoginForgetPassword", "beforeLoginResetPassword", "showMessageTemplate", "underscore", "angular_cookies"
 ], function() {
     angular.bootstrap(document.getElementById("main"), ["beforeLoginApp"]);
 });
