@@ -9,6 +9,7 @@ define([appLocation.userPostLogin], function (app) {
                        when("/templateSample/:type/:subType", { templateUrl: "../../App/Pages/UserAfterLogin/TemplateSample/TemplateSample.html" }).
                        when("/mobileSlide", { templateUrl: "../../App/Pages/UserAfterLogin/MobileSlide/MobileSlide.html" }).
                        when("/mobileSlide2", { templateUrl: "../../App/Pages/UserAfterLogin/MobileSlide2/MobileSlide2.html" }).
+                       when("/mobileSlide3", { templateUrl: "../../App/Pages/UserAfterLogin/MobileSlide2/MobileSlide3.html" }).
                        otherwise({ templateUrl: "../../Resource/templates/beforeLogin/contentView/404.html" });
 
     });
