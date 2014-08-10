@@ -13,6 +13,8 @@ using System.Data.Entity.Validation;
 using M2E.Service.JobTemplate.CommonMethods;
 using M2E.Session;
 using M2E.Models.DataWrapper;
+using M2E.signalRPushNotifications;
+using Microsoft.AspNet.SignalR;
 
 namespace M2E.Service.JobTemplate
 {
@@ -283,7 +285,16 @@ namespace M2E.Service.JobTemplate
             {
                 _db.SaveChanges();
                 CreateSubTemplateByRefKey CreateSubTemplateByRefKey = new CreateSubTemplateByRefKey();
-                CreateSubTemplateByRefKey.CreateSubTemplateByRefKeyService(req, username, refKey);                
+                CreateSubTemplateByRefKey.CreateSubTemplateByRefKeyService(req, username, refKey);
+
+                var signalRHub = new SignalRHub();
+                string totalProjects = _db.CreateTemplateQuestionInfoes.Count().ToString(CultureInfo.InvariantCulture);
+                string successRate = "";
+                string totalUsers = "";
+                string projectCategories = "";
+                var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRHub>();
+                hubContext.Clients.All.updateBeforeLoginUserProjectDetails(totalProjects, successRate, totalUsers, projectCategories);                
+
                 response.Status = 200;
                 response.Message = "success-"+digitKey;
                 response.Payload = refKey;
