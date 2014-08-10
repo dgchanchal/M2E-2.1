@@ -60,7 +60,7 @@ namespace M2E.Service.Register
                 var dbClientDetails = new ClientDetail
                 {
                     Username = req.Username,
-                    CompanyName = req.CompanyName
+                    CompanyName =  string.IsNullOrEmpty(req.CompanyName)?"NA":req.CompanyName
                 };
                 _db.ClientDetails.Add(dbClientDetails);
             }
