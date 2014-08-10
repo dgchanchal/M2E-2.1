@@ -2425,7 +2425,11 @@ Component: timeline
 */
 /* skin-blue navbar */
 .skin-blue .navbar {
-  background-color: #3c8dbc;
+    background-color: #004c8d;
+    background-image: -moz-linear-gradient(center top , #004c8d 0%, #004c8d 0%);
+    background-image: -webkit-linear-gradient(top, #004c8d 0%, #004c8d 0%, #004c8d 0%);
+    border-radius: 0px 0px 0 0;
+    box-shadow: 0 -0.5px 0 rgba(0, 0, 0, 0.78) inset;
 }
 .skin-blue .navbar .nav a {
   color: rgba(255, 255, 255, 0.8);
@@ -2450,14 +2454,19 @@ Component: timeline
 }
 /* skin-blue logo */
 .skin-blue .logo {
-  background-color: #367fa9;
+  background-color: #003778;
   color: #f9f9f9;
+
+    background-image: -moz-linear-gradient(center top , #003778 0%, #003778 0%);
+    background-image: -webkit-linear-gradient(top, #003778 0%, #003778 0%, #003778 0%);
+    border-radius: 0px 0px 0 0;
+    box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.2) inset;
 }
 .skin-blue .logo > a {
-  color: #f9f9f9;
+  color: #003778;
 }
 .skin-blue .logo:hover {
-  background: #357ca5;
+  background: #173c7d;
 }
 /* skin-blue content header */
 .skin-blue .right-side > .content-header {
