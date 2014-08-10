@@ -188,6 +188,7 @@
     <Compile Include="Models\CreateTemplateTextBoxQuestionsList.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataResponse\BeforeLoginUserProjectDetailsModel.cs" />
     <Compile Include="Models\DataResponse\ClientDetailsModel.cs" />
     <Compile Include="Models\DataResponse\ClientTemplateDetailById.cs" />
     <Compile Include="Models\DataResponse\ClientTemplateResponse.cs" />
@@ -324,6 +325,7 @@
     <Content Include="App\Pages\UserAfterLogin\Controller\userAfterLoginApp.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\CookieServiceUserView.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\SessionManagement.js" />
+    <Content Include="App\Pages\UserAfterLogin\MobileSlide2\MobileSlide3.html" />
     <Content Include="App\Pages\UserAfterLogin\MobileSlide2\MobileSlide2.html" />
     <Content Include="App\Pages\UserAfterLogin\MobileSlide\MobileSlide.html" />
     <Content Include="App\Pages\UserAfterLogin\ShowTemplate\CreateTemplate.css" />

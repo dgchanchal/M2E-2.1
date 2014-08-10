@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Data.Entity.Validation;
@@ -8,6 +9,8 @@ using M2E.CommonMethods;
 using M2E.Encryption;
 using M2E.Models;
 using M2E.Models.DataWrapper;
+using M2E.signalRPushNotifications;
+using Microsoft.AspNet.SignalR;
 
 namespace M2E.Service.Register
 {
@@ -72,6 +75,13 @@ namespace M2E.Service.Register
             try
             {
                 _db.SaveChanges();
+                var signalRHub = new SignalRHub();
+                string totalProjects = "";
+                string successRate = "";
+                string totalUsers = _db.Users.Count().ToString(CultureInfo.InvariantCulture);
+                string projectCategories = "";
+                var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRHub>();
+                hubContext.Clients.All.updateBeforeLoginUserProjectDetails(totalProjects, successRate, totalUsers, projectCategories);
                 SendAccountCreationValidationEmail.SendAccountCreationValidationEmailMessage(req.Username, guid, request);
             }
             catch (DbEntityValidationException e)

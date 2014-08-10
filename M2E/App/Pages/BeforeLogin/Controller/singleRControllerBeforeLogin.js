@@ -21,7 +21,7 @@
         scope.$apply(function () {
             scope.updateBeforeLoginUserProjectDetailsDiv(totalProjects, successRate, totalUsers, projectCategories);
         });
-        showStickyToastMessage("Success", totalProjects + " - " + successRate + " - " + totalUsers + " - " + projectCategories);
+        //showStickyToastMessage("Success", totalProjects + " - " + successRate + " - " + totalUsers + " - " + projectCategories);
     };
 
     // Start the connection
