@@ -5,16 +5,16 @@ define([appLocation.userPostLogin], function (app) {
     app.controller('showTemplateDetailController', function ($scope, $http, $rootScope, $routeParams, CookieUtil) {
 
         //alert("showTemplateDetail");
-//        $scope.refKey = $routeParams.refKey;
-//        $scope.type = $routeParams.type;
-//        $scope.subType = $routeParams.subType;
-//        $scope.title = $routeParams.title;
-//        $scope.creationTime = $routeParams.creationTime;
-//        $scope.earningPerThreads = $routeParams.earningPerThreads;
-//        $scope.currency = $routeParams.currency;
-//        $scope.totalThreads = $routeParams.totalThreads;
-//        $scope.remainingThreads = $routeParams.remainingThreads;
-
+        //        $scope.refKey = $routeParams.refKey;
+        //        $scope.type = $routeParams.type;
+        //        $scope.subType = $routeParams.subType;
+        //        $scope.title = $routeParams.title;
+        //        $scope.creationTime = $routeParams.creationTime;
+        //        $scope.earningPerThreads = $routeParams.earningPerThreads;
+        //        $scope.currency = $routeParams.currency;
+        //        $scope.totalThreads = $routeParams.totalThreads;
+        //        $scope.remainingThreads = $routeParams.remainingThreads;
+        $scope.TemplateDetailShowRulesAndRegulationInfoDiv = false;
         var url = ServerContextPah + '/User/GetTemplateInformationByRefKey?refKey=' + $routeParams.refKey;
         var headers = {
             'Content-Type': 'application/json',
@@ -38,10 +38,14 @@ define([appLocation.userPostLogin], function (app) {
         }).error(function (data, status, headers, config) {
 
         });
+
+        $scope.openTemplateEditPageWithId = function (id) {
+            //$('#closeModalPopup' + id).click();
+            //alert(id);
+            location.href = "#/editTemplate/edit/" + id;
+        }
+
     });
-
-
-
 
 });
 
