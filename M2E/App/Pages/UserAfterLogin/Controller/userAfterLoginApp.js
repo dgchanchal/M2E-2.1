@@ -2,7 +2,7 @@
 define([appLocation.userPostLogin], function (app) {
     app.config(function ($routeProvider) {
 
-        $routeProvider.when("/", { templateUrl: (mobileDevice) ? "../../App/Pages/UserAfterLogin/Index/MobileIndex.html"  : "../../App/Pages/UserAfterLogin/Index/Index.html" }).
+        $routeProvider.when("/", { templateUrl: (mobileDevice) ? "../../App/Pages/UserAfterLogin/Index/MobileIndex.html" : "../../App/Pages/UserAfterLogin/Index/MobileIndex.html" }).
                        when("/edit", { templateUrl: "../../App/Pages/UserAfterLogin/EditPage/EditPage.html" }).
                        when("/showTemplate", { templateUrl: "../../App/Pages/UserAfterLogin/ShowTemplate/ShowTemplate.html" }).
                        when("/editTemplate/:username/:templateid", { templateUrl: "../../App/Pages/UserAfterLogin/EditTemplate/EditTemplate.html" }).
