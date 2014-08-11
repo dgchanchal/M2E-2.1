@@ -15,6 +15,7 @@ define([appLocation.userPostLogin], function (app) {
         //        $scope.totalThreads = $routeParams.totalThreads;
         //        $scope.remainingThreads = $routeParams.remainingThreads;
         $scope.TemplateDetailShowRulesAndRegulationInfoDiv = false;
+        $scope.userShowTemplateDetailsIWillDoItAndReportAbuseButton = true;
         var url = ServerContextPah + '/User/GetTemplateInformationByRefKey?refKey=' + $routeParams.refKey;
         var headers = {
             'Content-Type': 'application/json',
@@ -39,10 +40,13 @@ define([appLocation.userPostLogin], function (app) {
 
         });
 
-        $scope.openTemplateEditPageWithId = function (id) {
-            //$('#closeModalPopup' + id).click();
-            //alert(id);
-            location.href = "#/editTemplate/edit/" + id;
+        $scope.TemplateDetailShowRulesAndRegulationInfoDivFunction = function () {
+            $scope.TemplateDetailShowRulesAndRegulationInfoDiv = true;
+            $scope.userShowTemplateDetailsIWillDoItAndReportAbuseButton = false;
+        }
+
+        $scope.userShowTemplateDetailFinalAcceptance = function (refKey) {
+            location.href = "#/startSurvey/"+refKey;
         }
 
     });
