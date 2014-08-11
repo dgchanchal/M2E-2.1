@@ -282,6 +282,9 @@
     <Content Include="App\img\loading\loading100x100.gif" />
     <Content Include="App\img\loading\loading123.gif" />
     <Content Include="App\img\loading\loading70x70.gif" />
+    <Content Include="App\img\swipeImage\Touch_Gestures_4-20.png" />
+    <Content Include="App\img\swipeImage\Touch_Gestures_4-32.png" />
+    <Content Include="App\img\swipeImage\Touch_Gestures_4-128.png" />
     <Content Include="App\js\angular-cookies.js" />
     <Content Include="App\js\angular-cookies.min.js" />
     <Content Include="App\js\angular.js" />
@@ -339,6 +342,7 @@
     <Content Include="App\Pages\UserAfterLogin\EditPage\editPage.js" />
     <Content Include="App\Pages\UserAfterLogin\Index\Index.html" />
     <Content Include="App\Pages\UserAfterLogin\Index\index.js" />
+    <Content Include="App\Pages\UserAfterLogin\Survey\MobileSurvey.html" />
     <Content Include="App\Pages\UserAfterLogin\TemplateSample\TemplateSample.js" />
     <Content Include="App\Pages\UserAfterLogin\TemplateSample\TemplateSample.html" />
     <Content Include="App\Pages\UserPostLoginDM.js" />
@@ -1272,7 +1276,6 @@
     <Folder Include="App\css\" />
     <Folder Include="App\Pages\ClientAfterLogin\Ads\" />
     <Folder Include="App\Pages\ClientAfterLogin\ContentWriting\" />
-    <Folder Include="App\Pages\UserAfterLogin\Survey\" />
     <Folder Include="App\third-Party\html5-file-upload\uploads\" />
     <Folder Include="App_Data\" />
     <Folder Include="DAO\" />
