@@ -8,17 +8,16 @@
                         <li><a href="#"><i class="fa fa-dashboard"></i> Survey</a></li>
                         <li class="active">We will take your few moment.</li>
                     </ol>
-                </section>
-
+                </section>                
                 <!-- Main content -->
                 <section class="content">
+                <div class="pagination floatRight"></div>
                     <h4 class="page-header">
                         Survey
                         <small>Be honest and get paid.</small><img class="floatRight" src="../../App/img/swipeImage/Touch_Gestures_4-32.png" />
                     </h4>                    
                     <!-- Small boxes (Stat box) -->
-                    <div class="row">
-                     
+                    <div class="row">                     
 			            <div class="swiper-container">
                             <div class="swiper-wrapper">
                             <div class="swiper-slide blue-slide">
@@ -91,9 +90,8 @@
                                 <button  class="btn btn-success btn-sm">submit</button>
                               </div>
                             </div>
-                            <div class="pagination"></div>
-                          </div>
-		
+                            
+                          </div>		                    
                     </div><!-- /.row -->
                                                         
 
@@ -102,7 +100,7 @@
         
 <script>
     var mySwiper = new Swiper('.swiper-container', {
-        //pagination: '.pagination',
+        pagination: '.pagination',
         paginationClickable: true
     })
     $('.fancybox').fancybox();
@@ -138,10 +136,7 @@
   line-height: 45px;
 }
 .pagination {
-  position: absolute;
   z-index: 20;
-  left: 10px;
-  bottom: 10px;
 }
 .swiper-pagination-switch {
   display: inline-block;
@@ -158,6 +153,6 @@
   background: #aaa;
 }
 .swiper-active-switch {
-  background: #fff;
+  background: #4390ee;
 }
   </style>
