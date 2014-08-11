@@ -1922,6 +1922,15 @@ Component: timeline
   -moz-border-radius: 50%;
   border-radius: 50%;
 }
+ .bg-light-blue:hover {
+    background-color: #2071a0 !important;
+}
+ .bg-aqua:hover {
+    background-color: #0096c5 !important;
+}
+ .bg-red:hover {
+    background-color: #c9614c !important;
+}
 /* 
     Component: callout
 ------------------------
