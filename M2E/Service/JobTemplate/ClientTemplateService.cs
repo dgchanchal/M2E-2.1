@@ -253,7 +253,7 @@ namespace M2E.Service.JobTemplate
             var response = new ResponseModel<string>();
 
             var keyInfo = _db.CreateTemplateQuestionInfoes.FirstOrDefault();
-            var refKey = username;
+            var refKey = _db.Users.SingleOrDefault(x=>x.Username == username).guid;
             var digitKey = 0;
             if (keyInfo != null)
             {

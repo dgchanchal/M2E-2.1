@@ -1,0 +1,77 @@
+﻿<!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Dashboard
+                        <small>Control panel</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li class="active">Dashboard</li>
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content" ng-controller="showTemplateDetailController">                   
+                    <!-- top row -->
+                    <div class="row">
+                        <div class="col-xs-12 connectedSortable">
+                            
+                        </div><!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+
+                    <!-- Main row -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- Custom Tabs -->
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a data-toggle="tab" href="#tab_1">Job Detail</a></li>                                                                    
+                                    
+                                </ul>
+                                <div class="tab-content">
+                                    <div id="tab_1" class="tab-pane active">
+                                        <div class="row">
+                                           
+                                            <div class="col-sm-12">
+                                                <p class="lead"><span ng-bind="TemplateInfo.title"></span></p>
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <tbody><tr>
+                                                            <th>Type:</th>
+                                                            <td><span ng-bind="TemplateInfo.type"></span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>subType:</th>
+                                                            <td><span ng-bind="TemplateInfo.subType"></span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Total Threads:</th>
+                                                            <td><span ng-bind="TemplateInfo.totalThreads"></span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Remaining Threads:</th>
+                                                            <td><span ng-bind="TemplateInfo.remainingThreads"></span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Max you can earn</th>
+                                                            <td><span ng-bind="TemplateInfo.currency"></span> <span ng-bind="TemplateInfo.earningPerThreads"></span></td>
+                                                        </tr>
+                                                        <!--<tr>
+                                                            <th>Started at</th>
+                                                            <td><span ng-bind="TemplateInfo.creationTime"></span></td>
+                                                        </tr>-->
+                                                    </tbody></table>
+                                                </div>
+                                                <button class="btn btn-success btn-sm">I will do it</button>&nbsp;<button class="btn btn-danger btn-sm">This is a spam.</button>
+                                            </div><!-- /.col -->
+                                             
+                                        </div>
+                                    </div><!-- /.tab-pane -->                                    
+                                </div><!-- /.tab-content -->
+                            </div><!-- nav-tabs-custom -->
+                        </div>
+                         
+                    </div><!-- /.row (main row) -->
+
+                </section><!-- /.content -->

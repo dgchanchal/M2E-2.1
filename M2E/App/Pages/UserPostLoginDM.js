@@ -97,7 +97,10 @@ appRequire = require
             },
             showAfterLoginShowTemplate: { //used
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox"]
-            },                        
+            },
+            userAfterLoginShowTemplateDetail: { //used
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox"]
+            },                       
             userAfterLoginEditPage: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox"]
             },
@@ -142,6 +145,7 @@ appRequire = require
             SessionManagement: "../../App/Pages/UserAfterLogin/Controller/common/SessionManagement",//new
             userAfterLoginIndex: "../../App/Pages/UserAfterLogin/index/index",//new
             userAfterLoginShowTemplate: "../../App/Pages/UserAfterLogin/ShowTemplate/ShowTemplate",//new
+            userAfterLoginShowTemplateDetail: "../../App/Pages/UserAfterLogin/ShowTemplateDetail/ShowTemplateDetail",//new
             userAfterLoginCookieService: "../../../../App/Pages/UserAfterLogin/Controller/common/CookieServiceUserView",//used            
             userAfterLoginEditPage: "../../App/Pages/UserAfterLogin/EditPage/editPage",//used
             userAfterLoginTemplateSample: "../../App/Pages/UserAfterLogin/TemplateSample/TemplateSample",//used
@@ -154,7 +158,7 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "jquery_blockUI", "restangular", "moment", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTEApp","beforeLoginAdminLTETree",
     "jquery_slimscroll", "iCheck", "angular_cookies", "configureBlockUI", "fancybox", "userAfterLoginApp", "SessionManagement",
     "userAfterLoginIndex", "userAfterLoginShowTemplate", "userAfterLoginCookieService", "userAfterLoginEditPage", "fancybox", "filedrop","wysihtml5",
-    "fileDropScript", "domReady", "userAfterLoginTemplateSample", "dragend", "idangerous_swiper_2_1_min"
+    "fileDropScript", "domReady", "userAfterLoginTemplateSample", "dragend", "idangerous_swiper_2_1_min","userAfterLoginShowTemplateDetail"
 ], function() {
     angular.bootstrap(document.getElementById("mainUser"), ["afterLoginUserApp"]);
 });

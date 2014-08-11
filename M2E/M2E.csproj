@@ -195,6 +195,7 @@
     <Compile Include="Models\DataResponse\ImgurImageResponse.cs" />
     <Compile Include="Models\DataResponse\ImgurImageUploadResponse.cs" />
     <Compile Include="Models\DataResponse\LoginResponse.cs" />
+    <Compile Include="Models\DataResponse\UserResponse\UserProductSurveyTemplateModel.cs" />
     <Compile Include="Models\DataWrapper\CreateTemplateRequest.cs" />
     <Compile Include="Models\DataWrapper\CreateTemplate\CreateTemplateeditableInstructionsListModel.cs" />
     <Compile Include="Models\DataWrapper\CreateTemplate\CreateTemplateListBoxQuestionsListModel.cs" />
@@ -266,6 +267,7 @@
     <Compile Include="Service\Login\WebLogin.cs" />
     <Compile Include="Service\Register\WebRegister.cs" />
     <Compile Include="Service\UploadImages\imgurService.cs" />
+    <Compile Include="Service\UserService\Survey\UserProductSurveyTemplateService.cs" />
     <Compile Include="Session\HeaderManager.cs" />
     <Compile Include="Session\M2ESession.cs" />
     <Compile Include="Session\TokenManager.cs" />
@@ -325,15 +327,14 @@
     <Content Include="App\Pages\UserAfterLogin\Controller\userAfterLoginApp.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\CookieServiceUserView.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\SessionManagement.js" />
+    <Content Include="App\Pages\UserAfterLogin\ShowTemplateDetail\ShowTemplateDetail.html" />
+    <Content Include="App\Pages\UserAfterLogin\ShowTemplateDetail\ShowTemplateDetail.js" />
     <Content Include="App\Pages\UserAfterLogin\css\UserAfterLogin.css" />
-    <Content Include="App\Pages\UserAfterLogin\Index\MobileIndex.html" />
     <Content Include="App\Pages\UserAfterLogin\MobileSlide2\MobileSlide3.html" />
     <Content Include="App\Pages\UserAfterLogin\MobileSlide2\MobileSlide2.html" />
     <Content Include="App\Pages\UserAfterLogin\MobileSlide\MobileSlide.html" />
-    <Content Include="App\Pages\UserAfterLogin\ShowTemplate\CreateTemplate.css" />
     <Content Include="App\Pages\UserAfterLogin\ShowTemplate\ShowTemplate.html" />
     <Content Include="App\Pages\UserAfterLogin\ShowTemplate\ShowTemplate.js" />
-    <Content Include="App\Pages\UserAfterLogin\EditPage\editPage.css" />
     <Content Include="App\Pages\UserAfterLogin\EditPage\EditPage.html" />
     <Content Include="App\Pages\UserAfterLogin\EditPage\editPage.js" />
     <Content Include="App\Pages\UserAfterLogin\Index\Index.html" />
@@ -375,7 +376,6 @@
     <Content Include="App\Pages\ClientAfterLogin\Survey\CreateTemplate\CreateTemplate.js" />
     <Content Include="App\Pages\ClientAfterLogin\Survey\CreateTemplate\CreateTemplate.html" />
     <Content Include="App\Pages\ClientAfterLogin\css\ClientAfterLogin.css" />
-    <Content Include="App\Pages\ClientAfterLogin\EditPage\editPage.css" />
     <Content Include="App\Pages\ClientAfterLogin\EditPage\EditPage.html" />
     <Content Include="App\Pages\ClientAfterLogin\EditPage\editPage.js" />
     <Content Include="App\Pages\ClientAfterLogin\Index\index.css" />

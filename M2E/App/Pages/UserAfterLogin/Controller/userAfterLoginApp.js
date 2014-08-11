@@ -1,9 +1,10 @@
 'use strict';
 define([appLocation.userPostLogin], function (app) {
     app.config(function ($routeProvider) {
-
-        $routeProvider.when("/", { templateUrl: (mobileDevice) ? "../../App/Pages/UserAfterLogin/Index/MobileIndex.html" : "../../App/Pages/UserAfterLogin/Index/MobileIndex.html" }).
+        //(mobileDevice) ? "../../App/Pages/UserAfterLogin/Index/MobileIndex.html"  : "../../App/Pages/UserAfterLogin/Index/Index.html" }).
+        $routeProvider.when("/", { templateUrl: "../../App/Pages/UserAfterLogin/Index/Index.html" }).
                        when("/edit", { templateUrl: "../../App/Pages/UserAfterLogin/EditPage/EditPage.html" }).
+                       when("/showTemplateDetail/:refKey", { templateUrl: "../../App/Pages/UserAfterLogin/ShowTemplateDetail/ShowTemplateDetail.html" }).
                        when("/showTemplate", { templateUrl: "../../App/Pages/UserAfterLogin/ShowTemplate/ShowTemplate.html" }).
                        when("/editTemplate/:username/:templateid", { templateUrl: "../../App/Pages/UserAfterLogin/EditTemplate/EditTemplate.html" }).
                        when("/templateSample/:type/:subType", { templateUrl: "../../App/Pages/UserAfterLogin/TemplateSample/TemplateSample.html" }).
