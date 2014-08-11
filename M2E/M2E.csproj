@@ -378,7 +378,6 @@
     <Content Include="App\Pages\ClientAfterLogin\css\ClientAfterLogin.css" />
     <Content Include="App\Pages\ClientAfterLogin\EditPage\EditPage.html" />
     <Content Include="App\Pages\ClientAfterLogin\EditPage\editPage.js" />
-    <Content Include="App\Pages\ClientAfterLogin\Index\index.css" />
     <Content Include="App\Pages\ClientAfterLogin\Index\Index.html" />
     <Content Include="App\Pages\ClientAfterLogin\Index\index.js" />
     <Content Include="App\Pages\PreLoginDM.js" />
