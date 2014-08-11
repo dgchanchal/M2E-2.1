@@ -4,12 +4,12 @@ define([appLocation.postLogin], function (app) {
 
         $routeProvider.when("/", { templateUrl: "../../App/Pages/ClientAfterLogin/Index/Index.html" }).
                        when("/edit", { templateUrl: "../../App/Pages/ClientAfterLogin/EditPage/EditPage.html" }).
-                       when("/createTemplate", { templateUrl: "../../App/Pages/ClientAfterLogin/CreateTemplate/CreateTemplate.html" }).
+                       when("/createTemplate", { templateUrl: "../../App/Pages/ClientAfterLogin/Survey/CreateTemplate/CreateTemplate.html" }).
                        when("/editTemplate/:username/:templateid", { templateUrl: "../../App/Pages/ClientAfterLogin/EditTemplate/EditTemplate.html" }).
                        when("/templateSample/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/TemplateSample/TemplateSample.html" }).
                        when("/templateInfo/:type/:subType/:templateId", { templateUrl: "../../App/Pages/ClientAfterLogin/TemplateInfo/TemplateInfo.html" }).
-                       when("/moderatingPhotos", { templateUrl: "../../App/Pages/ClientAfterLogin/ModeratingPhotos/ModeratingPhotos.html" }).
-                       when("/transcriptionTemplate", { templateUrl: "../../App/Pages/ClientAfterLogin/TranscriptionTemplate/TranscriptionTemplate.html" }).
+                       when("/moderatingPhotos", { templateUrl: "../../App/Pages/ClientAfterLogin/Moderation/ModeratingPhotos/ModeratingPhotos.html" }).
+                       when("/transcriptionTemplate", { templateUrl: "../../App/Pages/ClientAfterLogin/DataEntry/TranscriptionTemplate/TranscriptionTemplate.html" }).
                        otherwise({ templateUrl: "../../Resource/templates/beforeLogin/contentView/404.html" });
 
     });

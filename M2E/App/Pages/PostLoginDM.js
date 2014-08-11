@@ -181,14 +181,14 @@ appRequire = require
             SessionManagement: "../../App/Pages/ClientAfterLogin/Controller/common/SessionManagement",//new
             AngularFileUploadController: "../../App/Pages/ClientAfterLogin/Controller/common/AngularFileUploadController",//new
             clientAfterLoginIndex: "../../App/Pages/ClientAfterLogin/index/index",//new
-            clientAfterLoginCreateTemplate: "../../App/Pages/ClientAfterLogin/CreateTemplate/CreateTemplate",//new
+            clientAfterLoginCreateTemplate: "../../App/Pages/ClientAfterLogin/Survey/CreateTemplate/CreateTemplate",//new
             clientAfterLoginCookieService: "../../../../App/Pages/ClientAfterLogin/Controller/common/CookieServiceClientView",//used
             clientAfterLoginEditTemplate: "../../App/Pages/ClientAfterLogin/EditTemplate/EditTemplate",//used
             clientAfterLoginTemplateInfo: "../../App/Pages/ClientAfterLogin/TemplateInfo/TemplateInfo",//used
             clientAfterLoginEditPage: "../../App/Pages/ClientAfterLogin/EditPage/editPage",//used
             clientAfterLoginTemplateSample: "../../App/Pages/ClientAfterLogin/TemplateSample/TemplateSample",//used
-            ClientAfterLoginModeratingPhotos: "../../App/Pages/ClientAfterLogin/ModeratingPhotos/ModeratingPhotos",//used
-            ClientAfterLoginTranscriptionTemplate: "../../App/Pages/ClientAfterLogin/TranscriptionTemplate/TranscriptionTemplate",//used
+            ClientAfterLoginModeratingPhotos: "../../App/Pages/ClientAfterLogin/Moderation/ModeratingPhotos/ModeratingPhotos",//used
+            ClientAfterLoginTranscriptionTemplate: "../../App/Pages/ClientAfterLogin/DataEntry/TranscriptionTemplate/TranscriptionTemplate",//used
             
         },
         urlArgs: "123"
