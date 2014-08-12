@@ -16,20 +16,34 @@
 
                     <!-- Main row -->
                     <div class="row">
-                            <div class="col-md-12" ng-repeat="Thread in InProgressTaskList">
-                                <div class="box box-solid">
-                                    <div class="box-header">
-                                        <i class="fa fa-text-width"></i>
-                                        <h3 class="box-title"><span ng-bind="Thread.type"></span></h3><small><span ng-bind="Thread.subType"></span></small>
-                                    </div><!-- /.box-header -->
-                                    <div class="box-body">
-                                        <blockquote>
-                                            <p><a href="#/showTemplateDetail/{{Thread.refKey}}"><span ng-bind="Thread.title"></span></a></p>                                            
-                                        </blockquote>
-                                    </div><!-- /.box-body -->
-                                </div><!-- /.box -->
-                            </div>
-                                        
+                       <section class="col-lg-12 connectedSortable">        
+                                        <div class="box box-color box-bordered">
+							<div class="box-title">
+								<h3>
+									<i class="icon-search"></i>
+									Search results
+								</h3>
+							</div>
+							<div class="box-content nopadding">
+								
+								<div class="search-results">
+									<ul>
+										<li ng-repeat="Thread in InProgressTaskList">											
+											<div class="search-info">
+                                            <img alt="" src="http://www.placehold.it/80">
+												<a href="#/showTemplateDetail/{{Thread.refKey}}"><span ng-bind="Thread.title"></span></a>
+												<p class="url">www.loremasdasdd.com/</p>
+                                                <p>Category : <span ng-bind="Thread.type"></span></p>
+                                                <p>Category : <span ng-bind="Thread.subType"></span></p>												
+											</div>
+										</li>
+										
+									</ul>
+								</div>
+								
+							</div>
+						</div>
+                       </section><!-- /.content -->
                     </div><!-- /.row (main row) -->
 
                 </section><!-- /.content -->

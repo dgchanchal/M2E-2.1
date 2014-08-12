@@ -707,3 +707,61 @@ element.style {
 {
     float:right;
 }
+
+.search-results ul {
+    *zoom: 1;
+}
+
+    .search-results ul:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .search-results ul li {
+        *zoom: 1;
+        padding: 15px;
+        border-top: 1px dotted #bbb;
+    }
+
+        .search-results ul li:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .search-results ul li:first-child {
+            border-top: 0;
+        }
+
+        .search-results ul li:last-child {
+            -moz-border-radius-bottomleft: 0;
+            -webkit-border-bottom-left-radius: 0;
+            border-bottom-left-radius: 0;
+            -moz-border-radius-bottomright: 0;
+            -webkit-border-bottom-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .search-results ul li .thumbnail {
+            float: left;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+        }
+
+        .search-results ul li .search-info {
+            margin-left: 0px;
+        }
+
+            .search-results ul li .search-info a {
+                font-size: 16px;
+            }
+
+            .search-results ul li .search-info .url {
+                color: #29b754;
+            }
+
+        .search-results ul li:nth-child(even) {
+            background: #fff;
+        }
