@@ -7,8 +7,7 @@ define([appLocation.userPostLogin], function (app) {
 
         $scope.surveyInfoInstruction = {
             type: "",
-            subType: "",
-            visible: true,
+            subType: "",            
             data: [
                 { instruction: "The Question relates to your life , so they are simple and can be easily answered." },
                 { instruction: "This survey is only to know the basics of human mentality, so you need not to worry , just choose the best option according to you." }
@@ -17,8 +16,7 @@ define([appLocation.userPostLogin], function (app) {
 
         $scope.surveyInfoSingleAnswerQuestion = {
             type: "",
-            subType: "",
-            visible: true,
+            subType: "",            
             data: [
                 { id: "SAQ-1", question: "Where do you live?", options: splitOptionsToList("Mumbai;Delhi;Kolkata;Chennai"), answer: "-" },
                 { id: "SAQ-2", question: "What is your favorite passtime?", options: splitOptionsToList("Studying;Playing;Dancing;Coding"), answer: "-" },
@@ -31,8 +29,7 @@ define([appLocation.userPostLogin], function (app) {
 
         $scope.surveyInfoMultipleAnswerQuestion = {
             type: "",
-            subType: "",
-            visible: true,
+            subType: "",            
             data: [
                 { id: "MAQ-1", question: "Which among these is perfect buy Phone in the Market?", options: splitOptionsToList("Iphone 5s;Samsung Galaxy S5;Moto X;Moto E"), answer: "-" },
                 { id: "MAQ-2", question: "Which among follower cricket deserves Bharat Ratna Award?", options: splitOptionsToList("Sachin Tendulkar;Rahul Dravid;Kapil Dev;Narayana Kartiken;Dhayn Chnadra;Rahul Gandhi;Narendra Modi;Shahrukh Khan"), answer: "-" },
@@ -43,8 +40,7 @@ define([appLocation.userPostLogin], function (app) {
 
         $scope.surveyInfoListBoxAnswerQuestion = {
             type: "",
-            subType: "",
-            visible: true,
+            subType: "",            
             data: [
                 { id: "LAQ-1", question: "Which among these is perfect buy Phone in the Market?", options: splitOptionsToList("Iphone 5s;Samsung Galaxy S5;Moto X;Moto E"), answer: "-" },
                 { id: "LAQ-2", question: "Which among follower cricket deserves Bharat Ratna Award?", options: splitOptionsToList("Sachin Tendulkar;Rahul Dravid;Kapil Dev;Narayana Kartiken;Dhayn Chnadra;Rahul Gandhi;Narendra Modi;Shahrukh Khan"), answer: "-" },
@@ -55,8 +51,7 @@ define([appLocation.userPostLogin], function (app) {
 
         $scope.surveyInfoTextBoxAnswerQuestion = {
             type: "",
-            subType: "",
-            visible: true,
+            subType: "",            
             data: [
                 { id: "TAQ-1", question: "Enter your City Pin Code?", options: splitOptionsToList("Iphone 5s;Samsung Galaxy S5;Moto X;Moto E"), answer: "-" }                
 

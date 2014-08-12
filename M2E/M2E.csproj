@@ -195,6 +195,14 @@
     <Compile Include="Models\DataResponse\ImgurImageResponse.cs" />
     <Compile Include="Models\DataResponse\ImgurImageUploadResponse.cs" />
     <Compile Include="Models\DataResponse\LoginResponse.cs" />
+    <Compile Include="Models\DataResponse\UserResponse\Survey\UserSurveyInfoInnerInstructionListData.cs" />
+    <Compile Include="Models\DataResponse\UserResponse\Survey\UserSurveyInfoInnerListData.cs" />
+    <Compile Include="Models\DataResponse\UserResponse\Survey\UserSurveyInfoInstruction.cs" />
+    <Compile Include="Models\DataResponse\UserResponse\Survey\UserSurveyInfoListBoxAnswerQuestion.cs" />
+    <Compile Include="Models\DataResponse\UserResponse\Survey\UserSurveyInfoMultipleAnswerQuestion.cs" />
+    <Compile Include="Models\DataResponse\UserResponse\Survey\UserSurveyInfoSingleAnswerQueston.cs" />
+    <Compile Include="Models\DataResponse\UserResponse\Survey\UserSurveyInfoTextBoxAnswerQuestion.cs" />
+    <Compile Include="Models\DataResponse\UserResponse\Survey\UserSurveyResponse.cs" />
     <Compile Include="Models\DataResponse\UserResponse\UserProductSurveyTemplateModel.cs" />
     <Compile Include="Models\DataWrapper\CreateTemplateRequest.cs" />
     <Compile Include="Models\DataWrapper\CreateTemplate\CreateTemplateeditableInstructionsListModel.cs" />
