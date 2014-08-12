@@ -708,6 +708,12 @@ element.style {
     float:right;
 }
 
+.maxHeight800px
+{
+    max-height:600px!important;
+    overflow:auto;
+}
+
 .search-results ul {
     *zoom: 1;
 }
