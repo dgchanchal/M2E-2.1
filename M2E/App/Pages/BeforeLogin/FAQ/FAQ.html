@@ -34,108 +34,31 @@
                 </div><!-- /.box -->
             </div><!-- ./col -->
             <div class ="col-md-12">
-                <div class="box box-solid">                        
-                    <div id="HowToJoinM2E" class="margin-left-3percent">
-                        <h3>How can I join M2E?
-                        </h3>
-                        <p>It’s pretty simple. Go to www.madetoearn.com, now if you are client click on the client login button and
-                            if you, like millions of students want to earn click on the worker login section.
-                        </p>    
-                    </div><div id="MultipleAccounts" class="margin-left-3percent">
-                              <h3>Can I have multiple accounts?
-                              </h3>
-                              <p>The answer is NO! Please don’t try to trick the computer as in the later stages your job (once you
-                                  earn above Rs1000) we will ask you PAN card and other identity related information. If we found any 
-                                  discrepancy we will disable your account and money will forfeited.
-                              </p>    
-                          </div><div id="CostToJoinM2E" class="margin-left-3percent">
-                                    <h3>Does it cost to join M2E?
-                                    </h3>
-                                    <p>No, it does not cost anything. We won’t ever charge you for our services. So smile!
-                                    </p>    
-                                </div><div id="ForgotMyPassword" class="margin-left-3percent">
-                                          <h3>What if I forgot my password?
-                                          </h3>
-                                          <p>After logging in, in the setting section you can always update any information related to you. Same as 
-
-                                              you do in all social media sites.
-                                          </p>    
-                                      </div>
-                    <div id="UpdatePersonalInformation" class="margin-left-3percent">
-                        <h3>How to update my personal information?
-                        </h3>
-                        <p >After logging in, in the setting section you can always update any information related to you. Same as
-
-                            you do in all social media sites.
-                        </p>    
-                    </div>
-                    <div id="DeleteMyAccount" class="margin-left-3percent">
-                        <h3>Can I delete my account?
-                        </h3>
-                        <p >Mostly you never will! Still if you ever want to delete an account click on the delete section in settings 
-
-                            section. If you are unable to do this send us an email at email@madetoearn.com
-                        </p>    
-                    </div><div id="HowMuchICanEarnPerDay" class="margin-left-3percent">
-                              <h3>How much can I earn per day?
-                              </h3>
-                              <p>Currently we have set the maximum to Rs200. This is done to ensure that everyone gets equaly
-
-                                  opportunity.
-                              </p>    
-                          </div><div id="TrackingSystem" class="margin-left-3percent">
-                                    <h3>Do you have a tracking system?
-                                    </h3>
-                                    <p>We have a very sophisticated tracking system that monitors your work performance. Based on he rating
-
-                                        our system gives you more jobs will be assigned.
-                                    </p>    
-                                </div><div id="HowDoIGetPaid" class="margin-left-3percent">
-                                          <h3>How do I get paid?
-                                          </h3>
-                                          <p>Currently we have set the maximum to Rs200. This is done to ensure that everyone gets equaly
-
-                                              opportunity.
-                                          </p>    
-                                      </div><div id="MinBalanceForWithdrawal" class="margin-left-3percent">
-                                                <h3>What are the minimum amount required to withdraw money to a bank account?
-                                                </h3>
-                                                <p>Just Rs100. We wanted to keep a lower limit, but that will result in high operating cost for us.
-                                                </p>    
-                                            </div><div id="CheckMyBalance" class="margin-left-3percent">
-                                                      <h3>How can I check the amount of money in my account?
-                                                      </h3>
-                                                      <p>Go to dashboard. Your earning will be shown there with all transactions and withdrawals.
-
-                                                          opportunity.
-                                                      </p>    
-                                                  </div><div id="DaysToCreditAmountInMyAccount" class="margin-left-3percent">
-                                                            <h3>Once I complete a job, how many days it will take to credit my account?
-                                                            </h3>
-                                                            <p>Anywhere between 1-7 days. This depends on the client who proposed the job and bank transfer
-
-                                                                timings. We will be more than happy to credit your account for the work you have done.
-                                                            </p>    
-                                                        </div> <div id="DaysToCreditAmountInMyBankAccount" class="margin-left-3percent">
-                                                                   <h3>How many days it takes to credit money to my bank account?
-                                                                   </h3>
-                                                                   <p>Despite a huge ecommerce growth, our banking system is still slow. So it may take anywhere between 3 
-
-                                                                       to 5 days.
-                                                                   </p>    
-                                                               </div><div id="CustomerServiceNumber" class="margin-left-3percent">
-                                                                         <h3>Do you have customer service number?
-                                                                         </h3>
-                                                                         <p>Sorry, we don’t have a phone number for customer service. Simply because we don’t want you to stay
-
-                                                                             in a long queue and listen to some cranky music. Just fill the contact form with your question and send 
-
-                                                                             us. We will email you our response. If it’s not solved in an email conversation. We will call you at our 
-
-                                                                             expense!
-                                                                         </p>    
-                                                                     </div>
-                </div>
+                <div class="box">
+								<div class="box-title">
+									<h3>
+										<i class="icon-reorder"></i>
+										FAQ
+									</h3>
+								</div>
+								<div class="box-content">
+									<div id="accordion2" class="accordion">
+										<div class="accordion-group" ng-repeat="faq in FAQquestionsList">
+											<div class="accordion-heading">
+												<a href="#{{faq.id}}Collapse" id="{{faq.id}}" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle faqQuestionDivBackgroundColor">
+													<span ng-bind="faq.question"></span>
+												</a>
+											</div>
+											<div class="accordion-body collapse" id="{{faq.id}}Collapse">
+												<div class="accordion-inner">
+													<span ng-bind="faq.answer"></span>
+												</div>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+							</div>
             </div>
         </div><!-- /.row -->
     </div>                     
