@@ -217,6 +217,14 @@
         paginationClickable: true
     })
     $('.fancybox').fancybox();
+    refreshCheckboxAndRadioButton();
+    function refreshCheckboxAndRadioButton() {
+        $("input[type='checkbox'], input[type='radio']").iCheck({
+            checkboxClass: 'icheckbox_minimal',
+            radioClass: 'iradio_minimal'
+        });
+    }
+
   </script>
 
 <style type="text/css">
