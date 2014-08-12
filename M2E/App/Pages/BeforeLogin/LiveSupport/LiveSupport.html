@@ -1,0 +1,67 @@
+﻿<link href="../../App/Pages/BeforeLogin/FAQ/FAQ.css" rel="stylesheet" type="text/css" />
+<aside class="right-side strech" ng-controller="beforeLoginFAQ">               
+    <!-- Main content -->
+
+    <div class="container">            
+        <h2 class="page-header">FAQ</h2>
+        <div class="row">                       
+            <div class="col-md-12">
+                <div class="box box-solid">
+                    <div class="box-body">
+                                                                
+                        <ul><li><h3>General</h3>
+                            </li>
+                            <li> <a style="cursor: pointer;" ng-click="scrollTo('HowToJoinM2E')">How can I join M2E?</a></li>
+                            <li> <a style="cursor: pointer;" ng-click="scrollTo('MultipleAccounts')">Can I have multiple accounts?</a></li>
+                            <li> <a style="cursor: pointer;" ng-click="scrollTo('CostToJoinM2E')">Does it cost to join M2E?</a></li>
+                            <li> <a style="cursor: pointer;" ng-click="scrollTo('ForgotMyPassword')">What if I forgot my password?</a></li>
+                            <li> <a style="cursor: pointer;" ng-click="scrollTo('UpdatePersonalInformation')">How to update my personal information?</a></li>
+                            <li> <a style="cursor: pointer;" ng-click="scrollTo('DeleteMyAccount')">Can I delete my account?</a></li>
+                            <li> <a style="cursor: pointer;" ng-click="scrollTo('HowMuchICanEarnPerDay')">How much can I earn per day?</a></li>
+                            <li> <a style="cursor: pointer;" ng-click="scrollTo('TrackingSystem')">Do you have a tracking system?</a></li>
+                        </ul>
+                        <ul><li><h3>Payment related</h3>
+                            </li>
+                            <li> <a style="cursor: pointer;" ng-click="scrollTo('HowDoIGetPaid')">How do I get paid?</a></li>
+                            <li> <a style="cursor: pointer;" ng-click="scrollTo('MinBalanceForWithdrawal')">What are the minimum amount required to withdraw money to a bank account?</a></li>
+                            <li> <a style="cursor: pointer;" ng-click="scrollTo('CheckMyBalance')">How can I check the amount of money in my account?</a></li>
+                            <li> <a style="cursor: pointer;" ng-click="scrollTo('DaysToCreditAmountInMyAccount')">Once I complete a job, how many days it will take to credit my account?</a></li>
+                            <li> <a style="cursor: pointer;" ng-click="scrollTo('DaysToCreditAmountInMyBankAccount')">How many days it takes to credit money to my bank account?</a></li>
+                            <li> <a style="cursor: pointer;" ng-click="scrollTo('CustomerServiceNumber')">Do you have customer service number?</a></li>  
+                        </ul>	
+
+                    </div>                                                                               
+                </div><!-- /.box -->
+            </div><!-- ./col -->
+            <div class ="col-md-12">
+                <div class="box">
+								<div class="box-title">
+									<h3>
+										<i class="icon-reorder"></i>
+										FAQ
+									</h3>
+								</div>
+								<div class="box-content">
+									<div id="accordion2" class="accordion">
+										<div class="accordion-group" ng-repeat="faq in FAQquestionsList">
+											<div class="accordion-heading">
+												<a href="#{{faq.id}}Collapse" id="{{faq.id}}" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle faqQuestionDivBackgroundColor">
+													<span ng-bind="faq.question"></span>
+												</a>
+											</div>
+											<div class="accordion-body collapse" id="{{faq.id}}Collapse">
+												<div class="accordion-inner">
+													<span ng-bind="faq.answer"></span>
+												</div>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+            </div>
+        </div><!-- /.row -->
+    </div>                     
+                    
+    <!-- END TYPOGRAPHY -->
+</aside>

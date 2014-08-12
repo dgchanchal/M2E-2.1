@@ -315,6 +315,8 @@
     <Content Include="App\js\underscore-min.js" />
     <Content Include="App\Pages\BeforeLogin\ClientMoreInfo\ClientMoreInfo.html" />
     <Content Include="App\Pages\BeforeLogin\ContactUs\contactus.html" />
+    <Content Include="App\Pages\BeforeLogin\LiveSupport\LiveSupport.html" />
+    <Content Include="App\Pages\BeforeLogin\LiveSupport\LiveSupport.js" />
     <Content Include="App\Pages\BeforeLogin\css\BeforeLoginStyle.css" />
     <Content Include="App\Pages\BeforeLogin\TnC\TnC.html" />
     <Content Include="App\Pages\BeforeLogin\UserMoreInfo\UserMoreInfo.html" />
@@ -342,6 +344,7 @@
     <Content Include="App\Pages\UserAfterLogin\EditPage\editPage.js" />
     <Content Include="App\Pages\UserAfterLogin\Index\Index.html" />
     <Content Include="App\Pages\UserAfterLogin\Index\index.js" />
+    <Content Include="App\Pages\UserAfterLogin\Survey\Survey.js" />
     <Content Include="App\Pages\UserAfterLogin\Survey\MobileSurvey.html" />
     <Content Include="App\Pages\UserAfterLogin\TemplateSample\TemplateSample.js" />
     <Content Include="App\Pages\UserAfterLogin\TemplateSample\TemplateSample.html" />
@@ -366,7 +369,6 @@
     <Content Include="App\Pages\BeforeLogin\AboutUs\AboutUs.html" />
     <Content Include="App\Pages\BeforeLogin\Controller\beforeLoginApp.js" />
     <Content Include="App\Pages\BeforeLogin\Controller\common\CookieService.js" />
-    <Content Include="App\Pages\BeforeLogin\FAQ\FAQ.css" />
     <Content Include="App\Pages\BeforeLogin\FAQ\FAQ.html" />
     <Content Include="App\Pages\BeforeLogin\FAQ\FAQ.js" />
     <Content Include="App\Pages\BeforeLogin\Index\index.js" />

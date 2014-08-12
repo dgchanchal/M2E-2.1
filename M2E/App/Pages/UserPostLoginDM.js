@@ -106,6 +106,9 @@ appRequire = require
             },
             userAfterLoginTemplateSample: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox"]
+            },
+            userAfterLoginSurvey: {
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox"]
             }
                         
         },
@@ -149,6 +152,7 @@ appRequire = require
             userAfterLoginCookieService: "../../../../App/Pages/UserAfterLogin/Controller/common/CookieServiceUserView",//used            
             userAfterLoginEditPage: "../../App/Pages/UserAfterLogin/EditPage/editPage",//used
             userAfterLoginTemplateSample: "../../App/Pages/UserAfterLogin/TemplateSample/TemplateSample",//used
+            userAfterLoginSurvey: "../../App/Pages/UserAfterLogin/Survey/Survey",//used
             
         },
         urlArgs: ""
@@ -158,7 +162,7 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "jquery_blockUI", "restangular", "moment", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTEApp","beforeLoginAdminLTETree",
     "jquery_slimscroll", "iCheck", "angular_cookies", "configureBlockUI", "fancybox", "userAfterLoginApp", "SessionManagement",
     "userAfterLoginIndex", "userAfterLoginShowTemplate", "userAfterLoginCookieService", "userAfterLoginEditPage", "fancybox", "filedrop","wysihtml5",
-    "fileDropScript", "domReady", "userAfterLoginTemplateSample", "dragend", "idangerous_swiper_2_1_min","userAfterLoginShowTemplateDetail"
+    "fileDropScript", "domReady", "userAfterLoginTemplateSample", "dragend", "idangerous_swiper_2_1_min","userAfterLoginShowTemplateDetail","userAfterLoginSurvey"
 ], function() {
     angular.bootstrap(document.getElementById("mainUser"), ["afterLoginUserApp"]);
 });
