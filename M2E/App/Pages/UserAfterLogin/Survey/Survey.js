@@ -11,6 +11,8 @@ define([appLocation.userPostLogin], function (app) {
             surveyTextBoxAnswerQuestion: []
         };
 
+        $scope.surveyInfoTitle = "This is the title of the survey";
+
         $scope.surveyInfoInstruction = {
             type: "",
             subType: "",
@@ -66,156 +68,312 @@ define([appLocation.userPostLogin], function (app) {
 
         var renderSurveyQuestion = "";
 
-        // instruction list
-        if ($scope.surveyInfoInstruction.data.Length != 0) {
+        if (mobileDevice) {
+            // instruction list
+            if ($scope.surveyInfoInstruction.data.Length != 0) {
+                renderSurveyQuestion += "<div class='swiper-slide gray-slide box-body maxHeight800px'>";
+                renderSurveyQuestion += "<div class='box box-color box-bordered blue'>";
+                renderSurveyQuestion += "<div class='box-title'>";
+                renderSurveyQuestion += "<h3>";
+                renderSurveyQuestion += "<i class='icon-file'></i>";
+                renderSurveyQuestion += "Instructions";
+                renderSurveyQuestion += "</h3>";
+                renderSurveyQuestion += "</div>";
+                renderSurveyQuestion += "<div class='box-content'>";
+                $.each($scope.surveyInfoInstruction.data, function () {
+                    renderSurveyQuestion += "<li>" + this.instruction + "</li>";
+                });
+                renderSurveyQuestion += "</div>";
+                renderSurveyQuestion += "</div>";
+                renderSurveyQuestion += "</div>";
+            }
+
+            // single answer question..
+            if ($scope.surveyInfoSingleAnswerQuestion.data.Length != 0) {
+                $.each($scope.surveyInfoSingleAnswerQuestion.data, function () {
+                    renderSurveyQuestion += "<div class='swiper-slide gray-slide box-body maxHeight800px'>";
+                    renderSurveyQuestion += "<div class='box box-color box-bordered blue'>";
+                    renderSurveyQuestion += "<div class='box-title'>";
+                    renderSurveyQuestion += "<h3>";
+                    renderSurveyQuestion += "<i class='icon-file'></i>";
+                    renderSurveyQuestion += "Single Answer Question";
+                    renderSurveyQuestion += "</h3>";
+                    renderSurveyQuestion += "</div>";
+                    renderSurveyQuestion += "<div class='box-content'>";
+                    renderSurveyQuestion += "<p><b>";
+                    renderSurveyQuestion += this.question;
+                    renderSurveyQuestion += "</b></p>";
+                    var id = this.id;
+                    $.each(this.options, function () {
+                        renderSurveyQuestion += "<input type='radio' class='userSurveyRadioButton' name='" + id + "' value='" + id + "_" + this + "'/> " + this + "<br/>";
+
+                    });
+                    renderSurveyQuestion += "</div>";
+                    renderSurveyQuestion += "</div>";
+                    renderSurveyQuestion += "</div>";
+                });
+            }
+
+            //multiple answer question
+            if ($scope.surveyInfoMultipleAnswerQuestion.data.Length != 0) {
+                $.each($scope.surveyInfoMultipleAnswerQuestion.data, function () {
+                    renderSurveyQuestion += "<div class='swiper-slide gray-slide box-body maxHeight800px'>";
+                    renderSurveyQuestion += "<div class='box box-color box-bordered blue'>";
+                    renderSurveyQuestion += "<div class='box-title'>";
+                    renderSurveyQuestion += "<h3>";
+                    renderSurveyQuestion += "<i class='icon-file'></i>";
+                    renderSurveyQuestion += "Multiple Answer Question";
+                    renderSurveyQuestion += "</h3>";
+                    renderSurveyQuestion += "</div>";
+                    renderSurveyQuestion += "<div class='box-content'>";
+                    renderSurveyQuestion += "<p><b>";
+                    renderSurveyQuestion += this.question;
+                    renderSurveyQuestion += "</b></p>";
+                    var id = this.id;
+                    $.each(this.options, function () {
+                        renderSurveyQuestion += "<input type='checkbox' class='userSurveyCheckBoxButton' name='" + id + "' value='" + id + "_" + this + "'/> " + this + "<br/>";
+
+                    });
+                    renderSurveyQuestion += "</div>";
+                    renderSurveyQuestion += "</div>";
+                    renderSurveyQuestion += "</div>";
+                });
+            }
+
+            //listbox answer question
+            if ($scope.surveyInfoListBoxAnswerQuestion.data.Length != 0) {
+                $.each($scope.surveyInfoListBoxAnswerQuestion.data, function () {
+                    renderSurveyQuestion += "<div class='swiper-slide gray-slide box-body maxHeight800px'>";
+                    renderSurveyQuestion += "<div class='box box-color box-bordered blue'>";
+                    renderSurveyQuestion += "<div class='box-title'>";
+                    renderSurveyQuestion += "<h3>";
+                    renderSurveyQuestion += "<i class='icon-file'></i>";
+                    renderSurveyQuestion += "ListBox Answer Question";
+                    renderSurveyQuestion += "</h3>";
+                    renderSurveyQuestion += "</div>";
+                    renderSurveyQuestion += "<div class='box-content'>";
+                    //renderSurveyQuestion += "<p><b>";
+                    //renderSurveyQuestion += this.question;
+                    //renderSurveyQuestion += "</b></p>";
+
+
+                    renderSurveyQuestion += "<fieldset>";
+
+                    renderSurveyQuestion += "<label>";
+                    renderSurveyQuestion += "<b>" + this.question + "</b>";
+                    renderSurveyQuestion += "</label>";
+
+                    //var listBoxQuestionsOptionList = this.Options.split(';');
+                    renderSurveyQuestion += "<select name='" + this.id + "' class='form-control'>";
+                    var id = this.id;
+                    $.each(this.options, function () {
+                        renderSurveyQuestion += "<option value='" + id + "_" + this + "'>" + this + "</option>";
+                    });
+                    renderSurveyQuestion += "</select>";
+                    renderSurveyQuestion += "</fieldset>";
+
+                    renderSurveyQuestion += "</div>";
+                    renderSurveyQuestion += "</div>";
+                    renderSurveyQuestion += "</div>";
+                });
+            }
+            //textBox answer question
+            var textBoxRenderSurveyQuestion = "";
+            if ($scope.surveyInfoTextBoxAnswerQuestion.data.Length != 0) {
+                $.each($scope.surveyInfoTextBoxAnswerQuestion.data, function () {
+                    renderSurveyQuestion += "<div class='swiper-slide gray-slide box-body maxHeight800px'>";
+                    renderSurveyQuestion += "<div class='box box-color box-bordered blue'>";
+                    renderSurveyQuestion += "<div class='box-title'>";
+                    renderSurveyQuestion += "<h3>";
+                    renderSurveyQuestion += "<i class='icon-file'></i>";
+                    renderSurveyQuestion += "TextBox Answer Question";
+                    renderSurveyQuestion += "</h3>";
+                    renderSurveyQuestion += "</div>";
+                    renderSurveyQuestion += "<div class='box-content'>";
+                    renderSurveyQuestion += "<p><b>";
+                    renderSurveyQuestion += this.question;
+                    renderSurveyQuestion += "</b></p>";
+
+                    renderSurveyQuestion += "<input type='textarea' name='" + this.id + "' placeholder='Enter Your Answer'/><br/>";
+
+                    renderSurveyQuestion += "</div>";
+                    renderSurveyQuestion += "</div>";
+                    renderSurveyQuestion += "</div>";
+                });
+            }
+
+            // adding button at last
             renderSurveyQuestion += "<div class='swiper-slide gray-slide box-body maxHeight800px'>";
             renderSurveyQuestion += "<div class='box box-color box-bordered blue'>";
             renderSurveyQuestion += "<div class='box-title'>";
             renderSurveyQuestion += "<h3>";
             renderSurveyQuestion += "<i class='icon-file'></i>";
-            renderSurveyQuestion += "Instructions";
+            renderSurveyQuestion += "Submit Your Survey";
             renderSurveyQuestion += "</h3>";
             renderSurveyQuestion += "</div>";
             renderSurveyQuestion += "<div class='box-content'>";
-            $.each($scope.surveyInfoInstruction.data, function () {
-                renderSurveyQuestion += "<li>" + this.instruction + "</li>";
-            });
+            renderSurveyQuestion += "<button  class=\"btn btn-success btn-sm\">submit</button>";
             renderSurveyQuestion += "</div>";
             renderSurveyQuestion += "</div>";
             renderSurveyQuestion += "</div>";
-        }
 
-        // single answer question..
-        if ($scope.surveyInfoSingleAnswerQuestion.data.Length != 0) {
-            $.each($scope.surveyInfoSingleAnswerQuestion.data, function () {
-                renderSurveyQuestion += "<div class='swiper-slide gray-slide box-body maxHeight800px'>";
-                renderSurveyQuestion += "<div class='box box-color box-bordered blue'>";
-                renderSurveyQuestion += "<div class='box-title'>";
-                renderSurveyQuestion += "<h3>";
-                renderSurveyQuestion += "<i class='icon-file'></i>";
-                renderSurveyQuestion += "Single Answer Question";
-                renderSurveyQuestion += "</h3>";
+            $('#swiperWrapperId').html(renderSurveyQuestion);
+            initializeSwiperFunction();
+
+        }
+        else { // if it is web.
+
+            renderSurveyQuestion += "<div style='' class='control-group'>";
+            renderSurveyQuestion += "<label for=\"textfield\" class=\"control-label\">";
+            renderSurveyQuestion += "<b>Title</b></label>";
+            renderSurveyQuestion += "<div class='controls'><p><b>" + $scope.surveyInfoTitle + "</b></p></div></div>";
+
+            // instruction list
+            if ($scope.surveyInfoInstruction.data.Length != 0) {
+                renderSurveyQuestion += "<div style='' class='control-group'>";
+                renderSurveyQuestion += "<label for=\"textfield\" class=\"control-label\">";
+                renderSurveyQuestion += "<b>Instructions</b></label>";
+                renderSurveyQuestion += "<div class='controls'>";
+                renderSurveyQuestion += "<ul>";
+                $.each($scope.surveyInfoInstruction.data, function () {
+                    renderSurveyQuestion += "<li>" + this.instruction + "</li>";
+                });
+                renderSurveyQuestion += "</ul>";
                 renderSurveyQuestion += "</div>";
-                renderSurveyQuestion += "<div class='box-content'>";
-                renderSurveyQuestion += "<p><b>";
-                renderSurveyQuestion += this.question;
-                renderSurveyQuestion += "</b></p>";
-                var id = this.id;
-                $.each(this.options, function () {
-                    renderSurveyQuestion += "<input type='radio' class='userSurveyRadioButton' name='" + id + "' value='" + id + "_" + this + "'/> " + this + "<br/>";
+                renderSurveyQuestion += "</div>";
+            }
+
+            // single answer question..
+            if ($scope.surveyInfoSingleAnswerQuestion.data.Length != 0) {
+                renderSurveyQuestion += "<div style='' class='control-group'>";
+                renderSurveyQuestion += "<label for=\"textfield\" class=\"control-label\">";
+                renderSurveyQuestion += "<b>SAQ</b></label>";
+                renderSurveyQuestion += "<div class='controls'>";
+
+                $.each($scope.surveyInfoSingleAnswerQuestion.data, function () {
+
+                    renderSurveyQuestion += "<fieldset>";
+
+                    renderSurveyQuestion += "<label>";
+                    renderSurveyQuestion += "<b>" + this.question; +"</b>";
+                    renderSurveyQuestion += "</label>";
+
+                    var id = this.id;
+                    $.each(this.options, function () {
+                        renderSurveyQuestion += "<div class='radio'>";
+                        //renderSurveyQuestion += "<label>";
+                        renderSurveyQuestion += "<input type='radio' class='userSurveyRadioButton' name='" + id + "' value='" + id + "_" + this + "'/> <span>" + this + "</span><br/>";
+                        //renderSurveyQuestion += "</label>";
+                        renderSurveyQuestion += "</div>";
+                    });
+                    renderSurveyQuestion += "</fieldset>";
 
                 });
                 renderSurveyQuestion += "</div>";
                 renderSurveyQuestion += "</div>";
-                renderSurveyQuestion += "</div>";
-            });
-        }
+            }
 
-        //multiple answer question
-        if ($scope.surveyInfoMultipleAnswerQuestion.data.Length != 0) {
-            $.each($scope.surveyInfoMultipleAnswerQuestion.data, function () {
-                renderSurveyQuestion += "<div class='swiper-slide gray-slide box-body maxHeight800px'>";
-                renderSurveyQuestion += "<div class='box box-color box-bordered blue'>";
-                renderSurveyQuestion += "<div class='box-title'>";
-                renderSurveyQuestion += "<h3>";
-                renderSurveyQuestion += "<i class='icon-file'></i>";
-                renderSurveyQuestion += "Multiple Answer Question";
-                renderSurveyQuestion += "</h3>";
-                renderSurveyQuestion += "</div>";
-                renderSurveyQuestion += "<div class='box-content'>";
-                renderSurveyQuestion += "<p><b>";
-                renderSurveyQuestion += this.question;
-                renderSurveyQuestion += "</b></p>";
-                var id = this.id;
-                $.each(this.options, function () {
-                    renderSurveyQuestion += "<input type='checkbox' class='userSurveyCheckBoxButton' name='" + id + "' value='" + id + "_" + this + "'/> " + this + "<br/>";
+            //multiple answer question
+            if ($scope.surveyInfoMultipleAnswerQuestion.data.Length != 0) {
+                renderSurveyQuestion += "<div style='' class='control-group'>";
+                renderSurveyQuestion += "<label for=\"textfield\" class=\"control-label\">";
+                renderSurveyQuestion += "<b>MAQ</b></label>";
+                renderSurveyQuestion += "<div class='controls'>";
+
+                $.each($scope.surveyInfoMultipleAnswerQuestion.data, function () {
+                    renderSurveyQuestion += "<fieldset>";
+                    renderSurveyQuestion += "<label>";
+                    renderSurveyQuestion += "<b>" + this.question; +"</b>";
+                    renderSurveyQuestion += "</label>";
+                    var id = this.id;
+                    $.each(this.options, function () {
+                        renderSurveyQuestion += "<div class='radio'>";
+                        renderSurveyQuestion += "<label>";
+                        renderSurveyQuestion += "<input type='checkbox' class='userSurveyCheckBoxButton' name='" + id + "' value='" + id + "_" + this + "'/> " + this + "<br/>";
+                        renderSurveyQuestion += "</label>";
+                        renderSurveyQuestion += "</div>";
+                    });
+                    renderSurveyQuestion += "</fieldset>";
 
                 });
                 renderSurveyQuestion += "</div>";
                 renderSurveyQuestion += "</div>";
-                renderSurveyQuestion += "</div>";
-            });
-        }
+            }
 
-        //listbox answer question
-        if ($scope.surveyInfoListBoxAnswerQuestion.data.Length != 0) {
-            $.each($scope.surveyInfoListBoxAnswerQuestion.data, function () {
-                renderSurveyQuestion += "<div class='swiper-slide gray-slide box-body maxHeight800px'>";
-                renderSurveyQuestion += "<div class='box box-color box-bordered blue'>";
-                renderSurveyQuestion += "<div class='box-title'>";
-                renderSurveyQuestion += "<h3>";
-                renderSurveyQuestion += "<i class='icon-file'></i>";
-                renderSurveyQuestion += "ListBox Answer Question";
-                renderSurveyQuestion += "</h3>";
-                renderSurveyQuestion += "</div>";
-                renderSurveyQuestion += "<div class='box-content'>";
-                //renderSurveyQuestion += "<p><b>";
-                //renderSurveyQuestion += this.question;
-                //renderSurveyQuestion += "</b></p>";
+            //listbox answer question
+            if ($scope.surveyInfoListBoxAnswerQuestion.data.Length != 0) {
+                renderSurveyQuestion += "<div style='' class='control-group'>";
+                renderSurveyQuestion += "<label for=\"textfield\" class=\"control-label\">";
+                renderSurveyQuestion += "<b>LAQ</b></label>";
+                renderSurveyQuestion += "<div class='controls'>";
 
+                $.each($scope.surveyInfoListBoxAnswerQuestion.data, function () {
 
-                renderSurveyQuestion += "<fieldset>";
+                    renderSurveyQuestion += "<fieldset>";
 
-                renderSurveyQuestion += "<label>";
-                renderSurveyQuestion += "<b>" + this.question + "</b>";
-                renderSurveyQuestion += "</label>";
+                    renderSurveyQuestion += "<label>";
+                    renderSurveyQuestion += "<b>" + this.question + "</b>";
+                    renderSurveyQuestion += "</label>";
 
-                //var listBoxQuestionsOptionList = this.Options.split(';');
-                renderSurveyQuestion += "<select name='" + this.id + "' class='form-control'>";
-                var id = this.id;
-                $.each(this.options, function () {
-                    renderSurveyQuestion += "<option value='" + id + "_" + this + "'>" + this + "</option>";
+                    //var listBoxQuestionsOptionList = this.Options.split(';');
+                    renderSurveyQuestion += "<select name='" + this.id + "' class='form-control'>";
+                    var id = this.id;
+                    $.each(this.options, function () {
+                        renderSurveyQuestion += "<option value='" + id + "_" + this + "'>" + this + "</option>";
+                    });
+                    renderSurveyQuestion += "</select>";
+                    renderSurveyQuestion += "</fieldset>";
+
                 });
-                renderSurveyQuestion += "</select>";
-                renderSurveyQuestion += "</fieldset>";
+                renderSurveyQuestion += "</div>";
+                renderSurveyQuestion += "</div>";
+            }
 
+            //textBox answer question
+            var textBoxRenderSurveyQuestion = "";
+            if ($scope.surveyInfoTextBoxAnswerQuestion.data.Length != 0) {
+                renderSurveyQuestion += "<div style='' class='control-group'>";
+                renderSurveyQuestion += "<label for=\"textfield\" class=\"control-label\">";
+                renderSurveyQuestion += "<b>TAQ</b></label>";
+                renderSurveyQuestion += "<div class='controls'>";
+                $.each($scope.surveyInfoTextBoxAnswerQuestion.data, function () {
+                    renderSurveyQuestion += "<fieldset>";
+                    renderSurveyQuestion += "<label>";
+                    renderSurveyQuestion += "<b>" + this.question; +"</b>";
+                    renderSurveyQuestion += "</label><br/>";
+
+                    renderSurveyQuestion += "<input type='textarea' name='" + this.id + "' placeholder='Enter Your Answer'/><br/>";
+
+                    renderSurveyQuestion += "</fieldset>";
+
+                });
                 renderSurveyQuestion += "</div>";
                 renderSurveyQuestion += "</div>";
-                renderSurveyQuestion += "</div>";
-            });
+            }
+
+            // adding button at last
+            renderSurveyQuestion += "<div style='' class='control-group'>";
+            renderSurveyQuestion += "<label for=\"textfield\" class=\"control-label\">";
+            renderSurveyQuestion += "<b>Submit</b></label>";
+            renderSurveyQuestion += "<div class='controls'>";
+
+            renderSurveyQuestion += "<fieldset>";
+            renderSurveyQuestion += "<label>";
+
+            renderSurveyQuestion += "</label><br/>";
+
+            renderSurveyQuestion += "<button  class=\"btn btn-success btn-sm\">submit</button>";
+
+            renderSurveyQuestion += "</fieldset>";
+
+            renderSurveyQuestion += "</div>";
+            renderSurveyQuestion += "</div>";
+
+            $('#userSurveyWebViewId').html(renderSurveyQuestion);
+            initializeSwiperFunction();
+
         }
-        //textBox answer question
-        var textBoxRenderSurveyQuestion = "";
-        if ($scope.surveyInfoTextBoxAnswerQuestion.data.Length != 0) {
-            $.each($scope.surveyInfoTextBoxAnswerQuestion.data, function () {
-                renderSurveyQuestion += "<div class='swiper-slide gray-slide box-body maxHeight800px'>";
-                renderSurveyQuestion += "<div class='box box-color box-bordered blue'>";
-                renderSurveyQuestion += "<div class='box-title'>";
-                renderSurveyQuestion += "<h3>";
-                renderSurveyQuestion += "<i class='icon-file'></i>";
-                renderSurveyQuestion += "TextBox Answer Question";
-                renderSurveyQuestion += "</h3>";
-                renderSurveyQuestion += "</div>";
-                renderSurveyQuestion += "<div class='box-content'>";
-                renderSurveyQuestion += "<p><b>";
-                renderSurveyQuestion += this.question;
-                renderSurveyQuestion += "</b></p>";
 
-                renderSurveyQuestion += "<input type='textarea' name='" + this.id + "' placeholder='Enter Your Answer'/><br/>";
-
-                renderSurveyQuestion += "</div>";
-                renderSurveyQuestion += "</div>";
-                renderSurveyQuestion += "</div>";
-            });
-        }
-
-        // adding button at last
-        renderSurveyQuestion += "<div class='swiper-slide gray-slide box-body maxHeight800px'>";
-        renderSurveyQuestion += "<div class='box box-color box-bordered blue'>";
-        renderSurveyQuestion += "<div class='box-title'>";
-        renderSurveyQuestion += "<h3>";
-        renderSurveyQuestion += "<i class='icon-file'></i>";
-        renderSurveyQuestion += "Submit Your Survey";
-        renderSurveyQuestion += "</h3>";
-        renderSurveyQuestion += "</div>";
-        renderSurveyQuestion += "<div class='box-content'>";
-        renderSurveyQuestion += "<button  class=\"btn btn-success btn-sm\">submit</button>";
-        renderSurveyQuestion += "</div>";
-        renderSurveyQuestion += "</div>";
-        renderSurveyQuestion += "</div>";
-
-        $('#swiperWrapperId').html(renderSurveyQuestion);
-        initializeSwiperFunction();
 
         $scope.newValue = function (value) {
             console.log(value);
@@ -226,10 +384,14 @@ define([appLocation.userPostLogin], function (app) {
         }
 
         function initializeSwiperFunction() {
-            var mySwiper = new Swiper('.swiper-container', {
-                pagination: '.pagination',
-                paginationClickable: true
-            });
+            if (mobileDevice) {
+                var mySwiper = new Swiper('.swiper-container', {
+                    pagination: '.pagination',
+                    paginationClickable: true
+                });
+                reinitSwiper(mySwiper);
+            }
+            
             $('.fancybox').fancybox();
 
 
@@ -315,8 +477,7 @@ define([appLocation.userPostLogin], function (app) {
                     $scope.userSurveyResult.surveyMultipleAnswerQuestion.push(checkBoxButtonAnswer);
                 }
             }
-
-            reinitSwiper(mySwiper);
+            
         }
     });
 
