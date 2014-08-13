@@ -260,7 +260,7 @@ define([appLocation.userPostLogin], function (app) {
 
                     var id = this.id;
                     $.each(this.options, function () {
-                        renderSurveyQuestion += "<div class='radio'>";
+                        renderSurveyQuestion += "<div class='radio' style='padding: 0px 0px 0px 20px;'>";
                         //renderSurveyQuestion += "<label>";
                         renderSurveyQuestion += "<input type='radio' class='userSurveyRadioButton' name='" + id + "' value='" + id + "_" + this + "'/> <span>" + this + "</span><br/>";
                         //renderSurveyQuestion += "</label>";
@@ -283,14 +283,14 @@ define([appLocation.userPostLogin], function (app) {
                 $.each($scope.surveyInfoMultipleAnswerQuestion.data, function () {
                     renderSurveyQuestion += "<fieldset>";
                     renderSurveyQuestion += "<label>";
-                    renderSurveyQuestion += "<b>" + this.question; +"</b>";
+                    renderSurveyQuestion += "<b>" + this.question +"</b>";
                     renderSurveyQuestion += "</label>";
                     var id = this.id;
                     $.each(this.options, function () {
-                        renderSurveyQuestion += "<div class='radio'>";
-                        renderSurveyQuestion += "<label>";
+                        renderSurveyQuestion += "<div class='checkbox' style='padding: 0px 0px 0px 20px;'>";
+                        
                         renderSurveyQuestion += "<input type='checkbox' class='userSurveyCheckBoxButton' name='" + id + "' value='" + id + "_" + this + "'/> " + this + "<br/>";
-                        renderSurveyQuestion += "</label>";
+                        
                         renderSurveyQuestion += "</div>";
                     });
                     renderSurveyQuestion += "</fieldset>";
@@ -391,7 +391,7 @@ define([appLocation.userPostLogin], function (app) {
                 });
                 reinitSwiper(mySwiper);
             }
-
+            
 //            $("input[type='checkbox'], input[type='radio']").iCheck({
 //                checkboxClass: 'icheckbox_minimal',
 //                radioClass: 'iradio_minimal'
@@ -406,7 +406,7 @@ define([appLocation.userPostLogin], function (app) {
                 //console.log(a + "---" + this.value);
                 var data = this.value.split('_');
                 $scope.userSurveyResult.surveySingleAnswerQuestion.push(commonUserSurveyRadioButtonFunction(data));
-                //console.log($scope.userSurveyResult.surveySingleAnswerQuestion);
+                console.log($scope.userSurveyResult.surveySingleAnswerQuestion);
             });
 
             $('.userSurveyRadioButton').on('ifChecked', function (event) {
@@ -414,7 +414,7 @@ define([appLocation.userPostLogin], function (app) {
                 //console.log(a + "---" + this.value);
                 var data = this.value.split('_');
                 $scope.userSurveyResult.surveySingleAnswerQuestion.push(commonUserSurveyRadioButtonFunction(data));
-                //console.log($scope.userSurveyResult.surveySingleAnswerQuestion);
+                console.log($scope.userSurveyResult.surveySingleAnswerQuestion);
             });
 
             function commonUserSurveyRadioButtonFunction(data) {
@@ -447,19 +447,19 @@ define([appLocation.userPostLogin], function (app) {
                 }
 
                 commonUserSurveyCheckBoxButtonFunction(data, checked);
-                //console.log($scope.userSurveyResult.surveyMultipleAnswerQuestion);
+                console.log($scope.userSurveyResult.surveyMultipleAnswerQuestion);
 
             });
 
             $('.userSurveyCheckBoxButton').on('ifChecked', function (event) {
                 var data = this.value.split('_');
                 commonUserSurveyCheckBoxButtonFunction(data, true);
-                //console.log($scope.userSurveyResult.surveyMultipleAnswerQuestion);
+                console.log($scope.userSurveyResult.surveyMultipleAnswerQuestion);
             });
             $('.userSurveyCheckBoxButton').on('ifUnchecked', function (event) {
                 var data = this.value.split('_');
                 commonUserSurveyCheckBoxButtonFunction(data, false);
-                //console.log($scope.userSurveyResult.surveyMultipleAnswerQuestion);
+                console.log($scope.userSurveyResult.surveyMultipleAnswerQuestion);
             });
 
             function commonUserSurveyCheckBoxButtonFunction(data, checked) {
@@ -524,3 +524,4 @@ function reinitSwiper(swiper) {
         swiper.reInit();
     }, 500);
 }
+
