@@ -352,6 +352,7 @@
     <Content Include="App\Pages\UserAfterLogin\EditPage\editPage.js" />
     <Content Include="App\Pages\UserAfterLogin\Index\Index.html" />
     <Content Include="App\Pages\UserAfterLogin\Index\index.js" />
+    <Content Include="App\Pages\UserAfterLogin\Survey\WebSurvey.html" />
     <Content Include="App\Pages\UserAfterLogin\Survey\Survey.js" />
     <Content Include="App\Pages\UserAfterLogin\Survey\MobileSurvey.html" />
     <Content Include="App\Pages\UserAfterLogin\TemplateSample\TemplateSample.js" />

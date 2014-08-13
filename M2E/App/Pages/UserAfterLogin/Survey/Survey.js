@@ -316,7 +316,7 @@ define([appLocation.userPostLogin], function (app) {
                     renderSurveyQuestion += "</label>";
 
                     //var listBoxQuestionsOptionList = this.Options.split(';');
-                    renderSurveyQuestion += "<select name='" + this.id + "' class='form-control'>";
+                    renderSurveyQuestion += "<select name='" + this.id + "' class='form-control userSurveyListBoxButton'>";
                     var id = this.id;
                     $.each(this.options, function () {
                         renderSurveyQuestion += "<option value='" + id + "_" + this + "'>" + this + "</option>";
@@ -406,7 +406,7 @@ define([appLocation.userPostLogin], function (app) {
                 //console.log(a + "---" + this.value);
                 var data = this.value.split('_');
                 $scope.userSurveyResult.surveySingleAnswerQuestion.push(commonUserSurveyRadioButtonFunction(data));
-                console.log($scope.userSurveyResult.surveySingleAnswerQuestion);
+                //console.log($scope.userSurveyResult.surveySingleAnswerQuestion);
             });
 
             $('.userSurveyRadioButton').on('ifChecked', function (event) {
@@ -414,7 +414,7 @@ define([appLocation.userPostLogin], function (app) {
                 //console.log(a + "---" + this.value);
                 var data = this.value.split('_');
                 $scope.userSurveyResult.surveySingleAnswerQuestion.push(commonUserSurveyRadioButtonFunction(data));
-                console.log($scope.userSurveyResult.surveySingleAnswerQuestion);
+                //console.log($scope.userSurveyResult.surveySingleAnswerQuestion);
             });
 
             function commonUserSurveyRadioButtonFunction(data) {
@@ -447,19 +447,19 @@ define([appLocation.userPostLogin], function (app) {
                 }
 
                 commonUserSurveyCheckBoxButtonFunction(data, checked);
-                console.log($scope.userSurveyResult.surveyMultipleAnswerQuestion);
+                //console.log($scope.userSurveyResult.surveyMultipleAnswerQuestion);
 
             });
 
             $('.userSurveyCheckBoxButton').on('ifChecked', function (event) {
                 var data = this.value.split('_');
                 commonUserSurveyCheckBoxButtonFunction(data, true);
-                console.log($scope.userSurveyResult.surveyMultipleAnswerQuestion);
+                //console.log($scope.userSurveyResult.surveyMultipleAnswerQuestion);
             });
             $('.userSurveyCheckBoxButton').on('ifUnchecked', function (event) {
                 var data = this.value.split('_');
                 commonUserSurveyCheckBoxButtonFunction(data, false);
-                console.log($scope.userSurveyResult.surveyMultipleAnswerQuestion);
+                //console.log($scope.userSurveyResult.surveyMultipleAnswerQuestion);
             });
 
             function commonUserSurveyCheckBoxButtonFunction(data, checked) {
@@ -482,7 +482,34 @@ define([appLocation.userPostLogin], function (app) {
                     $scope.userSurveyResult.surveyMultipleAnswerQuestion.push(checkBoxButtonAnswer);
                 }
             }
-            
+
+            //checkbox
+            $('.userSurveyListBoxButton').on('change', function () {
+                var a;
+                var data = this.value.split('_');
+
+                $scope.userSurveyResult.surveyListBoxAnswerQuestion.push(commonUserSurveyListBoxButtonFunction(data));
+                //commonUserSurveyCheckBoxButtonFunction(data, checked);
+                console.log($scope.userSurveyResult.surveyListBoxAnswerQuestion);
+
+            });
+
+            function commonUserSurveyListBoxButtonFunction(data) {
+                var radioButtonAnswer = { key: data[0], value: data[1] };
+
+                var i, flag = false;
+                for (i = 0; i < $scope.userSurveyResult.surveyListBoxAnswerQuestion.length; i++) {
+                    if ($scope.userSurveyResult.surveyListBoxAnswerQuestion[i].key == data[0]) {
+                        flag = true;
+                        break;
+                    }
+                }
+                if (flag)
+                    $scope.userSurveyResult.surveyListBoxAnswerQuestion.splice(i, 1);
+
+                return radioButtonAnswer;
+            }
+
         }
     });
 
