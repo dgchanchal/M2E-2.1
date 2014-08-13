@@ -74,9 +74,9 @@ appRequire = require
             fancybox: {//new
                 deps: ["jquery"]
             },
-            dragend: {//new
-                deps: ["jquery"]
-            },
+//            dragend: {//new
+//                deps: ["jquery"]
+//            },
             idangerous_swiper_2_1_min: {//new
                 deps: ["jquery"]
             },
@@ -139,7 +139,7 @@ appRequire = require
             domReady: "../../App/js/domReady",
             fileDropScript:"../../App/third-Party/html5-file-upload/assets/js/script",
             wysihtml5: "../../Template/AdminLTE-master/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min",
-            dragend: "../../App/js/dragend",//used..
+            //dragend: "../../App/js/dragend",//used..
             idangerous_swiper_2_1_min: "../../App/third-Party/Swiper-master/demos/js/idangerous.swiper-2.1.min",//used..
             //==============================================================================================================
             // Application Related JS
@@ -162,7 +162,7 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "jquery_blockUI", "restangular", "moment", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTEApp","beforeLoginAdminLTETree",
     "jquery_slimscroll", "iCheck", "angular_cookies", "configureBlockUI", "fancybox", "userAfterLoginApp", "SessionManagement",
     "userAfterLoginIndex", "userAfterLoginShowTemplate", "userAfterLoginCookieService", "userAfterLoginEditPage", "fancybox", "filedrop","wysihtml5",
-    "fileDropScript", "domReady", "userAfterLoginTemplateSample", "dragend", "idangerous_swiper_2_1_min","userAfterLoginShowTemplateDetail","userAfterLoginSurvey"
+    "fileDropScript", "domReady", "userAfterLoginTemplateSample", "idangerous_swiper_2_1_min","userAfterLoginShowTemplateDetail","userAfterLoginSurvey"
 ], function() {
     angular.bootstrap(document.getElementById("mainUser"), ["afterLoginUserApp"]);
 });
