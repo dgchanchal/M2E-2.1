@@ -178,24 +178,24 @@ define([appLocation.userPostLogin], function (app) {
         var textBoxRenderSurveyQuestion = "";
         if ($scope.surveyInfoTextBoxAnswerQuestion.data.Length != 0) {
             $.each($scope.surveyInfoTextBoxAnswerQuestion.data, function () {
-                //textBoxRenderSurveyQuestion += "<div class='swiper-slide gray-slide box-body maxHeight800px'>";
-                //textBoxRenderSurveyQuestion += "<div class='box box-color box-bordered blue'>";
-                textBoxRenderSurveyQuestion += "<div class='box-title'>";
-                textBoxRenderSurveyQuestion += "<h3>";
-                textBoxRenderSurveyQuestion += "<i class='icon-file'></i>";
-                textBoxRenderSurveyQuestion += "TextBox Answer Question";
-                textBoxRenderSurveyQuestion += "</h3>";
+                renderSurveyQuestion += "<div class='swiper-slide gray-slide box-body maxHeight800px'>";
+                renderSurveyQuestion += "<div class='box box-color box-bordered blue'>";
+                renderSurveyQuestion += "<div class='box-title'>";
+                renderSurveyQuestion += "<h3>";
+                renderSurveyQuestion += "<i class='icon-file'></i>";
+                renderSurveyQuestion += "TextBox Answer Question";
+                renderSurveyQuestion += "</h3>";
                 renderSurveyQuestion += "</div>";
-                textBoxRenderSurveyQuestion += "<div class='box-content'>";
-                textBoxRenderSurveyQuestion += "<p><b>";
-                textBoxRenderSurveyQuestion += this.question;
-                textBoxRenderSurveyQuestion += "</b></p>";
+                renderSurveyQuestion += "<div class='box-content'>";
+                renderSurveyQuestion += "<p><b>";
+                renderSurveyQuestion += this.question;
+                renderSurveyQuestion += "</b></p>";
 
-                textBoxRenderSurveyQuestion += "<input type='textarea' name='" + this.id + "' placeholder='Enter Your Answer'/><br/>";
+                renderSurveyQuestion += "<input type='textarea' name='" + this.id + "' placeholder='Enter Your Answer'/><br/>";
 
-                textBoxRenderSurveyQuestion += "</div>";
-                //textBoxRenderSurveyQuestion += "</div>";
-                //textBoxRenderSurveyQuestion += "</div>";
+                renderSurveyQuestion += "</div>";
+                renderSurveyQuestion += "</div>";
+                renderSurveyQuestion += "</div>";
             });
         }
 
