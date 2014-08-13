@@ -46,7 +46,7 @@ define([appLocation.userPostLogin], function (app) {
         }
 
         $scope.userShowTemplateDetailFinalAcceptance = function (refKey) {
-            location.href = "#/startSurvey/"+refKey;
+            location.href = "user/#/startSurvey/"+refKey;
         }
 
     });
