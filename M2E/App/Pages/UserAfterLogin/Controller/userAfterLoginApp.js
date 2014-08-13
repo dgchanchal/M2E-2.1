@@ -6,6 +6,7 @@ define([appLocation.userPostLogin], function (app) {
                        when("/edit", { templateUrl: "../../App/Pages/UserAfterLogin/EditPage/EditPage.html" }).
                        when("/showTemplateDetail/:refKey", { templateUrl: "../../App/Pages/UserAfterLogin/ShowTemplateDetail/ShowTemplateDetail.html" }).
                        when("/startSurvey/:refKey", { templateUrl: (mobileDevice) ? "../../App/Pages/UserAfterLogin/Survey/MobileSurvey.html" : "../../App/Pages/UserAfterLogin/Survey/WebSurvey.html" }).
+                       when("/mobileModeration", { templateUrl: "../../App/Pages/UserAfterLogin/Moderation/MobileModeration.html" }).
                        when("/showTemplate", { templateUrl: "../../App/Pages/UserAfterLogin/ShowTemplate/ShowTemplate.html" }).
                        when("/editTemplate/:username/:templateid", { templateUrl: "../../App/Pages/UserAfterLogin/EditTemplate/EditTemplate.html" }).
                        when("/templateSample/:type/:subType", { templateUrl: "../../App/Pages/UserAfterLogin/TemplateSample/TemplateSample.html" }).
@@ -77,7 +78,7 @@ define([appLocation.userPostLogin], function (app) {
            {
                value: "Moderation", dropDownMenuShow: true, dropDownSubMenuClass: "dropdown-submenu", dropDownMenuClass: "dropdown-menu", dropDownSubMenuArrow: "dropdown", dropDownMenuList: [
                  { value: "Moderating Ads", link: "#" },
-                 { value: "Moderating Photos", link: "#" },
+                 { value: "Moderating Photos", link: "#/mobileModeration" },
                  { value: "Moderating Music", link: "#" },
                  { value: "Moderating Video", link: "#" }
                ]

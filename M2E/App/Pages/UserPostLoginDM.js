@@ -153,6 +153,7 @@ appRequire = require
             userAfterLoginEditPage: "../../App/Pages/UserAfterLogin/EditPage/editPage",//used
             userAfterLoginTemplateSample: "../../App/Pages/UserAfterLogin/TemplateSample/TemplateSample",//used
             userAfterLoginSurvey: "../../App/Pages/UserAfterLogin/Survey/Survey",//used
+            userAfterLoginModeration: "../../App/Pages/UserAfterLogin/Survey/Survey",//used
             
         },
         urlArgs: ""
