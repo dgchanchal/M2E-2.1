@@ -30,7 +30,7 @@ define([appLocation.userPostLogin], function (app) {
                    { id: "SAQ-2", question: "What is your favorite passtime?", options: splitOptionsToList("Studying;Playing;Dancing;Coding"), answer: "-" },
                    { id: "SAQ-3", question: "Which among these is animal?", options: splitOptionsToList("<a title=\"Personalized Title\" data-fancybox-group=\"gallery\" href=\"http://i.imgur.com/wom619S.jpg\" class=\"fancybox\"><img alt=\"\" src=\"http://i.imgur.com/wom619Ss.jpg\" class=\"MaxUploadedSmallSized\"></a>;<a title=\"Personalized Title\" data-fancybox-group=\"gallery\" href=\"http://i.imgur.com/FhD2x5H.jpg\" class=\"fancybox\"><img alt=\"\" src=\"http://i.imgur.com/FhD2x5Hs.jpg\" class=\"MaxUploadedSmallSized\"></a>;<a title=\"Personalized Title\" data-fancybox-group=\"gallery\" href=\"http://i.imgur.com/TvI9dOg.jpg\" class=\"fancybox\"><img alt=\"\" src=\"http://i.imgur.com/TvI9dOgs.jpg\" class=\"MaxUploadedSmallSized\"></a>;<a title=\"Personalized Title\" data-fancybox-group=\"gallery\" href=\"http://i.imgur.com/6oXVy0a.jpg\" class=\"fancybox\"><img alt=\"\" src=\"http://i.imgur.com/6oXVy0as.jpg\" class=\"MaxUploadedSmallSized\"></a>"), answer: "-" },
                    { id: "SAQ-4", question: "is the following image obscene?</b></p><a title=\"Personalized Title\" data-fancybox-group=\"gallery\" href=\"http://i.imgur.com/z8oQdAh.png\" class=\"fancybox\"><img alt=\"\" src=\"http://i.imgur.com/z8oQdAhs.png\" class=\"MaxUploadedSmallSized\"></a>", options: splitOptionsToList("Yes;No"), answer: "-" },
-                   { id: "SAQ-4", question: "Can you Name this famous Personality?</b></p> <a title=\"Personalized Title\" data-fancybox-group=\"gallery\" href=\"http://upload.wikimedia.org/wikipedia/commons/d/d7/Bundesarchiv_Bild_183-61849-0001%2C_Indien%2C_Otto_Grotewohl_bei_Ministerpr%C3%A4sident_Nehru_cropped.jpg\" class=\"fancybox\"><img alt=\"\" src=\"http://upload.wikimedia.org/wikipedia/commons/d/d7/Bundesarchiv_Bild_183-61849-0001%2C_Indien%2C_Otto_Grotewohl_bei_Ministerpr%C3%A4sident_Nehru_cropped.jpg\" class=\"MaxUploadedSmallSized\"></a>", options: splitOptionsToList("Indra Gandi;Jawahar Lal Nehru;Amitabh Bacchan;Abdul Kalam"), answer: "-" }
+                   { id: "SAQ-5", question: "Can you Name this famous Personality?</b></p> <a title=\"Personalized Title\" data-fancybox-group=\"gallery\" href=\"http://upload.wikimedia.org/wikipedia/commons/d/d7/Bundesarchiv_Bild_183-61849-0001%2C_Indien%2C_Otto_Grotewohl_bei_Ministerpr%C3%A4sident_Nehru_cropped.jpg\" class=\"fancybox\"><img alt=\"\" src=\"http://upload.wikimedia.org/wikipedia/commons/d/d7/Bundesarchiv_Bild_183-61849-0001%2C_Indien%2C_Otto_Grotewohl_bei_Ministerpr%C3%A4sident_Nehru_cropped.jpg\" class=\"MaxUploadedSmallSized\"></a>", options: splitOptionsToList("Indra Gandi;Jawahar Lal Nehru;Amitabh Bacchan;Abdul Kalam"), answer: "-" }
 
             ]
         };
@@ -41,7 +41,8 @@ define([appLocation.userPostLogin], function (app) {
             data: [
             { id: "MAQ-1", question: "Which among these is perfect buy Phone in the Market?", options: splitOptionsToList("Iphone 5s;Samsung Galaxy S5;Moto X;Moto E"), answer: "-" },
             { id: "MAQ-2", question: "Which among follower cricket deserves Bharat Ratna Award?", options: splitOptionsToList("Sachin Tendulkar;Rahul Dravid;Kapil Dev;Narayana Kartiken;Dhayn Chnadra;Rahul Gandhi;Narendra Modi;Shahrukh Khan"), answer: "-" },
-            { id: "MAQ-3", question: "News Channel which are Transparent in india?", options: splitOptionsToList("Aaj Tak;NDTV;ZEE News;DD News"), answer: "-" },
+            { id: "MAQ-3", question: "Which among these is animal?", options: splitOptionsToList("<a title=\"Personalized Title\" data-fancybox-group=\"gallery\" href=\"http://i.imgur.com/wom619S.jpg\" class=\"fancybox\"><img alt=\"\" src=\"http://i.imgur.com/wom619Ss.jpg\" class=\"MaxUploadedSmallSized\"></a>;<a title=\"Personalized Title\" data-fancybox-group=\"gallery\" href=\"http://i.imgur.com/FhD2x5H.jpg\" class=\"fancybox\"><img alt=\"\" src=\"http://i.imgur.com/FhD2x5Hs.jpg\" class=\"MaxUploadedSmallSized\"></a>;<a title=\"Personalized Title\" data-fancybox-group=\"gallery\" href=\"http://i.imgur.com/TvI9dOg.jpg\" class=\"fancybox\"><img alt=\"\" src=\"http://i.imgur.com/TvI9dOgs.jpg\" class=\"MaxUploadedSmallSized\"></a>;<a title=\"Personalized Title\" data-fancybox-group=\"gallery\" href=\"http://i.imgur.com/6oXVy0a.jpg\" class=\"fancybox\"><img alt=\"\" src=\"http://i.imgur.com/6oXVy0as.jpg\" class=\"MaxUploadedSmallSized\"></a>"), answer: "-" },
+            { id: "MAQ-4", question: "News Channel which are Transparent in india?", options: splitOptionsToList("Aaj Tak;NDTV;ZEE News;DD News"), answer: "-" },
 
             ]
         };
@@ -61,7 +62,8 @@ define([appLocation.userPostLogin], function (app) {
             type: "",
             subType: "",
             data: [
-                { id: "TAQ-1", question: "Enter your City Pin Code?", options: splitOptionsToList("Iphone 5s;Samsung Galaxy S5;Moto X;Moto E"), answer: "-" }
+                { id: "TAQ-1", question: "Enter your City Pin Code?", options: splitOptionsToList("Iphone 5s;Samsung Galaxy S5;Moto X;Moto E"), answer: "-" },
+                { id: "TAQ-2", question: "What is your Favorite passtime?", options: splitOptionsToList("Iphone 5s;Samsung Galaxy S5;Moto X;Moto E"), answer: "-" }
 
             ]
         };
@@ -283,14 +285,14 @@ define([appLocation.userPostLogin], function (app) {
                 $.each($scope.surveyInfoMultipleAnswerQuestion.data, function () {
                     renderSurveyQuestion += "<fieldset>";
                     renderSurveyQuestion += "<label>";
-                    renderSurveyQuestion += "<b>" + this.question +"</b>";
+                    renderSurveyQuestion += "<b>" + this.question + "</b>";
                     renderSurveyQuestion += "</label>";
                     var id = this.id;
                     $.each(this.options, function () {
                         renderSurveyQuestion += "<div class='checkbox' style='padding: 0px 0px 0px 20px;'>";
-                        
+
                         renderSurveyQuestion += "<input type='checkbox' class='userSurveyCheckBoxButton' name='" + id + "' value='" + id + "_" + this + "'/> " + this + "<br/>";
-                        
+
                         renderSurveyQuestion += "</div>";
                     });
                     renderSurveyQuestion += "</fieldset>";
@@ -342,7 +344,7 @@ define([appLocation.userPostLogin], function (app) {
                     renderSurveyQuestion += "<b>" + this.question; +"</b>";
                     renderSurveyQuestion += "</label><br/>";
 
-                    renderSurveyQuestion += "<input type='textarea' name='" + this.id + "' placeholder='Enter Your Answer'/><br/>";
+                    renderSurveyQuestion += "<input type='text' class='userSurveyTextBoxButton' name='" + this.id + "' placeholder='Enter Your Answer'/><br/>";
 
                     renderSurveyQuestion += "</fieldset>";
 
@@ -391,12 +393,12 @@ define([appLocation.userPostLogin], function (app) {
                 });
                 reinitSwiper(mySwiper);
             }
-            
-//            $("input[type='checkbox'], input[type='radio']").iCheck({
-//                checkboxClass: 'icheckbox_minimal',
-//                radioClass: 'iradio_minimal'
-//            });
-            
+
+            //            $("input[type='checkbox'], input[type='radio']").iCheck({
+            //                checkboxClass: 'icheckbox_minimal',
+            //                radioClass: 'iradio_minimal'
+            //            });
+
             $('.fancybox').fancybox();
 
 
@@ -510,6 +512,28 @@ define([appLocation.userPostLogin], function (app) {
                 return radioButtonAnswer;
             }
 
+            $('.userSurveyTextBoxButton').bind('input propertychange', function () {
+                var data = this.name.split('_');
+                $scope.userSurveyResult.surveyTextBoxAnswerQuestion.push(commonUserSurveyTextBoxFunction(this.name, $(this).val()));
+                console.log($scope.userSurveyResult.surveyTextBoxAnswerQuestion);
+                //console.log(this.name + " --- " + $(this).val());
+            });
+
+            function commonUserSurveyTextBoxFunction(key,value) {
+                var textBoxAnswer = { key: key , value: value };
+
+                var i, flag = false;
+                for (i = 0; i < $scope.userSurveyResult.surveyTextBoxAnswerQuestion.length; i++) {
+                    if ($scope.userSurveyResult.surveyTextBoxAnswerQuestion[i].key == key) {
+                        flag = true;
+                        break;
+                    }
+                }
+                if (flag)
+                    $scope.userSurveyResult.surveyTextBoxAnswerQuestion.splice(i, 1);
+
+                return textBoxAnswer;
+            }
         }
     });
 
