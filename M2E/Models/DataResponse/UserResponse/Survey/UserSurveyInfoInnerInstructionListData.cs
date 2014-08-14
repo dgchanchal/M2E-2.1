@@ -7,6 +7,6 @@ namespace M2E.Models.DataResponse.UserResponse.Survey
 {
     public class UserSurveyInfoInnerInstructionListData
     {
-        string instruction { get; set; }
+        public string instruction { get; set; }
     }
 }

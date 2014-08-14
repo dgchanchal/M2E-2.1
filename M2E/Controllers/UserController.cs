@@ -41,5 +41,17 @@ namespace M2E.Controllers
             return Json(userTemplateList.GetTemplateInformationByRefKey(username, refKey));
 
         }
+
+        [HttpPost]
+        public JsonResult GetTemplateSurveyQuestionsByRefKey()
+        {
+            var username = "sumitchourasia91@gmail.com";
+            var refKey = Request.QueryString["refKey"].ToString(CultureInfo.InvariantCulture);
+            var headers = new HeaderManager(Request);
+            var userTemplateList = new UserProductSurveyTemplateService();
+            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+            return Json(userTemplateList.GetTemplateSurveyQuestionsByRefKey(username, refKey));
+
+        }
     }
 }

@@ -7,9 +7,9 @@ namespace M2E.Models.DataResponse.UserResponse.Survey
 {
     public class UserSurveyInfoInnerListData
     {
-        string id { get; set; }
-        string question { get; set; }
-        string options { get; set; }
-        string answer { get; set; }
+        public string id { get; set; }
+        public string question { get; set; }
+        public string options { get; set; }
+        public string answer { get; set; }
     }
 }

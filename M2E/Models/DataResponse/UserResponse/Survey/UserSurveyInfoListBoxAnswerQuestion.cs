@@ -7,8 +7,8 @@ namespace M2E.Models.DataResponse.UserResponse.Survey
 {
     public class UserSurveyInfoListBoxAnswerQuestion
     {
-        string type { get; set; }
-        string subType { get; set; }
-        List<UserSurveyInfoInnerListData> data { get; set; }
+        public string type { get; set; }
+        public string subType { get; set; }
+        public List<UserSurveyInfoInnerListData> data { get; set; }
     }
 }
