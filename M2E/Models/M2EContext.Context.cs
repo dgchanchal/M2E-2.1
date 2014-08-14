@@ -44,5 +44,8 @@ namespace M2E.Models
         public DbSet<UserSkill> UserSkills { get; set; }
         public DbSet<ValidateUserKey> ValidateUserKeys { get; set; }
         public DbSet<CreateTemplateImgurImagesList> CreateTemplateImgurImagesLists { get; set; }
+        public DbSet<UserSurveyResultToBeReviewed> UserSurveyResultToBeRevieweds1 { get; set; }
+        public DbSet<UserSurveyResult> UserSurveyResults { get; set; }
+        public DbSet<UserJobMapping> UserJobMappings { get; set; }
     }
 }

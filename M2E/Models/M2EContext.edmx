@@ -25,6 +25,9 @@
     <EntitySet Name="UserSkills" EntityType="M2EModel.Store.UserSkills" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ValidateUserKeys" EntityType="M2EModel.Store.ValidateUserKeys" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CreateTemplateImgurImagesLists" EntityType="M2EModel.Store.CreateTemplateImgurImagesLists" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserSurveyResultToBeRevieweds1" EntityType="M2EModel.Store.UserSurveyResultToBeRevieweds1" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserSurveyResults" EntityType="M2EModel.Store.UserSurveyResults" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserJobMappings" EntityType="M2EModel.Store.UserJobMappings" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
   <EntityType Name="ClientDetails">
     <Key>
@@ -259,6 +262,40 @@
     <Property Name="imgurDeleteHash" Type="nvarchar(max)" Nullable="false" />
     <Property Name="imgurLink" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="UserSurveyResultToBeRevieweds1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="refKey" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="answer" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="questionId" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSurveyResults">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="refKey" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="answer" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="questionId" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserJobMappings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="refKey" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="startTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="endTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="expectedDeliveryTime" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -283,6 +320,9 @@
           <EntitySet Name="UserSkills" EntityType="M2EModel.UserSkill" />
           <EntitySet Name="ValidateUserKeys" EntityType="M2EModel.ValidateUserKey" />
           <EntitySet Name="CreateTemplateImgurImagesLists" EntityType="M2EModel.CreateTemplateImgurImagesList" />
+          <EntitySet Name="UserSurveyResultToBeRevieweds1" EntityType="M2EModel.UserSurveyResultToBeReviewed" />
+          <EntitySet Name="UserSurveyResults" EntityType="M2EModel.UserSurveyResult" />
+          <EntitySet Name="UserJobMappings" EntityType="M2EModel.UserJobMapping" />
         </EntityContainer>
         <EntityType Name="ClientDetail">
           <Key>
@@ -516,6 +556,40 @@
           <Property Type="String" Name="imgurId" Nullable="false" />
           <Property Type="String" Name="imgurDeleteHash" Nullable="false" />
           <Property Type="String" Name="imgurLink" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSurveyResultToBeReviewed">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="refKey" Nullable="false" />
+          <Property Type="String" Name="type" Nullable="false" />
+          <Property Type="String" Name="answer" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="false" />
+          <Property Type="String" Name="questionId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSurveyResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="refKey" Nullable="false" />
+          <Property Type="String" Name="type" Nullable="false" />
+          <Property Type="String" Name="answer" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="false" />
+          <Property Type="String" Name="questionId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserJobMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="refKey" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="false" />
+          <Property Type="String" Name="startTime" Nullable="false" />
+          <Property Type="String" Name="status" Nullable="false" />
+          <Property Type="String" Name="endTime" Nullable="false" />
+          <Property Type="String" Name="expectedDeliveryTime" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -775,6 +849,43 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="UserSurveyResultToBeRevieweds1">
+      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserSurveyResultToBeReviewed)">
+        <MappingFragment StoreEntitySet="UserSurveyResultToBeRevieweds1">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="refKey" ColumnName="refKey" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="answer" ColumnName="answer" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="questionId" ColumnName="questionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSurveyResults">
+      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserSurveyResult)">
+        <MappingFragment StoreEntitySet="UserSurveyResults">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="refKey" ColumnName="refKey" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="answer" ColumnName="answer" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="questionId" ColumnName="questionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserJobMappings">
+      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserJobMapping)">
+        <MappingFragment StoreEntitySet="UserJobMappings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="refKey" ColumnName="refKey" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="startTime" ColumnName="startTime" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="endTime" ColumnName="endTime" />
+          <ScalarProperty Name="expectedDeliveryTime" ColumnName="expectedDeliveryTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -804,7 +915,7 @@
         <EntityTypeShape EntityType="M2EModel.CreateTemplateSingleQuestionsList" Width="1.5" PointX="4.75" PointY="4.75" Height="3.1340950520833317" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.CreateTemplateTextBoxQuestionsList" Width="1.5" PointX="6.75" PointY="0.75" Height="3.1340950520833317" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.ForgetPassword" Width="1.5" PointX="6.75" PointY="4.75" Height="1.5956835937499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.JobData" Width="1.5" PointX="6.75" PointY="7.75" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="M2EModel.JobData" Width="1.5" PointX="6.875" PointY="9.375" Height="2.5571907552083317" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.LinkedInAuthApiData" Width="1.5" PointX="8.75" PointY="0.75" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.RecommendedBy" Width="1.5" PointX="0.75" PointY="8.75" Height="1.5956835937500031" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.ThirdPartyLogin" Width="1.5" PointX="2.75" PointY="8.75" Height="2.1725878906250031" IsExpanded="true" />
@@ -815,6 +926,9 @@
         <EntityTypeShape EntityType="M2EModel.UserSkill" Width="1.5" PointX="10.75" PointY="5.75" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.ValidateUserKey" Width="1.5" PointX="10.75" PointY="8.75" Height="1.5956835937500031" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.CreateTemplateImgurImagesList" Width="1.5" PointX="0.875" PointY="2.5" Height="3.1340950520833326" />
+        <EntityTypeShape EntityType="M2EModel.UserSurveyResultToBeReviewed" Width="1.5" PointX="2.875" PointY="4.125" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="M2EModel.UserSurveyResult" Width="1.5" PointX="2.875" PointY="6.375" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="M2EModel.UserJobMapping" Width="1.5" PointX="6.75" PointY="6.5" Height="2.3648893229166656" />
       </Diagram>
     </Diagrams>
   </Designer>

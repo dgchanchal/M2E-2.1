@@ -8,6 +8,8 @@ using M2E.CommonMethods;
 using M2E.Models;
 using M2E.Models.DataResponse.UserResponse;
 using M2E.Models.DataResponse.UserResponse.Survey;
+using M2E.Models.DataWrapper.UserSurvey;
+using System.Data.Entity.Validation;
 
 namespace M2E.Service.UserService.Survey
 {
@@ -123,7 +125,7 @@ namespace M2E.Service.UserService.Survey
                 foreach (var surveySingleAnswerQuestion in surveyTemplateSingleQuestionsList)
                 {
                     var UserSurveyInfoInnerListData = new UserSurveyInfoInnerListData();
-                    UserSurveyInfoInnerListData.id = surveySingleAnswerQuestion.Id.ToString();
+                    UserSurveyInfoInnerListData.id = "SAQ-"+surveySingleAnswerQuestion.Id.ToString();
                     UserSurveyInfoInnerListData.question = surveySingleAnswerQuestion.Question;
                     UserSurveyInfoInnerListData.options = surveySingleAnswerQuestion.Options;
                     UserSurveyInfoSingleAnswerQueston.data.Add(UserSurveyInfoInnerListData);
@@ -134,7 +136,7 @@ namespace M2E.Service.UserService.Survey
                 foreach (var surveyMultipleAnswerQuestion in surveyTemplateMultipleQuestionsList)
                 {
                     var UserSurveyInfoInnerListData = new UserSurveyInfoInnerListData();
-                    UserSurveyInfoInnerListData.id = surveyMultipleAnswerQuestion.Id.ToString();
+                    UserSurveyInfoInnerListData.id = "MAQ-" + surveyMultipleAnswerQuestion.Id.ToString();
                     UserSurveyInfoInnerListData.question = surveyMultipleAnswerQuestion.Question;
                     UserSurveyInfoInnerListData.options = surveyMultipleAnswerQuestion.Options;
                     UserSurveyInfoMultipleAnswerQuestion.data.Add(UserSurveyInfoInnerListData);
@@ -145,7 +147,7 @@ namespace M2E.Service.UserService.Survey
                 foreach (var surveyListBoxAnswerQuestion in surveyTemplateListBoxQuestionsList)
                 {
                     var UserSurveyInfoInnerListData = new UserSurveyInfoInnerListData();
-                    UserSurveyInfoInnerListData.id = surveyListBoxAnswerQuestion.Id.ToString();
+                    UserSurveyInfoInnerListData.id = "LAQ-" + surveyListBoxAnswerQuestion.Id.ToString();
                     UserSurveyInfoInnerListData.question = surveyListBoxAnswerQuestion.Question;
                     UserSurveyInfoInnerListData.options = surveyListBoxAnswerQuestion.Options;
                     UserSurveyInfoListBoxAnswerQuestion.data.Add(UserSurveyInfoInnerListData);
@@ -156,7 +158,7 @@ namespace M2E.Service.UserService.Survey
                 foreach (var surveyTextBoxAnswerQuestion in surveyTemplateTextBoxQuestionsList)
                 {
                     var UserSurveyInfoInnerListData = new UserSurveyInfoInnerListData();
-                    UserSurveyInfoInnerListData.id = surveyTextBoxAnswerQuestion.Id.ToString();
+                    UserSurveyInfoInnerListData.id = "TAQ-" + surveyTextBoxAnswerQuestion.Id.ToString();
                     UserSurveyInfoInnerListData.question = surveyTextBoxAnswerQuestion.Question;
                     UserSurveyInfoInnerListData.options = surveyTextBoxAnswerQuestion.Options;
                     UserSurveyInfoTextBoxAnswerQuestion.data.Add(UserSurveyInfoInnerListData);
@@ -184,6 +186,84 @@ namespace M2E.Service.UserService.Survey
                 return response;
             }
 
+        }
+
+        public ResponseModel<string> SubmitTemplateSurveyResultByRefKey(UserSurveyResultRequest EntireSurveyResult, string refKey,string username)
+        {
+            var response = new ResponseModel<string>();
+
+            foreach (var userSurveyResult in EntireSurveyResult.surveySingleAnswerQuestion)
+            {
+                var surveyResponse = new UserSurveyResultToBeReviewed();
+                surveyResponse.questionId = userSurveyResult.key.Split('-')[1];
+                surveyResponse.type = userSurveyResult.key.Split('-')[0];
+                surveyResponse.answer = userSurveyResult.value;
+                surveyResponse.refKey = refKey;
+                surveyResponse.username = username;
+                _db.UserSurveyResultToBeRevieweds1.Add(surveyResponse);
+            }
+
+            foreach (var userSurveyResult in EntireSurveyResult.surveyMultipleAnswerQuestion)
+            {
+                string[] optionValues = userSurveyResult.value.Split(';');
+                for (int i = 0; i < optionValues.Length - 1; i++)
+                {
+                    var surveyResponse = new UserSurveyResultToBeReviewed();
+                    surveyResponse.questionId = userSurveyResult.key.Split('-')[1];
+                    surveyResponse.type = userSurveyResult.key.Split('-')[0];
+                    surveyResponse.answer = optionValues[i];
+                    surveyResponse.refKey = refKey;
+                    surveyResponse.username = username;
+                    _db.UserSurveyResultToBeRevieweds1.Add(surveyResponse);
+                }
+                
+            }
+
+            foreach (var userSurveyResult in EntireSurveyResult.surveyListBoxAnswerQuestion)
+            {
+                var surveyResponse = new UserSurveyResultToBeReviewed();
+                surveyResponse.questionId = userSurveyResult.key.Split('-')[1];
+                surveyResponse.type = userSurveyResult.key.Split('-')[0];
+                surveyResponse.answer = userSurveyResult.value;
+                surveyResponse.refKey = refKey;
+                surveyResponse.username = username;
+                _db.UserSurveyResultToBeRevieweds1.Add(surveyResponse);
+            }
+
+            foreach (var userSurveyResult in EntireSurveyResult.surveyTextBoxAnswerQuestion)
+            {
+                var surveyResponse = new UserSurveyResultToBeReviewed();
+                surveyResponse.questionId = userSurveyResult.key.Split('-')[1];
+                surveyResponse.type = userSurveyResult.key.Split('-')[0];
+                surveyResponse.answer = userSurveyResult.value;
+                surveyResponse.refKey = refKey;
+                surveyResponse.username = username;
+                _db.UserSurveyResultToBeRevieweds1.Add(surveyResponse);
+            }
+            try
+            {
+                _db.SaveChanges();                
+                //var signalRHub = new SignalRHub();
+                //string totalProjects = _db.CreateTemplateQuestionInfoes.Count().ToString(CultureInfo.InvariantCulture);
+                //string successRate = "";
+                //string totalUsers = "";
+                //string projectCategories = "";
+                //var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRHub>();
+                //hubContext.Clients.All.updateBeforeLoginUserProjectDetails(totalProjects, successRate, totalUsers, projectCategories);
+
+                response.Status = 200;
+                response.Message = "success-";
+                response.Payload = refKey;
+            }
+            catch (DbEntityValidationException e)
+            {
+                DbContextException.LogDbContextException(e);
+                response.Status = 500;
+                response.Message = "Failed";
+                response.Payload = "Exception Occured";
+            }
+
+            return response;
         }
     }
 }

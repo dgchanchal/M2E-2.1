@@ -216,6 +216,8 @@
     <Compile Include="Models\DataWrapper\RegisterationRequest.cs" />
     <Compile Include="Models\DataWrapper\ResetPasswordRequest.cs" />
     <Compile Include="Models\DataWrapper\TemplateInfoModel.cs" />
+    <Compile Include="Models\DataWrapper\UserSurvey\UserSurveyAnswerKeyValuePairRequest.cs" />
+    <Compile Include="Models\DataWrapper\UserSurvey\UserSurveyResultRequest.cs" />
     <Compile Include="Models\DataWrapper\ValidateAccountRequest.cs" />
     <Compile Include="Models\ForgetPassword.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
@@ -254,6 +256,9 @@
     <Compile Include="Models\UserDetail.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserJobMapping.cs">
+      <DependentUpon>M2EContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserPageSetting.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
@@ -261,6 +266,12 @@
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserSkill.cs">
+      <DependentUpon>M2EContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserSurveyResult.cs">
+      <DependentUpon>M2EContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserSurveyResultToBeReviewed.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ValidateUserKey.cs">

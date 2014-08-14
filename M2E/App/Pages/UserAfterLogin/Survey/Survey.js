@@ -147,7 +147,7 @@ define([appLocation.userPostLogin], function (app) {
 
                         var singleQuestionsOptionList = this.options.split(';');
                         for (var j = 0; j < singleQuestionsOptionList.length; j++) {
-                            renderSurveyQuestion += "<input type='radio' class='userSurveyRadioButton' name='" + id + "' value='" + id + "_" + j + "'/> " + singleQuestionsOptionList[j] + "<br/>";                            
+                            renderSurveyQuestion += "<input type='radio' class='userSurveyRadioButton' name='" + id + "' value='" + id + "_" + j + "'/> " + singleQuestionsOptionList[j] + "<br/>";
                         }
                         renderSurveyQuestion += "</div>";
                         renderSurveyQuestion += "</div>";
@@ -175,7 +175,7 @@ define([appLocation.userPostLogin], function (app) {
                         for (var j = 0; j < multipleQuestionsOptionList.length; j++) {
                             renderSurveyQuestion += "<input type='checkbox' class='userSurveyCheckBoxButton' name='" + id + "' value='" + id + "_" + j + "'/> " + multipleQuestionsOptionList[j] + "<br/>";
 
-                        };                       
+                        };
                         renderSurveyQuestion += "</div>";
                         renderSurveyQuestion += "</div>";
                         renderSurveyQuestion += "</div>";
@@ -332,7 +332,7 @@ define([appLocation.userPostLogin], function (app) {
                         renderSurveyQuestion += "<b>" + this.question + "</b>";
                         renderSurveyQuestion += "</label>";
                         var id = this.id;
-                        var multipleQuestionsOptionList = this.options.replace("\"","\\\"").split(';');
+                        var multipleQuestionsOptionList = this.options.replace("\"", "\\\"").split(';');
                         for (var j = 0; j < multipleQuestionsOptionList.length; j++) {
                             renderSurveyQuestion += "<div class='checkbox' style='padding: 0px 0px 0px 20px;'>";
 
@@ -411,7 +411,7 @@ define([appLocation.userPostLogin], function (app) {
 
                 renderSurveyQuestion += "</label><br/>";
 
-                renderSurveyQuestion += "<button  class=\"btn btn-success btn-sm\">submit</button>";
+                renderSurveyQuestion += "<button  class=\"btn btn-success btn-sm\" id='userSurveySubmitButtonId'>submit</button>";
 
                 renderSurveyQuestion += "</fieldset>";
 
@@ -582,6 +582,35 @@ define([appLocation.userPostLogin], function (app) {
 
                 return textBoxAnswer;
             }
+
+            //submit button
+            $('#userSurveySubmitButtonId').on('click', function () {
+                
+                var url = ServerContextPah + '/User/SubmitTemplateSurveyResultByRefKey?refKey=' + $routeParams.refKey;
+                var userSurveyResultData = $scope.userSurveyResult;
+                var headers = {
+                    'Content-Type': 'application/json',
+                    'UTMZT': CookieUtil.getUTMZT(),
+                    'UTMZK': CookieUtil.getUTMZK(),
+                    'UTMZV': CookieUtil.getUTMZV()
+                };
+                startBlockUI('wait..', 3);
+                $http({
+                    url: url,
+                    method: "POST",
+                    data: userSurveyResultData,
+                    headers: headers
+                }).success(function (data, status, headers, config) {
+                    //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
+                    stopBlockUI();
+                    if (data.Status == "200") {
+                        
+                    }
+
+                }).error(function (data, status, headers, config) {
+
+                });
+            });
         }
     });
 

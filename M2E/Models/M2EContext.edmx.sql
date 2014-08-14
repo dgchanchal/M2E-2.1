@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 08/04/2014 17:13:40
+-- Date Created: 08/14/2014 15:25:13
 -- Generated from EDMX file: F:\temp2\branches\M2E-2.0\M2E\Models\M2EContext.edmx
 -- --------------------------------------------------
 
@@ -78,6 +78,15 @@ IF OBJECT_ID(N'[dbo].[ValidateUserKeys]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[CreateTemplateImgurImagesLists]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CreateTemplateImgurImagesLists];
+GO
+IF OBJECT_ID(N'[dbo].[UserSurveyResultToBeRevieweds1]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserSurveyResultToBeRevieweds1];
+GO
+IF OBJECT_ID(N'[dbo].[UserSurveyResults]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserSurveyResults];
+GO
+IF OBJECT_ID(N'[dbo].[UserJobMappings]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserJobMappings];
 GO
 
 -- --------------------------------------------------
@@ -317,6 +326,40 @@ CREATE TABLE [dbo].[CreateTemplateImgurImagesLists] (
 );
 GO
 
+-- Creating table 'UserSurveyResultToBeRevieweds1'
+CREATE TABLE [dbo].[UserSurveyResultToBeRevieweds1] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [refKey] nvarchar(max)  NOT NULL,
+    [type] nvarchar(max)  NOT NULL,
+    [answer] nvarchar(max)  NOT NULL,
+    [username] nvarchar(max)  NOT NULL,
+    [questionId] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'UserSurveyResults'
+CREATE TABLE [dbo].[UserSurveyResults] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [refKey] nvarchar(max)  NOT NULL,
+    [type] nvarchar(max)  NOT NULL,
+    [answer] nvarchar(max)  NOT NULL,
+    [username] nvarchar(max)  NOT NULL,
+    [questionId] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'UserJobMappings'
+CREATE TABLE [dbo].[UserJobMappings] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [refKey] nvarchar(max)  NOT NULL,
+    [username] nvarchar(max)  NOT NULL,
+    [startTime] nvarchar(max)  NOT NULL,
+    [status] nvarchar(max)  NOT NULL,
+    [endTime] nvarchar(max)  NOT NULL,
+    [expectedDeliveryTime] nvarchar(max)  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -432,6 +475,24 @@ GO
 -- Creating primary key on [Id] in table 'CreateTemplateImgurImagesLists'
 ALTER TABLE [dbo].[CreateTemplateImgurImagesLists]
 ADD CONSTRAINT [PK_CreateTemplateImgurImagesLists]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'UserSurveyResultToBeRevieweds1'
+ALTER TABLE [dbo].[UserSurveyResultToBeRevieweds1]
+ADD CONSTRAINT [PK_UserSurveyResultToBeRevieweds1]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'UserSurveyResults'
+ALTER TABLE [dbo].[UserSurveyResults]
+ADD CONSTRAINT [PK_UserSurveyResults]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'UserJobMappings'
+ALTER TABLE [dbo].[UserJobMappings]
+ADD CONSTRAINT [PK_UserJobMappings]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
