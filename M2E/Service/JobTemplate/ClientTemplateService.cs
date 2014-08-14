@@ -27,7 +27,7 @@ namespace M2E.Service.JobTemplate
         public ResponseModel<List<ClientTemplateResponse>> GetAllTemplateInformation(string username)
         {            
             var response = new ResponseModel<List<ClientTemplateResponse>>();
-            var templateData = _db.CreateTemplateQuestionInfoes.OrderByDescending(x => x.creationTime).ToList();
+            var templateData = _db.CreateTemplateQuestionInfoes.OrderByDescending(x => x.creationTime).Where(x=>x.username == username).ToList();
             response.Status = 200;
             response.Message = "success";
             response.Payload = new List<ClientTemplateResponse>();
@@ -35,6 +35,8 @@ namespace M2E.Service.JobTemplate
             {
                 foreach (var job in templateData)
                 {
+                    long clientThread = _db.UserJobMappings.Where(x => x.refKey == job.referenceId && x.status == "done").Count();
+                    long totalThread = 1000;// hard coded.
                     var clientTemplate = new ClientTemplateResponse
                     {
                         title = job.title,
@@ -42,7 +44,8 @@ namespace M2E.Service.JobTemplate
                         showTime = " 4 hours",
                         editId = job.Id.ToString(CultureInfo.InvariantCulture),
                         showEllipse = true,
-                        timeShowType = "success"
+                        timeShowType = "success",
+                        progressPercent = Convert.ToString(clientThread)
                     };
                     response.Payload.Add(clientTemplate);
                 }

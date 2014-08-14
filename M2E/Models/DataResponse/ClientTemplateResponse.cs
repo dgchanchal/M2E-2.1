@@ -13,5 +13,6 @@ namespace M2E.Models.DataResponse
         public string showTime { get; set; }
         public string editId { get; set; }
         public string creationDate { get; set; }
+        public string progressPercent { get; set; }
     }
 }
