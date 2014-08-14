@@ -66,5 +66,29 @@ namespace M2E.Controllers
             return Json(userTemplateList.SubmitTemplateSurveyResultByRefKey(surveyResult, refKey, username));
 
         }
+
+        [HttpPost]
+        public JsonResult AllocateThreadToUserByRefKey()
+        {
+            var username = "sumitchourasia91@gmail.com";
+            var refKey = Request.QueryString["refKey"].ToString(CultureInfo.InvariantCulture);
+            var headers = new HeaderManager(Request);
+            var userTemplateList = new UserProductSurveyTemplateService();
+            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+            return Json(userTemplateList.AllocateThreadToUserByRefKey(refKey, username));
+
+        }
+
+        [HttpPost]
+        public JsonResult GetUserActiveThreads()
+        {
+            var username = "sumitchourasia91@gmail.com";
+            var status = Request.QueryString["status"].ToString(CultureInfo.InvariantCulture);
+            var headers = new HeaderManager(Request);
+            var userTemplateList = new UserProductSurveyTemplateService();
+            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+            return Json(userTemplateList.GetUserActiveThreads(username, status));
+
+        }
     }
 }

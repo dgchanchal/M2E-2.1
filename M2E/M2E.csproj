@@ -203,6 +203,7 @@
     <Compile Include="Models\DataResponse\UserResponse\Survey\UserSurveyInfoSingleAnswerQueston.cs" />
     <Compile Include="Models\DataResponse\UserResponse\Survey\UserSurveyInfoTextBoxAnswerQuestion.cs" />
     <Compile Include="Models\DataResponse\UserResponse\Survey\UserSurveyResponse.cs" />
+    <Compile Include="Models\DataResponse\UserResponse\UserActiveThreadsResponse.cs" />
     <Compile Include="Models\DataResponse\UserResponse\UserProductSurveyTemplateModel.cs" />
     <Compile Include="Models\DataWrapper\CreateTemplateRequest.cs" />
     <Compile Include="Models\DataWrapper\CreateTemplate\CreateTemplateeditableInstructionsListModel.cs" />
@@ -359,6 +360,8 @@
     <Content Include="App\Pages\UserAfterLogin\Controller\userAfterLoginApp.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\CookieServiceUserView.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\SessionManagement.js" />
+    <Content Include="App\Pages\UserAfterLogin\UserActiveThreads\UserActiveThreads.html" />
+    <Content Include="App\Pages\UserAfterLogin\UserActiveThreads\UserActiveThreads.js" />
     <Content Include="App\Pages\UserAfterLogin\Moderation\MobileModeration.html" />
     <Content Include="App\Pages\UserAfterLogin\Moderation\Moderation.js" />
     <Content Include="App\Pages\UserAfterLogin\Moderation\WebModeration.html" />

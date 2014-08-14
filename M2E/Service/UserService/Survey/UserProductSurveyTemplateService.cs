@@ -42,6 +42,17 @@ namespace M2E.Service.UserService.Survey
                         totalThreads = "5000", // currently hard coded.
                         remainingThreads = "500"// currently hard coded.                       
                     };
+                    var AlreadyAppliedJobs = _db.UserJobMappings.SingleOrDefault(x => x.username == username && x.refKey == job.referenceId);
+                    if (AlreadyAppliedJobs != null)
+                    {
+                        userTemplate.userStatus = AlreadyAppliedJobs.status;
+                        userTemplate.userDeadline = AlreadyAppliedJobs.expectedDeliveryTime;
+                    }
+                    else
+                    {
+                        userTemplate.userStatus = "new";
+                        userTemplate.userDeadline = "NA";
+                    }
                     response.Payload.Add(userTemplate);
                 }
 
@@ -240,6 +251,9 @@ namespace M2E.Service.UserService.Survey
                 surveyResponse.username = username;
                 _db.UserSurveyResultToBeRevieweds1.Add(surveyResponse);
             }
+            var surveyThreadUserJobMapping = _db.UserJobMappings.SingleOrDefault(x => x.username == username && x.refKey != refKey);
+            surveyThreadUserJobMapping.status = "done";
+            surveyThreadUserJobMapping.endTime = DateTime.Now.ToString();
             try
             {
                 _db.SaveChanges();                
@@ -262,6 +276,92 @@ namespace M2E.Service.UserService.Survey
                 response.Message = "Failed";
                 response.Payload = "Exception Occured";
             }
+
+            return response;
+        }
+
+        public ResponseModel<string> AllocateThreadToUserByRefKey(string refKey, string username)
+        {
+            var response = new ResponseModel<string>();
+
+            var ifAlreadyAllocated = _db.UserJobMappings.SingleOrDefault(x => x.refKey == refKey && x.username == username);
+            if (ifAlreadyAllocated != null)
+            {
+                response.Status = 403;
+                response.Message = "already applied";
+                return response;
+            }
+            int expectedDeliveryTimeInMinutes = 15;
+            var UserJobMapping = new UserJobMapping();
+            UserJobMapping.refKey = refKey;
+            UserJobMapping.username = username;
+            UserJobMapping.startTime = DateTime.Now.ToString();
+            UserJobMapping.expectedDeliveryTime = DateTime.Now.AddMinutes(expectedDeliveryTimeInMinutes).ToString();
+            UserJobMapping.endTime = "NA";
+            UserJobMapping.status = "assigned";
+
+            _db.UserJobMappings.Add(UserJobMapping);
+            try
+            {
+                _db.SaveChanges();
+                //var signalRHub = new SignalRHub();
+                //string totalProjects = _db.CreateTemplateQuestionInfoes.Count().ToString(CultureInfo.InvariantCulture);
+                //string successRate = "";
+                //string totalUsers = "";
+                //string projectCategories = "";
+                //var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRHub>();
+                //hubContext.Clients.All.updateBeforeLoginUserProjectDetails(totalProjects, successRate, totalUsers, projectCategories);
+
+                response.Status = 200;
+                response.Message = "success-";
+                response.Payload = refKey;
+            }
+            catch (DbEntityValidationException e)
+            {
+                DbContextException.LogDbContextException(e);
+                response.Status = 500;
+                response.Message = "Failed";
+                response.Payload = "Exception Occured";
+            }
+
+            return response;
+        }
+
+        public ResponseModel<List<UserActiveThreadsResponse>> GetUserActiveThreads(string username, string status)
+        {
+            var response = new ResponseModel<List<UserActiveThreadsResponse>>();
+            response.Payload = new List<UserActiveThreadsResponse>();
+            List<UserJobMapping> UserThreads=new List<UserJobMapping>();;
+            string statusDone = "done";
+            if(status == "active")
+                UserThreads = _db.UserJobMappings.OrderBy(x => x.Id).Where(x => x.username == username && x.status != statusDone).ToList();
+            else
+                UserThreads = _db.UserJobMappings.OrderBy(x => x.Id).Where(x => x.username == username && x.status == statusDone).ToList();
+            if (UserThreads == null)
+            {
+                response.Status = 404;
+                response.Message = "No Threads Available for you.";
+                return response;
+            }
+            
+            foreach (var thread in UserThreads)
+            {                
+                var ThreadInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x=> x.referenceId == thread.refKey);
+                var UserActiveThreadsResponse = new UserActiveThreadsResponse();
+                UserActiveThreadsResponse.startTime = thread.startTime;
+                UserActiveThreadsResponse.endTime = thread.endTime;
+                UserActiveThreadsResponse.expectedDeliveryTime = thread.expectedDeliveryTime;
+                UserActiveThreadsResponse.status = thread.status;
+                UserActiveThreadsResponse.refKey = thread.refKey;
+                UserActiveThreadsResponse.title = ThreadInfo.title;
+                UserActiveThreadsResponse.type = ThreadInfo.type;
+                UserActiveThreadsResponse.subType = ThreadInfo.subType;
+                response.Payload.Add(UserActiveThreadsResponse);
+            }
+                response.Status = 200;
+                response.Message = "success";
+                
+            
 
             return response;
         }
