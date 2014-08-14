@@ -39,7 +39,7 @@
                                             <td data-title="'Task'" sortable="'title'">{{subTask.title}}&nbsp <span><a class="cursorPointer"  ng-click="openTemplateInfoPageWithId(subTask.editId)" role="button" data-toggle="modal">info</a></span> <span> <a class="cursorPointer" ng-click="deleteTemplateEditPageWithId(subTask.editId)" role="button" data-toggle="modal"><font color="red">Delete </font></a> </span></td>
                                             <td data-title="'Progress'">
                                                 <div class="progress xs">
-                                                    <div style="width: {{subTask.progressPercent}}%" class="progress-bar progress-bar-info"></div>
+                                                    <div style="width: {{subTask.progressPercent}}%" id="progressBar{{subTask.editId}}" class="progress-bar progress-bar-info"></div>
                                                 </div>
                                             </td>
                                             <td data-title="'Label'"><span class="badge bg-blue">{{subTask.progressPercent}}%</span></td>
