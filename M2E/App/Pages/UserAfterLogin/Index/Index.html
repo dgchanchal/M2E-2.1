@@ -32,8 +32,8 @@
 											<div ng-show="Thread.userStatus == 'assigned'" class="search-info callout callout-danger">
                                             <img ng-show="Thread.type!='survey'" alt="" src="http://www.placehold.it/80"/>
                                             <img ng-show="Thread.type=='survey'" alt="" src="../../App/img/templateIcons/survey_icon.jpg"/>
-												<span ng-bind="Thread.title"></span>
-												<p class="url floatRight">Category : <span style="color:#368ee0" ng-bind="Thread.type"></span> Subcategory : <span style="color:#368ee0" ng-bind="Thread.subType"></span></p>
+												<span ng-bind="Thread.title"></span><br />
+												Category : <span style="color:#368ee0" ng-bind="Thread.subType"></span>
                                                 <p>This job is Assigned to you and having Deadline at : <b><span ng-bind="Thread.userDeadline"></span></b></p>
                                                 <p>visit My Active Job tab for further details.</p>
 											</div>
@@ -41,15 +41,15 @@
                                             <div ng-show="Thread.userStatus == 'done'" class="search-info callout callout-info">
                                             <img ng-show="Thread.type!='survey'" alt="" src="http://www.placehold.it/80"/>
                                             <img ng-show="Thread.type=='survey'" alt="" src="../../App/img/templateIcons/survey_icon.jpg"/>
-												<a href="#/showTemplateDetail/{{Thread.refKey}}"><span ng-bind="Thread.title"></span></a>
-												<p class="url floatRight">Category : <span style="color:#368ee0" ng-bind="Thread.type"></span> Subcategory : <span style="color:#368ee0" ng-bind="Thread.subType"></span></p>                                                											
+												<a href="#/showTemplateDetail/{{Thread.refKey}}"><span ng-bind="Thread.title"></span></a><br />
+												Category : <span style="color:#368ee0" ng-bind="Thread.subType"></span>
 											</div>
 
                                             <div ng-show="Thread.userStatus == 'NA'" class="search-info callout callout-warning">
                                             <img ng-show="Thread.type!='survey'" alt="" src="http://www.placehold.it/80"/>
                                             <img ng-show="Thread.type=='survey'" alt="" src="../../App/img/templateIcons/survey_icon.jpg"/>
-												<a href="#/showTemplateDetail/{{Thread.refKey}}"><span ng-bind="Thread.title"></span></a>
-												<p class="url floatRight">Category : <span style="color:#368ee0" ng-bind="Thread.type"></span> Subcategory : <span style="color:#368ee0" ng-bind="Thread.subType"></span></p> 
+												<a href="#/showTemplateDetail/{{Thread.refKey}}"><span ng-bind="Thread.title"></span></a><br />
+												Category : <span style="color:#368ee0" ng-bind="Thread.subType"></span>
                                                 <p></p>
 											</div>
                                             
