@@ -203,55 +203,74 @@ namespace M2E.Service.UserService.Survey
         {
             var response = new ResponseModel<string>();
 
-            foreach (var userSurveyResult in EntireSurveyResult.surveySingleAnswerQuestion)
+            if (EntireSurveyResult == null)
             {
-                var surveyResponse = new UserSurveyResultToBeReviewed();
-                surveyResponse.questionId = userSurveyResult.key.Split('-')[1];
-                surveyResponse.type = userSurveyResult.key.Split('-')[0];
-                surveyResponse.answer = userSurveyResult.value;
-                surveyResponse.refKey = refKey;
-                surveyResponse.username = username;
-                _db.UserSurveyResultToBeRevieweds1.Add(surveyResponse);
+                response.Status = 403;
+                response.Message = "No data to save to database.";
             }
 
-            foreach (var userSurveyResult in EntireSurveyResult.surveyMultipleAnswerQuestion)
+            if (EntireSurveyResult.surveySingleAnswerQuestion != null)
             {
-                string[] optionValues = userSurveyResult.value.Split(';');
-                for (int i = 0; i < optionValues.Length - 1; i++)
+                foreach (var userSurveyResult in EntireSurveyResult.surveySingleAnswerQuestion)
                 {
                     var surveyResponse = new UserSurveyResultToBeReviewed();
                     surveyResponse.questionId = userSurveyResult.key.Split('-')[1];
                     surveyResponse.type = userSurveyResult.key.Split('-')[0];
-                    surveyResponse.answer = optionValues[i];
+                    surveyResponse.answer = userSurveyResult.value;
                     surveyResponse.refKey = refKey;
                     surveyResponse.username = username;
                     _db.UserSurveyResultToBeRevieweds1.Add(surveyResponse);
                 }
-                
             }
 
-            foreach (var userSurveyResult in EntireSurveyResult.surveyListBoxAnswerQuestion)
+            if (EntireSurveyResult.surveyMultipleAnswerQuestion != null)
             {
-                var surveyResponse = new UserSurveyResultToBeReviewed();
-                surveyResponse.questionId = userSurveyResult.key.Split('-')[1];
-                surveyResponse.type = userSurveyResult.key.Split('-')[0];
-                surveyResponse.answer = userSurveyResult.value;
-                surveyResponse.refKey = refKey;
-                surveyResponse.username = username;
-                _db.UserSurveyResultToBeRevieweds1.Add(surveyResponse);
+                foreach (var userSurveyResult in EntireSurveyResult.surveyMultipleAnswerQuestion)
+                {
+                    string[] optionValues = userSurveyResult.value.Split(';');
+                    for (int i = 0; i < optionValues.Length - 1; i++)
+                    {
+                        var surveyResponse = new UserSurveyResultToBeReviewed();
+                        surveyResponse.questionId = userSurveyResult.key.Split('-')[1];
+                        surveyResponse.type = userSurveyResult.key.Split('-')[0];
+                        surveyResponse.answer = optionValues[i];
+                        surveyResponse.refKey = refKey;
+                        surveyResponse.username = username;
+                        _db.UserSurveyResultToBeRevieweds1.Add(surveyResponse);
+                    }
+
+                }
             }
 
-            foreach (var userSurveyResult in EntireSurveyResult.surveyTextBoxAnswerQuestion)
+            if (EntireSurveyResult.surveyListBoxAnswerQuestion != null)
             {
-                var surveyResponse = new UserSurveyResultToBeReviewed();
-                surveyResponse.questionId = userSurveyResult.key.Split('-')[1];
-                surveyResponse.type = userSurveyResult.key.Split('-')[0];
-                surveyResponse.answer = userSurveyResult.value;
-                surveyResponse.refKey = refKey;
-                surveyResponse.username = username;
-                _db.UserSurveyResultToBeRevieweds1.Add(surveyResponse);
+                foreach (var userSurveyResult in EntireSurveyResult.surveyListBoxAnswerQuestion)
+                {
+                    var surveyResponse = new UserSurveyResultToBeReviewed();
+                    surveyResponse.questionId = userSurveyResult.key.Split('-')[1];
+                    surveyResponse.type = userSurveyResult.key.Split('-')[0];
+                    surveyResponse.answer = userSurveyResult.value;
+                    surveyResponse.refKey = refKey;
+                    surveyResponse.username = username;
+                    _db.UserSurveyResultToBeRevieweds1.Add(surveyResponse);
+                }
             }
-            var surveyThreadUserJobMapping = _db.UserJobMappings.SingleOrDefault(x => x.username == username && x.refKey != refKey);
+
+            if (EntireSurveyResult.surveyTextBoxAnswerQuestion != null)
+            {
+                foreach (var userSurveyResult in EntireSurveyResult.surveyTextBoxAnswerQuestion)
+                {
+                    var surveyResponse = new UserSurveyResultToBeReviewed();
+                    surveyResponse.questionId = userSurveyResult.key.Split('-')[1];
+                    surveyResponse.type = userSurveyResult.key.Split('-')[0];
+                    surveyResponse.answer = userSurveyResult.value;
+                    surveyResponse.refKey = refKey;
+                    surveyResponse.username = username;
+                    _db.UserSurveyResultToBeRevieweds1.Add(surveyResponse);
+                }
+            }
+            
+            var surveyThreadUserJobMapping = _db.UserJobMappings.SingleOrDefault(x => x.username == username && x.refKey == refKey);
             surveyThreadUserJobMapping.status = "done";
             surveyThreadUserJobMapping.endTime = DateTime.Now.ToString();
             try

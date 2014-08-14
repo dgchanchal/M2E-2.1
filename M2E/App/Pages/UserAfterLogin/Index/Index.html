@@ -35,21 +35,23 @@
 												<span ng-bind="Thread.title"></span><br />
 												Category : <span style="color:#368ee0" ng-bind="Thread.subType"></span>
                                                 <p>This job is Assigned to you and having Deadline at : <b><span ng-bind="Thread.userDeadline"></span></b></p>
-                                                <p>visit My Active Job tab for further details.</p>
+                                                <p>visit <a href="#/userThreads/active">My Active Job</a> tab for further details.</p>
 											</div>
 
                                             <div ng-show="Thread.userStatus == 'done'" class="search-info callout callout-info">
                                             <img ng-show="Thread.type!='survey'" alt="" src="http://www.placehold.it/80"/>
                                             <img ng-show="Thread.type=='survey'" alt="" src="../../App/img/templateIcons/survey_icon.jpg"/>
-												<a href="#/showTemplateDetail/{{Thread.refKey}}"><span ng-bind="Thread.title"></span></a><br />
+												<span ng-bind="Thread.title"></span><br />
 												Category : <span style="color:#368ee0" ng-bind="Thread.subType"></span>
+                                                <p>You have already completed this job.</p>
+                                                <p>visit <a href="#/userThreads/completed">My Completed Job </a> tab for further details.</p>
 											</div>
 
-                                            <div ng-show="Thread.userStatus == 'NA'" class="search-info callout callout-warning">
-                                            <img ng-show="Thread.type!='survey'" alt="" src="http://www.placehold.it/80"/>
-                                            <img ng-show="Thread.type=='survey'" alt="" src="../../App/img/templateIcons/survey_icon.jpg"/>
+                                            <div ng-show="Thread.userStatus == 'new'" class="search-info callout callout-warning">
+                                            <a href="#/showTemplateDetail/{{Thread.refKey}}"><img ng-show="Thread.type!='survey'" alt="" src="http://www.placehold.it/80"/></a>
+                                            <a href="#/showTemplateDetail/{{Thread.refKey}}"><img ng-show="Thread.type=='survey'" alt="" src="../../App/img/templateIcons/survey_icon.jpg"/></a>
 												<a href="#/showTemplateDetail/{{Thread.refKey}}"><span ng-bind="Thread.title"></span></a><br />
-												Category : <span style="color:#368ee0" ng-bind="Thread.subType"></span>
+												Category : <span style="color:#368ee0" ng-bind="Thread.subType"></span>&nbsp; Total Threads : <span style="color:#368ee0" ng-bind="Thread.totalThreads"></span>&nbsp; Remaining Thread : <span style="color:#368ee0" ng-bind="Thread.remainingThreads"></span>&nbsp; Max Earning : <span style="color:#368ee0" ng-bind="Thread.currency"></span><span style="color:#368ee0" ng-bind="Thread.earningPerThreads"></span>
                                                 <p></p>
 											</div>
                                             
