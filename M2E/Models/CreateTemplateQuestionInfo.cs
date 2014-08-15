@@ -18,7 +18,7 @@ namespace M2E.Models
         public string username { get; set; }
         public string type { get; set; }
         public string visible { get; set; }
-        public string buttonText { get; set; }
+        public string description { get; set; }
         public string referenceId { get; set; }
         public string total { get; set; }
         public string completed { get; set; }

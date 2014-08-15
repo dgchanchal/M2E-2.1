@@ -92,7 +92,7 @@
     <Property Name="username" Type="nvarchar(max)" Nullable="false" />
     <Property Name="type" Type="nvarchar(max)" Nullable="false" />
     <Property Name="visible" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="buttonText" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
     <Property Name="referenceId" Type="nvarchar(max)" Nullable="false" />
     <Property Name="total" Type="nvarchar(max)" Nullable="false" />
     <Property Name="completed" Type="nvarchar(max)" Nullable="false" />
@@ -387,7 +387,7 @@
           <Property Name="username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="type" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="visible" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="buttonText" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="referenceId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="total" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="completed" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
@@ -663,7 +663,7 @@
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="type" ColumnName="type" />
           <ScalarProperty Name="visible" ColumnName="visible" />
-          <ScalarProperty Name="buttonText" ColumnName="buttonText" />
+          <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="referenceId" ColumnName="referenceId" />
           <ScalarProperty Name="total" ColumnName="total" />
           <ScalarProperty Name="completed" ColumnName="completed" />

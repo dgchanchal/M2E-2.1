@@ -269,7 +269,7 @@ namespace M2E.Service.JobTemplate
             refKey += digitKey;
             var createTemplateQuestionsInfoInsert = new CreateTemplateQuestionInfo
             {
-                buttonText = "NA",
+                description = "NA",
                 username = username,
                 title = req[0].title,
                 visible = "NA",
@@ -321,7 +321,7 @@ namespace M2E.Service.JobTemplate
             
             var createTemplateQuestionsInfoInsert = new CreateTemplateQuestionInfo
             {
-                buttonText = "NA",
+                description = "NA",
                 username = username,
                 title = req[0].title,
                 visible = "NA",

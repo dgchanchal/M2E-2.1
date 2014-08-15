@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 08/14/2014 15:25:13
--- Generated from EDMX file: F:\temp2\branches\M2E-2.0\M2E\Models\M2EContext.edmx
+-- Date Created: 08/15/2014 19:40:45
+-- Generated from EDMX file: F:\PcOnGo_SVN\branches\M2E-2.0\M2E\Models\M2EContext.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -154,7 +154,7 @@ CREATE TABLE [dbo].[CreateTemplateQuestionInfoes] (
     [username] nvarchar(max)  NOT NULL,
     [type] nvarchar(max)  NOT NULL,
     [visible] nvarchar(max)  NOT NULL,
-    [buttonText] nvarchar(max)  NOT NULL,
+    [description] nvarchar(max)  NOT NULL,
     [referenceId] nvarchar(max)  NOT NULL,
     [total] nvarchar(max)  NOT NULL,
     [completed] nvarchar(max)  NOT NULL,
