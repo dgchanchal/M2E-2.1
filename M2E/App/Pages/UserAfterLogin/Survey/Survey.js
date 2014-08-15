@@ -258,9 +258,10 @@ define([appLocation.userPostLogin], function (app) {
 
                         //var listBoxQuestionsOptionList = this.Options.split(';');
                         renderSurveyQuestion += "<select name='" + this.id + "' class='form-control'>";
-                        var id = this.id;
+                        var id = this.id;                        
                         insertAttemptedSurveyQuestionsList(id);
                         var listBoxQuestionsOptionList = this.options.split(';');
+                        renderSurveyQuestion += "<option value='" + id + "_-1'>---SELECT---</option>";
                         for (var j = 0; j < listBoxQuestionsOptionList.length; j++) {
                             renderSurveyQuestion += "<option value='" + id + "_" + j + "'>" + listBoxQuestionsOptionList[j] + "</option>";
                         };
@@ -307,7 +308,7 @@ define([appLocation.userPostLogin], function (app) {
                 renderSurveyQuestion += "</h3>";
                 renderSurveyQuestion += "</div>";
                 renderSurveyQuestion += "<div class='box-content'>";
-                renderSurveyQuestion += "<button  class=\"btn btn-success btn-sm\">submit</button>";
+                renderSurveyQuestion += "<button  class=\"btn btn-success btn-sm\" id='userSurveySubmitButtonId'>submit</button>";
                 renderSurveyQuestion += "</div>";
                 renderSurveyQuestion += "</div>";
                 renderSurveyQuestion += "</div>";
