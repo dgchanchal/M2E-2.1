@@ -44,7 +44,7 @@ define([appLocation.userPostLogin], function (app) {
                 }
             }            
             $scope.attemptedSurveyQuestions[i].attempted = true;
-            //console.log($scope.attemptedSurveyQuestions);
+            console.log($scope.attemptedSurveyQuestions);
         }
         function unmarkAttemptedSurveyQuestionsList(key) {
             var i;
@@ -57,7 +57,7 @@ define([appLocation.userPostLogin], function (app) {
             
             //console.log(key);
             $scope.attemptedSurveyQuestions[i].attempted = false;
-            //console.log($scope.attemptedSurveyQuestions);
+            console.log($scope.attemptedSurveyQuestions);
         }
 //        $scope.surveyInfoTitle = "This is the title of the survey";
 
@@ -257,7 +257,7 @@ define([appLocation.userPostLogin], function (app) {
                         renderSurveyQuestion += "</label>";
 
                         //var listBoxQuestionsOptionList = this.Options.split(';');
-                        renderSurveyQuestion += "<select name='" + this.id + "' class='form-control'>";
+                        renderSurveyQuestion += "<select name='" + this.id + "' class='form-control userSurveyListBoxButton'>";
                         var id = this.id;                        
                         insertAttemptedSurveyQuestionsList(id);
                         var listBoxQuestionsOptionList = this.options.split(';');
@@ -290,7 +290,7 @@ define([appLocation.userPostLogin], function (app) {
                         renderSurveyQuestion += this.question;
                         renderSurveyQuestion += "</b></p>";
                         insertAttemptedSurveyQuestionsList(this.id);
-                        renderSurveyQuestion += "<input type='textarea' name='" + this.id + "' placeholder='Enter Your Answer'/><br/>";
+                        renderSurveyQuestion += "<input type='textarea' name='" + this.id + "' class='userSurveyTextBoxButton' placeholder='Enter Your Answer'/><br/>";
 
                         renderSurveyQuestion += "</div>";
                         renderSurveyQuestion += "</div>";
