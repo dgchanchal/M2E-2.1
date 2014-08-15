@@ -12,7 +12,54 @@ define([appLocation.userPostLogin], function (app) {
             surveyTextBoxAnswerQuestion: []
         };
 
-        //        $scope.surveyInfoTitle = "This is the title of the survey";
+        $scope.attemptedSurveyQuestions = [];
+
+        function insertAttemptedSurveyQuestionsList(key) {
+            $scope.attemptedSurveyQuestions.push({ key: key, attempted: false });
+        }
+        function removeAttemptedSurveyQuestionsList(key) {           
+            var i;
+            for (i = 0; i < $scope.attemptedSurveyQuestions.length; i++) {
+                if ($scope.attemptedSurveyQuestions.key == key) {                    
+                    break;
+                }
+            }            
+            $scope.attemptedSurveyQuestions.splice(i, 1);
+        }
+        function checkEveryQuestionsAttempted() {
+            var i,flag = true;
+            for (i = 0; i < $scope.attemptedSurveyQuestions.length; i++) {
+                if ($scope.attemptedSurveyQuestions[i].attempted == false) {
+                    flag = false;
+                    break;
+                }                
+            }
+            return flag;
+        }
+        function markAttemptedSurveyQuestionsList(key) {            
+            var i;                        
+            for (i = 0; i < $scope.attemptedSurveyQuestions.length; i++) {                
+                if ($scope.attemptedSurveyQuestions[i].key == key) {
+                    break;
+                }
+            }            
+            $scope.attemptedSurveyQuestions[i].attempted = true;
+            //console.log($scope.attemptedSurveyQuestions);
+        }
+        function unmarkAttemptedSurveyQuestionsList(key) {
+            var i;
+            console.log(key);
+            for (i = 0; i < $scope.attemptedSurveyQuestions.length; i++) {
+                if ($scope.attemptedSurveyQuestions[i].key == key) {
+                    break;
+                }
+            }
+            
+            //console.log(key);
+            $scope.attemptedSurveyQuestions[i].attempted = false;
+            //console.log($scope.attemptedSurveyQuestions);
+        }
+//        $scope.surveyInfoTitle = "This is the title of the survey";
 
         //        $scope.surveyInfoInstruction = {
         //            type: "",
@@ -99,7 +146,9 @@ define([appLocation.userPostLogin], function (app) {
                 $scope.surveyInfoMultipleAnswerQuestion = data.Payload.MultipleAnswerQuestion;
                 $scope.surveyInfoListBoxAnswerQuestion = data.Payload.ListBoxAnswerQuestion;
                 $scope.surveyInfoTextBoxAnswerQuestion = data.Payload.TextBoxAnswerQuestion;
+                
                 renderPageAfterAjaxCall();
+                console.log($scope.attemptedSurveyQuestions);
             }
 
         }).error(function (data, status, headers, config) {
@@ -145,7 +194,7 @@ define([appLocation.userPostLogin], function (app) {
                         renderSurveyQuestion += this.question;
                         renderSurveyQuestion += "</b></p>";
                         var id = this.id;
-
+                        insertAttemptedSurveyQuestionsList(id);
                         var singleQuestionsOptionList = this.options.split(';');
                         for (var j = 0; j < singleQuestionsOptionList.length; j++) {
                             renderSurveyQuestion += "<input type='radio' class='userSurveyRadioButton' name='" + id + "' value='" + id + "_" + j + "'/> " + singleQuestionsOptionList[j] + "<br/>";
@@ -172,6 +221,7 @@ define([appLocation.userPostLogin], function (app) {
                         renderSurveyQuestion += this.question;
                         renderSurveyQuestion += "</b></p>";
                         var id = this.id;
+                        insertAttemptedSurveyQuestionsList(id);
                         var multipleQuestionsOptionList = this.options.split(';');
                         for (var j = 0; j < multipleQuestionsOptionList.length; j++) {
                             renderSurveyQuestion += "<input type='checkbox' class='userSurveyCheckBoxButton' name='" + id + "' value='" + id + "_" + j + "'/> " + multipleQuestionsOptionList[j] + "<br/>";
@@ -209,6 +259,7 @@ define([appLocation.userPostLogin], function (app) {
                         //var listBoxQuestionsOptionList = this.Options.split(';');
                         renderSurveyQuestion += "<select name='" + this.id + "' class='form-control'>";
                         var id = this.id;
+                        insertAttemptedSurveyQuestionsList(id);
                         var listBoxQuestionsOptionList = this.options.split(';');
                         for (var j = 0; j < listBoxQuestionsOptionList.length; j++) {
                             renderSurveyQuestion += "<option value='" + id + "_" + j + "'>" + listBoxQuestionsOptionList[j] + "</option>";
@@ -237,7 +288,7 @@ define([appLocation.userPostLogin], function (app) {
                         renderSurveyQuestion += "<p><b>";
                         renderSurveyQuestion += this.question;
                         renderSurveyQuestion += "</b></p>";
-
+                        insertAttemptedSurveyQuestionsList(this.id);
                         renderSurveyQuestion += "<input type='textarea' name='" + this.id + "' placeholder='Enter Your Answer'/><br/>";
 
                         renderSurveyQuestion += "</div>";
@@ -262,8 +313,7 @@ define([appLocation.userPostLogin], function (app) {
                 renderSurveyQuestion += "</div>";
 
                 $('#swiperWrapperId').html(renderSurveyQuestion);
-                initializeSwiperFunction();
-
+                initializeSwiperFunction();                
             }
             else { // if it is web.
 
@@ -303,6 +353,7 @@ define([appLocation.userPostLogin], function (app) {
                         renderSurveyQuestion += "</label>";
 
                         var id = this.id;
+                        insertAttemptedSurveyQuestionsList(id);
                         var singleQuestionsOptionList = this.options.split(';');
                         for (var j = 0; j < singleQuestionsOptionList.length; j++) {
                             renderSurveyQuestion += "<div class='radio' style='padding: 0px 0px 0px 20px;'>";
@@ -333,7 +384,8 @@ define([appLocation.userPostLogin], function (app) {
                         renderSurveyQuestion += "<b>" + this.question + "</b>";
                         renderSurveyQuestion += "</label>";
                         var id = this.id;
-                        var multipleQuestionsOptionList = this.options.replace("\"", "\\\"").split(';');
+                        insertAttemptedSurveyQuestionsList(id);
+                        var multipleQuestionsOptionList = this.options.split(';');
                         for (var j = 0; j < multipleQuestionsOptionList.length; j++) {
                             renderSurveyQuestion += "<div class='checkbox' style='padding: 0px 0px 0px 20px;'>";
 
@@ -367,7 +419,9 @@ define([appLocation.userPostLogin], function (app) {
                         //var listBoxQuestionsOptionList = this.Options.split(';');
                         renderSurveyQuestion += "<select name='" + this.id + "' class='form-control userSurveyListBoxButton'>";
                         var id = this.id;
+                        insertAttemptedSurveyQuestionsList(id);
                         var listBoxQuestionsOptionList = this.options.split(';');
+                        renderSurveyQuestion += "<option value='" + id + "_-1'>---SELECT---</option>";
                         for (var j = 0; j < listBoxQuestionsOptionList.length; j++) {
                             renderSurveyQuestion += "<option value='" + id + "_" + j + "'>" + listBoxQuestionsOptionList[j] + "</option>";
                         };
@@ -391,7 +445,7 @@ define([appLocation.userPostLogin], function (app) {
                         renderSurveyQuestion += "<label>";
                         renderSurveyQuestion += "<b>" + this.question; +"</b>";
                         renderSurveyQuestion += "</label><br/>";
-
+                        insertAttemptedSurveyQuestionsList(this.id);
                         renderSurveyQuestion += "<input type='text' class='userSurveyTextBoxButton' name='" + this.id + "' placeholder='Enter Your Answer'/><br/>";
 
                         renderSurveyQuestion += "</fieldset>";
@@ -420,9 +474,8 @@ define([appLocation.userPostLogin], function (app) {
                 renderSurveyQuestion += "</div>";
 
                 $('#userSurveyWebViewId').html(renderSurveyQuestion);
-                initializeSwiperFunction();
-
-            }
+                initializeSwiperFunction();                
+            }            
         }
 
 
@@ -457,7 +510,7 @@ define([appLocation.userPostLogin], function (app) {
                 //console.log(a + "---" + this.value);
                 var data = this.value.split('_');
                 $scope.userSurveyResult.surveySingleAnswerQuestion.push(commonUserSurveyRadioButtonFunction(data));
-                console.log($scope.userSurveyResult.surveySingleAnswerQuestion);
+                markAttemptedSurveyQuestionsList(data[0]);                
             });
 
             $('.userSurveyRadioButton').on('ifChecked', function (event) {
@@ -465,7 +518,7 @@ define([appLocation.userPostLogin], function (app) {
                 //console.log(a + "---" + this.value);
                 var data = this.value.split('_');
                 $scope.userSurveyResult.surveySingleAnswerQuestion.push(commonUserSurveyRadioButtonFunction(data));
-                console.log($scope.userSurveyResult.surveySingleAnswerQuestion);
+                markAttemptedSurveyQuestionsList(data[0]);                
             });
 
             function commonUserSurveyRadioButtonFunction(data) {
@@ -498,19 +551,19 @@ define([appLocation.userPostLogin], function (app) {
                 }
 
                 commonUserSurveyCheckBoxButtonFunction(data, checked);
-                console.log($scope.userSurveyResult.surveyMultipleAnswerQuestion);
+                //console.log($scope.userSurveyResult.surveyMultipleAnswerQuestion);
 
             });
 
             $('.userSurveyCheckBoxButton').on('ifChecked', function (event) {
                 var data = this.value.split('_');
                 commonUserSurveyCheckBoxButtonFunction(data, true);
-                console.log($scope.userSurveyResult.surveyMultipleAnswerQuestion);
+                //console.log($scope.userSurveyResult.surveyMultipleAnswerQuestion);
             });
             $('.userSurveyCheckBoxButton').on('ifUnchecked', function (event) {
                 var data = this.value.split('_');
                 commonUserSurveyCheckBoxButtonFunction(data, false);
-                console.log($scope.userSurveyResult.surveyMultipleAnswerQuestion);
+                //console.log($scope.userSurveyResult.surveyMultipleAnswerQuestion);
             });
 
             function commonUserSurveyCheckBoxButtonFunction(data, checked) {
@@ -523,14 +576,21 @@ define([appLocation.userPostLogin], function (app) {
                 }
 
                 if (flag) {
-                    if (checked)
+                    if (checked) {
                         $scope.userSurveyResult.surveyMultipleAnswerQuestion[i].value += data[1] + ';';
-                    else
+                        markAttemptedSurveyQuestionsList(data[0]);
+                    } else {
                         $scope.userSurveyResult.surveyMultipleAnswerQuestion[i].value = $scope.userSurveyResult.surveyMultipleAnswerQuestion[i].value.replace(data[1] + ';', "");
+                        if ($scope.userSurveyResult.surveyMultipleAnswerQuestion[i].value == "" || $scope.userSurveyResult.surveyMultipleAnswerQuestion[i].value == null) {
+                            unmarkAttemptedSurveyQuestionsList(data[0]);
+                        }
+                    }
+                        
                 }
                 else {
                     var checkBoxButtonAnswer = { key: data[0], value: data[1] + ';' };
                     $scope.userSurveyResult.surveyMultipleAnswerQuestion.push(checkBoxButtonAnswer);
+                    markAttemptedSurveyQuestionsList(data[0]);
                 }
             }
 
@@ -541,7 +601,7 @@ define([appLocation.userPostLogin], function (app) {
 
                 $scope.userSurveyResult.surveyListBoxAnswerQuestion.push(commonUserSurveyListBoxButtonFunction(data));
                 //commonUserSurveyCheckBoxButtonFunction(data, checked);
-                console.log($scope.userSurveyResult.surveyListBoxAnswerQuestion);
+                //console.log($scope.userSurveyResult.surveyListBoxAnswerQuestion);
 
             });
 
@@ -558,13 +618,17 @@ define([appLocation.userPostLogin], function (app) {
                 if (flag)
                     $scope.userSurveyResult.surveyListBoxAnswerQuestion.splice(i, 1);
 
+                if (data[1] != '-1')
+                    markAttemptedSurveyQuestionsList(data[0]);
+                else
+                    unmarkAttemptedSurveyQuestionsList(data[0]);
                 return radioButtonAnswer;
             }
 
             $('.userSurveyTextBoxButton').bind('input propertychange', function () {
                 var data = this.name.split('_');
                 $scope.userSurveyResult.surveyTextBoxAnswerQuestion.push(commonUserSurveyTextBoxFunction(this.name, $(this).val()));
-                console.log($scope.userSurveyResult.surveyTextBoxAnswerQuestion);
+                //console.log($scope.userSurveyResult.surveyTextBoxAnswerQuestion);
                 //console.log(this.name + " --- " + $(this).val());
             });
 
@@ -580,37 +644,44 @@ define([appLocation.userPostLogin], function (app) {
                 }
                 if (flag)
                     $scope.userSurveyResult.surveyTextBoxAnswerQuestion.splice(i, 1);
-
+                if (value != "")
+                    markAttemptedSurveyQuestionsList(key);
+                else
+                    unmarkAttemptedSurveyQuestionsList(key);
                 return textBoxAnswer;
             }
 
             //submit button
             $('#userSurveySubmitButtonId').on('click', function () {
-                
-                var url = ServerContextPah + '/User/SubmitTemplateSurveyResultByRefKey?refKey=' + $routeParams.refKey;
-                var userSurveyResultData = $scope.userSurveyResult;
-                var headers = {
-                    'Content-Type': 'application/json',
-                    'UTMZT': CookieUtil.getUTMZT(),
-                    'UTMZK': CookieUtil.getUTMZK(),
-                    'UTMZV': CookieUtil.getUTMZV()
-                };
-                startBlockUI('wait..', 3);
-                $http({
-                    url: url,
-                    method: "POST",
-                    data: userSurveyResultData,
-                    headers: headers
-                }).success(function (data, status, headers, config) {
-                    //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
-                    stopBlockUI();
-                    if (data.Status == "200") {
-                        showToastMessage("Success", "Survey Successfully submitted");
-                    }
+                if (checkEveryQuestionsAttempted()) {
+                    var url = ServerContextPah + '/User/SubmitTemplateSurveyResultByRefKey?refKey=' + $routeParams.refKey;
+                    var userSurveyResultData = $scope.userSurveyResult;
+                    var headers = {
+                        'Content-Type': 'application/json',
+                        'UTMZT': CookieUtil.getUTMZT(),
+                        'UTMZK': CookieUtil.getUTMZK(),
+                        'UTMZV': CookieUtil.getUTMZV()
+                    };
+                    startBlockUI('wait..', 3);
+                    $http({
+                        url: url,
+                        method: "POST",
+                        data: userSurveyResultData,
+                        headers: headers
+                    }).success(function(data, status, headers, config) {
+                        //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
+                        stopBlockUI();
+                        if (data.Status == "200") {
+                            showToastMessage("Success", "Survey Successfully submitted");
+                        }
 
-                }).error(function (data, status, headers, config) {
+                    }).error(function(data, status, headers, config) {
 
-                });
+                    });
+                } else {
+                    showToastMessage("Warning", "Attempt All Questions Before Submitting.");
+                }
+
             });
         }
     });
