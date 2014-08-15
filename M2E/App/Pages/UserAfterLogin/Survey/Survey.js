@@ -3,6 +3,7 @@ define([appLocation.userPostLogin], function (app) {
 
     app.controller('UserAfterLoginSurvey', function ($scope, $http, $route, $rootScope, $routeParams, CookieUtil) {
         $scope.logoImage = { url: logoImage };
+        //showToastMessage("Error", "Title of the Template cann't be empty");
         $('title').html("index"); //TODO: change the title so cann't be tracked in log
         $scope.userSurveyResult = {
             surveySingleAnswerQuestion: [],
@@ -604,7 +605,7 @@ define([appLocation.userPostLogin], function (app) {
                     //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
                     stopBlockUI();
                     if (data.Status == "200") {
-                        showToastMessage("success", "Survey Successfully submitted");
+                        showToastMessage("Success", "Survey Successfully submitted");
                     }
 
                 }).error(function (data, status, headers, config) {
