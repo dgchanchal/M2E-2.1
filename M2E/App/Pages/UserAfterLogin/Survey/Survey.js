@@ -604,7 +604,7 @@ define([appLocation.userPostLogin], function (app) {
                     //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
                     stopBlockUI();
                     if (data.Status == "200") {
-                        
+                        showToastMessage("success", "Survey Successfully submitted");
                     }
 
                 }).error(function (data, status, headers, config) {
