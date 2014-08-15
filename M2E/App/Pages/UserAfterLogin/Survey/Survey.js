@@ -298,7 +298,7 @@ define([appLocation.userPostLogin], function (app) {
                         renderSurveyQuestion += "<fieldset>";
 
                         renderSurveyQuestion += "<label>";
-                        renderSurveyQuestion += "<b>" + this.question; +"</b>";
+                        renderSurveyQuestion += "<b>" + this.question +"</b>";
                         renderSurveyQuestion += "</label>";
 
                         var id = this.id;
