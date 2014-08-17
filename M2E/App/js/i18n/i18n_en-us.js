@@ -2,28 +2,28 @@
 window.madetoearn.i18n = {
    
     // before login master page
-    "beforeLoginCompanyTitle":"Made To Earn",
-    "beforeLoginMasterPageAboutM2E": "What is M2E?",
+    "beforeLoginCompanyTitle":"Crowd Automation",
+    "beforeLoginMasterPageAboutM2E": "About us?",
     "beforeLoginMasterPageSignIn": "Sign In",
-    "beforeLoginMasterPageContactUs": "Contact Us",
+    "beforeLoginMasterPageContactUs": "Contact us",
     "beforeLoginMasterPageFAQ": "FAQ",
     "beforeLoginMasterPageTnC": "Terms & Privacy",
 
     //beflore login index page
-    "beforeLoginIndexPageM2EText": "Made To Earn",
-    "beforeLoginIndexPageClientMoreInfo": "More Info",
+    "beforeLoginIndexPageM2EText": "Crowd Automation",
+    "beforeLoginIndexPageClientMoreInfo": "More info",
     "beforeLoginIndexPageClientAbout": "About",
-    "beforeLoginIndexPageUserMoreInfo": "More Info",
-    "beforeLoginIndexPageUserAbout": "Register",
-    "beforeLoginIndexPageUserText": "User",
-    "beforeLoginIndexClientText": "Client",
-    "beforeLoginIndexPageClientHireText": "HIRE",
-    "beforeLoginIndexPageClientWorkText": "Work",
-    "beforeLoginIndexPageClientIneedItDone": "I need it done",
-    "beforeLoginIndexPageRegisterAsClient": "Register as Client",
+    "beforeLoginIndexPageUserMoreInfo": "More info",
+    "beforeLoginIndexPageUserAbout": "About",
+    "beforeLoginIndexPageUserText": "Crowd Automation Resource",
+    "beforeLoginIndexClientText": "Crowd Automation Requester",
+    "beforeLoginIndexPageClientHireText": "Get Results",
+    "beforeLoginIndexPageClientWorkText": "Earn Money",
+    "beforeLoginIndexPageClientIneedItDone": "<p><b>As a Crowd Automation Requester you:</b></p>" + " Have access to a global, on-demand, 24 x 7 workforce </br>" + "Get thousands of HITs completed in minutes </br>" + "Pay only when you're satisfied with the results",
+    "beforeLoginIndexPageRegisterAsClient": "Register as Crowd Requester",
     "beforeLoginIndexPageUserIWillDoIt": "I will do it",
-    "beforeLoginIndexPageRegisterAsUser": "Register as User",
-    "beforeLoginIndexPageAboutM2EShordDescpription": "Made2earn is India's first technological initiative that aims at utilizing the potential of the millions of Indian youth and provide them with financial Independence. Our goal is to provide all Indian University attending students a better value for their time. All the jobs will be of less than 15min. For our clients it an opportunity to harness the potential of the general public. Human intelligence is at stake here. Market surveys, data entry, captcha reading, opinion polls, product testing, social media marketing, app testing, video marketing, online advertisements and the list goes on to anything imaginable. These are all done at a fraction of cost as compared to other freelancing companies.",
+    "beforeLoginIndexPageRegisterAsUser": "Register as Crowd Resource",
+    "beforeLoginIndexPageAboutM2EShordDescpription": "Cautom stands for <b><i> crowd automation</i></b>. This is based on the fact and belief that there are always some tasks that can only be done by a human, not a machine.",
 
     //beflore login about us page
     "beforeLoginAboutUsPageContent": "<p>You would have been thinking of some cool college students who came up with a world changing idea or a technical geek who tried to build the next Facebook. We do not belong to any of these categories.</p>"+

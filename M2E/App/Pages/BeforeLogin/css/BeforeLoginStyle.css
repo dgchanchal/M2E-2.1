@@ -987,7 +987,7 @@ p, pre, table, form {
         min-height: 500px !important;
     }
     #page-footer #footer-bottom {
-    background-color: #012447;
+    background-color: #121212;
     color: #fff;
     padding: 20px 0;
 }
@@ -1015,7 +1015,7 @@ p, pre, table, form {
     width: 50%;
 }
  .middleFooterBackground {
-    background-color: #004c8d;
+    background-color: #1a1a1a;
     padding: 20px 0;
     position: relative;
 }
@@ -1088,3 +1088,72 @@ a:hover {
     color: #0979cd !important;
     left: 3px;
 }
+#hdr .hdr-no-accent, #hdr .hdr-no-accent:visited {
+    color: #d2d2d2;
+}
+#hdr a:focus, #hdr a:hover, #hdr a:visited:hover, #hdr a:visited:focus, #hdr a.hdr-no-accent:focus, #hdr a.hdr-no-accent:hover, #hdr a.hdr-no-accent:visited:focus, #hdr a.hdr-no-accent:visited:hover, #hdr .hdr-signin a:focus, #hdr .hdr-signin a:hover, #hdr .hdr-signin a:visited:hover, #hdr .hdr-signin a:visited:focus {
+    color: #fff;
+}
+     #preloader  {
+         position: absolute;
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         background-color: #fefefe;
+         z-index: 99;
+         height: 100%;
+     }
+
+    #status  {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        background-image: url(../../App/img/loading/loading123.gif);
+        background-repeat: no-repeat;
+        background-position: center;
+        margin: -100px 0 0 -100px;
+    }
+    #hdr-fb-sub.hdr-2c-collapse {
+        max-height: 10px;
+    }
+    #hdr-fb-sub {
+        background-color: #2a2a2a;
+        height: 33px;
+        margin: 0 auto;
+        opacity: 0.9;
+        width: 100%;
+        z-index: 9;
+    }
+    #hdr-fb-sub1.hdr-2c-collapse {
+        max-height: 10px;
+    }
+    #hdr-fb-sub1 {
+        background-color: #00bcf2;
+        height: 33px;
+        margin: 0 auto;
+        opacity: 0.9;
+        width: 100%;
+        z-index: 9;
+    }
+
+
+    /*Anchor*/
+
+    #hdr .hdr-no-accent, #hdr .hdr-no-accent:visited {
+        color: #d2d2d2;
+    }
+    .hdr-nav-large-primary a, .hdr-nav-large-primary .hdr-nav-separator {
+        margin-right: 18px;
+    }
+    #hdr-nav-large-primary > a {
+        display: inline-block;
+    }
+    a {
+        font-family: 'WOL_SB','Segoe UI Semibold','Segoe UI',Tahoma,Helvetica,sans-serif;
+        font-weight: 600;
+        text-decoration: none;
+        vertical-align: baseline;
+    }

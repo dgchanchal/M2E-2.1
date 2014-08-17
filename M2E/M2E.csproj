@@ -297,6 +297,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="App\img\background-city.png" />
+    <Content Include="App\img\cautom.jpg" />
     <Content Include="App\img\loading\load1.gif" />
     <Content Include="App\img\loading\loading.gif" />
     <Content Include="App\img\loading\loading100x100.gif" />

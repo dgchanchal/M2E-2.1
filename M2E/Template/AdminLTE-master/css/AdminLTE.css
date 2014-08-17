@@ -1925,6 +1925,12 @@ Component: timeline
  .bg-light-blue:hover {
     background-color: #2071a0 !important;
 }
+.bg-green:hover {
+    background-color: #008438 !important;
+}
+.bg-yellow:hover {
+    background-color: #d88100 !important;
+}
  .bg-aqua:hover {
     background-color: #0096c5 !important;
 }
@@ -2434,9 +2440,9 @@ Component: timeline
 */
 /* skin-blue navbar */
 .skin-blue .navbar {
-    background-color: #004c8d;
-    background-image: -moz-linear-gradient(center top , #004c8d 0%, #004c8d 0%);
-    background-image: -webkit-linear-gradient(top, #004c8d 0%, #004c8d 0%, #004c8d 0%);
+    background-color: #1a1a1a ;
+    background-image: -moz-linear-gradient(center top , #1a1a1a  0%, #1a1a1a  0%);
+    background-image: -webkit-linear-gradient(top, #1a1a1a  0%, #1a1a1a  0%, #1a1a1a  0%);
     border-radius: 0px 0px 0 0;
     box-shadow: 0 -0.5px 0 rgba(0, 0, 0, 0.78) inset;
 }

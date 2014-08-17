@@ -53,14 +53,19 @@
                         <a class="navbar-brand-logo googleAnalytics" href="#" ga-category="BeforeLogin" ga-event="CompanyLogo" ga-label="Click"><img src="../../Template/AdminLTE-master/img/m2eV3.png" alt="Logo" width="125" height="42" /></a>
                     </div>
                     <div>                
-                        <div class=" navbar-right googleAnalytics" style="line-height: 46px;" ga-category="BeforeLogin" ga-event="Login" ga-label="web" method="post" action="/Account/Login/web">
-                            <a class="googleAnalytics" href="#/AboutUs" ga-category="BeforeLogin" ga-event="What is M2E" ga-label="LinkClick"><span style="color: #ffffff; font-size: 16px; font-weight: normal;" data-i18n="beforeLoginMasterPageAboutM2E"></span></a>
-                            <a class="googleAnalytics" href="#/login" ga-category="BeforeLogin" ga-event="Sign In Link Clicked" ga-label="LinkClick"><span style="color: #ffffff; font-size: 16px; font-weight: normal; margin-left: 10px;" data-i18n="beforeLoginMasterPageSignIn"></span></a>
+                        <div id="hdr" class=" navbar-right googleAnalytics hdr-no-accent hdr-nav-large-primary hdr-leaf" style="line-height: 46px;" ga-category="BeforeLogin" ga-event="Login" ga-label="web" method="post" action="/Account/Login/web">
+                            <a class="googleAnalytics" href="#/AboutUs" ga-category="BeforeLogin" ga-event="What is M2E" ga-label="LinkClick"><span data-i18n="beforeLoginMasterPageAboutM2E"></span></a>
+                            <a class="googleAnalytics" href="#/login" ga-category="BeforeLogin" ga-event="Sign In Link Clicked" ga-label="LinkClick"><span data-i18n="beforeLoginMasterPageSignIn"></span></a>
                         </div>
                     </div>
                 </div>                                                                                
             </nav>
         </header>
+        <nav role="navigation" class="hdr-2c-collapse" id="hdr-fb-sub">
+		<div data-enable-animations="true" id="hdr-2c">
+			&nbsp;
+		</div>
+	</nav>
        
 
         <div class="wrapper row-offcanvas row-offcanvas-left footerMinHeight" ng-view>           
@@ -81,50 +86,13 @@
                 </div>
             </div>
         </div>*@
-        
-		<div>
-	username <input type="text" id="displayname" />
-	message <input type="text" id="msg" />
-	<input type="button" id="send" value="Send" />
-	
-	<ul id="messages">
-	</ul>
-	</div>
-
-	<hr/>
-	<div>
-
-	<div id="registration2">
-
-	<label>Username: </label>
-
-	<input type="text" id="user2" />
-
-	<input type="button" id="register2" value="Register" /><br />
-
-	</div>
-
-	<div id="sendControls2">
-
-	<label>To (Username): </label>
-
-	<input type="text" id="toUsr2" /><br />
-
-	<label>Message (Username): </label>
-
-	<input type="text" id="msg2" />
-
-	<input type="button" id="send2" value="Send" />
-
-	</div>
-
-	<ul id="messages2">
-
-	</ul>
-
-	</div>
 
         <footer id="page-footer">
+            <nav role="navigation" class="hdr-2c-collapse" id="hdr-fb-sub1">
+                <div data-enable-animations="true" id="hdr-3c">
+                    &nbsp;
+                </div>
+            </nav>
             <!-- footer-top -->
             <section id="footer-content" class="middleFooterBackground">
                 <div class="container">
@@ -135,11 +103,11 @@
                                     <h4>Follow Us</h4>
                                 </header>
                                 <span>
-                                            <button class="btn bg-light-blue btn-circle"><i class="fa fa-facebook"></i></button>
-                                            <button class="btn bg-aqua btn-circle"><i class="fa fa-twitter"></i></button>
-                                            <button class="btn bg-red btn-circle"><i class="fa fa-linkedin"></i></button>
-                                            <button class="btn bg-red btn-circle"><i class="fa fa-google-plus"></i></button>
-                                            <button class="btn bg-red btn-circle"><i class="fa fa-youtube"></i></button>
+                                    <button class="btn bg-light-blue btn-circle"><i class="fa fa-facebook"></i></button>
+                                    <button class="btn bg-aqua btn-circle"><i class="fa fa-twitter"></i></button>
+                                    <button class="btn bg-red btn-circle"><i class="fa fa-linkedin"></i></button>
+                                    <button class="btn bg-red btn-circle"><i class="fa fa-google-plus"></i></button>
+                                    <button class="btn bg-red btn-circle"><i class="fa fa-youtube"></i></button>
                                 </span>
                             </aside>
                         </div>
@@ -221,29 +189,3 @@
            
     </body>
 </html>
-
-<style type="text/css">
-#preloader  {
-     position: absolute;
-     top: 0;
-     left: 0;
-     right: 0;
-     bottom: 0;
-     background-color: #fefefe;
-     z-index: 99;
-    height: 100%;
- }
-
-#status  {
-     width: 200px;
-     height: 200px;
-     position: absolute;
-     left: 50%;
-     top: 50%;
-     background-image: url(../../App/img/loading/loading123.gif);
-     background-repeat: no-repeat;
-     background-position: center;
-     margin: -100px 0 0 -100px;
- }
-
-</style>
