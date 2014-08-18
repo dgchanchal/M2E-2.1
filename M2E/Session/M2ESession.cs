@@ -21,5 +21,6 @@ namespace M2E.Session
         }
         public string SessionId { get; set; }
         public string UserName { get; set; }
+        public dynamic SignalRClient { get; set; }
     }
 }

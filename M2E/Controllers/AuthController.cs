@@ -15,6 +15,8 @@ using M2E.Service.Register;
 using System.Reflection;
 using M2E.Session;
 using System.Configuration;
+using M2E.signalRPushNotifications;
+using Microsoft.AspNet.SignalR;
 
 namespace M2E.Controllers
 {
@@ -44,7 +46,7 @@ namespace M2E.Controllers
             {
                 var session = new M2ESession(req.UserName);
                 TokenManager.CreateSession(session);
-                responseData.UTMZT = session.SessionId;
+                responseData.UTMZT = session.SessionId;                
             }
             var response = new ResponseModel<LoginResponse> { Status = Convert.ToInt32(responseData.Code), Message = "success", Payload = responseData };
             return Json(response);
@@ -54,6 +56,14 @@ namespace M2E.Controllers
         public JsonResult IsValidSession(isValidSessionRequest req)
         {
             var response = new ResponseModel<bool> { Status = 200, Message = "success", Payload = TokenManager.IsValidSession(req.UTMZT) };
+            return Json(response);
+        }
+
+        [HttpPost]
+        public JsonResult GetUsernameFromSessionId()
+        {
+            var headers = new HeaderManager(Request);
+            var response = new ResponseModel<string> { Status = 200, Message = "success", Payload = TokenManager.GetUsernameFromSessionId(headers) };
             return Json(response);
         }
 

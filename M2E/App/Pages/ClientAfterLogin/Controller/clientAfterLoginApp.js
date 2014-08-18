@@ -18,14 +18,15 @@ define([appLocation.postLogin], function (app) {
 
         $rootScope.$on("$locationChangeStart", function (event, next, current) {
 
-//            var headerSessionData = {
-//                UTMZT: CookieUtil.getUTMZT(),
-//                UTMZK: CookieUtil.getUTMZK(),
-//                UTMZV: CookieUtil.getUTMZV()
-//            }
+            //            var headerSessionData = {
+            //                UTMZT: CookieUtil.getUTMZT(),
+            //                UTMZK: CookieUtil.getUTMZK(),
+            //                UTMZV: CookieUtil.getUTMZV()
+            //            }
 
             //SessionManagementUtil.isValidSession(headerSessionData);
             /* Sidebar tree view */
+            userSession.guid = CookieUtil.getUTMZT();
             $(".sidebar .treeview").tree();
 
             gaWeb("BeforeLogin-Page Visited", "Page Visited", next);
@@ -34,7 +35,7 @@ define([appLocation.postLogin], function (app) {
         });
     });
 
-   
+
     app.controller('ClientAfterMasterPage', function ($scope, $http, $rootScope, CookieUtil) {
 
         _.defer(function () { $scope.$apply(); });

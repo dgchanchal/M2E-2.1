@@ -1,7 +1,8 @@
 var logoImage = "../../Template/AdminLTE-master/img/m2eV3.png";
 var googleAnalyticsAppID = "UA-51967607-1";
 var userSession = {
-    username:"sumitchourasia91@gmail.com",
+    username: "sumitchourasia91@gmail.com",
+    guid:"",
     listOfImgurImages:[],
     keepMeSignedIn:false,
     wysiHtml5UploadedInstructionsImageUrlLink: [],

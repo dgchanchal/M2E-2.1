@@ -6,7 +6,7 @@ using Microsoft.AspNet.SignalR;
 
 namespace M2E.signalRPushNotifications
 {
-    public class SignalRHub : Hub
+    public class SignalRClientHub : Hub
     {
         private static Dictionary<string, dynamic> connectedClients = new Dictionary<string, dynamic>();
 
@@ -25,7 +25,7 @@ namespace M2E.signalRPushNotifications
             }
             Clients.Caller.addMessage("'" + userName + "'registered.");
         }
-        
+
         public void AddNotification(string notificationMessage, string toUser)
         {
             lock (connectedClients)
@@ -37,15 +37,5 @@ namespace M2E.signalRPushNotifications
                 }
             }
         }
-
-        public void Send(string name, string message)
-        {
-            Clients.All.sendMessage(name, message);
-        }
-
-        //public void updateBeforeLoginUserProjectDetails(string totalProjects, string successRate,string totalUsers,string projectCategories)
-        //{
-        //    Clients.All.sendMessage(totalProjects, successRate, totalUsers, projectCategories);
-        //}
     }
 }

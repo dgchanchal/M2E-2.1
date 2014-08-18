@@ -23,6 +23,12 @@ namespace M2E.Session
             MemoryCache.Default.Remove(sessionId);
         }
 
+        public static string GetUsernameFromSessionId(HeaderManager headers)
+        {
+            var session = getSessionInfo(headers.AuthToken, headers);
+            return session.UserName;
+        }
+
         public static M2ESession getSessionInfo(string sessionId, HeaderManager headers)
         {
             M2ESession session = null;
