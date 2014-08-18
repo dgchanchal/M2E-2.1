@@ -1,7 +1,7 @@
 'use strict';
-define([appLocation.preLogin], function(app) {
+define([appLocation.preLogin], function (app) {
 
-    app.controller('beforeLoginSignInController', function($scope, $http, $route, $rootScope, $routeParams, CookieUtil) {
+    app.controller('beforeLoginSignInController', function ($scope, $http, $route, $rootScope, $routeParams, CookieUtil) {
 
         $scope.EmailId = "";
         $scope.Password = "";
@@ -25,7 +25,14 @@ define([appLocation.preLogin], function(app) {
             visible: false,
             message: ''
         }
-
+        var type = getParameterByName("type");
+        var mssg = getParameterByName("mssg");
+        if (getParameterByName("type") == "info") {
+            $scope.showHeaderErrors = true;
+            $scope.HeaderAlert.visible = true;
+            $scope.HeaderAlert.classType = "warning";
+            $scope.HeaderAlert.message = getParameterByName("mssg");
+        }
         if ($routeParams.code == "Password200") {
             showToastMessage("Success", "Password has been successfully changed.");
             $scope.showHeaderErrors = true;
@@ -34,7 +41,7 @@ define([appLocation.preLogin], function(app) {
             $scope.HeaderAlert.message = "Your Password has been successfully changed. To continue, please login.";
         }
 
-        $scope.Login = function() {
+        $scope.Login = function () {
             $scope.showFooterErrors = false;
 
             if ($scope.EmailId == null || $scope.EmailId == "") {
@@ -82,7 +89,7 @@ define([appLocation.preLogin], function(app) {
                     method: "POST",
                     data: userLoginData,
                     headers: { 'Content-Type': 'application/json' }
-                }).success(function(data, status, headers, config) {
+                }).success(function (data, status, headers, config) {
                     //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
                     stopBlockUI();
                     if (data.Status == "401") {
@@ -117,7 +124,7 @@ define([appLocation.preLogin], function(app) {
                         location.href = "/client";
                     }
 
-                }).error(function(data, status, headers, config) {
+                }).error(function (data, status, headers, config) {
 
                 });
             } else {

@@ -40,7 +40,7 @@ define([appLocation.postLogin], function (app) {
                     $scope.InProgressTaskList = data.Payload;
                 }
                 else if (data.Status == "401") {
-                    location.href = "/#/login?type=info&mssg=your session is expired.";
+                    location.href = "/?type=info&mssg=your session is expired/#/login";
                 }
 
             }).error(function (data, status, headers, config) {
