@@ -75,7 +75,7 @@ appRequire = require
                 deps: ["jquery"]
             },
             fileDropScript: {//new
-                deps: ["jquery", "filedrop", "clientAfterLoginEditTemplate", "clientAfterLoginCreateTemplate", "domReady"]
+                deps: ["jquery", "filedrop", "clientAfterLoginCreateTemplate", "domReady"]
             },
             angularjs_fileUpload_shim: {//new
                 deps: ["angular", "jquery"]
@@ -98,6 +98,15 @@ appRequire = require
              bootstrap_slider: {//new
                 deps: ["jquery"]
             },
+             highcharts: {//new
+                deps: ["jquery"]
+            },
+             highcharts_3d: {//new
+                deps: ["jquery","highcharts"]
+            },
+             highcharts_exporting: {//new
+                deps: ["jquery","highcharts_3d"]
+            },
             clientAfterLoginCookieService: {
                 deps: ["jquery", "jquery_cookie"]
             },
@@ -116,14 +125,14 @@ appRequire = require
             clientAfterLoginCreateTemplate: { //used
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","wysihtml5","bootstrap_wysihtml5","prettify","AngularFileUploadController","ion_rangeSlider_min","bootstrap_slider"]
             },            
-            clientAfterLoginEditTemplate: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","wysihtml5","bootstrap_wysihtml5","prettify"]
-            },
+//            clientAfterLoginEditTemplate: {
+//                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","wysihtml5","bootstrap_wysihtml5","prettify"]
+//            },
             clientAfterLoginEditPage: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
             },
             clientAfterLoginTemplateInfo: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","highcharts"]
             },
             AngularFileUploadController: {
                 deps: ["angularjs_fileUpload_shim","angularjs_fileUpload"]
@@ -173,6 +182,9 @@ appRequire = require
             ion_rangeSlider_min:"../../Template/AdminLTE-master/js/plugins/ionslider/ion.rangeSlider.min",
             bootstrap_slider:"../../Template/AdminLTE-master/js/plugins/bootstrap-slider/bootstrap-slider",
             //morris_min: "../../Template/AdminLTE-master/js/plugins/morris/morris.min",//used
+            highcharts:"../../App/third-Party/highcharts/highcharts",
+            highcharts_3d:"../../App/third-Party/highcharts/highcharts-3d",
+            highcharts_exporting:"../../App/third-Party/highcharts/modules/exporting",
 
             //==============================================================================================================
             // Application Related JS
@@ -183,7 +195,7 @@ appRequire = require
             clientAfterLoginIndex: "../../App/Pages/ClientAfterLogin/index/index",//new
             clientAfterLoginCreateTemplate: "../../App/Pages/ClientAfterLogin/Survey/CreateTemplate/CreateTemplate",//new
             clientAfterLoginCookieService: "../../../../App/Pages/ClientAfterLogin/Controller/common/CookieServiceClientView",//used
-            clientAfterLoginEditTemplate: "../../App/Pages/ClientAfterLogin/EditTemplate/EditTemplate",//used
+            //clientAfterLoginEditTemplate: "../../App/Pages/ClientAfterLogin/EditTemplate/EditTemplate",//used
             clientAfterLoginTemplateInfo: "../../App/Pages/ClientAfterLogin/TemplateInfo/TemplateInfo",//used
             clientAfterLoginEditPage: "../../App/Pages/ClientAfterLogin/EditPage/editPage",//used
             clientAfterLoginTemplateSample: "../../App/Pages/ClientAfterLogin/TemplateSample/TemplateSample",//used
@@ -197,10 +209,10 @@ appRequire = require
 appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMessage", "jquery_cookie",
     "jquery_blockUI", "restangular", "moment", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTEApp",
     "jquery_slimscroll", "iCheck", "angular_cookies", "configureBlockUI", "fancybox", "clientAfterLoginApp", "SessionManagement",
-    "clientAfterLoginIndex", "clientAfterLoginCreateTemplate", "clientAfterLoginCookieService", "clientAfterLoginEditTemplate", "clientAfterLoginEditPage", "fancybox", "filedrop","wysihtml5",
+    "clientAfterLoginIndex", "clientAfterLoginCreateTemplate", "clientAfterLoginCookieService", "clientAfterLoginEditPage", "fancybox", "filedrop","wysihtml5",
     "fileDropScript", "domReady","prettify","bootstrap_wysihtml5","angularjs_fileUpload_shim","angularjs_fileUpload","AngularFileUploadController",
     "clientAfterLoginTemplateInfo","ng_table","clientAfterLoginTemplateSample","ClientAfterLoginModeratingPhotos","ClientAfterLoginTranscriptionTemplate",
-    "bootstrap_slider","ion_rangeSlider_min"
+    "bootstrap_slider","ion_rangeSlider_min","highcharts_3d","highcharts","highcharts_exporting"
 ], function() {
     angular.bootstrap(document.getElementById("mainClient"), ["afterLoginClientApp"]);
 });
