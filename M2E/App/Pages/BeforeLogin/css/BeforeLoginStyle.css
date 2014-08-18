@@ -1059,7 +1059,7 @@ p, pre, table, form {
 }
 ul.list-links {
     color: #d9d9d9;
-    padding-left: 15px;
+    padding-left: 0px;
 }
 ul.list-links li {
     padding: 0px;

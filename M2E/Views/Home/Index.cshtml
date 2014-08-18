@@ -54,7 +54,7 @@
                     </div>
                     <div>                
                         <div id="hdr" class=" navbar-right googleAnalytics hdr-no-accent hdr-nav-large-primary hdr-leaf" style="line-height: 46px;" ga-category="BeforeLogin" ga-event="Login" ga-label="web" method="post" action="/Account/Login/web">
-                            <a class="googleAnalytics" href="#/AboutUs" ga-category="BeforeLogin" ga-event="What is M2E" ga-label="LinkClick"><span data-i18n="beforeLoginMasterPageAboutM2E"></span></a>
+                            <a class="googleAnalytics" href="#/AboutUs" ga-category="BeforeLogin" ga-event="About Us " ga-label="LinkClick"><span data-i18n="beforeLoginMasterPageAboutM2E"></span></a>
                             <a class="googleAnalytics" href="#/login" ga-category="BeforeLogin" ga-event="Sign In Link Clicked" ga-label="LinkClick"><span data-i18n="beforeLoginMasterPageSignIn"></span></a>
                         </div>
                     </div>
@@ -70,22 +70,6 @@
 
         <div class="wrapper row-offcanvas row-offcanvas-left footerMinHeight" ng-view>           
         </div>       
-        
-        @*        <div id="footer">
-            <div class="container">
-                <div class="text-muted credit">
-                    <div style="float: left; margin-left: -16px auto;font-size: 16px; margin-top: -12px;">
-                        <span ng-cloak>©2014 <span ng-bind="beforeLoginFooterCopyRightInfo.companyName"></span>
-                            <span style="margin-left: 10px; padding-left: 1px;"><a href="#/contactus" class="googleAnalytics" ga-category="BeforeLogin" ga-event="ContactUsBottonLink" ga-label="Click" ><span ng-bind="beforeLoginFooterCopyRightInfo.contactUs"></span></a></span>
-                            <span style="margin-left: 2px; padding-left: 1px;">|</span>
-                            <span style="margin-left: 2px; padding-left: 1px;"><a href="#/faq" class="googleAnalytics" ga-category="BeforeLogin" ga-event="FAQBottonLink" ga-label="Click"><span ng-bind="beforeLoginFooterCopyRightInfo.FAQ"></span></a></span>
-                            <span style="margin-left: 2px; padding-left: 1px;">|</span>
-                            <span style="margin-left: 2px; padding-left: 1px;"><a href="#/tnc" class="googleAnalytics" ga-category="BeforeLogin" ga-event="Terms&PrivacyBottonLink" ga-label="Click"><span ng-bind="beforeLoginFooterCopyRightInfo.TnC"></span></a></span>
-                        </span> 
-                    </div>
-                </div>
-            </div>
-        </div>*@
 
 		<div>
 	username <input type="text" id="displayname" />
@@ -145,11 +129,11 @@
                                     <h4>Follow Us</h4>
                                 </header>
                                 <span>
-                                    <button class="btn bg-light-blue btn-circle"><i class="fa fa-facebook"></i></button>
-                                    <button class="btn bg-aqua btn-circle"><i class="fa fa-twitter"></i></button>
-                                    <button class="btn bg-red btn-circle"><i class="fa fa-linkedin"></i></button>
-                                    <button class="btn bg-red btn-circle"><i class="fa fa-google-plus"></i></button>
-                                    <button class="btn bg-red btn-circle"><i class="fa fa-youtube"></i></button>
+                                    <button class="btn bg-light-blue btn-circle googleAnalytics" ga-category="BeforeLogin" ga-event="Facebook_Footer_Button" ga-label="Click"><i class="fa fa-facebook"></i></button>
+                                    <button class="btn bg-aqua btn-circle googleAnalytics" ga-category="BeforeLogin" ga-event="Twitter_Footer_Button" ga-label="Click"><i class="fa fa-twitter"></i></button>
+                                    <button class="btn bg-red btn-circle googleAnalytics" ga-category="BeforeLogin" ga-event="LinkedIn_Footer_Button" ga-label="Click"><i class="fa fa-linkedin"></i></button>
+                                    <button class="btn bg-red btn-circle googleAnalytics" ga-category="BeforeLogin" ga-event="GooglePlus_Footer_Button" ga-label="Click"><i class="fa fa-google-plus"></i></button>
+                                    <button class="btn bg-red btn-circle googleAnalytics" ga-category="BeforeLogin" ga-event="Youtube_Footer_Button" ga-label="Click"><i class="fa fa-youtube"></i></button>
                                 </span>
                             </aside>
                         </div>
@@ -157,15 +141,15 @@
                         <div class="col-md-3 col-sm-4">
                             <aside>
                                 <header>
-                                    <h4>Contact Us</h4>
+                                    <h4 ng-bind="beforeLoginFooterInfo.contactUs"></h4>
                                 </header>
                                 <address>
-                                    <strong>MadeToEarn</strong> <br>
+                                    <strong ng-bind="beforeLoginFooterInfo.companyName"></strong> <br>
                                     <span>403, Testing,</span> <br>
                                     <span>Testing Center, </span> <br>
                                     <span>USA - 00000</span> <br>
                                     <span>Missory, USA</span> <br>
-                                    <abbr title="Email">email:</abbr> <a href="mailto:info@madetoearn.com">info@madetoearn.com</a>
+                                    <abbr title="Email">email:</abbr> <a class="googleAnalytics" ga-category="BeforeLogin" ga-event="Facebook_Footer_Button" ga-label="Click" href="mailto:info@cautom.com">info@cautom.com</a>
                                 </address>
                             </aside>
                         </div>
@@ -173,14 +157,14 @@
                         <div class="col-md-3 col-sm-4">
                             <aside>
                                 <header>
-                                    <h4>Important Links</h4>
+                                    <h4 ng-bind="beforeLoginFooterInfo.impLinks"></h4>
                                 </header>
                                 <ul class="list-links">
-                                    <li><a href="#/AboutUs">About us</a></li>
-                                    <li><a href="#/">Home</a></li>
-                                    <li><a href="#/faq">FAQs</a></li>
-                                    <li><a href="#/contactus">Contact us</a></li>
-                                    <li><a href="#/tnc">Terms & Privacy</a></li>
+                                    <li><a Class="googleAnalytics" ga-category="BeforeLogin" ga-event="AboutUs_Footer_Button" ga-label="Click" href="#/AboutUs" ng-bind="beforeLoginFooterInfo.aboutus"></a></li>
+                                    <li><a Class="googleAnalytics" ga-category="BeforeLogin" ga-event="Home_Footer_Button" ga-label="Click" href="#/" ng-bind="beforeLoginFooterInfo.home"></a></li>
+                                    <li><a Class="googleAnalytics" ga-category="BeforeLogin" ga-event="FAQs_Footer_Button" ga-label="Click" href="#/faq" ng-bind="beforeLoginFooterInfo.FAQ"></a></li>
+                                    <li><a Class="googleAnalytics" ga-category="BeforeLogin" ga-event="ContactUs_Footer_Button" ga-label="Click" href="#/contactus" span ng-bind="beforeLoginFooterInfo.contactUs"></a></li>
+                                    <li><a Class="googleAnalytics" ga-category="BeforeLogin" ga-event="TermsAndPrivacy_Footer_Button" ga-label="Click" href="#/tnc" ng-bind="beforeLoginFooterInfo.TnC"></a></li>
                                 </ul>
                             </aside>
                         </div>
@@ -188,26 +172,25 @@
                         <div class="col-md-3 col-sm-4">
                             <aside>
                                 <header>
-                                    <h4>FAQs</h4>
+                                    <h4 ng-bind="beforeLoginFooterInfo.FAQ"></h4>
                                 </header>
                                 <ul class="list-links">
-                                    <li><a style="cursor: pointer;" ng-click="FAQscrollTo('HowToJoinM2E')">How can I join M2E?</a></li>
-                                    <li><a style="cursor: pointer;" ng-click="FAQscrollTo('HowDoIGetPaid')">How do I get paid?</a></li>
-                                    <li><a style="cursor: pointer;" ng-click="FAQscrollTo('CostToJoinM2E')">Does it cost to join M2E?</a></li>
-                                    <li><a style="cursor: pointer;" ng-click="FAQscrollTo('HowMuchICanEarnPerDay')">How much can I earn per day?</a></li>
-                                    <li><a style="cursor: pointer;" ng-click="FAQscrollTo('TrackingSystem')">Do you have a tracking system?</a></li>
-                                    <li><a style="cursor: pointer;" ng-click="FAQscrollTo('CustomerServiceNumber')">Do you have customer service number?</a></li>
+                                    <li><a Class="googleAnalytics" ga-category="BeforeLogin" ga-event="TermsAndPrivacy_Footer_Button" ga-label="Click" style="cursor: pointer;" ng-click="FAQscrollTo('HowToJoinM2E')">How can I join Crowd Automation?</a></li>
+                                    <li><a Class="googleAnalytics" ga-category="BeforeLogin" ga-event="TermsAndPrivacy_Footer_Button" ga-label="Click" style="cursor: pointer;" ng-click="FAQscrollTo('HowDoIGetPaid')">How do I get paid?</a></li>
+                                    <li><a Class="googleAnalytics" ga-category="BeforeLogin" ga-event="TermsAndPrivacy_Footer_Button" ga-label="Click" style="cursor: pointer;" ng-click="FAQscrollTo('CostToJoinM2E')">Does it cost to join Crowd Automation?</a></li>
+                                    <li><a Class="googleAnalytics" ga-category="BeforeLogin" ga-event="TermsAndPrivacy_Footer_Button" ga-label="Click" style="cursor: pointer;" ng-click="FAQscrollTo('HowMuchICanEarnPerDay')">How much can I earn per day?</a></li>
+                                    <li><a Class="googleAnalytics" ga-category="BeforeLogin" ga-event="TermsAndPrivacy_Footer_Button" ga-label="Click" style="cursor: pointer;" ng-click="FAQscrollTo('TrackingSystem')">Do you have a tracking system?</a></li>
+                                    <li><a Class="googleAnalytics" ga-category="BeforeLogin" ga-event="TermsAndPrivacy_Footer_Button" ga-label="Click" style="cursor: pointer;" ng-click="FAQscrollTo('CustomerServiceNumber')">Do you have customer service number?</a></li>
                                 </ul>
                             </aside>
                         </div>
                     </div>
                 </div>
-                @*    <div class="background"><img src="assets/img/background-city.png" class="" alt=""></div>*@
             </section>
             <section id="footer-bottom">
                 <div class="container">
                     <div class="footer-inner">
-                        <div class="copyright">&copy; MadeToearn, All rights reserved</div>
+                        <div class="copyright">&copy; <span ng-bind="beforeLoginFooterInfo.footerMost"></span></div>
                     </div>
                 </div>
             </section>

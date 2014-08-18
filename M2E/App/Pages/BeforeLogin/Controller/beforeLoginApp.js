@@ -55,16 +55,16 @@ define([appLocation.preLogin], function (app) {
 
         $rootScope.logoImage = { url: logoImage };
         $('title').html("index"); //TODO: change the title so cann't be tracked in log
-        $rootScope.beforeLoginFooterCopyRightInfo = {
-            companyName: "MadeToEarn",
+        $rootScope.beforeLoginFooterInfo = {
+            companyName: "Crowd Automation",
             contactUs: "Contact Us",
-            FAQ: "FAQ",
-            TnC: "Terms & Conditions"
+            impLinks: "Important Links",
+            FAQ: "FAQs",
+            TnC: "Terms & Privacy",
+            aboutus: "About Us",
+            home: "Home",
+            footerMost: "Crowd Automation, All rights reserved"
         };
-        if (detectmob()) {
-            $rootScope.beforeLoginFooterCopyRightInfo.companyName = "M2E";
-            $rootScope.beforeLoginFooterCopyRightInfo.TnC = "T&C";
-        }
 
         $scope.FAQscrollTo = function (id) {
             //$anchorScroll();
