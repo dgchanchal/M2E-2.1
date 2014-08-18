@@ -413,7 +413,7 @@ define([appLocation.userPostLogin], function (app) {
             var clientCreateTemplateData = { Data: $rootScope.jobTemplate, ImgurList: userSession.listOfImgurImages };
             //var currentTemplateId = new Date().getTime();
 
-            var url = ServerContextPah + '/Client/CreateTemplate?username=' + userSession.username;
+            var url = ServerContextPah + '/Client/CreateTemplate';
             if (($('#createTemplateTitleText').val() != "") && ($('#createTemplateTitleText').val() != null)) {
                 startBlockUI('wait..', 3);
                 $http({

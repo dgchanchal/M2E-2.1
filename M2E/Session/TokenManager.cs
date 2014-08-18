@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Runtime.Caching;
+using M2E.Models;
+using System.Configuration;
+using M2E.Encryption;
 
 namespace M2E.Session
 {
     public class TokenManager
-    {
+    {        
         public static void CreateSession(M2ESession session)
         {
             var sessionId = session.SessionId;
@@ -18,6 +21,45 @@ namespace M2E.Session
         public static void RemoveSession(string sessionId)
         {
             MemoryCache.Default.Remove(sessionId);
+        }
+
+        public static M2ESession getSessionInfo(string sessionId, HeaderManager headers)
+        {
+            M2ESession session = null;
+            if (IsValidSession(sessionId, out session))
+            {
+                return session;
+            }
+            else
+            {
+                if (headers == null)
+                    return null;
+                if (sessionId == null)
+                    return null;
+                string Authkey = ConfigurationManager.AppSettings["AuthKey"];
+                string username = EncryptionClass.GetDecryptionValue(headers.AuthKey, Authkey);
+                M2EContext _db = new M2EContext();
+                var dbUserInfo = _db.Users.SingleOrDefault(x=>x.Username == username);
+                if (dbUserInfo != null)
+                {
+                    string password = EncryptionClass.GetDecryptionValue(headers.AuthValue, Authkey);
+                    if (dbUserInfo.KeepMeSignedIn == "true" && dbUserInfo.Password == password)
+                    {
+                        var NewSession = new M2ESession(username, sessionId);
+                        TokenManager.CreateSession(NewSession);
+                        return getSessionInfo(sessionId, headers);
+                    }
+                    else
+                    {
+                        return null;
+                    }
+
+                }
+                else
+                {
+                    return null;
+                }                
+            }
         }
 
         public static bool IsValidSession(string sessionId)
@@ -31,7 +73,10 @@ namespace M2E.Session
 
         private static bool IsValidSession(string sessionId, out  M2ESession session)
         {
-            session = null;            
+            session = null;
+
+            if (sessionId == null)
+                return false;
             if (MemoryCache.Default.Contains(sessionId))
             {
                 session = (M2ESession)MemoryCache.Default.Get(sessionId);

@@ -22,11 +22,11 @@ define([appLocation.userPostLogin], function (app) {
 
         $rootScope.$on("$locationChangeStart", function (event, next, current) {
 
-            var headerSessionData = {
-                UTMZT: CookieUtil.getUTMZT(),
-                UTMZK: CookieUtil.getUTMZK(),
-                UTMZV: CookieUtil.getUTMZV()
-            }
+//            var headerSessionData = {
+//                UTMZT: CookieUtil.getUTMZT(),
+//                UTMZK: CookieUtil.getUTMZK(),
+//                UTMZV: CookieUtil.getUTMZV()
+//            }
 
             //SessionManagementUtil.isValidSession(headerSessionData);
             /* Sidebar tree view */

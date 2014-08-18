@@ -70,7 +70,7 @@ namespace M2E.Service.UserService.Survey
         public ResponseModel<UserProductSurveyTemplateModel> GetTemplateInformationByRefKey(string username,string refKey)
         {
             var response = new ResponseModel<UserProductSurveyTemplateModel>();
-            var job = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x=>x.username == username && x.referenceId == refKey);
+            var job = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x=>x.referenceId == refKey);
             response.Status = 200;
             response.Message = "success";
             response.Payload = new UserProductSurveyTemplateModel();
@@ -106,12 +106,12 @@ namespace M2E.Service.UserService.Survey
         public ResponseModel<UserSurveyResponse> GetTemplateSurveyQuestionsByRefKey(string username, string refKey)
         {
             var response = new ResponseModel<UserSurveyResponse>();
-            var surveyJobInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.username == username && x.referenceId == refKey);
-            var surveyTemplateInstructionsList = _db.CreateTemplateeditableInstructionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == refKey && x.username == username).ToList();
-            var surveyTemplateSingleQuestionsList = _db.CreateTemplateSingleQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == refKey && x.username == username).ToList();
-            var surveyTemplateMultipleQuestionsList = _db.CreateTemplateMultipleQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == refKey && x.username == username).ToList();
-            var surveyTemplateTextBoxQuestionsList = _db.CreateTemplateTextBoxQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == refKey && x.username == username).ToList();
-            var surveyTemplateListBoxQuestionsList = _db.CreateTemplateListBoxQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == refKey && x.username == username).ToList();
+            var surveyJobInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey);
+            var surveyTemplateInstructionsList = _db.CreateTemplateeditableInstructionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == refKey).ToList();
+            var surveyTemplateSingleQuestionsList = _db.CreateTemplateSingleQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == refKey).ToList();
+            var surveyTemplateMultipleQuestionsList = _db.CreateTemplateMultipleQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == refKey).ToList();
+            var surveyTemplateTextBoxQuestionsList = _db.CreateTemplateTextBoxQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == refKey).ToList();
+            var surveyTemplateListBoxQuestionsList = _db.CreateTemplateListBoxQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == refKey).ToList();
 
 
             response.Status = 200;

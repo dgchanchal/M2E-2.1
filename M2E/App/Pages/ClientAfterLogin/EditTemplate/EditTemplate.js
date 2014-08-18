@@ -17,12 +17,18 @@ define([appLocation.postLogin], function (app) {
         $rootScope.jobTemplate = [];
         $rootScope.imgurImageTemplate = [];
 
-        var url = ServerContextPah + '/Client/GetTemplateDetailById?username=' + userSession.username + '&id=' + $routeParams.templateid;
+        var url = ServerContextPah + '/Client/GetTemplateDetailById?id=' + $routeParams.templateid;
+        var headers = {
+            'Content-Type': 'application/json',
+            'UTMZT': CookieUtil.getUTMZT(),
+            'UTMZK': CookieUtil.getUTMZK(),
+            'UTMZV': CookieUtil.getUTMZV()
+        };
         startBlockUI('wait..', 3);
         $http({
             url: url,
             method: "POST",
-            headers: { 'Content-Type': 'application/json' }
+            headers: headers
         }).success(function (data, status, headers, config) {
             //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
             stopBlockUI();
@@ -45,11 +51,17 @@ define([appLocation.postLogin], function (app) {
         loadImagesfromImgur();
 
         function loadImagesfromImgur() {
-            var url = ServerContextPah + '/Client/GetTemplateImageDetailById?username=' + userSession.username + '&id=' + $routeParams.templateid;
+            var url = ServerContextPah + '/Client/GetTemplateImageDetailById?id=' + $routeParams.templateid;
+            var headers = {
+                'Content-Type': 'application/json',
+                'UTMZT': CookieUtil.getUTMZT(),
+                'UTMZK': CookieUtil.getUTMZK(),
+                'UTMZV': CookieUtil.getUTMZV()
+            };
             $http({
                 url: url,
                 method: "POST",
-                headers: { 'Content-Type': 'application/json' }
+                headers: headers
             }).success(function (data, status, headers, config) {
                 //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
 
@@ -455,7 +467,7 @@ define([appLocation.postLogin], function (app) {
 
         $scope.DeleteEditImgurImageByIdFunction = function (id) {
 
-            var url = ServerContextPah + '/Client/DeleteTemplateImgurImageById?username=' + userSession.username + '&id=' + id;
+            var url = ServerContextPah + '/Client/DeleteTemplateImgurImageById?id=' + id;
             {
                 startBlockUI('wait..', 3);
                 $http({
@@ -479,14 +491,20 @@ define([appLocation.postLogin], function (app) {
         $scope.ClientEditTemplateFunction = function () {
             $rootScope.jobTemplate[0].title = $('#createTemplateTitleText').val();
             var clientEditTemplateData = { Data: $rootScope.jobTemplate, ImgurList: userSession.listOfImgurImages };
-            var url = ServerContextPah + '/Client/EditTemplateDetailById?username=' + userSession.username + '&id=' + $routeParams.templateid;
+            var url = ServerContextPah + '/Client/EditTemplateDetailById?id=' + $routeParams.templateid;
+            var headersSubmit = {
+                'Content-Type': 'application/json',
+                'UTMZT': CookieUtil.getUTMZT(),
+                'UTMZK': CookieUtil.getUTMZK(),
+                'UTMZV': CookieUtil.getUTMZV()
+            };
             if (($('#createTemplateTitleText').val() != "") && ($('#createTemplateTitleText').val() != null)) {
                 startBlockUI('wait..', 3);
                 $http({
                     url: url,
                     method: "POST",
                     data: clientEditTemplateData,
-                    headers: { 'Content-Type': 'application/json' }
+                    headers: headersSubmit
                 }).success(function (data, status, headers, config) {
                     //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
                     stopBlockUI();

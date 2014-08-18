@@ -7,6 +7,7 @@ using M2E.Session;
 using M2E.Service.UserService.Survey;
 using System.Globalization;
 using M2E.Models.DataWrapper.UserSurvey;
+using M2E.Models;
 
 namespace M2E.Controllers
 {
@@ -23,71 +24,143 @@ namespace M2E.Controllers
         [HttpPost]
         public JsonResult GetAllTemplateInformation()
         {
-            var username = "sumitchourasia91@gmail.com";
+            //var username = "sumitchourasia91@gmail.com";
             var headers = new HeaderManager(Request);
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
             var userTemplateList = new UserProductSurveyTemplateService();
             var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
-            return Json(userTemplateList.GetAllTemplateInformation(username));
+            if (isValidToken)
+            {
+                return Json(userTemplateList.GetAllTemplateInformation(session.UserName));
+            }
+            else
+            {
+                ResponseModel<string> response = new ResponseModel<string>();
+                response.Status = 401;
+                response.Message = "Unauthorized";
+                return Json(response);
+            }
+            
            
         }
 
         [HttpPost]
         public JsonResult GetTemplateInformationByRefKey()
         {
-            var username = "sumitchourasia91@gmail.com";
-            var refKey = Request.QueryString["refKey"].ToString(CultureInfo.InvariantCulture);
+            //var username = "sumitchourasia91@gmail.com";
+            var refKey = Request.QueryString["refKey"].ToString(CultureInfo.InvariantCulture);            
             var headers = new HeaderManager(Request);
-            var userTemplateList = new UserProductSurveyTemplateService();
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
+            var userTemplateList = new UserProductSurveyTemplateService();            
             var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
-            return Json(userTemplateList.GetTemplateInformationByRefKey(username, refKey));
+            if (isValidToken)
+            {
+                return Json(userTemplateList.GetTemplateInformationByRefKey(session.UserName, refKey));
+            }
+            else
+            {
+                ResponseModel<string> response = new ResponseModel<string>();
+                response.Status = 401;
+                response.Message = "Unauthorized";
+                return Json(response);
+            }
+            
 
         }
 
         [HttpPost]
         public JsonResult GetTemplateSurveyQuestionsByRefKey()
         {
-            var username = "sumitchourasia91@gmail.com";
+            //var username = "sumitchourasia91@gmail.com";
             var refKey = Request.QueryString["refKey"].ToString(CultureInfo.InvariantCulture);
             var headers = new HeaderManager(Request);
-            var userTemplateList = new UserProductSurveyTemplateService();
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
+            var userTemplateList = new UserProductSurveyTemplateService();            
             var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
-            return Json(userTemplateList.GetTemplateSurveyQuestionsByRefKey(username, refKey));
+            if (isValidToken)
+            {
+                return Json(userTemplateList.GetTemplateSurveyQuestionsByRefKey(session.UserName, refKey));
+            }
+            else
+            {
+                ResponseModel<string> response = new ResponseModel<string>();
+                response.Status = 401;
+                response.Message = "Unauthorized";
+                return Json(response);
+            }
+            
 
         }
 
         [HttpPost]
         public JsonResult SubmitTemplateSurveyResultByRefKey(UserSurveyResultRequest surveyResult)
         {
-            var username = "sumitchourasia91@gmail.com";
+            //var username = "sumitchourasia91@gmail.com";
             var refKey = Request.QueryString["refKey"].ToString(CultureInfo.InvariantCulture);
             var headers = new HeaderManager(Request);
-            var userTemplateList = new UserProductSurveyTemplateService();
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
+            var userTemplateList = new UserProductSurveyTemplateService();            
             var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
-            return Json(userTemplateList.SubmitTemplateSurveyResultByRefKey(surveyResult, refKey, username));
+            if (isValidToken)
+            {
+                return Json(userTemplateList.SubmitTemplateSurveyResultByRefKey(surveyResult, refKey, session.UserName));
+            }
+            else
+            {
+                ResponseModel<string> response = new ResponseModel<string>();
+                response.Status = 401;
+                response.Message = "Unauthorized";
+                return Json(response);
+            }
+           
 
         }
 
         [HttpPost]
         public JsonResult AllocateThreadToUserByRefKey()
         {
-            var username = "sumitchourasia91@gmail.com";
+            //var username = "sumitchourasia91@gmail.com";
             var refKey = Request.QueryString["refKey"].ToString(CultureInfo.InvariantCulture);
             var headers = new HeaderManager(Request);
-            var userTemplateList = new UserProductSurveyTemplateService();
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
+            var userTemplateList = new UserProductSurveyTemplateService();            
             var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
-            return Json(userTemplateList.AllocateThreadToUserByRefKey(refKey, username));
+            if (isValidToken)
+            {
+                return Json(userTemplateList.AllocateThreadToUserByRefKey(refKey, session.UserName));
+            }
+            else
+            {
+                ResponseModel<string> response = new ResponseModel<string>();
+                response.Status = 401;
+                response.Message = "Unauthorized";
+                return Json(response);
+            }
+            
 
         }
 
         [HttpPost]
         public JsonResult GetUserActiveThreads()
         {
-            var username = "sumitchourasia91@gmail.com";
+            //var username = "sumitchourasia91@gmail.com";
             var status = Request.QueryString["status"].ToString(CultureInfo.InvariantCulture);
             var headers = new HeaderManager(Request);
-            var userTemplateList = new UserProductSurveyTemplateService();
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
+            var userTemplateList = new UserProductSurveyTemplateService();            
             var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
-            return Json(userTemplateList.GetUserActiveThreads(username, status));
+            if (isValidToken)
+            {
+                return Json(userTemplateList.GetUserActiveThreads(session.UserName, status));
+            }
+            else
+            {
+                ResponseModel<string> response = new ResponseModel<string>();
+                response.Status = 401;
+                response.Message = "Unauthorized";
+                return Json(response);
+            }
+            
 
         }
     }

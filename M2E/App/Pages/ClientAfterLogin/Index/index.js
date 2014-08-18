@@ -71,13 +71,19 @@ define([appLocation.postLogin], function (app) {
 
         $scope.deleteTemplateEditPageWithId = function (id) {
             $('#closeModalPopup' + id).click();
-            var url = ServerContextPah + '/Client/DeleteTemplateDetailById?username=' + userSession.username + '&id=' + id;
+            var url = ServerContextPah + '/Client/DeleteTemplateDetailById?id=' + id;
+            var headers = {
+                'Content-Type': 'application/json',
+                'UTMZT': CookieUtil.getUTMZT(),
+                'UTMZK': CookieUtil.getUTMZK(),
+                'UTMZV': CookieUtil.getUTMZV()
+            };
             if (confirm("Template will be permanently deleted. Are you sure?") == true) {
                 startBlockUI('wait..', 3);
                 $http({
                     url: url,
                     method: "POST",
-                    headers: { 'Content-Type': 'application/json' }
+                    headers: headers
                 }).success(function (data, status, headers, config) {
                     //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
 

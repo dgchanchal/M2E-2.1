@@ -6,12 +6,18 @@ define([appLocation.postLogin], function (app) {
         loadClientDetails();
 
         function loadClientDetails() {
-            var url = ServerContextPah + '/Client/GetClientDetails?username=' + userSession.username;
+            var url = ServerContextPah + '/Client/GetClientDetails';
+            var headers = {
+                'Content-Type': 'application/json',
+                'UTMZT': CookieUtil.getUTMZT(),
+                'UTMZK': CookieUtil.getUTMZK(),
+                'UTMZV': CookieUtil.getUTMZV()
+            };
             startBlockUI('wait..', 3);
             $http({
                 url: url,
                 method: "POST",
-                headers: { 'Content-Type': 'application/json' }
+                headers: headers
             }).success(function (data, status, headers, config) {
                 //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
                 stopBlockUI();

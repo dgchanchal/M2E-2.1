@@ -241,14 +241,20 @@ define([appLocation.postLogin], function (app) {
             var clientCreateModeratingPhotosData = { Data: $scope.jobTemplate, ImgurList: userSession.imgurImageTemplateModeratingPhotos, TemplateInfo: { type: TemplateInfoModel.moderationType, subType: TemplateInfoModel.moderationSubTypeModeratingPhotos} };
             //var currentTemplateId = new Date().getTime();
 
-            var url = ServerContextPah + '/Client/CreateTemplate?username=' + userSession.username;
+            var url = ServerContextPah + '/Client/CreateTemplate';
+            var headers = {
+                'Content-Type': 'application/json',
+                'UTMZT': CookieUtil.getUTMZT(),
+                'UTMZK': CookieUtil.getUTMZK(),
+                'UTMZV': CookieUtil.getUTMZV()
+            };
             if (($('#createTemplateTitleTextModeratingPhotos').val() != "") && ($('#createTemplateTitleTextModeratingPhotos').val() != null)) {
                 startBlockUI('wait..', 3);
                 $http({
                     url: url,
                     method: "POST",
                     data: clientCreateModeratingPhotosData,
-                    headers: { 'Content-Type': 'application/json' }
+                    headers: headers
                 }).success(function (data, status, headers, config) {
                     //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
                     stopBlockUI();

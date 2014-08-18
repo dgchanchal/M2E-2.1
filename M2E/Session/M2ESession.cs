@@ -13,6 +13,12 @@ namespace M2E.Session
             this.SessionId = Guid.NewGuid().ToString();
             this.UserName = userName;
         }
+        public M2ESession(string userName, string Guid)
+        {
+            var now = DateTime.Now;
+            this.SessionId = Guid;
+            this.UserName = userName;
+        }
         public string SessionId { get; set; }
         public string UserName { get; set; }
     }
