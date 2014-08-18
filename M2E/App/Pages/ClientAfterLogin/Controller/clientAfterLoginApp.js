@@ -26,7 +26,7 @@ define([appLocation.postLogin], function (app) {
 
             //SessionManagementUtil.isValidSession(headerSessionData);
             /* Sidebar tree view */
-            userSession.guid = CookieUtil.getUTMZT();
+            //userSession.guid = CookieUtil.getUTMZT();
             $(".sidebar .treeview").tree();
 
             gaWeb("BeforeLogin-Page Visited", "Page Visited", next);
