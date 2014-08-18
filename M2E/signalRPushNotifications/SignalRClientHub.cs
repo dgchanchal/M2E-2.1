@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Microsoft.AspNet.SignalR;
+using M2E.Session;
 
 namespace M2E.signalRPushNotifications
 {
@@ -10,32 +11,22 @@ namespace M2E.signalRPushNotifications
     {
         private static Dictionary<string, dynamic> connectedClients = new Dictionary<string, dynamic>();
 
-        public void RegisterClient(string userName)
+        public void RegisterClient(string tokenId)
         {
-            lock (connectedClients)
+            M2ESession session = TokenManager.getSessionInfo(tokenId);
+            if (session != null)
             {
-                if (connectedClients.ContainsKey(userName))
-                {
-                    connectedClients[userName] = Clients.Caller;
-                }
-                else
-                {
-                    connectedClients.Add(userName, Clients.Caller);
-                }
-            }
-            Clients.Caller.addMessage("'" + userName + "'registered.");
+                SignalRManager.SignalRCreateManager(session.UserName, Clients.Caller);
+                Clients.Caller.addMessage("'" + session.UserName + "'registered.");
+            }            
         }
 
         public void AddNotification(string notificationMessage, string toUser)
         {
-            lock (connectedClients)
-            {
-                if (connectedClients.ContainsKey(toUser))
-                {
-                    dynamic client = connectedClients[toUser];
-                    client.addMessage(notificationMessage);
-                }
-            }
+            dynamic client = SignalRManager.getSignalRDetail(toUser);
+            if(client != null)
+                client.addMessage(notificationMessage);
+            
         }
     }
 }

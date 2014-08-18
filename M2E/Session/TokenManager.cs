@@ -15,9 +15,14 @@ namespace M2E.Session
         {
             var sessionId = session.SessionId;
             const int hours = 1; // TODO: currently hard coded hour value;
-            MemoryCache.Default.Set(sessionId, session, new CacheItemPolicy() { SlidingExpiration = new TimeSpan(hours, 0, 0) });
+            //MemoryCache.Default.Set(sessionId, session, new CacheItemPolicy() { SlidingExpiration = new TimeSpan(hours, 0, 0) });
+            setMemoryCacheValue(sessionId, session, hours, 0, 0);
         }
 
+        private static void setMemoryCacheValue(string SessionId, M2ESession session, int hours, int minutes, int seconds)
+        {
+            MemoryCache.Default.Set(SessionId, session, new CacheItemPolicy() { SlidingExpiration = new TimeSpan(hours, 0, 0) });
+        }
         public static void RemoveSession(string sessionId)
         {
             MemoryCache.Default.Remove(sessionId);
@@ -26,7 +31,17 @@ namespace M2E.Session
         public static string GetUsernameFromSessionId(HeaderManager headers)
         {
             var session = getSessionInfo(headers.AuthToken, headers);
-            return session.UserName;
+            if (session != null)
+                return session.UserName;
+            else
+                return null;
+        }
+
+        public static void UpdateSignalRClientAddr(M2ESession session,dynamic signalRClientAddr)
+        {
+            session.SignalRClient = signalRClientAddr;
+            const int hours = 1; // TODO: currently hard coded hour value;
+            setMemoryCacheValue(session.SessionId, session, hours, 0, 0);
         }
 
         public static M2ESession getSessionInfo(string sessionId, HeaderManager headers)
@@ -68,6 +83,20 @@ namespace M2E.Session
             }
         }
 
+        public static M2ESession getSessionInfo(string sessionId)
+        {
+            M2ESession session = null;
+            if (IsValidSession(sessionId, out session))
+            {
+                return session;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        
+
         public static bool IsValidSession(string sessionId)
         {
             if (sessionId == null)
@@ -85,7 +114,7 @@ namespace M2E.Session
                 return false;
             if (MemoryCache.Default.Contains(sessionId))
             {
-                session = (M2ESession)MemoryCache.Default.Get(sessionId);
+                session = (M2ESession)MemoryCache.Default.Get(sessionId);                
             }
             return VerifySessionObject(session);
         }

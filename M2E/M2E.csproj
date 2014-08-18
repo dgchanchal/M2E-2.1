@@ -290,6 +290,7 @@
     <Compile Include="Service\UserService\Survey\UserProductSurveyTemplateService.cs" />
     <Compile Include="Session\HeaderManager.cs" />
     <Compile Include="Session\M2ESession.cs" />
+    <Compile Include="Session\SignalRManager.cs" />
     <Compile Include="Session\TokenManager.cs" />
     <Compile Include="signalRPushNotifications\SignalRClientHub.cs" />
     <Compile Include="signalRPushNotifications\SignalRHub.cs" />
