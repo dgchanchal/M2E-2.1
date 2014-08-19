@@ -80,17 +80,17 @@ namespace M2E.Service.JobTemplate
             const string status_assigned = "assigned";
             const string status_reviewed = "reviewed";
             var userInfo = _db.Users.SingleOrDefault(x => x.Username == username);
-            string refKey = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x=>x.Id == id && x.username == username).referenceId;
-            var job = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey && x.username == username); ;
+            var clientJobInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.Id == id && x.username == username);
+            var job = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == clientJobInfo.referenceId && x.username == username); ;
             response.Status = 200;
             response.Message = "success";
             response.Payload = new ClientTemplateResponse();
             try
             {
-                long JobCompleted = _db.UserJobMappings.Where(x => x.refKey == refKey && x.status == status_done).Count();
-                long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == refKey && x.status == status_assigned).Count();
-                long JobTotal = 10; //currently hard coded
+                long JobCompleted = _db.UserJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == status_done).Count();
+                long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == status_assigned).Count();
                 long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
+
                 var clientTemplate = new ClientTemplateResponse
                 {
                         title = job.title,
@@ -99,10 +99,10 @@ namespace M2E.Service.JobTemplate
                         editId = job.Id.ToString(CultureInfo.InvariantCulture),
                         showEllipse = true,
                         timeShowType = "success",
-                        progressPercent = Convert.ToString((JobCompleted) * 100 / JobTotal),
+                        progressPercent = Convert.ToString((JobCompleted) * 100 / Convert.ToInt32(clientJobInfo.totalThreads)),
                         JobCompleted = Convert.ToString(JobCompleted),
                         JobAssigned = Convert.ToString(JobAssigned),
-                        JobTotal = Convert.ToString(JobTotal),
+                        JobTotal = Convert.ToString(clientJobInfo.totalThreads),
                         JobReviewed = Convert.ToString(JobReviewed)
                 };
                     response.Payload=clientTemplate;         
@@ -326,7 +326,7 @@ namespace M2E.Service.JobTemplate
             refKey += digitKey;
             var createTemplateQuestionsInfoInsert = new CreateTemplateQuestionInfo
             {
-                description = "NA",
+                description = TemplateInfo.description!=null?TemplateInfo.description:"NA",
                 username = username,
                 title = req[0].title,
                 visible = "NA",
@@ -334,10 +334,10 @@ namespace M2E.Service.JobTemplate
                 subType = TemplateInfo.subType,
                 creationTime = DateTime.Now.ToString(CultureInfo.InvariantCulture),
                 referenceId = refKey,
-                totalThreads = "NA",
+                totalThreads = TemplateInfo.totalThreads,
                 completed = "NA",
                 verified = "NA",
-                payPerUser = "NA"
+                payPerUser = TemplateInfo.amountEachThread
             };
 
             _db.CreateTemplateQuestionInfoes.Add(createTemplateQuestionsInfoInsert);

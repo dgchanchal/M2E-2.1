@@ -14,7 +14,7 @@ define([appLocation.postLogin], function (app) {
         var totalMultipleQuestionList = 0;
         var totalTextBoxQuestionList = 0;
         var totalListBoxQuestionList = 0;
-        
+
         $rootScope.jobTemplate = [
                 { type: "AddInstructions", title: "", visible: false, buttonText: "Add Instructions", editableInstructionsList: [{ Number: totalEditableInstruction, Text: "Instruction 1"}] },
                 { type: "AddSingleQuestionsList", title: "", visible: false, buttonText: "Add Ques. (single Ans.)", singleQuestionsList: [{ Number: totalSingleQuestionList, Question: "What is your gender ?", Options: "Male1;Female2"}] },
@@ -493,7 +493,7 @@ define([appLocation.postLogin], function (app) {
 
         $scope.ClientCreateTemplateFunction = function () {
             $rootScope.jobTemplate[0].title = $('#createTemplateTitleText').val();
-            var clientCreateTemplateData = { Data: $rootScope.jobTemplate, ImgurList: userSession.listOfImgurImages, TemplateInfo: { type: TemplateInfoModel.surveyType, subType: TemplateInfoModel.surveySubTypeProductSurvey} };
+            var clientCreateTemplateData = { Data: $rootScope.jobTemplate, ImgurList: userSession.listOfImgurImages, TemplateInfo: { type: TemplateInfoModel.surveyType, subType: TemplateInfoModel.surveySubTypeProductSurvey, description: $('#createTemplateDescriptionText').val(), totalThreads: $("#totalNumberOfThreads").val(), amountEachThread: $("#amountPerThreadTextBoxInput").val()} };
             //var currentTemplateId = new Date().getTime();
 
             var url = ServerContextPah + '/Client/CreateTemplate';
@@ -503,27 +503,35 @@ define([appLocation.postLogin], function (app) {
                 'UTMZK': CookieUtil.getUTMZK(),
                 'UTMZV': CookieUtil.getUTMZV()
             };
-            if (($('#createTemplateTitleText').val() != "") && ($('#createTemplateTitleText').val() != null)) {
-                startBlockUI('wait..', 3);
-                $http({
-                    url: url,
-                    method: "POST",
-                    data: clientCreateTemplateData,
-                    headers: headers
-                }).success(function (data, status, headers, config) {
-                    //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
-                    stopBlockUI();
-                    userSession.listOfImgurImages = [];
-                    var id = data.Message.split('-')[1];
-                    location.href = "#/";
-                    showToastMessage("Success", "Successfully Created");
-                }).error(function (data, status, headers, config) {
-
-                });
+            var isValidAmountPerThreadTextBoxInput = ($('#amountPerThreadTextBoxInput').val() != "") && $('#amountPerThreadTextBoxInput').val() >= 0.03;
+            var isValidTotalNumberOfThreads = ($('#totalNumberOfThreads').val() != "") && $('#totalNumberOfThreads').val() >= 1;
+            if (!isValidAmountPerThreadTextBoxInput || !isValidTotalNumberOfThreads) {
+                showToastMessage("Error", "Some Fields are invalid !!! Min Amount Payable to each workforce is $0.03 <br/> Min Thread Allowed is 1");
             }
             else {
-                showToastMessage("Error", "Title of the Template cann't be empty");
+                if (($('#createTemplateTitleText').val() != "") && ($('#createTemplateTitleText').val() != null)) {
+                    startBlockUI('wait..', 3);
+                    $http({
+                        url: url,
+                        method: "POST",
+                        data: clientCreateTemplateData,
+                        headers: headers
+                    }).success(function (data, status, headers, config) {
+                        //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
+                        stopBlockUI();
+                        userSession.listOfImgurImages = [];
+                        var id = data.Message.split('-')[1];
+                        location.href = "#/";
+                        showToastMessage("Success", "Successfully Created");
+                    }).error(function (data, status, headers, config) {
+
+                    });
+                }
+                else {
+                    showToastMessage("Error", "Title of the Template cann't be empty");
+                }
             }
+            
 
         }
 

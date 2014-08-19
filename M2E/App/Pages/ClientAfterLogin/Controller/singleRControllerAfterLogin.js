@@ -145,7 +145,7 @@ function render_container_highcharts_completed_vs_assigned_vs_remaining(id, jobC
             }
         },
         series: [{
-            name: 'Percentage - ',
+            name: 'Percentage  ',
             data: [
                                 ['Completed', jobCompleted],
                                 ['Assigned', jobAssigned],
@@ -187,7 +187,7 @@ function render_container_highcharts_completed_vs_reviewed(id, total, reviewed, 
             }
         },
         series: [{
-            name: 'Percentage - ',
+            name: 'Percentage  ',
             data: [
                                 ['Review Done', reviewed],
                                 ['To be Reviewed', remaining]

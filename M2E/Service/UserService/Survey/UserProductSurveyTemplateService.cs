@@ -13,6 +13,7 @@ using System.Data.Entity.Validation;
 using M2E.signalRPushNotifications;
 using Microsoft.AspNet.SignalR;
 using M2E.Session;
+using System.Configuration;
 
 namespace M2E.Service.UserService.Survey
 {
@@ -33,6 +34,8 @@ namespace M2E.Service.UserService.Survey
             {
                 foreach (var job in templateData)
                 {
+                    string earningPerThreadTemp = Convert.ToString(Convert.ToDouble(job.payPerUser) * (Convert.ToDouble(Convert.ToString(ConfigurationManager.AppSettings["dollarToRupeesValue"]))));
+                    string remainingThreadsTemp = Convert.ToString(Convert.ToInt32(job.totalThreads) - _db.UserJobMappings.Where(x => x.refKey == job.referenceId).Count());
                     var userTemplate = new UserProductSurveyTemplateModel
                     {
                         title = job.title,
@@ -40,10 +43,10 @@ namespace M2E.Service.UserService.Survey
                         subType = job.subType,
                         refKey = job.referenceId,
                         creationTime = job.creationTime,
-                        earningPerThreads = "50",
-                        currency = "INR",
-                        totalThreads = "5000", // currently hard coded.
-                        remainingThreads = "500"// currently hard coded.                       
+                        earningPerThreads = earningPerThreadTemp,
+                        currency = "INR", // hard coded currency
+                        totalThreads = job.totalThreads, 
+                        remainingThreads =  remainingThreadsTemp                 
                     };
                     var AlreadyAppliedJobs = _db.UserJobMappings.SingleOrDefault(x => x.username == username && x.refKey == job.referenceId);
                     if (AlreadyAppliedJobs != null)
@@ -61,7 +64,7 @@ namespace M2E.Service.UserService.Survey
 
                 return response;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 response.Status = 500;//some error occured
                 response.Message = "failed";
@@ -79,7 +82,8 @@ namespace M2E.Service.UserService.Survey
             response.Payload = new UserProductSurveyTemplateModel();
             try
             {
-                
+                string earningPerThreadTemp = Convert.ToString(Convert.ToDouble(job.payPerUser) *(Convert.ToDouble(ConfigurationManager.AppSettings["dollarToRupeesValue"])));
+                string remainingThreadsTemp = Convert.ToString(Convert.ToInt32(job.totalThreads) - _db.UserJobMappings.Where(x => x.refKey == job.referenceId).Count());
                     var userTemplate = new UserProductSurveyTemplateModel
                     {
                         title = job.title,
@@ -87,10 +91,10 @@ namespace M2E.Service.UserService.Survey
                         subType = job.subType,
                         refKey = job.referenceId,
                         creationTime = job.creationTime,
-                        earningPerThreads = "50",
-                        currency = "INR",
-                        totalThreads = "5000", // currently hard coded.
-                        remainingThreads = "500"// currently hard coded.                       
+                        earningPerThreads = earningPerThreadTemp,
+                        currency = "INR", // hard coded currency
+                        totalThreads = job.totalThreads, // currently hard coded.
+                        remainingThreads = remainingThreadsTemp
                     };
                     response.Payload =userTemplate;
                 
@@ -285,8 +289,7 @@ namespace M2E.Service.UserService.Survey
                 var clientJobInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey);
                 long JobId = clientJobInfo.Id;
                 long JobCompleted = _db.UserJobMappings.Where(x => x.refKey == refKey && x.status == status_done).Count();
-                long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == refKey && x.status == status_assigned).Count();
-                long JobTotal = 10; //currently hard coded
+                long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == refKey && x.status == status_assigned).Count();                
                 long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
 
                 var SignalRClientHub = new SignalRClientHub();                
@@ -294,7 +297,7 @@ namespace M2E.Service.UserService.Survey
                 dynamic client = SignalRManager.getSignalRDetail(clientJobInfo.username);
                 if (client != null)
                 {
-                    client.updateClientProgressChart(Convert.ToString(JobId), Convert.ToString(JobTotal), Convert.ToString(JobCompleted), Convert.ToString(JobAssigned), Convert.ToString(JobReviewed));
+                    client.updateClientProgressChart(Convert.ToString(JobId), clientJobInfo.totalThreads, Convert.ToString(JobCompleted), Convert.ToString(JobAssigned), Convert.ToString(JobReviewed));
                     //client.updateClientProgressChart("8", "20", "10", "8", "5");
                     //client.addMessage("add message signalR");
                 }
@@ -345,8 +348,7 @@ namespace M2E.Service.UserService.Survey
                 var clientJobInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey);
                 long JobId = clientJobInfo.Id;
                 long JobCompleted = _db.UserJobMappings.Where(x => x.refKey == refKey && x.status == status_done).Count();
-                long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == refKey && x.status == status_assigned).Count();
-                long JobTotal = 10; //currently hard coded
+                long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == refKey && x.status == status_assigned).Count();                
                 long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
 
                 var SignalRClientHub = new SignalRClientHub();
@@ -354,7 +356,7 @@ namespace M2E.Service.UserService.Survey
                 dynamic client = SignalRManager.getSignalRDetail(clientJobInfo.username);
                 if (client != null)
                 {
-                    client.updateClientProgressChart(Convert.ToString(JobId), Convert.ToString(JobTotal), Convert.ToString(JobCompleted), Convert.ToString(JobAssigned), Convert.ToString(JobReviewed));
+                    client.updateClientProgressChart(Convert.ToString(JobId), clientJobInfo.totalThreads, Convert.ToString(JobCompleted), Convert.ToString(JobAssigned), Convert.ToString(JobReviewed));
                     //client.updateClientProgressChart("8", "20", "10", "8", "5");
                     //client.addMessage("add message signalR");
                 }
