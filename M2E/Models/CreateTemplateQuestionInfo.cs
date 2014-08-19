@@ -20,11 +20,12 @@ namespace M2E.Models
         public string visible { get; set; }
         public string description { get; set; }
         public string referenceId { get; set; }
-        public string total { get; set; }
+        public string totalThreads { get; set; }
         public string completed { get; set; }
         public string verified { get; set; }
         public string creationTime { get; set; }
         public string title { get; set; }
         public string subType { get; set; }
+        public string payPerUser { get; set; }
     }
 }

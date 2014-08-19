@@ -94,12 +94,13 @@
     <Property Name="visible" Type="nvarchar(max)" Nullable="false" />
     <Property Name="description" Type="nvarchar(max)" Nullable="false" />
     <Property Name="referenceId" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="total" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="totalThreads" Type="nvarchar(max)" Nullable="false" />
     <Property Name="completed" Type="nvarchar(max)" Nullable="false" />
     <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
     <Property Name="creationTime" Type="nvarchar(max)" Nullable="false" />
     <Property Name="title" Type="nvarchar(max)" Nullable="false" />
     <Property Name="subType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="payPerUser" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="CreateTemplateSingleQuestionsLists">
     <Key>
@@ -389,12 +390,13 @@
           <Property Name="visible" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="referenceId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="total" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="totalThreads" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="completed" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="verified" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="creationTime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Type="String" Name="title" Nullable="false" />
           <Property Type="String" Name="subType" Nullable="false" />
+          <Property Type="String" Name="payPerUser" Nullable="false" />
         </EntityType>
         <EntityType Name="CreateTemplateSingleQuestionsList">
           <Key>
@@ -665,12 +667,13 @@
           <ScalarProperty Name="visible" ColumnName="visible" />
           <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="referenceId" ColumnName="referenceId" />
-          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="totalThreads" ColumnName="totalThreads" />
           <ScalarProperty Name="completed" ColumnName="completed" />
           <ScalarProperty Name="verified" ColumnName="verified" />
           <ScalarProperty Name="creationTime" ColumnName="creationTime" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="subType" ColumnName="subType" />
+          <ScalarProperty Name="payPerUser" ColumnName="payPerUser" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -911,7 +914,7 @@
         <EntityTypeShape EntityType="M2EModel.CreateTemplateeditableInstructionsList" Width="1.5" PointX="2.75" PointY="0.75" Height="2.9417936197916656" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.CreateTemplateListBoxQuestionsList" Width="1.5" PointX="4.75" PointY="0.75" Height="3.1340950520833335" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.CreateTemplateMultipleQuestionsList" Width="1.5" PointX="0.875" PointY="5.875" Height="3.1340950520833335" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.CreateTemplateQuestionInfo" Width="1.5" PointX="4.875" PointY="8.375" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="M2EModel.CreateTemplateQuestionInfo" Width="1.5" PointX="4.875" PointY="8.375" Height="3.5186979166666656" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.CreateTemplateSingleQuestionsList" Width="1.5" PointX="4.75" PointY="4.75" Height="3.1340950520833317" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.CreateTemplateTextBoxQuestionsList" Width="1.5" PointX="6.75" PointY="0.75" Height="3.1340950520833317" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.ForgetPassword" Width="1.5" PointX="6.75" PointY="4.75" Height="1.5956835937499996" IsExpanded="true" />

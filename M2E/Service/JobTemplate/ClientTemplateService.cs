@@ -334,9 +334,10 @@ namespace M2E.Service.JobTemplate
                 subType = TemplateInfo.subType,
                 creationTime = DateTime.Now.ToString(CultureInfo.InvariantCulture),
                 referenceId = refKey,
-                total = "NA",
+                totalThreads = "NA",
                 completed = "NA",
-                verified = "NA"
+                verified = "NA",
+                payPerUser = "NA"
             };
 
             _db.CreateTemplateQuestionInfoes.Add(createTemplateQuestionsInfoInsert);
@@ -386,9 +387,10 @@ namespace M2E.Service.JobTemplate
                 subType = "NA",
                 creationTime = DateTime.Now.ToString(CultureInfo.InvariantCulture),
                 referenceId = refKey,
-                total = "NA",
+                totalThreads = "NA",
                 completed = "NA",
-                verified = "NA"
+                verified = "NA",
+                payPerUser = "NA"
             };
 
             _db.CreateTemplateQuestionInfoes.Add(createTemplateQuestionsInfoInsert);
