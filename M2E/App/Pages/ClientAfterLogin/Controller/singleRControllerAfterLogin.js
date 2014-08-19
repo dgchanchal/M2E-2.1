@@ -1,4 +1,4 @@
-﻿$(document).ready(function () {
+﻿$(document).ready(function ($) {
 
     //console.log("inside signalR after login user " + $.cookie('utmzt'));
     var username = "";
