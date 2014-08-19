@@ -14,5 +14,9 @@ namespace M2E.Models.DataResponse
         public string editId { get; set; }
         public string creationDate { get; set; }
         public string progressPercent { get; set; }
+        public string JobCompleted { get; set; }
+        public string JobAssigned { get; set; }
+        public string JobTotal { get; set; }
+        public string JobReviewed { get; set; }
     }
 }

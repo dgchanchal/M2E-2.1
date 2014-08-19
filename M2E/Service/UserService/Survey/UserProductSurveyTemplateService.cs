@@ -10,6 +10,9 @@ using M2E.Models.DataResponse.UserResponse;
 using M2E.Models.DataResponse.UserResponse.Survey;
 using M2E.Models.DataWrapper.UserSurvey;
 using System.Data.Entity.Validation;
+using M2E.signalRPushNotifications;
+using Microsoft.AspNet.SignalR;
+using M2E.Session;
 
 namespace M2E.Service.UserService.Survey
 {
@@ -271,18 +274,30 @@ namespace M2E.Service.UserService.Survey
             }
             
             var surveyThreadUserJobMapping = _db.UserJobMappings.SingleOrDefault(x => x.username == username && x.refKey == refKey);
-            surveyThreadUserJobMapping.status = "done";
+            const string status_done = "done";
+            const string status_assigned = "assigned";
+            const string status_reviewed = "reviewed";
+            surveyThreadUserJobMapping.status = status_done;
             surveyThreadUserJobMapping.endTime = DateTime.Now.ToString();
             try
             {
-                _db.SaveChanges();                
-                //var signalRHub = new SignalRHub();
-                //string totalProjects = _db.CreateTemplateQuestionInfoes.Count().ToString(CultureInfo.InvariantCulture);
-                //string successRate = "";
-                //string totalUsers = "";
-                //string projectCategories = "";
-                //var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRHub>();
-                //hubContext.Clients.All.updateBeforeLoginUserProjectDetails(totalProjects, successRate, totalUsers, projectCategories);
+                _db.SaveChanges();
+                var clientJobInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey);
+                long JobId = clientJobInfo.Id;
+                long JobCompleted = _db.UserJobMappings.Where(x => x.refKey == refKey && x.status == status_done).Count();
+                long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == refKey && x.status == status_assigned).Count();
+                long JobTotal = 10; //currently hard coded
+                long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
+
+                var SignalRClientHub = new SignalRClientHub();                
+                var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
+                dynamic client = SignalRManager.getSignalRDetail(clientJobInfo.username);
+                if (client != null)
+                {
+                    client.updateClientProgressChart(Convert.ToString(JobId), Convert.ToString(JobTotal), Convert.ToString(JobCompleted), Convert.ToString(JobAssigned), Convert.ToString(JobReviewed));
+                    //client.updateClientProgressChart("8", "20", "10", "8", "5");
+                    //client.addMessage("add message signalR");
+                }
 
                 response.Status = 200;
                 response.Message = "success-";

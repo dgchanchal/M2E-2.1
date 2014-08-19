@@ -12,10 +12,11 @@ namespace M2E.Session
         {            
             const int hours = 1; // TODO: currently hard coded hour value;
             //MemoryCache.Default.Set(sessionId, session, new CacheItemPolicy() { SlidingExpiration = new TimeSpan(hours, 0, 0) });
-            if (!MemoryCache.Default.Contains(username))
-            {
-                setMemoryCacheValue(username, clientAddr, hours, 0, 0);
-            }            
+            setMemoryCacheValue(username, clientAddr, hours, 0, 0);
+            //if (!MemoryCache.Default.Contains(username))
+            //{
+            //    setMemoryCacheValue(username, clientAddr, hours, 0, 0);
+            //}            
         }
         private static void setMemoryCacheValue(string username, dynamic clientAddr, int hours, int minutes, int seconds)
         {

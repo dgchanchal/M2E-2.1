@@ -47,6 +47,28 @@ namespace M2E.Controllers
         }
 
         [HttpPost]
+        public JsonResult GetTemplateInformationByRefKey()
+        {
+            //var username = "sumitchourasia91@gmail.com";            
+            var headers = new HeaderManager(Request);
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
+            var clientTemplate = new ClientTemplateService();
+            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+            var id = Convert.ToInt32(Request.QueryString["id"]);
+            if (isValidToken)
+            {
+                return Json(clientTemplate.GetTemplateInformationByRefKey(session.UserName,id));
+            }
+            else
+            {
+                ResponseModel<string> response = new ResponseModel<string>();
+                response.Status = 401;
+                response.Message = "Unauthorized";
+                return Json(response);
+            }
+        }
+
+        [HttpPost]
         public JsonResult GetTemplateDetailById()
         {
             //var username = Request.QueryString["username"].ToString(CultureInfo.InvariantCulture);

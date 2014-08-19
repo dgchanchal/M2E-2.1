@@ -25,8 +25,8 @@ define([appLocation.preLogin], function (app) {
             visible: false,
             message: ''
         }
-        var type = getParameterByName("type");
-        var mssg = getParameterByName("mssg");
+        //var type = getParameterByName("type");
+        //var mssg = getParameterByName("mssg");
         if (getParameterByName("type") == "info") {
             $scope.showHeaderErrors = true;
             $scope.HeaderAlert.visible = true;

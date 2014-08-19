@@ -515,7 +515,7 @@ define([appLocation.postLogin], function (app) {
                     stopBlockUI();
                     userSession.listOfImgurImages = [];
                     var id = data.Message.split('-')[1];
-                    location.href = "#/editTemplate/edit/" + id;
+                    location.href = "#/";
                     showToastMessage("Success", "Successfully Created");
                 }).error(function (data, status, headers, config) {
 
