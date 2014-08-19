@@ -1,0 +1,146 @@
+﻿<!-- Content Header (Page header) -->
+<div ng-controller="ClientAfterLoginTemplateResponseDetail">
+                <section class="content-header" >
+                    <span><button class="btn btn-success btn-flat" ng-click="openTemplateInfoPageWithId(templateId)">Back</button> </span>
+                        <!--<span class="active"><button ng-click="openTemplateEditPageWithId(templateId)" class="btn btn-warning">Edit</button></span>-->
+                        <span class="active"><button ng-click="deleteTemplatePageWithId(templateId)" class="btn btn-danger">Delete</button></span>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">                   
+                    <!-- top row -->
+                    <div class="row">
+                        <div class="col-xs-12 connectedSortable">
+                            
+                        </div><!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+
+                    <!-- Main row -->
+                    <div class="row">
+                        <!-- Left col -->
+                        <section class="col-lg-12 connectedSortable">                            
+                           <div class="box box-color box-bordered">
+                <div class="box-title">
+                    <h3>
+                        <i class="icon-user"></i>Information
+                    </h3>
+                </div>
+                <div class="box-content nopadding"> 
+                                   
+                    <div class="row">
+                        <div class="col-md-3">
+                                                                                    
+                            <div class="box-body">
+                                    <table class="table table-bordered">
+                                        <tbody><tr>
+                                            <th style="width: 10px">#</th>
+                                            <th>Task</th>                                            
+                                            <th style="width: 40px">Label</th>
+                                        </tr>
+                                        <tr>
+                                            <td>1.</td>
+                                            <td>Update software</td>                                           
+                                            <td><span class="badge bg-red">55%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2.</td>
+                                            <td>Clean database</td>                                            
+                                            <td><span class="badge bg-yellow">70%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3.</td>
+                                            <td>Cron job running</td>                                            
+                                            <td><span class="badge bg-light-blue">30%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>4.</td>
+                                            <td>Fix and squish bugs</td>                                            
+                                            <td><span class="badge bg-green">90%</span></td>
+                                        </tr>
+                                    </tbody></table>
+                                </div>
+                        </div>
+                        <div class="col-md-9">
+                              <div id="container" style="height: 400px; margin: 0 auto"></div>
+                        </div>                                               
+                    </div>
+                   
+                </div>
+            </div>
+                        </section><!-- /.Left col -->                        
+                    </div><!-- /.row (main row) -->
+
+                </section><!-- /.content -->
+         
+        <!-- page script -->
+  </div>
+        <script type="text/javascript">
+$(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'This is Question?'
+            },            
+            xAxis: {
+                type: 'category',
+                labels: {
+                formatter: function() {
+                    return this.value;
+                },
+                useHTML: true
+            }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Population (millions)'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Population in 2008: <b>{point.y:.1f} millions</b>',
+            },
+            series: [{
+                name: 'Population',
+                data: [
+                    ['0', 23.7],
+                    ['1', 16,1],
+                    ['2', 14.2],
+                    ['3', 14.0],
+                    ['4', 12.5],
+                    ['5', 12.1],
+                    ['6', 11.8],
+                    ['7', 11.7],
+                    ['8', 11.1],
+                    ['9', 11.1],
+                    ['10', 10.5],
+                    ['11', 10.4],
+                    ['12', 10.0]                    
+                ],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+        
+    });
+    
+    $(document).ready(function($) {
+        $('.fancybox').fancybox();
+    });
+		</script>

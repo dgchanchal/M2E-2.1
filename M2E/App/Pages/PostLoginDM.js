@@ -134,6 +134,9 @@ appRequire = require
             clientAfterLoginTemplateInfo: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","highcharts"]
             },
+            ClientAfterLoginTemplateResponseDetail: {
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","highcharts"]
+            },
             AngularFileUploadController: {
                 deps: ["angularjs_fileUpload_shim","angularjs_fileUpload"]
             },
@@ -201,6 +204,7 @@ appRequire = require
             clientAfterLoginTemplateSample: "../../App/Pages/ClientAfterLogin/TemplateSample/TemplateSample",//used
             ClientAfterLoginModeratingPhotos: "../../App/Pages/ClientAfterLogin/Moderation/ModeratingPhotos/ModeratingPhotos",//used
             ClientAfterLoginTranscriptionTemplate: "../../App/Pages/ClientAfterLogin/DataEntry/TranscriptionTemplate/TranscriptionTemplate",//used
+            ClientAfterLoginTemplateResponseDetail: "../../App/Pages/ClientAfterLogin/TemplateResponseDetail/TemplateResponseDetail",//used
             
         },
         urlArgs: "123"
@@ -212,7 +216,7 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "clientAfterLoginIndex", "clientAfterLoginCreateTemplate", "clientAfterLoginCookieService", "clientAfterLoginEditPage", "fancybox", "filedrop","wysihtml5",
     "fileDropScript", "domReady","prettify","bootstrap_wysihtml5","angularjs_fileUpload_shim","angularjs_fileUpload","AngularFileUploadController",
     "clientAfterLoginTemplateInfo","ng_table","clientAfterLoginTemplateSample","ClientAfterLoginModeratingPhotos","ClientAfterLoginTranscriptionTemplate",
-    "bootstrap_slider","ion_rangeSlider_min","highcharts_3d","highcharts","highcharts_exporting"
+    "bootstrap_slider","ion_rangeSlider_min","highcharts_3d","highcharts","highcharts_exporting","ClientAfterLoginTemplateResponseDetail"
 ], function() {
     angular.bootstrap(document.getElementById("mainClient"), ["afterLoginClientApp"]);
 });

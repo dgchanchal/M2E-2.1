@@ -1,11 +1,11 @@
 'use strict';
 define([appLocation.postLogin], function (app) {
 
-    app.controller('ClientAfterLoginTemplateInfo', function ($scope, $http, $rootScope, $routeParams, CookieUtil, $route) {
+    app.controller('ClientAfterLoginTemplateResponseDetail', function ($scope, $http, $rootScope, $routeParams, CookieUtil, $route) {
         $('title').html("Template Info page"); //TODO: change the title so cann't be tracked in log
         $scope.templateId = $routeParams.templateId;
         //console.log("template info page");
-        initializeClientChart();
+        //initializeClientChart();
         function initializeClientChart() {
             var url = ServerContextPah + '/Client/GetTemplateInformationByRefKey?id=' + $routeParams.templateId;
             var headers = {
@@ -22,7 +22,6 @@ define([appLocation.postLogin], function (app) {
             }).success(function (data, status, headers, config) {
                 //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
                 stopBlockUI();
-                $scope.templateTitle = data.Payload.title;
                 render_container_highcharts_completed_vs_reviewed(data.Payload.editId, parseInt(data.Payload.JobTotal), parseInt(data.Payload.JobReviewed), parseInt(data.Payload.JobTotal) - parseInt(data.Payload.JobReviewed));
                 render_container_highcharts_completed_vs_assigned_vs_remaining(data.Payload.editId,parseInt(data.Payload.JobCompleted), parseInt(data.Payload.JobAssigned), parseInt(data.Payload.JobTotal - data.Payload.JobCompleted));
                 render_container_highcharts_horizontal_bar_chart_ratio_completed_reviewed_remaining(data.Payload.editId,parseInt(data.Payload.JobCompleted), parseInt(data.Payload.JobAssigned), parseInt(data.Payload.JobReviewed), parseInt(data.Payload.JobTotal - data.Payload.JobCompleted), parseInt(data.Payload.JobTotal));
@@ -78,10 +77,10 @@ define([appLocation.postLogin], function (app) {
             location.href = "#/editTemplate/edit/" + id;
         }
 
-        $scope.openTemplateResponseDetailPageWithId = function (id) {
+        $scope.openTemplateInfoPageWithId = function (id) {
             //$('#closeModalPopup' + id).click();
             //alert(id);
-            location.href = "#/templateResponseDetail/Survey/ProductSurvey/" + id;
+            location.href = "#/templateInfo/Survey/ProductSurvey/" + id;
         }
     });
 
