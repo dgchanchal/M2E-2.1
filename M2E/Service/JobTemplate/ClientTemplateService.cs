@@ -80,7 +80,7 @@ namespace M2E.Service.JobTemplate
             const string status_assigned = "assigned";
             const string status_reviewed = "reviewed";
             var userInfo = _db.Users.SingleOrDefault(x => x.Username == username);
-            string refKey = userInfo.guid + id;
+            string refKey = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x=>x.Id == id && x.username == username).referenceId;
             var job = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey && x.username == username); ;
             response.Status = 200;
             response.Message = "success";
@@ -421,6 +421,7 @@ namespace M2E.Service.JobTemplate
             try
             {
                 var templateData = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.Id == id && x.username == username);
+                var UserJobMapping = _db.UserJobMappings.SingleOrDefault(x => x.refKey == templateData.referenceId);
                 var createTemplateeditableInstructionsListsCreateResponse = _db.CreateTemplateeditableInstructionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId && x.username == username).ToList();
                 var createTemplateSingleQuestionsListsCreateResponse = _db.CreateTemplateSingleQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId && x.username == username).ToList();
                 var createTemplateMultipleQuestionsListsCreateResponse = _db.CreateTemplateMultipleQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId && x.username == username).ToList();
@@ -430,11 +431,15 @@ namespace M2E.Service.JobTemplate
 
                 if (templateData != null)
                     _db.CreateTemplateQuestionInfoes.Remove(templateData);
+
+                if (UserJobMapping != null)
+                    _db.UserJobMappings.Remove(UserJobMapping);
+
                 if (createTemplateImgurImagesListsCreateResponse != null)
                 {
                     foreach (var createTemplateImgurImageCreateResponse in createTemplateImgurImagesListsCreateResponse)
                     {
-                        _db.CreateTemplateImgurImagesLists.Remove(createTemplateImgurImageCreateResponse);
+                    _db.CreateTemplateImgurImagesLists.Remove(createTemplateImgurImageCreateResponse);
                     }
                 }
 
