@@ -28,7 +28,7 @@
         $('#progressBar' + Id).css('width', (JobCompleted * 100) / JobTotal + '%');
         $('#progressBarValue' + Id).html(((JobCompleted * 100) / JobTotal) + '%');
         if ($("#container_highcharts_completed_vs_reviewed" + Id).length != 0) {
-            showToastMessage("Success", "update client progress bar Successfully");
+            //showToastMessage("Success", "update client progress bar Successfully");
             render_container_highcharts_completed_vs_reviewed(Id, parseInt(JobTotal), parseInt(JobReviewed), parseInt(JobTotal) - parseInt(JobReviewed));
             render_container_highcharts_completed_vs_assigned_vs_remaining(Id, parseInt(JobCompleted), parseInt(JobAssigned), parseInt(JobTotal - JobCompleted));
             render_container_highcharts_horizontal_bar_chart_ratio_completed_reviewed_remaining(Id, parseInt(JobCompleted), parseInt(JobAssigned), parseInt(JobReviewed), parseInt(JobTotal - JobCompleted), parseInt(JobTotal));
