@@ -13,5 +13,6 @@ namespace M2E.Models.DataResponse.ClientResponse
         public string UniqueId { get; set; }
         public int index { get; set; }
         public Dictionary<string, int> resultMap { get; set; }
+        public Dictionary<string, string> textBoxResultMap { get; set; }
     }
 }

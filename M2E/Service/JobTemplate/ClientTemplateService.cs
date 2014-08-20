@@ -240,6 +240,37 @@ namespace M2E.Service.JobTemplate
                         ClientSurveyResultResponseListData.resultList.Add(ClientSurveyResultResponseData);
                     }
 
+                    foreach (var textBoxQuestionsLists in createTemplateTextBoxQuestionsListsCreateResponse)
+                    {
+                        const string questionTypeTAQ = "TAQ";
+                        var mapRes = new Dictionary<string, string>();
+
+                        var ClientSurveyResultResponseData = new ClientSurveyResultResponse();
+                        ClientSurveyResultResponseData.questionType = questionTypeTAQ;
+                        ClientSurveyResultResponseData.question = textBoxQuestionsLists.Question;
+                        //ClientSurveyResultResponseData.options = textBoxQuestionsLists.Options;
+                        ClientSurveyResultResponseData.UniqueId = questionTypeTAQ + textBoxQuestionsLists.Id;
+                        //ClientSurveyResultResponseData.index = index;
+                        ClientSurveyResultResponseData.textBoxResultMap = new Dictionary<string, string>();
+                        var optionsList = textBoxQuestionsLists.Options.Split(';');
+                        var questionListId = Convert.ToString(textBoxQuestionsLists.Id);
+                        var map = _db.UserSurveyResultToBeRevieweds1
+                                     .Where(x => x.refKey == textBoxQuestionsLists.referenceKey &&
+                                               x.type == questionTypeTAQ &&
+                                               x.questionId == questionListId)
+                                     .GroupBy(x => x.answer).OrderByDescending(x=>x.Count())
+                                     .ToDictionary(x => x.Key, x => x.Count());
+                        //for (int i = 0; i < optionsList.Length; i++)
+                        //{
+                        //    if (!map.ContainsKey(Convert.ToString(i)))
+                        //        mapRes[Convert.ToString(i)] = 0;
+                        //    else
+                        //        mapRes[Convert.ToString(i)] = map[Convert.ToString(i)];
+                        //}
+                        ClientSurveyResultResponseData.resultMap = map;
+                        ClientSurveyResultResponseListData.resultList.Add(ClientSurveyResultResponseData);
+                    }
+
                     response.Status = 200;
                     response.Message = "success";
                     response.Payload = ClientSurveyResultResponseListData;

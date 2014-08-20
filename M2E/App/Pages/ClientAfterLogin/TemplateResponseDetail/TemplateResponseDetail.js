@@ -28,26 +28,45 @@ define([appLocation.postLogin], function (app) {
                     //console.log(this.index);
                     this.dataList=[];
                     this.dataListUI=[];
-                    this.optionsList = this.options.split(';');
-                    var i=0;             
-                    for (var key in  this.resultMap) {
-                        var dataOptionsUI = {text:this.optionsList[i],key:key,value:this.resultMap[key]};
-                        var currentIndexData=[];
-                        if(this.optionsList[i].match(/<img/))
-                        {
-                            currentIndexData = [key,this.resultMap[key]];  
-                        }
-                        else
-                        {
-                            currentIndexData = [this.optionsList[i],this.resultMap[key]];                                        
-                        }
+                    if(this.questionType != "TAQ")
+                    {
+                        this.optionsList = this.options.split(';');
+                        var i=0;             
+                        for (var key in  this.resultMap) {
+                            var dataOptionsUI = {text:this.optionsList[i],key:key,value:this.resultMap[key]};
+                            var currentIndexData=[];
+                            if(this.optionsList[i].match(/<img/))
+                            {
+                                currentIndexData = [key,this.resultMap[key]];  
+                            }
+                            else
+                            {
+                                currentIndexData = [this.optionsList[i],this.resultMap[key]];                                        
+                            }
                                               
-                        this.dataList.push(currentIndexData);                        
-                        this.dataListUI.push(dataOptionsUI);
-                        i++;           
+                            this.dataList.push(currentIndexData);                        
+                            this.dataListUI.push(dataOptionsUI);
+                            i++;           
+                        }
+                        //console.log(this.dataListUI);                  
+                        this.highCharts = renderHighcharts(this.dataList);
                     }
-                    //console.log(this.dataListUI);                  
-                    this.highCharts = renderHighcharts(this.dataList);                    
+                    else
+                    {                        
+                        var i=0;             
+                        for (var key in  this.resultMap) {
+                            var dataOptionsUI = {text:key,key:i+1,value:this.resultMap[key]};
+                            var currentIndexData=[];
+                            
+                            currentIndexData = [key,this.resultMap[key]];  
+                                                                          
+                            this.dataList.push(currentIndexData);                        
+                            this.dataListUI.push(dataOptionsUI);
+                            i++;           
+                        }
+                        //console.log(this.dataListUI);                  
+                        this.highCharts = renderHighcharts(this.dataList);
+                    }                 
                 });                
                 
                 $('.fancybox').fancybox();
