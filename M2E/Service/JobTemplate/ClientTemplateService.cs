@@ -142,7 +142,7 @@ namespace M2E.Service.JobTemplate
                     ClientSurveyResultResponseListData.title = templateData.title;
                     ClientSurveyResultResponseListData.description = templateData.description;
                     ClientSurveyResultResponseListData.resultList = new List<ClientSurveyResultResponse>();
-                    int index = 0;
+                    //int index = 0;
                     foreach (var singleQuestionsLists in createTemplateSingleQuestionsListsCreateResponse)
                     {
                         const string questionTypeSAQ = "SAQ";
@@ -152,8 +152,8 @@ namespace M2E.Service.JobTemplate
                         ClientSurveyResultResponseData.questionType = questionTypeSAQ;
                         ClientSurveyResultResponseData.question = singleQuestionsLists.Question;
                         ClientSurveyResultResponseData.options = singleQuestionsLists.Options;
-                        ClientSurveyResultResponseData.UniqueId = "SAQ"+singleQuestionsLists.Id;
-                        ClientSurveyResultResponseData.index = index;
+                        ClientSurveyResultResponseData.UniqueId = questionTypeSAQ + singleQuestionsLists.Id;
+                        //ClientSurveyResultResponseData.index = index;
                         ClientSurveyResultResponseData.resultMap = new Dictionary<string, int>();
                         var optionsList = singleQuestionsLists.Options.Split(';');
                         var questionListId = Convert.ToString(singleQuestionsLists.Id);
@@ -173,9 +173,73 @@ namespace M2E.Service.JobTemplate
                         
                         ClientSurveyResultResponseData.resultMap = mapRes;
                         ClientSurveyResultResponseListData.resultList.Add(ClientSurveyResultResponseData);
-                        index++;
+                        //index++;
                     }
-                    
+
+                    foreach (var multipleQuestionsLists in createTemplateMultipleQuestionsListsCreateResponse)
+                    {
+                        const string questionTypeMAQ = "MAQ";
+                        var mapRes = new Dictionary<string, int>();
+
+                        var ClientSurveyResultResponseData = new ClientSurveyResultResponse();
+                        ClientSurveyResultResponseData.questionType = questionTypeMAQ;
+                        ClientSurveyResultResponseData.question = multipleQuestionsLists.Question;
+                        ClientSurveyResultResponseData.options = multipleQuestionsLists.Options;
+                        ClientSurveyResultResponseData.UniqueId = questionTypeMAQ + multipleQuestionsLists.Id;
+                        //ClientSurveyResultResponseData.index = index;
+                        ClientSurveyResultResponseData.resultMap = new Dictionary<string, int>();
+                        var optionsList = multipleQuestionsLists.Options.Split(';');
+                        var questionListId = Convert.ToString(multipleQuestionsLists.Id);
+                        var map = _db.UserSurveyResultToBeRevieweds1
+                                     .Where(x => x.refKey == multipleQuestionsLists.referenceKey &&
+                                               x.type == questionTypeMAQ &&
+                                               x.questionId == questionListId)
+                                     .GroupBy(x => x.answer)
+                                     .ToDictionary(x => x.Key, x => x.Count());
+                        for (int i = 0; i < optionsList.Length; i++)
+                        {
+                            if (!map.ContainsKey(Convert.ToString(i)))
+                                mapRes[Convert.ToString(i)] = 0;
+                            else
+                                mapRes[Convert.ToString(i)] = map[Convert.ToString(i)];
+                        }
+
+                        ClientSurveyResultResponseData.resultMap = mapRes;
+                        ClientSurveyResultResponseListData.resultList.Add(ClientSurveyResultResponseData);
+                    }
+
+                    foreach (var listBoxQuestionsLists in createTemplateListBoxQuestionsListsCreateResponse)
+                    {
+                        const string questionTypeLAQ = "LAQ";
+                        var mapRes = new Dictionary<string, int>();
+
+                        var ClientSurveyResultResponseData = new ClientSurveyResultResponse();
+                        ClientSurveyResultResponseData.questionType = questionTypeLAQ;
+                        ClientSurveyResultResponseData.question = listBoxQuestionsLists.Question;
+                        ClientSurveyResultResponseData.options = listBoxQuestionsLists.Options;
+                        ClientSurveyResultResponseData.UniqueId = questionTypeLAQ + listBoxQuestionsLists.Id;
+                        //ClientSurveyResultResponseData.index = index;
+                        ClientSurveyResultResponseData.resultMap = new Dictionary<string, int>();
+                        var optionsList = listBoxQuestionsLists.Options.Split(';');
+                        var questionListId = Convert.ToString(listBoxQuestionsLists.Id);
+                        var map = _db.UserSurveyResultToBeRevieweds1
+                                     .Where(x => x.refKey == listBoxQuestionsLists.referenceKey &&
+                                               x.type == questionTypeLAQ &&
+                                               x.questionId == questionListId)
+                                     .GroupBy(x => x.answer)
+                                     .ToDictionary(x => x.Key, x => x.Count());
+                        for (int i = 0; i < optionsList.Length; i++)
+                        {
+                            if (!map.ContainsKey(Convert.ToString(i)))
+                                mapRes[Convert.ToString(i)] = 0;
+                            else
+                                mapRes[Convert.ToString(i)] = map[Convert.ToString(i)];
+                        }
+
+                        ClientSurveyResultResponseData.resultMap = mapRes;
+                        ClientSurveyResultResponseListData.resultList.Add(ClientSurveyResultResponseData);
+                    }
+
                     response.Status = 200;
                     response.Message = "success";
                     response.Payload = ClientSurveyResultResponseListData;

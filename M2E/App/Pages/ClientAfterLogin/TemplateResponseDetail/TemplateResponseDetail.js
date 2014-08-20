@@ -46,7 +46,7 @@ define([appLocation.postLogin], function (app) {
                         this.dataListUI.push(dataOptionsUI);
                         i++;           
                     }
-                    console.log(this.dataListUI);                  
+                    //console.log(this.dataListUI);                  
                     this.highCharts = renderHighcharts(this.dataList);                    
                 });                
                 
