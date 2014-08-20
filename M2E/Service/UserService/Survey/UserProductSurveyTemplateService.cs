@@ -209,13 +209,23 @@ namespace M2E.Service.UserService.Survey
         public ResponseModel<string> SubmitTemplateSurveyResultByRefKey(UserSurveyResultRequest EntireSurveyResult, string refKey,string username)
         {
             var response = new ResponseModel<string>();
+            const string status_done = "done";
+            const string status_assigned = "assigned";
+            const string status_reviewed = "reviewed";
 
             if (EntireSurveyResult == null)
             {
                 response.Status = 403;
                 response.Message = "No data to save to database.";
+                return response;
             }
-
+            var UserAlreadySubmittedForThisSurvey = _db.UserJobMappings.SingleOrDefault(x => x.refKey == refKey && x.username == username && x.status == status_done);
+            if(UserAlreadySubmittedForThisSurvey != null)
+            {
+                response.Status = 405;
+                response.Message = "You cann't submit same survey Twice.";
+                return response;
+            }
             if (EntireSurveyResult.surveySingleAnswerQuestion != null)
             {
                 foreach (var userSurveyResult in EntireSurveyResult.surveySingleAnswerQuestion)
@@ -278,9 +288,7 @@ namespace M2E.Service.UserService.Survey
             }
             
             var surveyThreadUserJobMapping = _db.UserJobMappings.SingleOrDefault(x => x.username == username && x.refKey == refKey);
-            const string status_done = "done";
-            const string status_assigned = "assigned";
-            const string status_reviewed = "reviewed";
+            
             surveyThreadUserJobMapping.status = status_done;
             surveyThreadUserJobMapping.endTime = DateTime.Now.ToString();
             try

@@ -488,6 +488,10 @@ namespace M2E.Service.JobTemplate
             var keyInfo = _db.CreateTemplateQuestionInfoes.FirstOrDefault();
             var refKey = _db.Users.SingleOrDefault(x=>x.Username == username).guid;
             var digitKey = 0;
+
+            Random rnd = new Random();
+            int randomValue = rnd.Next(1, 10000);
+            
             if (keyInfo != null)
             {
                 digitKey = _db.CreateTemplateQuestionInfoes.Max(x => x.Id) + 1;                
@@ -496,7 +500,7 @@ namespace M2E.Service.JobTemplate
             {
                 digitKey = 1;                
             }
-            refKey += digitKey;
+            refKey += digitKey + randomValue;
             var createTemplateQuestionsInfoInsert = new CreateTemplateQuestionInfo
             {
                 description = TemplateInfo.description!=null?TemplateInfo.description:"NA",
@@ -594,7 +598,8 @@ namespace M2E.Service.JobTemplate
             try
             {
                 var templateData = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.Id == id && x.username == username);
-                var UserJobMapping = _db.UserJobMappings.SingleOrDefault(x => x.refKey == templateData.referenceId);
+                var UserJobMappingList = _db.UserJobMappings.Where(x => x.refKey == templateData.referenceId).ToList();
+                var UserSurveyResultList = _db.UserSurveyResultToBeRevieweds1.Where(x => x.refKey == templateData.referenceId).ToList();
                 var createTemplateeditableInstructionsListsCreateResponse = _db.CreateTemplateeditableInstructionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId && x.username == username).ToList();
                 var createTemplateSingleQuestionsListsCreateResponse = _db.CreateTemplateSingleQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId && x.username == username).ToList();
                 var createTemplateMultipleQuestionsListsCreateResponse = _db.CreateTemplateMultipleQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId && x.username == username).ToList();
@@ -605,8 +610,21 @@ namespace M2E.Service.JobTemplate
                 if (templateData != null)
                     _db.CreateTemplateQuestionInfoes.Remove(templateData);
 
-                if (UserJobMapping != null)
-                    _db.UserJobMappings.Remove(UserJobMapping);
+                if (UserJobMappingList != null)
+                {
+                    foreach (var UserJobMapping in UserJobMappingList)
+                    {                       
+                        _db.UserJobMappings.Remove(UserJobMapping);
+                    }                    
+                }
+
+                if (UserSurveyResultList != null)
+                {
+                    foreach (var UserSurveyResult in UserSurveyResultList)
+                    {
+                        _db.UserSurveyResultToBeRevieweds1.Remove(UserSurveyResult);
+                    }
+                }
 
                 if (createTemplateImgurImagesListsCreateResponse != null)
                 {
@@ -674,7 +692,7 @@ namespace M2E.Service.JobTemplate
 
                 return response;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 response.Status = 500;
                 response.Message = "Exception";
