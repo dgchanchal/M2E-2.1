@@ -27,32 +27,40 @@
                     </h3>
                 </div>
                 <div class="box-content nopadding"> 
-                                   
-                    <div class="row box-color box-bordered" ng-repeat="questionInfo in ClientTemplateResponseDetailModel.resultList">
-                        <div class="col-md-3">
-                                                 <b><span ng-bind-html-unsafe="questionInfo.question"></span></b>                                   
-                            <div class="box-body">
-                                    <table class="table table-bordered">
-                                        <tbody><tr>
-                                            <th style="width: 10px">#</th>
-                                            <th>Options</th>                                            
-                                            <th style="width: 40px">Count</th>
-                                        </tr>
-                                        <tr ng-repeat="data in questionInfo.dataListUI">
-                                            <td><span ng-bind-html-unsafe="data.key"></span></td>
-                                            <td><span ng-bind-html-unsafe="data.text"></span></td>                                           
-                                            <td><span ng-show="data.value != 0" ng-bind-html-unsafe="data.value"></span><span ng-show="data.value == 0"> 0</span></td>
-                                        </tr>                                        
-                                    </tbody></table>
-                                </div>
-                        </div>
-                        <div class="col-md-9">
-                              <!--<div id="TemplateResponseDetail{{questionInfo.UniqueId}}" style="height: 400px; margin: 0 auto"></div>-->
-                              <div high-chart="questionInfo.highCharts"></div>
-                        </div>
-                        <hr />                                            
-                    </div>
-                   
+                            <div id="accordion2" class="accordion">
+										<div class="accordion-group" ng-repeat="questionInfo in ClientTemplateResponseDetailModel.resultList">
+											<div class="accordion-heading">
+												<a href="#{{questionInfo.UniqueId}}Collapse" id="{{questionInfo.UniqueId}}" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle faqQuestionDivBackgroundColor">
+													<b><span ng-bind-html-unsafe="questionInfo.question"></span></b> 
+												</a>
+											</div>
+											<div class="accordion-body collapse" id="{{questionInfo.UniqueId}}Collapse">
+												<div class="accordion-inner">
+													<div class="col-md-3">                                                                                    
+                                                        <div class="box-body">
+                                                            <table class="table table-bordered">
+                                                                <tbody><tr>
+                                                                    <th style="width: 10px">#</th>
+                                                                    <th>Options</th>                                            
+                                                                    <th style="width: 40px">Count</th>
+                                                                </tr>
+                                                                <tr ng-repeat="data in questionInfo.dataListUI">
+                                                                    <td><span ng-bind-html-unsafe="data.key"></span></td>
+                                                                    <td><span ng-bind-html-unsafe="data.text"></span></td>                                           
+                                                                    <td><span ng-show="data.value != 0" ng-bind-html-unsafe="data.value"></span><span ng-show="data.value == 0"> 0</span></td>
+                                                                </tr>                                        
+                                                            </tbody></table>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-9">                                                      
+                                                      <div high-chart="questionInfo.highCharts"></div>
+                                                    </div> 
+												</div>
+											</div>
+										</div>
+										
+									</div>
+                                                                                  
                 </div>
             </div>
                         </section><!-- /.Left col -->                        

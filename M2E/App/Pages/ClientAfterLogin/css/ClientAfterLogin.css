@@ -779,3 +779,53 @@ element.style {
     line-height: 24px;
     margin: 3px 0;
 }
+
+.accordion-widget .accordion-group {
+    border: 2px solid #eee;
+}
+
+    .accordion-widget .accordion-group:hover {
+        border-color: #ddd !important;
+    }
+
+    .accordion-widget .accordion-group .accordion-heading .accordion-toggle {
+        padding: 13px 0 13px 13px;
+        font-size: 20px;
+        color: #333;
+        position: relative;
+    }
+
+        .accordion-widget .accordion-group .accordion-heading .accordion-toggle:hover {
+            text-decoration: none;
+            background: #ddd !important;
+        }
+
+    .accordion-widget .accordion-group .accordion-inner {
+        border: 0;
+    }
+
+.accordion .accordion-group {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.accordion-inner {
+    border-top: 1px solid #e5e5e5;
+    padding: 9px 15px;
+}
+
+    .accordion .accordion-group .accordion-heading .accordion-toggle .faqQuestionDivBackgroundColor {
+        background: #f6f6f6;
+    }
+
+.accordion-group {
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    margin-bottom: 2px;
+}
+.faqQuestionDivBackgroundColor {
+        background: #f6f6f6;
+        display:block;
+        padding:8px 15px;
+    }
