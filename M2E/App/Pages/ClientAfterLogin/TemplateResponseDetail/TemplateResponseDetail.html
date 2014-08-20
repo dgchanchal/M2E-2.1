@@ -30,7 +30,7 @@
                                    
                     <div class="row box-color box-bordered" ng-repeat="questionInfo in ClientTemplateResponseDetailModel.resultList">
                         <div class="col-md-3">
-                                                 <b><span ng-bind="questionInfo.question"></span></b>                                   
+                                                 <b><span ng-bind-html-unsafe="questionInfo.question"></span></b>                                   
                             <div class="box-body">
                                     <table class="table table-bordered">
                                         <tbody><tr>
@@ -39,9 +39,9 @@
                                             <th style="width: 40px">Count</th>
                                         </tr>
                                         <tr ng-repeat="data in questionInfo.dataListUI">
-                                            <td>{{data.key}}</td>
-                                            <td>{{data.text}}</td>                                           
-                                            <td>{{data.value}}</td>
+                                            <td><span ng-bind-html-unsafe="data.key"></span></td>
+                                            <td><span ng-bind-html-unsafe="data.text"></span></td>                                           
+                                            <td><span ng-show="data.value != 0" ng-bind-html-unsafe="data.value"></span><span ng-show="data.value == 0"> 0</span></td>
                                         </tr>                                        
                                     </tbody></table>
                                 </div>
