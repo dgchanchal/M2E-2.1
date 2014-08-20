@@ -15,6 +15,7 @@ using M2E.Session;
 using M2E.Models.DataWrapper;
 using M2E.signalRPushNotifications;
 using Microsoft.AspNet.SignalR;
+using M2E.Models.DataResponse.ClientResponse;
 
 namespace M2E.Service.JobTemplate
 {
@@ -43,7 +44,8 @@ namespace M2E.Service.JobTemplate
                     long JobCompleted = _db.UserJobMappings.Where(x => x.refKey == job.referenceId && x.status == status_done).Count();
                     long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == job.referenceId && x.status == status_assigned).Count();
                     long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
-
+                    if (JobCompleted > Convert.ToInt32(job.totalThreads))
+                        JobCompleted = Convert.ToInt32(job.totalThreads);
                     var clientTemplate = new ClientTemplateResponse
                     {
                         title = job.title,
@@ -91,6 +93,9 @@ namespace M2E.Service.JobTemplate
                 long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == status_assigned).Count();
                 long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
 
+                if (JobCompleted > Convert.ToInt32(clientJobInfo.totalThreads))
+                    JobCompleted = Convert.ToInt32(clientJobInfo.totalThreads);
+
                 var clientTemplate = new ClientTemplateResponse
                 {
                         title = job.title,
@@ -116,6 +121,79 @@ namespace M2E.Service.JobTemplate
                 return response;
             }
 
+        }
+
+        public ResponseModel<ClientSurveyResultResponseList> GetTemplateSurveyResponseResultById(string username, long id)
+        {
+            var response = new ResponseModel<ClientSurveyResultResponseList>();
+            try
+            {
+                var ClientSurveyResultResponseListData = new ClientSurveyResultResponseList();
+                var templateData = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.Id == id);                
+                var createTemplateSingleQuestionsListsCreateResponse = _db.CreateTemplateSingleQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId).ToList();
+                var createTemplateMultipleQuestionsListsCreateResponse = _db.CreateTemplateMultipleQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId).ToList();
+                var createTemplateTextBoxQuestionsListsCreateResponse = _db.CreateTemplateTextBoxQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId).ToList();
+                var createTemplateListBoxQuestionsListsCreateResponse = _db.CreateTemplateListBoxQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId).ToList();
+
+                if (templateData != null)
+                {                    
+                    ClientSurveyResultResponseListData.type = templateData.type;
+                    ClientSurveyResultResponseListData.subType = templateData.subType;
+                    ClientSurveyResultResponseListData.title = templateData.title;
+                    ClientSurveyResultResponseListData.description = templateData.description;
+                    ClientSurveyResultResponseListData.resultList = new List<ClientSurveyResultResponse>();
+                    int index = 0;
+                    foreach (var singleQuestionsLists in createTemplateSingleQuestionsListsCreateResponse)
+                    {
+                        const string questionTypeSAQ = "SAQ";
+                        var mapRes = new Dictionary<string, int>();
+
+                        var ClientSurveyResultResponseData = new ClientSurveyResultResponse();
+                        ClientSurveyResultResponseData.questionType = questionTypeSAQ;
+                        ClientSurveyResultResponseData.question = singleQuestionsLists.Question;
+                        ClientSurveyResultResponseData.options = singleQuestionsLists.Options;
+                        ClientSurveyResultResponseData.UniqueId = "SAQ"+singleQuestionsLists.Id;
+                        ClientSurveyResultResponseData.index = index;
+                        ClientSurveyResultResponseData.resultMap = new Dictionary<string, int>();
+                        var optionsList = singleQuestionsLists.Options.Split(';');
+                        var questionListId = Convert.ToString(singleQuestionsLists.Id);
+                        var map = _db.UserSurveyResultToBeRevieweds1
+                                     .Where(x=>x.refKey == singleQuestionsLists.referenceKey && 
+                                               x.type == questionTypeSAQ &&
+                                               x.questionId == questionListId)
+                                     .GroupBy(x=>x.answer)
+                                     .ToDictionary(x=>x.Key, x=>x.Count());
+                        for (int i = 0; i < optionsList.Length; i++)
+                        {
+                            if (!map.ContainsKey(Convert.ToString(i)))
+                                mapRes[Convert.ToString(i)] = 0;
+                            else
+                                mapRes[Convert.ToString(i)] = map[Convert.ToString(i)];
+                        }
+                        
+                        ClientSurveyResultResponseData.resultMap = mapRes;
+                        ClientSurveyResultResponseListData.resultList.Add(ClientSurveyResultResponseData);
+                        index++;
+                    }
+                    
+                    response.Status = 200;
+                    response.Message = "success";
+                    response.Payload = ClientSurveyResultResponseListData;
+                    
+                }
+                else
+                {
+                    response.Status = 404;
+                    response.Message = "No Data found";
+                }
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Status = 500;
+                response.Message = "Exception";
+                return response;
+            }
         }
 
         public ResponseModel<ClientTemplateDetailById> GetTemplateDetailById(string username,long id)

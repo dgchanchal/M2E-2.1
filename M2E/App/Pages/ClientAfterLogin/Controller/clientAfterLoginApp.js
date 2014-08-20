@@ -15,6 +15,17 @@ define([appLocation.postLogin], function (app) {
 
     });
 
+    app.directive("highChart", function ($parse) {
+        return {
+            link: function (scope, element, attrs, ngModel) {
+                var props = $parse(attrs.highChart)(scope);
+                props.chart.renderTo = element[0];
+                //console.log(props)
+                new Highcharts.Chart(props);
+            }
+        }
+    });
+
     app.run(function ($rootScope, $location, CookieUtil, SessionManagementUtil) { //Insert in the function definition the dependencies you need.
 
         $rootScope.$on("$locationChangeStart", function (event, next, current) {

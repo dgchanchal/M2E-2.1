@@ -23,15 +23,33 @@ define([appLocation.postLogin], function (app) {
                 //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
                 stopBlockUI();
                 $scope.templateTitle = data.Payload.title;
-                render_container_highcharts_completed_vs_reviewed(data.Payload.editId, parseInt(data.Payload.JobTotal), parseInt(data.Payload.JobReviewed), parseInt(data.Payload.JobTotal) - parseInt(data.Payload.JobReviewed));
-                render_container_highcharts_completed_vs_assigned_vs_remaining(data.Payload.editId, parseInt(data.Payload.JobCompleted), parseInt(data.Payload.JobAssigned), parseInt(data.Payload.JobTotal - data.Payload.JobCompleted - data.Payload.JobAssigned));
-                render_container_highcharts_horizontal_bar_chart_ratio_completed_reviewed_remaining(data.Payload.editId, parseInt(data.Payload.JobCompleted), parseInt(data.Payload.JobAssigned), parseInt(data.Payload.JobReviewed), parseInt(data.Payload.JobTotal - data.Payload.JobCompleted - data.Payload.JobAssigned), parseInt(data.Payload.JobTotal));
+
+                var JobTotal_int = parseInt(data.Payload.JobTotal);
+                var JobReviewed_int = parseInt(data.Payload.JobReviewed);
+                var JobAssigned_int = parseInt(data.Payload.JobAssigned);
+                var JobCompleted_int = parseInt(data.Payload.JobCompleted);
+                if (JobCompleted_int > JobTotal_int)
+                    JobCompleted_int = JobTotal_int;
+                var JobRemaining_int = JobTotal_int - JobCompleted_int - JobAssigned_int;
+                var JobReviewRemaining = JobTotal_int - JobReviewed_int;
+
+//                console.log("JobTotal_int  : " + JobTotal_int);
+//                console.log("JobReviewed_int  : " + JobReviewed_int);
+//                console.log("JobAssigned_int  : " + JobAssigned_int);
+//                console.log("JobCompleted_int  : " + JobCompleted_int);
+//                console.log("JobRemaining_int  : " + JobRemaining_int);
+//                console.log("JobReviewRemaining  : " + JobReviewRemaining);
+
+                render_container_highcharts_completed_vs_reviewed(data.Payload.editId, JobTotal_int, JobReviewed_int, JobReviewRemaining);
+                render_container_highcharts_completed_vs_assigned_vs_remaining(data.Payload.editId, JobCompleted_int, JobAssigned_int, JobRemaining_int);
+                render_container_highcharts_horizontal_bar_chart_ratio_completed_reviewed_remaining(data.Payload.editId, JobCompleted_int, JobAssigned_int, JobReviewed_int, JobRemaining_int, JobTotal_int);
+
             }).error(function (data, status, headers, config) {
 
             });
         };
 
-        
+
         $scope.deleteTemplatePageWithId = function (id) {
             var url = ServerContextPah + '/Client/DeleteTemplateDetailById?id=' + id;
             var headers = {

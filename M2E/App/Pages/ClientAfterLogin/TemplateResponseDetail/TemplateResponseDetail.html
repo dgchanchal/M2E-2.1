@@ -11,7 +11,7 @@
                     <!-- top row -->
                     <div class="row">
                         <div class="col-xs-12 connectedSortable">
-                            
+                            <span ng-bind="ClientTemplateResponseDetailModel.title"></span>
                         </div><!-- /.col -->
                     </div>
                     <!-- /.row -->
@@ -28,42 +28,29 @@
                 </div>
                 <div class="box-content nopadding"> 
                                    
-                    <div class="row">
+                    <div class="row box-color box-bordered" ng-repeat="questionInfo in ClientTemplateResponseDetailModel.resultList">
                         <div class="col-md-3">
-                                                                                    
+                                                 <b><span ng-bind="questionInfo.question"></span></b>                                   
                             <div class="box-body">
                                     <table class="table table-bordered">
                                         <tbody><tr>
                                             <th style="width: 10px">#</th>
-                                            <th>Task</th>                                            
-                                            <th style="width: 40px">Label</th>
+                                            <th>Options</th>                                            
+                                            <th style="width: 40px">Count</th>
                                         </tr>
-                                        <tr>
-                                            <td>1.</td>
-                                            <td>Update software</td>                                           
-                                            <td><span class="badge bg-red">55%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2.</td>
-                                            <td>Clean database</td>                                            
-                                            <td><span class="badge bg-yellow">70%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3.</td>
-                                            <td>Cron job running</td>                                            
-                                            <td><span class="badge bg-light-blue">30%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4.</td>
-                                            <td>Fix and squish bugs</td>                                            
-                                            <td><span class="badge bg-green">90%</span></td>
-                                        </tr>
+                                        <tr ng-repeat="data in questionInfo.dataListUI">
+                                            <td>{{data.key}}</td>
+                                            <td>{{data.text}}</td>                                           
+                                            <td>{{data.value}}</td>
+                                        </tr>                                        
                                     </tbody></table>
                                 </div>
                         </div>
                         <div class="col-md-9">
-                              <div id="container" style="height: 400px; margin: 0 auto"></div>
-                        </div>                                               
+                              <!--<div id="TemplateResponseDetail{{questionInfo.UniqueId}}" style="height: 400px; margin: 0 auto"></div>-->
+                              <div high-chart="questionInfo.highCharts"></div>
+                        </div>
+                        <hr />                                            
                     </div>
                    
                 </div>
@@ -76,69 +63,7 @@
         <!-- page script -->
   </div>
         <script type="text/javascript">
-$(function () {
-        $('#container').highcharts({
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'This is Question?'
-            },            
-            xAxis: {
-                type: 'category',
-                labels: {
-                formatter: function() {
-                    return this.value;
-                },
-                useHTML: true
-            }
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Population (millions)'
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            tooltip: {
-                pointFormat: 'Population in 2008: <b>{point.y:.1f} millions</b>',
-            },
-            series: [{
-                name: 'Population',
-                data: [
-                    ['0', 23.7],
-                    ['1', 16,1],
-                    ['2', 14.2],
-                    ['3', 14.0],
-                    ['4', 12.5],
-                    ['5', 12.1],
-                    ['6', 11.8],
-                    ['7', 11.7],
-                    ['8', 11.1],
-                    ['9', 11.1],
-                    ['10', 10.5],
-                    ['11', 10.4],
-                    ['12', 10.0]                    
-                ],
-                dataLabels: {
-                    enabled: true,
-                    rotation: -90,
-                    color: '#FFFFFF',
-                    align: 'right',
-                    x: 4,
-                    y: 10,
-                    style: {
-                        fontSize: '13px',
-                        fontFamily: 'Verdana, sans-serif',
-                        textShadow: '0 0 3px black'
-                    }
-                }
-            }]
-        });
-        
-    });
+
     
     $(document).ready(function($) {
         $('.fancybox').fancybox();
