@@ -29,10 +29,24 @@
         $('#progressBarValue' + Id).html(((JobCompleted * 100) / JobTotal) + '%');
         if ($("#container_highcharts_completed_vs_reviewed" + Id).length != 0) {
             //showToastMessage("Success", "update client progress bar Successfully");
-            render_container_highcharts_completed_vs_reviewed(Id, parseInt(JobTotal), parseInt(JobReviewed), parseInt(JobTotal) - parseInt(JobReviewed));
-            render_container_highcharts_completed_vs_assigned_vs_remaining(Id, parseInt(JobCompleted), parseInt(JobAssigned), parseInt(JobTotal - JobCompleted));
-            render_container_highcharts_horizontal_bar_chart_ratio_completed_reviewed_remaining(Id, parseInt(JobCompleted), parseInt(JobAssigned), parseInt(JobReviewed), parseInt(JobTotal - JobCompleted), parseInt(JobTotal));
-        }       
+            var JobTotal_int = parseInt(JobTotal);
+            var JobReviewed_int = parseInt(JobReviewed);
+            var JobAssigned_int = parseInt(JobAssigned);
+            var JobCompleted_int = parseInt(JobCompleted);            
+            var JobRemaining_int = JobTotal_int - JobCompleted_int - JobAssigned_int;
+            var JobReviewRemaining = JobTotal_int - JobReviewed_int;
+
+            console.log("JobTotal_int  : " + JobTotal_int);
+            console.log("JobReviewed_int  : "+JobReviewed_int);
+            console.log("JobAssigned_int  : "+JobAssigned_int);
+            console.log("JobCompleted_int  : "+JobCompleted_int);
+            console.log("JobRemaining_int  : "+JobRemaining_int);
+            console.log("JobReviewRemaining  : " + JobReviewRemaining);
+
+            render_container_highcharts_completed_vs_reviewed(Id, JobTotal_int, JobReviewed_int, JobReviewRemaining);
+            render_container_highcharts_completed_vs_assigned_vs_remaining(Id, JobCompleted_int, JobAssigned_int, JobRemaining_int);
+            render_container_highcharts_horizontal_bar_chart_ratio_completed_reviewed_remaining(Id, JobCompleted_int, JobAssigned_int, JobReviewed_int, JobRemaining_int, JobTotal_int);
+        }
 
     };
 
@@ -112,7 +126,7 @@ function render_container_highcharts_horizontal_bar_chart_ratio_completed_review
     });
 }
 function render_container_highcharts_completed_vs_assigned_vs_remaining(id, jobCompleted, jobAssigned, remaining) {
-
+   
     Highcharts.setOptions({
         colors: ['#0000FF', '#FF0000', '#5cb85c']
     });

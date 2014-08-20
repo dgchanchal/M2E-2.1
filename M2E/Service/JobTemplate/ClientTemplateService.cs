@@ -39,11 +39,11 @@ namespace M2E.Service.JobTemplate
             try
             {
                 foreach (var job in templateData)
-                {                                                   
+                {                                                                                          
                     long JobCompleted = _db.UserJobMappings.Where(x => x.refKey == job.referenceId && x.status == status_done).Count();
                     long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == job.referenceId && x.status == status_assigned).Count();
-                    long JobTotal = 10; //currently hard coded
                     long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
+
                     var clientTemplate = new ClientTemplateResponse
                     {
                         title = job.title,
@@ -52,10 +52,10 @@ namespace M2E.Service.JobTemplate
                         editId = job.Id.ToString(CultureInfo.InvariantCulture),
                         showEllipse = true,
                         timeShowType = "success",
-                        progressPercent = Convert.ToString((JobCompleted) * 100 / JobTotal),
+                        progressPercent = Convert.ToString(System.Math.Ceiling (((JobCompleted) * 100 / Convert.ToDouble(job.totalThreads)) * 100) / 100),
                         JobCompleted = Convert.ToString(JobCompleted),
                         JobAssigned = Convert.ToString(JobAssigned),
-                        JobTotal = Convert.ToString(JobTotal),
+                        JobTotal = job.totalThreads,
                         JobReviewed = Convert.ToString(JobReviewed)
                     };
                     response.Payload.Add(clientTemplate);
@@ -99,7 +99,7 @@ namespace M2E.Service.JobTemplate
                         editId = job.Id.ToString(CultureInfo.InvariantCulture),
                         showEllipse = true,
                         timeShowType = "success",
-                        progressPercent = Convert.ToString((JobCompleted) * 100 / Convert.ToInt32(clientJobInfo.totalThreads)),
+                        progressPercent = Convert.ToString(System.Math.Ceiling(((JobCompleted) * 100 / Convert.ToDouble(clientJobInfo.totalThreads)) * 100) / 100),
                         JobCompleted = Convert.ToString(JobCompleted),
                         JobAssigned = Convert.ToString(JobAssigned),
                         JobTotal = Convert.ToString(clientJobInfo.totalThreads),

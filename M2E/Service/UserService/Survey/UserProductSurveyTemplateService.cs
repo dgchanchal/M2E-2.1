@@ -225,7 +225,7 @@ namespace M2E.Service.UserService.Survey
                     surveyResponse.type = userSurveyResult.key.Split('-')[0];
                     surveyResponse.answer = userSurveyResult.value;
                     surveyResponse.refKey = refKey;
-                    surveyResponse.username = username;
+                    surveyResponse.username = username;                    
                     _db.UserSurveyResultToBeRevieweds1.Add(surveyResponse);
                 }
             }

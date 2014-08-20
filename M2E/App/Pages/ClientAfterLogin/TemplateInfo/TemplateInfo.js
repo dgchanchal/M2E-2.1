@@ -24,8 +24,8 @@ define([appLocation.postLogin], function (app) {
                 stopBlockUI();
                 $scope.templateTitle = data.Payload.title;
                 render_container_highcharts_completed_vs_reviewed(data.Payload.editId, parseInt(data.Payload.JobTotal), parseInt(data.Payload.JobReviewed), parseInt(data.Payload.JobTotal) - parseInt(data.Payload.JobReviewed));
-                render_container_highcharts_completed_vs_assigned_vs_remaining(data.Payload.editId,parseInt(data.Payload.JobCompleted), parseInt(data.Payload.JobAssigned), parseInt(data.Payload.JobTotal - data.Payload.JobCompleted));
-                render_container_highcharts_horizontal_bar_chart_ratio_completed_reviewed_remaining(data.Payload.editId,parseInt(data.Payload.JobCompleted), parseInt(data.Payload.JobAssigned), parseInt(data.Payload.JobReviewed), parseInt(data.Payload.JobTotal - data.Payload.JobCompleted), parseInt(data.Payload.JobTotal));
+                render_container_highcharts_completed_vs_assigned_vs_remaining(data.Payload.editId, parseInt(data.Payload.JobCompleted), parseInt(data.Payload.JobAssigned), parseInt(data.Payload.JobTotal - data.Payload.JobCompleted - data.Payload.JobAssigned));
+                render_container_highcharts_horizontal_bar_chart_ratio_completed_reviewed_remaining(data.Payload.editId, parseInt(data.Payload.JobCompleted), parseInt(data.Payload.JobAssigned), parseInt(data.Payload.JobReviewed), parseInt(data.Payload.JobTotal - data.Payload.JobCompleted - data.Payload.JobAssigned), parseInt(data.Payload.JobTotal));
             }).error(function (data, status, headers, config) {
 
             });
