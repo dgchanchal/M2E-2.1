@@ -6,6 +6,12 @@ define([appLocation.userPostLogin], function (app) {
         console.log("angular transcription template");
         var tableRow=1;
         var tableCol=1;
+        var zoomImageHeight = 600;      
+        $scope.TranscriptionImageWidthClass="col-md-7";
+        $scope.TranscriptionInputWidthClass="col-md-5";
+        $scope.TranscriptionRowToggleText="Align in Two Rows";
+        $scope.TranscriptionRowToggleButtonClass="btn btn-warning btn-flat";
+
         var url = ServerContextPah + '/User/GetTranscriptionTemplateInformationByRefKey?refKey=' + $routeParams.refKey;
             var headers = {
                 'Content-Type': 'application/json',
@@ -26,6 +32,7 @@ define([appLocation.userPostLogin], function (app) {
                     $scope.TranscriptionTemplateInfo = data.Payload;
                     $scope.TranscriptionTemplateInfo.optionsList = data.Payload.options.split(';');
                     createDynamicTableForInput($scope.TranscriptionTemplateInfo.optionsList,10,false);
+                    //$('#PanZoom').css("height", "600px");
                 }
 
             }).error(function (data, status, headers, config) {
@@ -44,8 +51,28 @@ define([appLocation.userPostLogin], function (app) {
                      tableRow++;
             }
 
+            $scope.AlignTranscriptionBoxToggle = function () {
+                //console.log($scope.TranscriptionRowToggleText);
+                if($scope.TranscriptionImageWidthClass == "col-md-12")
+                {
+                    $scope.TranscriptionImageWidthClass="col-md-7";
+                    $scope.TranscriptionInputWidthClass="col-md-5";
+                    $scope.TranscriptionRowToggleText="Align in Two Rows";
+                    $scope.TranscriptionRowToggleButtonClass="btn btn-warning btn-flat";
+                }
+                else
+                {
+                    $scope.TranscriptionImageWidthClass="col-md-12";
+                    $scope.TranscriptionInputWidthClass="col-md-12";
+                    $scope.TranscriptionRowToggleText="Align in Single Rows";
+                    $scope.TranscriptionRowToggleButtonClass="btn btn-primary btn-flat";
+                }                
+            }
+
             $scope.AddRowTranscriptionInputTableBox = function () {
                 createDynamicTableForInput($scope.TranscriptionTemplateInfo.optionsList,5,true);
+                zoomImageHeight +=300;               
+                $('#PanZoom').css({ "height": zoomImageHeight+'px'});             
             }
             function createDynamicTableForInput(optionsList,count,isAppend)
             {

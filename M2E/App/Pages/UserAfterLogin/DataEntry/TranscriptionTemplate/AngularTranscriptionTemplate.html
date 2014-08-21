@@ -36,11 +36,11 @@
                                        </div>
                                        <div class="box-content nopadding">
                                            <div class="row row-padding">                                        
-                                                <div class="col-md-7">
+                                                <div class="{{TranscriptionImageWidthClass}}">
                                                     <!-- small box -->
                                                     <div style="position:relative">
                                                         <panzoomwidget panzoom-id="PanZoom" style="position:absolute;top:10px;left:10px;z-index:1"></panzoomwidget>
-                                                        <panzoom id="PanZoom" config="panzoomConfig" model="panzoomModel" style="height: 600px">
+                                                        <panzoom id="PanZoom" config="panzoomConfig" model="panzoomModel" style="height: 800px">
                                                             <!--<img src="http://engrenages.blog.lemonde.fr/files/2010/03/photo-061d.1269391401.jpg" style="position:absolute" />-->
                                                             <img src="{{TranscriptionTemplateInfo.imageUrl}}" style="position:absolute" />
                                                             <svg style="position:absolute" width="800px" height="600px">
@@ -50,11 +50,12 @@
                                                     </div>
                                                 </div><!-- ./col -->
  
-                                                <div class="col-md-5">
+                                                <div class="{{TranscriptionInputWidthClass}}">
                                                     <div class="box-body" id="TranscriptionInputTableBoxId">
                                                         
                                                     </div>
                                                         <button class="btn btn-success" ng-click="AddRowTranscriptionInputTableBox()">Add Row</button>
+                                                        <button class="{{TranscriptionRowToggleButtonClass}}" ng-click="AlignTranscriptionBoxToggle()"><span ng-bind="TranscriptionRowToggleText"></span></button>
                                                 </div> 
                                             </div>
                                        </div>
