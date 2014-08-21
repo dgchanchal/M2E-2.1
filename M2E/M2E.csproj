@@ -197,6 +197,7 @@
     <Compile Include="Models\DataResponse\ImgurImageResponse.cs" />
     <Compile Include="Models\DataResponse\ImgurImageUploadResponse.cs" />
     <Compile Include="Models\DataResponse\LoginResponse.cs" />
+    <Compile Include="Models\DataResponse\UserResponse\DataEntry\Transcription\UserTranscriptionTemplateModel.cs" />
     <Compile Include="Models\DataResponse\UserResponse\Survey\UserSurveyInfoInnerInstructionListData.cs" />
     <Compile Include="Models\DataResponse\UserResponse\Survey\UserSurveyInfoInnerListData.cs" />
     <Compile Include="Models\DataResponse\UserResponse\Survey\UserSurveyInfoInstruction.cs" />
@@ -289,6 +290,7 @@
     <Compile Include="Service\Login\WebLogin.cs" />
     <Compile Include="Service\Register\WebRegister.cs" />
     <Compile Include="Service\UploadImages\imgurService.cs" />
+    <Compile Include="Service\UserService\dataEntry\Transcription.cs" />
     <Compile Include="Service\UserService\Survey\UserProductSurveyTemplateService.cs" />
     <Compile Include="Session\HeaderManager.cs" />
     <Compile Include="Session\M2ESession.cs" />
@@ -301,7 +303,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Content Include="App\img\background-city.png" />
     <Content Include="App\img\cautom.jpg" />
     <Content Include="App\img\loading\load1.gif" />
     <Content Include="App\img\loading\loading.gif" />
@@ -316,6 +317,7 @@
     <Content Include="App\img\movies\6.jpg" />
     <Content Include="App\img\movies\7.jpg" />
     <Content Include="App\img\movies\8.jpg" />
+    <Content Include="App\img\panzoom\shark_attack.jpg" />
     <Content Include="App\img\swipeImage\Touch_Gestures_4-20.png" />
     <Content Include="App\img\swipeImage\Touch_Gestures_4-32.png" />
     <Content Include="App\img\swipeImage\Touch_Gestures_4-128.png" />
@@ -326,6 +328,8 @@
     <Content Include="App\js\angular.min.js" />
     <Content Include="App\js\configureBlockUI.js" />
     <Content Include="App\js\dragend.js" />
+    <Content Include="App\js\jquery.panzoom.js" />
+    <Content Include="App\js\jquery.panzoom.min.js" />
     <Content Include="App\js\singleRController.js" />
     <Content Include="App\js\jquery.signalR-1.0.1.js" />
     <Content Include="App\js\jquery.signalR-1.0.1.min.js" />
@@ -367,9 +371,17 @@
     <Content Include="App\Pages\ClientAfterLogin\TemplateInfo\TemplateInfo.js" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateSample\TemplateSample.js" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateSample\TemplateSample.html" />
+    <Content Include="App\Pages\UserAfterLogin\Controller\panzoom\controllers\TestController.js" />
+    <Content Include="App\Pages\UserAfterLogin\Controller\panzoom\directives\panzoom.js" />
+    <Content Include="App\Pages\UserAfterLogin\Controller\panzoom\directives\panzoomwidget.js" />
+    <Content Include="App\Pages\UserAfterLogin\Controller\panzoom\hamster.js" />
+    <Content Include="App\Pages\UserAfterLogin\Controller\panzoom\mousewheel.js" />
+    <Content Include="App\Pages\UserAfterLogin\Controller\panzoom\services\PanZoomService.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\userAfterLoginApp.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\CookieServiceUserView.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\SessionManagement.js" />
+    <Content Include="App\Pages\UserAfterLogin\DataEntry\TranscriptionTemplate\AngularTranscriptionTemplate.html" />
+    <Content Include="App\Pages\UserAfterLogin\DataEntry\TranscriptionTemplate\AngularTranscriptionTemplate.js" />
     <Content Include="App\Pages\UserAfterLogin\DataEntry\TranscriptionTemplate\TranscriptionTemplate.html" />
     <Content Include="App\Pages\UserAfterLogin\DataEntry\TranscriptionTemplate\TranscriptionTemplate.js" />
     <Content Include="App\Pages\UserAfterLogin\UserActiveThreads\UserActiveThreads.html" />

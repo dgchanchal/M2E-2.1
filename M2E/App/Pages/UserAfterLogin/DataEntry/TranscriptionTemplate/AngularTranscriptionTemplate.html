@@ -41,7 +41,8 @@
                                                     <div style="position:relative">
                                                         <panzoomwidget panzoom-id="PanZoom" style="position:absolute;top:10px;left:10px;z-index:1"></panzoomwidget>
                                                         <panzoom id="PanZoom" config="panzoomConfig" model="panzoomModel" style="height: 600px">
-                                                            <img src="http://engrenages.blog.lemonde.fr/files/2010/03/photo-061d.1269391401.jpg" style="position:absolute" />
+                                                            <!--<img src="http://engrenages.blog.lemonde.fr/files/2010/03/photo-061d.1269391401.jpg" style="position:absolute" />-->
+                                                            <img src="{{TranscriptionTemplateInfo.imageUrl}}" style="position:absolute" />
                                                             <svg style="position:absolute" width="800px" height="600px">
                                                                 <rect ng-repeat="rect in rects" ng-attr-x="{{rect.x}}" ng-attr-y="{{rect.y}}" ng-attr-width="{{rect.width}}" ng-attr-height="{{rect.height}}" rx="10" ry="10" style="fill:none;stroke-width:2;stroke:rgb(255,0,0)" />
                                                             </svg>
@@ -50,55 +51,8 @@
                                                 </div><!-- ./col -->
  
                                                 <div class="col-md-5">
-                                                    <div class="box-body">
-                                                        <table class="table table-bordered">
-                                                            <tbody><tr>
-                                                                <th style="width: 10px">#</th>
-                                                                <th>Task</th>
-                                                                <th>Progress</th>
-                                                                <th style="width: 40px">Label</th>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>1.</td>
-                                                                <td>Update software</td>
-                                                                <td>
-                                                                    <div class="progress xs">
-                                                                        <div style="width: 55%" class="progress-bar progress-bar-danger"></div>
-                                                                    </div>
-                                                                </td>
-                                                                <td><span class="badge bg-red">55%</span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>2.</td>
-                                                                <td>Clean database</td>
-                                                                <td>
-                                                                    <div class="progress xs">
-                                                                        <div style="width: 70%" class="progress-bar progress-bar-yellow"></div>
-                                                                    </div>
-                                                                </td>
-                                                                <td><span class="badge bg-yellow">70%</span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3.</td>
-                                                                <td>Cron job running</td>
-                                                                <td>
-                                                                    <div class="progress xs progress-striped active">
-                                                                        <div style="width: 30%" class="progress-bar progress-bar-primary"></div>
-                                                                    </div>
-                                                                </td>
-                                                                <td><span class="badge bg-light-blue">30%</span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>4.</td>
-                                                                <td>Fix and squish bugs</td>
-                                                                <td>
-                                                                    <div class="progress xs progress-striped active">
-                                                                        <div style="width: 90%" class="progress-bar progress-bar-success"></div>
-                                                                    </div>
-                                                                </td>
-                                                                <td><span class="badge bg-green">90%</span></td>
-                                                            </tr>
-                                                        </tbody></table>
+                                                    <div class="box-body" id="TranscriptionInputTableBoxId">
+                                                        
                                                     </div>
 
                                                 </div> 

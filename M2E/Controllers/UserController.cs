@@ -8,6 +8,7 @@ using M2E.Service.UserService.Survey;
 using System.Globalization;
 using M2E.Models.DataWrapper.UserSurvey;
 using M2E.Models;
+using M2E.Service.UserService.dataEntry;
 
 namespace M2E.Controllers
 {
@@ -56,6 +57,30 @@ namespace M2E.Controllers
             if (isValidToken)
             {
                 return Json(userTemplateList.GetTemplateInformationByRefKey(session.UserName, refKey));
+            }
+            else
+            {
+                ResponseModel<string> response = new ResponseModel<string>();
+                response.Status = 401;
+                response.Message = "Unauthorized";
+                return Json(response);
+            }
+            
+
+        }
+
+        [HttpPost]
+        public JsonResult GetTranscriptionTemplateInformationByRefKey()
+        {
+            //var username = "sumitchourasia91@gmail.com";
+            var refKey = Request.QueryString["refKey"].ToString(CultureInfo.InvariantCulture);            
+            var headers = new HeaderManager(Request);
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
+            var userTemplateList = new UserTranscriptionService();   
+            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+            if (isValidToken)
+            {
+                return Json(userTemplateList.GetTranscriptionTemplateInformationByRefKey(session.UserName, refKey));
             }
             else
             {

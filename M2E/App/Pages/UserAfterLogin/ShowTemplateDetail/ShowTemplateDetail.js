@@ -3,9 +3,7 @@ define([appLocation.userPostLogin], function (app) {
 
     //getting user info..
     app.controller('showTemplateDetailController', function ($scope, $http, $rootScope, $routeParams, CookieUtil) {
-
-        if ($routeParams.type == "survey" && $routeParams.subType == "productSurvey") {
-            
+         
             $scope.TemplateDetailShowRulesAndRegulationInfoDiv = false;
             $scope.userShowTemplateDetailsIWillDoItAndReportAbuseButton = true;
             var url = ServerContextPah + '/User/GetTemplateInformationByRefKey?refKey=' + $routeParams.refKey;
@@ -57,6 +55,8 @@ define([appLocation.userPostLogin], function (app) {
                     if (data.Status == "200") {
                         if(type == "survey" && subType == "productSurvey")
                             location.href = "#/startSurvey/" + refKey;
+                        else if(type == "dataEntry" && subType == "Transcription")
+                            location.href = "#/startAngularTranscription/" + refKey;
                     }
                     else if (data.Status == "403") {
                         alert("already applied to this job");
@@ -65,8 +65,7 @@ define([appLocation.userPostLogin], function (app) {
                 }).error(function (data, status, headers, config) {
 
                 });
-            }
-        }
+            }        
         
 
     });
