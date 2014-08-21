@@ -21,7 +21,7 @@ define([appLocation.postLogin], function (app) {
                 { type: "AddInstructions", title: "", visible: false, buttonText: "Add Instructions", editableInstructionsList: [{ Number: totalEditableInstruction, Text: "Instruction 1"}] },
                 { type: "AddSingleQuestionsList", title: "", visible: false, buttonText: "Add Query", singleQuestionsList: [{ Number: totalSingleQuestionList, Question: "Is this Image Obscene?", Options: "Yes;No"}] },
                 { type: "AddMultipleQuestionsList", title: "", visible: false, buttonText: "Add Ques. (Multiple Ans.)", multipleQuestionsList: [{ Number: totalMultipleQuestionList, Question: "What is your multiple gender ?", Options: "Malem1;Femalem2"}] },
-                { type: "AddTextBoxQuestionsList", title: "", visible: true, buttonText: "Add Ques. (TextBox Ans.)", textBoxQuestionsList: [{ Number: totalTextBoxQuestionList, Question: "s.no;item;quantity;price per item;total;discount;net payble amount", Options: "text"}] },
+                { type: "AddTextBoxQuestionsList", title: "", visible: true, buttonText: "Add Ques. (TextBox Ans.)", textBoxQuestionsList: [{ Number: totalTextBoxQuestionList, Question: "item;quantity;price per item;total;discount;net payble amount", Options: "text"}] },
                 { type: "AddListBoxQuestionsList", title: "", visible: false, buttonText: "Add Ques. (ListBox Ans.)", listBoxQuestionsList: [{ Number: totalListBoxQuestionList, Question: "What is your multiple gender ?", Options: "Malem1;Femalem2"}] }
         ];
 
@@ -223,7 +223,7 @@ define([appLocation.postLogin], function (app) {
         $scope.ClientCreateTranscriptionTemplateFunction = function () {
             $scope.jobTemplate[0].title = $('#createTemplateTitleTextTranscriptionTemplate').val();
             //console.log(userSession.imgurImageTranscriptionTemplate);
-            var clientCreateTranscriptionTemplateData = { Data: $scope.jobTemplate, ImgurList: userSession.imgurImageTranscriptionTemplate, TemplateInfo: { type: TemplateInfoModel.dataEntryType, subType: TemplateInfoModel.dataEntrySubTypeTranscription} };
+            var clientCreateTranscriptionTemplateData = { Data: $scope.jobTemplate, ImgurList: userSession.imgurImageTranscriptionTemplate, TemplateInfo: { type: TemplateInfoModel.dataEntryType, subType: TemplateInfoModel.dataEntrySubTypeTranscription, description: $('#createTemplateDescriptionText').val(), totalThreads: $("#totalNumberOfThreads").val(), amountEachThread: $("#amountPerThreadTextBoxInput").val()} };
             //var currentTemplateId = new Date().getTime();
 
             var url = ServerContextPah + '/Client/CreateTemplate';
@@ -233,7 +233,13 @@ define([appLocation.postLogin], function (app) {
                 'UTMZK': CookieUtil.getUTMZK(),
                 'UTMZV': CookieUtil.getUTMZV()
             };
-            if (($('#createTemplateTitleTextTranscriptionTemplate').val() != "") && ($('#createTemplateTitleTextTranscriptionTemplate').val() != null)) {
+
+            var isValidAmountPerThreadTextBoxInput = ($('#amountPerThreadTextBoxInput').val() != "") && $('#amountPerThreadTextBoxInput').val() >= 0.03;
+            var isValidTotalNumberOfThreads = ($('#totalNumberOfThreads').val() != "") && $('#totalNumberOfThreads').val() >= 1;
+            if (!isValidAmountPerThreadTextBoxInput || !isValidTotalNumberOfThreads) {
+                showToastMessage("Error", "Some Fields are invalid !!! Min Amount Payable to each workforce is $0.03 <br/> Min Thread Allowed is 1");
+            }
+            else if (($('#createTemplateTitleTextTranscriptionTemplate').val() != "") && ($('#createTemplateTitleTextTranscriptionTemplate').val() != null)) {
                 startBlockUI('wait..', 3);
                 $http({
                     url: url,

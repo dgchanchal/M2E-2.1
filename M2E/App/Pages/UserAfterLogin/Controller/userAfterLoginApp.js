@@ -4,9 +4,12 @@ define([appLocation.userPostLogin], function (app) {
         //(mobileDevice) ? "../../App/Pages/UserAfterLogin/Index/MobileIndex.html"  : "../../App/Pages/UserAfterLogin/Index/Index.html" }).
         $routeProvider.when("/", { templateUrl: "../../App/Pages/UserAfterLogin/Index/Index.html" }).
                        when("/edit", { templateUrl: "../../App/Pages/UserAfterLogin/EditPage/EditPage.html" }).
-                       when("/showTemplateDetail/:refKey", { templateUrl: "../../App/Pages/UserAfterLogin/ShowTemplateDetail/ShowTemplateDetail.html" }).
+                       //when("/showTemplateDetail/:refKey", { templateUrl: "../../App/Pages/UserAfterLogin/ShowTemplateDetail/ShowTemplateDetail.html" }).
+                       when("/showTemplateDetail/:type/:subType/:refKey", { templateUrl: "../../App/Pages/UserAfterLogin/ShowTemplateDetail/ShowTemplateDetail.html" }).
                        when("/userThreads/:status", { templateUrl: "../../App/Pages/UserAfterLogin/UserActiveThreads/UserActiveThreads.html" }).
                        when("/startSurvey/:refKey", { templateUrl: (mobileDevice) ? "../../App/Pages/UserAfterLogin/Survey/MobileSurvey.html" : "../../App/Pages/UserAfterLogin/Survey/WebSurvey.html" }).
+                       when("/startTranscription", { templateUrl: "../../App/Pages/UserAfterLogin/DataEntry/TranscriptionTemplate/TranscriptionTemplate.html" }).
+                       when("/startAngularTranscription", { templateUrl: "../../App/Pages/UserAfterLogin/DataEntry/TranscriptionTemplate/AngularTranscriptionTemplate.html" }).
                        when("/mobileModeration", { templateUrl: "../../App/Pages/UserAfterLogin/Moderation/MobileModeration.html" }).
                        when("/showTemplate", { templateUrl: "../../App/Pages/UserAfterLogin/ShowTemplate/ShowTemplate.html" }).
                        when("/editTemplate/:username/:templateid", { templateUrl: "../../App/Pages/UserAfterLogin/EditTemplate/EditTemplate.html" }).

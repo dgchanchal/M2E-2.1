@@ -370,6 +370,8 @@
     <Content Include="App\Pages\UserAfterLogin\Controller\userAfterLoginApp.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\CookieServiceUserView.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\SessionManagement.js" />
+    <Content Include="App\Pages\UserAfterLogin\DataEntry\TranscriptionTemplate\TranscriptionTemplate.html" />
+    <Content Include="App\Pages\UserAfterLogin\DataEntry\TranscriptionTemplate\TranscriptionTemplate.js" />
     <Content Include="App\Pages\UserAfterLogin\UserActiveThreads\UserActiveThreads.html" />
     <Content Include="App\Pages\UserAfterLogin\UserActiveThreads\UserActiveThreads.js" />
     <Content Include="App\Pages\UserAfterLogin\Moderation\MobileModeration.html" />

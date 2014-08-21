@@ -74,11 +74,29 @@ appRequire = require
             fancybox: {//new
                 deps: ["jquery"]
             },
+            hamster: {//new
+                deps: ["jquery"]
+            },
+            mousewheel: {//new
+                deps: ["jquery"]
+            },
+            jquery_panzoom: {//new
+                deps: ["jquery"]
+            },
+            panzoom: {//new
+                deps: ["jquery"]
+            },
 //            dragend: {//new
 //                deps: ["jquery"]
 //            },
             idangerous_swiper_2_1_min: {//new
                 deps: ["jquery"]
+            },
+            PanZoomService: {
+                deps: ["jquery", "panzoom","mousewheel","hamster"]
+            },
+            panzoomwidget: {
+                deps: ["jquery", "panzoom","mousewheel","hamster"]
             },
             userAfterLoginCookieService: {
                 deps: ["jquery", "jquery_cookie"]
@@ -112,6 +130,12 @@ appRequire = require
             },
             userAfterLoginSurvey: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox"]
+            },
+            userAfterLoginTranscriptionTemplate: {
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox","jquery_panzoom"]
+            },
+            UserAfterLoginAngularTranscriptionTemplate: {
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox","PanZoomService","panzoomwidget"]
             }
                         
         },
@@ -144,6 +168,12 @@ appRequire = require
             wysihtml5: "../../Template/AdminLTE-master/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min",
             //dragend: "../../App/js/dragend",//used..
             idangerous_swiper_2_1_min: "../../App/third-Party/Swiper-master/demos/js/idangerous.swiper-2.1.min",//used..
+            jquery_panzoom: "../../App/js/jquery.panzoom",//used..
+            hamster: "../../App/Pages/UserAfterLogin/Controller/panzoom/hamster",//used..
+            mousewheel: "../../App/Pages/UserAfterLogin/Controller/panzoom/mousewheel",//used..
+            panzoom: "../../App/Pages/UserAfterLogin/Controller/panzoom/directives/panzoom",//used..
+            PanZoomService: "../../App/Pages/UserAfterLogin/Controller/panzoom/services/PanZoomService",//used..
+            panzoomwidget: "../../App/Pages/UserAfterLogin/Controller/panzoom/directives/panzoomwidget",//used..
             //==============================================================================================================
             // Application Related JS
             //==============================================================================================================
@@ -158,6 +188,8 @@ appRequire = require
             userAfterLoginSurvey: "../../App/Pages/UserAfterLogin/Survey/Survey",//used
             userAfterLoginModeration: "../../App/Pages/UserAfterLogin/Survey/Survey",//used
             userAfterLoginActiveThreads: "../../App/Pages/UserAfterLogin/UserActiveThreads/UserActiveThreads",//used
+            userAfterLoginTranscriptionTemplate: "../../App/Pages/UserAfterLogin/DataEntry/TranscriptionTemplate/TranscriptionTemplate",//used
+            UserAfterLoginAngularTranscriptionTemplate: "../../App/Pages/UserAfterLogin/DataEntry/TranscriptionTemplate/AngularTranscriptionTemplate",//used
             
         },
         urlArgs: ""
@@ -168,7 +200,8 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "jquery_slimscroll", "iCheck", "angular_cookies", "configureBlockUI", "fancybox", "userAfterLoginApp", "SessionManagement",
     "userAfterLoginIndex", "userAfterLoginShowTemplate", "userAfterLoginCookieService", "userAfterLoginEditPage", "fancybox", "filedrop","wysihtml5",
     "fileDropScript", "domReady", "userAfterLoginTemplateSample", "idangerous_swiper_2_1_min","userAfterLoginShowTemplateDetail","userAfterLoginSurvey",
-    "userAfterLoginActiveThreads"
+    "userAfterLoginActiveThreads","userAfterLoginTranscriptionTemplate","jquery_panzoom","UserAfterLoginAngularTranscriptionTemplate","hamster","mousewheel",
+    "panzoom","PanZoomService","panzoomwidget"
 ], function() {
     angular.bootstrap(document.getElementById("mainUser"), ["afterLoginUserApp"]);
 });
