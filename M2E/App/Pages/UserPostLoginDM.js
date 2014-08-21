@@ -93,10 +93,10 @@ appRequire = require
                 deps: ["jquery"]
             },
             PanZoomService: {
-                deps: ["jquery", "panzoom","mousewheel","hamster"]
+                deps: ["jquery", "panzoom","mousewheel","hamster","angular"]
             },
             panzoomwidget: {
-                deps: ["jquery", "panzoom","mousewheel","hamster"]
+                deps: ["jquery", "panzoom", "mousewheel", "hamster", "angular"]
             },
             userAfterLoginCookieService: {
                 deps: ["jquery", "jquery_cookie"]
