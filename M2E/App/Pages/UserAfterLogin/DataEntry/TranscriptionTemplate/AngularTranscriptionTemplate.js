@@ -25,7 +25,7 @@ define([appLocation.userPostLogin], function (app) {
                 if (data.Status == "200") {
                     $scope.TranscriptionTemplateInfo = data.Payload;
                     $scope.TranscriptionTemplateInfo.optionsList = data.Payload.options.split(';');
-                    createDynamicTableForInput($scope.TranscriptionTemplateInfo.optionsList);
+                    createDynamicTableForInput($scope.TranscriptionTemplateInfo.optionsList,10);
                 }
 
             }).error(function (data, status, headers, config) {
@@ -33,7 +33,7 @@ define([appLocation.userPostLogin], function (app) {
             });
 
 
-            function createDynamicTableForInput(optionsList)
+            function createDynamicTableForInput(optionsList,count)
             {
                 var dynamicInputTableHTML ="";
                  dynamicInputTableHTML += "<b> title of job</b>";
@@ -46,17 +46,22 @@ define([appLocation.userPostLogin], function (app) {
                     dynamicInputTableHTML +="<th>"+this+"</th>";                    
                  });                                                                     
                  dynamicInputTableHTML +="</tr>";
-
-                 dynamicInputTableHTML +="<tr>";
-                 tableCol=1;
-                 $.each(optionsList, function () {                 
-                    if(tableCol == 1)
-                        dynamicInputTableHTML +="<td>"+tableRow+".</td>";
-                    dynamicInputTableHTML +="<td ><input type='text' placeholder='"+this+"' id='TranscriptionInput-"+tableRow+"-"+tableCol+"'/></td>";
-                    tableCol++;                     
-                 });
                  
-                 dynamicInputTableHTML +="</tr>";
+                 tableRow=1;
+                 for(var j=1;j<=count;j++)
+                 {
+                    tableCol=1;
+                    dynamicInputTableHTML +="<tr>";
+                     $.each(optionsList, function () {                 
+                        if(tableCol == 1)
+                            dynamicInputTableHTML +="<td>"+tableRow+".</td>";
+                        dynamicInputTableHTML +="<td><input class='transcriptionTemplateInputTextBox' name='TranscriptionInput-"+tableRow+"-"+tableCol+"' type='text' placeholder='"+this+"' id='TranscriptionInput-"+tableRow+"-"+tableCol+"'/></td>";
+                        tableCol++;                     
+                     });
+                     dynamicInputTableHTML +="</tr>";
+                     tableRow++;
+                 }
+                                                   
                  dynamicInputTableHTML +="</tbody>";
                  dynamicInputTableHTML +="</table>";
 
@@ -64,6 +69,8 @@ define([appLocation.userPostLogin], function (app) {
 
                  $('#TranscriptionInputTableBoxId').html(dynamicInputTableHTML);
             }
+                                 
+
         var shark = {
             x: 391,
             y: 371,
