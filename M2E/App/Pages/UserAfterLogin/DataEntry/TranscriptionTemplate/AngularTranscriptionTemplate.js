@@ -31,7 +31,7 @@ define([appLocation.userPostLogin], function (app) {
             if (data.Status == "200") {
                 $scope.TranscriptionTemplateInfo = data.Payload;
                 $scope.TranscriptionTemplateInfo.optionsList = data.Payload.options.split(';');
-                createDynamicTableForInput($scope.TranscriptionTemplateInfo.optionsList, 10, false);
+                createDynamicTableForInput($scope.TranscriptionTemplateInfo.optionsList, 1, false);
                 //$('#PanZoom').css("height", "600px");
             }
 
@@ -75,10 +75,22 @@ define([appLocation.userPostLogin], function (app) {
 
 
         $scope.SubmitTranscriptionInputTableData = function () {
+            var isValid = true;
             alert("submit");
         }
 
+        function initializeEnterKeyEventOnTextBox() {
 
+            $('.transcriptionTemplateInputTextBox').keydown(function (e) {
+                if (e.keyCode == 13) {
+                    createDynamicTableForInput($scope.TranscriptionTemplateInfo.optionsList, 1, true);
+                    if (tableRow > 10) {
+                        zoomImageHeight += 60;
+                        $('#PanZoom').css({ "height": zoomImageHeight + 'px' });
+                    }                    
+                }
+            })
+        }
         function createDynamicTableForInput(optionsList, count, isAppend) {
             var dynamicInputTableHTML = "";
             if (!isAppend) {
@@ -134,6 +146,8 @@ define([appLocation.userPostLogin], function (app) {
 
                 $('#TranscriptionInputTableBoxId').append(dynamicInputTableHTML);
             }
+
+            initializeEnterKeyEventOnTextBox();
 
         }
 
