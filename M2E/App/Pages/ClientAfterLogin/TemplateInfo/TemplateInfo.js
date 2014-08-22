@@ -98,10 +98,13 @@ define([appLocation.postLogin], function (app) {
             location.href = "#/editTemplate/edit/" + id;
         }
 
-        $scope.openTemplateResponseDetailPageWithId = function (type,subType,id) {
+        $scope.openTemplateResponseDetailPageWithId = function () {
             //$('#closeModalPopup' + id).click();
             //alert(id);
-            location.href = "#/templateResponseDetail/"+type+"/"+subType+"/" + id;
+            if ($scope.templateInfo.type == "dataEntry" && $scope.templateInfo.subType == "Transcription")
+                location.href = "#/transcriptionResponseDetail/" + $scope.templateInfo.type + "/" + $scope.templateInfo.subType + "/" + $scope.templateInfo.editId;
+            else
+                location.href = "#/templateResponseDetail/" + $scope.templateInfo.type + "/" + $scope.templateInfo.subType + "/" + $scope.templateInfo.editId;
         }
     });
 

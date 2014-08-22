@@ -5,11 +5,10 @@ define([appLocation.postLogin], function (app) {
         $('title').html("Transcription Info page"); //TODO: change the title so cann't be tracked in log
         $scope.templateId = $routeParams.templateId;
 
-        
+        initializeGetTranscriptionResponseResultById();
 
-        initializeGetTemplateSurveyResponseResultById();
-        function initializeGetTemplateSurveyResponseResultById() {
-            var url = ServerContextPah + '/Client/GetTranscriptionResponseResultById?id=' + $routeParams.templateId;
+        function initializeGetTranscriptionResponseResultById() {
+            var url = ServerContextPah + '/Client/GetAllCompletedTranscriptionInformation?id=' + $routeParams.templateId;
             var headers = {
                 'Content-Type': 'application/json',
                 'UTMZT': CookieUtil.getUTMZT(),
@@ -23,13 +22,16 @@ define([appLocation.postLogin], function (app) {
                 headers: headers
             }).success(function (data, status, headers, config) {
                 stopBlockUI();
-                
+                if (data.Status == "200") {
+                    $scope.AllCompletedTranscriptions = data.Payload;
+                    $scope.AllCompletedTranscriptions.optionsList = data.Payload.options.split(';');
+                }
             }).error(function (data, status, headers, config) {
                 console.log("failure");
             });
         };
 
-        
+
         $scope.deleteTemplatePageWithId = function (id) {
             var url = ServerContextPah + '/Client/DeleteTemplateDetailById?id=' + id;
             var headers = {

@@ -20,5 +20,6 @@ namespace M2E.Models.DataResponse
         public string JobReviewed { get; set; }
         public string type { get; set; }
         public string subType { get; set; }
+        public string refKey { get; set; }
     }
 }

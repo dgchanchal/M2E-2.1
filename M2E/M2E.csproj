@@ -191,9 +191,11 @@
     </Compile>
     <Compile Include="Models\DataResponse\BeforeLoginUserProjectDetailsModel.cs" />
     <Compile Include="Models\DataResponse\ClientDetailsModel.cs" />
+    <Compile Include="Models\DataResponse\ClientResponse\ClientAllTranscriptionResultResponse.cs" />
     <Compile Include="Models\DataResponse\ClientResponse\ClientSurveyResultResponseList.cs" />
     <Compile Include="Models\DataResponse\ClientResponse\ClientSurveyResultResponse.cs" />
     <Compile Include="Models\DataResponse\ClientResponse\ClientTranscriptionResultResponse.cs" />
+    <Compile Include="Models\DataResponse\ClientResponse\ClientTranscriptionTableResponseData.cs" />
     <Compile Include="Models\DataResponse\ClientTemplateDetailById.cs" />
     <Compile Include="Models\DataResponse\ClientTemplateResponse.cs" />
     <Compile Include="Models\DataResponse\ImgurImageResponse.cs" />

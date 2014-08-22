@@ -17,6 +17,7 @@ using M2E.signalRPushNotifications;
 using Microsoft.AspNet.SignalR;
 using M2E.Models.DataResponse.ClientResponse;
 using M2E.Models.Constants;
+using Newtonsoft.Json;
 
 namespace M2E.Service.JobTemplate
 {
@@ -144,7 +145,8 @@ namespace M2E.Service.JobTemplate
                         JobTotal = Convert.ToString(clientJobInfo.totalThreads),
                         JobReviewed = Convert.ToString(JobReviewed),
                         type = clientJobInfo.type,
-                        subType = clientJobInfo.subType
+                        subType = clientJobInfo.subType,
+                        refKey = clientJobInfo.referenceId
                     };
                     response.Payload = clientTemplate;         
 
@@ -383,6 +385,51 @@ namespace M2E.Service.JobTemplate
                 return response;
             }
         }
+
+        public ResponseModel<ClientAllTranscriptionResultResponse> GetAllCompletedTranscriptionInformation(string username, long id)
+        {
+            var response = new ResponseModel<ClientAllTranscriptionResultResponse>();
+            try
+            {
+                var ClientTranscriptionResultResponseListData = new ClientAllTranscriptionResultResponse();
+                ClientTranscriptionResultResponseListData.data = new List<ClientTranscriptionTableResponseData>();
+                var templateData = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.Id == id);
+
+                if (templateData != null)
+                {
+                    var TranscriptionResultList = _db.UserMultipleJobMappings.Where(x => x.refKey == templateData.referenceId && x.status == Constants.status_done).ToList();
+
+                    ClientTranscriptionResultResponseListData.title = templateData.title;
+                    ClientTranscriptionResultResponseListData.type = templateData.type;
+                    ClientTranscriptionResultResponseListData.subType = templateData.subType;
+                    ClientTranscriptionResultResponseListData.options = _db.CreateTemplateTextBoxQuestionsLists.SingleOrDefault(x => x.referenceKey == templateData.referenceId).Question;
+                    foreach (var TranscriptionResult in TranscriptionResultList)
+                    {
+                        var ClientTranscriptionResultResponse = new ClientTranscriptionTableResponseData();
+                        ClientTranscriptionResultResponse.imageUrl = TranscriptionResult.imageKey;
+                        //ClientTranscriptionResultResponse.imageUrl_s = TranscriptionResult.imageKey.Split('/')[0] + "//" + TranscriptionResult.imageKey.Split('/')[2] + "/" + TranscriptionResult.imageKey.Split('/')[3].Split('.')[0] + 's' + "." + TranscriptionResult.imageKey.Split('/')[3].Split('.')[1];
+                        ClientTranscriptionResultResponse.userResponseData = JsonConvert.DeserializeObject<List<string[]>>(TranscriptionResult.surveyResult);
+                        ClientTranscriptionResultResponseListData.data.Add(ClientTranscriptionResultResponse);
+                    }
+                    response.Status = 200;
+                    response.Message = "success";
+                    response.Payload = ClientTranscriptionResultResponseListData;
+                }
+                else
+                {
+                    response.Status = 404;
+                    response.Message = "No Data found";
+                }
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Status = 500;
+                response.Message = "Exception";
+                return response;
+            }
+        }
+
 
         public ResponseModel<ClientTemplateDetailById> GetTemplateDetailById(string username,long id)
         {
