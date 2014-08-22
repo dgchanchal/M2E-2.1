@@ -158,7 +158,7 @@ define([appLocation.userPostLogin], function (app) {
         // The panzoom config model can be used to override default configuration values
         $scope.panzoomConfig = {
             zoomLevels: 12,
-            neutralZoomLevel: 1,
+            neutralZoomLevel: 5,
             scalePerZoomLevel: 1.5
         };
 
