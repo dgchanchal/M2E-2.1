@@ -44,7 +44,7 @@ define([appLocation.userPostLogin], function (app) {
             var dynamicInputTableHTML = "";
             dynamicInputTableHTML += "<tr>";
             $.each(optionsList, function () {
-                dynamicInputTableHTML += "<td><input class='form-control transcriptionTemplateInputTextBox' name='TranscriptionInput-" + tableRow + "-" + tableCol + "' type='text' placeholder='" + this + "' id='TranscriptionInput-" + tableRow + "-" + tableCol + "'/></td>";
+                dynamicInputTableHTML += "<td><input class='form-control transcriptionTemplateInputTextBox"+tableRow+"' name='TranscriptionInput-" + tableRow + "-" + tableCol + "' type='text' placeholder='" + this + "' id='TranscriptionInput-" + tableRow + "-" + tableCol + "'/></td>";
                 tableCol++;
             });
             dynamicInputTableHTML += "</tr>";
@@ -81,7 +81,7 @@ define([appLocation.userPostLogin], function (app) {
 
         function initializeEnterKeyEventOnTextBox() {
 
-            $('.transcriptionTemplateInputTextBox').keydown(function (e) {
+            $('.transcriptionTemplateInputTextBox' + (tableRow-1)).keydown(function (e) {
                 if (e.keyCode == 13) {
                     createDynamicTableForInput($scope.TranscriptionTemplateInfo.optionsList, 1, true);
                     if (tableRow > 10) {
@@ -112,7 +112,7 @@ define([appLocation.userPostLogin], function (app) {
                     $.each(optionsList, function () {
                         if (tableCol == 1)
                             dynamicInputTableHTML += "<td>" + tableRow + ".</td>";
-                        dynamicInputTableHTML += "<td><input class='form-control transcriptionTemplateInputTextBox' name='TranscriptionInput-" + tableRow + "-" + tableCol + "' type='text' placeholder='" + this + "' id='TranscriptionInput-" + tableRow + "-" + tableCol + "'/></td>";
+                        dynamicInputTableHTML += "<td><input class='form-control transcriptionTemplateInputTextBox"+tableRow+"' name='TranscriptionInput-" + tableRow + "-" + tableCol + "' type='text' placeholder='" + this + "' id='TranscriptionInput-" + tableRow + "-" + tableCol + "'/></td>";
                         tableCol++;
                     });
                     dynamicInputTableHTML += "</tr>";
@@ -134,7 +134,7 @@ define([appLocation.userPostLogin], function (app) {
                     $.each(optionsList, function () {
                         if (tableCol == 1)
                             dynamicInputTableHTML += "<td>" + tableRow + ".</td>";
-                        dynamicInputTableHTML += "<td><input class='form-control transcriptionTemplateInputTextBox' name='TranscriptionInput-" + tableRow + "-" + tableCol + "' type='text' placeholder='" + this + "' id='TranscriptionInput-" + tableRow + "-" + tableCol + "'/></td>";
+                        dynamicInputTableHTML += "<td><input class='form-control transcriptionTemplateInputTextBox" + tableRow + "' name='TranscriptionInput-" + tableRow + "-" + tableCol + "' type='text' placeholder='" + this + "' id='TranscriptionInput-" + tableRow + "-" + tableCol + "'/></td>";
                         tableCol++;
                     });
                     dynamicInputTableHTML += "</tr>";
