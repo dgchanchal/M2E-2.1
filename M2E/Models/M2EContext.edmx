@@ -28,6 +28,7 @@
     <EntitySet Name="UserSurveyResultToBeRevieweds1" EntityType="M2EModel.Store.UserSurveyResultToBeRevieweds1" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserSurveyResults" EntityType="M2EModel.Store.UserSurveyResults" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserJobMappings" EntityType="M2EModel.Store.UserJobMappings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserMultipleJobMappings" EntityType="M2EModel.Store.UserMultipleJobMappings" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
   <EntityType Name="ClientDetails">
     <Key>
@@ -101,6 +102,7 @@
     <Property Name="title" Type="nvarchar(max)" Nullable="false" />
     <Property Name="subType" Type="nvarchar(max)" Nullable="false" />
     <Property Name="payPerUser" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="true" />
   </EntityType>
   <EntityType Name="CreateTemplateSingleQuestionsLists">
     <Key>
@@ -297,6 +299,21 @@
     <Property Name="endTime" Type="nvarchar(max)" Nullable="false" />
     <Property Name="expectedDeliveryTime" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="UserMultipleJobMappings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="refKey" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="startTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="subType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="endTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="expectedDelivery" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="surveyResult" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -324,6 +341,7 @@
           <EntitySet Name="UserSurveyResultToBeRevieweds1" EntityType="M2EModel.UserSurveyResultToBeReviewed" />
           <EntitySet Name="UserSurveyResults" EntityType="M2EModel.UserSurveyResult" />
           <EntitySet Name="UserJobMappings" EntityType="M2EModel.UserJobMapping" />
+          <EntitySet Name="UserMultipleJobMappings" EntityType="M2EModel.UserMultipleJobMapping" />
         </EntityContainer>
         <EntityType Name="ClientDetail">
           <Key>
@@ -397,6 +415,7 @@
           <Property Type="String" Name="title" Nullable="false" />
           <Property Type="String" Name="subType" Nullable="false" />
           <Property Type="String" Name="payPerUser" Nullable="false" />
+          <Property Type="DateTime" Name="DateTime" Nullable="true" />
         </EntityType>
         <EntityType Name="CreateTemplateSingleQuestionsList">
           <Key>
@@ -593,6 +612,21 @@
           <Property Type="String" Name="endTime" Nullable="false" />
           <Property Type="String" Name="expectedDeliveryTime" Nullable="false" />
         </EntityType>
+        <EntityType Name="UserMultipleJobMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="refKey" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="false" />
+          <Property Type="String" Name="startTime" Nullable="false" />
+          <Property Type="String" Name="type" Nullable="false" />
+          <Property Type="String" Name="subType" Nullable="false" />
+          <Property Type="String" Name="status" Nullable="false" />
+          <Property Type="String" Name="endTime" Nullable="false" />
+          <Property Type="String" Name="expectedDelivery" Nullable="false" />
+          <Property Type="String" Name="surveyResult" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -674,6 +708,7 @@
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="subType" ColumnName="subType" />
           <ScalarProperty Name="payPerUser" ColumnName="payPerUser" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -889,6 +924,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="UserMultipleJobMappings">
+      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserMultipleJobMapping)">
+        <MappingFragment StoreEntitySet="UserMultipleJobMappings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="refKey" ColumnName="refKey" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="startTime" ColumnName="startTime" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="subType" ColumnName="subType" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="endTime" ColumnName="endTime" />
+          <ScalarProperty Name="expectedDelivery" ColumnName="expectedDelivery" />
+          <ScalarProperty Name="surveyResult" ColumnName="surveyResult" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -914,17 +965,17 @@
         <EntityTypeShape EntityType="M2EModel.CreateTemplateeditableInstructionsList" Width="1.5" PointX="2.75" PointY="0.75" Height="2.9417936197916656" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.CreateTemplateListBoxQuestionsList" Width="1.5" PointX="4.75" PointY="0.75" Height="3.1340950520833335" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.CreateTemplateMultipleQuestionsList" Width="1.5" PointX="0.875" PointY="5.875" Height="3.1340950520833335" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.CreateTemplateQuestionInfo" Width="1.5" PointX="4.875" PointY="8.375" Height="3.5186979166666656" IsExpanded="true" />
+        <EntityTypeShape EntityType="M2EModel.CreateTemplateQuestionInfo" Width="1.5" PointX="4.875" PointY="8.375" Height="3.7109993489583335" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.CreateTemplateSingleQuestionsList" Width="1.5" PointX="4.75" PointY="4.75" Height="3.1340950520833317" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.CreateTemplateTextBoxQuestionsList" Width="1.5" PointX="6.75" PointY="0.75" Height="3.1340950520833317" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.ForgetPassword" Width="1.5" PointX="6.75" PointY="4.75" Height="1.5956835937499996" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.JobData" Width="1.5" PointX="6.875" PointY="9.375" Height="2.5571907552083317" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.LinkedInAuthApiData" Width="1.5" PointX="8.75" PointY="0.75" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.RecommendedBy" Width="1.5" PointX="0.75" PointY="8.75" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="M2EModel.RecommendedBy" Width="1.5" PointX="0.75" PointY="9.125" Height="1.5956835937500031" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.ThirdPartyLogin" Width="1.5" PointX="2.75" PointY="8.75" Height="2.1725878906250031" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.UserDetail" Width="1.5" PointX="8.75" PointY="3.75" Height="1.5956835937500031" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.UserPageSetting" Width="1.5" PointX="8.75" PointY="6.75" Height="2.1725878906250031" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.UserRecommendation" Width="1.5" PointX="8.75" PointY="9.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="M2EModel.UserDetail" Width="1.5" PointX="8.75" PointY="8.75" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="M2EModel.UserPageSetting" Width="1.5" PointX="8.75" PointY="10.5" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="M2EModel.UserRecommendation" Width="1.5" PointX="10.75" PointY="10.5" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.User" Width="1.5" PointX="10.75" PointY="0.75" Height="3.7109993489583388" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.UserSkill" Width="1.5" PointX="10.75" PointY="5.75" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.ValidateUserKey" Width="1.5" PointX="10.75" PointY="8.75" Height="1.5956835937500031" IsExpanded="true" />
@@ -932,6 +983,7 @@
         <EntityTypeShape EntityType="M2EModel.UserSurveyResultToBeReviewed" Width="1.5" PointX="2.875" PointY="4.125" Height="2.1725878906249996" />
         <EntityTypeShape EntityType="M2EModel.UserSurveyResult" Width="1.5" PointX="2.875" PointY="6.375" Height="2.1725878906249996" />
         <EntityTypeShape EntityType="M2EModel.UserJobMapping" Width="1.5" PointX="6.75" PointY="6.5" Height="2.3648893229166656" />
+        <EntityTypeShape EntityType="M2EModel.UserMultipleJobMapping" Width="1.5" PointX="9" PointY="3.75" Height="2.9417936197916656" />
       </Diagram>
     </Diagrams>
   </Designer>

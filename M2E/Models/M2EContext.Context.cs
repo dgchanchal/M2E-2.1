@@ -47,5 +47,6 @@ namespace M2E.Models
         public DbSet<UserSurveyResultToBeReviewed> UserSurveyResultToBeRevieweds1 { get; set; }
         public DbSet<UserSurveyResult> UserSurveyResults { get; set; }
         public DbSet<UserJobMapping> UserJobMappings { get; set; }
+        public DbSet<UserMultipleJobMapping> UserMultipleJobMappings { get; set; }
     }
 }

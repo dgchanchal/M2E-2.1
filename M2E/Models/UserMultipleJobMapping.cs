@@ -12,21 +12,17 @@ namespace M2E.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class CreateTemplateQuestionInfo
+    public partial class UserMultipleJobMapping
     {
         public int Id { get; set; }
+        public string refKey { get; set; }
         public string username { get; set; }
+        public string startTime { get; set; }
         public string type { get; set; }
-        public string visible { get; set; }
-        public string description { get; set; }
-        public string referenceId { get; set; }
-        public string totalThreads { get; set; }
-        public string completed { get; set; }
-        public string verified { get; set; }
-        public string creationTime { get; set; }
-        public string title { get; set; }
         public string subType { get; set; }
-        public string payPerUser { get; set; }
-        public Nullable<System.DateTime> DateTime { get; set; }
+        public string status { get; set; }
+        public string endTime { get; set; }
+        public string expectedDelivery { get; set; }
+        public string surveyResult { get; set; }
     }
 }

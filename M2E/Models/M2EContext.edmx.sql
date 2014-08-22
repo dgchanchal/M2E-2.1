@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 08/19/2014 17:50:20
+-- Date Created: 08/22/2014 11:17:06
 -- Generated from EDMX file: F:\temp2\branches\M2E-2.0\M2E\Models\M2EContext.edmx
 -- --------------------------------------------------
 
@@ -162,7 +162,8 @@ CREATE TABLE [dbo].[CreateTemplateQuestionInfoes] (
     [creationTime] nvarchar(max)  NOT NULL,
     [title] nvarchar(max)  NOT NULL,
     [subType] nvarchar(max)  NOT NULL,
-    [payPerUser] nvarchar(max)  NOT NULL
+    [payPerUser] nvarchar(max)  NOT NULL,
+    [DateTime] datetime  NULL
 );
 GO
 
@@ -361,6 +362,21 @@ CREATE TABLE [dbo].[UserJobMappings] (
 );
 GO
 
+-- Creating table 'UserMultipleJobMappings'
+CREATE TABLE [dbo].[UserMultipleJobMappings] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [refKey] nvarchar(max)  NOT NULL,
+    [username] nvarchar(max)  NOT NULL,
+    [startTime] nvarchar(max)  NOT NULL,
+    [type] nvarchar(max)  NOT NULL,
+    [subType] nvarchar(max)  NOT NULL,
+    [status] nvarchar(max)  NOT NULL,
+    [endTime] nvarchar(max)  NOT NULL,
+    [expectedDelivery] nvarchar(max)  NOT NULL,
+    [surveyResult] nvarchar(max)  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -494,6 +510,12 @@ GO
 -- Creating primary key on [Id] in table 'UserJobMappings'
 ALTER TABLE [dbo].[UserJobMappings]
 ADD CONSTRAINT [PK_UserJobMappings]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'UserMultipleJobMappings'
+ALTER TABLE [dbo].[UserMultipleJobMappings]
+ADD CONSTRAINT [PK_UserMultipleJobMappings]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 

@@ -7,6 +7,7 @@ using M2E.Models;
 using M2E.Common.Logger;
 using M2E.CommonMethods;
 using System.Reflection;
+using M2E.Models.Constants;
 
 namespace M2E.Service.UserService.dataEntry
 {
@@ -24,7 +25,14 @@ namespace M2E.Service.UserService.dataEntry
                 var TranscriptionJobInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x=>x.referenceId == refKey);
                 var TranscriptionJobOptions = _db.CreateTemplateTextBoxQuestionsLists.SingleOrDefault(x=>x.referenceKey == refKey);
                 var TranscriptionImage = _db.CreateTemplateImgurImagesLists.SingleOrDefault(x => x.referenceKey == refKey); // TODO: currently we assumed one transcription image per task. need to change.
-                if (TranscriptionJobInfo != null && TranscriptionJobOptions != null)
+                //var TranscriptionAllocatedThreadInfo = _db.UserMultipleJobMappings.SingleOrDefault(x => x.refKey == refKey && x.username == username && x.status != Constants.status_done);
+                //if (TranscriptionAllocatedThreadInfo == null)
+                //{
+                //    response.Status = 405;
+                //    response.Message = "This Thread is not assigned to you yet.";
+                //    return response;
+                //}
+                if (TranscriptionJobInfo != null && TranscriptionJobOptions != null && TranscriptionImage != null)
                 {                                       
                     var UserTranscriptionTemplateModel = new UserTranscriptionTemplateModel();
                     UserTranscriptionTemplateModel.type = TranscriptionJobInfo.type;
@@ -34,7 +42,7 @@ namespace M2E.Service.UserService.dataEntry
                     UserTranscriptionTemplateModel.title = TranscriptionJobInfo.title;
                     UserTranscriptionTemplateModel.refKey = TranscriptionJobInfo.referenceId;
                     UserTranscriptionTemplateModel.imageUrl = TranscriptionImage.imgurLink;
-
+                    //UserTranscriptionTemplateModel.uniqueId = Convert.ToString(TranscriptionAllocatedThreadInfo.Id);
                     response.Status = 200;
                     response.Message = "success";
                     response.Payload = UserTranscriptionTemplateModel;
@@ -43,7 +51,7 @@ namespace M2E.Service.UserService.dataEntry
                 
                 return response;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 response.Status = 500;//some error occured
                 response.Message = "failed";

@@ -14,6 +14,7 @@ using M2E.signalRPushNotifications;
 using Microsoft.AspNet.SignalR;
 using M2E.Session;
 using System.Configuration;
+using M2E.Models.Constants;
 
 namespace M2E.Service.UserService.Survey
 {
@@ -25,52 +26,8 @@ namespace M2E.Service.UserService.Survey
 
         public ResponseModel<List<UserProductSurveyTemplateModel>> GetAllTemplateInformation(string username)
         {
-            var response = new ResponseModel<List<UserProductSurveyTemplateModel>>();
-            var templateData = _db.CreateTemplateQuestionInfoes.OrderByDescending(x => x.creationTime).ToList();
-            response.Status = 200;
-            response.Message = "success";
-            response.Payload = new List<UserProductSurveyTemplateModel>();
-            try
-            {
-                foreach (var job in templateData)
-                {
-                    string earningPerThreadTemp = Convert.ToString(Convert.ToDouble(job.payPerUser) * (Convert.ToDouble(Convert.ToString(ConfigurationManager.AppSettings["dollarToRupeesValue"]))));
-                    string remainingThreadsTemp = Convert.ToString(Convert.ToInt32(job.totalThreads) - _db.UserJobMappings.Where(x => x.refKey == job.referenceId).Count());
-                    var userTemplate = new UserProductSurveyTemplateModel
-                    {
-                        title = job.title,
-                        type = job.type,
-                        subType = job.subType,
-                        refKey = job.referenceId,
-                        creationTime = job.creationTime,
-                        earningPerThreads = earningPerThreadTemp,
-                        currency = "INR", // hard coded currency
-                        totalThreads = job.totalThreads, 
-                        remainingThreads =  remainingThreadsTemp                 
-                    };
-                    var AlreadyAppliedJobs = _db.UserJobMappings.SingleOrDefault(x => x.username == username && x.refKey == job.referenceId);
-                    if (AlreadyAppliedJobs != null)
-                    {
-                        userTemplate.userStatus = AlreadyAppliedJobs.status;
-                        userTemplate.userDeadline = AlreadyAppliedJobs.expectedDeliveryTime;
-                    }
-                    else
-                    {
-                        userTemplate.userStatus = "new";
-                        userTemplate.userDeadline = "NA";
-                    }
-                    response.Payload.Add(userTemplate);
-                }
-
-                return response;
-            }
-            catch (Exception ex)
-            {
-                response.Status = 500;//some error occured
-                response.Message = "failed";
-                return response;
-            }
-
+            return GetAllTemplateInformationIncludingDoneAssigned(username);
+            //return GetAllTemplateInformationExcludingDoneAssigned(username);
         }
 
         public ResponseModel<UserProductSurveyTemplateModel> GetTemplateInformationByRefKey(string username,string refKey)
@@ -83,8 +40,13 @@ namespace M2E.Service.UserService.Survey
             try
             {
                 string earningPerThreadTemp = Convert.ToString(Convert.ToDouble(job.payPerUser) *(Convert.ToDouble(ConfigurationManager.AppSettings["dollarToRupeesValue"])));
-                string remainingThreadsTemp = Convert.ToString(Convert.ToInt32(job.totalThreads) - _db.UserJobMappings.Where(x => x.refKey == job.referenceId).Count());
-                    var userTemplate = new UserProductSurveyTemplateModel
+                string remainingThreadsTemp = string.Empty;
+                if (job.type == Constants.type_dataEntry && job.subType == Constants.subType_Transcription)
+                    remainingThreadsTemp = Convert.ToString(Convert.ToInt32(job.totalThreads) - _db.UserMultipleJobMappings.Where(x => x.refKey == job.referenceId).Count());
+                else
+                    remainingThreadsTemp = Convert.ToString(Convert.ToInt32(job.totalThreads) - _db.UserJobMappings.Where(x => x.refKey == job.referenceId).Count());
+                    
+                var userTemplate = new UserProductSurveyTemplateModel
                     {
                         title = job.title,
                         type = job.type,
@@ -327,36 +289,109 @@ namespace M2E.Service.UserService.Survey
 
         public ResponseModel<string> AllocateThreadToUserByRefKey(string refKey, string username)
         {
+            
+            var clientJobInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey);
             var response = new ResponseModel<string>();
+            if (clientJobInfo.type == Constants.type_dataEntry && clientJobInfo.subType == Constants.subType_Transcription)
+            {
+                response = AllocateMultipleAssignTypeThreadToUserByRefKey(clientJobInfo,refKey,username);
+            }
+            else
+            {
+                response = AllocateSingleAssignTypeThreadToUserByRefKey(clientJobInfo,refKey, username);
+            }
+            return response;
+        }
 
-            var ifAlreadyAllocated = _db.UserJobMappings.SingleOrDefault(x => x.refKey == refKey && x.username == username);
+        public ResponseModel<List<UserActiveThreadsResponse>> GetUserActiveThreads(string username, string status)
+        {
+            var response = new ResponseModel<List<UserActiveThreadsResponse>>();
+            response.Payload = new List<UserActiveThreadsResponse>();
+            List<UserJobMapping> UserThreads=new List<UserJobMapping>();
+            List<UserMultipleJobMapping> UserMultipleJobMapping = new List<UserMultipleJobMapping>(); ;
+            if (status == Constants.status_active)
+            {
+                UserThreads = _db.UserJobMappings.OrderBy(x => x.Id).Where(x => x.username == username && x.status != Constants.status_done).ToList();
+                UserMultipleJobMapping = _db.UserMultipleJobMappings.OrderBy(x => x.Id).Where(x => x.username == username && x.status != Constants.status_done).ToList();
+            }
+            else
+            {
+                UserThreads = _db.UserJobMappings.OrderBy(x => x.Id).Where(x => x.username == username && x.status == Constants.status_done).ToList();
+                UserMultipleJobMapping = _db.UserMultipleJobMappings.OrderBy(x => x.Id).Where(x => x.username == username && x.status == Constants.status_done).ToList();
+            }
+            if (UserThreads == null && UserMultipleJobMapping== null)
+            {
+                response.Status = 404;
+                response.Message = "No Threads Available for you.";
+                return response;
+            }
+                        
+            foreach (var thread in UserThreads)
+            {                
+                var ThreadInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x=> x.referenceId == thread.refKey);
+                var UserActiveThreadsResponse = new UserActiveThreadsResponse();
+                UserActiveThreadsResponse.startTime = thread.startTime;
+                UserActiveThreadsResponse.endTime = thread.endTime;
+                UserActiveThreadsResponse.expectedDeliveryTime = thread.expectedDeliveryTime;
+                UserActiveThreadsResponse.status = thread.status;
+                UserActiveThreadsResponse.refKey = thread.refKey;
+                UserActiveThreadsResponse.title = ThreadInfo.title;
+                UserActiveThreadsResponse.type = ThreadInfo.type;
+                UserActiveThreadsResponse.subType = ThreadInfo.subType;
+                response.Payload.Add(UserActiveThreadsResponse);
+            }
+
+            foreach (var thread in UserMultipleJobMapping)
+            {
+                var ThreadInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == thread.refKey);
+                var UserActiveThreadsResponse = new UserActiveThreadsResponse();
+                UserActiveThreadsResponse.startTime = thread.startTime;
+                UserActiveThreadsResponse.endTime = thread.endTime;
+                UserActiveThreadsResponse.expectedDeliveryTime = thread.expectedDelivery;
+                UserActiveThreadsResponse.status = thread.status;
+                UserActiveThreadsResponse.refKey = thread.refKey;
+                UserActiveThreadsResponse.title = ThreadInfo.title;
+                UserActiveThreadsResponse.type = ThreadInfo.type;
+                UserActiveThreadsResponse.subType = ThreadInfo.subType;
+                response.Payload.Add(UserActiveThreadsResponse);
+            }
+
+                response.Status = 200;
+                response.Message = "success";
+            
+            return response;
+        }
+
+        private ResponseModel<string> AllocateMultipleAssignTypeThreadToUserByRefKey(CreateTemplateQuestionInfo clientJobInfo, string refKey, string username)
+        {
+            var response = new ResponseModel<string>();
+            var ifAlreadyAllocated = _db.UserMultipleJobMappings.SingleOrDefault(x => x.refKey == refKey && x.username == username && x.status != Constants.status_done);
             if (ifAlreadyAllocated != null)
             {
                 response.Status = 403;
-                response.Message = "already applied";
+                response.Message = "You haven't completed your previous Active Thread for this Job.";
                 return response;
             }
-            int expectedDeliveryTimeInMinutes = 15;
-            var UserJobMapping = new UserJobMapping();
-            UserJobMapping.refKey = refKey;
-            UserJobMapping.username = username;
-            UserJobMapping.startTime = DateTime.Now.ToString();
-            UserJobMapping.expectedDeliveryTime = DateTime.Now.AddMinutes(expectedDeliveryTimeInMinutes).ToString();
-            UserJobMapping.endTime = "NA";
-            UserJobMapping.status = "assigned";
-
-            _db.UserJobMappings.Add(UserJobMapping);
+            const int expectedDeliveryTimeInMinutes = 15;
+                        
+            var UserMultipleJobMapping = new UserMultipleJobMapping();
+            UserMultipleJobMapping.endTime = Constants.NA;
+            UserMultipleJobMapping.expectedDelivery = DateTime.Now.AddMinutes(expectedDeliveryTimeInMinutes).ToString();
+            UserMultipleJobMapping.refKey = refKey;
+            UserMultipleJobMapping.startTime = DateTime.Now.ToString();
+            UserMultipleJobMapping.status = Constants.status_assigned;
+            UserMultipleJobMapping.subType = Constants.subType_Transcription;
+            UserMultipleJobMapping.surveyResult = Constants.NA;
+            UserMultipleJobMapping.type = Constants.type_dataEntry;
+            UserMultipleJobMapping.username = username;
+            _db.UserMultipleJobMappings.Add(UserMultipleJobMapping);
             try
             {
                 _db.SaveChanges();
-                const string status_done = "done";
-                const string status_assigned = "assigned";
-                const string status_reviewed = "reviewed";
 
-                var clientJobInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey);
                 long JobId = clientJobInfo.Id;
-                long JobCompleted = _db.UserJobMappings.Where(x => x.refKey == refKey && x.status == status_done).Count();
-                long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == refKey && x.status == status_assigned).Count();                
+                long JobCompleted = _db.UserMultipleJobMappings.Where(x => x.refKey == refKey && x.status == Constants.status_done).Count();
+                long JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == refKey && x.status == Constants.status_assigned).Count();
                 long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
 
                 var SignalRClientHub = new SignalRClientHub();
@@ -384,43 +419,204 @@ namespace M2E.Service.UserService.Survey
             return response;
         }
 
-        public ResponseModel<List<UserActiveThreadsResponse>> GetUserActiveThreads(string username, string status)
+        private ResponseModel<string> AllocateSingleAssignTypeThreadToUserByRefKey(CreateTemplateQuestionInfo clientJobInfo, string refKey, string username)
         {
-            var response = new ResponseModel<List<UserActiveThreadsResponse>>();
-            response.Payload = new List<UserActiveThreadsResponse>();
-            List<UserJobMapping> UserThreads=new List<UserJobMapping>();;
-            string statusDone = "done";
-            if(status == "active")
-                UserThreads = _db.UserJobMappings.OrderBy(x => x.Id).Where(x => x.username == username && x.status != statusDone).ToList();
-            else
-                UserThreads = _db.UserJobMappings.OrderBy(x => x.Id).Where(x => x.username == username && x.status == statusDone).ToList();
-            if (UserThreads == null)
+            var response = new ResponseModel<string>();
+            var ifAlreadyAllocated = _db.UserJobMappings.SingleOrDefault(x => x.refKey == refKey && x.username == username);
+            if (ifAlreadyAllocated != null)
             {
-                response.Status = 404;
-                response.Message = "No Threads Available for you.";
+                response.Status = 403;
+                response.Message = "already applied";
                 return response;
             }
-            
-            foreach (var thread in UserThreads)
-            {                
-                var ThreadInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x=> x.referenceId == thread.refKey);
-                var UserActiveThreadsResponse = new UserActiveThreadsResponse();
-                UserActiveThreadsResponse.startTime = thread.startTime;
-                UserActiveThreadsResponse.endTime = thread.endTime;
-                UserActiveThreadsResponse.expectedDeliveryTime = thread.expectedDeliveryTime;
-                UserActiveThreadsResponse.status = thread.status;
-                UserActiveThreadsResponse.refKey = thread.refKey;
-                UserActiveThreadsResponse.title = ThreadInfo.title;
-                UserActiveThreadsResponse.type = ThreadInfo.type;
-                UserActiveThreadsResponse.subType = ThreadInfo.subType;
-                response.Payload.Add(UserActiveThreadsResponse);
-            }
+            int expectedDeliveryTimeInMinutes = 15;
+            var UserJobMapping = new UserJobMapping();
+            UserJobMapping.refKey = refKey;
+            UserJobMapping.username = username;
+            UserJobMapping.startTime = DateTime.Now.ToString();
+            UserJobMapping.expectedDeliveryTime = DateTime.Now.AddMinutes(expectedDeliveryTimeInMinutes).ToString();
+            UserJobMapping.endTime = "NA";
+            UserJobMapping.status = Constants.status_assigned;
+
+            _db.UserJobMappings.Add(UserJobMapping);
+            try
+            {
+                _db.SaveChanges();
+
+                long JobId = clientJobInfo.Id;
+                long JobCompleted = _db.UserJobMappings.Where(x => x.refKey == refKey && x.status == Constants.status_done).Count();
+                long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == refKey && x.status == Constants.status_assigned).Count();
+                long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
+
+                var SignalRClientHub = new SignalRClientHub();
+                var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
+                dynamic client = SignalRManager.getSignalRDetail(clientJobInfo.username);
+                if (client != null)
+                {
+                    client.updateClientProgressChart(Convert.ToString(JobId), clientJobInfo.totalThreads, Convert.ToString(JobCompleted), Convert.ToString(JobAssigned), Convert.ToString(JobReviewed));
+                    //client.updateClientProgressChart("8", "20", "10", "8", "5");
+                    //client.addMessage("add message signalR");
+                }
+
                 response.Status = 200;
-                response.Message = "success";
-                
-            
+                response.Message = "success-";
+                response.Payload = refKey;
+            }
+            catch (DbEntityValidationException e)
+            {
+                DbContextException.LogDbContextException(e);
+                response.Status = 500;
+                response.Message = "Failed";
+                response.Payload = "Exception Occured";
+            }
 
             return response;
+        }
+
+        private ResponseModel<List<UserProductSurveyTemplateModel>> GetAllTemplateInformationIncludingDoneAssigned(string username)
+        {
+            var response = new ResponseModel<List<UserProductSurveyTemplateModel>>();
+            var templateData = _db.CreateTemplateQuestionInfoes.OrderByDescending(x => x.creationTime).ToList();
+            response.Status = 200;
+            response.Message = "success";
+            response.Payload = new List<UserProductSurveyTemplateModel>();
+            try
+            {
+                foreach (var job in templateData)
+                {
+                    string earningPerThreadTemp = Convert.ToString(Convert.ToDouble(job.payPerUser) * (Convert.ToDouble(Convert.ToString(ConfigurationManager.AppSettings["dollarToRupeesValue"]))));
+                    string remainingThreadsTemp = string.Empty;
+
+                    var userTemplate = new UserProductSurveyTemplateModel
+                    {
+                        title = job.title,
+                        type = job.type,
+                        subType = job.subType,
+                        refKey = job.referenceId,
+                        creationTime = job.creationTime,
+                        earningPerThreads = earningPerThreadTemp,
+                        currency = "INR", // hard coded currency
+                        totalThreads = job.totalThreads
+                    };
+
+                    if (job.type == Constants.type_dataEntry && job.subType == Constants.subType_Transcription)
+                    {
+                        var AlreadyAppliedJobs = _db.UserMultipleJobMappings.SingleOrDefault(x => x.username == username && x.refKey == job.referenceId && x.status != Constants.status_done);
+                        if (AlreadyAppliedJobs != null)
+                        {
+                            userTemplate.userStatus = AlreadyAppliedJobs.status;
+                            userTemplate.userDeadline = AlreadyAppliedJobs.expectedDelivery;
+                        }
+                        else
+                        {
+                            userTemplate.userStatus = "new";
+                            userTemplate.userDeadline = "NA";
+                        }
+                        remainingThreadsTemp = Convert.ToString(Convert.ToInt32(job.totalThreads) - _db.UserMultipleJobMappings.Where(x => x.refKey == job.referenceId).Count());
+                    }
+                    else
+                    {
+                        var AlreadyAppliedJobs = _db.UserJobMappings.SingleOrDefault(x => x.username == username && x.refKey == job.referenceId);
+                        if (AlreadyAppliedJobs != null)
+                        {
+                            userTemplate.userStatus = AlreadyAppliedJobs.status;
+                            userTemplate.userDeadline = AlreadyAppliedJobs.expectedDeliveryTime;
+                        }
+                        else
+                        {
+                            userTemplate.userStatus = "new";
+                            userTemplate.userDeadline = "NA";
+                        }
+                        remainingThreadsTemp = Convert.ToString(Convert.ToInt32(job.totalThreads) - _db.UserJobMappings.Where(x => x.refKey == job.referenceId).Count());
+                    }
+
+                    userTemplate.remainingThreads = remainingThreadsTemp;
+
+
+                    response.Payload.Add(userTemplate);
+                }
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Status = 500;//some error occured
+                response.Message = "failed";
+                return response;
+            }
+
+        }
+
+        private ResponseModel<List<UserProductSurveyTemplateModel>> GetAllTemplateInformationExcludingDoneAssigned(string username)
+        {
+            var response = new ResponseModel<List<UserProductSurveyTemplateModel>>();
+            var templateData = _db.CreateTemplateQuestionInfoes.OrderByDescending(x => x.creationTime).ToList();
+            response.Status = 200;
+            response.Message = "success";
+            response.Payload = new List<UserProductSurveyTemplateModel>();
+            try
+            {
+                foreach (var job in templateData)
+                {
+                    string earningPerThreadTemp = Convert.ToString(Convert.ToDouble(job.payPerUser) * (Convert.ToDouble(Convert.ToString(ConfigurationManager.AppSettings["dollarToRupeesValue"]))));
+                    string remainingThreadsTemp = string.Empty;
+
+                    var userTemplate = new UserProductSurveyTemplateModel
+                    {
+                        title = job.title,
+                        type = job.type,
+                        subType = job.subType,
+                        refKey = job.referenceId,
+                        creationTime = job.creationTime,
+                        earningPerThreads = earningPerThreadTemp,
+                        currency = "INR", // hard coded currency
+                        totalThreads = job.totalThreads
+                    };
+
+                    if (job.type == Constants.type_dataEntry && job.subType == Constants.subType_Transcription)
+                    {
+                        var AlreadyAppliedJobs = _db.UserMultipleJobMappings.SingleOrDefault(x => x.username == username && x.refKey == job.referenceId && x.status != Constants.status_done);
+                        if (AlreadyAppliedJobs != null)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            userTemplate.userStatus = "new";
+                            userTemplate.userDeadline = "NA";
+                        }
+                        remainingThreadsTemp = Convert.ToString(Convert.ToInt32(job.totalThreads) - _db.UserMultipleJobMappings.Where(x => x.refKey == job.referenceId).Count());
+                    }
+                    else
+                    {
+                        var AlreadyAppliedJobs = _db.UserJobMappings.SingleOrDefault(x => x.username == username && x.refKey == job.referenceId);
+                        if (AlreadyAppliedJobs != null)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            userTemplate.userStatus = "new";
+                            userTemplate.userDeadline = "NA";
+                        }
+                        remainingThreadsTemp = Convert.ToString(Convert.ToInt32(job.totalThreads) - _db.UserJobMappings.Where(x => x.refKey == job.referenceId).Count());
+                    }
+
+                    userTemplate.remainingThreads = remainingThreadsTemp;
+
+
+                    response.Payload.Add(userTemplate);
+                }
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Status = 500;//some error occured
+                response.Message = "failed";
+                return response;
+            }
+
         }
     }
 }

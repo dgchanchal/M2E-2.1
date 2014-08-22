@@ -14,5 +14,6 @@ namespace M2E.Models.DataResponse.UserResponse.DataEntry.Transcription
         public string refKey { get; set; }
         public string options { get; set; }
         public string imageUrl { get; set; }
+        public string uniqueId { get; set; }
     }
 }

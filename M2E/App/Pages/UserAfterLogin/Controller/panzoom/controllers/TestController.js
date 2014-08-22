@@ -1,12 +1,12 @@
 angular.module('test', ['panzoom', 'panzoomwidget'])
 
-.controller('TestController', ['$scope',
+.controller('TestController1', ['$scope',
                                function ($scope) {
         var shark = {
-            x: 391,
-            y: 371,
-            width: 206,
-            height: 136
+            x: 0,
+            y: 0,
+            width: 400,
+            height: 400
         };
         var chopper = {
             x: 88,
@@ -29,8 +29,7 @@ angular.module('test', ['panzoom', 'panzoomwidget'])
         $scope.panzoomConfig = {
             zoomLevels: 12,
             neutralZoomLevel: 5,
-            scalePerZoomLevel: 1.5,
-            initialZoomToFit: shark
+            scalePerZoomLevel: 1.5            
         };
 
         // The panzoom model should initialle be empty; it is initialized by the <panzoom>

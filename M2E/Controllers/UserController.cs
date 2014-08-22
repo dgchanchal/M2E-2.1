@@ -145,6 +145,7 @@ namespace M2E.Controllers
         public JsonResult AllocateThreadToUserByRefKey()
         {
             //var username = "sumitchourasia91@gmail.com";
+            ResponseModel<string> response = new ResponseModel<string>();
             var refKey = Request.QueryString["refKey"].ToString(CultureInfo.InvariantCulture);
             var headers = new HeaderManager(Request);
             M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
@@ -152,16 +153,14 @@ namespace M2E.Controllers
             var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
             if (isValidToken)
             {
-                return Json(userTemplateList.AllocateThreadToUserByRefKey(refKey, session.UserName));
+                response = userTemplateList.AllocateThreadToUserByRefKey(refKey, session.UserName);
             }
             else
-            {
-                ResponseModel<string> response = new ResponseModel<string>();
+            {                
                 response.Status = 401;
-                response.Message = "Unauthorized";
-                return Json(response);
+                response.Message = "Unauthorized";                
             }
-            
+            return Json(response);
 
         }
 

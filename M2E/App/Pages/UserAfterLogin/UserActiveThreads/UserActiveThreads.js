@@ -39,12 +39,13 @@ define([appLocation.userPostLogin], function (app) {
         });
 
 
-        $scope.userStartSurvey = function (type,subType,refKey) {
+        $scope.userStartSurvey = function (type, subType, refKey) {
             //location.href = "#/startSurvey/" + refKey;
             if (type == "survey" && subType == "productSurvey")
                 location.href = "#/startSurvey/" + refKey;
-            else if (type == "dataEntry" && subType == "Transcription")
+            else if (type == "dataEntry" && subType == "Transcription") {
                 location.href = "#/startAngularTranscription/" + refKey;
+            }
         }
 
     });

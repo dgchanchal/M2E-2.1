@@ -167,6 +167,7 @@
     <Compile Include="Models\ClientDetail.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Constants\Constants.cs" />
     <Compile Include="Models\CreateTemplateeditableInstructionsList.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
@@ -261,6 +262,9 @@
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserJobMapping.cs">
+      <DependentUpon>M2EContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserMultipleJobMapping.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserPageSetting.cs">
