@@ -193,6 +193,7 @@
     <Compile Include="Models\DataResponse\ClientDetailsModel.cs" />
     <Compile Include="Models\DataResponse\ClientResponse\ClientSurveyResultResponseList.cs" />
     <Compile Include="Models\DataResponse\ClientResponse\ClientSurveyResultResponse.cs" />
+    <Compile Include="Models\DataResponse\ClientResponse\ClientTranscriptionResultResponse.cs" />
     <Compile Include="Models\DataResponse\ClientTemplateDetailById.cs" />
     <Compile Include="Models\DataResponse\ClientTemplateResponse.cs" />
     <Compile Include="Models\DataResponse\ImgurImageResponse.cs" />
@@ -365,6 +366,8 @@
     <Content Include="App\Pages\BeforeLogin\UserMoreInfo\UserMoreInfo.html" />
     <Content Include="App\Pages\ClientAfterLogin\Controller\common\AngularFileUploadController.js" />
     <Content Include="App\Pages\ClientAfterLogin\Controller\singleRControllerAfterLogin.js" />
+    <Content Include="App\Pages\ClientAfterLogin\DataEntry\TranscriptionResponseDetail\TranscriptionResponseDetail.html" />
+    <Content Include="App\Pages\ClientAfterLogin\DataEntry\TranscriptionResponseDetail\TranscriptionResponseDetail.js" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateResponseDetail\TemplateResponseDetail.html" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateResponseDetail\TemplateResponseDetail.js" />
     <Content Include="App\Pages\ClientAfterLogin\DataEntry\TranscriptionTemplate\TranscriptionTemplate.html" />

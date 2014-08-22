@@ -365,11 +365,11 @@ namespace M2E.Service.UserService.Survey
         private ResponseModel<string> AllocateMultipleAssignTypeThreadToUserByRefKey(CreateTemplateQuestionInfo clientJobInfo, string refKey, string username)
         {
             var response = new ResponseModel<string>();
-            var ifAlreadyAllocated = _db.UserMultipleJobMappings.SingleOrDefault(x => x.refKey == refKey && x.username == username && x.status != Constants.status_done);
+            var ifAlreadyAllocated = _db.UserMultipleJobMappings.SingleOrDefault(x => x.refKey == refKey && x.username == username);
             if (ifAlreadyAllocated != null)
             {
                 response.Status = 403;
-                response.Message = "You haven't completed your previous Active Thread for this Job.";
+                response.Message = "You have already applied for this job";
                 return response;
             }
             const int expectedDeliveryTimeInMinutes = 15;
@@ -384,37 +384,51 @@ namespace M2E.Service.UserService.Survey
             UserMultipleJobMapping.surveyResult = Constants.NA;
             UserMultipleJobMapping.type = Constants.type_dataEntry;
             UserMultipleJobMapping.username = username;
-            _db.UserMultipleJobMappings.Add(UserMultipleJobMapping);
-            try
+
+            var availableJobLists = _db.CreateTemplateImgurImagesLists.Where(x => x.referenceKey == refKey && x.status == Constants.status_open).ToList();
+            if (availableJobLists != null)
             {
-                _db.SaveChanges();
-
-                long JobId = clientJobInfo.Id;
-                long JobCompleted = _db.UserMultipleJobMappings.Where(x => x.refKey == refKey && x.status == Constants.status_done).Count();
-                long JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == refKey && x.status == Constants.status_assigned).Count();
-                long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
-
-                var SignalRClientHub = new SignalRClientHub();
-                var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
-                dynamic client = SignalRManager.getSignalRDetail(clientJobInfo.username);
-                if (client != null)
+                var transcriptionTask = availableJobLists.First();
+                try
                 {
-                    client.updateClientProgressChart(Convert.ToString(JobId), clientJobInfo.totalThreads, Convert.ToString(JobCompleted), Convert.ToString(JobAssigned), Convert.ToString(JobReviewed));
-                    //client.updateClientProgressChart("8", "20", "10", "8", "5");
-                    //client.addMessage("add message signalR");
-                }
+                    //to be inclucded in lock
+                    UserMultipleJobMapping.imageKey = transcriptionTask.imgurLink;
+                    var updateImgurImageMapAfterAssigning = _db.CreateTemplateImgurImagesLists.SingleOrDefault(x => x.Id == transcriptionTask.Id);
+                    updateImgurImageMapAfterAssigning.status = Constants.status_assigned;
+                    _db.UserMultipleJobMappings.Add(UserMultipleJobMapping);
+                    _db.SaveChanges();
+                    //to be inclucded in lock
+                    
 
-                response.Status = 200;
-                response.Message = "success-";
-                response.Payload = refKey;
+                    long JobId = clientJobInfo.Id;
+                    long JobCompleted = _db.UserMultipleJobMappings.Where(x => x.refKey == refKey && x.status == Constants.status_done).Count();
+                    long JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == refKey && x.status == Constants.status_assigned).Count();
+                    long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
+
+                    var SignalRClientHub = new SignalRClientHub();
+                    var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
+                    dynamic client = SignalRManager.getSignalRDetail(clientJobInfo.username);
+                    if (client != null)
+                    {
+                        client.updateClientProgressChart(Convert.ToString(JobId), clientJobInfo.totalThreads, Convert.ToString(JobCompleted), Convert.ToString(JobAssigned), Convert.ToString(JobReviewed));
+                        //client.updateClientProgressChart("8", "20", "10", "8", "5");
+                        //client.addMessage("add message signalR");
+                    }
+
+                    response.Status = 200;
+                    response.Message = "success-";
+                    response.Payload = refKey;
+                }
+                catch (DbEntityValidationException e)
+                {
+                    DbContextException.LogDbContextException(e);
+                    response.Status = 500;
+                    response.Message = "Failed";
+                    response.Payload = "Exception Occured";
+                }
             }
-            catch (DbEntityValidationException e)
-            {
-                DbContextException.LogDbContextException(e);
-                response.Status = 500;
-                response.Message = "Failed";
-                response.Payload = "Exception Occured";
-            }
+            //UserMultipleJobMapping.imageKey = 
+            
 
             return response;
         }

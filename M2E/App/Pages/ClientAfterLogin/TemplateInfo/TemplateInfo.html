@@ -1,7 +1,7 @@
 ﻿<!-- Content Header (Page header) -->
 <div ng-controller="ClientAfterLoginTemplateInfo">
                 <section class="content-header" >
-                    <span><button class="btn btn-success btn-flat" ng-click="openTemplateResponseDetailPageWithId(templateId)">Show Detail</button> </span>
+                    <span><button class="btn btn-success btn-flat" ng-click="openTemplateResponseDetailPageWithId(templateInfo.type,templateInfo.subType,templateId)">Show Detail</button> </span>
                         <!--<span class="active"><button ng-click="openTemplateEditPageWithId(templateId)" class="btn btn-warning">Edit</button></span>-->
                         <span class="active"><button ng-click="deleteTemplatePageWithId(templateId)" class="btn btn-danger">Delete</button></span>
                 </section>
@@ -11,7 +11,7 @@
                     <!-- top row -->
                     <div class="row">
                         <div class="col-xs-12 connectedSortable">
-                            <b>{{templateTitle}}</b>
+                            <b><span ng-bind="templateInfo.title"></span></b>
                         </div><!-- /.col -->
                     </div>
                     <!-- /.row -->

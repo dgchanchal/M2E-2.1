@@ -231,6 +231,7 @@
     <Property Name="Locked" Type="nvarchar(max)" Nullable="true" />
     <Property Name="KeepMeSignedIn" Type="nvarchar(max)" Nullable="true" />
     <Property Name="RegistrationTime" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DateTime" Type="datetime" Nullable="true" />
   </EntityType>
   <EntityType Name="UserSkills">
     <Key>
@@ -313,6 +314,7 @@
     <Property Name="endTime" Type="nvarchar(max)" Nullable="false" />
     <Property Name="expectedDelivery" Type="nvarchar(max)" Nullable="false" />
     <Property Name="surveyResult" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="imageKey" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -544,6 +546,7 @@
           <Property Name="Locked" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="KeepMeSignedIn" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="RegistrationTime" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="DateTime" Name="DateTime" Nullable="true" />
         </EntityType>
         <EntityType Name="UserSkill">
           <Key>
@@ -626,6 +629,7 @@
           <Property Type="String" Name="endTime" Nullable="false" />
           <Property Type="String" Name="expectedDelivery" Nullable="false" />
           <Property Type="String" Name="surveyResult" Nullable="false" />
+          <Property Type="String" Name="imageKey" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -848,6 +852,7 @@
           <ScalarProperty Name="Locked" ColumnName="Locked" />
           <ScalarProperty Name="KeepMeSignedIn" ColumnName="KeepMeSignedIn" />
           <ScalarProperty Name="RegistrationTime" ColumnName="RegistrationTime" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -937,6 +942,7 @@
           <ScalarProperty Name="endTime" ColumnName="endTime" />
           <ScalarProperty Name="expectedDelivery" ColumnName="expectedDelivery" />
           <ScalarProperty Name="surveyResult" ColumnName="surveyResult" />
+          <ScalarProperty Name="imageKey" ColumnName="imageKey" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -976,14 +982,14 @@
         <EntityTypeShape EntityType="M2EModel.UserDetail" Width="1.5" PointX="8.75" PointY="8.75" Height="1.5956835937500031" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.UserPageSetting" Width="1.5" PointX="8.75" PointY="10.5" Height="2.1725878906250031" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.UserRecommendation" Width="1.5" PointX="10.75" PointY="10.5" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.User" Width="1.5" PointX="10.75" PointY="0.75" Height="3.7109993489583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="M2EModel.User" Width="1.5" PointX="10.75" PointY="0.75" Height="3.9033007812499996" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.UserSkill" Width="1.5" PointX="10.75" PointY="5.75" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.ValidateUserKey" Width="1.5" PointX="10.75" PointY="8.75" Height="1.5956835937500031" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.CreateTemplateImgurImagesList" Width="1.5" PointX="0.875" PointY="2.5" Height="3.1340950520833326" />
         <EntityTypeShape EntityType="M2EModel.UserSurveyResultToBeReviewed" Width="1.5" PointX="2.875" PointY="4.125" Height="2.1725878906249996" />
         <EntityTypeShape EntityType="M2EModel.UserSurveyResult" Width="1.5" PointX="2.875" PointY="6.375" Height="2.1725878906249996" />
         <EntityTypeShape EntityType="M2EModel.UserJobMapping" Width="1.5" PointX="6.75" PointY="6.5" Height="2.3648893229166656" />
-        <EntityTypeShape EntityType="M2EModel.UserMultipleJobMapping" Width="1.5" PointX="9" PointY="3.75" Height="2.9417936197916656" />
+        <EntityTypeShape EntityType="M2EModel.UserMultipleJobMapping" Width="1.5" PointX="9" PointY="3.75" Height="3.1340950520833326" />
       </Diagram>
     </Diagrams>
   </Designer>

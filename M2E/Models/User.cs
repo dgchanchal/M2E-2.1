@@ -28,5 +28,6 @@ namespace M2E.Models
         public string Locked { get; set; }
         public string KeepMeSignedIn { get; set; }
         public string RegistrationTime { get; set; }
+        public Nullable<System.DateTime> DateTime { get; set; }
     }
 }

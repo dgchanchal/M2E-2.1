@@ -24,5 +24,6 @@ namespace M2E.Models
         public string endTime { get; set; }
         public string expectedDelivery { get; set; }
         public string surveyResult { get; set; }
+        public string imageKey { get; set; }
     }
 }

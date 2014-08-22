@@ -197,7 +197,7 @@
             if ($(this).val() != lastValueAmountPerThreadTextBoxInput) {
 
                 lastValueAmountPerThreadTextBoxInput = $(this).val();
-                $("#TotalAmountPayableCreateTemplate").html(lastValueAmountPerThreadTextBoxInput * lastValueTotalNumberOfThreads);
+                updateTotalPayableAmountDiv();
                 console.log(lastValueAmountPerThreadTextBoxInput + ":" + lastValueTotalNumberOfThreads);
             }
         });
@@ -206,12 +206,15 @@
         $("#totalNumberOfThreads").on('change keyup paste mouseup', function () {
             if ($(this).val() != lastValueTotalNumberOfThreads) {
                 lastValueTotalNumberOfThreads = $(this).val();
-                $("#TotalAmountPayableCreateTemplate").html(lastValueAmountPerThreadTextBoxInput * lastValueTotalNumberOfThreads);
+                updateTotalPayableAmountDiv();
                 console.log(lastValueAmountPerThreadTextBoxInput + ":" + lastValueTotalNumberOfThreads);
             }
         });
     });
 
+    function updateTotalPayableAmountDiv() {        
+        $("#TotalAmountPayableCreateTemplate").html($("#amountPerThreadTextBoxInput").val() * $('#totalNumberOfThreads').val());
+    }
     function roundOffDecimal(num, digit) {
         (Math.round(num * 100) / 100).toString() //-> "1.1"
         num.toFixed(digit)

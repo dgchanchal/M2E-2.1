@@ -21,7 +21,7 @@ define([appLocation.postLogin], function (app) {
                 { type: "AddInstructions", title: "", visible: false, buttonText: "Add Instructions", editableInstructionsList: [{ Number: totalEditableInstruction, Text: "Instruction 1"}] },
                 { type: "AddSingleQuestionsList", title: "", visible: false, buttonText: "Add Query", singleQuestionsList: [{ Number: totalSingleQuestionList, Question: "Is this Image Obscene?", Options: "Yes;No"}] },
                 { type: "AddMultipleQuestionsList", title: "", visible: false, buttonText: "Add Ques. (Multiple Ans.)", multipleQuestionsList: [{ Number: totalMultipleQuestionList, Question: "What is your multiple gender ?", Options: "Malem1;Femalem2"}] },
-                { type: "AddTextBoxQuestionsList", title: "", visible: true, buttonText: "Add Ques. (TextBox Ans.)", textBoxQuestionsList: [{ Number: totalTextBoxQuestionList, Question: "item;quantity;price per item;discount;total", Options: "text"}] },
+                { type: "AddTextBoxQuestionsList", title: "", visible: true, buttonText: "Add Ques. (TextBox Ans.)", textBoxQuestionsList: [{ Number: totalTextBoxQuestionList, Question: "item;price", Options: "text"}] },
                 { type: "AddListBoxQuestionsList", title: "", visible: false, buttonText: "Add Ques. (ListBox Ans.)", listBoxQuestionsList: [{ Number: totalListBoxQuestionList, Question: "What is your multiple gender ?", Options: "Malem1;Femalem2"}] }
         ];
 
@@ -69,6 +69,7 @@ define([appLocation.postLogin], function (app) {
         $scope.refreshTranscriptionTemplateListDiv = function () {
             //alert("inside function");
             $scope.imgurImageTranscriptionTemplate = userSession.imgurImageTranscriptionTemplate;
+            updateTotalPayableAmountDiv();
             $('.fancybox').fancybox();
         }
 
@@ -85,9 +86,14 @@ define([appLocation.postLogin], function (app) {
 
             //console.log(userSession.imgurImageTemplateModeratingPhotos);
             $scope.imgurImageTranscriptionTemplate = userSession.imgurImageTranscriptionTemplate;
+            updateTotalPayableAmountDiv();
             $('.fancybox').fancybox();
         }
 
+        function updateTotalPayableAmountDiv() {
+            $('#totalNumberOfThreads').val(userSession.imgurImageTranscriptionTemplate.length);
+            $("#TotalAmountPayableCreateTemplate").html($("#amountPerThreadTextBoxInput").val() * $('#totalNumberOfThreads').val());
+        }
         $scope.addEditableInstructions = function () {
             if (($('#AddInstructionsTextAreaTranscriptionTemplate').val() != "") && ($('#AddInstructionsTextAreaTranscriptionTemplate').val() != null)) {
                 var addEditableInstructionsFancyBoxInImages = $('#AddInstructionsTextAreaTranscriptionTemplate').val();

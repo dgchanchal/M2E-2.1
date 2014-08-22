@@ -9,6 +9,7 @@ using System.Globalization;
 using M2E.Models.DataWrapper.UserSurvey;
 using M2E.Models;
 using M2E.Service.UserService.dataEntry;
+using Newtonsoft.Json;
 
 namespace M2E.Controllers
 {
@@ -90,6 +91,47 @@ namespace M2E.Controllers
                 return Json(response);
             }
             
+
+        }
+
+        [HttpPost]
+        public JsonResult SubmitTranscriptionInputTableDataByRefKey(List<string[]> data)
+        {
+            //var username = "sumitchourasia91@gmail.com";
+            var refKey = Request.QueryString["refKey"].ToString(CultureInfo.InvariantCulture);
+            var UserResponse = new List<string[]>();
+            foreach (var row in data)
+            {
+                bool useful = false;
+                foreach (var inputBoxData in row)
+                {
+                    if (inputBoxData != null && inputBoxData != "")
+                    {
+                        useful = true;
+                        break;
+                    }
+                }
+                if (useful)
+                    UserResponse.Add(row);
+            }
+            var serializeData = JsonConvert.SerializeObject(UserResponse);
+            var headers = new HeaderManager(Request);
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
+            var userTemplateList = new UserTranscriptionService();
+            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+            if (isValidToken)
+            {
+                return Json(userTemplateList.SubmitTranscriptionInputTableDataByRefKey(session.UserName, refKey, serializeData));
+                return null;
+            }
+            else
+            {
+                ResponseModel<string> response = new ResponseModel<string>();
+                response.Status = 401;
+                response.Message = "Unauthorized";
+                return Json(response);
+            }
+
 
         }
 

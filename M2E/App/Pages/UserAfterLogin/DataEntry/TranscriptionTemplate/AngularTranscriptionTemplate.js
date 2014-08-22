@@ -12,6 +12,8 @@ define([appLocation.userPostLogin], function (app) {
         $scope.TranscriptionRowToggleText = "Align in Two Rows";
         $scope.TranscriptionRowToggleButtonClass = "btn btn-warning btn-flat";
 
+        $scope.TranscriptionImageUserInputResponse = [];
+
         var url = ServerContextPah + '/User/GetTranscriptionTemplateInformationByRefKey?refKey=' + $routeParams.refKey;
         var headers = {
             'Content-Type': 'application/json',
@@ -43,8 +45,12 @@ define([appLocation.userPostLogin], function (app) {
             tableCol = 1;
             var dynamicInputTableHTML = "";
             dynamicInputTableHTML += "<tr>";
+            var i = optionsList.length;
             $.each(optionsList, function () {
-                dynamicInputTableHTML += "<td><input class='form-control transcriptionTemplateInputTextBox"+tableRow+"' name='TranscriptionInput-" + tableRow + "-" + tableCol + "' type='text' placeholder='" + this + "' id='TranscriptionInput-" + tableRow + "-" + tableCol + "'/></td>";
+                if (i != tableCol)
+                    dynamicInputTableHTML += "<td><input class='form-control' name='TranscriptionInput-" + tableRow + "-" + tableCol + "' type='text' placeholder='" + this + "' id='TranscriptionInput-" + tableRow + "-" + tableCol + "'/></td>";
+                else
+                    dynamicInputTableHTML += "<td><input class='form-control transcriptionTemplateInputTextBox" + tableRow + "' name='TranscriptionInput-" + tableRow + "-" + tableCol + "' type='text' placeholder='" + this + "' id='TranscriptionInput-" + tableRow + "-" + tableCol + "'/></td>";
                 tableCol++;
             });
             dynamicInputTableHTML += "</tr>";
@@ -68,31 +74,69 @@ define([appLocation.userPostLogin], function (app) {
         }
 
         $scope.AddRowTranscriptionInputTableBox = function () {
-            createDynamicTableForInput($scope.TranscriptionTemplateInfo.optionsList, 5, true);
-            zoomImageHeight += 300;
-            $('#PanZoom').css({ "height": zoomImageHeight + 'px' });
+            createDynamicTableForInput($scope.TranscriptionTemplateInfo.optionsList, 1, true);
+            if (tableRow > 10) {
+                zoomImageHeight += 60;
+                $('#PanZoom').css({ "height": zoomImageHeight + 'px' });
+            }
         }
 
 
         $scope.SubmitTranscriptionInputTableData = function () {
-            var isValid = true;
-            alert("submit");
+
+            for (var i = 1; i <= tableRow; i++) {
+                var UserInputData = [];
+                for (var j = 1; j <= $scope.TranscriptionTemplateInfo.optionsList.length; j++) {
+                    UserInputData.push($('#TranscriptionInput-' + i + '-' + j + '').val());
+                }
+                $scope.TranscriptionImageUserInputResponse.push(UserInputData);
+            }
+            submitTranscriptionInputTableDataToServer($scope.TranscriptionImageUserInputResponse);
+            //console.log($scope.TranscriptionImageUserInputResponse);
         }
 
+        function submitTranscriptionInputTableDataToServer(data) {
+            var url = ServerContextPah + '/User/SubmitTranscriptionInputTableDataByRefKey?refKey=' + $routeParams.refKey;
+            var headers = {
+                'Content-Type': 'application/json',
+                'UTMZT': CookieUtil.getUTMZT(),
+                'UTMZK': CookieUtil.getUTMZK(),
+                'UTMZV': CookieUtil.getUTMZV()
+            };
+            startBlockUI('wait..', 3);
+            $http({
+                url: url,
+                method: "POST",
+                data: data,
+                headers: headers
+            }).success(function (data, status, headers, config) {
+                //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
+                stopBlockUI();
+                if (data.Status == "200") {
+                    alert("successfully submitted");
+                }
+
+            }).error(function (data, status, headers, config) {
+
+            });
+        }
         function initializeEnterKeyEventOnTextBox() {
 
-            $('.transcriptionTemplateInputTextBox' + (tableRow-1)).keydown(function (e) {
-                if (e.keyCode == 13) {
+            $('.transcriptionTemplateInputTextBox' + (tableRow - 1)).keydown(function (e) {
+                if (e.keyCode == 13 || e.keyCode == 9) {
                     createDynamicTableForInput($scope.TranscriptionTemplateInfo.optionsList, 1, true);
                     if (tableRow > 10) {
                         zoomImageHeight += 60;
                         $('#PanZoom').css({ "height": zoomImageHeight + 'px' });
-                    }                    
+                    }
+                    //console.log(tableRow - 1);
+                    //$("#TranscriptionInput-2-1").focus();
                 }
             })
         }
         function createDynamicTableForInput(optionsList, count, isAppend) {
             var dynamicInputTableHTML = "";
+            var k = $scope.TranscriptionTemplateInfo.optionsList.length;
             if (!isAppend) {
                 dynamicInputTableHTML += "<b> title of job</b>";
                 dynamicInputTableHTML += "<table class='table table-bordered'>";
@@ -112,7 +156,11 @@ define([appLocation.userPostLogin], function (app) {
                     $.each(optionsList, function () {
                         if (tableCol == 1)
                             dynamicInputTableHTML += "<td>" + tableRow + ".</td>";
-                        dynamicInputTableHTML += "<td><input class='form-control transcriptionTemplateInputTextBox"+tableRow+"' name='TranscriptionInput-" + tableRow + "-" + tableCol + "' type='text' placeholder='" + this + "' id='TranscriptionInput-" + tableRow + "-" + tableCol + "'/></td>";
+
+                        if (k != tableCol)
+                            dynamicInputTableHTML += "<td><input class='form-control' name='TranscriptionInput-" + tableRow + "-" + tableCol + "' type='text' placeholder='" + this + "' id='TranscriptionInput-" + tableRow + "-" + tableCol + "'/></td>";
+                        else
+                            dynamicInputTableHTML += "<td><input class='form-control transcriptionTemplateInputTextBox" + tableRow + "' name='TranscriptionInput-" + tableRow + "-" + tableCol + "' type='text' placeholder='" + this + "' id='TranscriptionInput-" + tableRow + "-" + tableCol + "'/></td>";
                         tableCol++;
                     });
                     dynamicInputTableHTML += "</tr>";
@@ -134,7 +182,12 @@ define([appLocation.userPostLogin], function (app) {
                     $.each(optionsList, function () {
                         if (tableCol == 1)
                             dynamicInputTableHTML += "<td>" + tableRow + ".</td>";
-                        dynamicInputTableHTML += "<td><input class='form-control transcriptionTemplateInputTextBox" + tableRow + "' name='TranscriptionInput-" + tableRow + "-" + tableCol + "' type='text' placeholder='" + this + "' id='TranscriptionInput-" + tableRow + "-" + tableCol + "'/></td>";
+
+                        if (k != tableCol)
+                            dynamicInputTableHTML += "<td><input class='form-control' name='TranscriptionInput-" + tableRow + "-" + tableCol + "' type='text' placeholder='" + this + "' id='TranscriptionInput-" + tableRow + "-" + tableCol + "'/></td>";
+                        else
+                            dynamicInputTableHTML += "<td><input class='form-control transcriptionTemplateInputTextBox" + tableRow + "' name='TranscriptionInput-" + tableRow + "-" + tableCol + "' type='text' placeholder='" + this + "' id='TranscriptionInput-" + tableRow + "-" + tableCol + "'/></td>";
+
                         tableCol++;
                     });
                     dynamicInputTableHTML += "</tr>";

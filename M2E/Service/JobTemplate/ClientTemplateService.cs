@@ -16,6 +16,7 @@ using M2E.Models.DataWrapper;
 using M2E.signalRPushNotifications;
 using Microsoft.AspNet.SignalR;
 using M2E.Models.DataResponse.ClientResponse;
+using M2E.Models.Constants;
 
 namespace M2E.Service.JobTemplate
 {
@@ -40,27 +41,58 @@ namespace M2E.Service.JobTemplate
             try
             {
                 foreach (var job in templateData)
-                {                                                                                          
-                    long JobCompleted = _db.UserJobMappings.Where(x => x.refKey == job.referenceId && x.status == status_done).Count();
-                    long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == job.referenceId && x.status == status_assigned).Count();
-                    long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
-                    if (JobCompleted > Convert.ToInt32(job.totalThreads))
-                        JobCompleted = Convert.ToInt32(job.totalThreads);
-                    var clientTemplate = new ClientTemplateResponse
+                {
+                    if (job.type == Constants.type_dataEntry && job.subType == Constants.subType_Transcription)
                     {
-                        title = job.title,
-                        creationDate = job.creationTime.Split(' ')[0],
-                        showTime = " 4 hours",
-                        editId = job.Id.ToString(CultureInfo.InvariantCulture),
-                        showEllipse = true,
-                        timeShowType = "success",
-                        progressPercent = Convert.ToString(System.Math.Ceiling (((JobCompleted) * 100 / Convert.ToDouble(job.totalThreads)) * 100) / 100),
-                        JobCompleted = Convert.ToString(JobCompleted),
-                        JobAssigned = Convert.ToString(JobAssigned),
-                        JobTotal = job.totalThreads,
-                        JobReviewed = Convert.ToString(JobReviewed)
-                    };
-                    response.Payload.Add(clientTemplate);
+                        long JobCompleted = _db.UserMultipleJobMappings.Where(x => x.refKey == job.referenceId && x.status == status_done).Count();
+                        long JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == job.referenceId && x.status == status_assigned).Count();
+                        long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
+                        if (JobCompleted > Convert.ToInt32(job.totalThreads))
+                            JobCompleted = Convert.ToInt32(job.totalThreads);
+                        var clientTemplate = new ClientTemplateResponse
+                        {
+                            title = job.title,
+                            creationDate = job.creationTime.Split(' ')[0],
+                            showTime = " 4 hours",
+                            editId = job.Id.ToString(CultureInfo.InvariantCulture),
+                            showEllipse = true,
+                            timeShowType = "success",
+                            progressPercent = Convert.ToString(System.Math.Ceiling(((JobCompleted) * 100 / Convert.ToDouble(job.totalThreads)) * 100) / 100),
+                            JobCompleted = Convert.ToString(JobCompleted),
+                            JobAssigned = Convert.ToString(JobAssigned),
+                            JobTotal = job.totalThreads,
+                            JobReviewed = Convert.ToString(JobReviewed),
+                            type = job.type,
+                            subType = job.subType
+                        };
+                        response.Payload.Add(clientTemplate);
+                    }
+                    else
+                    {
+                        long JobCompleted = _db.UserJobMappings.Where(x => x.refKey == job.referenceId && x.status == status_done).Count();
+                        long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == job.referenceId && x.status == status_assigned).Count();
+                        long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
+                        if (JobCompleted > Convert.ToInt32(job.totalThreads))
+                            JobCompleted = Convert.ToInt32(job.totalThreads);
+                        var clientTemplate = new ClientTemplateResponse
+                        {
+                            title = job.title,
+                            creationDate = job.creationTime.Split(' ')[0],
+                            showTime = " 4 hours",
+                            editId = job.Id.ToString(CultureInfo.InvariantCulture),
+                            showEllipse = true,
+                            timeShowType = "success",
+                            progressPercent = Convert.ToString(System.Math.Ceiling(((JobCompleted) * 100 / Convert.ToDouble(job.totalThreads)) * 100) / 100),
+                            JobCompleted = Convert.ToString(JobCompleted),
+                            JobAssigned = Convert.ToString(JobAssigned),
+                            JobTotal = job.totalThreads,
+                            JobReviewed = Convert.ToString(JobReviewed),
+                            type = job.type,
+                            subType = job.subType
+                        };
+                        response.Payload.Add(clientTemplate);
+                    }
+                    
                 }
                 
                 return response;
@@ -89,15 +121,17 @@ namespace M2E.Service.JobTemplate
             response.Payload = new ClientTemplateResponse();
             try
             {
-                long JobCompleted = _db.UserJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == status_done).Count();
-                long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == status_assigned).Count();
-                long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
-
-                if (JobCompleted > Convert.ToInt32(clientJobInfo.totalThreads))
-                    JobCompleted = Convert.ToInt32(clientJobInfo.totalThreads);
-
-                var clientTemplate = new ClientTemplateResponse
+                if (job.type == Constants.type_dataEntry && job.subType == Constants.subType_Transcription)
                 {
+                    long JobCompleted = _db.UserMultipleJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == status_done).Count();
+                    long JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == status_assigned).Count();
+                    long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
+
+                    if (JobCompleted > Convert.ToInt32(clientJobInfo.totalThreads))
+                        JobCompleted = Convert.ToInt32(clientJobInfo.totalThreads);
+
+                    var clientTemplate = new ClientTemplateResponse
+                    {
                         title = job.title,
                         creationDate = job.creationTime.Split(' ')[0],
                         showTime = " 4 hours",
@@ -108,10 +142,41 @@ namespace M2E.Service.JobTemplate
                         JobCompleted = Convert.ToString(JobCompleted),
                         JobAssigned = Convert.ToString(JobAssigned),
                         JobTotal = Convert.ToString(clientJobInfo.totalThreads),
-                        JobReviewed = Convert.ToString(JobReviewed)
-                };
-                    response.Payload=clientTemplate;         
+                        JobReviewed = Convert.ToString(JobReviewed),
+                        type = clientJobInfo.type,
+                        subType = clientJobInfo.subType
+                    };
+                    response.Payload = clientTemplate;         
 
+                }
+                else
+                {
+                    long JobCompleted = _db.UserJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == status_done).Count();
+                    long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == status_assigned).Count();
+                    long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
+
+                    if (JobCompleted > Convert.ToInt32(clientJobInfo.totalThreads))
+                        JobCompleted = Convert.ToInt32(clientJobInfo.totalThreads);
+
+                    var clientTemplate = new ClientTemplateResponse
+                    {
+                        title = job.title,
+                        creationDate = job.creationTime.Split(' ')[0],
+                        showTime = " 4 hours",
+                        editId = job.Id.ToString(CultureInfo.InvariantCulture),
+                        showEllipse = true,
+                        timeShowType = "success",
+                        progressPercent = Convert.ToString(System.Math.Ceiling(((JobCompleted) * 100 / Convert.ToDouble(clientJobInfo.totalThreads)) * 100) / 100),
+                        JobCompleted = Convert.ToString(JobCompleted),
+                        JobAssigned = Convert.ToString(JobAssigned),
+                        JobTotal = Convert.ToString(clientJobInfo.totalThreads),
+                        JobReviewed = Convert.ToString(JobReviewed),
+                        type = clientJobInfo.type,
+                        subType = clientJobInfo.subType
+                    };
+                    response.Payload = clientTemplate;         
+                }
+                
                 return response;
             }
             catch (Exception)
@@ -275,6 +340,34 @@ namespace M2E.Service.JobTemplate
                     response.Message = "success";
                     response.Payload = ClientSurveyResultResponseListData;
                     
+                }
+                else
+                {
+                    response.Status = 404;
+                    response.Message = "No Data found";
+                }
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Status = 500;
+                response.Message = "Exception";
+                return response;
+            }
+        }
+
+        public ResponseModel<ClientTranscriptionResultResponse> GetTranscriptionResponseResultById(string username, long id)
+        {
+            var response = new ResponseModel<ClientTranscriptionResultResponse>();
+            try
+            {
+                var ClientSurveyResultResponseListData = new ClientTranscriptionResultResponse();
+                var templateData = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.Id == id);
+                
+                if (templateData != null)
+                {
+                    //var transcriptionData = _db.UserMultipleJobMappings.SingleOrDefault(
+
                 }
                 else
                 {

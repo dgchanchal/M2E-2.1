@@ -1,0 +1,47 @@
+﻿<!-- Content Header (Page header) -->
+<div ng-controller="ClientAfterLoginTranscriptionResponseDetail">
+                <section class="content-header" >
+                    <span><button class="btn btn-success btn-flat" ng-click="openTemplateInfoPageWithId(templateId)">Back</button> </span>
+                        <!--<span class="active"><button ng-click="openTemplateEditPageWithId(templateId)" class="btn btn-warning">Edit</button></span>-->
+                        <span class="active"><button ng-click="deleteTemplatePageWithId(templateId)" class="btn btn-danger">Delete</button></span>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">                   
+                    <!-- top row -->
+                    <div class="row">
+                        <div class="col-xs-12 connectedSortable">
+                            <span ng-bind="ClientTemplateResponseDetailModel.title"></span>
+                        </div><!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+
+                    <!-- Main row -->
+                    <div class="row">
+                        <!-- Left col -->
+                        <section class="col-lg-12 connectedSortable">                            
+                           <div class="box box-color box-bordered">
+                <div class="box-title">
+                    <h3>
+                        <i class="icon-user"></i>Transcription Result
+                    </h3>
+                </div>
+                <div class="box-content nopadding"> 
+                            
+                                                                                  
+                </div>
+            </div>
+                        </section><!-- /.Left col -->                        
+                    </div><!-- /.row (main row) -->
+
+                </section><!-- /.content -->
+         
+        <!-- page script -->
+  </div>
+        <script type="text/javascript">
+
+    
+    $(document).ready(function($) {
+        $('.fancybox').fancybox();
+    });
+		</script>

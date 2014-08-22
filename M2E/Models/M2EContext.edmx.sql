@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 08/22/2014 11:17:06
+-- Date Created: 08/22/2014 17:10:42
 -- Generated from EDMX file: F:\temp2\branches\M2E-2.0\M2E\Models\M2EContext.edmx
 -- --------------------------------------------------
 
@@ -87,6 +87,9 @@ IF OBJECT_ID(N'[dbo].[UserSurveyResults]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[UserJobMappings]', 'U') IS NOT NULL
     DROP TABLE [dbo].[UserJobMappings];
+GO
+IF OBJECT_ID(N'[dbo].[UserMultipleJobMappings]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserMultipleJobMappings];
 GO
 
 -- --------------------------------------------------
@@ -291,7 +294,8 @@ CREATE TABLE [dbo].[Users] (
     [gender] nvarchar(max)  NULL,
     [Locked] nvarchar(max)  NULL,
     [KeepMeSignedIn] nvarchar(max)  NULL,
-    [RegistrationTime] nvarchar(max)  NULL
+    [RegistrationTime] nvarchar(max)  NULL,
+    [DateTime] datetime  NULL
 );
 GO
 
@@ -373,7 +377,8 @@ CREATE TABLE [dbo].[UserMultipleJobMappings] (
     [status] nvarchar(max)  NOT NULL,
     [endTime] nvarchar(max)  NOT NULL,
     [expectedDelivery] nvarchar(max)  NOT NULL,
-    [surveyResult] nvarchar(max)  NOT NULL
+    [surveyResult] nvarchar(max)  NOT NULL,
+    [imageKey] nvarchar(max)  NOT NULL
 );
 GO
 

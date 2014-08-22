@@ -18,5 +18,7 @@ namespace M2E.Models.DataResponse
         public string JobAssigned { get; set; }
         public string JobTotal { get; set; }
         public string JobReviewed { get; set; }
+        public string type { get; set; }
+        public string subType { get; set; }
     }
 }

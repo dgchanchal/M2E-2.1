@@ -8,6 +8,7 @@ namespace M2E.Models.Constants
     public static class Constants
     {
         public const string status_done = "done";
+        public const string status_open = "open";
         public const string status_active = "active";
         public const string status_assigned = "assigned";
         public const string status_reviewed = "reviewed";
