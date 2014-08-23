@@ -100,7 +100,10 @@ appRequire = require
             },
             beforeLoginResetPassword: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
-            },            
+            },
+            termsPrivacyController: {
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
+            }
         },
         paths: {
             //==============================================================================================================
@@ -141,7 +144,7 @@ appRequire = require
             beforeLoginForgetPassword: "../../App/Pages/BeforeLogin/ForgetPassword/forgetPasswordTemplate",
             beforeLoginResetPassword: "../../App/Pages/BeforeLogin/ResetPassword/resetpasswordTemplate",
             showMessageTemplate: "../../App/Pages/BeforeLogin/ShowMessage/showMessageTemplate",
-            
+            termsPrivacyController: "../../App/Pages/BeforeLogin/TnC/TnC",
             
             
         },
@@ -151,7 +154,7 @@ appRequire = require
 appRequire(["jquery", "angular", "jquery_toastmessage", "toastMessage", "jquery_cookie",
     "jquery_blockUI", "restangular","angular_route", "angular_animate", "bootstrap", "bootstrap_switch", //"beforeLoginAdminLTEApp", "moment","iCheck",
     "beforeLoginApp", "beforeLoginIndex", "beforeLoginFAQ", "beforeLoginLogin", "beforeLoginCookieService", "beforeLoginSignUpClient", "beforeLoginSignUpUser",
-    "beforeLoginValidateEmail", "beforeLoginForgetPassword", "beforeLoginResetPassword", "showMessageTemplate", "underscore", "angular_cookies"
+    "beforeLoginValidateEmail", "beforeLoginForgetPassword", "beforeLoginResetPassword", "showMessageTemplate", "underscore", "angular_cookies", "termsPrivacyController"
 ], function() {
     angular.bootstrap(document.getElementById("main"), ["beforeLoginApp"]);
 });

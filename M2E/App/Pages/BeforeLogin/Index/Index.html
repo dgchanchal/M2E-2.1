@@ -8,7 +8,7 @@
                     </div>
                     <div class="col-md-6" style="">
                         <div class="hero-dock-elm">
-                            <h2 class="headingBase headingXXL ccBlack headerSize">
+                            <h2 class="headingBase headingXXL ccBlack {{headeClassName}}" >
                                 Meet the new Technology Fabric: Crowd Automation
                             </h2>
                             <h2 class="headingBase headingS saHeadingS ccBlack" data-i18n="beforeLoginIndexPageAboutM2EShordDescpription">
@@ -173,7 +173,7 @@
     }
     /*2nd Div of Home Page*/
     .div-requester_Accepter {
-        background-color: #fafafa; 
+        background-color: #f3f3f3; 
         color: #ffffff;
     }
     /*Row padding*/
@@ -196,11 +196,11 @@
     }
     /*Accepter Box and Requester Box*/
     .box-accepter {
-        background: none repeat scroll 0 0 #b51503;
+        background: none repeat scroll 0 0 #bc2c1c;
         border-top: 2px solid #b51503;
     }
     .box-requester {
-    background: none repeat scroll 0 0 #00188f;
+    background: none repeat scroll 0 0 #2b3d94;
     border-top: 2px solid #3b3b3b;
 }
 .ccBlack, .ccBlack .para, div.hero-base .headingBase.ccBlack {
@@ -305,25 +305,12 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li {
 .headerSize {
     font-size: 46px;
 }
-
-@media all and (max-device-width: 720px){
-    .headerSize {
-        font-size: 24px;
-        line-height: 24px
-    }
+.headerSize-Mobile {
+    font-size: 24px;
+    line-height: 24px
 }
-
-@media all and (max-device-width: 640px){
-    .headerSize {
-        font-size: 24px;
-        line-height: 24px
-    }
-}
-
-@media all and (max-device-width: 320px){
-    .headerSize {
-        font-size: 24px;
-        line-height: 24px
-    }
+.headerSize-Ipad {
+    font-size: 32px;
+    line-height: 32px
 }
 </style>

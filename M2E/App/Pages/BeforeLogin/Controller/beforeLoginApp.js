@@ -60,11 +60,19 @@ define([appLocation.preLogin], function (app) {
             contactUs: "Contact Us",
             impLinks: "Important Links",
             FAQ: "FAQs",
-            TnC: "Terms & Privacy",
+            TnC: "Terms, Privacy & Cookies",
             aboutus: "About Us",
             home: "Home",
-            footerMost: "Crowd Automation, All rights reserved"
-        };
+            footerMost: "Crowd Automation, All rights reserved"       
+    };
+        if (mobileDevice || isAndroidDevice) {
+            $rootScope.headeClassName = "headerSize-Mobile";
+        }
+        else if (ipadDevice) {
+            $rootScope.headeClassName = "headerSize-Ipad";
+        }
+        else
+            $rootScope.headeClassName = "headerSize";
 
         $scope.FAQscrollTo = function (id) {
             //$anchorScroll();

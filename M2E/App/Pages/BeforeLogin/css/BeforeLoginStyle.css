@@ -3,39 +3,11 @@
     display: table;
     line-height: 0;
 }
-.row-fluid:before, .row-fluid:after {
-    content: "";
-    display: table;
-    line-height: 0;
-}
 .row-fluid:after {
     clear: both;
 }
-.row-fluid:before, .row-fluid:after {
-    content: "";
-    display: table;
-    line-height: 0;
-}
-.row-fluid:after {
-    clear: both;
-}
-.row-fluid:before, .row-fluid:after {
-    content: "";
-    display: table;
-    line-height: 0;
-}
 .row-fluid {
     width: 100%;
-}
-.row-fluid {
-    width: 100%;
-}
-
-.row-fluid [class*="span"]:first-child {
-    margin-left: 0;
-}
-.row-fluid [class*="span"]:first-child {
-    margin-left: 0;
 }
 .row-fluid .span12 {
     width: 100%;
@@ -49,14 +21,6 @@
     width: 100%;
 }
 .row-fluid .span12 {
-    width: 100%;
-}
-.row-fluid [class*="span"] {
-    box-sizing: border-box;
-    display: block;
-    float: left;
-    margin-left: 2.12766%;
-    min-height: 30px;
     width: 100%;
 }
 .span12 {
@@ -176,9 +140,6 @@ a {
     text-align: center;
     width: 100px;
 }
-label, input, button, select, textarea {
-    font-size: 13px;
-}
 label {
     display: block;
     margin-bottom: 5px;
@@ -188,7 +149,7 @@ label, input, button, select, textarea {
     font-weight: normal;
     line-height: 20px;
 }
-label, select, button, input[type="button"], input[type="reset"], input[type="submit"], input[type="radio"], input[type="checkbox"] {
+select, button, input[type="button"], input[type="reset"], input[type="submit"], input[type="radio"], input[type="checkbox"] {
     cursor: pointer;
 }
 
@@ -203,18 +164,10 @@ label, select, button, input[type="button"], input[type="reset"], input[type="su
 button.btn, input.btn[type="submit"] {
 }
 
-label, input, button, select, textarea {
-    font-size: 13px;
-}
 input, button, select, textarea {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
-label, input, button, select, textarea {
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 20px;
-}
-label, select, button, input[type="button"], input[type="reset"], input[type="submit"], input[type="radio"], input[type="checkbox"] {
+select, button, input[type="button"], input[type="reset"], input[type="submit"], input[type="radio"], input[type="checkbox"] {
     cursor: pointer;
 }
 button, html input[type="button"], input[type="reset"], input[type="submit"] {
@@ -293,11 +246,8 @@ input[type="radio"], input[type="checkbox"] {
     line-height: normal;
     margin: 4px 0 0;
 }
-label, select, button, input[type="button"], input[type="reset"], input[type="submit"], input[type="radio"], input[type="checkbox"] {
+select, button, input[type="button"], input[type="reset"], input[type="submit"], input[type="radio"], input[type="checkbox"] {
     cursor: pointer;
-}
-label, input, button, select, textarea {
-    font-size: 13px;
 }
 input, textarea {
     border-radius: 0 !important;
@@ -314,11 +264,6 @@ input, textarea, .uneditable-input {
 }
 input, button, select, textarea {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-label, input, button, select, textarea {
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 20px;
 }
 button, input {
     line-height: normal;
@@ -568,55 +513,12 @@ li {
 form {
     margin: 0 0 20px;
 }
-
-.row-fluid:before, .row-fluid:after {
-    content: "";
-    display: table;
-    line-height: 0;
-}
-.row-fluid:before, .row-fluid:after {
-    content: "";
-    display: table;
-    line-height: 0;
-}
-.row-fluid:after {
-    clear: both;
-}
-.row-fluid:before, .row-fluid:after {
-    content: "";
-    display: table;
-    line-height: 0;
-}
-.row-fluid:after {
-    clear: both;
-}
-.row-fluid:before, .row-fluid:after {
-    content: "";
-    display: table;
-    line-height: 0;
-}
 .row-fluid {
     width: 100%;
-}
-
-.row-fluid [class*="span"]:first-child {
-    margin-left: 0;
-}
-.row-fluid [class*="span"]:first-child {
-    margin-left: 0;
 }
 .row-fluid .span2 {
     width: 14.5299%;
 }
-.row-fluid [class*="span"] {
-    box-sizing: border-box;
-    display: block;
-    float: left;
-    margin-left: 2.5641%;
-    min-height: 30px;
-    width: 100%;
-}
-
 .fileupload {
     margin-bottom: 0;
 }
@@ -682,15 +584,6 @@ element.style {
 .row-fluid .span10 {
     width: 82.906%;
 }
-.row-fluid [class*="span"] {
-    box-sizing: border-box;
-    display: block;
-    float: left;
-    margin-left: 2.5641%;
-    min-height: 30px;
-    width: 100%;
-}
-
 .box.box-color .box-title h3 {
     color: #fff;
 }
