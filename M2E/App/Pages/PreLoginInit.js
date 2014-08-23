@@ -5,7 +5,7 @@
  */
 define(['angular'], function() {
 
-    var dependances = ['restangular'];
+    var dependances = ['restangular', 'ngRoute', 'ngAnimate'];
     var app = angular.module("beforeLoginApp", dependances);
     return app;
 });
