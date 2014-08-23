@@ -44,6 +44,9 @@ appRequire = require
             angular_animate: {
                 deps: ["angular", "jquery", "angular_route"]
             },
+            sanitize: {
+                deps: ["angular", "jquery"]
+            },
             jquery_toastmessage: {
                 deps: ["jquery"]
             },
@@ -132,6 +135,7 @@ appRequire = require
             configureBlockUI: "../../App/js/configureBlockUI",
             angular_route: "../../App/js/angular-route",
             angular_animate: "../../App/js/angular-animate",
+            sanitize: "../../App/js/angular/ngSanitize/sanitize",
 
             //==============================================================================================================
             // Application Related JS
@@ -157,7 +161,8 @@ appRequire = require
 appRequire(["jquery", "angular", "jquery_toastmessage", "toastMessage", "jquery_cookie",
     "jquery_blockUI", "restangular","angular_route", "angular_animate", "bootstrap", "bootstrap_switch", //"beforeLoginAdminLTEApp", "moment","iCheck",
     "beforeLoginApp", "beforeLoginIndex", "beforeLoginFAQ", "beforeLoginLogin", "beforeLoginCookieService", "beforeLoginSignUpClient", "beforeLoginSignUpUser",
-    "beforeLoginValidateEmail", "beforeLoginForgetPassword", "beforeLoginResetPassword", "showMessageTemplate", "underscore", "angular_cookies", "termsPrivacyController"    
+    "beforeLoginValidateEmail", "beforeLoginForgetPassword", "beforeLoginResetPassword", "showMessageTemplate", "underscore", "angular_cookies", "termsPrivacyController",
+    "sanitize"
 ], function() {
     angular.bootstrap(document.getElementById("main"), ["beforeLoginApp"]);
 });

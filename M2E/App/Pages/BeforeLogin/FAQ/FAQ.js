@@ -1,6 +1,6 @@
 'use strict';
 define([appLocation.preLogin], function (app) {
-    app.controller('beforeLoginFAQ', function ($scope, $location, $http, $rootScope, CookieUtil, $anchorScroll) {
+    app.controller('beforeLoginFAQ', function ($scope, $location, $http, $rootScope, CookieUtil, $anchorScroll, $sce) {
         $scope.scrollTo = function (id) {
             $anchorScroll();
             $('#' + id).click();
@@ -9,7 +9,11 @@ define([appLocation.preLogin], function (app) {
         };
 
         $scope.FAQquestionsList = [
-            { className: "div_heading1", id: "HowToJoinM2E", question: "How can I join M2E?", answer: "It's pretty simple. Go to www.madetoearn.com, now if you are client click on the client login button and if you, like millions of students want to earn click on the worker login section." },
+            {
+                className: "div_heading1", id: "HowToJoinCautom", question: "How can I join Crowd Automation?",
+                answer: $sce.trustAsHtml("It's pretty simple. Go to www.cautom.com, now if you are a new Crowd Automation Requester, please visit <a class='undeline_anchor' href='#/signup/client'>Crowd Automation Requester</a> section, like millions of students want to register please visit <a class='undeline_anchor' href='#/signup/user'>Crowd Automation Accepter</a> section." +
+                    "<p>now if you are already a Crowd Automation Requester or Accepter please visit <a class='undeline_anchor' href='#/login'>login</a> section.</p>")
+            },
             { className: "div_heading2", id: "MultipleAccounts", question: "Can I have multiple accounts?", answer: "The answer is NO! Please don't try to trick the computer as in the later stages your job (once you earn above Rs1000) we will ask you PAN card and other identity related information. If we found any discrepancy we will disable your account and money will forfeited." },
             { className: "div_heading3", id: "CostToJoinM2E", question: "Does it cost to join M2E?", answer: "No, it does not cost anything. We won't ever charge you for our services. So smile!" },
             { className: "div_heading4", id: "ForgotMyPassword", question: "What if I forgot my password?", answer: "It happens every time for all of us! Just click on the forgot password link on the main page and follow the instructions." },
@@ -22,7 +26,8 @@ define([appLocation.preLogin], function (app) {
             { className: "div_heading1", id: "CheckMyBalance", question: "How can I check the amount of money in my account?", answer: "Go to dashboard. Your earning will be shown there with all transactions and withdrawals. opportunity." },
             { className: "div_heading2", id: "DaysToCreditAmountInMyAccount", question: "Once I complete a job, how many days it will take to credit my account?", answer: "Anywhere between 1-7 days. This depends on the client who proposed the job and bank transfer timings. We will be more than happy to credit your account for the work you have done." },
             { className: "div_heading3", id: "DaysToCreditAmountInMyBankAccount", question: "How many days it takes to credit money to my bank account?", answer: "Despite a huge ecommerce growth, our banking system is still slow. So it may take anywhere between 3 to 5 days." },
-            { className: "div_heading4", id: "CustomerServiceNumber", question: "Do you have customer service number?", answer: "Sorry, we don't have a phone number for customer service. Simply because we don't want you to stay in a long queue and listen to some cranky music. Just fill the contact form with your question and send us. We will email you our response. If it's not solved in an email conversation. We will call you at our expense!" }
+            { className: "div_heading4", id: "CustomerServiceNumber", question: "Do you have customer service number?", answer: "Sorry, we don't have a phone number for customer service. Simply because we don't want you to stay in a long queue and listen to some cranky music. Just fill the contact form with your question and send us. We will email you our response. If it's not solved in an email conversation. We will call you at our expense!" },
+            { className: "div_heading5", id: "HowToContactUs", question: "How to conatct us?", answer: "Sorry, we don't have a phone number for customer service. Simply because we don't want you to stay in a long queue and listen to some cranky music. Just fill the contact form with your question and send us. We will email you our response. If it's not solved in an email conversation. We will call you at our expense!" }
         ];
     });
 });

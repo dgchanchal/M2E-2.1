@@ -1283,8 +1283,10 @@ div.main-content {
 }
 
     /*end of Tnc Css*/
-
-
+.undeline_anchor {
+    text-decoration: underline;
+    color: #3c8dbc !important;
+}
 /* ANIMATIONS
 ============================================================================= */
 
