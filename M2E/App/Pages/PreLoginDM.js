@@ -59,9 +59,9 @@ appRequire = require
             jquery_slimscroll: {
                 deps: ["jquery"]
             },
-            TweenMax_min: {
-                deps: ["jquery"]
-            },
+            //TweenMax_min: {
+            //    deps: ["jquery"]
+            //},
             //beforeLoginAdminLTETree: {
             //    deps: ["jquery"]
             //},
@@ -72,7 +72,7 @@ appRequire = require
             //    deps: ["jquery", "jquery_slimscroll", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTETree", "iCheck"]
             //},            
             beforeLoginApp: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "TweenMax_min"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
             },
             showMessageTemplate: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
@@ -148,7 +148,7 @@ appRequire = require
             beforeLoginResetPassword: "../../App/Pages/BeforeLogin/ResetPassword/resetpasswordTemplate",
             showMessageTemplate: "../../App/Pages/BeforeLogin/ShowMessage/showMessageTemplate",
             termsPrivacyController: "../../App/Pages/BeforeLogin/TnC/TnC",
-            TweenMax_min: "http://cdnjs.cloudflare.com/ajax/libs/gsap/1.9.7/TweenMax.min",
+            //TweenMax_min: "http://cdnjs.cloudflare.com/ajax/libs/gsap/1.9.7/TweenMax.min",
             
         },
         urlArgs: ""
@@ -157,8 +157,7 @@ appRequire = require
 appRequire(["jquery", "angular", "jquery_toastmessage", "toastMessage", "jquery_cookie",
     "jquery_blockUI", "restangular","angular_route", "angular_animate", "bootstrap", "bootstrap_switch", //"beforeLoginAdminLTEApp", "moment","iCheck",
     "beforeLoginApp", "beforeLoginIndex", "beforeLoginFAQ", "beforeLoginLogin", "beforeLoginCookieService", "beforeLoginSignUpClient", "beforeLoginSignUpUser",
-    "beforeLoginValidateEmail", "beforeLoginForgetPassword", "beforeLoginResetPassword", "showMessageTemplate", "underscore", "angular_cookies", "termsPrivacyController",
-    "TweenMax_min"
+    "beforeLoginValidateEmail", "beforeLoginForgetPassword", "beforeLoginResetPassword", "showMessageTemplate", "underscore", "angular_cookies", "termsPrivacyController"    
 ], function() {
     angular.bootstrap(document.getElementById("main"), ["beforeLoginApp"]);
 });

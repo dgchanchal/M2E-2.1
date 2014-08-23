@@ -1052,6 +1052,237 @@ a:hover {
     }
 
 
+    /*TnC CSS*/
+    .padding-class {
+    padding: 10px 32px;
+    background-color: #fff;
+} 
+.TopNavigation {
+    float: left;
+    font-size: 0.8em;
+    cursor: pointer;
+} 
+div.main-content {
+    margin-bottom: 20px;
+    min-height: 555px;
+}
+/*Row 2 Column 9*/
+.div_content {
+    float: left;
+    padding-bottom: 2em;
+    width: 42.5em;
+}
+.page {
+    background-color: #fff;
+    border: 0 solid #496077;
+    margin: 0.3em auto 0;
+    width: 100%;
+}
+.div_c {
+    clear: both;
+    padding-top: 0.8em;
+}
+.div_heading_gen {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-style: solid;
+    border-width: 0.01em 0.01em 0.01em 2em;
+    float: left;
+    font-size: 1.6em;
+    padding: 0.25em;
+    width: 100%;
+}
+.div_heading1 {
+    border-color: #01542a;
+    color: #01542a;
+}
+.div_heading2 {
+    border-color: #0067a9;
+    color: #0067a9;
+}
+.div_heading3 {
+    border-color: #b63b00;
+    color: #b63b00;
+}
+.div_heading4 {
+    border-color: #004785;
+    color: #004785;
+}
+.div_heading5 {
+    border-color: #387500;
+    color: #387500;
+}
+.div_heading6 {
+    border-color: #be0080;
+    color: #be0080;
+}
+.div_heading7 {
+    border-color: #b63b00;
+    color: #b63b00;
+}
+.div_heading8 {
+    border-color: #662e91;
+    color: #662e91;
+}
+.div_heading9 {
+    border-color: #0067a9;
+    color: #0067a9;
+}
+.div_heading10 {
+    border-color: #ba131a;
+    color: #ba131a;
+}
+.Description {
+    color: #524d52;
+    font-family: Segoe UI,sans-serif;
+    font-size: 0.78em;
+    font-weight: normal;
+    line-height: 1.5em;
+    margin-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-top: 0;
+    width: 100%;
+    text-align: justify;
+}
+#wrapperModuleFooter {
+    padding-top: 0.9em;
+}
+#lnkGoTop {
+    text-decoration: underline;
+}
+.clear {
+    clear: both;
+}
+
+
+.div_grey {
+    background-color: #ececec;
+    float: left;
+    width: 74%;
+}
+
+.div_rightAliagn {
+    float: right;
+}
+
+.div_print {
+    float: left;
+    padding-top: 0.15em;
+}
+
+.pageIntro {
+    background-color: #fff;
+    border: 0 solid #496077;
+    margin: 0.7em auto 0;
+    width: 100%;
+}
+
+.PsTitle {
+    color: #b63b00 !important;
+    display: inline-block;
+    font-family: Segoe UI,sans-serif;
+    font-size: 2em;
+    margin-left: -0.02em;
+    margin-right: 0.3em !important;
+    vertical-align: top;
+}
+/*row 2 Column3*/
+.right-div-column {
+    height: 0.25em;
+       }
+#short_div {
+    padding-top: 1em;
+}
+#menu_cookie_div {
+    float: none;
+}
+.div_side_comp {
+    width: 18em;
+}
+.right-div-column-gen {
+    background-position: left center;
+    background-repeat: repeat-y;
+    cursor: pointer;
+    font-size: 0.9em;
+    height: auto;
+    min-height: 2.9em;
+    position: relative;
+}
+.Right_Nav_Title {
+    color: white;
+    cursor: pointer;
+    margin-left: 2.9em;
+    padding-bottom: 0.3em;
+    padding-right: 0.3em;
+    padding-top: 0.3em;
+    position: absolute;
+    width: auto;
+    padding-top: 11px;
+}
+.tr_Right_Nav_Header1 {
+    background-color: #01542a;
+}
+.tr_Right_Nav_Header1:hover {
+    background-color: #003b11;
+}
+.tr_Right_Nav_Header2 {
+    background-color: #0067a9;
+}
+.tr_Right_Nav_Header2:hover {
+    background-color: #004486;
+}
+.tr_Right_Nav_Header3 {
+    background-color: #b63b00;
+}
+.tr_Right_Nav_Header3:hover {
+    background-color: #9f2400;
+}
+.tr_Right_Nav_Header4 {
+    background-color: #004785;
+}
+.tr_Right_Nav_Header4:hover {
+    background-color: #00215f;
+}
+.tr_Right_Nav_Header5 {
+    background-color: #387500;
+}
+.tr_Right_Nav_Header5:hover {
+    background-color: #175400;
+}
+.tr_Right_Nav_Header6 {
+    background-color: #be0080;
+}
+.tr_Right_Nav_Header6:hover {
+    background-color: #920054;
+}
+.tr_Right_Nav_Header7 {
+    background-color: #b63b00;
+}
+.tr_Right_Nav_Header7:hover {
+    background-color: #901500;
+}
+.tr_Right_Nav_Header8 {
+    background-color: #662e91;
+}
+.tr_Right_Nav_Header8:hover {
+    background-color: #40086b;
+}
+.tr_Right_Nav_Header9 {
+    background-color: #0067a9;
+}
+.tr_Right_Nav_Header9:hover {
+    background-color: #004183;
+}
+.tr_Right_Nav_Header10 {
+    background-color: #ba131a;
+}
+.tr_Right_Nav_Header10:hover {
+    background-color: #940000;
+}
+
+    /*end of Tnc Css*/
 
 
 /* ANIMATIONS

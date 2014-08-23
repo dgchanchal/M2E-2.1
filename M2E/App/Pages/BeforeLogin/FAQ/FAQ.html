@@ -1,15 +1,13 @@
-﻿<link href="../../App/Pages/BeforeLogin/FAQ/FAQ.css" rel="stylesheet" type="text/css" />
-<aside class="right-side strech" ng-controller="beforeLoginFAQ">               
-    <!-- Main content -->
-
-    <div class="container">            
-        <h2 class="page-header">FAQ</h2>
-        <div class="row">                       
-            <div class="col-md-12">
-                <div class="box box-solid">
-                    <div class="box-body">
-                                                                
-                        <ul><li><h3>General</h3>
+﻿<div class="container padding-class" ng-controller="beforeLoginFAQ">
+    <div class="row">                      
+        <div class="col-md-12">        
+            <div class="pageIntro">
+                <div class="PsTitle">
+                    <span>       FAQs    </span>
+                </div>
+                <div class="div_c"></div>
+            </div>
+            <ul><li><h3>General</h3>
                             </li>
                             <li> <a style="cursor: pointer;" ng-click="scrollTo('HowToJoinM2E')">How can I join M2E?</a></li>
                             <li> <a style="cursor: pointer;" ng-click="scrollTo('MultipleAccounts')">Can I have multiple accounts?</a></li>
@@ -28,40 +26,46 @@
                             <li> <a style="cursor: pointer;" ng-click="scrollTo('DaysToCreditAmountInMyAccount')">Once I complete a job, how many days it will take to credit my account?</a></li>
                             <li> <a style="cursor: pointer;" ng-click="scrollTo('DaysToCreditAmountInMyBankAccount')">How many days it takes to credit money to my bank account?</a></li>
                             <li> <a style="cursor: pointer;" ng-click="scrollTo('CustomerServiceNumber')">Do you have customer service number?</a></li>  
-                        </ul>	
+                        </ul>
 
-                    </div>                                                                               
-                </div><!-- /.box -->
-            </div><!-- ./col -->
-            <div class ="col-md-12">
-                <div class="box">
-								<div class="box-title">
-									<h3>
-										<i class="icon-reorder"></i>
-										FAQ
-									</h3>
-								</div>
-								<div class="box-content">
-									<div id="accordion2" class="accordion">
-										<div class="accordion-group" ng-repeat="faq in FAQquestionsList">
-											<div class="accordion-heading">
-												<a href="#{{faq.id}}Collapse" id="{{faq.id}}" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle faqQuestionDivBackgroundColor">
-													<span ng-bind="faq.question"></span>
-												</a>
-											</div>
-											<div class="accordion-body collapse" id="{{faq.id}}Collapse">
-												<div class="accordion-inner">
-													<span ng-bind="faq.answer"></span>
-												</div>
-											</div>
-										</div>
-										
-									</div>
-								</div>
-							</div>
+
+        </div>
+    </div><!-- /.row --> 
+    <div class="row">
+        
+        
+        
+        
+        <div class ="col-md-12">
+            <div id="accordion2" class="Description aside_css">
+                <div class="" ng-repeat="faq in FAQquestionsList">
+                    <div class="{{faq.className}} div_heading_gen">
+                        <a id="{{faq.id}}" >
+                            <span ng-bind="faq.question"></span>
+                        </a>
+                    </div>
+                    <div class="div_c"></div>	
+                    <div class="in">
+                        <div class="accordion-inner">
+                            <span class=" aside_css" ng-bind="faq.answer"></span>
+                        </div>
+                    </div>
+                </div>                		           					
             </div>
-        </div><!-- /.row -->
-    </div>                     
-                    
-    <!-- END TYPOGRAPHY -->
-</aside>
+        </div>
+    </div><!-- /.row -->  
+
+</div>
+<style>
+    .aside_css {
+        font: 0.813em/1.538em 'wf_SegoeUI','Segoe UI',Tahoma,Verdana,Arial,Helvetica,sans-serif;
+        font-size: 1em;
+        color: #000000;
+    }
+    .aside_css
+    a {
+        font: 0.813em/1.538em 'wf_SegoeUI','Segoe UI',Tahoma,Verdana,Arial,Helvetica,sans-serif;
+        color: #000000;
+    }
+
+</style>

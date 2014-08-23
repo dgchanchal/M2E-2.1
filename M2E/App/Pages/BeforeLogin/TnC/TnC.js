@@ -8,14 +8,14 @@ define([appLocation.preLogin], function (app) {
             {
                 headerClass: "div_heading1",
                 RightBoxClass: "tr_Right_Nav_Header1",
-                headerLabel: "Cookies & Similar Technologies",
+                headerLabel: "Cookies",
                 showDiv: true,
                 ContentList: [
                     {
                         paragraphList: [
                             {
                                 isUnderline: false,
-                                text: "Our websites use 'cookies,' which are small pieces of data that are stored on your computer, mobile phone or other device. For instance, we use cookies to store your preferences and settings; help with sign-in; provide targeted ads; combat fraud; and analyze site operations."
+                                text: "Our websites use cookies', which are small pieces of data that are stored on your computer, mobile phone or other device. For instance, we use cookies to store your preferences and settings; help with sign-in; provide targeted ads; combat fraud; and analyze site operations."
                             },
                             {
                                 isUnderline: false,
@@ -153,10 +153,10 @@ define([appLocation.preLogin], function (app) {
                                 text: "All your data is stored in highly secured encrypted servers."
                             },
                             {
-                                text: "In-case of a security breach beyond our reach, we won’t be responsible for the resulting data misuse. However we will ensure that such activities never occur."
+                                text: "In-case of a security breach beyond our reach, we won't be responsible for the resulting data misuse. However we will ensure that such activities never occur."
                             },
                             {
-                                text: "All our servers are maintained by third parties, which are highly secure. But any major misuse from their part won’t be our liability."
+                                text: "All our servers are maintained by third parties, which are highly secure. But any major misuse from their part won't be our liability."
                             }
                         ]
                     },
@@ -172,7 +172,7 @@ define([appLocation.preLogin], function (app) {
                                 text: "All third party services we use have a similar or even strong privacy policy. Your data will be handled with at-most caution."
                             },
                             {
-                                text: "Any damages- direct or indirect caused by the third parties won’t be our liability in any case."
+                                text: "Any damages- direct or indirect caused by the third parties won't be our liability in any case."
                             }
                         ]
                     }
