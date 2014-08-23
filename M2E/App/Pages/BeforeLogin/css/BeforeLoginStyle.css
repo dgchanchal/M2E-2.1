@@ -1169,14 +1169,12 @@ a:hover {
 
 /* page specific animations ------------------------ */
 
-/* scaleup -------------------------- */
+/* scaleup ng-view -------------------------- */
 .page-scaleuppage.ng-leave         {
     
 }
 .page-scaleuppage.ng-enter 		{  
-     -webkit-animation:scaleUp 0.2s both ease-in;
-	-moz-animation:scaleUp 0.2s both ease-in;
-	animation:scaleUp 0.2s both ease-in;   
+       
 }
 
 /* home -------------------------- */

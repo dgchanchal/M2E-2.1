@@ -69,7 +69,7 @@ appRequire = require
             //    deps: ["jquery", "jquery_slimscroll", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTETree", "iCheck"]
             //},            
             beforeLoginApp: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "angular_animate", "angular_route"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
             },
             showMessageTemplate: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
@@ -108,7 +108,7 @@ appRequire = require
             //==============================================================================================================            
             underscore: "../../App/js/underscore-min",
             jquery: "../../App/js/jquery.min",
-            angular: "http://code.angularjs.org/1.2.13/angular",
+            angular: "../../App/js/angular.1.2.13",
             //m2ei18n: "../../App/js/m2ei18n",
             jquery_toastmessage: "../../App/third-Party/toastmessage/js/jquery.toastmessage",
             toastMessage: "../../App/js/toastMessage",
@@ -124,8 +124,8 @@ appRequire = require
             //iCheck: "../../Template/AdminLTE-master/js/plugins/iCheck/icheck.min",
             angular_cookies: "../../App/js/angular-cookies",
             configureBlockUI: "../../App/js/configureBlockUI",
-            angular_route: "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route",
-            angular_animate: "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate",
+            angular_route: "../../App/js/angular-route",
+            angular_animate: "../../App/js/angular-animate",
 
             //==============================================================================================================
             // Application Related JS
