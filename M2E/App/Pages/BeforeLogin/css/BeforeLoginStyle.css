@@ -1062,6 +1062,22 @@ a:hover {
 
 /* page specific animations ------------------------ */
 
+
+.hide-fade.ng-hide-add, .hide-fade.ng-hide-remove {
+  -webkit-animation:slideInRight 0.5s both ease-in;
+	-moz-animation:slideInRight 0.5s both ease-in;
+	animation:slideInRight 0.5s both ease-in;   
+  display:block!important;
+}
+.hide-fade.ng-hide-add.ng-hide-add-active,
+.hide-fade.ng-hide-remove {
+  opacity:0;
+}
+.hide-fade.ng-hide-add,
+.hide-fade.ng-hide-remove.ng-hide-remove-active {
+  opacity:1;
+}
+
 /* scaleup ng-view -------------------------- */
 .page-scaleuppage.ng-leave         {
     
@@ -1111,6 +1127,7 @@ a:hover {
 	-moz-animation:slideInUp 0.5s both ease-in;
 	animation:slideInUp 0.5s both ease-in;  
 }
+
 
 /*
  * the animation below will move enter in the view from the right side of the screen
