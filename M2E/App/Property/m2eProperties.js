@@ -16,7 +16,26 @@ var TemplateInfoModel = {
         moderationSubTypeModeratingPhotos : "moderatingPhotos",
         dataEntryType :"dataEntry",
         dataEntrySubTypeTranscription:"Transcription"
-    };
+};
+
+var clientConstants = {
+    name: "Crowd Automation Requester",
+    name_abb: "Requeater"
+};
+var companyConstants = {
+    name: "cautom",
+    fullName: "Crowd Automation"
+};
+var userConstants = {
+    name: "Crowd Automation Accepter",
+    name_abb: "Accepter",
+    task: "Crowd Individual Task",
+    task_abb: "CIT",
+    batch: "batch",
+    Batch: "Batch",
+    Reputation: "Reputation",
+    reputation: "reputation",
+};
 var ServerContextPah = "";
 
 var appLocation = {

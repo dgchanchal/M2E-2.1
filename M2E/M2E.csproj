@@ -333,6 +333,8 @@
     <Content Include="App\js\angular-cookies.min.js" />
     <Content Include="App\js\angular.js" />
     <Content Include="App\js\angular.min.js" />
+    <Content Include="App\js\angular\ngSanitize\filter\linky.js" />
+    <Content Include="App\js\angular\ngSanitize\sanitize.js" />
     <Content Include="App\js\configureBlockUI.js" />
     <Content Include="App\js\dragend.js" />
     <Content Include="App\js\jquery.panzoom.js" />
@@ -1421,6 +1423,7 @@
       <DependentUpon>M2EContext.edmx</DependentUpon>
       <LastGenOutput>M2EContext.cs</LastGenOutput>
     </Content>
+    <Content Include="App\js\angular\ngSanitize\.jshintrc" />
     <None Include="App\third-Party\angular-file-upload-master\demo\.classpath" />
     <None Include="App\third-Party\angular-file-upload-master\demo\.project" />
     <None Include="App\third-Party\angular-file-upload-master\demo\src\log4j.properties" />

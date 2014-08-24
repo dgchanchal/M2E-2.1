@@ -1088,7 +1088,7 @@ div.main-content {
     -moz-border-right-colors: none;
     -moz-border-top-colors: none;
     border-style: solid;
-    border-width: 0.01em 0.01em 0.01em 2em;
+    border-width: 1px 1px 1px 30px;
     float: left;
     font-size: 1.6em;
     padding: 0.25em;

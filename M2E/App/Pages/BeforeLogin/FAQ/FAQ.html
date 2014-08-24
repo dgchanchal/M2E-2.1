@@ -38,18 +38,18 @@
         
         <div class ="col-md-12">
             <div id="accordion2" class="Description aside_css">
-                <div class="" ng-repeat="faq in FAQquestionsList">
+                <div class="" ng-repeat="faq in FAQGeneralList">
                     <div class="{{faq.className}} div_heading_gen">
                         <a id="{{faq.id}}" >
                             <span ng-bind="faq.question"></span>
                         </a>
-                    </div>
-                    <div class="div_c"></div>	
-                    <div class="in">
+                    </div>	
+                    <div class="in box-content {{faq.className}}">
                         <div class="accordion-inner">
-                            <span class=" aside_css" data-ng-bind-html="faq.answer"></span>
+                            <span class=" aside_css1" data-ng-bind-html="faq.answer"></span>
                         </div>
                     </div>
+                    <div class="div_c"></div><div class="div_c"></div><div class="div_c"></div>
                 </div>                		           					
             </div>
         </div>
@@ -57,15 +57,51 @@
 
 </div>
 <style>
-    .aside_css {
-        font: 0.813em/1.538em 'wf_SegoeUI','Segoe UI',Tahoma,Verdana,Arial,Helvetica,sans-serif;
-        font-size: 1em;
-        color: #000000;
-    }
+    
+    .box-content:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+.box-content:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+
+.box-content {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-image: none;
+    border-style: none solid solid;
+    border-width: 0 2px 2px;
+}
+.box-content {
+    background: none repeat scroll 0 0 #fff;
+    padding: 0px;
+}
+
+
+     .aside_css {
+         font: 0.813em/1.538em 'wf_SegoeUI','Segoe UI',Tahoma,Verdana,Arial,Helvetica,sans-serif;
+         font-size: 1em;
+     }
+          .aside_css1 {
+         font: 0.813em/1.538em 'wf_SegoeUI','Segoe UI',Tahoma,Verdana,Arial,Helvetica,sans-serif;
+         font-size: 1em;
+         color: #000000;
+         position: relative;
+         top: 5px;
+     }
     .aside_css
     a {
         font: 0.813em/1.538em 'wf_SegoeUI','Segoe UI',Tahoma,Verdana,Arial,Helvetica,sans-serif;
         color: #000000;
     }
-
 </style>
