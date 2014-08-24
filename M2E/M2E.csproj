@@ -267,9 +267,7 @@
     <Compile Include="Models\UserJobMapping.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserMultipleJobMapping.cs">
-      <DependentUpon>M2EContext.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\UserMultipleJobMapping.cs" />
     <Compile Include="Models\UserPageSetting.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
@@ -310,6 +308,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="App\css\magic.css" />
     <Content Include="App\img\cautom.jpg" />
     <Content Include="App\img\loading\load1.gif" />
     <Content Include="App\img\loading\loading.gif" />
@@ -336,7 +335,10 @@
     <Content Include="App\js\angular\ngSanitize\filter\linky.js" />
     <Content Include="App\js\angular\ngSanitize\sanitize.js" />
     <Content Include="App\js\configureBlockUI.js" />
+    <Content Include="App\js\angular-route.js" />
+    <Content Include="App\js\angular-animate.js" />
     <Content Include="App\js\dragend.js" />
+    <Content Include="App\js\angular.1.2.13.js" />
     <Content Include="App\js\jquery.panzoom.js" />
     <Content Include="App\js\jquery.panzoom.min.js" />
     <Content Include="App\js\singleRController.js" />
@@ -367,12 +369,9 @@
     <Content Include="App\Pages\BeforeLogin\LiveSupport\LiveSupport.js" />
     <Content Include="App\Pages\BeforeLogin\css\BeforeLoginStyle.css" />
     <Content Include="App\Pages\BeforeLogin\TnC\TnC.html" />
-    <Content Include="App\Pages\BeforeLogin\TnC\TnC.js" />
     <Content Include="App\Pages\BeforeLogin\UserMoreInfo\UserMoreInfo.html" />
     <Content Include="App\Pages\ClientAfterLogin\Controller\common\AngularFileUploadController.js" />
     <Content Include="App\Pages\ClientAfterLogin\Controller\singleRControllerAfterLogin.js" />
-    <Content Include="App\Pages\ClientAfterLogin\DataEntry\TranscriptionResponseDetail\TranscriptionResponseDetail.html" />
-    <Content Include="App\Pages\ClientAfterLogin\DataEntry\TranscriptionResponseDetail\TranscriptionResponseDetail.js" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateResponseDetail\TemplateResponseDetail.html" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateResponseDetail\TemplateResponseDetail.js" />
     <Content Include="App\Pages\ClientAfterLogin\DataEntry\TranscriptionTemplate\TranscriptionTemplate.html" />
@@ -1394,7 +1393,6 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\css\" />
     <Folder Include="App\Pages\ClientAfterLogin\Ads\" />
     <Folder Include="App\Pages\ClientAfterLogin\ContentWriting\" />
     <Folder Include="App\third-Party\html5-file-upload\uploads\" />
@@ -1552,7 +1550,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>9076</DevelopmentServerPort>
+          <DevelopmentServerPort>8111</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
