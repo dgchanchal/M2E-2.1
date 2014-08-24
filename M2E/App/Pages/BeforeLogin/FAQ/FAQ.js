@@ -28,7 +28,9 @@ define([appLocation.preLogin], function (app) {
             {
                 className: "div_heading3",
                 id: "Requester", question: "Who is a " + clientConstants.name + "?",
-                answer: $sce.trustAsHtml("A " + clientConstants.name + " is anyone (or company or organization) who uploads a task as to harness the crowd potential.")
+                answer: $sce.trustAsHtml("A " + clientConstants.name + " is anyone (or company or organization) who uploads a task as to harness the crowd potential. <p class='div_c'>As a " + clientConstants.name + ", " +
+                    "you use our Interface to submit your questions, retrieve answers, and perform other automated tasks. You can send a mail on "+ companyConstants.supportEmail +" to automate your bulk requirement. We will integrate your requirement with our API." +
+                    "<p>To "+ userConstants.name +", you are known as the creator of your " + userConstants.task_abb + "s, and as the creator and maintainer of your " + userConstants.Batch + " types.</p>")
             },
             {
                 className: "div_heading4",

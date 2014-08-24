@@ -24,7 +24,8 @@ var clientConstants = {
 };
 var companyConstants = {
     name: "cautom",
-    fullName: "Crowd Automation"
+    fullName: "Crowd Automation",
+    supportEmail: "support@cautom.com"
 };
 var userConstants = {
     name: "Crowd Automation Accepter",
