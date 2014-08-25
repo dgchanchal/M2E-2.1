@@ -245,7 +245,7 @@ define([appLocation.postLogin], function (app) {
 
         $scope.ClientCreateModeratingPhotosFunction = function () {
             $scope.jobTemplate[0].title = $('#createTemplateTitleTextModeratingPhotos').val();
-            var clientCreateModeratingPhotosData = { Data: $scope.jobTemplate, ImgurList: userSession.imgurImageTemplateModeratingPhotos, TemplateInfo: { type: TemplateInfoModel.moderationType, subType: TemplateInfoModel.moderationSubTypeModeratingPhotos} };
+            var clientCreateModeratingPhotosData = { Data: $scope.jobTemplate, ImgurList: userSession.imgurImageTemplateModeratingPhotos, TemplateInfo: { type: TemplateInfoModel.moderationType, subType: TemplateInfoModel.moderationSubTypeModeratingPhotos, description: $('#createTemplateDescriptionTextModeratingPhotos').val(), totalThreads: $("#totalNumberOfThreads").val(), amountEachThread: $("#amountPerThreadTextBoxInput").val()} };
             //var currentTemplateId = new Date().getTime();
 
             var url = ServerContextPah + '/Client/CreateTemplate';
@@ -255,7 +255,13 @@ define([appLocation.postLogin], function (app) {
                 'UTMZK': CookieUtil.getUTMZK(),
                 'UTMZV': CookieUtil.getUTMZV()
             };
-            if (($('#createTemplateTitleTextModeratingPhotos').val() != "") && ($('#createTemplateTitleTextModeratingPhotos').val() != null)) {
+
+            var isValidAmountPerThreadTextBoxInput = ($('#amountPerThreadTextBoxInput').val() != "") && $('#amountPerThreadTextBoxInput').val() >= 0.03;
+            var isValidTotalNumberOfThreads = ($('#totalNumberOfThreads').val() != "") && $('#totalNumberOfThreads').val() >= 1;
+            if (!isValidAmountPerThreadTextBoxInput || !isValidTotalNumberOfThreads) {
+                showToastMessage("Error", "Some Fields are invalid !!! Min Amount Payable to each workforce is $0.03 <br/> Min Thread Allowed is 1");
+            }
+            else if (($('#createTemplateTitleTextModeratingPhotos').val() != "") && ($('#createTemplateTitleTextModeratingPhotos').val() != null)) {
                 startBlockUI('wait..', 3);
                 $http({
                     url: url,

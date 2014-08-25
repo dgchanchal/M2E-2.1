@@ -28,6 +28,15 @@ appRequire = require
             },//         
             jquery_cookie: {//used
                 deps: ["jquery"]
+            },
+            angular_route: {//new
+                deps: ["angular", "jquery"]
+            },
+            angular_animate: {
+                deps: ["angular", "jquery"]
+            },
+            sanitize: {
+                deps: ["angular", "jquery"]
             },            
             //m2ei18n: {
             //    deps: ["jquery"]
@@ -136,6 +145,9 @@ appRequire = require
 //            },
             UserAfterLoginAngularTranscriptionTemplate: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox","PanZoomService","panzoomwidget"]
+            },
+            UserAfterLoginImageModeration: {
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox","PanZoomService","panzoomwidget"]
             }
                         
         },
@@ -145,7 +157,7 @@ appRequire = require
             //==============================================================================================================            
             underscore: "../../App/js/underscore-min",
             jquery: "../../App/js/jquery.min",//used..
-            angular: "../../App/js/angular.min",//used..
+            angular: "../../App/js/angular.1.2.13",//used..
             //m2ei18n: "../../App/js/m2ei18n",
             jquery_toastmessage: "../../App/third-Party/toastmessage/js/jquery.toastmessage",//used
             toastMessage: "../../App/js/toastMessage",//used
@@ -174,6 +186,9 @@ appRequire = require
             panzoom: "../../App/Pages/UserAfterLogin/Controller/panzoom/directives/panzoom",//used..
             PanZoomService: "../../App/Pages/UserAfterLogin/Controller/panzoom/services/PanZoomService",//used..
             panzoomwidget: "../../App/Pages/UserAfterLogin/Controller/panzoom/directives/panzoomwidget",//used..
+            angular_route: "../../App/js/angular-route",
+            angular_animate: "../../App/js/angular-animate",
+            sanitize: "../../App/js/angular/ngSanitize/sanitize",
             //==============================================================================================================
             // Application Related JS
             //==============================================================================================================
@@ -190,6 +205,7 @@ appRequire = require
             userAfterLoginActiveThreads: "../../App/Pages/UserAfterLogin/UserActiveThreads/UserActiveThreads",//used
             //userAfterLoginTranscriptionTemplate: "../../App/Pages/UserAfterLogin/DataEntry/TranscriptionTemplate/TranscriptionTemplate",//used
             UserAfterLoginAngularTranscriptionTemplate: "../../App/Pages/UserAfterLogin/DataEntry/TranscriptionTemplate/AngularTranscriptionTemplate",//used
+            UserAfterLoginImageModeration: "../../App/Pages/UserAfterLogin/Moderation/Moderation",//used
             
         },
         urlArgs: ""
@@ -201,7 +217,7 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "userAfterLoginIndex", "userAfterLoginShowTemplate", "userAfterLoginCookieService", "userAfterLoginEditPage", "fancybox", "filedrop","wysihtml5",
     "fileDropScript", "domReady", "userAfterLoginTemplateSample", "idangerous_swiper_2_1_min","userAfterLoginShowTemplateDetail","userAfterLoginSurvey",
     "userAfterLoginActiveThreads","UserAfterLoginAngularTranscriptionTemplate","hamster","mousewheel",
-    "panzoom","PanZoomService","panzoomwidget"
+    "panzoom","PanZoomService","panzoomwidget","angular_route","sanitize","angular_animate","UserAfterLoginImageModeration"
 ], function() {
     angular.bootstrap(document.getElementById("mainUser"), ["afterLoginUserApp"]);
 });

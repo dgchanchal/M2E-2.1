@@ -388,6 +388,12 @@ namespace M2E.Service.UserService.Survey
             var availableJobLists = _db.CreateTemplateImgurImagesLists.Where(x => x.referenceKey == refKey && x.status == Constants.status_open).ToList();
             if (availableJobLists != null)
             {
+                if (availableJobLists.Count == 0)
+                {
+                    response.Status = 406;
+                    response.Message = "All Threads of this job is already assigned.";
+                    return response;
+                }
                 var transcriptionTask = availableJobLists.First();
                 try
                 {
@@ -515,7 +521,7 @@ namespace M2E.Service.UserService.Survey
 
                     if (job.type == Constants.type_dataEntry && job.subType == Constants.subType_Transcription)
                     {
-                        var AlreadyAppliedJobs = _db.UserMultipleJobMappings.SingleOrDefault(x => x.username == username && x.refKey == job.referenceId && x.status != Constants.status_done);
+                        var AlreadyAppliedJobs = _db.UserMultipleJobMappings.SingleOrDefault(x => x.username == username && x.refKey == job.referenceId);
                         if (AlreadyAppliedJobs != null)
                         {
                             userTemplate.userStatus = AlreadyAppliedJobs.status;

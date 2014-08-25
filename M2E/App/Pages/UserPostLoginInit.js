@@ -5,7 +5,7 @@
  */
 define(['angular','domReady'], function () {
 
-    var dependances = ['restangular', 'panzoom', 'panzoomwidget'];
+    var dependances = ['restangular', 'panzoom', 'panzoomwidget', 'ngRoute', 'ngAnimate', 'ngSanitize'];
     var app = angular.module("afterLoginUserApp", dependances);
     return app;
 });

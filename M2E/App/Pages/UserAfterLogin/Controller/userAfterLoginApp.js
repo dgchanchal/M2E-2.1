@@ -11,6 +11,7 @@ define([appLocation.userPostLogin], function (app) {
                        when("/startTranscription/:refKey", { templateUrl: "../../App/Pages/UserAfterLogin/DataEntry/TranscriptionTemplate/TranscriptionTemplate.html" }).
                        when("/startAngularTranscription/:refKey", { templateUrl: "../../App/Pages/UserAfterLogin/DataEntry/TranscriptionTemplate/AngularTranscriptionTemplate.html" }).
                        when("/mobileModeration", { templateUrl: "../../App/Pages/UserAfterLogin/Moderation/MobileModeration.html" }).
+                       when("/webModeration", { templateUrl: "../../App/Pages/UserAfterLogin/Moderation/WebModeration.html" }).
                        when("/showTemplate", { templateUrl: "../../App/Pages/UserAfterLogin/ShowTemplate/ShowTemplate.html" }).
                        when("/editTemplate/:username/:templateid", { templateUrl: "../../App/Pages/UserAfterLogin/EditTemplate/EditTemplate.html" }).
                        when("/templateSample/:type/:subType", { templateUrl: "../../App/Pages/UserAfterLogin/TemplateSample/TemplateSample.html" }).
