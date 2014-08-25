@@ -41,10 +41,13 @@ define([appLocation.userPostLogin], function (app) {
 
         $scope.userStartSurvey = function (type, subType, refKey) {
             //location.href = "#/startSurvey/" + refKey;
-            if (type == "survey" && subType == "productSurvey")
+            if (type == TemplateInfoModel.type_survey && subType == TemplateInfoModel.subType_productSurvey)
                 location.href = "#/startSurvey/" + refKey;
-            else if (type == "dataEntry" && subType == "Transcription") {
+            else if (type == TemplateInfoModel.type_dataEntry && subType == TemplateInfoModel.subType_Transcription) {
                 location.href = "#/startAngularTranscription/" + refKey;
+            }
+            else if (type == TemplateInfoModel.type_moderation && subType == TemplateInfoModel.subType_imageModeration) {
+                location.href = "#/imageModeration/" + refKey;
             }
         }
 

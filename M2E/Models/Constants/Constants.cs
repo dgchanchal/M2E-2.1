@@ -14,6 +14,8 @@ namespace M2E.Models.Constants
         public const string status_reviewed = "reviewed";
         public const string type_dataEntry = "dataEntry";
         public const string subType_Transcription = "Transcription";
+        public const string type_moderation = "moderation";
+        public const string subType_moderatingPhotos = "moderatingPhotos";
         public const string NA = "NA";
     }
 }

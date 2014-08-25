@@ -52,13 +52,17 @@ define([appLocation.userPostLogin], function (app) {
             }).success(function (data, status, headers, config) {
                 //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
                 stopBlockUI();
+                console.log(type +"  "+ TemplateInfoModel.type_moderation+"   "+  subType +"   "+ TemplateInfoModel.subType_imageModeration);
                 if (data.Status == "200") {
-                    if (type == "survey" && subType == "productSurvey")
+                    if (type == TemplateInfoModel.type_survey && subType == TemplateInfoModel.subType_productSurvey)
                         location.href = "#/startSurvey/" + refKey;
-                    else if (type == "dataEntry" && subType == "Transcription") {
+                    else if (type == TemplateInfoModel.type_dataEntry && subType == TemplateInfoModel.subType_Transcription) {
                         location.href = "#/startAngularTranscription/" + refKey;
                     }
-                    
+                    else if (type == TemplateInfoModel.type_moderation && subType == TemplateInfoModel.subType_imageModeration) {
+                        location.href = "#/imageModeration/" + refKey;
+                    }
+
                 }
                 else if (data.Status == "403") {
                     alert("already applied to this job");

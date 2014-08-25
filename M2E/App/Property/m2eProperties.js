@@ -12,6 +12,16 @@ var userSession = {
 var TemplateInfoModel = {
         surveyType : "survey",
         surveySubTypeProductSurvey : "productSurvey",
+        
+        type_survey : "survey",
+        subType_productSurvey : "productSurvey",
+        
+        type_dataEntry : "dataEntry",
+        subType_Transcription : "Transcription",
+        
+        type_moderation : "moderation",        
+        subType_imageModeration : "moderatingPhotos",
+        
         moderationType : "moderation",
         moderationSubTypeModeratingPhotos : "moderatingPhotos",
         dataEntryType :"dataEntry",

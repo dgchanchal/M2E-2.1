@@ -101,8 +101,10 @@ define([appLocation.postLogin], function (app) {
         $scope.openTemplateResponseDetailPageWithId = function () {
             //$('#closeModalPopup' + id).click();
             //alert(id);
-            if ($scope.templateInfo.type == "dataEntry" && $scope.templateInfo.subType == "Transcription")
+            if ($scope.templateInfo.type == TemplateInfoModel.type_dataEntry && $scope.templateInfo.subType == TemplateInfoModel.subType_Transcription)
                 location.href = "#/transcriptionResponseDetail/" + $scope.templateInfo.type + "/" + $scope.templateInfo.subType + "/" + $scope.templateInfo.editId;
+            else if ($scope.templateInfo.type == TemplateInfoModel.type_moderation && $scope.templateInfo.subType == TemplateInfoModel.subType_imageModeration)
+                location.href = "#/moderatingPhotosResponseDetail/" + $scope.templateInfo.type + "/" + $scope.templateInfo.subType + "/" + $scope.templateInfo.editId;
             else
                 location.href = "#/templateResponseDetail/" + $scope.templateInfo.type + "/" + $scope.templateInfo.subType + "/" + $scope.templateInfo.editId;
         }

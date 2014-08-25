@@ -202,6 +202,7 @@
     <Compile Include="Models\DataResponse\ImgurImageUploadResponse.cs" />
     <Compile Include="Models\DataResponse\LoginResponse.cs" />
     <Compile Include="Models\DataResponse\UserResponse\DataEntry\Transcription\UserTranscriptionTemplateModel.cs" />
+    <Compile Include="Models\DataResponse\UserResponse\Moderation\UserImageModerationtemplateModel.cs" />
     <Compile Include="Models\DataResponse\UserResponse\Survey\UserSurveyInfoInnerInstructionListData.cs" />
     <Compile Include="Models\DataResponse\UserResponse\Survey\UserSurveyInfoInnerListData.cs" />
     <Compile Include="Models\DataResponse\UserResponse\Survey\UserSurveyInfoInstruction.cs" />
@@ -296,6 +297,7 @@
     <Compile Include="Service\Register\WebRegister.cs" />
     <Compile Include="Service\UploadImages\imgurService.cs" />
     <Compile Include="Service\UserService\dataEntry\Transcription.cs" />
+    <Compile Include="Service\UserService\Moderation\ImageModeration.cs" />
     <Compile Include="Service\UserService\Survey\UserProductSurveyTemplateService.cs" />
     <Compile Include="Session\HeaderManager.cs" />
     <Compile Include="Session\M2ESession.cs" />
@@ -375,6 +377,8 @@
     <Content Include="App\Pages\ClientAfterLogin\Controller\singleRControllerAfterLogin.js" />
     <Content Include="App\Pages\ClientAfterLogin\DataEntry\TranscriptionResponseDetail\TranscriptionResponseDetail.html" />
     <Content Include="App\Pages\ClientAfterLogin\DataEntry\TranscriptionResponseDetail\TranscriptionResponseDetail.js" />
+    <Content Include="App\Pages\ClientAfterLogin\Moderation\ModeratingPhotosResponseDetail\ModeratingPhotosResponseDetail.html" />
+    <Content Include="App\Pages\ClientAfterLogin\Moderation\ModeratingPhotosResponseDetail\ModeratingPhotosResponseDetail.js" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateResponseDetail\TemplateResponseDetail.html" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateResponseDetail\TemplateResponseDetail.js" />
     <Content Include="App\Pages\ClientAfterLogin\DataEntry\TranscriptionTemplate\TranscriptionTemplate.html" />

@@ -48,12 +48,17 @@
                                                 </div><!-- ./col -->
  
                                                 <div class="{{TranscriptionInputWidthClass}}">
-                                                    <div class="box-body" id="TranscriptionInputTableBoxId">
-                                                        
-                                                    </div>
-                                                        <button class="btn btn-success" ng-click="AddRowTranscriptionInputTableBox()">Add New Row (or press Enter)</button>
+                                                    <div class="box-body">
+                                                        <fieldset>
+                                                        <label><b><span data-ng-bind-html="TranscriptionTemplateInfo.question"></span></b></label>
+                                                        <div style="padding: 0px 0px 0px 20px;" class="radio" ng-repeat="options in TranscriptionTemplateInfo.optionsList">
+                                                            <input type="radio" value="{{$index}}" name="Image_Moderation" class="userImageModerationRadioButton"> 
+                                                            <span data-ng-bind-html="options"></span>
+                                                        </div>
+                                                        </fieldset>
+                                                    </div>                                                        
                                                         <button class="{{TranscriptionRowToggleButtonClass}}" ng-click="AlignTranscriptionBoxToggle()"><span ng-bind="TranscriptionRowToggleText"></span></button>
-                                                        <button class="btn btn-danger" ng-click="SubmitTranscriptionInputTableData()">Submit</button>
+                                                        <button class="btn btn-danger" ng-click="SubmitImageModerationInputTableData()">Submit</button>
                                                 </div> 
                                             </div>
                                        </div>

@@ -12,6 +12,7 @@ using M2E.signalRPushNotifications;
 using Microsoft.AspNet.SignalR;
 using M2E.Session;
 using System.Data.Entity.Validation;
+using M2E.Models.DataResponse.UserResponse.Moderation;
 
 namespace M2E.Service.UserService.dataEntry
 {
@@ -49,6 +50,46 @@ namespace M2E.Service.UserService.dataEntry
                     }
                 }
                                   
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Status = 500;//some error occured
+                response.Message = "failed";
+                return response;
+            }
+
+        }
+
+        public ResponseModel<UserImageModerationtemplateModel> GetImageModerationTemplateInformationByRefKey(string username, string refKey)
+        {
+            var response = new ResponseModel<UserImageModerationtemplateModel>();
+            try
+            {
+                var ImageModerationJobInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey);
+                var ImageModerationJobQuestionOptionsDescription = _db.CreateTemplateSingleQuestionsLists.SingleOrDefault(x => x.referenceKey == refKey);
+                var UserMultipleJobMapping = _db.UserMultipleJobMappings.SingleOrDefault(x => x.refKey == refKey && x.username == username);
+                if (UserMultipleJobMapping != null)
+                {
+                    var ImageModerationImage = _db.CreateTemplateImgurImagesLists.SingleOrDefault(x => x.referenceKey == refKey && x.imgurLink == UserMultipleJobMapping.imageKey);
+                    if (ImageModerationJobInfo != null && ImageModerationJobQuestionOptionsDescription != null && ImageModerationImage != null)
+                    {
+                        var UserImageModerationTemplateModel = new UserImageModerationtemplateModel();
+                        UserImageModerationTemplateModel.type = ImageModerationJobInfo.type;
+                        UserImageModerationTemplateModel.subType = ImageModerationJobInfo.subType;
+                        UserImageModerationTemplateModel.description = ImageModerationJobInfo.description;
+                        UserImageModerationTemplateModel.question = ImageModerationJobQuestionOptionsDescription.Question;
+                        UserImageModerationTemplateModel.options = ImageModerationJobQuestionOptionsDescription.Options;// currently using same question table for transcription.
+                        UserImageModerationTemplateModel.title = ImageModerationJobInfo.title;
+                        UserImageModerationTemplateModel.refKey = ImageModerationJobInfo.referenceId;
+                        UserImageModerationTemplateModel.imageUrl = UserMultipleJobMapping.imageKey;
+                        //UserTranscriptionTemplateModel.uniqueId = Convert.ToString(TranscriptionAllocatedThreadInfo.Id);
+                        response.Status = 200;
+                        response.Message = "success";
+                        response.Payload = UserImageModerationTemplateModel;
+                    }
+                }
+
                 return response;
             }
             catch (Exception ex)

@@ -149,6 +149,9 @@ appRequire = require
              ClientAfterLoginTranscriptionResponseDetail: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","highcharts"]
             },
+            ClientAfterLoginModeratingPhotosResponseDetail: {
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService", "fancybox","highcharts"]
+            },
             AngularFileUploadController: {
                 deps: ["angularjs_fileUpload_shim","angularjs_fileUpload"]
             },
@@ -217,6 +220,7 @@ appRequire = require
             clientAfterLoginEditPage: "../../App/Pages/ClientAfterLogin/EditPage/editPage",//used
             clientAfterLoginTemplateSample: "../../App/Pages/ClientAfterLogin/TemplateSample/TemplateSample",//used
             ClientAfterLoginModeratingPhotos: "../../App/Pages/ClientAfterLogin/Moderation/ModeratingPhotos/ModeratingPhotos",//used
+            ClientAfterLoginModeratingPhotosResponseDetail: "../../App/Pages/ClientAfterLogin/Moderation/ModeratingPhotosResponseDetail/ModeratingPhotosResponseDetail",//used
             ClientAfterLoginTranscriptionTemplate: "../../App/Pages/ClientAfterLogin/DataEntry/TranscriptionTemplate/TranscriptionTemplate",//used
             ClientAfterLoginTemplateResponseDetail: "../../App/Pages/ClientAfterLogin/TemplateResponseDetail/TemplateResponseDetail",//used
             ClientAfterLoginTranscriptionResponseDetail: "../../App/Pages/ClientAfterLogin/DataEntry/TranscriptionResponseDetail/TranscriptionResponseDetail",//used
@@ -232,7 +236,7 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "fileDropScript", "domReady","prettify","bootstrap_wysihtml5","angularjs_fileUpload_shim","angularjs_fileUpload","AngularFileUploadController",
     "clientAfterLoginTemplateInfo","ng_table","clientAfterLoginTemplateSample","ClientAfterLoginModeratingPhotos","ClientAfterLoginTranscriptionTemplate",
     "bootstrap_slider","ion_rangeSlider_min","highcharts_3d","highcharts","highcharts_exporting","ClientAfterLoginTemplateResponseDetail","ClientAfterLoginTranscriptionResponseDetail",
-    "angular_route","sanitize","angular_animate"
+    "angular_route","sanitize","angular_animate","ClientAfterLoginModeratingPhotosResponseDetail"
 ], function() {
     angular.bootstrap(document.getElementById("mainClient"), ["afterLoginClientApp"]);
 });

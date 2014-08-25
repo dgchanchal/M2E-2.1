@@ -186,10 +186,8 @@ namespace M2E.Controllers
                     products.Rows.Add();                    
                     int count = 1;
                     foreach (var item in userResponse.userResponseData)
-                    {
-                        
-                            products.Rows.Add(item);
-                                              
+                    {                        
+                        products.Rows.Add(item);                                              
                     }
 
                     products.Rows.Add();

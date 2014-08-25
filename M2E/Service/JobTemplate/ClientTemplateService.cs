@@ -122,7 +122,8 @@ namespace M2E.Service.JobTemplate
             response.Payload = new ClientTemplateResponse();
             try
             {
-                if (job.type == Constants.type_dataEntry && job.subType == Constants.subType_Transcription)
+                if ((job.type == Constants.type_dataEntry && job.subType == Constants.subType_Transcription)||
+                    (job.type == Constants.type_moderation && job.subType == Constants.subType_moderatingPhotos))
                 {
                     long JobCompleted = _db.UserMultipleJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == status_done).Count();
                     long JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == status_assigned).Count();
@@ -738,6 +739,7 @@ namespace M2E.Service.JobTemplate
             {
                 var templateData = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.Id == id && x.username == username);
                 var UserJobMappingList = _db.UserJobMappings.Where(x => x.refKey == templateData.referenceId).ToList();
+                var UserMultipleJobMappingList = _db.UserMultipleJobMappings.Where(x => x.refKey == templateData.referenceId).ToList();
                 var UserSurveyResultList = _db.UserSurveyResultToBeRevieweds1.Where(x => x.refKey == templateData.referenceId).ToList();
                 var createTemplateeditableInstructionsListsCreateResponse = _db.CreateTemplateeditableInstructionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId && x.username == username).ToList();
                 var createTemplateSingleQuestionsListsCreateResponse = _db.CreateTemplateSingleQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId && x.username == username).ToList();
@@ -755,6 +757,14 @@ namespace M2E.Service.JobTemplate
                     {                       
                         _db.UserJobMappings.Remove(UserJobMapping);
                     }                    
+                }
+
+                if (UserMultipleJobMappingList != null)
+                {
+                    foreach (var UserMultipleJobMapping in UserMultipleJobMappingList)
+                    {
+                        _db.UserMultipleJobMappings.Remove(UserMultipleJobMapping);
+                    }
                 }
 
                 if (UserSurveyResultList != null)

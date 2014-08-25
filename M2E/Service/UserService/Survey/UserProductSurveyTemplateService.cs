@@ -41,7 +41,8 @@ namespace M2E.Service.UserService.Survey
             {
                 string earningPerThreadTemp = Convert.ToString(Convert.ToDouble(job.payPerUser) *(Convert.ToDouble(ConfigurationManager.AppSettings["dollarToRupeesValue"])));
                 string remainingThreadsTemp = string.Empty;
-                if (job.type == Constants.type_dataEntry && job.subType == Constants.subType_Transcription)
+                if ((job.type == Constants.type_dataEntry && job.subType == Constants.subType_Transcription)||
+                        (job.type == Constants.type_moderation && job.subType == Constants.subType_moderatingPhotos))
                     remainingThreadsTemp = Convert.ToString(Convert.ToInt32(job.totalThreads) - _db.UserMultipleJobMappings.Where(x => x.refKey == job.referenceId).Count());
                 else
                     remainingThreadsTemp = Convert.ToString(Convert.ToInt32(job.totalThreads) - _db.UserJobMappings.Where(x => x.refKey == job.referenceId).Count());
@@ -292,7 +293,8 @@ namespace M2E.Service.UserService.Survey
             
             var clientJobInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey);
             var response = new ResponseModel<string>();
-            if (clientJobInfo.type == Constants.type_dataEntry && clientJobInfo.subType == Constants.subType_Transcription)
+            if ((clientJobInfo.type == Constants.type_dataEntry && clientJobInfo.subType == Constants.subType_Transcription) ||
+                (clientJobInfo.type == Constants.type_moderation && clientJobInfo.subType == Constants.subType_moderatingPhotos))
             {
                 response = AllocateMultipleAssignTypeThreadToUserByRefKey(clientJobInfo,refKey,username);
             }
@@ -329,31 +331,40 @@ namespace M2E.Service.UserService.Survey
             foreach (var thread in UserThreads)
             {                
                 var ThreadInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x=> x.referenceId == thread.refKey);
-                var UserActiveThreadsResponse = new UserActiveThreadsResponse();
-                UserActiveThreadsResponse.startTime = thread.startTime;
-                UserActiveThreadsResponse.endTime = thread.endTime;
-                UserActiveThreadsResponse.expectedDeliveryTime = thread.expectedDeliveryTime;
-                UserActiveThreadsResponse.status = thread.status;
-                UserActiveThreadsResponse.refKey = thread.refKey;
-                UserActiveThreadsResponse.title = ThreadInfo.title;
-                UserActiveThreadsResponse.type = ThreadInfo.type;
-                UserActiveThreadsResponse.subType = ThreadInfo.subType;
-                response.Payload.Add(UserActiveThreadsResponse);
+                if (ThreadInfo != null)
+                {
+                    var UserActiveThreadsResponse = new UserActiveThreadsResponse();
+                    UserActiveThreadsResponse.startTime = thread.startTime;
+                    UserActiveThreadsResponse.endTime = thread.endTime;
+                    UserActiveThreadsResponse.expectedDeliveryTime = thread.expectedDeliveryTime;
+                    UserActiveThreadsResponse.status = thread.status;
+                    UserActiveThreadsResponse.refKey = thread.refKey;
+                    UserActiveThreadsResponse.title = ThreadInfo.title;
+                    UserActiveThreadsResponse.type = ThreadInfo.type;
+                    UserActiveThreadsResponse.subType = ThreadInfo.subType;
+                    response.Payload.Add(UserActiveThreadsResponse);
+                }
+                
             }
 
             foreach (var thread in UserMultipleJobMapping)
             {
-                var ThreadInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == thread.refKey);
-                var UserActiveThreadsResponse = new UserActiveThreadsResponse();
-                UserActiveThreadsResponse.startTime = thread.startTime;
-                UserActiveThreadsResponse.endTime = thread.endTime;
-                UserActiveThreadsResponse.expectedDeliveryTime = thread.expectedDelivery;
-                UserActiveThreadsResponse.status = thread.status;
-                UserActiveThreadsResponse.refKey = thread.refKey;
-                UserActiveThreadsResponse.title = ThreadInfo.title;
-                UserActiveThreadsResponse.type = ThreadInfo.type;
-                UserActiveThreadsResponse.subType = ThreadInfo.subType;
-                response.Payload.Add(UserActiveThreadsResponse);
+                
+                    var ThreadInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == thread.refKey);
+                    if (ThreadInfo != null)
+                    {
+                        var UserActiveThreadsResponse = new UserActiveThreadsResponse();
+                        UserActiveThreadsResponse.startTime = thread.startTime;
+                        UserActiveThreadsResponse.endTime = thread.endTime;
+                        UserActiveThreadsResponse.expectedDeliveryTime = thread.expectedDelivery;
+                        UserActiveThreadsResponse.status = thread.status;
+                        UserActiveThreadsResponse.refKey = thread.refKey;
+                        UserActiveThreadsResponse.title = ThreadInfo.title;
+                        UserActiveThreadsResponse.type = ThreadInfo.type;
+                        UserActiveThreadsResponse.subType = ThreadInfo.subType;
+                        response.Payload.Add(UserActiveThreadsResponse);  
+                    }                                  
+                
             }
 
                 response.Status = 200;
@@ -380,9 +391,18 @@ namespace M2E.Service.UserService.Survey
             UserMultipleJobMapping.refKey = refKey;
             UserMultipleJobMapping.startTime = DateTime.Now.ToString();
             UserMultipleJobMapping.status = Constants.status_assigned;
-            UserMultipleJobMapping.subType = Constants.subType_Transcription;
+
+            if (clientJobInfo.type == Constants.type_moderation && clientJobInfo.subType == Constants.subType_moderatingPhotos)
+            {
+                UserMultipleJobMapping.subType = Constants.subType_moderatingPhotos;
+                UserMultipleJobMapping.type = Constants.type_moderation;
+            }
+            else if (clientJobInfo.type == Constants.type_dataEntry && clientJobInfo.subType == Constants.subType_Transcription)
+            {
+                UserMultipleJobMapping.subType = Constants.subType_Transcription;
+                UserMultipleJobMapping.type = Constants.type_dataEntry;
+            }
             UserMultipleJobMapping.surveyResult = Constants.NA;
-            UserMultipleJobMapping.type = Constants.type_dataEntry;
             UserMultipleJobMapping.username = username;
 
             var availableJobLists = _db.CreateTemplateImgurImagesLists.Where(x => x.referenceKey == refKey && x.status == Constants.status_open).ToList();
@@ -519,7 +539,8 @@ namespace M2E.Service.UserService.Survey
                         totalThreads = job.totalThreads
                     };
 
-                    if (job.type == Constants.type_dataEntry && job.subType == Constants.subType_Transcription)
+                    if ((job.type == Constants.type_dataEntry && job.subType == Constants.subType_Transcription)||
+                        (job.type == Constants.type_moderation && job.subType == Constants.subType_moderatingPhotos))
                     {
                         var AlreadyAppliedJobs = _db.UserMultipleJobMappings.SingleOrDefault(x => x.username == username && x.refKey == job.referenceId);
                         if (AlreadyAppliedJobs != null)

@@ -1,0 +1,63 @@
+﻿<!-- Content Header (Page header) -->
+<div ng-controller="ClientAfterLoginModeratingPhotosResponseDetail">
+                <section class="content-header" >
+                    <span><button class="btn btn-success btn-flat" ng-click="openTemplateInfoPageWithId(templateId)">Back</button> </span>                        
+                        <span><button ng-click="deleteTemplatePageWithId(templateId)" class="btn btn-danger">Delete</button></span>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">                   
+                    <!-- top row -->
+                    <div class="row">
+                        <div class="col-xs-12 connectedSortable">
+                            <span ng-bind="ClientTemplateResponseDetailModel.title"></span>
+                        </div><!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+
+                    <!-- Main row -->
+                    <div class="row">
+                        <!-- Left col -->
+                        <section class="col-lg-12 connectedSortable">                            
+                           <div class="box box-color box-bordered">
+                <div class="box-title">
+                    <h3>
+                        <i class="icon-user"></i>Transcription Result
+                    </h3>
+                </div>
+                <div class="box-content nopadding"> 
+                    <div class="row" ng-repeat="transcriptionResult in AllCompletedTranscriptions.data">
+                        <div class="col-md-6">
+                            <a class='fancybox' href='{{transcriptionResult.imageUrl}}' data-fancybox-group='gallery' title='Personalized Title'><img style="max-height: 300px;" src='{{transcriptionResult.imageUrl}}' alt=''></a>
+                       </div>
+                        <div class="col-md-6">
+                            <div class="box-body">
+                                    <table class="table table-bordered">
+                                        <tbody><tr>
+                                            <th style="width: 10px">#</th>
+                                            <th ng-repeat="options in AllCompletedTranscriptions.optionsList"><span ng-bind="options"></span></th>                                            
+                                        </tr>
+                                        <tr ng-repeat="userResponse in transcriptionResult.userResponseData">
+                                            <td><span ng-bind="($index+1)"></span></td>
+                                            <td ng-repeat="item in userResponse"><span ng-bind="item"></span></td>                                            
+                                        </tr>                                        
+                                    </tbody></table>
+                                </div>
+                       </div>  
+                    </div>                                                     
+                </div>
+            </div>
+                        </section><!-- /.Left col -->                        
+                    </div><!-- /.row (main row) -->
+
+                </section><!-- /.content -->
+         
+        <!-- page script -->
+  </div>
+        <script type="text/javascript">
+
+
+            $(document).ready(function ($) {
+                $('.fancybox').fancybox();
+            });
+		</script>

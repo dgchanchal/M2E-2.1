@@ -259,6 +259,7 @@ define([appLocation.postLogin], function (app) {
                     //var id = data.Message.split('-')[1];
                     //location.href = "#/editTemplate/edit/" + id;
                     showToastMessage("Success", "Successfully Created");
+                    location.href = "/client#/";
                 }).error(function (data, status, headers, config) {
 
                 });

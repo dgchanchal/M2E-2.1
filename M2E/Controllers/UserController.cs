@@ -10,6 +10,7 @@ using M2E.Models.DataWrapper.UserSurvey;
 using M2E.Models;
 using M2E.Service.UserService.dataEntry;
 using Newtonsoft.Json;
+using M2E.Service.UserService.Moderation;
 
 namespace M2E.Controllers
 {
@@ -94,6 +95,29 @@ namespace M2E.Controllers
 
         }
 
+
+        [HttpPost]
+        public JsonResult GetImageModerationTemplateInformationByRefKey()
+        {
+            //var username = "sumitchourasia91@gmail.com";
+            var refKey = Request.QueryString["refKey"].ToString(CultureInfo.InvariantCulture);
+            var headers = new HeaderManager(Request);
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
+            var userTemplateList = new UserTranscriptionService();
+            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+            if (isValidToken)
+            {
+                return Json(userTemplateList.GetImageModerationTemplateInformationByRefKey(session.UserName, refKey));
+            }
+            else
+            {
+                ResponseModel<string> response = new ResponseModel<string>();
+                response.Status = 401;
+                response.Message = "Unauthorized";
+                return Json(response);
+            }
+        }
+
         [HttpPost]
         public JsonResult SubmitTranscriptionInputTableDataByRefKey(List<string[]> data)
         {
@@ -123,6 +147,31 @@ namespace M2E.Controllers
             {
                 return Json(userTemplateList.SubmitTranscriptionInputTableDataByRefKey(session.UserName, refKey, serializeData));
                 return null;
+            }
+            else
+            {
+                ResponseModel<string> response = new ResponseModel<string>();
+                response.Status = 401;
+                response.Message = "Unauthorized";
+                return Json(response);
+            }
+
+
+        }
+
+        [HttpPost]
+        public JsonResult SubmitImageModerationInputTableDataByRefKey()
+        {
+            //var username = "sumitchourasia91@gmail.com";
+            var refKey = Request.QueryString["refKey"].ToString(CultureInfo.InvariantCulture);
+            var data = Request.QueryString["data"].ToString(CultureInfo.InvariantCulture);         
+            var headers = new HeaderManager(Request);
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
+            var UserImageModeration = new UserImageModeration();
+            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+            if (isValidToken)
+            {
+                return Json(UserImageModeration.SubmitImageModerationInputTableDataByRefKey(session.UserName, refKey, data));                
             }
             else
             {
