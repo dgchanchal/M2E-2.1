@@ -9,6 +9,9 @@ using M2E.CommonMethods;
 using M2E.Service.JobTemplate;
 using M2E.Service.Client;
 using M2E.Session;
+using System.IO;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace M2E.Controllers
 {
@@ -153,6 +156,75 @@ namespace M2E.Controllers
                 response.Status = 401;
                 response.Message = "Unauthorized";
                 return Json(response);
+            }
+        }
+
+        public ActionResult DownloadAllCompletedTranscriptionInformation()
+        {
+            //var username = Request.QueryString["username"].ToString(CultureInfo.InvariantCulture);
+            var headers = new HeaderManager(Request);            
+            var id = Convert.ToInt32(Request.QueryString["id"]);
+            var guid = Convert.ToString(Request.QueryString["guid"]);
+            M2ESession session = TokenManager.getSessionInfo(guid);
+            var clientTemplate = new ClientTemplateService();
+            var isValidToken = TokenManager.IsValidSession(guid);
+            var fileName = "Transcription_" + session.UserName + "_" + DateTime.Now.ToString("yyyy_MM_dd");
+            if (isValidToken)
+            {
+                var CompletedTranscriptions = clientTemplate.GetAllCompletedTranscriptionInformation(session.UserName, id);
+                var products = new System.Data.DataTable("teste");
+                var columnName = CompletedTranscriptions.Payload.options.Split(';');
+
+                foreach (var Column in columnName)
+                {
+                    products.Columns.Add(Column, typeof(string));
+                }
+
+                foreach (var userResponse in CompletedTranscriptions.Payload.data)
+                {                    
+                                        
+                    products.Rows.Add();                    
+                    int count = 1;
+                    foreach (var item in userResponse.userResponseData)
+                    {
+                        
+                            products.Rows.Add(item);
+                                              
+                    }
+
+                    products.Rows.Add();
+                    products.Rows.Add("Transcription Image", userResponse.imageUrl);
+                    products.Rows.Add();
+                    products.Rows.Add();
+                    products.Rows.Add();
+                }
+                
+
+
+                var grid = new GridView();
+                grid.DataSource = products;
+                grid.DataBind();
+
+                Response.ClearContent();
+                Response.Buffer = true;
+                Response.AddHeader("content-disposition", "attachment; filename=" + fileName + ".xls");
+                Response.ContentType = "application/ms-excel";
+
+                Response.Charset = "";
+                StringWriter sw = new StringWriter();
+                HtmlTextWriter htw = new HtmlTextWriter(sw);
+
+                grid.RenderControl(htw);
+
+                Response.Output.Write(sw.ToString());
+                Response.Flush();
+                Response.End();
+
+                return View("MyView");                
+            }
+            else
+            {                
+                return null;
             }
         }
 
@@ -349,6 +421,25 @@ namespace M2E.Controllers
                 return Json(response);
             }
             
+        }
+
+        private Stream GenerateStreamFromString(string s)
+        {
+            try
+            {
+                MemoryStream stream = new MemoryStream();
+                StreamWriter writer = new StreamWriter(stream);
+                writer.Write(s);
+                writer.Flush();
+                stream.Position = 0;
+                return stream;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("GenerateStreamFromString", ex);
+
+                throw;
+            }
         }
     }
 }

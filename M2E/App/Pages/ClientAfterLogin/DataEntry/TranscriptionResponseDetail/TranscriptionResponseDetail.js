@@ -72,6 +72,10 @@ define([appLocation.postLogin], function (app) {
 
         }
 
+        $scope.downloadTemplateInfoPageWithId = function (id) {            
+            window.location = '/Client/DownloadAllCompletedTranscriptionInformation?id=' + id + '&guid=' + CookieUtil.getUTMZT() + '';
+        }
+
         $scope.openTemplateEditPageWithId = function (id) {
             //$('#closeModalPopup' + id).click();
             //alert(id);

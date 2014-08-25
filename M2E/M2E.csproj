@@ -372,6 +372,8 @@
     <Content Include="App\Pages\BeforeLogin\UserMoreInfo\UserMoreInfo.html" />
     <Content Include="App\Pages\ClientAfterLogin\Controller\common\AngularFileUploadController.js" />
     <Content Include="App\Pages\ClientAfterLogin\Controller\singleRControllerAfterLogin.js" />
+    <Content Include="App\Pages\ClientAfterLogin\DataEntry\TranscriptionResponseDetail\TranscriptionResponseDetail.html" />
+    <Content Include="App\Pages\ClientAfterLogin\DataEntry\TranscriptionResponseDetail\TranscriptionResponseDetail.js" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateResponseDetail\TemplateResponseDetail.html" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateResponseDetail\TemplateResponseDetail.js" />
     <Content Include="App\Pages\ClientAfterLogin\DataEntry\TranscriptionTemplate\TranscriptionTemplate.html" />
@@ -1527,6 +1529,7 @@
     <None Include="Template\AdminLTE-master\less\vars.less" />
     <None Include="Template\AdminLTE-master\LICENSE" />
     <None Include="Template\AdminLTE-master\README.md" />
+    <None Include="Views\Client\DownloadAllCompletedTranscriptionInformation.cshtml" />
     <None Include="Views\Client\Index.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />

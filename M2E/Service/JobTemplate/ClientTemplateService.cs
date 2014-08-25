@@ -430,7 +430,6 @@ namespace M2E.Service.JobTemplate
             }
         }
 
-
         public ResponseModel<ClientTemplateDetailById> GetTemplateDetailById(string username,long id)
         {
             var response = new ResponseModel<ClientTemplateDetailById>();
