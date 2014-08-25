@@ -49,7 +49,13 @@
                                                        <b>Title</b></label>                                                 
                                                    <div class="controls"><fieldset><div class="input-group"></div><input type="text" id="createTemplateTitleTextModeratingPhotos" placeholder="Enter Title for the Survey (compulsory)" value="" class="form-control"></fieldset></div>
                                                </div>
-
+                                               <div class="control-group" style="">
+                                                   <label class="control-label" for="textfield">
+                                                       <b>Description</b></label>                                                 
+                                                   <div class="controls">
+                                                        <textarea style="height: 150px;" class="input-block-level form-control textarea" id="createTemplateDescriptionTextModeratingPhotos" name="textarea" placeholder="Enter Brief Description about your Survey"></textarea>
+                                                   </div>
+                                               </div>
                                                <div class="control-group" ng-show="jobTemplate[0].visible">
                                                    <label for="textfield" class="control-label">
                                                         
@@ -120,6 +126,38 @@
 		                                                </div> 
                                                    </div>
                                                </div>
+                                               <div class="control-group">
+                                                   <label class="control-label">
+                                                       <a role="button" class="btn btn-primary">
+                                                           Budget</a><b><small>Choose your budget</small></b></label>
+                                                   <div class="controls">                                                       
+                                                       <table class="table table-bordered">
+                                                            <tbody><tr>                                                                
+                                                                <th>Type</th>
+                                                                <th>Value</th>                                                                
+                                                            </tr>
+                                                            <tr>                                                                
+                                                                <td>Quantity of Workforce Required</td>
+                                                                <td>
+                                                                    <input id="totalNumberOfThreads" type="text" name="totalNumberOfThreads" placeholder="Min 1 Required" value="1" />
+                                                                </td>                                                                
+                                                            </tr>
+                                                            <tr>                                                                
+                                                                <td>Amount Payable To each Workforce ($)</td>
+                                                                <td>                                                                    
+                                                                    <input id="amountPerThreadTextBoxInput" type="text" name="amountPerThread" placeholder="Min 0.03 Required" value="1" />                                                                    
+                                                                </td>                                                                
+                                                            </tr>
+                                                            <tr>                                                                
+                                                                <td>Total Amount ($)</td>
+                                                                <td>
+                                                                    <div id="TotalAmountPayableCreateTemplate">1</div>
+                                                                </td>                                                                
+                                                            </tr>                                                           
+                                                        </tbody></table>
+                                                    
+                                                   </div>
+                                               </div>
                                                <div class="form-actions">
                                                    <button class="btn btn-primary" ng-click="ClientCreateModeratingPhotosFunction()">
                                                        Create</button>
@@ -145,4 +183,38 @@
 
 <script type="text/javascript" charset="utf-8">
     $(prettyPrint);
+
+    $(function () {
+        /* BOOTSTRAP SLIDER */
+
+        var lastValueAmountPerThreadTextBoxInput = '1';
+        var lastValueTotalNumberOfThreads = '1';
+        $("#amountPerThreadTextBoxInput").on('change keyup paste mouseup', function () {
+            if ($(this).val() != lastValueAmountPerThreadTextBoxInput) {
+
+                lastValueAmountPerThreadTextBoxInput = $(this).val();
+                updateTotalPayableAmountDiv();
+                console.log(lastValueAmountPerThreadTextBoxInput + ":" + lastValueTotalNumberOfThreads);
+            }
+        });
+
+
+        $("#totalNumberOfThreads").on('change keyup paste mouseup', function () {
+            if ($(this).val() != lastValueTotalNumberOfThreads) {
+                lastValueTotalNumberOfThreads = $(this).val();
+                updateTotalPayableAmountDiv();
+                console.log(lastValueAmountPerThreadTextBoxInput + ":" + lastValueTotalNumberOfThreads);
+            }
+        });
+    });
+
+    function updateTotalPayableAmountDiv() {
+        $("#TotalAmountPayableCreateTemplate").html($("#amountPerThreadTextBoxInput").val() * $('#totalNumberOfThreads').val());
+    }
+    function roundOffDecimal(num, digit) {
+        (Math.round(num * 100) / 100).toString() //-> "1.1"
+        num.toFixed(digit)
+        //console.log(num);
+        return num;
+    }
 </script>

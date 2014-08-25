@@ -72,7 +72,13 @@ define([appLocation.postLogin], function (app) {
 
         $scope.refreshModeratingPhotosListDiv = function () {
             $scope.imgurImageTemplateModeratingPhotos = userSession.imgurImageTemplateModeratingPhotos;
+            updateTotalPayableAmountDiv();
             $('.fancybox').fancybox();
+        }
+
+        function updateTotalPayableAmountDiv() {
+            $('#totalNumberOfThreads').val(userSession.imgurImageTemplateModeratingPhotos.length);
+            $("#TotalAmountPayableCreateTemplate").html($("#amountPerThreadTextBoxInput").val() * $('#totalNumberOfThreads').val());
         }
 
         $scope.DeleteEditImgurImageByIdFunction = function (id) {
@@ -88,6 +94,7 @@ define([appLocation.postLogin], function (app) {
 
             //console.log(userSession.imgurImageTemplateModeratingPhotos);
             $scope.imgurImageTemplateModeratingPhotos = userSession.imgurImageTemplateModeratingPhotos;
+            updateTotalPayableAmountDiv();
             $('.fancybox').fancybox();
         }
 
