@@ -83,6 +83,15 @@ appRequire = require
             angularjs_fileUpload: {//new
                 deps: ["angular", "jquery"]
             },
+            angular_route: {//new
+                deps: ["angular", "jquery"]
+            },
+            angular_animate: {
+                deps: ["angular", "jquery"]
+            },
+            sanitize: {
+                deps: ["angular", "jquery"]
+            },
 //            morris_min: {//new
 //                deps: ["jquery"]
 //            },
@@ -159,7 +168,7 @@ appRequire = require
             //==============================================================================================================            
             underscore: "../../App/js/underscore-min",
             jquery: "../../App/js/jquery.min",//used..
-            angular: "../../App/js/angular.min",//used..
+            angular: "../../App/js/angular.1.2.13",//used..
             //m2ei18n: "../../App/js/m2ei18n",
             jquery_toastmessage: "../../App/third-Party/toastmessage/js/jquery.toastmessage",//used
             toastMessage: "../../App/js/toastMessage",//used
@@ -191,7 +200,9 @@ appRequire = require
             highcharts:"../../App/third-Party/highcharts/highcharts",
             highcharts_3d:"../../App/third-Party/highcharts/highcharts-3d",
             highcharts_exporting:"../../App/third-Party/highcharts/modules/exporting",
-
+            angular_route: "../../App/js/angular-route",
+            angular_animate: "../../App/js/angular-animate",
+            sanitize: "../../App/js/angular/ngSanitize/sanitize",
             //==============================================================================================================
             // Application Related JS
             //==============================================================================================================
@@ -220,7 +231,8 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "clientAfterLoginIndex", "clientAfterLoginCreateTemplate", "clientAfterLoginCookieService", "clientAfterLoginEditPage", "fancybox", "filedrop","wysihtml5",
     "fileDropScript", "domReady","prettify","bootstrap_wysihtml5","angularjs_fileUpload_shim","angularjs_fileUpload","AngularFileUploadController",
     "clientAfterLoginTemplateInfo","ng_table","clientAfterLoginTemplateSample","ClientAfterLoginModeratingPhotos","ClientAfterLoginTranscriptionTemplate",
-    "bootstrap_slider","ion_rangeSlider_min","highcharts_3d","highcharts","highcharts_exporting","ClientAfterLoginTemplateResponseDetail","ClientAfterLoginTranscriptionResponseDetail"
+    "bootstrap_slider","ion_rangeSlider_min","highcharts_3d","highcharts","highcharts_exporting","ClientAfterLoginTemplateResponseDetail","ClientAfterLoginTranscriptionResponseDetail",
+    "angular_route","sanitize","angular_animate"
 ], function() {
     angular.bootstrap(document.getElementById("mainClient"), ["afterLoginClientApp"]);
 });

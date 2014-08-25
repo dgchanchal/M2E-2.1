@@ -829,3 +829,22 @@ element.style {
         display:block;
         padding:8px 15px;
     }
+
+
+/* page specific animations ------------------------ */
+
+
+.hide-fade.ng-hide-add, .hide-fade.ng-hide-remove {
+  -webkit-animation:slideInRight 0.5s both ease-in;
+	-moz-animation:slideInRight 0.5s both ease-in;
+	animation:slideInRight 0.5s both ease-in;   
+  display:block!important;
+}
+.hide-fade.ng-hide-add.ng-hide-add-active,
+.hide-fade.ng-hide-remove {
+  opacity:0;
+}
+.hide-fade.ng-hide-add,
+.hide-fade.ng-hide-remove.ng-hide-remove-active {
+  opacity:1;
+}

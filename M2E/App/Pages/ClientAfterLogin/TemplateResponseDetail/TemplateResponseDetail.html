@@ -31,7 +31,7 @@
 										<div class="accordion-group" ng-repeat="questionInfo in ClientTemplateResponseDetailModel.resultList">
 											<div class="accordion-heading">
 												<a href="#{{questionInfo.UniqueId}}Collapse" id="{{questionInfo.UniqueId}}" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle faqQuestionDivBackgroundColor">
-													<b><span ng-bind-html-unsafe="questionInfo.question"></span></b> 
+													<b><span data-ng-bind-html="questionInfo.question"></span></b> 
 												</a>
 											</div>
 											<div class="accordion-body collapse" id="{{questionInfo.UniqueId}}Collapse">
@@ -45,9 +45,9 @@
                                                                     <th style="width: 40px">Count</th>
                                                                 </tr>
                                                                 <tr ng-repeat="data in questionInfo.dataListUI">
-                                                                    <td><span ng-bind-html-unsafe="data.key"></span></td>
-                                                                    <td><span ng-bind-html-unsafe="data.text"></span></td>                                           
-                                                                    <td><span ng-show="data.value != 0" ng-bind-html-unsafe="data.value"></span><span ng-show="data.value == 0"> 0</span></td>
+                                                                    <td><span data-ng-bind-html="data.key"></span></td>
+                                                                    <td><span data-ng-bind-html="data.text"></span></td>                                           
+                                                                    <td><span ng-show="data.value != 0" data-ng-bind-html="data.value"></span><span ng-show="data.value == 0"> 0</span></td>
                                                                 </tr>                                        
                                                             </tbody></table>
                                                         </div>
