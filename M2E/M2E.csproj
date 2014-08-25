@@ -191,7 +191,9 @@
     </Compile>
     <Compile Include="Models\DataResponse\BeforeLoginUserProjectDetailsModel.cs" />
     <Compile Include="Models\DataResponse\ClientDetailsModel.cs" />
+    <Compile Include="Models\DataResponse\ClientResponse\ClientAllImageModerationResultResponse.cs" />
     <Compile Include="Models\DataResponse\ClientResponse\ClientAllTranscriptionResultResponse.cs" />
+    <Compile Include="Models\DataResponse\ClientResponse\ClientImageModerationResponseData.cs" />
     <Compile Include="Models\DataResponse\ClientResponse\ClientSurveyResultResponseList.cs" />
     <Compile Include="Models\DataResponse\ClientResponse\ClientSurveyResultResponse.cs" />
     <Compile Include="Models\DataResponse\ClientResponse\ClientTranscriptionResultResponse.cs" />

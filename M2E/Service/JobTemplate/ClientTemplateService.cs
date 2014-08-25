@@ -431,6 +431,52 @@ namespace M2E.Service.JobTemplate
             }
         }
 
+        public ResponseModel<ClientAllImageModerationResultResponse> GetAllCompletedImageModerationInformation(string username, long id)
+        {
+            var response = new ResponseModel<ClientAllImageModerationResultResponse>();
+            try
+            {
+                var ClientImageModerationResultResponseListData = new ClientAllImageModerationResultResponse();
+                ClientImageModerationResultResponseListData.data = new List<ClientImageModerationResponseData>();
+                var templateData = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.Id == id);
+
+                if (templateData != null)
+                {
+                    var ImageModerationResultList = _db.UserMultipleJobMappings.Where(x => x.refKey == templateData.referenceId && x.status == Constants.status_done).ToList();
+
+                    ClientImageModerationResultResponseListData.title = templateData.title;
+                    ClientImageModerationResultResponseListData.type = templateData.type;
+                    ClientImageModerationResultResponseListData.subType = templateData.subType;
+                    var ImageModerationDescription = _db.CreateTemplateSingleQuestionsLists.SingleOrDefault(x => x.referenceKey == templateData.referenceId);
+                    ClientImageModerationResultResponseListData.options = ImageModerationDescription.Options;
+                    ClientImageModerationResultResponseListData.question = ImageModerationDescription.Question;
+                    foreach (var ImageModerationResult in ImageModerationResultList)
+                    {
+                        var ClientImageModerationResponseDataResponse = new ClientImageModerationResponseData();
+                        ClientImageModerationResponseDataResponse.imageUrl = ImageModerationResult.imageKey;
+                        ClientImageModerationResponseDataResponse.userResponse = ImageModerationResult.surveyResult;
+                        ClientImageModerationResponseDataResponse.userResponseValue = ImageModerationDescription.Options.Split(';')[Convert.ToInt32(ImageModerationResult.surveyResult)];
+                        ClientImageModerationResultResponseListData.data.Add(ClientImageModerationResponseDataResponse);
+                    }
+                    response.Status = 200;
+                    response.Message = "success";
+                    response.Payload = ClientImageModerationResultResponseListData;
+                }
+                else
+                {
+                    response.Status = 404;
+                    response.Message = "No Data found";
+                }
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Status = 500;
+                response.Message = "Exception";
+                return response;
+            }
+        }
+
         public ResponseModel<ClientTemplateDetailById> GetTemplateDetailById(string username,long id)
         {
             var response = new ResponseModel<ClientTemplateDetailById>();

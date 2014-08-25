@@ -159,6 +159,29 @@ namespace M2E.Controllers
             }
         }
 
+        [HttpPost]
+        public JsonResult GetAllCompletedImageModerationInformation()
+        {
+            //var username = Request.QueryString["username"].ToString(CultureInfo.InvariantCulture);
+            var headers = new HeaderManager(Request);
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
+            var id = Convert.ToInt32(Request.QueryString["id"]);
+            var clientTemplate = new ClientTemplateService();
+            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+            if (isValidToken)
+            {
+                return Json(clientTemplate.GetAllCompletedImageModerationInformation(session.UserName, id));
+            }
+            else
+            {
+                ResponseModel<string> response = new ResponseModel<string>();
+                response.Status = 401;
+                response.Message = "Unauthorized";
+                return Json(response);
+            }
+        }
+
+
         public ActionResult DownloadAllCompletedTranscriptionInformation()
         {
             //var username = Request.QueryString["username"].ToString(CultureInfo.InvariantCulture);

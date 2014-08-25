@@ -8,7 +8,7 @@ define([appLocation.postLogin], function (app) {
         initializeGetTranscriptionResponseResultById();
 
         function initializeGetTranscriptionResponseResultById() {
-            var url = ServerContextPah + '/Client/GetAllCompletedTranscriptionInformation?id=' + $routeParams.templateId;
+            var url = ServerContextPah + '/Client/GetAllCompletedImageModerationInformation?id=' + $routeParams.templateId;
             var headers = {
                 'Content-Type': 'application/json',
                 'UTMZT': CookieUtil.getUTMZT(),
@@ -23,8 +23,7 @@ define([appLocation.postLogin], function (app) {
             }).success(function (data, status, headers, config) {
                 stopBlockUI();
                 if (data.Status == "200") {
-                    $scope.AllCompletedTranscriptions = data.Payload;
-                    $scope.AllCompletedTranscriptions.optionsList = data.Payload.options.split(';');
+                    $scope.AllCompletedImageModerationList = data.Payload;
                 }
             }).error(function (data, status, headers, config) {
                 console.log("failure");
