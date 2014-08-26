@@ -418,11 +418,14 @@ namespace M2E.Service.UserService.Survey
                 try
                 {
                     //to be inclucded in lock
-                    UserMultipleJobMapping.imageKey = transcriptionTask.imgurLink;
-                    var updateImgurImageMapAfterAssigning = _db.CreateTemplateImgurImagesLists.SingleOrDefault(x => x.Id == transcriptionTask.Id);
-                    updateImgurImageMapAfterAssigning.status = Constants.status_assigned;
-                    _db.UserMultipleJobMappings.Add(UserMultipleJobMapping);
-                    _db.SaveChanges();
+                    lock (this)
+                    {
+                        UserMultipleJobMapping.imageKey = transcriptionTask.imgurLink;
+                        var updateImgurImageMapAfterAssigning = _db.CreateTemplateImgurImagesLists.SingleOrDefault(x => x.Id == transcriptionTask.Id);
+                        updateImgurImageMapAfterAssigning.status = Constants.status_assigned;
+                        _db.UserMultipleJobMappings.Add(UserMultipleJobMapping);
+                        _db.SaveChanges();
+                    }                    
                     //to be inclucded in lock
                     
 

@@ -68,12 +68,14 @@ define([appLocation.postLogin], function (app) {
            {
                value: "Data entry", dropDownMenuShow: true, dropDownSubMenuClass: "dropdown-submenu", dropDownMenuClass: "dropdown-menu", dropDownSubMenuArrow: "dropdown", dropDownMenuList: [
                { value: "Verification & Duplication", link: "#/VerificationAndDuplicationSample" },
-               { value: "Data Entry", link: "#" },
+               { value: "Data Collection", link: "#" },
+               { value: "Tagging of an Image", link: "#" },
                { value: "Search the web", link: "#" },
                { value: "Do Excel work", link: "#" },
                { value: "Find information", link: "#" },
                { value: "Post advertisements", link: "#" },
-               { value: "Transcription", link: "#/templateSample/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_Transcription }
+               { value: "Transcription", link: "#/templateSample/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_Transcription },
+               { value: "Transcription from A/V", link: "#" }
                ]
            },
            {
@@ -92,7 +94,8 @@ define([appLocation.postLogin], function (app) {
                value: "Survey", dropDownMenuShow: true, dropDownSubMenuClass: "dropdown-submenu", dropDownMenuClass: "dropdown-menu", dropDownSubMenuArrow: "dropdown", dropDownMenuList: [
                  { value: "Product survey", link: "#/templateSample/" + TemplateInfoModel.type_survey + "/" + TemplateInfoModel.subType_productSurvey },
                  { value: "User feedback survey", link: "#/templateSample/" + TemplateInfoModel.type_survey + "/" + TemplateInfoModel.subType_productSurvey },
-                 { value: "Pools", link: "#/templateSample/" + TemplateInfoModel.type_survey + "/" + TemplateInfoModel.subType_productSurvey }
+                 { value: "Pools", link: "#/templateSample/" + TemplateInfoModel.type_survey + "/" + TemplateInfoModel.subType_productSurvey },
+                 { value: "Survey Link", link: "#" }
                ]
            },
            {

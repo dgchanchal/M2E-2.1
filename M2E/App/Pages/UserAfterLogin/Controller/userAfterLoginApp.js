@@ -54,12 +54,14 @@ define([appLocation.userPostLogin], function (app) {
            {
                value: "Data entry", dropDownMenuShow: true, dropDownSubMenuClass: "dropdown-submenu", dropDownMenuClass: "dropdown-menu", dropDownSubMenuArrow: "dropdown", dropDownMenuList: [
                { value: "Verification & Duplication", link: "#/VerificationAndDuplicationSample" },
-               { value: "Data Entry", link: "#" },
+               { value: "Data Collection", link: "#" },
+               { value: "Tagging of an Image", link: "#" },
                { value: "Search the web", link: "#" },
                { value: "Do Excel work", link: "#" },
                { value: "Find information", link: "#" },
                { value: "Post advertisements", link: "#" },
-               { value: "Transcription", link: "#" }
+               { value: "Transcription", link: "#" },
+               { value: "Transcription from A/V", link: "#" }
                ]
            },
            {
@@ -78,7 +80,8 @@ define([appLocation.userPostLogin], function (app) {
                value: "Survey", dropDownMenuShow: true, dropDownSubMenuClass: "dropdown-submenu", dropDownMenuClass: "dropdown-menu", dropDownSubMenuArrow: "dropdown", dropDownMenuList: [
                  { value: "Product survey", link: "#/templateSample/test/okay" },
                  { value: "User feedback survey", link: "#" },
-                 { value: "Pools", link: "#" }
+                 { value: "Pools", link: "#" },
+                 { value: "Survey Link", link: "#" }
                ]
            },
            {
