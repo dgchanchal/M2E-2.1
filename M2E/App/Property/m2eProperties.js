@@ -10,9 +10,7 @@ var userSession = {
     imgurImageTranscriptionTemplate: [] 
 };
 var TemplateInfoModel = {
-        surveyType : "survey",
-        surveySubTypeProductSurvey : "productSurvey",
-        
+               
         type_survey : "survey",
         subType_productSurvey : "productSurvey",
         
@@ -20,12 +18,7 @@ var TemplateInfoModel = {
         subType_Transcription : "Transcription",
         
         type_moderation : "moderation",        
-        subType_imageModeration : "moderatingPhotos",
-        
-        moderationType : "moderation",
-        moderationSubTypeModeratingPhotos : "moderatingPhotos",
-        dataEntryType :"dataEntry",
-        dataEntrySubTypeTranscription:"Transcription"
+        subType_imageModeration : "moderatingPhotos"                      
 };
 
 var clientConstants = {

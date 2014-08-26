@@ -245,7 +245,7 @@ define([appLocation.postLogin], function (app) {
 
         $scope.ClientCreateModeratingPhotosFunction = function () {
             $scope.jobTemplate[0].title = $('#createTemplateTitleTextModeratingPhotos').val();
-            var clientCreateModeratingPhotosData = { Data: $scope.jobTemplate, ImgurList: userSession.imgurImageTemplateModeratingPhotos, TemplateInfo: { type: TemplateInfoModel.moderationType, subType: TemplateInfoModel.moderationSubTypeModeratingPhotos, description: $('#createTemplateDescriptionTextModeratingPhotos').val(), totalThreads: $("#totalNumberOfThreads").val(), amountEachThread: $("#amountPerThreadTextBoxInput").val()} };
+            var clientCreateModeratingPhotosData = { Data: $scope.jobTemplate, ImgurList: userSession.imgurImageTemplateModeratingPhotos, TemplateInfo: { type: TemplateInfoModel.type_moderation, subType: TemplateInfoModel.subType_imageModeration, description: $('#createTemplateDescriptionTextModeratingPhotos').val(), totalThreads: $("#totalNumberOfThreads").val(), amountEachThread: $("#amountPerThreadTextBoxInput").val()} };
             //var currentTemplateId = new Date().getTime();
 
             var url = ServerContextPah + '/Client/CreateTemplate';
