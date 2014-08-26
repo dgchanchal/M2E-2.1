@@ -210,7 +210,7 @@ define([appLocation.postLogin], function (app) {
                 totalQuestionTextBoxAnswerHtmlData += "<fieldset>";
                 totalQuestionTextBoxAnswerHtmlData += "<div class='input-group' style='width: 100%;'>";
                 //totalQuestionTextBoxAnswerHtmlData += "<label>";
-                totalQuestionTextBoxAnswerHtmlData += textBoxCategories + "<a style='cursor:pointer' class='addQuestionTextBoxAnswerClass' id='" + this.Number + "'><i class='fa fa-times'></i></a>";
+                totalQuestionTextBoxAnswerHtmlData += textBoxCategories ;
                 //totalQuestionTextBoxAnswerHtmlData += "</label>";
                 totalQuestionTextBoxAnswerHtmlData += "</div>";
 

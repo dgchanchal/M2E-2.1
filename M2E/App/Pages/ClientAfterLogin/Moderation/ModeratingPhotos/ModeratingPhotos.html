@@ -44,24 +44,23 @@
                                                                                                                                                                   
                                                </div>
                                                 
-                                               <div class="control-group" style="">
+                                               <div class="control-group rowTitleBackgroundColor">
                                                    <label class="control-label" for="textfield">
                                                        <b>Title</b></label>                                                 
-                                                   <div class="controls"><fieldset><div class="input-group"></div><input type="text" id="createTemplateTitleTextModeratingPhotos" placeholder="Enter Title for the Survey (compulsory)" value="" class="form-control"></fieldset></div>
+                                                   <div class="controls rowTitleBackgroundColor"><fieldset><div class="input-group"></div><input type="text" id="createTemplateTitleTextModeratingPhotos" placeholder="Enter Title for the Survey (compulsory)" value="" class="form-control"></fieldset></div>
                                                </div>
-                                               <div class="control-group" style="">
+                                               <div class="control-group rowDescriptionBackgroundColor" style="">
                                                    <label class="control-label" for="textfield">
                                                        <b>Description</b></label>                                                 
-                                                   <div class="controls">
+                                                   <div class="controls rowDescriptionBackgroundColor">
                                                         <textarea style="height: 150px;" class="input-block-level form-control textarea" id="createTemplateDescriptionTextModeratingPhotos" name="textarea" placeholder="Enter Brief Description about your Survey"></textarea>
                                                    </div>
                                                </div>
-                                               <div class="control-group" ng-show="jobTemplate[0].visible">
+                                               <div class="control-group rowInstructionsBackgroundColor" ng-show="jobTemplate[0].visible">
                                                    <label for="textfield" class="control-label">
                                                         
-                                                       <a  role="button" class="btn btn-primary">
-                                                       Add</a><b><small>Instructions</small></b></label>
-                                                   <div class="controls">
+                                                       <b><small>Instructions</small></b></label>
+                                                   <div class="controls rowInstructionsBackgroundColor">
                                                        <ul id="editableInstructionsListIDModeratingPhotos">
                                
 
@@ -74,16 +73,15 @@
                                                             </div>
                                                             <div class="modal-footer clearfix">
                                      
-                                                                <button ng-click="addEditableInstructions()" class="btn btn-primary pull-left"><i class="fa fa-envelope"></i> Submit </button>
+                                                                <button ng-click="addEditableInstructions()" class="btn btn-primary"><i class="fa fa-envelope"></i> Insert </button>
                                                             </div>
                                                        
                                                    </div>
                                                </div>       
-                                               <div class="control-group" ng-show="jobTemplate[1].visible">
+                                               <div class="control-group rowSAQBackgroundColor" ng-show="jobTemplate[1].visible">
                                                    <label for="textfield" class="control-label">
-                                                       <a role="button" class="btn btn-primary">
-                                                           Add</a><b><small>Query</small></b></label>
-                                                   <div class="controls">
+                                                       <b><small>Query</small></b></label>
+                                                   <div class="controls rowSAQBackgroundColor">
                                                         <div id="addSingleAnswerQuestionIDModeratingPhotos"></div>
                                                          <div class="modal-body">                            
                                                             <div>                                
@@ -94,20 +92,17 @@
                                                         </div>
                                                         <div class="modal-footer clearfix">
 
-                                                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard </button>
-
                                                             <button class="btn btn-primary" ng-click="InsertSingleQuestionRow()">
-                                                                    Submit</button> 
+                                                                    Insert</button> 
                                                         </div>
                                                    </div>
 
                                                </div>
                                                 
-                                                <div class="control-group" id="ModeratingPhotosViewAfterUploadId">
+                                                <div class="control-group rowMAQBackgroundColor" id="ModeratingPhotosViewAfterUploadId">
                                                    <label class="control-label">
-                                                       <a role="button" class="btn btn-primary" ng-click="refreshModeratingPhotosListDiv()">
-                                                           Refresh</a><b><small>click refresh to see latest uploaded files.</small></b></label>
-                                                   <div class="controls">
+                                                       <b><small>your uploaded files will appear in this section</small></b></label>
+                                                   <div class="controls rowMAQBackgroundColor">
                                                           <div class="row">
                                                             <div class="col-lg-3 col-xs-6" ng-repeat="imgurImage in imgurImageTemplateModeratingPhotos">
 		                                                        <a  title="{{jobTemplate[1].singleQuestionsList[0].Question}}{{imgurImageTemplateModeratingPhotosImageTitleOptionsList}}" data-fancybox-group="gallery" href="{{imgurImage.data.link}}" class="fancybox"><img class="MaxUploadedSmallSizedModeratingPhotos" alt="" ng-src="{{imgurImage.data.link_s}}"></a><br /><span class="imgurImagesUploadManageClass" ng-click="DeleteEditImgurImageByIdFunction(imgurImage.data.id)">delete</span>
@@ -116,21 +111,19 @@
                                                    </div>
                                                </div>
                                                                                                                                                                                        
-                                                <div class="control-group">
+                                                <div class="control-group rowTAQBackgroundColor">
                                                    <label class="control-label">
-                                                       <a href="" role="button" class="btn btn-primary" data-toggle="modal">
-                                                           Upload</a><b><small>Select from form input</small></b></label>
-                                                   <div class="controls">
+                                                       <b><small>drag and drop set of images</small></b></label>
+                                                   <div class="controls rowTAQBackgroundColor">
                                                          <div class="dropbox" id="dropboxModeratingPhotos">
 			                                                <span class="message">Drop images here to upload. <br /><i>(they will only be visible to you)</i></span>
 		                                                </div> 
                                                    </div>
                                                </div>
-                                               <div class="control-group">
+                                               <div class="control-group rowBudgetBackgroundColor">
                                                    <label class="control-label">
-                                                       <a role="button" class="btn btn-primary">
-                                                           Budget</a><b><small>Choose your budget</small></b></label>
-                                                   <div class="controls">                                                       
+                                                       Budget<br /><b><small>Choose your budget</small></b></label>
+                                                   <div class="controls rowBudgetBackgroundColor">                                                       
                                                        <table class="table table-bordered">
                                                             <tbody><tr>                                                                
                                                                 <th>Type</th>
@@ -139,13 +132,13 @@
                                                             <tr>                                                                
                                                                 <td>Quantity of Workforce Required</td>
                                                                 <td>
-                                                                    <input id="totalNumberOfThreads" type="text" name="totalNumberOfThreads" placeholder="Min 1 Required" value="1"  disabled/>
+                                                                    <input id="totalNumberOfThreads" class="form-control" type="text" name="totalNumberOfThreads" placeholder="Min 1 Required" value="1"  disabled/>
                                                                 </td>                                                                
                                                             </tr>
                                                             <tr>                                                                
                                                                 <td>Amount Payable To each Workforce ($)</td>
                                                                 <td>                                                                    
-                                                                    <input id="amountPerThreadTextBoxInput" type="text" name="amountPerThread" placeholder="Min 0.03 Required" value="1" />                                                                    
+                                                                    <input id="amountPerThreadTextBoxInput" class="form-control" type="text" name="amountPerThread" placeholder="Min 0.03 Required" value="1" />                                                                    
                                                                 </td>                                                                
                                                             </tr>
                                                             <tr>                                                                
@@ -158,11 +151,13 @@
                                                     
                                                    </div>
                                                </div>
-                                               <div class="form-actions">
-                                                   <button class="btn btn-primary" ng-click="ClientCreateModeratingPhotosFunction()">
-                                                       Create</button>
-                                                   <button type="button" class="btn">
-                                                       Need More Info</button>
+                                               <div class="form-actions rowSurveySubmitBackgroundColor">
+                                                    <div class="innerDivCenterAlign">
+                                                           <button class="btn btn-primary" ng-click="ClientCreateModeratingPhotosFunction()">
+                                                               Create Template</button>
+                                                           <button type="button" class="btn btn btn-warning">
+                                                               view sample</button>
+                                                       </div>
                                                </div>
                                            </form>
                                        </div>
