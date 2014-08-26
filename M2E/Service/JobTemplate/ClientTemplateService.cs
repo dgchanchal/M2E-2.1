@@ -32,10 +32,6 @@ namespace M2E.Service.JobTemplate
             var response = new ResponseModel<List<ClientTemplateResponse>>();
             var templateData = _db.CreateTemplateQuestionInfoes.OrderByDescending(x => x.creationTime).Where(x=>x.username == username).ToList();
 
-            const string status_done = "done";
-            const string status_assigned = "assigned";
-            const string status_reviewed = "reviewed";
-
             response.Status = 200;
             response.Message = "success";
             response.Payload = new List<ClientTemplateResponse>();
@@ -45,8 +41,8 @@ namespace M2E.Service.JobTemplate
                 {
                     if (job.type == Constants.type_dataEntry && job.subType == Constants.subType_Transcription)
                     {
-                        long JobCompleted = _db.UserMultipleJobMappings.Where(x => x.refKey == job.referenceId && x.status == status_done).Count();
-                        long JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == job.referenceId && x.status == status_assigned).Count();
+                        long JobCompleted = _db.UserMultipleJobMappings.Where(x => x.refKey == job.referenceId && x.status == Constants.status_done).Count();
+                        long JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == job.referenceId && x.status == Constants.status_assigned).Count();
                         long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
                         if (JobCompleted > Convert.ToInt32(job.totalThreads))
                             JobCompleted = Convert.ToInt32(job.totalThreads);
@@ -70,8 +66,8 @@ namespace M2E.Service.JobTemplate
                     }
                     else
                     {
-                        long JobCompleted = _db.UserJobMappings.Where(x => x.refKey == job.referenceId && x.status == status_done).Count();
-                        long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == job.referenceId && x.status == status_assigned).Count();
+                        long JobCompleted = _db.UserJobMappings.Where(x => x.refKey == job.referenceId && x.status == Constants.status_done).Count();
+                        long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == job.referenceId && x.status == Constants.status_assigned).Count();
                         long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
                         if (JobCompleted > Convert.ToInt32(job.totalThreads))
                             JobCompleted = Convert.ToInt32(job.totalThreads);
@@ -110,10 +106,7 @@ namespace M2E.Service.JobTemplate
         public ResponseModel<ClientTemplateResponse> GetTemplateInformationByRefKey(string username,long id)
         {
             var response = new ResponseModel<ClientTemplateResponse>();
-            
-            const string status_done = "done";
-            const string status_assigned = "assigned";
-            const string status_reviewed = "reviewed";
+         
             var userInfo = _db.Users.SingleOrDefault(x => x.Username == username);
             var clientJobInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.Id == id && x.username == username);
             var job = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == clientJobInfo.referenceId && x.username == username); ;
@@ -125,8 +118,8 @@ namespace M2E.Service.JobTemplate
                 if ((job.type == Constants.type_dataEntry && job.subType == Constants.subType_Transcription)||
                     (job.type == Constants.type_moderation && job.subType == Constants.subType_moderatingPhotos))
                 {
-                    long JobCompleted = _db.UserMultipleJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == status_done).Count();
-                    long JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == status_assigned).Count();
+                    long JobCompleted = _db.UserMultipleJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == Constants.status_done).Count();
+                    long JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == Constants.status_assigned).Count();
                     long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
 
                     if (JobCompleted > Convert.ToInt32(clientJobInfo.totalThreads))
@@ -154,8 +147,8 @@ namespace M2E.Service.JobTemplate
                 }
                 else
                 {
-                    long JobCompleted = _db.UserJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == status_done).Count();
-                    long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == status_assigned).Count();
+                    long JobCompleted = _db.UserJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == Constants.status_done).Count();
+                    long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == Constants.status_assigned).Count();
                     long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
 
                     if (JobCompleted > Convert.ToInt32(clientJobInfo.totalThreads))
@@ -212,22 +205,21 @@ namespace M2E.Service.JobTemplate
                     ClientSurveyResultResponseListData.resultList = new List<ClientSurveyResultResponse>();
                     //int index = 0;
                     foreach (var singleQuestionsLists in createTemplateSingleQuestionsListsCreateResponse)
-                    {
-                        const string questionTypeSAQ = "SAQ";
+                    {                        
                         var mapRes = new Dictionary<string, int>();
 
                         var ClientSurveyResultResponseData = new ClientSurveyResultResponse();
-                        ClientSurveyResultResponseData.questionType = questionTypeSAQ;
+                        ClientSurveyResultResponseData.questionType = Constants.questionTypeSAQ;
                         ClientSurveyResultResponseData.question = singleQuestionsLists.Question;
                         ClientSurveyResultResponseData.options = singleQuestionsLists.Options;
-                        ClientSurveyResultResponseData.UniqueId = questionTypeSAQ + singleQuestionsLists.Id;
+                        ClientSurveyResultResponseData.UniqueId = Constants.questionTypeSAQ + singleQuestionsLists.Id;
                         //ClientSurveyResultResponseData.index = index;
                         ClientSurveyResultResponseData.resultMap = new Dictionary<string, int>();
                         var optionsList = singleQuestionsLists.Options.Split(';');
                         var questionListId = Convert.ToString(singleQuestionsLists.Id);
                         var map = _db.UserSurveyResultToBeRevieweds1
-                                     .Where(x=>x.refKey == singleQuestionsLists.referenceKey && 
-                                               x.type == questionTypeSAQ &&
+                                     .Where(x=>x.refKey == singleQuestionsLists.referenceKey &&
+                                               x.type == Constants.questionTypeSAQ &&
                                                x.questionId == questionListId)
                                      .GroupBy(x=>x.answer)
                                      .ToDictionary(x=>x.Key, x=>x.Count());
@@ -245,22 +237,21 @@ namespace M2E.Service.JobTemplate
                     }
 
                     foreach (var multipleQuestionsLists in createTemplateMultipleQuestionsListsCreateResponse)
-                    {
-                        const string questionTypeMAQ = "MAQ";
+                    {                        
                         var mapRes = new Dictionary<string, int>();
 
                         var ClientSurveyResultResponseData = new ClientSurveyResultResponse();
-                        ClientSurveyResultResponseData.questionType = questionTypeMAQ;
+                        ClientSurveyResultResponseData.questionType = Constants.questionTypeMAQ;
                         ClientSurveyResultResponseData.question = multipleQuestionsLists.Question;
                         ClientSurveyResultResponseData.options = multipleQuestionsLists.Options;
-                        ClientSurveyResultResponseData.UniqueId = questionTypeMAQ + multipleQuestionsLists.Id;
+                        ClientSurveyResultResponseData.UniqueId = Constants.questionTypeMAQ + multipleQuestionsLists.Id;
                         //ClientSurveyResultResponseData.index = index;
                         ClientSurveyResultResponseData.resultMap = new Dictionary<string, int>();
                         var optionsList = multipleQuestionsLists.Options.Split(';');
                         var questionListId = Convert.ToString(multipleQuestionsLists.Id);
                         var map = _db.UserSurveyResultToBeRevieweds1
                                      .Where(x => x.refKey == multipleQuestionsLists.referenceKey &&
-                                               x.type == questionTypeMAQ &&
+                                               x.type == Constants.questionTypeMAQ &&
                                                x.questionId == questionListId)
                                      .GroupBy(x => x.answer)
                                      .ToDictionary(x => x.Key, x => x.Count());
@@ -277,22 +268,21 @@ namespace M2E.Service.JobTemplate
                     }
 
                     foreach (var listBoxQuestionsLists in createTemplateListBoxQuestionsListsCreateResponse)
-                    {
-                        const string questionTypeLAQ = "LAQ";
+                    {                        
                         var mapRes = new Dictionary<string, int>();
 
                         var ClientSurveyResultResponseData = new ClientSurveyResultResponse();
-                        ClientSurveyResultResponseData.questionType = questionTypeLAQ;
+                        ClientSurveyResultResponseData.questionType = Constants.questionTypeLAQ;
                         ClientSurveyResultResponseData.question = listBoxQuestionsLists.Question;
                         ClientSurveyResultResponseData.options = listBoxQuestionsLists.Options;
-                        ClientSurveyResultResponseData.UniqueId = questionTypeLAQ + listBoxQuestionsLists.Id;
+                        ClientSurveyResultResponseData.UniqueId = Constants.questionTypeLAQ + listBoxQuestionsLists.Id;
                         //ClientSurveyResultResponseData.index = index;
                         ClientSurveyResultResponseData.resultMap = new Dictionary<string, int>();
                         var optionsList = listBoxQuestionsLists.Options.Split(';');
                         var questionListId = Convert.ToString(listBoxQuestionsLists.Id);
                         var map = _db.UserSurveyResultToBeRevieweds1
                                      .Where(x => x.refKey == listBoxQuestionsLists.referenceKey &&
-                                               x.type == questionTypeLAQ &&
+                                               x.type == Constants.questionTypeLAQ &&
                                                x.questionId == questionListId)
                                      .GroupBy(x => x.answer)
                                      .ToDictionary(x => x.Key, x => x.Count());
@@ -309,22 +299,21 @@ namespace M2E.Service.JobTemplate
                     }
 
                     foreach (var textBoxQuestionsLists in createTemplateTextBoxQuestionsListsCreateResponse)
-                    {
-                        const string questionTypeTAQ = "TAQ";
+                    {                        
                         var mapRes = new Dictionary<string, string>();
 
                         var ClientSurveyResultResponseData = new ClientSurveyResultResponse();
-                        ClientSurveyResultResponseData.questionType = questionTypeTAQ;
+                        ClientSurveyResultResponseData.questionType = Constants.questionTypeTAQ;
                         ClientSurveyResultResponseData.question = textBoxQuestionsLists.Question;
                         //ClientSurveyResultResponseData.options = textBoxQuestionsLists.Options;
-                        ClientSurveyResultResponseData.UniqueId = questionTypeTAQ + textBoxQuestionsLists.Id;
+                        ClientSurveyResultResponseData.UniqueId = Constants.questionTypeTAQ + textBoxQuestionsLists.Id;
                         //ClientSurveyResultResponseData.index = index;
                         ClientSurveyResultResponseData.textBoxResultMap = new Dictionary<string, string>();
                         var optionsList = textBoxQuestionsLists.Options.Split(';');
                         var questionListId = Convert.ToString(textBoxQuestionsLists.Id);
                         var map = _db.UserSurveyResultToBeRevieweds1
                                      .Where(x => x.refKey == textBoxQuestionsLists.referenceKey &&
-                                               x.type == questionTypeTAQ &&
+                                               x.type == Constants.questionTypeTAQ &&
                                                x.questionId == questionListId)
                                      .GroupBy(x => x.answer).OrderByDescending(x=>x.Count())
                                      .ToDictionary(x => x.Key, x => x.Count());
@@ -689,17 +678,17 @@ namespace M2E.Service.JobTemplate
             refKey += digitKey + randomValue;
             var createTemplateQuestionsInfoInsert = new CreateTemplateQuestionInfo
             {
-                description = TemplateInfo.description!=null?TemplateInfo.description:"NA",
+                description = TemplateInfo.description!=null?TemplateInfo.description:Constants.NA,
                 username = username,
                 title = req[0].title,
-                visible = "NA",
+                visible = Constants.NA,
                 type = TemplateInfo.type,
                 subType = TemplateInfo.subType,
                 creationTime = DateTime.Now.ToString(CultureInfo.InvariantCulture),
                 referenceId = refKey,
                 totalThreads = TemplateInfo.totalThreads,
-                completed = "NA",
-                verified = "NA",
+                completed = Constants.NA,
+                verified = Constants.NA,
                 payPerUser = TemplateInfo.amountEachThread
             };
 
@@ -742,18 +731,18 @@ namespace M2E.Service.JobTemplate
             
             var createTemplateQuestionsInfoInsert = new CreateTemplateQuestionInfo
             {
-                description = "NA",
+                description = Constants.NA,
                 username = username,
                 title = req[0].title,
-                visible = "NA",
-                type = "NA",
-                subType = "NA",
+                visible = Constants.NA,
+                type = Constants.NA,
+                subType = Constants.NA,
                 creationTime = DateTime.Now.ToString(CultureInfo.InvariantCulture),
                 referenceId = refKey,
-                totalThreads = "NA",
-                completed = "NA",
-                verified = "NA",
-                payPerUser = "NA"
+                totalThreads = Constants.NA,
+                completed = Constants.NA,
+                verified = Constants.NA,
+                payPerUser = Constants.NA
             };
 
             _db.CreateTemplateQuestionInfoes.Add(createTemplateQuestionsInfoInsert);
@@ -1026,14 +1015,14 @@ namespace M2E.Service.JobTemplate
             {
                 var CreateTemplateImgurImagesListInsert = new CreateTemplateImgurImagesList
                 {
-                    assignedTo = "NA",
-                    assignTime = "NA",
-                    completedAt = "NA",
+                    assignedTo = Constants.NA,
+                    assignTime = Constants.NA,
+                    completedAt = Constants.NA,
                     referenceKey = refKey,
-                    status = "open",
+                    status = Constants.status_open,
                     username = username,
                     verified = "No",
-                    imgurId = imageInfo.data.id==null?"NA":imageInfo.data.id,
+                    imgurId = imageInfo.data.id == null ? Constants.NA : imageInfo.data.id,
                     imgurDeleteHash = imageInfo.data.deletehash,
                     imgurLink = imageInfo.data.link
                 };

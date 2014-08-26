@@ -375,12 +375,22 @@
     <Content Include="App\Pages\BeforeLogin\TnC\TnC.html" />
     <Content Include="App\Pages\BeforeLogin\TnC\TnC.js" />
     <Content Include="App\Pages\BeforeLogin\UserMoreInfo\UserMoreInfo.html" />
+    <Content Include="App\Pages\ClientAfterLogin\ContentWritting\articleWritting\articleWritting.html" />
+    <Content Include="App\Pages\ClientAfterLogin\ContentWritting\articleWritting\articleWritting.js" />
     <Content Include="App\Pages\ClientAfterLogin\Controller\common\AngularFileUploadController.js" />
     <Content Include="App\Pages\ClientAfterLogin\Controller\singleRControllerAfterLogin.js" />
+    <Content Include="App\Pages\ClientAfterLogin\DataEntry\TranscribeAV\TranscribeAV.html" />
+    <Content Include="App\Pages\ClientAfterLogin\DataEntry\TranscribeAV\TranscribeAV.js" />
+    <Content Include="App\Pages\ClientAfterLogin\DataEntry\taggingImage\taggingImage.html" />
+    <Content Include="App\Pages\ClientAfterLogin\DataEntry\taggingImage\taggingImage.js" />
+    <Content Include="App\Pages\ClientAfterLogin\DataEntry\dataCollection\dataCollection.html" />
+    <Content Include="App\Pages\ClientAfterLogin\DataEntry\dataCollection\dataCollection.js" />
     <Content Include="App\Pages\ClientAfterLogin\DataEntry\TranscriptionResponseDetail\TranscriptionResponseDetail.html" />
     <Content Include="App\Pages\ClientAfterLogin\DataEntry\TranscriptionResponseDetail\TranscriptionResponseDetail.js" />
     <Content Include="App\Pages\ClientAfterLogin\Moderation\ModeratingPhotosResponseDetail\ModeratingPhotosResponseDetail.html" />
     <Content Include="App\Pages\ClientAfterLogin\Moderation\ModeratingPhotosResponseDetail\ModeratingPhotosResponseDetail.js" />
+    <Content Include="App\Pages\ClientAfterLogin\Survey\SurveyLink\SurveyLink.html" />
+    <Content Include="App\Pages\ClientAfterLogin\Survey\SurveyLink\SurveyLink.js" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateResponseDetail\TemplateResponseDetail.html" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateResponseDetail\TemplateResponseDetail.js" />
     <Content Include="App\Pages\ClientAfterLogin\DataEntry\TranscriptionTemplate\TranscriptionTemplate.html" />
@@ -1403,7 +1413,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App\Pages\ClientAfterLogin\Ads\" />
-    <Folder Include="App\Pages\ClientAfterLogin\ContentWriting\" />
     <Folder Include="App\third-Party\html5-file-upload\uploads\" />
     <Folder Include="App_Data\" />
     <Folder Include="DAO\" />

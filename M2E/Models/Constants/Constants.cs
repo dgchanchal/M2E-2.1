@@ -17,5 +17,10 @@ namespace M2E.Models.Constants
         public const string type_moderation = "moderation";
         public const string subType_moderatingPhotos = "moderatingPhotos";
         public const string NA = "NA";
+
+        public const string questionTypeSAQ = "SAQ";
+        public const string questionTypeMAQ = "MAQ";
+        public const string questionTypeLAQ = "LAQ";
+        public const string questionTypeTAQ = "TAQ";
     }
 }

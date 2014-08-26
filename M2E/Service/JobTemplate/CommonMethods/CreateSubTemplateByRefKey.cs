@@ -7,6 +7,7 @@ using M2E.CommonMethods;
 using System.Reflection;
 using System.Globalization;
 using System.Data.Entity.Validation;
+using M2E.Models.Constants;
 
 namespace M2E.Service.JobTemplate.CommonMethods
 {
@@ -35,11 +36,11 @@ namespace M2E.Service.JobTemplate.CommonMethods
                                 Number = instructionsList.Number,
                                 Text = instructionsList.Text,
                                 assignTime = DateTime.Now.ToString(CultureInfo.InvariantCulture),
-                                assignedTo = "NA",
-                                completedAt = "NA",
+                                assignedTo = Constants.NA,
+                                completedAt = Constants.NA,
                                 referenceKey = refKey,
-                                status = "Open",
-                                verified = "NA"
+                                status = Constants.status_open,
+                                verified = Constants.NA
                             };
                             _db.CreateTemplateeditableInstructionsLists.Add(createTemplateeditableInstructionsListInsert);
                         }
@@ -54,11 +55,11 @@ namespace M2E.Service.JobTemplate.CommonMethods
                                 Question = singleQuestionList.Question,
                                 Options = singleQuestionList.Options,
                                 assignTime = DateTime.Now.ToString(CultureInfo.InvariantCulture),
-                                assignedTo = "NA",
-                                completedAt = "NA",
+                                assignedTo = Constants.NA,
+                                completedAt = Constants.NA,
                                 referenceKey = refKey,
-                                status = "Open",
-                                verified = "NA"
+                                status = Constants.status_open,
+                                verified = Constants.NA
                             };
                             _db.CreateTemplateSingleQuestionsLists.Add(createTemplateSingleQuestionsListInsert);
                         }
@@ -73,11 +74,11 @@ namespace M2E.Service.JobTemplate.CommonMethods
                                 Question = multipleQuestionsList.Question,
                                 Options = multipleQuestionsList.Options,
                                 assignTime = DateTime.Now.ToString(CultureInfo.InvariantCulture),
-                                assignedTo = "NA",
-                                completedAt = "NA",
+                                assignedTo = Constants.NA,
+                                completedAt = Constants.NA,
                                 referenceKey = refKey,
-                                status = "Open",
-                                verified = "NA"
+                                status = Constants.status_open,
+                                verified = Constants.NA
                             };
                             _db.CreateTemplateMultipleQuestionsLists.Add(createTemplateMultipleQuestionsListInsert);
                         }
@@ -92,11 +93,11 @@ namespace M2E.Service.JobTemplate.CommonMethods
                                 Question = textBoxQuestionsList.Question,
                                 Options = textBoxQuestionsList.Options,
                                 assignTime = DateTime.Now.ToString(CultureInfo.InvariantCulture),
-                                assignedTo = "NA",
-                                completedAt = "NA",
+                                assignedTo = Constants.NA,
+                                completedAt = Constants.NA,
                                 referenceKey = refKey,
-                                status = "Open",
-                                verified = "NA"
+                                status = Constants.status_open,
+                                verified = Constants.NA
                             };
                             _db.CreateTemplateTextBoxQuestionsLists.Add(createTemplateTextBoxQuestionsListInsert);
                         }
@@ -111,11 +112,11 @@ namespace M2E.Service.JobTemplate.CommonMethods
                                 Question = listBoxQuestionsList.Question,
                                 Options = listBoxQuestionsList.Options,
                                 assignTime = DateTime.Now.ToString(CultureInfo.InvariantCulture),
-                                assignedTo = "NA",
-                                completedAt = "NA",
+                                 assignedTo = Constants.NA,
+                                completedAt = Constants.NA,
                                 referenceKey = refKey,
-                                status = "Open",
-                                verified = "NA"
+                                status = Constants.status_open,
+                                verified = Constants.NA
                             };
                             _db.CreateTemplateListBoxQuestionsLists.Add(createTemplateListBoxQuestionsListInsert);
                         }

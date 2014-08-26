@@ -191,7 +191,7 @@ namespace M2E.Controllers
             M2ESession session = TokenManager.getSessionInfo(guid);
             var clientTemplate = new ClientTemplateService();
             var isValidToken = TokenManager.IsValidSession(guid);
-            var fileName = "Transcription_" + session.UserName + "_" + DateTime.Now.ToString("yyyy_MM_dd");
+            var fileName = "Transcription_" + session.UserName + "_" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss");
             if (isValidToken)
             {
                 var CompletedTranscriptions = clientTemplate.GetAllCompletedTranscriptionInformation(session.UserName, id);
