@@ -38,7 +38,7 @@
                                            <form class='form-horizontal form-bordered'>
                                               
                                               <div class="control-group">                                                        
-                                                   <a ng-click="addInstructionsRow()" role="button" class="btn btn-success btn-flat"><i
+                                                   <a ng-click="addInstructionsRow()" role="button" ng-class="{true:'btn btn-danger btn-flat', false:'btn btn-success btn-flat'}[jobTemplate[0].visible]"><i
                                                                                                                     class="icon-plus-sign"></i>{{jobTemplate[0].buttonText}}</a>
                                               
                                                </div>
