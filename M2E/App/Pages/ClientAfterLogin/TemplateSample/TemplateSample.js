@@ -7,19 +7,20 @@ define([appLocation.postLogin], function (app) {
         $scope.subType = $routeParams.subType;
         if ($routeParams.type == TemplateInfoModel.type_survey) {
             if ($routeParams.subType == TemplateInfoModel.subType_productSurvey) {
-                $scope.TemplateUrl = "#/createTemplate";
+                $scope.TemplateUrl = "#/createTemplate/" + $routeParams.type + "/" + $routeParams.subType;
             }
         }
         else if ($routeParams.type == TemplateInfoModel.type_moderation) {
             if ($routeParams.subType == TemplateInfoModel.subType_imageModeration) {
-                $scope.TemplateUrl = "#/moderatingPhotos";
+                $scope.TemplateUrl = "#/moderatingPhotos/" + $routeParams.type + "/" + $routeParams.subType;
             }
         }
         else if ($routeParams.type == TemplateInfoModel.type_dataEntry) {
             if ($routeParams.subType == TemplateInfoModel.subType_Transcription) {
-                $scope.TemplateUrl = "#/transcriptionTemplate";
+                $scope.TemplateUrl = "#/transcriptionTemplate/" + $routeParams.type + "/" + $routeParams.subType;
             }
         }
+        console.log($routeParams.type + "   " + TemplateInfoModel.type_dataEntry + "   " + $routeParams.subType + "   " + TemplateInfoModel.subType_Transcription);
     });
 
 });

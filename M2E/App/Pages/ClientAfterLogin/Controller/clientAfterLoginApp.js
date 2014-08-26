@@ -4,15 +4,15 @@ define([appLocation.postLogin], function (app) {
 
         $routeProvider.when("/", { templateUrl: "../../App/Pages/ClientAfterLogin/Index/Index.html" }).
                        when("/edit", { templateUrl: "../../App/Pages/ClientAfterLogin/EditPage/EditPage.html" }).
-                       when("/createTemplate", { templateUrl: "../../App/Pages/ClientAfterLogin/Survey/CreateTemplate/CreateTemplate.html" }).
+                       when("/createTemplate/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/Survey/CreateTemplate/CreateTemplate.html" }).
                        when("/editTemplate/:username/:templateid", { templateUrl: "../../App/Pages/ClientAfterLogin/EditTemplate/EditTemplate.html" }).
                        when("/templateSample/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/TemplateSample/TemplateSample.html" }).
                        when("/templateInfo/:type/:subType/:templateId", { templateUrl: "../../App/Pages/ClientAfterLogin/TemplateInfo/TemplateInfo.html" }).
                        when("/templateResponseDetail/:type/:subType/:templateId", { templateUrl: "../../App/Pages/ClientAfterLogin/TemplateResponseDetail/TemplateResponseDetail.html" }).
                        when("/transcriptionResponseDetail/:type/:subType/:templateId", { templateUrl: "../../App/Pages/ClientAfterLogin/DataEntry/TranscriptionResponseDetail/TranscriptionResponseDetail.html" }).
-                       when("/moderatingPhotos", { templateUrl: "../../App/Pages/ClientAfterLogin/Moderation/ModeratingPhotos/ModeratingPhotos.html" }).
+                       when("/moderatingPhotos/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/Moderation/ModeratingPhotos/ModeratingPhotos.html" }).
                        when("/moderatingPhotosResponseDetail/:type/:subType/:templateId", { templateUrl: "../../App/Pages/ClientAfterLogin/Moderation/ModeratingPhotosResponseDetail/ModeratingPhotosResponseDetail.html" }).
-                       when("/transcriptionTemplate", { templateUrl: "../../App/Pages/ClientAfterLogin/DataEntry/TranscriptionTemplate/TranscriptionTemplate.html" }).
+                       when("/transcriptionTemplate/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/DataEntry/TranscriptionTemplate/TranscriptionTemplate.html" }).
                        otherwise({ templateUrl: "../../Resource/templates/beforeLogin/contentView/404.html" });
 
     });
@@ -73,7 +73,7 @@ define([appLocation.postLogin], function (app) {
                { value: "Do Excel work", link: "#" },
                { value: "Find information", link: "#" },
                { value: "Post advertisements", link: "#" },
-               { value: "Transcription", link: "#/templateSample/dataEntry/transcription" }
+               { value: "Transcription", link: "#/templateSample/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_Transcription }
                ]
            },
            {
@@ -90,7 +90,7 @@ define([appLocation.postLogin], function (app) {
            },
            {
                value: "Survey", dropDownMenuShow: true, dropDownSubMenuClass: "dropdown-submenu", dropDownMenuClass: "dropdown-menu", dropDownSubMenuArrow: "dropdown", dropDownMenuList: [
-                 { value: "Product survey", link: "#/templateSample/survey/productSurvey" },
+                 { value: "Product survey", link: "#/templateSample/" + TemplateInfoModel.type_survey + "/" + TemplateInfoModel.subType_productSurvey },
                  { value: "User feedback survey", link: "#" },
                  { value: "Pools", link: "#" }
                ]
@@ -98,7 +98,7 @@ define([appLocation.postLogin], function (app) {
            {
                value: "Moderation", dropDownMenuShow: true, dropDownSubMenuClass: "dropdown-submenu", dropDownMenuClass: "dropdown-menu", dropDownSubMenuArrow: "dropdown", dropDownMenuList: [
                  { value: "Moderating Ads", link: "#" },
-                 { value: "Moderating Photos", link: "#/templateSample/moderation/moderatingPhotos" },
+                 { value: "Moderating Photos", link: "#/templateSample/" + TemplateInfoModel.type_moderation + "/" + TemplateInfoModel.subType_imageModeration },
                  { value: "Moderating Music", link: "#" },
                  { value: "Moderating Video", link: "#" }
                ]
