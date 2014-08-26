@@ -31,7 +31,7 @@
                                    <div class="box box-color box-bordered">
                                        <div class="box-title">
                                            <h3>
-                                               <i class="icon-user"></i>Edit user profile
+                                               <i class="icon-user"></i>Create Your Survey
                                            </h3>
                                        </div>
                                        <div class="box-content nopadding" ng-cloak>
@@ -51,24 +51,23 @@
                                                                                                                                                                   
                                                </div>
                                                 
-                                               <div class="control-group" style="">
+                                               <div class="control-group rowTitleBackgroundColor" style="">
                                                    <label class="control-label" for="textfield">
                                                        <b>Title</b></label>                                                 
-                                                   <div class="controls"><fieldset><div class="input-group"></div><input type="text" id="createTemplateTitleText" placeholder="Enter Title for the Survey (compulsory)" value="" class="form-control"></fieldset></div>
+                                                   <div class="controls rowTitleBackgroundColor"><fieldset><div class="input-group"></div><input type="text" id="createTemplateTitleText" placeholder="Enter Title for the Survey (compulsory)" value="" class="form-control"></fieldset></div>
                                                </div>
-                                               <div class="control-group" style="">
+                                               <div class="control-group rowDescriptionBackgroundColor" style="">
                                                    <label class="control-label" for="textfield">
                                                        <b>Description</b></label>                                                 
-                                                   <div class="controls">
+                                                   <div class="controls rowDescriptionBackgroundColor">
                                                    <textarea style="height: 150px;" class="input-block-level form-control textarea" id="createTemplateDescriptionText" name="textarea" placeholder="Enter Brief Description about your Survey"></textarea>
                                                    </div>
                                                </div>
-                                               <div class="control-group" ng-show="jobTemplate[0].visible">
+                                               <div class="control-group rowInstructionsBackgroundColor" ng-show="jobTemplate[0].visible">
                                                    <label for="textfield" class="control-label">
                                                         
-                                                       <a  role="button" class="btn btn-primary">
-                                                       Add</a><b><small>Instructions</small></b></label>
-                                                   <div class="controls">
+                                                       <b><small>Instructions</small></b></label>
+                                                   <div class="controls rowInstructionsBackgroundColor">
                                                        <ul id="editableInstructionsListID">
                                
 
@@ -81,16 +80,15 @@
                                                             </div>
                                                             <div class="modal-footer clearfix">
                                      
-                                                                <button ng-click="addEditableInstructions()" class="btn btn-primary pull-left"><i class="fa fa-envelope"></i> Submit </button>
+                                                                <button ng-click="addEditableInstructions()" class="btn btn-primary"><i class="fa fa-envelope"></i> Insert</button>
                                                             </div>
                                                        
                                                    </div>
                                                </div>       
-                                               <div class="control-group" ng-show="jobTemplate[1].visible">
+                                               <div class="control-group rowSAQBackgroundColor" ng-show="jobTemplate[1].visible">
                                                    <label for="textfield" class="control-label">
-                                                       <a role="button" class="btn btn-primary">
-                                                           Add</a><b><small>Question</small></b></label>
-                                                   <div class="controls">
+                                                       <b><small>Question</small></b></label>
+                                                   <div class="controls rowSAQBackgroundColor">
                                                         <div id="addSingleAnswerQuestionID"></div>
                                                          <div class="modal-body">                            
                                                             <div>                                
@@ -100,20 +98,17 @@
 
                                                         </div>
                                                         <div class="modal-footer clearfix">
-
-                                                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard </button>
-
+                                                            
                                                             <button class="btn btn-primary" ng-click="InsertSingleQuestionRow()">
-                                                                    Submit</button> 
+                                                                    Insert</button> 
                                                         </div>
                                                    </div>
 
                                                </div>
-                                               <div class="control-group" ng-show="jobTemplate[2].visible">
+                                               <div class="control-group rowMAQBackgroundColor" ng-show="jobTemplate[2].visible">
                                                    <label for="textfield" class="control-label">
-                                                       <a role="button" class="btn btn-primary">
-                                                           Add</a><b><small>Question with multi ans</small></b></label>
-                                                   <div class="controls">
+                                                       <b><small>Question with multi ans</small></b></label>
+                                                   <div class="controls rowMAQBackgroundColor">
                                                         <div id="addMultipleAnswerQuestionID"></div>
                                                         <div class="modal-body">                            
                                                             <div>                                
@@ -124,18 +119,15 @@
                                                         </div>
                                                         <div class="modal-footer clearfix">
 
-                                                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard </button>
-
                                                             <button class="btn btn-primary" ng-click="InsertMultipleQuestionRow()">
-                                                                Submit</button>    
+                                                                Insert</button>    
                                                         </div>
                                                    </div>
                                                </div>
-                                               <div class="control-group" ng-show="jobTemplate[3].visible">
+                                               <div class="control-group rowTAQBackgroundColor" ng-show="jobTemplate[3].visible">
                                                    <label for="textfield" class="control-label">
-                                                       <a role="button" class="btn btn-primary" >
-                                                           Add</a><b><small>Question with single line ans</small></b></label>                                                 
-                                                   <div class="controls">
+                                                       <b><small>Question with single line ans</small></b></label>                                                 
+                                                   <div class="controls rowTAQBackgroundColor">
                                                         <div id="addTextBoxAnswerQuestionID"></div>
                                                        <div class="modal-body">                            
                                                         <div>                                
@@ -146,18 +138,15 @@
                                                     </div>
                                                     <div class="modal-footer clearfix">
 
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard </button>
-
                                                         <button class="btn btn-primary" ng-click="InsertTextBoxQuestionRow()">
-                                                            Submit</button>    
+                                                            Insert</button>    
                                                     </div>
                                                    </div>
                                                </div>
-                                               <div class="control-group" ng-show="jobTemplate[4].visible">
+                                               <div class="control-group rowLAQBackgroundColor" ng-show="jobTemplate[4].visible">
                                                    <label class="control-label">
-                                                       <a role="button" class="btn btn-primary">
-                                                           Add</a><b><small>Question with list box ans</small></b></label>
-                                                   <div class="controls">
+                                                      <b><small>Question with list box ans</small></b></label>
+                                                   <div class="controls rowLAQBackgroundColor">
                                                        <div id="addListBoxAnswerQuestionID"></div>
                                                        <div class="modal-body">                            
                                                         <div>                                
@@ -168,19 +157,16 @@
 
                                                     </div>
                                                     <div class="modal-footer clearfix">
-
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Discard </button>
-
+                                                        
                                                         <button class="btn btn-primary" ng-click="InsertListBoxQuestionRow()">
-                                                            Submit</button>    
+                                                            Insert</button>    
                                                     </div>
                                                    </div>
                                                </div>
-                                               <div class="control-group">
+                                               <div class="control-group rowBudgetBackgroundColor">
                                                    <label class="control-label">
-                                                       <a role="button" class="btn btn-primary">
-                                                           Budget</a><b><small>Choose your budget</small></b></label>
-                                                   <div class="controls">                                                       
+                                                       Budget<br /><b><small>Choose your budget</small></b></label>
+                                                   <div class="controls rowBudgetBackgroundColor">                                                       
                                                        <table class="table table-bordered">
                                                             <tbody><tr>                                                                
                                                                 <th>Type</th>
@@ -189,13 +175,13 @@
                                                             <tr>                                                                
                                                                 <td>Quantity of Workforce Required</td>
                                                                 <td>
-                                                                    <input id="totalNumberOfThreads" type="text" name="totalNumberOfThreads" placeholder="Min 1 Required" value="1" />
+                                                                    <input id="totalNumberOfThreads" class="form-control" type="text" name="totalNumberOfThreads" placeholder="Min 1 Required" value="1" />
                                                                 </td>                                                                
                                                             </tr>
                                                             <tr>                                                                
                                                                 <td>Amount Payable To each Workforce ($)</td>
                                                                 <td>                                                                    
-                                                                    <input id="amountPerThreadTextBoxInput" type="text" name="amountPerThread" placeholder="Min 0.03 Required" value="1" />                                                                    
+                                                                    <input id="amountPerThreadTextBoxInput" class="form-control" type="text" name="amountPerThread" placeholder="Min 0.03 Required" value="1" />                                                                    
                                                                 </td>                                                                
                                                             </tr>
                                                             <tr>                                                                
@@ -208,11 +194,13 @@
                                                     
                                                    </div>
                                                </div>                                                                                            
-                                               <div class="form-actions">
-                                                   <button class="btn btn-primary" ng-click="ClientCreateTemplateFunction()">
-                                                       Create</button>
-                                                   <button type="button" class="btn">
-                                                       Need More Info</button>
+                                               <div class="form-actions rowSurveySubmitBackgroundColor">
+                                                    <div class="innerDivCenterAlign">
+                                                           <button class="btn btn-success" ng-click="ClientCreateTemplateFunction()">
+                                                               Create Template</button>
+                                                           <button type="button" class="btn btn-warning">
+                                                               view sample</button>
+                                                       </div>
                                                </div>
                                            </form>
                                        </div>

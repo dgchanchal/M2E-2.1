@@ -338,6 +338,39 @@ fieldset {
     padding: 10px;
 }
 
+.rowTitleBackgroundColor {
+    background-color: #F6F9F8 !important;
+}
+.rowDescriptionBackgroundColor {
+    background-color: #EEF2FF !important;
+}
+.rowInstructionsBackgroundColor {
+    background-color: #EEF8EE !important;
+}
+.rowSAQBackgroundColor {
+    background-color: #FAF2EF !important;
+}
+.rowMAQBackgroundColor {
+    background-color: #E9F0E3 !important;
+}
+.rowLAQBackgroundColor {
+    background-color: #F2F6EE !important;
+}
+.rowTAQBackgroundColor {
+    background-color: #FAF1EC !important;
+}
+.rowBudgetBackgroundColor {
+    background-color: #FCF7F4 !important;
+}
+.rowSurveySubmitBackgroundColor {
+    background-color: #662e91 !important;
+}
+
+.innerDivCenterAlign {
+    display: table;
+    margin: 0 auto;
+}
+
 ul, ol {
     margin: 0 0 10px 25px;
     padding: 0;
