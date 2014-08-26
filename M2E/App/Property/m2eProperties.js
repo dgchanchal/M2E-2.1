@@ -13,10 +13,17 @@ var TemplateInfoModel = {
                
         type_survey : "survey",
         subType_productSurvey : "productSurvey",
+        subType_surveyLink : "surveyLink",
         
         type_dataEntry : "dataEntry",
-        subType_Transcription : "Transcription",
-        
+        subType_Transcription : "Transcription",        
+        subType_dataCollection : "dataCollection",
+        subType_taggingImage : "taggingImage",
+        subType_transcribeAV : "transcribeAV",        
+
+        type_contentWritting : "contentWritting",        
+        subType_articleWritting : "articleWritting",
+
         type_moderation : "moderation",        
         subType_imageModeration : "moderatingPhotos"                      
 };

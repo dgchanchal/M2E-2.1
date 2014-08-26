@@ -1,0 +1,134 @@
+﻿
+<!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Dashboard
+                        <small>Control panel</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li class="active">Dashboard</li>
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content" >     <!--ng-controller="ClientAfterLoginTaggingImageTemplate"  -->            
+                    <!-- top row -->
+                    <div class="row">
+                        <div class="col-xs-12 connectedSortable">
+                            
+                        </div><!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+
+                    <!-- Main row -->
+                    <div class="row">
+                        <!-- Left col -->
+                        <section class="col-lg-12 connectedSortable">                            
+                           <div class="box box-color box-bordered">
+               
+                               <section class="col-lg-12 connectedSortable">                            
+                                   <div class="box box-color box-bordered">
+                                       <div class="box-title">
+                                           <h3>
+                                               <i class="icon-user"></i>Data Collection
+                                           </h3>
+                                       </div>
+                                       <div class="box-content">
+                                           <div class="row col-xs-12 col-md-12"><!-- Instructions -->
+                                                <div class="panel panel-primary">
+                                                <div class="panel-heading"><strong>Instructions</strong></div>
+
+                                                <div class="panel-body">
+                                                <p>You must provide 3 tags for the main subject in this image.</p>
+
+                                                <ul>
+	                                                <li>Each tag must be a single word.</li>
+	                                                <li>No tag can be longer than 25 characters.</li>
+	                                                <li>The tags must describe the image, the contents of the image, or some relevant context.</li>
+                                                </ul>
+                                                </div>
+                                                </div>
+                                                <!-- End Instructions -->
+
+                                                <fieldset>
+                                                <div><img src="https://s3.amazonaws.com/bhtemplates/4.jpg" class="imagecontainer" alt="image_url"></div>
+
+                                                <div class="tagfields">
+                                                <div class="form-group"><label>Tag 1:</label> <input type="text" size="30" name="tag1" class="form-control"></div>
+
+                                                <div class="form-group"><label>Tag 2:</label> <input type="text" size="30" name="tag2" class="form-control"></div>
+
+                                                <div class="form-group"><label>Tag 3:</label> <input type="text" size="30" name="tag3" class="form-control"></div>
+                                                </div>
+                                                </fieldset>
+                                                </div>
+                                                                                                
+                                       </div>
+                                   </div>
+                               </section>
+
+                           </div>
+                        </section><!-- /.Left col -->                        
+                    </div><!-- /.row (main row) -->
+
+                </section><!-- /.content -->
+         
+         <div id="TrancriptionFormShowExampleId" style="display:none">
+            fancybox div
+        </div>
+
+        <style>
+        .imagecontainer {
+            border: 1px solid #fbfbfb;
+            display: block;
+            float: left;
+            height: 200px;
+            margin: 0 15px 15px 0;
+            position: relative;
+            width: auto;
+        }
+        .tagfields {
+            display: block;
+            float: left;
+        }
+        </style>
+<script type="text/javascript" charset="utf-8">
+    $('.textarea').wysihtml5();
+
+    $(prettyPrint);
+
+    $(function () {
+        /* BOOTSTRAP SLIDER */
+
+        var lastValueAmountPerThreadTextBoxInput = '1';
+        var lastValueTotalNumberOfThreads = '1';
+        $("#amountPerThreadTextBoxInput").on('change keyup paste mouseup', function () {
+            if ($(this).val() != lastValueAmountPerThreadTextBoxInput) {
+
+                lastValueAmountPerThreadTextBoxInput = $(this).val();
+                updateTotalPayableAmountDiv();
+                console.log(lastValueAmountPerThreadTextBoxInput + ":" + lastValueTotalNumberOfThreads);
+            }
+        });
+
+
+        $("#totalNumberOfThreads").on('change keyup paste mouseup', function () {
+            if ($(this).val() != lastValueTotalNumberOfThreads) {
+                lastValueTotalNumberOfThreads = $(this).val();
+                updateTotalPayableAmountDiv();
+                console.log(lastValueAmountPerThreadTextBoxInput + ":" + lastValueTotalNumberOfThreads);
+            }
+        });
+    });
+
+    function updateTotalPayableAmountDiv() {        
+        $("#TotalAmountPayableCreateTemplate").html($("#amountPerThreadTextBoxInput").val() * $('#totalNumberOfThreads').val());
+    }
+    function roundOffDecimal(num, digit) {
+        (Math.round(num * 100) / 100).toString() //-> "1.1"
+        num.toFixed(digit)
+        //console.log(num);
+        return num;
+    }
+        </script>

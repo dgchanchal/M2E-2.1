@@ -13,6 +13,11 @@ define([appLocation.postLogin], function (app) {
                        when("/moderatingPhotos/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/Moderation/ModeratingPhotos/ModeratingPhotos.html" }).
                        when("/moderatingPhotosResponseDetail/:type/:subType/:templateId", { templateUrl: "../../App/Pages/ClientAfterLogin/Moderation/ModeratingPhotosResponseDetail/ModeratingPhotosResponseDetail.html" }).
                        when("/transcriptionTemplate/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/DataEntry/TranscriptionTemplate/TranscriptionTemplate.html" }).
+                       when("/dataCollectionTemplate/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/DataEntry/dataCollection/dataCollection.html" }).
+                       when("/surveyLinkTemplate/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/Survey/SurveyLink/SurveyLink.html" }).
+                       when("/taggingImageTemplate/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/DataEntry/taggingImage/taggingImage.html" }).
+                       when("/transcribeAVTemplate/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/DataEntry/TranscribeAV/TranscribeAV.html" }).
+                       when("/articleWrittingTemplate/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/ContentWritting/articleWritting/articleWritting.html" }).
                        otherwise({ templateUrl: "../../Resource/templates/beforeLogin/contentView/404.html" });
 
     });
@@ -68,26 +73,26 @@ define([appLocation.postLogin], function (app) {
            {
                value: "Data entry", dropDownMenuShow: true, dropDownSubMenuClass: "dropdown-submenu", dropDownMenuClass: "dropdown-menu", dropDownSubMenuArrow: "dropdown", dropDownMenuList: [
                { value: "Verification & Duplication", link: "#/VerificationAndDuplicationSample" },
-               { value: "Data Collection", link: "#" },
-               { value: "Tagging of an Image", link: "#" },
+               { value: "Data Collection", link: "#/dataCollectionTemplate/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_dataCollection },
+               { value: "Tagging of an Image", link: "#/taggingImageTemplate/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_taggingImage },
                { value: "Search the web", link: "#" },
                { value: "Do Excel work", link: "#" },
                { value: "Find information", link: "#" },
                { value: "Post advertisements", link: "#" },
                { value: "Transcription", link: "#/templateSample/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_Transcription },
-               { value: "Transcription from A/V", link: "#" }
+               { value: "Transcription from A/V", link: "#/transcribeAVTemplate/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_transcribeAV }
                ]
            },
            {
                value: "Content Writing", dropDownMenuShow: true, dropDownSubMenuClass: "dropdown-submenu", dropDownMenuClass: "dropdown-menu", dropDownSubMenuArrow: "dropdown", dropDownMenuList: [
-                 { value: "Article writing", link: "#" },
-                 { value: "Blog writing", link: "#" },
-                 { value: "Copy typing", link: "#" },
-                 { value: "Powerpoint", link: "#" },
-                 { value: "Short stories", link: "#" },
-                 { value: "Travel writing", link: "#" },
-                 { value: "Reviews", link: "#" },
-                 { value: "Product descriptions", link: "#" }
+                 { value: "Article writing", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.articleWritting },
+                 { value: "Blog writing", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.articleWritting },
+                 { value: "Copy typing", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.articleWritting },
+                 { value: "Powerpoint", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.articleWritting },
+                 { value: "Short stories", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.articleWritting },
+                 { value: "Travel writing", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.articleWritting },
+                 { value: "Reviews", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.articleWritting },
+                 { value: "Product descriptions", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.articleWritting }
                ]
            },
            {
@@ -95,7 +100,7 @@ define([appLocation.postLogin], function (app) {
                  { value: "Product survey", link: "#/templateSample/" + TemplateInfoModel.type_survey + "/" + TemplateInfoModel.subType_productSurvey },
                  { value: "User feedback survey", link: "#/templateSample/" + TemplateInfoModel.type_survey + "/" + TemplateInfoModel.subType_productSurvey },
                  { value: "Pools", link: "#/templateSample/" + TemplateInfoModel.type_survey + "/" + TemplateInfoModel.subType_productSurvey },
-                 { value: "Survey Link", link: "#" }
+                 { value: "Survey Link", link: "#/surveyLinkTemplate/" + TemplateInfoModel.type_survey + "/" + TemplateInfoModel.subType_surveyLink }
                ]
            },
            {
