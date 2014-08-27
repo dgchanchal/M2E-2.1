@@ -21,8 +21,15 @@ var TemplateInfoModel = {
         subType_taggingImage : "taggingImage",
         subType_transcribeAV : "transcribeAV",        
 
-        type_contentWritting : "contentWritting",        
-        subType_articleWritting : "articleWritting",
+        type_contentWritting : "contentWriting",        
+        subType_articleWritting : "articleWriting",
+        subType_blogWriting : "blogWriting",
+        subType_copyTyping : "copyTyping",
+        subType_powerpoint : "powerpoint",
+        subType_shortStories : "shortStories",
+        subType_travelWriting : "travelWriting",
+        subType_reviews : "reviews",
+        subType_productDescriptions : "productDescriptions",
 
         type_moderation : "moderation",        
         subType_imageModeration : "moderatingPhotos"                      

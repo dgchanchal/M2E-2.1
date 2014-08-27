@@ -17,32 +17,32 @@ define([appLocation.userPostLogin], function (app) {
         function insertAttemptedSurveyQuestionsList(key) {
             $scope.attemptedSurveyQuestions.push({ key: key, attempted: false });
         }
-        function removeAttemptedSurveyQuestionsList(key) {           
+        function removeAttemptedSurveyQuestionsList(key) {
             var i;
             for (i = 0; i < $scope.attemptedSurveyQuestions.length; i++) {
-                if ($scope.attemptedSurveyQuestions.key == key) {                    
+                if ($scope.attemptedSurveyQuestions.key == key) {
                     break;
                 }
-            }            
+            }
             $scope.attemptedSurveyQuestions.splice(i, 1);
         }
         function checkEveryQuestionsAttempted() {
-            var i,flag = true;
+            var i, flag = true;
             for (i = 0; i < $scope.attemptedSurveyQuestions.length; i++) {
                 if ($scope.attemptedSurveyQuestions[i].attempted == false) {
                     flag = false;
                     break;
-                }                
+                }
             }
             return flag;
         }
-        function markAttemptedSurveyQuestionsList(key) {            
-            var i;                        
-            for (i = 0; i < $scope.attemptedSurveyQuestions.length; i++) {                
+        function markAttemptedSurveyQuestionsList(key) {
+            var i;
+            for (i = 0; i < $scope.attemptedSurveyQuestions.length; i++) {
                 if ($scope.attemptedSurveyQuestions[i].key == key) {
                     break;
                 }
-            }            
+            }
             $scope.attemptedSurveyQuestions[i].attempted = true;
             console.log($scope.attemptedSurveyQuestions);
         }
@@ -54,12 +54,12 @@ define([appLocation.userPostLogin], function (app) {
                     break;
                 }
             }
-            
+
             //console.log(key);
             $scope.attemptedSurveyQuestions[i].attempted = false;
             console.log($scope.attemptedSurveyQuestions);
         }
-//        $scope.surveyInfoTitle = "This is the title of the survey";
+        //        $scope.surveyInfoTitle = "This is the title of the survey";
 
         //        $scope.surveyInfoInstruction = {
         //            type: "",
@@ -146,7 +146,7 @@ define([appLocation.userPostLogin], function (app) {
                 $scope.surveyInfoMultipleAnswerQuestion = data.Payload.MultipleAnswerQuestion;
                 $scope.surveyInfoListBoxAnswerQuestion = data.Payload.ListBoxAnswerQuestion;
                 $scope.surveyInfoTextBoxAnswerQuestion = data.Payload.TextBoxAnswerQuestion;
-                
+
                 renderPageAfterAjaxCall();
                 console.log($scope.attemptedSurveyQuestions);
             }
@@ -160,7 +160,7 @@ define([appLocation.userPostLogin], function (app) {
 
             if (mobileDevice) {
                 // instruction list
-                if ($scope.surveyInfoInstruction.data.Length != 0) {
+                if ($scope.surveyInfoInstruction.data.length != 0) {
                     renderSurveyQuestion += "<div class='swiper-slide gray-slide box-body maxHeight800px'>";
                     renderSurveyQuestion += "<div class='box box-color box-bordered blue'>";
                     renderSurveyQuestion += "<div class='box-title'>";
@@ -179,7 +179,7 @@ define([appLocation.userPostLogin], function (app) {
                 }
 
                 // single answer question..
-                if ($scope.surveyInfoSingleAnswerQuestion.data.Length != 0) {
+                if ($scope.surveyInfoSingleAnswerQuestion.data.length != 0) {
                     $.each($scope.surveyInfoSingleAnswerQuestion.data, function () {
                         renderSurveyQuestion += "<div class='swiper-slide gray-slide box-body maxHeight800px'>";
                         renderSurveyQuestion += "<div class='box box-color box-bordered blue'>";
@@ -206,7 +206,7 @@ define([appLocation.userPostLogin], function (app) {
                 }
 
                 //multiple answer question
-                if ($scope.surveyInfoMultipleAnswerQuestion.data.Length != 0) {
+                if ($scope.surveyInfoMultipleAnswerQuestion.data.length != 0) {
                     $.each($scope.surveyInfoMultipleAnswerQuestion.data, function () {
                         renderSurveyQuestion += "<div class='swiper-slide gray-slide box-body maxHeight800px'>";
                         renderSurveyQuestion += "<div class='box box-color box-bordered blue'>";
@@ -234,7 +234,7 @@ define([appLocation.userPostLogin], function (app) {
                 }
 
                 //listbox answer question
-                if ($scope.surveyInfoListBoxAnswerQuestion.data.Length != 0) {
+                if ($scope.surveyInfoListBoxAnswerQuestion.data.length != 0) {
                     $.each($scope.surveyInfoListBoxAnswerQuestion.data, function () {
                         renderSurveyQuestion += "<div class='swiper-slide gray-slide box-body maxHeight800px'>";
                         renderSurveyQuestion += "<div class='box box-color box-bordered blue'>";
@@ -258,7 +258,7 @@ define([appLocation.userPostLogin], function (app) {
 
                         //var listBoxQuestionsOptionList = this.Options.split(';');
                         renderSurveyQuestion += "<select name='" + this.id + "' class='form-control userSurveyListBoxButton'>";
-                        var id = this.id;                        
+                        var id = this.id;
                         insertAttemptedSurveyQuestionsList(id);
                         var listBoxQuestionsOptionList = this.options.split(';');
                         renderSurveyQuestion += "<option value='" + id + "_-1'>---SELECT---</option>";
@@ -275,7 +275,7 @@ define([appLocation.userPostLogin], function (app) {
                 }
                 //textBox answer question
                 var textBoxRenderSurveyQuestion = "";
-                if ($scope.surveyInfoTextBoxAnswerQuestion.data.Length != 0) {
+                if ($scope.surveyInfoTextBoxAnswerQuestion.data.length != 0) {
                     $.each($scope.surveyInfoTextBoxAnswerQuestion.data, function () {
                         renderSurveyQuestion += "<div class='swiper-slide gray-slide box-body maxHeight800px'>";
                         renderSurveyQuestion += "<div class='box box-color box-bordered blue'>";
@@ -314,7 +314,7 @@ define([appLocation.userPostLogin], function (app) {
                 renderSurveyQuestion += "</div>";
 
                 $('#swiperWrapperId').html(renderSurveyQuestion);
-                initializeSwiperFunction();                
+                initializeSwiperFunction();
             }
             else { // if it is web.
 
@@ -324,7 +324,7 @@ define([appLocation.userPostLogin], function (app) {
                 renderSurveyQuestion += "<div class='controls'><p><b>" + $scope.surveyInfoTitle + "</b></p></div></div>";
 
                 // instruction list
-                if ($scope.surveyInfoInstruction.data.Length != 0) {
+                if ($scope.surveyInfoInstruction.data.length != 0) {
                     renderSurveyQuestion += "<div style='' class='control-group'>";
                     renderSurveyQuestion += "<label for=\"textfield\" class=\"control-label\">";
                     renderSurveyQuestion += "<b>Instructions</b></label>";
@@ -337,9 +337,9 @@ define([appLocation.userPostLogin], function (app) {
                     renderSurveyQuestion += "</div>";
                     renderSurveyQuestion += "</div>";
                 }
-
+                
                 // single answer question..
-                if ($scope.surveyInfoSingleAnswerQuestion.data.Length != 0) {
+                if ($scope.surveyInfoSingleAnswerQuestion.data.length != 0) {
                     renderSurveyQuestion += "<div style='' class='control-group'>";
                     renderSurveyQuestion += "<label for=\"textfield\" class=\"control-label\">";
                     renderSurveyQuestion += "<b>SAQ</b></label>";
@@ -350,7 +350,7 @@ define([appLocation.userPostLogin], function (app) {
                         renderSurveyQuestion += "<fieldset>";
 
                         renderSurveyQuestion += "<label>";
-                        renderSurveyQuestion += "<b>" + this.question +"</b>";
+                        renderSurveyQuestion += "<b>" + this.question + "</b>";
                         renderSurveyQuestion += "</label>";
 
                         var id = this.id;
@@ -373,7 +373,7 @@ define([appLocation.userPostLogin], function (app) {
                 }
 
                 //multiple answer question
-                if ($scope.surveyInfoMultipleAnswerQuestion.data.Length != 0) {
+                if ($scope.surveyInfoMultipleAnswerQuestion.data.length != 0) {
                     renderSurveyQuestion += "<div style='' class='control-group'>";
                     renderSurveyQuestion += "<label for=\"textfield\" class=\"control-label\">";
                     renderSurveyQuestion += "<b>MAQ</b></label>";
@@ -403,7 +403,7 @@ define([appLocation.userPostLogin], function (app) {
                 }
 
                 //listbox answer question
-                if ($scope.surveyInfoListBoxAnswerQuestion.data.Length != 0) {
+                if ($scope.surveyInfoListBoxAnswerQuestion.data.length != 0) {
                     renderSurveyQuestion += "<div style='' class='control-group'>";
                     renderSurveyQuestion += "<label for=\"textfield\" class=\"control-label\">";
                     renderSurveyQuestion += "<b>LAQ</b></label>";
@@ -436,7 +436,7 @@ define([appLocation.userPostLogin], function (app) {
 
                 //textBox answer question
                 var textBoxRenderSurveyQuestion = "";
-                if ($scope.surveyInfoTextBoxAnswerQuestion.data.Length != 0) {
+                if ($scope.surveyInfoTextBoxAnswerQuestion.data.length != 0) {
                     renderSurveyQuestion += "<div style='' class='control-group'>";
                     renderSurveyQuestion += "<label for=\"textfield\" class=\"control-label\">";
                     renderSurveyQuestion += "<b>TAQ</b></label>";
@@ -475,8 +475,8 @@ define([appLocation.userPostLogin], function (app) {
                 renderSurveyQuestion += "</div>";
 
                 $('#userSurveyWebViewId').html(renderSurveyQuestion);
-                initializeSwiperFunction();                
-            }            
+                initializeSwiperFunction();
+            }
         }
 
 
@@ -511,7 +511,7 @@ define([appLocation.userPostLogin], function (app) {
                 //console.log(a + "---" + this.value);
                 var data = this.value.split('_');
                 $scope.userSurveyResult.surveySingleAnswerQuestion.push(commonUserSurveyRadioButtonFunction(data));
-                markAttemptedSurveyQuestionsList(data[0]);                
+                markAttemptedSurveyQuestionsList(data[0]);
             });
 
             $('.userSurveyRadioButton').on('ifChecked', function (event) {
@@ -519,7 +519,7 @@ define([appLocation.userPostLogin], function (app) {
                 //console.log(a + "---" + this.value);
                 var data = this.value.split('_');
                 $scope.userSurveyResult.surveySingleAnswerQuestion.push(commonUserSurveyRadioButtonFunction(data));
-                markAttemptedSurveyQuestionsList(data[0]);                
+                markAttemptedSurveyQuestionsList(data[0]);
             });
 
             function commonUserSurveyRadioButtonFunction(data) {
@@ -586,7 +586,7 @@ define([appLocation.userPostLogin], function (app) {
                             unmarkAttemptedSurveyQuestionsList(data[0]);
                         }
                     }
-                        
+
                 }
                 else {
                     var checkBoxButtonAnswer = { key: data[0], value: data[1] + ';' };
@@ -669,14 +669,14 @@ define([appLocation.userPostLogin], function (app) {
                         method: "POST",
                         data: userSurveyResultData,
                         headers: headers
-                    }).success(function(data, status, headers, config) {
+                    }).success(function (data, status, headers, config) {
                         //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
                         stopBlockUI();
                         if (data.Status == "200") {
                             showToastMessage("Success", "Survey Successfully submitted");
                         }
 
-                    }).error(function(data, status, headers, config) {
+                    }).error(function (data, status, headers, config) {
 
                     });
                 } else {

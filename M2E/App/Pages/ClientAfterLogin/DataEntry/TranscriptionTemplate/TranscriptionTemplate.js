@@ -184,7 +184,7 @@ define([appLocation.postLogin], function (app) {
             editableInstructions = "";
             $.each($scope.jobTemplate[0].editableInstructionsList, function () {
                 editableInstructions += "<li>";
-                editableInstructions += this.Text + "&nbsp;&nbsp";
+                editableInstructions += this.Text + "&nbsp;&nbsp<a style='cursor:pointer' class='addInstructionClass' id='" + this.Number + "'><i class='fa fa-times'></i></a>";
                 editableInstructions += "</li>";
             });
             $('#editableInstructionsListIDTranscriptionTemplate').html(editableInstructions);

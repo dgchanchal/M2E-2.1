@@ -52,7 +52,7 @@ define([appLocation.userPostLogin], function (app) {
             }).success(function (data, status, headers, config) {
                 //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
                 stopBlockUI();
-                console.log(type +"  "+ TemplateInfoModel.type_moderation+"   "+  subType +"   "+ TemplateInfoModel.subType_imageModeration);
+                console.log(type + "  " + TemplateInfoModel.type_moderation + "   " + subType + "   " + TemplateInfoModel.subType_imageModeration);
                 if (data.Status == "200") {
                     if (type == TemplateInfoModel.type_survey && subType == TemplateInfoModel.subType_productSurvey)
                         location.href = "#/startSurvey/" + refKey;
@@ -61,6 +61,9 @@ define([appLocation.userPostLogin], function (app) {
                     }
                     else if (type == TemplateInfoModel.type_moderation && subType == TemplateInfoModel.subType_imageModeration) {
                         location.href = "#/imageModeration/" + refKey;
+                    }
+                    else {
+                        location.href = "#/startSurvey/" + refKey;
                     }
 
                 }

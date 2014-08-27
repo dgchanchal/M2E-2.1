@@ -49,6 +49,9 @@ define([appLocation.userPostLogin], function (app) {
             else if (type == TemplateInfoModel.type_moderation && subType == TemplateInfoModel.subType_imageModeration) {
                 location.href = "#/imageModeration/" + refKey;
             }
+            else {
+                location.href = "#/startSurvey/" + refKey;
+            }
         }
 
     });

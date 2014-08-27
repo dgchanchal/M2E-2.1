@@ -85,14 +85,14 @@ define([appLocation.postLogin], function (app) {
            },
            {
                value: "Content Writing", dropDownMenuShow: true, dropDownSubMenuClass: "dropdown-submenu", dropDownMenuClass: "dropdown-menu", dropDownSubMenuArrow: "dropdown", dropDownMenuList: [
-                 { value: "Article writing", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.articleWritting },
-                 { value: "Blog writing", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.articleWritting },
-                 { value: "Copy typing", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.articleWritting },
-                 { value: "Powerpoint", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.articleWritting },
-                 { value: "Short stories", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.articleWritting },
-                 { value: "Travel writing", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.articleWritting },
-                 { value: "Reviews", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.articleWritting },
-                 { value: "Product descriptions", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.articleWritting }
+                 { value: "Article writing", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_articleWritting },
+                 { value: "Blog writing", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_blogWriting },
+                 { value: "Copy typing", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_copyTyping },
+                 { value: "Powerpoint", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_powerpoint },
+                 { value: "Short stories", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_shortStories },
+                 { value: "Travel writing", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_travelWriting },
+                 { value: "Reviews", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_reviews },
+                 { value: "Product descriptions", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_productDescriptions }
                ]
            },
            {

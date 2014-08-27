@@ -12,7 +12,143 @@
                 </section>
 
                 <!-- Main content -->
-                <section class="content" >     <!--ng-controller="ClientAfterLoginArticleWrittingTemplate"  -->            
+                <section class="content"  ng-controller="ClientAfterLoginArticleWrittingTemplate">     <!--ng-controller="ClientAfterLoginArticleWrittingTemplate"  -->            
+                    <!-- top row -->
+                    <div class="row">
+                        <div class="col-xs-12 connectedSortable">
+                            
+                        </div><!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+
+                    <!-- Main row -->
+                    <div class="row">
+                        <!-- Left col -->
+                        <section class="col-lg-12 connectedSortable">                            
+                           <div class="box box-color box-bordered">
+               
+                               <section class="col-lg-12 connectedSortable">                            
+                                   <div class="box box-color box-bordered">
+                                       <div class="box-title">
+                                           <h3>
+                                               <i class="icon-user"></i>Article Writting
+                                           </h3>
+                                       </div>
+                                       <div class="box-content">
+                                             <form class='form-horizontal form-bordered'>
+                                              
+                                              <div class="control-group">                                                        
+                                                   <a ng-click="addInstructionsRow()" role="button" ng-class="{true:'btn btn-danger btn-flat', false:'btn btn-success btn-flat'}[jobTemplate[0].visible]"><i
+                                                                                                                    class="icon-plus-sign"></i>{{jobTemplate[0].buttonText}}</a>
+                                              
+                                               </div>
+                                                
+
+                                               <div class="control-group rowTitleBackgroundColor" style="">
+                                                   <label class="control-label" for="textfield">
+                                                       <b>Title</b></label>                                                 
+                                                   <div class="controls rowTitleBackgroundColor"><fieldset><div class="input-group"></div><input type="text" id="createTemplateTitleTextArticleWritingTemplate" placeholder="Enter Title for the Survey (compulsory)" value="" class="form-control"></fieldset></div>
+                                               </div>
+
+                                               <div class="control-group rowInstructionsBackgroundColor" ng-show="jobTemplate[0].visible">
+                                                   <label for="textfield" class="control-label">                                                        
+                                                       <b><small>Instructions</small></b></label>
+                                                   <div class="controls rowInstructionsBackgroundColor">
+                                                       <ul id="editableInstructionsListIDTranscriptionTemplate">
+                               
+
+                                                       </ul>
+                                                      
+                                                            <div class="modal-body">                            
+                                                                <div class="form-group">
+                                                                    <textarea class="input-block-level form-control textarea" style="height: 250px;"  id="AddInstructionsTextAreaTranscriptionTemplate" name="textarea" placeholder="Add Instruction"></textarea> 
+                                                                </div>                           
+                                                            </div>
+                                                            <div class="modal-footer clearfix">
+                                                                <div class="innerDivCenterAlign">
+                                                                    <button ng-click="addEditableInstructions()" class="btn btn-danger"> Insert </button>
+                                                                </div>
+                                                            </div>
+                                                       
+                                                   </div>
+                                               </div>  
+
+                                               <div class="control-group rowTAQBackgroundColor" ng-show="jobTemplate[3].visible">
+                                                   <label for="textfield" class="control-label">
+                                                       <b><small>Question with single line ans</small></b></label>                                                 
+                                                   <div class="controls rowTAQBackgroundColor">
+                                                        <div id="addTextBoxAnswerQuestionIDArticleWritingTemplate"></div>
+                                                       <div class="modal-body">                            
+                                                        <div>                            
+                                                            <textarea style="height: 150px;" class="input-block-level form-control textarea" id="TextBoxQuestionTextBoxQuestionDataArticleWritingTemplate" name="textarea" placeholder="Question (TextBox Answer)"></textarea>                               
+            
+                                                        </div>                 
+
+                                                    </div>
+                                                    <div class="modal-footer clearfix">
+                                                        <div class="innerDivCenterAlign">
+                                                            <button class="btn btn-danger" ng-click="InsertTextBoxQuestionRow()">
+                                                            Insert</button>
+                                                        </div>  
+                                                    </div>
+                                                   </div>
+                                               </div>
+                                                    
+                                                                                                
+
+                                               <div class="control-group rowBudgetBackgroundColor">
+                                                   <label class="control-label">
+                                                       Budget<br /><b><small>Choose your budget</small></b></label>
+                                                   <div class="controls rowBudgetBackgroundColor">                                                       
+                                                       <table class="table table-bordered">
+                                                            <tbody><tr>                                                                
+                                                                <th>Type</th>
+                                                                <th>Value</th>                                                                
+                                                            </tr>
+                                                            <tr>                                                                
+                                                                <td>Quantity of Workforce Required</td>
+                                                                <td>
+                                                                    <input id="totalNumberOfThreads" class="form-control" type="text" name="totalNumberOfThreads" placeholder="Min 1 Required" value="1" />
+                                                                </td>                                                                
+                                                            </tr>
+                                                            <tr>                                                                
+                                                                <td>Amount Payable To each Workforce ($)</td>
+                                                                <td>                                                                    
+                                                                    <input id="amountPerThreadTextBoxInput" class="form-control" type="text" name="amountPerThread" placeholder="Min 0.03 Required" value="1" />                                                                    
+                                                                </td>                                                                
+                                                            </tr>
+                                                            <tr>                                                                
+                                                                <td>Total Amount ($)</td>
+                                                                <td>
+                                                                    <div id="TotalAmountPayableCreateTemplate">1</div>
+                                                                </td>                                                                
+                                                            </tr>                                                           
+                                                        </tbody></table>
+                                                    
+                                                   </div>
+                                               </div> 
+
+                                               <div class="form-actions rowSurveySubmitBackgroundColor">
+                                                    <div class="innerDivCenterAlign">
+                                                           <button class="btn btn-primary" ng-click="ClientCreateArticleWritingTemplateFunction()">
+                                                               Create Template</button>
+                                                           <button type="button" class="btn btn-warning">
+                                                               view sample</button>
+                                                       </div>
+                                               </div>
+                                           </form>
+
+                                       </div>
+                                   </div>
+                               </section>
+
+                           </div>
+                        </section><!-- /.Left col -->                        
+                    </div><!-- /.row (main row) -->
+
+                </section><!-- /.content -->
+         
+         <section class="content" >     <!--ng-controller="ClientAfterLoginArticleWrittingTemplate"  -->            
                     <!-- top row -->
                     <div class="row">
                         <div class="col-xs-12 connectedSortable">
@@ -40,29 +176,20 @@
                                                     <div class="panel panel-primary">
                                                     <div class="panel-heading"><strong>Instructions</strong></div>
 
-                                                    <div class="panel-body">
-                                                    <p>Write a brief description of a website.</p>
-
-                                                    <ul>
-	                                                    <li>Click the link below to review the website and browse its products and services.</li>
-	                                                    <li>Write a short article summarizing what the website is about and its products/services.</li>
-	                                                    <li>Your submission <strong>must be at least 50 words long </strong>but <strong>no more than 100 words</strong>. No award will be given for submissions of less than 50 words.</li>
-	                                                    <li>Your writing must be original and can <strong>NOT </strong>simply be a copy of part of the website.</li>
-                                                    </ul>
+                                                    <div class="panel-body" id="editableInstructionsListIDTranscriptionTemplatePreview">
+                                                    
                                                     </div>
                                                     </div>
                                                     <!-- End Instructions -->
 
-                                                    <div>
-                                                    <p><label>Website name:</label> <span>The Website Name Here</span></p>
-
-                                                    <p><label>Website address:</label> <span> <a target="_blank" href="http://www.linktowebsitehere.com">http://www.linktowebsitehere.com</a> </span></p>
+                                                    <div id="TextBoxQuestionTextBoxQuestionDataArticleWritingTemplatePreviewDescription">
+                                                    
                                                     </div>
                                                     &nbsp;
 
                                                     <div><label>Write the description below:</label><textarea rows="6" name="WritingTexts" cols="250" class="form-control"></textarea></div>
                                                     </div>
-                                                                                                
+                                                  
                                        </div>
                                    </div>
                                </section>
@@ -72,10 +199,6 @@
                     </div><!-- /.row (main row) -->
 
                 </section><!-- /.content -->
-         
-         <div id="TrancriptionFormShowExampleId" style="display:none">
-            fancybox div
-        </div>
 
 
 <script type="text/javascript" charset="utf-8">
