@@ -67,7 +67,7 @@
                                                     
                                                <div class="control-group rowTitleBackgroundColor" style="">
                                                    <label class="control-label" for="textfield">
-                                                       <b>Page Url</b></label>                                                 
+                                                       <b>Page Id</b></label>                                                 
                                                    <div class="controls rowTitleBackgroundColor">
                                                    <fieldset><div class="input-group"></div><input type="text" id="FacebookLikePageUrl" placeholder="Enter your Page Url" value="" class="form-control">
                                                    </fieldset>
@@ -104,10 +104,77 @@
                                                        </td>
                                                        </tr>
                                                    </table>
+                                                   <div class="innerDivCenterAlign">
+                                                            <button class="btn btn-danger" ng-click="ClientRenderTemplateView()">
+                                                               Render Template View Before Submitting</button>
+                                                               </div>
                                                    </div>                                                   
                                                    
                                                </div>                                         
+                                               <div class="control-group rowTitleBackgroundColor">
+                                                   <label class="control-label" for="textfield">
+                                                       <b>Your Page Detail will appear here</b></label>                                                 
+                                                   <div class="controls rowTitleBackgroundColor">
+                                                        <div class="row" ng-show="showFacebookDetailDiv">
+                                                            <div class="col-md-12">
+                                                            <img src="{{facebookData.cover.source}}"></img>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row" ng-show="showFacebookDetailDiv">
+                                                            <table class="table table-bordered">
+                                                                <tbody><tr>
+                                                                    <th style="width: 10px">#</th>
+                                                                    <th>Info</th>
+                                                                    <th>Description</th>                                                                    
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>1.</td>
+                                                                    <td>Page Name</td>
+                                                                    <td ng-bind="facebookData.name">                                                                        
+                                                                    </td>                                                                    
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>2.</td>
+                                                                    <td>About</td>
+                                                                    <td ng-bind="facebookData.about">                                                                        
+                                                                    </td>                                                                    
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>3.</td>
+                                                                    <td>Category</td>
+                                                                    <td ng-bind="facebookData.category">                                                                        
+                                                                    </td>                                                                   
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>4.</td>
+                                                                    <td>Total Likes</td>
+                                                                    <td>                                                                        
+                                                                        <b><span ng-bind="facebookData.likes"></span></b>
+                                                                    </td>                                                                    
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>4.</td>
+                                                                    <td>Total Talking of page</td>
+                                                                    <td>
+                                                                        <b><span ng-bind="facebookData.talking_about_count"></span></b>
+                                                                    </td>                                                                    
+                                                                </tr>
+                                                            </tbody></table>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div id="TextBoxQuestionTextBoxQuestionDataArticleWritingTemplatePreviewDescription">
+                                                    
+                                                                </div>
+                                                                &nbsp;
 
+                                                                <div id="showFacebookIframeForGivenPageUrl">
+                                                        
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                   </div>
+                                               </div>
                                                <div class="control-group rowBudgetBackgroundColor">
                                                    <label class="control-label">
                                                        Budget<br /><b><small>Choose your budget</small></b></label>
@@ -142,9 +209,7 @@
 
                                                <div class="form-actions rowSurveySubmitBackgroundColor">
                                                     <div class="innerDivCenterAlign">
-                                                             <button class="btn btn-primary" ng-click="ClientRenderTemplateView()">
-                                                               Render Template View</button>
-
+                                                             
                                                            <button class="btn btn-primary" ng-click="ClientCreateFacebookLikeTemplateFunction()">
                                                                Create Template</button>
                                                            <button type="button" class="btn btn-warning">
@@ -162,51 +227,7 @@
                     </div><!-- /.row (main row) -->
 
                 </section><!-- /.content -->
-         
-         <section class="content" >     <!--ng-controller="ClientAfterLoginArticleWrittingTemplate"  -->            
-                    <!-- top row -->
-                    <div class="row">
-                        <div class="col-xs-12 connectedSortable">
-                            
-                        </div><!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-
-                    <!-- Main row -->
-                    <div class="row">
-                        <!-- Left col -->
-                        <section class="col-lg-12 connectedSortable">                            
-                           <div class="box box-color box-bordered">
-               
-                               <section class="col-lg-12 connectedSortable">                            
-                                   <div class="box box-color box-bordered">
-                                       <div class="box-title">
-                                           <h3>
-                                               <i class="icon-user"></i>Facebook Like
-                                           </h3>
-                                       </div>
-                                       <div class="box-content">
-                                                
-                                               <div class="row col-xs-12 col-md-12"><!-- Instructions -->                                                    
-
-                                                    <div id="TextBoxQuestionTextBoxQuestionDataArticleWritingTemplatePreviewDescription">
-                                                    
-                                                    </div>
-                                                    &nbsp;
-
-                                                    <div id="showFacebookIframeForGivenPageUrl">
-                                                        
-                                                    </div>
-                                                  
-                                       </div>
-                                   </div>
-                               </section>
-
-                           </div>
-                        </section><!-- /.Left col -->                        
-                    </div><!-- /.row (main row) -->
-
-                </section><!-- /.content -->
+                
 
 
 <script type="text/javascript" charset="utf-8">

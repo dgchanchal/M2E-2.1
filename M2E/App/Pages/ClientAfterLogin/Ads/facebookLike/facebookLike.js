@@ -1,7 +1,7 @@
 'use strict';
 define([appLocation.postLogin], function (app) {
 
-    app.controller('ClientAfterLoginFacebookLikeTemplate', function ($scope, $http, $rootScope, $routeParams, CookieUtil) {
+    app.controller('ClientAfterLoginFacebookLikeTemplate', function ($scope, $http, $rootScope, Restangular, $routeParams, CookieUtil) {
         $('title').html("sample page"); //TODO: change the title so cann't be tracked in log
 
         var editableInstructions = "";
@@ -22,6 +22,10 @@ define([appLocation.postLogin], function (app) {
 
         $scope.facebookLikeIframe = "";
         $scope.facebookLikePageUrl = "";
+        $scope.facebookLikePageId = "";
+
+        $scope.showFacebookDetailDiv = false;
+        $scope.facebookData = {};
 
         userSession.wysiHtml5UploadedInstructionsImageUrlLink = [];
         userSession.imgurImageTranscriptionTemplate = [];
@@ -73,16 +77,24 @@ define([appLocation.postLogin], function (app) {
         }
 
 
-        $scope.addInstructionsRow = function () {
-            if ($scope.jobTemplate[0].visible == true) {
-                $scope.jobTemplate[0].buttonText = "Add Instructions";
-                $scope.jobTemplate[0].visible = false;
-            } else {
-                $scope.jobTemplate[0].visible = true;
-                $scope.jobTemplate[0].buttonText = "Remove Instructions";
-            }
-        }
+        // textbox questions..
+        $scope.InsertTextBoxQuestionRow = function () {
 
+            var addTextBoxQuestionFancyBoxInImages = $('#TextBoxQuestionTextBoxQuestionDataArticleWritingTemplate').val();
+            //console.log(addFancyBoxInImages);
+            var i = 0;
+            $.each(userSession.wysiHtml5UploadedInstructionsImageUrlLink, function () {
+
+                addTextBoxQuestionFancyBoxInImages = replaceImageWithFancyBoxImage(addTextBoxQuestionFancyBoxInImages, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link_s, userSession.wysiHtml5UploadedInstructionsImageUrlLink[i].link);
+                i++;
+            });
+
+            
+            var textBoxQuestionsList = { Number: totalTextBoxQuestionList, Question: addTextBoxQuestionFancyBoxInImages, Options: "text" };
+            $scope.jobTemplate[3].textBoxQuestionsList[0]=(textBoxQuestionsList);
+            $('#TextBoxQuestionTextBoxQuestionDataArticleWritingTemplate').data("wysihtml5").editor.clear();
+            refreshTextBoxQuestionsList();
+        }
 
         function initAddQuestionTextBoxAnswerClass() {
             $('.addQuestionTextBoxAnswerClass').click(function () {
@@ -112,11 +124,38 @@ define([appLocation.postLogin], function (app) {
             //var url = "https://www.facebook.com/beststatuslines";
             var url = $('#FacebookLikePageUrl').val();
             $scope.facebookLikePageUrl = url;
+            $scope.facebookLikePageUrl = url.replace('//www.', '//graph.');
+            getFacebookPageId();
+
             $scope.facebookLikeIframe = "<iframe src='//www.facebook.com/plugins/likebox.php?href=" + url + "&amp;width&amp;height=290&amp;colorscheme=" + $("#facebookSelectTheme option:selected").text() + "&amp;show_faces=" + $scope.param_show_faces + "&amp;header=" + $scope.param_header + "&amp;stream=" + $scope.param_stream + "&amp;show_border=" + $scope.param_show_border + "&amp;appId=" + facebookAppId + "' scrolling='no' frameborder='0' style='border:none; overflow:hidden; height:290px;' allowTransparency='true'></iframe>";
 
             $('#showFacebookIframeForGivenPageUrl').html($scope.facebookLikeIframe);
 
         }
+
+        function getFacebookPageId() {
+
+            var url = $scope.facebookLikePageUrl
+            var userSurveyResultData = $scope.userSurveyResult;
+            var headers = {
+                'Content-Type': 'application/json'
+            };
+
+            $http({
+                url: url,
+                method: "GET",
+                data: userSurveyResultData,
+                headers: headers
+            }).success(function (data, status, headers, config) {
+
+                $scope.facebookData = data;
+                $scope.showFacebookDetailDiv = true;
+
+            }).error(function (data, status, headers, config) {
+
+            });
+
+        };
 
         $scope.ClientCreateFacebookLikeTemplateFunction = function () {
             $scope.jobTemplate[0].title = $('#createTemplateTitleTextArticleWritingTemplate').val();
@@ -164,7 +203,7 @@ define([appLocation.postLogin], function (app) {
                     showToastMessage("Error", "Title of the Template cann't be empty");
                 }
             }
-            
+
 
         }
 

@@ -47,6 +47,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Facebook">
+      <HintPath>dll\Facebook.dll</HintPath>
+    </Reference>
     <Reference Include="GaDotNet.Common, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dll\GaDotNet.Common.dll</HintPath>
@@ -155,6 +158,7 @@
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SocialAuthController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Encryption\AES.cs" />
@@ -298,6 +302,7 @@
     <Compile Include="Service\Login\WebLogin.cs" />
     <Compile Include="Service\Register\WebRegister.cs" />
     <Compile Include="Service\SocialNetwork\facebook\FacebookHelper.cs" />
+    <Compile Include="Service\SocialNetwork\facebook\FacebookService.cs" />
     <Compile Include="Service\UploadImages\imgurService.cs" />
     <Compile Include="Service\UserService\dataEntry\Transcription.cs" />
     <Compile Include="Service\UserService\Moderation\ImageModeration.cs" />
@@ -376,6 +381,8 @@
     <Content Include="App\Pages\BeforeLogin\TnC\TnC.html" />
     <Content Include="App\Pages\BeforeLogin\TnC\TnC.js" />
     <Content Include="App\Pages\BeforeLogin\UserMoreInfo\UserMoreInfo.html" />
+    <Content Include="App\Pages\ClientAfterLogin\Ads\facebookLike\facebookLike.html" />
+    <Content Include="App\Pages\ClientAfterLogin\Ads\facebookLike\facebookLike.js" />
     <Content Include="App\Pages\ClientAfterLogin\ContentWritting\articleWritting\articleWritting.html" />
     <Content Include="App\Pages\ClientAfterLogin\ContentWritting\articleWritting\articleWritting.js" />
     <Content Include="App\Pages\ClientAfterLogin\Controller\common\AngularFileUploadController.js" />
@@ -1413,7 +1420,6 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\Pages\ClientAfterLogin\Ads\" />
     <Folder Include="App\third-Party\html5-file-upload\uploads\" />
     <Folder Include="App_Data\" />
     <Folder Include="DAO\" />
