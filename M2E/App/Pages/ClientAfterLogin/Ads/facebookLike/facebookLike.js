@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 define([appLocation.postLogin], function (app) {
 
     app.controller('ClientAfterLoginFacebookLikeTemplate', function ($scope, $http, $rootScope, Restangular, $routeParams, CookieUtil) {
@@ -89,9 +89,9 @@ define([appLocation.postLogin], function (app) {
                 i++;
             });
 
-            
+
             var textBoxQuestionsList = { Number: totalTextBoxQuestionList, Question: addTextBoxQuestionFancyBoxInImages, Options: "text" };
-            $scope.jobTemplate[3].textBoxQuestionsList[0]=(textBoxQuestionsList);
+            $scope.jobTemplate[3].textBoxQuestionsList[0] = (textBoxQuestionsList);
             $('#TextBoxQuestionTextBoxQuestionDataArticleWritingTemplate').data("wysihtml5").editor.clear();
             refreshTextBoxQuestionsList();
         }
@@ -124,7 +124,8 @@ define([appLocation.postLogin], function (app) {
             //var url = "https://www.facebook.com/beststatuslines";
             var url = $('#FacebookLikePageUrl').val();
             $scope.facebookLikePageUrl = url;
-            $scope.facebookLikePageUrl = url.replace('//www.', '//graph.');
+            //$scope.facebookLikePageUrl = url.replace('//www.', '//graph.');
+            $scope.facebookLikePageUrl = "https://graph.facebook.com/?ids=" + url;
             getFacebookPageId();
 
             $scope.facebookLikeIframe = "<iframe src='//www.facebook.com/plugins/likebox.php?href=" + url + "&amp;width&amp;height=290&amp;colorscheme=" + $("#facebookSelectTheme option:selected").text() + "&amp;show_faces=" + $scope.param_show_faces + "&amp;header=" + $scope.param_header + "&amp;stream=" + $scope.param_stream + "&amp;show_border=" + $scope.param_show_border + "&amp;appId=" + facebookAppId + "' scrolling='no' frameborder='0' style='border:none; overflow:hidden; height:290px;' allowTransparency='true'></iframe>";
@@ -135,7 +136,7 @@ define([appLocation.postLogin], function (app) {
 
         function getFacebookPageId() {
 
-            var url = $scope.facebookLikePageUrl
+            var url = $scope.facebookLikePageUrl;
             var userSurveyResultData = $scope.userSurveyResult;
             var headers = {
                 'Content-Type': 'application/json'
@@ -148,7 +149,12 @@ define([appLocation.postLogin], function (app) {
                 headers: headers
             }).success(function (data, status, headers, config) {
 
-                $scope.facebookData = data;
+                $.each(data, function (key, value) {
+                    //console.log(key, value);
+                    $scope.facebookData = value;
+                });
+
+                //$scope.facebookData = data[$scope.facebookLikePageUrl];
                 $scope.showFacebookDetailDiv = true;
 
             }).error(function (data, status, headers, config) {

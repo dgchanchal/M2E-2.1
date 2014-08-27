@@ -365,7 +365,9 @@ fieldset {
 .rowSurveySubmitBackgroundColor {
     background-color: #662e91 !important;
 }
-
+.rowFacebookDetailsBackgroundColor {
+    background-color: #f3b2db !important;
+}
 .innerDivCenterAlign {
     display: table;
     margin: 0 auto;
