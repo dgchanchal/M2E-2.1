@@ -18,6 +18,7 @@ define([appLocation.postLogin], function (app) {
                        when("/taggingImageTemplate/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/DataEntry/taggingImage/taggingImage.html" }).
                        when("/transcribeAVTemplate/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/DataEntry/TranscribeAV/TranscribeAV.html" }).
                        when("/articleWrittingTemplate/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/ContentWritting/articleWritting/articleWritting.html" }).
+                       when("/facebookLikeTemplate/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/Ads/facebookLike/facebookLike.html" }).
                        otherwise({ templateUrl: "../../Resource/templates/beforeLogin/contentView/404.html" });
 
     });
@@ -114,7 +115,7 @@ define([appLocation.postLogin], function (app) {
            {
                value: "Ads", dropDownMenuShow: true, dropDownSubMenuClass: "dropdown-submenu", dropDownMenuClass: "dropdown-menu", dropDownSubMenuArrow: "dropdown", dropDownMenuList: [
                  { value: "Facebook Views", link: "#" },
-                 { value: "Facebook likes", link: "#" },
+                 { value: "Facebook likes", link: "#/facebookLikeTemplate/" + TemplateInfoModel.type_Ads + "/" + TemplateInfoModel.subType_facebookLike },
                  { value: "Video reviewing", link: "#" },
                  { value: "Comments on social media", link: "#" }
                ]

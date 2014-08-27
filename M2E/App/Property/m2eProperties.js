@@ -1,5 +1,6 @@
 var logoImage = "../../Template/AdminLTE-master/img/m2eV3.png";
 var googleAnalyticsAppID = "UA-51967607-1";
+var facebookAppId = "689268497785729";
 var userSession = {
     username: "sumitchourasia91@gmail.com",
     guid:"",
@@ -32,7 +33,10 @@ var TemplateInfoModel = {
         subType_productDescriptions : "productDescriptions",
 
         type_moderation : "moderation",        
-        subType_imageModeration : "moderatingPhotos"                      
+        subType_imageModeration : "moderatingPhotos",
+        
+        type_Ads : "Ads",        
+        subType_facebookLike : "facebookLike"                      
 };
 
 var clientConstants = {
