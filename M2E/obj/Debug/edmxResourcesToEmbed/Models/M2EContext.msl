@@ -67,13 +67,16 @@
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="type" ColumnName="type" />
           <ScalarProperty Name="visible" ColumnName="visible" />
-          <ScalarProperty Name="buttonText" ColumnName="buttonText" />
+          <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="referenceId" ColumnName="referenceId" />
-          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="totalThreads" ColumnName="totalThreads" />
           <ScalarProperty Name="completed" ColumnName="completed" />
           <ScalarProperty Name="verified" ColumnName="verified" />
           <ScalarProperty Name="creationTime" ColumnName="creationTime" />
           <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="subType" ColumnName="subType" />
+          <ScalarProperty Name="payPerUser" ColumnName="payPerUser" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -213,6 +216,7 @@
           <ScalarProperty Name="Locked" ColumnName="Locked" />
           <ScalarProperty Name="KeepMeSignedIn" ColumnName="KeepMeSignedIn" />
           <ScalarProperty Name="RegistrationTime" ColumnName="RegistrationTime" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -249,6 +253,96 @@
           <ScalarProperty Name="imgurId" ColumnName="imgurId" />
           <ScalarProperty Name="imgurDeleteHash" ColumnName="imgurDeleteHash" />
           <ScalarProperty Name="imgurLink" ColumnName="imgurLink" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSurveyResultToBeRevieweds1">
+      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserSurveyResultToBeReviewed)">
+        <MappingFragment StoreEntitySet="UserSurveyResultToBeRevieweds1">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="refKey" ColumnName="refKey" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="answer" ColumnName="answer" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="questionId" ColumnName="questionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSurveyResults">
+      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserSurveyResult)">
+        <MappingFragment StoreEntitySet="UserSurveyResults">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="refKey" ColumnName="refKey" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="answer" ColumnName="answer" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="questionId" ColumnName="questionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserJobMappings">
+      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserJobMapping)">
+        <MappingFragment StoreEntitySet="UserJobMappings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="refKey" ColumnName="refKey" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="startTime" ColumnName="startTime" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="endTime" ColumnName="endTime" />
+          <ScalarProperty Name="expectedDeliveryTime" ColumnName="expectedDeliveryTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserMultipleJobMappings">
+      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserMultipleJobMapping)">
+        <MappingFragment StoreEntitySet="UserMultipleJobMappings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="refKey" ColumnName="refKey" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="startTime" ColumnName="startTime" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="subType" ColumnName="subType" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="endTime" ColumnName="endTime" />
+          <ScalarProperty Name="expectedDelivery" ColumnName="expectedDelivery" />
+          <ScalarProperty Name="surveyResult" ColumnName="surveyResult" />
+          <ScalarProperty Name="imageKey" ColumnName="imageKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CreateTemplateFacebookLikes">
+      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.CreateTemplateFacebookLike)">
+        <MappingFragment StoreEntitySet="CreateTemplateFacebookLikes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="referenceId" ColumnName="referenceId" />
+          <ScalarProperty Name="totalThreads" ColumnName="totalThreads" />
+          <ScalarProperty Name="completed" ColumnName="completed" />
+          <ScalarProperty Name="verified" ColumnName="verified" />
+          <ScalarProperty Name="creationTime" ColumnName="creationTime" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="subType" ColumnName="subType" />
+          <ScalarProperty Name="payPerUser" ColumnName="payPerUser" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="pageId" ColumnName="pageId" />
+          <ScalarProperty Name="pageUrl" ColumnName="pageUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserFacebookLikeJobMappings">
+      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserFacebookLikeJobMapping)">
+        <MappingFragment StoreEntitySet="UserFacebookLikeJobMappings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="refKey" ColumnName="refKey" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="pageLikeTime" ColumnName="pageLikeTime" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="subType" ColumnName="subType" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="pageId" ColumnName="pageId" />
+          <ScalarProperty Name="pageUrl" ColumnName="pageUrl" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

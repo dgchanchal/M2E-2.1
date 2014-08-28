@@ -1,8 +1,19 @@
 'use strict';
 define([appLocation.preLogin], function (app) {
 
-    app.controller('beforeLoginSignInController', function ($scope, $http, $route, $rootScope, $routeParams, CookieUtil) {
+    app.controller('beforeLoginSignInController', function ($scope, $http, $route, $rootScope, $routeParams, $timeout, CookieUtil) {
+        // Login Silder
+            var slidesInSlideshow = 2;
+            var slidesTimeIntervalInMs = 3000;
 
+            $scope.slideshow = 1;
+            var slideTimer =
+            $timeout(function interval() {
+                  $scope.slideshow = ($scope.slideshow % slidesInSlideshow) + 1;
+                  slideTimer = $timeout(interval, slidesTimeIntervalInMs);
+              }, slidesTimeIntervalInMs);
+
+        // Login Sign In Form
         $scope.EmailId = "";
         $scope.Password = "";
         $scope.KeepMeSignedInCheckBox = false;
@@ -25,8 +36,9 @@ define([appLocation.preLogin], function (app) {
             visible: false,
             message: ''
         }
-        //var type = getParameterByName("type");
-        //var mssg = getParameterByName("mssg");
+        $scope.userConstants = userConstants;
+        $scope.clientConstants = clientConstants;
+
         if (getParameterByName("type") == "info") {
             $scope.showHeaderErrors = true;
             $scope.HeaderAlert.visible = true;

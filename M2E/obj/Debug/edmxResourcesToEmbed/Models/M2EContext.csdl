@@ -20,6 +20,12 @@
     <EntitySet Name="UserSkills" EntityType="M2EModel.UserSkill" />
     <EntitySet Name="ValidateUserKeys" EntityType="M2EModel.ValidateUserKey" />
     <EntitySet Name="CreateTemplateImgurImagesLists" EntityType="M2EModel.CreateTemplateImgurImagesList" />
+    <EntitySet Name="UserSurveyResultToBeRevieweds1" EntityType="M2EModel.UserSurveyResultToBeReviewed" />
+    <EntitySet Name="UserSurveyResults" EntityType="M2EModel.UserSurveyResult" />
+    <EntitySet Name="UserJobMappings" EntityType="M2EModel.UserJobMapping" />
+    <EntitySet Name="UserMultipleJobMappings" EntityType="M2EModel.UserMultipleJobMapping" />
+    <EntitySet Name="CreateTemplateFacebookLikes" EntityType="M2EModel.CreateTemplateFacebookLike" />
+    <EntitySet Name="UserFacebookLikeJobMappings" EntityType="M2EModel.UserFacebookLikeJobMapping" />
   </EntityContainer>
   <EntityType Name="ClientDetail">
     <Key>
@@ -84,13 +90,16 @@
     <Property Name="username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="type" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="visible" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-    <Property Name="buttonText" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="referenceId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-    <Property Name="total" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="totalThreads" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="completed" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="verified" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="creationTime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Type="String" Name="title" Nullable="false" />
+    <Property Type="String" Name="subType" Nullable="false" />
+    <Property Type="String" Name="payPerUser" Nullable="false" />
+    <Property Type="DateTime" Name="DateTime" Nullable="true" />
   </EntityType>
   <EntityType Name="CreateTemplateSingleQuestionsList">
     <Key>
@@ -219,6 +228,7 @@
     <Property Name="Locked" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="KeepMeSignedIn" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
     <Property Name="RegistrationTime" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Type="DateTime" Name="DateTime" Nullable="true" />
   </EntityType>
   <EntityType Name="UserSkill">
     <Key>
@@ -252,5 +262,89 @@
     <Property Type="String" Name="imgurId" Nullable="false" />
     <Property Type="String" Name="imgurDeleteHash" Nullable="false" />
     <Property Type="String" Name="imgurLink" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSurveyResultToBeReviewed">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="refKey" Nullable="false" />
+    <Property Type="String" Name="type" Nullable="false" />
+    <Property Type="String" Name="answer" Nullable="false" />
+    <Property Type="String" Name="username" Nullable="false" />
+    <Property Type="String" Name="questionId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSurveyResult">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="refKey" Nullable="false" />
+    <Property Type="String" Name="type" Nullable="false" />
+    <Property Type="String" Name="answer" Nullable="false" />
+    <Property Type="String" Name="username" Nullable="false" />
+    <Property Type="String" Name="questionId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserJobMapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="refKey" Nullable="false" />
+    <Property Type="String" Name="username" Nullable="false" />
+    <Property Type="String" Name="startTime" Nullable="false" />
+    <Property Type="String" Name="status" Nullable="false" />
+    <Property Type="String" Name="endTime" Nullable="false" />
+    <Property Type="String" Name="expectedDeliveryTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserMultipleJobMapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="refKey" Nullable="false" />
+    <Property Type="String" Name="username" Nullable="false" />
+    <Property Type="String" Name="startTime" Nullable="false" />
+    <Property Type="String" Name="type" Nullable="false" />
+    <Property Type="String" Name="subType" Nullable="false" />
+    <Property Type="String" Name="status" Nullable="false" />
+    <Property Type="String" Name="endTime" Nullable="false" />
+    <Property Type="String" Name="expectedDelivery" Nullable="false" />
+    <Property Type="String" Name="surveyResult" Nullable="false" />
+    <Property Type="String" Name="imageKey" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CreateTemplateFacebookLike">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="username" Nullable="false" />
+    <Property Type="String" Name="type" Nullable="false" />
+    <Property Type="String" Name="description" Nullable="false" MaxLength="Max" />
+    <Property Type="String" Name="referenceId" Nullable="false" />
+    <Property Type="String" Name="totalThreads" Nullable="false" />
+    <Property Type="String" Name="completed" Nullable="false" />
+    <Property Type="String" Name="verified" Nullable="false" />
+    <Property Type="String" Name="creationTime" Nullable="false" />
+    <Property Type="String" Name="title" Nullable="false" />
+    <Property Type="String" Name="subType" Nullable="false" />
+    <Property Type="String" Name="payPerUser" Nullable="false" />
+    <Property Type="DateTime" Name="DateTime" Nullable="true" />
+    <Property Type="String" Name="pageId" Nullable="false" />
+    <Property Type="String" Name="pageUrl" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserFacebookLikeJobMapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="refKey" Nullable="false" />
+    <Property Type="String" Name="username" Nullable="false" />
+    <Property Type="DateTime" Name="pageLikeTime" Nullable="true" />
+    <Property Type="String" Name="type" Nullable="false" />
+    <Property Type="String" Name="subType" Nullable="false" />
+    <Property Type="String" Name="status" Nullable="false" />
+    <Property Type="String" Name="pageId" Nullable="false" />
+    <Property Type="String" Name="pageUrl" Nullable="false" />
   </EntityType>
 </Schema>

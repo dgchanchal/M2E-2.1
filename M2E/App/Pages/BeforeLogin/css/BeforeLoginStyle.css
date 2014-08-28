@@ -1287,6 +1287,14 @@ div.main-content {
     text-decoration: underline;
     color: #3c8dbc !important;
 }
+
+
+.innerDivCenterAlign {
+    display: table;
+    margin: 0 auto;
+}
+
+
 /* ANIMATIONS
 ============================================================================= */
 

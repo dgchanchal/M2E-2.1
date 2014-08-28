@@ -62,18 +62,7 @@ appRequire = require
             jquery_slimscroll: {
                 deps: ["jquery"]
             },
-            //TweenMax_min: {
-            //    deps: ["jquery"]
-            //},
-            //beforeLoginAdminLTETree: {
-            //    deps: ["jquery"]
-            //},
-            //iCheck: {
-            //    deps: ["jquery"]
-            //},
-            //beforeLoginAdminLTEApp: {
-            //    deps: ["jquery", "jquery_slimscroll", "bootstrap", "bootstrap_switch", "beforeLoginAdminLTETree", "iCheck"]
-            //},            
+           
             beforeLoginApp: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
             },
@@ -136,6 +125,7 @@ appRequire = require
             angular_route: "../../App/js/angular-route",
             angular_animate: "../../App/js/angular-animate",
             sanitize: "../../App/js/angular/ngSanitize/sanitize",
+            jquery_nivo_slider: "../../App/js/jquery.nivo.slider",
 
             //==============================================================================================================
             // Application Related JS

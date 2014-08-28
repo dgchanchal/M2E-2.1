@@ -337,6 +337,10 @@
     <Content Include="App\img\loading\loading100x100.gif" />
     <Content Include="App\img\loading\loading123.gif" />
     <Content Include="App\img\loading\loading70x70.gif" />
+    <Content Include="App\img\login\active.png" />
+    <Content Include="App\img\login\for_institutions.png" />
+    <Content Include="App\img\login\for_participants.png" />
+    <Content Include="App\img\login\inactive.png" />
     <Content Include="App\img\movies\1.jpg" />
     <Content Include="App\img\movies\2.jpg" />
     <Content Include="App\img\movies\3.jpg" />
@@ -361,6 +365,7 @@
     <Content Include="App\js\angular-animate.js" />
     <Content Include="App\js\dragend.js" />
     <Content Include="App\js\angular.1.2.13.js" />
+    <Content Include="App\js\jquery.nivo.slider.js" />
     <Content Include="App\js\jquery.panzoom.js" />
     <Content Include="App\js\jquery.panzoom.min.js" />
     <Content Include="App\js\singleRController.js" />
@@ -1434,6 +1439,7 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App\Pages\ClientAfterLogin\ContentWriting\" />
     <Folder Include="App\third-Party\html5-file-upload\uploads\" />
     <Folder Include="App_Data\" />
     <Folder Include="Upload\Images\" />
@@ -1589,7 +1595,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>8111</DevelopmentServerPort>
+          <DevelopmentServerPort>60769</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
