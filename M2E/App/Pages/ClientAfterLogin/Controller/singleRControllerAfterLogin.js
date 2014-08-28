@@ -24,26 +24,30 @@
 
 
     notificationClientHub.client.updateClientProgressChart = function (Id, JobTotal, JobCompleted, JobAssigned, JobReviewed) {
-        //showToastMessage("Success", "update client progress bar Successfully");        
-        if ($("#container_highcharts_completed_vs_reviewed" + Id).length != 0) {
-            //showToastMessage("Success", "update client progress bar Successfully");
-            var JobTotal_int = parseInt(JobTotal);
-            var JobReviewed_int = parseInt(JobReviewed);
-            var JobAssigned_int = parseInt(JobAssigned);
-            var JobCompleted_int = parseInt(JobCompleted);
-            if (JobCompleted_int > JobTotal_int)
-                JobCompleted_int = JobTotal_int;           
-            var JobRemaining_int = JobTotal_int - JobCompleted_int - JobAssigned_int;
-            var JobReviewRemaining = JobTotal_int - JobReviewed_int;
+        //showToastMessage("Success", "update client progress bar Successfully");
+        var JobTotal_int = parseInt(JobTotal);
+        var JobReviewed_int = parseInt(JobReviewed);
+        var JobAssigned_int = parseInt(JobAssigned);
+        var JobCompleted_int = parseInt(JobCompleted);
+        if (JobCompleted_int > JobTotal_int)
+            JobCompleted_int = JobTotal_int;
+        var JobRemaining_int = JobTotal_int - JobCompleted_int - JobAssigned_int;
+        var JobReviewRemaining = JobTotal_int - JobReviewed_int;
 
+        if ($('#progressBar' + Id).length != 0) {
             $('#progressBar' + Id).css('width', (JobCompleted_int * 100) / JobTotal_int + '%');
             $('#progressBarValue' + Id).html(((JobCompleted_int * 100) / JobTotal_int) + '%');
-//            console.log("JobTotal_int  : " + JobTotal_int);
-//            console.log("JobReviewed_int  : "+JobReviewed_int);
-//            console.log("JobAssigned_int  : "+JobAssigned_int);
-//            console.log("JobCompleted_int  : "+JobCompleted_int);
-//            console.log("JobRemaining_int  : "+JobRemaining_int);
-//            console.log("JobReviewRemaining  : " + JobReviewRemaining);
+        }        
+        else if ($("#container_highcharts_completed_vs_reviewed" + Id).length != 0) {
+            //showToastMessage("Success", "update client progress bar Successfully");
+            
+
+            //            console.log("JobTotal_int  : " + JobTotal_int);
+            //            console.log("JobReviewed_int  : "+JobReviewed_int);
+            //            console.log("JobAssigned_int  : "+JobAssigned_int);
+            //            console.log("JobCompleted_int  : "+JobCompleted_int);
+            //            console.log("JobRemaining_int  : "+JobRemaining_int);
+            //            console.log("JobReviewRemaining  : " + JobReviewRemaining);
 
             render_container_highcharts_completed_vs_reviewed(Id, JobTotal_int, JobReviewed_int, JobReviewRemaining);
             render_container_highcharts_completed_vs_assigned_vs_remaining(Id, JobCompleted_int, JobAssigned_int, JobRemaining_int);
