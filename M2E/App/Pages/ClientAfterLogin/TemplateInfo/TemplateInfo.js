@@ -7,7 +7,7 @@ define([appLocation.postLogin], function (app) {
         //console.log("template info page");
         initializeClientChart();
         function initializeClientChart() {
-            var url = ServerContextPah + '/Client/GetTemplateInformationByRefKey?id=' + $routeParams.templateId;
+            var url = ServerContextPah + '/Client/GetTemplateInformationByRefKey?id=' + $routeParams.templateId + '&type=' + $routeParams.type + '&subType=' + $routeParams.subType;
             var headers = {
                 'Content-Type': 'application/json',
                 'UTMZT': CookieUtil.getUTMZT(),

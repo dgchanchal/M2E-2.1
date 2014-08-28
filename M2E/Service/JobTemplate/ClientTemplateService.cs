@@ -134,76 +134,108 @@ namespace M2E.Service.JobTemplate
             
         }
 
-        public ResponseModel<ClientTemplateResponse> GetTemplateInformationByRefKey(string username,long id)
+        public ResponseModel<ClientTemplateResponse> GetTemplateInformationByRefKey(string username,long id,string type,string subType)
         {
-            var response = new ResponseModel<ClientTemplateResponse>();
-         
-            var userInfo = _db.Users.SingleOrDefault(x => x.Username == username);
-            var clientJobInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.Id == id && x.username == username);
-            var job = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == clientJobInfo.referenceId && x.username == username); ;
+            var response = new ResponseModel<ClientTemplateResponse>();                              
+            //var job = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == clientJobInfo.referenceId && x.username == username);
             response.Status = 200;
             response.Message = "success";
             response.Payload = new ClientTemplateResponse();
             try
             {
-                if ((job.type == Constants.type_dataEntry && job.subType == Constants.subType_Transcription)||
-                    (job.type == Constants.type_moderation && job.subType == Constants.subType_moderatingPhotos))
+                if (type == Constants.type_Ads && subType == Constants.subType_facebookLike)
                 {
-                    long JobCompleted = _db.UserMultipleJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == Constants.status_done).Count();
-                    long JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == Constants.status_assigned).Count();
-                    long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
+                    var clientFacebookLikeJobInfo = _db.CreateTemplateFacebookLikes.SingleOrDefault(x => x.Id == id && x.username == username);
 
-                    if (JobCompleted > Convert.ToInt32(clientJobInfo.totalThreads))
-                        JobCompleted = Convert.ToInt32(clientJobInfo.totalThreads);
+                    long JobCompleted = new FacebookDAO().facebookLikeCompletedThreadsWithRefKey(clientFacebookLikeJobInfo.referenceId);
+                    if (JobCompleted > Convert.ToInt32(clientFacebookLikeJobInfo.totalThreads))
+                        JobCompleted = Convert.ToInt32(clientFacebookLikeJobInfo.totalThreads);
 
+                    long JobAssigned = JobCompleted;
+                    long JobReviewed = JobCompleted;
+                    
                     var clientTemplate = new ClientTemplateResponse
                     {
-                        title = job.title,
-                        creationDate = job.creationTime.Split(' ')[0],
+                        title = clientFacebookLikeJobInfo.title,
+                        creationDate = clientFacebookLikeJobInfo.creationTime,
                         showTime = " 4 hours",
-                        editId = job.Id.ToString(CultureInfo.InvariantCulture),
+                        editId = clientFacebookLikeJobInfo.Id.ToString(CultureInfo.InvariantCulture),
                         showEllipse = true,
                         timeShowType = "success",
-                        progressPercent = Convert.ToString(System.Math.Ceiling(((JobCompleted) * 100 / Convert.ToDouble(clientJobInfo.totalThreads)) * 100) / 100),
+                        progressPercent = Convert.ToString(System.Math.Ceiling(((JobCompleted) * 100 / Convert.ToDouble(clientFacebookLikeJobInfo.totalThreads)) * 100) / 100),
                         JobCompleted = Convert.ToString(JobCompleted),
                         JobAssigned = Convert.ToString(JobAssigned),
-                        JobTotal = Convert.ToString(clientJobInfo.totalThreads),
+                        JobTotal = Convert.ToString(clientFacebookLikeJobInfo.totalThreads),
                         JobReviewed = Convert.ToString(JobReviewed),
-                        type = clientJobInfo.type,
-                        subType = clientJobInfo.subType,
-                        refKey = clientJobInfo.referenceId
+                        type = clientFacebookLikeJobInfo.type,
+                        subType = clientFacebookLikeJobInfo.subType,
+                        refKey = clientFacebookLikeJobInfo.referenceId
                     };
-                    response.Payload = clientTemplate;         
-
+                    response.Payload = clientTemplate;                
                 }
                 else
                 {
-                    long JobCompleted = _db.UserJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == Constants.status_done).Count();
-                    long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == Constants.status_assigned).Count();
-                    long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
+                    var clientJobInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.Id == id && x.username == username);  
 
-                    if (JobCompleted > Convert.ToInt32(clientJobInfo.totalThreads))
-                        JobCompleted = Convert.ToInt32(clientJobInfo.totalThreads);
-
-                    var clientTemplate = new ClientTemplateResponse
+                    if ((clientJobInfo.type == Constants.type_dataEntry && clientJobInfo.subType == Constants.subType_Transcription) ||
+                    (clientJobInfo.type == Constants.type_moderation && clientJobInfo.subType == Constants.subType_moderatingPhotos))
                     {
-                        title = job.title,
-                        creationDate = job.creationTime.Split(' ')[0],
-                        showTime = " 4 hours",
-                        editId = job.Id.ToString(CultureInfo.InvariantCulture),
-                        showEllipse = true,
-                        timeShowType = "success",
-                        progressPercent = Convert.ToString(System.Math.Ceiling(((JobCompleted) * 100 / Convert.ToDouble(clientJobInfo.totalThreads)) * 100) / 100),
-                        JobCompleted = Convert.ToString(JobCompleted),
-                        JobAssigned = Convert.ToString(JobAssigned),
-                        JobTotal = Convert.ToString(clientJobInfo.totalThreads),
-                        JobReviewed = Convert.ToString(JobReviewed),
-                        type = clientJobInfo.type,
-                        subType = clientJobInfo.subType
-                    };
-                    response.Payload = clientTemplate;         
+                        long JobCompleted = _db.UserMultipleJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == Constants.status_done).Count();
+                        long JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == Constants.status_assigned).Count();
+                        long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
+
+                        if (JobCompleted > Convert.ToInt32(clientJobInfo.totalThreads))
+                            JobCompleted = Convert.ToInt32(clientJobInfo.totalThreads);
+
+                        var clientTemplate = new ClientTemplateResponse
+                        {
+                            title = clientJobInfo.title,
+                            creationDate = clientJobInfo.creationTime,
+                            showTime = " 4 hours",
+                            editId = clientJobInfo.Id.ToString(CultureInfo.InvariantCulture),
+                            showEllipse = true,
+                            timeShowType = "success",
+                            progressPercent = Convert.ToString(System.Math.Ceiling(((JobCompleted) * 100 / Convert.ToDouble(clientJobInfo.totalThreads)) * 100) / 100),
+                            JobCompleted = Convert.ToString(JobCompleted),
+                            JobAssigned = Convert.ToString(JobAssigned),
+                            JobTotal = Convert.ToString(clientJobInfo.totalThreads),
+                            JobReviewed = Convert.ToString(JobReviewed),
+                            type = clientJobInfo.type,
+                            subType = clientJobInfo.subType,
+                            refKey = clientJobInfo.referenceId
+                        };
+                        response.Payload = clientTemplate;
+
+                    }
+                    else
+                    {
+                        long JobCompleted = _db.UserJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == Constants.status_done).Count();
+                        long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == Constants.status_assigned).Count();
+                        long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
+
+                        if (JobCompleted > Convert.ToInt32(clientJobInfo.totalThreads))
+                            JobCompleted = Convert.ToInt32(clientJobInfo.totalThreads);
+
+                        var clientTemplate = new ClientTemplateResponse
+                        {
+                            title = clientJobInfo.title,
+                            creationDate = clientJobInfo.creationTime,
+                            showTime = " 4 hours",
+                            editId = clientJobInfo.Id.ToString(CultureInfo.InvariantCulture),
+                            showEllipse = true,
+                            timeShowType = "success",
+                            progressPercent = Convert.ToString(System.Math.Ceiling(((JobCompleted) * 100 / Convert.ToDouble(clientJobInfo.totalThreads)) * 100) / 100),
+                            JobCompleted = Convert.ToString(JobCompleted),
+                            JobAssigned = Convert.ToString(JobAssigned),
+                            JobTotal = Convert.ToString(clientJobInfo.totalThreads),
+                            JobReviewed = Convert.ToString(JobReviewed),
+                            type = clientJobInfo.type,
+                            subType = clientJobInfo.subType
+                        };
+                        response.Payload = clientTemplate;
+                    }
                 }
-                
+                                
                 return response;
             }
             catch (Exception)
@@ -846,112 +878,20 @@ namespace M2E.Service.JobTemplate
             return response;
         }
 
-        public ResponseModel<string> DeleteTemplateDetailById(string username, long id)
+        public ResponseModel<string> DeleteTemplateDetailById(string username, long id,string type, string subType)
         {
             var response = new ResponseModel<string>();
             try
             {
-                var templateData = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.Id == id && x.username == username);
-                var UserJobMappingList = _db.UserJobMappings.Where(x => x.refKey == templateData.referenceId).ToList();
-                var UserMultipleJobMappingList = _db.UserMultipleJobMappings.Where(x => x.refKey == templateData.referenceId).ToList();
-                var UserSurveyResultList = _db.UserSurveyResultToBeRevieweds1.Where(x => x.refKey == templateData.referenceId).ToList();
-                var createTemplateeditableInstructionsListsCreateResponse = _db.CreateTemplateeditableInstructionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId && x.username == username).ToList();
-                var createTemplateSingleQuestionsListsCreateResponse = _db.CreateTemplateSingleQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId && x.username == username).ToList();
-                var createTemplateMultipleQuestionsListsCreateResponse = _db.CreateTemplateMultipleQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId && x.username == username).ToList();
-                var createTemplateTextBoxQuestionsListsCreateResponse = _db.CreateTemplateTextBoxQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId && x.username == username).ToList();
-                var createTemplateListBoxQuestionsListsCreateResponse = _db.CreateTemplateListBoxQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId && x.username == username).ToList();
-                var createTemplateImgurImagesListsCreateResponse = _db.CreateTemplateImgurImagesLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId && x.username == username).ToList();
-
-                if (templateData != null)
-                    _db.CreateTemplateQuestionInfoes.Remove(templateData);
-
-                if (UserJobMappingList != null)
+                if (type == Constants.type_Ads && subType == Constants.subType_facebookLike)
                 {
-                    foreach (var UserJobMapping in UserJobMappingList)
-                    {                       
-                        _db.UserJobMappings.Remove(UserJobMapping);
-                    }                    
+                    response = DeleteFacebookLikeTemplateDetailById(username, id);
                 }
-
-                if (UserMultipleJobMappingList != null)
+                else
                 {
-                    foreach (var UserMultipleJobMapping in UserMultipleJobMappingList)
-                    {
-                        _db.UserMultipleJobMappings.Remove(UserMultipleJobMapping);
-                    }
+                    response = DeleteSurveyTemplateDetailById(username, id);
                 }
-
-                if (UserSurveyResultList != null)
-                {
-                    foreach (var UserSurveyResult in UserSurveyResultList)
-                    {
-                        _db.UserSurveyResultToBeRevieweds1.Remove(UserSurveyResult);
-                    }
-                }
-
-                if (createTemplateImgurImagesListsCreateResponse != null)
-                {
-                    foreach (var createTemplateImgurImageCreateResponse in createTemplateImgurImagesListsCreateResponse)
-                    {
-                    _db.CreateTemplateImgurImagesLists.Remove(createTemplateImgurImageCreateResponse);
-                    }
-                }
-
-                if (createTemplateeditableInstructionsListsCreateResponse != null)
-                {
-                    foreach (var createTemplateeditableInstructionCreateResponse in createTemplateeditableInstructionsListsCreateResponse)
-                    {
-                        _db.CreateTemplateeditableInstructionsLists.Remove(createTemplateeditableInstructionCreateResponse);
-                    }                    
-                }
-
-                if (createTemplateSingleQuestionsListsCreateResponse != null)
-                {
-                    foreach (var createTemplateSingleQuestionCreateResponse in createTemplateSingleQuestionsListsCreateResponse)
-                    {
-                        _db.CreateTemplateSingleQuestionsLists.Remove(createTemplateSingleQuestionCreateResponse);
-                    }
-                }
-
-                if (createTemplateMultipleQuestionsListsCreateResponse != null)
-                {
-                    foreach (var createTemplateMultipleQuestionCreateResponse in createTemplateMultipleQuestionsListsCreateResponse)
-                    {
-                        _db.CreateTemplateMultipleQuestionsLists.Remove(createTemplateMultipleQuestionCreateResponse);
-                    }
-                }
-
-                if (createTemplateTextBoxQuestionsListsCreateResponse != null)
-                {
-                    foreach (var createTemplateTextBoxQuestionCreateResponse in createTemplateTextBoxQuestionsListsCreateResponse)
-                    {
-                        _db.CreateTemplateTextBoxQuestionsLists.Remove(createTemplateTextBoxQuestionCreateResponse);
-                    }
-                }
-
-                if (createTemplateListBoxQuestionsListsCreateResponse != null)
-                {
-                    foreach (var createTemplateListBoxQuestionCreateResponse in createTemplateListBoxQuestionsListsCreateResponse)
-                    {
-                        _db.CreateTemplateListBoxQuestionsLists.Remove(createTemplateListBoxQuestionCreateResponse);
-                    }
-                }
-                   
-
-                try
-                {
-                    _db.SaveChanges();
-                    response.Status = 200;
-                    response.Message = "Success";
-                    response.Payload = "Successfully Deleted";
-                }
-                catch (DbEntityValidationException e)
-                {
-                    DbContextException.LogDbContextException(e);
-                    response.Status = 500;
-                    response.Message = "Failed";
-                    response.Payload = "Exception Occured";
-                }
+                
 
                 return response;
             }
@@ -963,6 +903,149 @@ namespace M2E.Service.JobTemplate
             }
         }
 
+        private ResponseModel<string> DeleteFacebookLikeTemplateDetailById(string username, long id)
+        {
+            var response = new ResponseModel<string>();
+            var FacebookLikeTemplateData = _db.CreateTemplateFacebookLikes.SingleOrDefault(x => x.Id == id && x.username == username);
+            var UserFacebookLikeJobMappingsList = _db.UserFacebookLikeJobMappings.Where(x => x.refKey == FacebookLikeTemplateData.referenceId);
+
+            if (FacebookLikeTemplateData != null)
+                _db.CreateTemplateFacebookLikes.Remove(FacebookLikeTemplateData);
+
+            if (UserFacebookLikeJobMappingsList != null)
+            {
+                foreach (var UserFacebookLikeJobMapping in UserFacebookLikeJobMappingsList)
+                {
+                    _db.UserFacebookLikeJobMappings.Remove(UserFacebookLikeJobMapping);
+                }
+            }
+
+            try
+            {
+                _db.SaveChanges();
+                response.Status = 200;
+                response.Message = "Success";
+                response.Payload = "Successfully Deleted";
+                return response;
+            }
+            catch (DbEntityValidationException e)
+            {
+                DbContextException.LogDbContextException(e);
+                response.Status = 500;
+                response.Message = "Failed";
+                response.Payload = "Exception Occured";
+                return response;
+            }            
+        }
+
+        private ResponseModel<string> DeleteSurveyTemplateDetailById(string username, long id)
+        {
+            var response = new ResponseModel<string>();
+
+            var templateData = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.Id == id && x.username == username);
+            var UserJobMappingList = _db.UserJobMappings.Where(x => x.refKey == templateData.referenceId).ToList();
+            var UserMultipleJobMappingList = _db.UserMultipleJobMappings.Where(x => x.refKey == templateData.referenceId).ToList();
+            var UserSurveyResultList = _db.UserSurveyResultToBeRevieweds1.Where(x => x.refKey == templateData.referenceId).ToList();
+            var createTemplateeditableInstructionsListsCreateResponse = _db.CreateTemplateeditableInstructionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId && x.username == username).ToList();
+            var createTemplateSingleQuestionsListsCreateResponse = _db.CreateTemplateSingleQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId && x.username == username).ToList();
+            var createTemplateMultipleQuestionsListsCreateResponse = _db.CreateTemplateMultipleQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId && x.username == username).ToList();
+            var createTemplateTextBoxQuestionsListsCreateResponse = _db.CreateTemplateTextBoxQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId && x.username == username).ToList();
+            var createTemplateListBoxQuestionsListsCreateResponse = _db.CreateTemplateListBoxQuestionsLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId && x.username == username).ToList();
+            var createTemplateImgurImagesListsCreateResponse = _db.CreateTemplateImgurImagesLists.OrderBy(x => x.Id).Where(x => x.referenceKey == templateData.referenceId && x.username == username).ToList();
+
+            if (templateData != null)
+                _db.CreateTemplateQuestionInfoes.Remove(templateData);
+
+            if (UserJobMappingList != null)
+            {
+                foreach (var UserJobMapping in UserJobMappingList)
+                {
+                    _db.UserJobMappings.Remove(UserJobMapping);
+                }
+            }
+
+            if (UserMultipleJobMappingList != null)
+            {
+                foreach (var UserMultipleJobMapping in UserMultipleJobMappingList)
+                {
+                    _db.UserMultipleJobMappings.Remove(UserMultipleJobMapping);
+                }
+            }
+
+            if (UserSurveyResultList != null)
+            {
+                foreach (var UserSurveyResult in UserSurveyResultList)
+                {
+                    _db.UserSurveyResultToBeRevieweds1.Remove(UserSurveyResult);
+                }
+            }
+
+            if (createTemplateImgurImagesListsCreateResponse != null)
+            {
+                foreach (var createTemplateImgurImageCreateResponse in createTemplateImgurImagesListsCreateResponse)
+                {
+                    _db.CreateTemplateImgurImagesLists.Remove(createTemplateImgurImageCreateResponse);
+                }
+            }
+
+            if (createTemplateeditableInstructionsListsCreateResponse != null)
+            {
+                foreach (var createTemplateeditableInstructionCreateResponse in createTemplateeditableInstructionsListsCreateResponse)
+                {
+                    _db.CreateTemplateeditableInstructionsLists.Remove(createTemplateeditableInstructionCreateResponse);
+                }
+            }
+
+            if (createTemplateSingleQuestionsListsCreateResponse != null)
+            {
+                foreach (var createTemplateSingleQuestionCreateResponse in createTemplateSingleQuestionsListsCreateResponse)
+                {
+                    _db.CreateTemplateSingleQuestionsLists.Remove(createTemplateSingleQuestionCreateResponse);
+                }
+            }
+
+            if (createTemplateMultipleQuestionsListsCreateResponse != null)
+            {
+                foreach (var createTemplateMultipleQuestionCreateResponse in createTemplateMultipleQuestionsListsCreateResponse)
+                {
+                    _db.CreateTemplateMultipleQuestionsLists.Remove(createTemplateMultipleQuestionCreateResponse);
+                }
+            }
+
+            if (createTemplateTextBoxQuestionsListsCreateResponse != null)
+            {
+                foreach (var createTemplateTextBoxQuestionCreateResponse in createTemplateTextBoxQuestionsListsCreateResponse)
+                {
+                    _db.CreateTemplateTextBoxQuestionsLists.Remove(createTemplateTextBoxQuestionCreateResponse);
+                }
+            }
+
+            if (createTemplateListBoxQuestionsListsCreateResponse != null)
+            {
+                foreach (var createTemplateListBoxQuestionCreateResponse in createTemplateListBoxQuestionsListsCreateResponse)
+                {
+                    _db.CreateTemplateListBoxQuestionsLists.Remove(createTemplateListBoxQuestionCreateResponse);
+                }
+            }
+
+
+            try
+            {
+                _db.SaveChanges();
+                response.Status = 200;
+                response.Message = "Success";
+                response.Payload = "Successfully Deleted";
+                return response;
+            }
+            catch (DbEntityValidationException e)
+            {
+                DbContextException.LogDbContextException(e);
+                response.Status = 500;
+                response.Message = "Failed";
+                response.Payload = "Exception Occured";
+                return response;
+            }
+        }
         public ResponseModel<string> DeleteTemplateImgurImageById(string username, long id)
         {
             var response = new ResponseModel<string>();

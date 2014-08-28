@@ -74,49 +74,44 @@ define([appLocation.postLogin], function (app) {
 
         $scope.deleteTemplateEditPageWithId = function (type, subType, id) {
             $('#closeModalPopup' + id).click();
-            if (type == TemplateInfoModel.type_Ads && subType == TemplateInfoModel.subType_facebookLike) {
+            var url = ServerContextPah + '/Client/DeleteTemplateDetailById?id=' + id + '&type=' + type + '&subType=' + subType;
+            var headers = {
+                'Content-Type': 'application/json',
+                'UTMZT': CookieUtil.getUTMZT(),
+                'UTMZK': CookieUtil.getUTMZK(),
+                'UTMZV': CookieUtil.getUTMZV()
+            };
+            if (confirm("Template will be permanently deleted. Are you sure?") == true) {
+                startBlockUI('wait..', 3);
+                $http({
+                    url: url,
+                    method: "POST",
+                    headers: headers
+                }).success(function (data, status, headers, config) {
+                    //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
+
+                    if (data.Status == "200") {
+                        stopBlockUI();
+                        showToastMessage("Success", "Deleted Successfully");
+                        loadTaskInProgressTable();
+                    }
+                    else if (data.Status == "404") {
+                        stopBlockUI();
+                        alert("This template is not present in database");
+                    }
+                    else if (data.Status == "500") {
+                        stopBlockUI();
+                        alert("Internal Server Error Occured");
+                    }
+                }).error(function (data, status, headers, config) {
+
+                });
+            } else {
 
             }
-            else
-            {
-                var url = ServerContextPah + '/Client/DeleteTemplateDetailById?id=' + id;
-                var headers = {
-                    'Content-Type': 'application/json',
-                    'UTMZT': CookieUtil.getUTMZT(),
-                    'UTMZK': CookieUtil.getUTMZK(),
-                    'UTMZV': CookieUtil.getUTMZV()
-                };
-                if (confirm("Template will be permanently deleted. Are you sure?") == true) {
-                    startBlockUI('wait..', 3);
-                    $http({
-                        url: url,
-                        method: "POST",
-                        headers: headers
-                    }).success(function (data, status, headers, config) {
-                        //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
 
-                        if (data.Status == "200") {
-                            stopBlockUI();
-                            showToastMessage("Success", "Deleted Successfully");
-                            loadTaskInProgressTable();
-                        }
-                        else if (data.Status == "404") {
-                            stopBlockUI();
-                            alert("This template is not present in database");
-                        }
-                        else if (data.Status == "500") {
-                            stopBlockUI();
-                            alert("Internal Server Error Occured");
-                        }
-                    }).error(function (data, status, headers, config) {
 
-                    });
-                } else {
-
-                }
-            }
-         }
-            
+        }
     });
 
 });

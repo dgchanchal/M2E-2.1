@@ -58,9 +58,11 @@ namespace M2E.Controllers
             var clientTemplate = new ClientTemplateService();
             var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
             var id = Convert.ToInt32(Request.QueryString["id"]);
+            var type = Convert.ToString(Request.QueryString["type"]);
+            var subType = Convert.ToString(Request.QueryString["subType"]);
             if (isValidToken)
             {
-                return Json(clientTemplate.GetTemplateInformationByRefKey(session.UserName,id));
+                return Json(clientTemplate.GetTemplateInformationByRefKey(session.UserName,id,type,subType));
             }
             else
             {
@@ -351,11 +353,13 @@ namespace M2E.Controllers
             var headers = new HeaderManager(Request);
             M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
             var id = Convert.ToInt32(Request.QueryString["id"]);
+            var type = Convert.ToString(Request.QueryString["type"]);
+            var subType = Convert.ToString(Request.QueryString["subType"]);
             var clientTemplate = new ClientTemplateService();
             var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
             if (isValidToken)
             {
-                return Json(clientTemplate.DeleteTemplateDetailById(session.UserName, id));
+                return Json(clientTemplate.DeleteTemplateDetailById(session.UserName, id,type, subType));
             }
             else
             {
