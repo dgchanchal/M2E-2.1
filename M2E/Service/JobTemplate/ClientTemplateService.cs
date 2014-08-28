@@ -1046,6 +1046,7 @@ namespace M2E.Service.JobTemplate
                 return response;
             }
         }
+
         public ResponseModel<string> DeleteTemplateImgurImageById(string username, long id)
         {
             var response = new ResponseModel<string>();
