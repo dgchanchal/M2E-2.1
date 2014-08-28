@@ -13,6 +13,7 @@ define([appLocation.preLogin], function (app) {
                   slideTimer = $timeout(interval, slidesTimeIntervalInMs);
               }, slidesTimeIntervalInMs);
 
+        //alert(mobileDevice);
         // Login Sign In Form
         $scope.EmailId = "";
         $scope.Password = "";

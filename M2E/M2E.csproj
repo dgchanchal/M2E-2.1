@@ -330,6 +330,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="App\css\bannerscollection_zoominout.css" />
     <Content Include="App\css\magic.css" />
     <Content Include="App\img\cautom.jpg" />
     <Content Include="App\img\loading\load1.gif" />
@@ -349,6 +350,18 @@
     <Content Include="App\img\movies\6.jpg" />
     <Content Include="App\img\movies\7.jpg" />
     <Content Include="App\img\movies\8.jpg" />
+    <Content Include="App\img\opportuneFullWidth\01_opportune.jpg" />
+    <Content Include="App\img\opportuneFullWidth\02_opportune.jpg" />
+    <Content Include="App\img\opportuneFullWidth\03_opportune.jpg" />
+    <Content Include="App\img\opportuneFullWidth\04_opportune.jpg" />
+    <Content Include="App\img\opportuneFullWidth\05_opportune.jpg" />
+    <Content Include="App\img\opportuneFullWidth\06_opportune.jpg" />
+    <Content Include="App\img\opportuneFullWidth\thumbs\01_opportune.jpg" />
+    <Content Include="App\img\opportuneFullWidth\thumbs\02_opportune.jpg" />
+    <Content Include="App\img\opportuneFullWidth\thumbs\03_opportune.jpg" />
+    <Content Include="App\img\opportuneFullWidth\thumbs\04_opportune.jpg" />
+    <Content Include="App\img\opportuneFullWidth\thumbs\05_opportune.jpg" />
+    <Content Include="App\img\opportuneFullWidth\thumbs\06_opportune.jpg" />
     <Content Include="App\img\panzoom\shark_attack.jpg" />
     <Content Include="App\img\swipeImage\Touch_Gestures_4-20.png" />
     <Content Include="App\img\swipeImage\Touch_Gestures_4-32.png" />

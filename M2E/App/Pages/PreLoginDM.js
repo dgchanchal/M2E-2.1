@@ -58,7 +58,16 @@ appRequire = require
             },
             configureBlockUI: {
                 deps: ["jquery_blockUI"]
-            },            
+            },
+            jquery_ui_min: {
+                deps: ["jquery"]
+            },
+            jquery_ui_touch_punch_min: {
+                deps: ["jquery", "jquery_ui_min"]
+            },
+            bannerscollection_zoominout: {
+                deps: ["jquery", "jquery_ui_touch_punch_min", "jquery_ui_min"]
+            },
             jquery_slimscroll: {
                 deps: ["jquery"]
             },
@@ -70,7 +79,7 @@ appRequire = require
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
             },
             beforeLoginIndex: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "bannerscollection_zoominout"]
             },
             beforeLoginFAQ: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
@@ -106,6 +115,7 @@ appRequire = require
             //==============================================================================================================            
             underscore: "../../App/js/underscore-min",
             jquery: "../../App/js/jquery.min",
+            jquery_ui_min: "../../App/js/jquery-ui.min",
             angular: "../../App/js/angular.1.2.13",
             //m2ei18n: "../../App/js/m2ei18n",
             jquery_toastmessage: "../../App/third-Party/toastmessage/js/jquery.toastmessage",
@@ -126,6 +136,8 @@ appRequire = require
             angular_animate: "../../App/js/angular-animate",
             sanitize: "../../App/js/angular/ngSanitize/sanitize",
             jquery_nivo_slider: "../../App/js/jquery.nivo.slider",
+            bannerscollection_zoominout: "../../App/js/bannerscollection_zoominout",
+            jquery_ui_touch_punch_min: "../../App/js/jquery.ui.touch-punch.min",
 
             //==============================================================================================================
             // Application Related JS
@@ -152,7 +164,7 @@ appRequire(["jquery", "angular", "jquery_toastmessage", "toastMessage", "jquery_
     "jquery_blockUI", "restangular","angular_route", "angular_animate", "bootstrap", "bootstrap_switch", //"beforeLoginAdminLTEApp", "moment","iCheck",
     "beforeLoginApp", "beforeLoginIndex", "beforeLoginFAQ", "beforeLoginLogin", "beforeLoginCookieService", "beforeLoginSignUpClient", "beforeLoginSignUpUser",
     "beforeLoginValidateEmail", "beforeLoginForgetPassword", "beforeLoginResetPassword", "showMessageTemplate", "underscore", "angular_cookies", "termsPrivacyController",
-    "sanitize"
+    "sanitize", "bannerscollection_zoominout", "jquery_ui_touch_punch_min", "jquery_ui_min"
 ], function() {
     angular.bootstrap(document.getElementById("main"), ["beforeLoginApp"]);
 });
