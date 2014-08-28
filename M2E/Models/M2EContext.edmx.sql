@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 08/22/2014 17:10:42
+-- Date Created: 08/28/2014 12:10:09
 -- Generated from EDMX file: F:\temp2\branches\M2E-2.0\M2E\Models\M2EContext.edmx
 -- --------------------------------------------------
 
@@ -382,6 +382,40 @@ CREATE TABLE [dbo].[UserMultipleJobMappings] (
 );
 GO
 
+-- Creating table 'CreateTemplateFacebookLikes'
+CREATE TABLE [dbo].[CreateTemplateFacebookLikes] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [username] nvarchar(max)  NOT NULL,
+    [type] nvarchar(max)  NOT NULL,
+    [description] nvarchar(max)  NOT NULL,
+    [referenceId] nvarchar(max)  NOT NULL,
+    [totalThreads] nvarchar(max)  NOT NULL,
+    [completed] nvarchar(max)  NOT NULL,
+    [verified] nvarchar(max)  NOT NULL,
+    [creationTime] nvarchar(max)  NOT NULL,
+    [title] nvarchar(max)  NOT NULL,
+    [subType] nvarchar(max)  NOT NULL,
+    [payPerUser] nvarchar(max)  NOT NULL,
+    [DateTime] datetime  NULL,
+    [pageId] nvarchar(max)  NOT NULL,
+    [pageUrl] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'UserFacebookLikeJobMappings'
+CREATE TABLE [dbo].[UserFacebookLikeJobMappings] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [refKey] nvarchar(max)  NOT NULL,
+    [username] nvarchar(max)  NOT NULL,
+    [pageLikeTime] datetime  NULL,
+    [type] nvarchar(max)  NOT NULL,
+    [subType] nvarchar(max)  NOT NULL,
+    [status] nvarchar(max)  NOT NULL,
+    [pageId] nvarchar(max)  NOT NULL,
+    [pageUrl] nvarchar(max)  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -521,6 +555,18 @@ GO
 -- Creating primary key on [Id] in table 'UserMultipleJobMappings'
 ALTER TABLE [dbo].[UserMultipleJobMappings]
 ADD CONSTRAINT [PK_UserMultipleJobMappings]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'CreateTemplateFacebookLikes'
+ALTER TABLE [dbo].[CreateTemplateFacebookLikes]
+ADD CONSTRAINT [PK_CreateTemplateFacebookLikes]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'UserFacebookLikeJobMappings'
+ALTER TABLE [dbo].[UserFacebookLikeJobMappings]
+ADD CONSTRAINT [PK_UserFacebookLikeJobMappings]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 

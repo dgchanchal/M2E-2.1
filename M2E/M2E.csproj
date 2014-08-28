@@ -175,6 +175,9 @@
     <Compile Include="Models\CreateTemplateeditableInstructionsList.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CreateTemplateFacebookLike.cs">
+      <DependentUpon>M2EContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CreateTemplateImgurImagesList.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
@@ -271,10 +274,15 @@
     <Compile Include="Models\UserDetail.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserFacebookLikeJobMapping.cs">
+      <DependentUpon>M2EContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserJobMapping.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserMultipleJobMapping.cs" />
+    <Compile Include="Models\UserMultipleJobMapping.cs">
+      <DependentUpon>M2EContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserPageSetting.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>

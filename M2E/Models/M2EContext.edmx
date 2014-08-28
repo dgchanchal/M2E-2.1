@@ -29,6 +29,8 @@
     <EntitySet Name="UserSurveyResults" EntityType="M2EModel.Store.UserSurveyResults" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserJobMappings" EntityType="M2EModel.Store.UserJobMappings" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserMultipleJobMappings" EntityType="M2EModel.Store.UserMultipleJobMappings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CreateTemplateFacebookLikes" EntityType="M2EModel.Store.CreateTemplateFacebookLikes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserFacebookLikeJobMappings" EntityType="M2EModel.Store.UserFacebookLikeJobMappings" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
   <EntityType Name="ClientDetails">
     <Key>
@@ -316,6 +318,40 @@
     <Property Name="surveyResult" Type="nvarchar(max)" Nullable="false" />
     <Property Name="imageKey" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="CreateTemplateFacebookLikes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="referenceId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="totalThreads" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="completed" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="creationTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="subType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="payPerUser" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="true" />
+    <Property Name="pageId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="pageUrl" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserFacebookLikeJobMappings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="refKey" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="pageLikeTime" Type="datetime" Nullable="true" />
+    <Property Name="type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="subType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="pageId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="pageUrl" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -344,6 +380,8 @@
           <EntitySet Name="UserSurveyResults" EntityType="M2EModel.UserSurveyResult" />
           <EntitySet Name="UserJobMappings" EntityType="M2EModel.UserJobMapping" />
           <EntitySet Name="UserMultipleJobMappings" EntityType="M2EModel.UserMultipleJobMapping" />
+          <EntitySet Name="CreateTemplateFacebookLikes" EntityType="M2EModel.CreateTemplateFacebookLike" />
+          <EntitySet Name="UserFacebookLikeJobMappings" EntityType="M2EModel.UserFacebookLikeJobMapping" />
         </EntityContainer>
         <EntityType Name="ClientDetail">
           <Key>
@@ -630,6 +668,40 @@
           <Property Type="String" Name="expectedDelivery" Nullable="false" />
           <Property Type="String" Name="surveyResult" Nullable="false" />
           <Property Type="String" Name="imageKey" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CreateTemplateFacebookLike">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="username" Nullable="false" />
+          <Property Type="String" Name="type" Nullable="false" />
+          <Property Type="String" Name="description" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="referenceId" Nullable="false" />
+          <Property Type="String" Name="totalThreads" Nullable="false" />
+          <Property Type="String" Name="completed" Nullable="false" />
+          <Property Type="String" Name="verified" Nullable="false" />
+          <Property Type="String" Name="creationTime" Nullable="false" />
+          <Property Type="String" Name="title" Nullable="false" />
+          <Property Type="String" Name="subType" Nullable="false" />
+          <Property Type="String" Name="payPerUser" Nullable="false" />
+          <Property Type="DateTime" Name="DateTime" Nullable="true" />
+          <Property Type="String" Name="pageId" Nullable="false" />
+          <Property Type="String" Name="pageUrl" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserFacebookLikeJobMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="refKey" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="false" />
+          <Property Type="DateTime" Name="pageLikeTime" Nullable="true" />
+          <Property Type="String" Name="type" Nullable="false" />
+          <Property Type="String" Name="subType" Nullable="false" />
+          <Property Type="String" Name="status" Nullable="false" />
+          <Property Type="String" Name="pageId" Nullable="false" />
+          <Property Type="String" Name="pageUrl" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -946,6 +1018,42 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CreateTemplateFacebookLikes">
+      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.CreateTemplateFacebookLike)">
+        <MappingFragment StoreEntitySet="CreateTemplateFacebookLikes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="referenceId" ColumnName="referenceId" />
+          <ScalarProperty Name="totalThreads" ColumnName="totalThreads" />
+          <ScalarProperty Name="completed" ColumnName="completed" />
+          <ScalarProperty Name="verified" ColumnName="verified" />
+          <ScalarProperty Name="creationTime" ColumnName="creationTime" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="subType" ColumnName="subType" />
+          <ScalarProperty Name="payPerUser" ColumnName="payPerUser" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="pageId" ColumnName="pageId" />
+          <ScalarProperty Name="pageUrl" ColumnName="pageUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserFacebookLikeJobMappings">
+      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserFacebookLikeJobMapping)">
+        <MappingFragment StoreEntitySet="UserFacebookLikeJobMappings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="refKey" ColumnName="refKey" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="pageLikeTime" ColumnName="pageLikeTime" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="subType" ColumnName="subType" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="pageId" ColumnName="pageId" />
+          <ScalarProperty Name="pageUrl" ColumnName="pageUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -979,17 +1087,19 @@
         <EntityTypeShape EntityType="M2EModel.LinkedInAuthApiData" Width="1.5" PointX="8.75" PointY="0.75" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.RecommendedBy" Width="1.5" PointX="0.75" PointY="9.125" Height="1.5956835937500031" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.ThirdPartyLogin" Width="1.5" PointX="2.75" PointY="8.75" Height="2.1725878906250031" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.UserDetail" Width="1.5" PointX="8.75" PointY="8.75" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="M2EModel.UserDetail" Width="1.5" PointX="10.75" PointY="6.875" Height="1.5956835937500031" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.UserPageSetting" Width="1.5" PointX="8.75" PointY="10.5" Height="2.1725878906250031" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.UserRecommendation" Width="1.5" PointX="10.75" PointY="10.5" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.User" Width="1.5" PointX="10.75" PointY="0.75" Height="3.9033007812499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.UserSkill" Width="1.5" PointX="10.75" PointY="5.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="M2EModel.UserSkill" Width="1.5" PointX="10.75" PointY="4.875" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.ValidateUserKey" Width="1.5" PointX="10.75" PointY="8.75" Height="1.5956835937500031" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.CreateTemplateImgurImagesList" Width="1.5" PointX="0.875" PointY="2.5" Height="3.1340950520833326" />
         <EntityTypeShape EntityType="M2EModel.UserSurveyResultToBeReviewed" Width="1.5" PointX="2.875" PointY="4.125" Height="2.1725878906249996" />
         <EntityTypeShape EntityType="M2EModel.UserSurveyResult" Width="1.5" PointX="2.875" PointY="6.375" Height="2.1725878906249996" />
         <EntityTypeShape EntityType="M2EModel.UserJobMapping" Width="1.5" PointX="6.75" PointY="6.5" Height="2.3648893229166656" />
-        <EntityTypeShape EntityType="M2EModel.UserMultipleJobMapping" Width="1.5" PointX="9" PointY="3.75" Height="3.1340950520833326" />
+        <EntityTypeShape EntityType="M2EModel.UserMultipleJobMapping" Width="1.5" PointX="8.875" PointY="2.375" Height="3.1340950520833326" />
+        <EntityTypeShape EntityType="M2EModel.CreateTemplateFacebookLike" Width="1.5" PointX="8.875" PointY="5.75" Height="3.9033007812499996" />
+        <EntityTypeShape EntityType="M2EModel.UserFacebookLikeJobMapping" Width="1.5" PointX="2.625" PointY="11" Height="2.7494921874999996" />
       </Diagram>
     </Diagrams>
   </Designer>
