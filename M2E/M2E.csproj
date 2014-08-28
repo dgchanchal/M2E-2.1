@@ -161,6 +161,8 @@
     <Compile Include="Controllers\SocialAuthController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DAO\FacebookDAO.cs" />
+    <Compile Include="DAO\ProjectDAO.cs" />
     <Compile Include="Encryption\AES.cs" />
     <Compile Include="Encryption\Encryption.cs" />
     <Compile Include="Global.asax.cs">
@@ -211,6 +213,7 @@
     <Compile Include="Models\DataResponse\ImgurImageUploadResponse.cs" />
     <Compile Include="Models\DataResponse\LoginResponse.cs" />
     <Compile Include="Models\DataResponse\UserResponse\DataEntry\Transcription\UserTranscriptionTemplateModel.cs" />
+    <Compile Include="Models\DataResponse\UserResponse\FacebookLike\UserFacebookLikeTemplateModel.cs" />
     <Compile Include="Models\DataResponse\UserResponse\Moderation\UserImageModerationtemplateModel.cs" />
     <Compile Include="Models\DataResponse\UserResponse\Survey\UserSurveyInfoInnerInstructionListData.cs" />
     <Compile Include="Models\DataResponse\UserResponse\Survey\UserSurveyInfoInnerListData.cs" />
@@ -313,6 +316,7 @@
     <Compile Include="Service\SocialNetwork\facebook\FacebookService.cs" />
     <Compile Include="Service\UploadImages\imgurService.cs" />
     <Compile Include="Service\UserService\dataEntry\Transcription.cs" />
+    <Compile Include="Service\UserService\facebookLike\UserfacebookLikeServices.cs" />
     <Compile Include="Service\UserService\Moderation\ImageModeration.cs" />
     <Compile Include="Service\UserService\Survey\UserProductSurveyTemplateService.cs" />
     <Compile Include="Session\HeaderManager.cs" />
@@ -417,6 +421,8 @@
     <Content Include="App\Pages\ClientAfterLogin\TemplateInfo\TemplateInfo.js" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateSample\TemplateSample.js" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateSample\TemplateSample.html" />
+    <Content Include="App\Pages\UserAfterLogin\Ads\facebookLike\facebookLike.html" />
+    <Content Include="App\Pages\UserAfterLogin\Ads\facebookLike\facebookLike.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\panzoom\controllers\TestController.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\panzoom\directives\panzoom.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\panzoom\directives\panzoomwidget.js" />
@@ -1430,7 +1436,6 @@
   <ItemGroup>
     <Folder Include="App\third-Party\html5-file-upload\uploads\" />
     <Folder Include="App_Data\" />
-    <Folder Include="DAO\" />
     <Folder Include="Upload\Images\" />
   </ItemGroup>
   <ItemGroup>

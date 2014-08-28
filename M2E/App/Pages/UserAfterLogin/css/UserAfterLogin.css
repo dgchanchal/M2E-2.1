@@ -811,3 +811,70 @@ element.style {
     -moz-border-radius: 2px;
     -webkit-box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.5);
     box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2); }
+
+   
+    .oJobTile .oJobHideButton {
+    background-size: 12px 12px;
+    color: #c0c1c1;
+    display: inline-block;
+    height: 12px;
+    margin: 1px 0 0 5px;
+    opacity: 0.53;
+    width: 12px;
+}
+.oRight {
+    float: right;
+}
+.oBtnCloseSmall, .oBtnCloseAttachment, .oBtnCloseMessage {
+    background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Igkgd2lkdGg9IjlweCIgaGVpZ2h0PSI5cHgiIHZpZXdCb3g9IjAgMCA5IDkiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDkgOSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PGc+CTxnPgkJPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9IiM4NjgyODIiIGQ9Ik02LjU5Niw0LjUwNGwxLjk3Ny0xLjk4N2MwLjU4Ni0wLjU4NiwwLjU4Ni0xLjUzNiwwLTIuMTIyCQkJYy0wLjU4Ni0wLjU4NS0xLjUzNS0wLjU4NS0yLjEyMSwwTDQuNDczLDIuMzg1TDIuNTQxLDAuNDU3Yy0wLjU4MS0wLjU4My0xLjUyMy0wLjU4My0yLjEwNSwwYy0wLjU4MSwwLjU4My0wLjU4MSwxLjUyOSwwLDIuMTEzCQkJTDIuMzY5LDQuNWwtMS45MywxLjk0Yy0wLjU4NiwwLjU4Ni0wLjU4NiwxLjUzNSwwLDIuMTIxczEuNTM2LDAuNTg2LDIuMTIyLDBsMS45MzEtMS45NDFsMS45NDcsMS45NDMJCQljMC41ODIsMC41ODQsMS41MjUsMC41ODQsMi4xMDUsMGMwLjU4Mi0wLjU4NCwwLjU4Mi0xLjUyOSwwLTIuMTEzTDYuNTk2LDQuNTA0eiIvPgk8L2c+PC9nPjwvc3ZnPg==") no-repeat scroll 50% center rgba(0, 0, 0, 0);
+    color: #949494;
+    display: inline-block;
+    font-family: monospace;
+    font-size: 17px;
+    font-weight: 700;
+    height: 9px;
+    margin-right: 7px;
+    width: 9px;
+}
+
+.oJobTile .oSaveLink {
+    display: inline-block;
+    float: right;
+    margin-right: 5px;
+}
+a, .oBtnTertiary, .oBtnCancel, .oBtnSubtle, .oBtnPopup, .oThumbList figcaption, .oMoreSmall, .oLink {
+    color: #0093f0;
+    cursor: pointer;
+    text-decoration: none;
+}
+.oJobResults .oRowTitle.oH3 {
+    width: 90%;
+}
+.oRowTitle {
+    display: block;
+    font: 700 14px sans-serif;
+    margin-bottom: 6px;
+}
+.oH3, .oBtnToggle, h3 {
+    font-size: 13px;
+    padding-bottom: 5px;
+}
+.oSupportInfo {
+    color: #7c7c7a;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 16px;
+}
+b, strong {
+    font-weight: 700;
+}
+.oJobTile .oDescription {
+    margin-bottom: 13px;
+}
+
+.oSupportInfo {
+    color: #7c7c7a;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 16px;
+}

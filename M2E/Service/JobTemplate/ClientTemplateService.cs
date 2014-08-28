@@ -18,6 +18,7 @@ using Microsoft.AspNet.SignalR;
 using M2E.Models.DataResponse.ClientResponse;
 using M2E.Models.Constants;
 using Newtonsoft.Json;
+using M2E.DAO;
 
 namespace M2E.Service.JobTemplate
 {
@@ -91,7 +92,37 @@ namespace M2E.Service.JobTemplate
                     }
                     
                 }
-                
+
+                var FacebookLikeTemplateData = _db.CreateTemplateFacebookLikes.OrderByDescending(x => x.creationTime).Where(x => x.username == username).ToList();
+                if (FacebookLikeTemplateData != null)
+                {
+                    foreach (var facebookJob in FacebookLikeTemplateData)
+                    {
+                        long JobCompleted = new FacebookDAO().facebookLikeCompletedThreadsWithRefKey(facebookJob.referenceId);                        
+                        if (JobCompleted > Convert.ToInt32(facebookJob.totalThreads))
+                            JobCompleted = Convert.ToInt32(facebookJob.totalThreads);
+                        long JobAssigned = JobCompleted;
+                        long JobReviewed = JobCompleted;
+                        var clientTemplate = new ClientTemplateResponse
+                        {
+                            title = facebookJob.title,
+                            creationDate = facebookJob.creationTime,
+                            showTime = " 4 hours",
+                            editId = facebookJob.Id.ToString(CultureInfo.InvariantCulture),
+                            showEllipse = true,
+                            timeShowType = "success",
+                            progressPercent = Convert.ToString(System.Math.Ceiling(((JobCompleted) * 100 / Convert.ToDouble(facebookJob.totalThreads)) * 100) / 100),
+                            JobCompleted = Convert.ToString(JobCompleted),
+                            JobAssigned = Convert.ToString(JobAssigned),
+                            JobTotal = facebookJob.totalThreads,
+                            JobReviewed = Convert.ToString(JobReviewed),
+                            type = facebookJob.type,
+                            subType = facebookJob.subType
+                        };
+                        response.Payload.Add(clientTemplate);                 
+                    }
+                }
+                response.Payload = response.Payload.OrderByDescending(x => x.creationDate).ToList();
                 return response;
             }
             catch (Exception)
@@ -676,50 +707,98 @@ namespace M2E.Service.JobTemplate
                 digitKey = 1;                
             }
             refKey += digitKey + randomValue;
-            var createTemplateQuestionsInfoInsert = new CreateTemplateQuestionInfo
-            {
-                description = TemplateInfo.description!=null?TemplateInfo.description:Constants.NA,
-                username = username,
-                title = req[0].title,
-                visible = Constants.NA,
-                type = TemplateInfo.type,
-                subType = TemplateInfo.subType,
-                creationTime = DateTime.Now.ToString(CultureInfo.InvariantCulture),
-                referenceId = refKey,
-                totalThreads = TemplateInfo.totalThreads,
-                completed = Constants.NA,
-                verified = Constants.NA,
-                payPerUser = TemplateInfo.amountEachThread
-            };
 
-            _db.CreateTemplateQuestionInfoes.Add(createTemplateQuestionsInfoInsert);
+            if (TemplateInfo.type == Constants.type_Ads && TemplateInfo.subType == Constants.subType_facebookLike)
+            {
+                var createTemplateFacebookLikeInsert = new CreateTemplateFacebookLike
+                {                    
+                    username = username,
+                    title = req[0].title,                    
+                    type = TemplateInfo.type,
+                    subType = TemplateInfo.subType,
+                    creationTime = DateTime.Now.ToString(CultureInfo.InvariantCulture),
+                    referenceId = refKey,
+                    totalThreads = TemplateInfo.totalThreads,
+                    completed = Constants.NA,
+                    verified = Constants.NA,
+                    payPerUser = TemplateInfo.amountEachThread,
+                    DateTime = DateTime.Now,
+                    description = (req[3].textBoxQuestionsList[0].Question) == null ? Constants.NA : req[3].textBoxQuestionsList[0].Question,
+                    pageId = TemplateInfo.pageId,
+                    pageUrl = TemplateInfo.pageUrl
+                };
+                _db.CreateTemplateFacebookLikes.Add(createTemplateFacebookLikeInsert);
+                try
+                {
+                    _db.SaveChanges();
+                    
+                    var signalRHub = new SignalRHub();
+                    string totalProjects = new ProjectDAO().totalAvailableProjects();
+                    string successRate = "";
+                    string totalUsers = "";
+                    string projectCategories = "";
+                    var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRHub>();
+                    hubContext.Clients.All.updateBeforeLoginUserProjectDetails(totalProjects, successRate, totalUsers, projectCategories);
+
+                    response.Status = 200;
+                    response.Message = "success-" + digitKey;
+                    response.Payload = refKey;
+                }
+                catch (DbEntityValidationException e)
+                {
+                    DbContextException.LogDbContextException(e);
+                    response.Status = 500;
+                    response.Message = "Failed";
+                    response.Payload = "Exception Occured";
+                }
+            }
+            else
+            {
+                var createTemplateQuestionsInfoInsert = new CreateTemplateQuestionInfo
+                {
+                    description = TemplateInfo.description != null ? TemplateInfo.description : Constants.NA,
+                    username = username,
+                    title = req[0].title,
+                    visible = Constants.NA,
+                    type = TemplateInfo.type,
+                    subType = TemplateInfo.subType,
+                    creationTime = DateTime.Now.ToString(CultureInfo.InvariantCulture),
+                    referenceId = refKey,
+                    totalThreads = TemplateInfo.totalThreads,
+                    completed = Constants.NA,
+                    verified = Constants.NA,
+                    payPerUser = TemplateInfo.amountEachThread
+                };
+
+                _db.CreateTemplateQuestionInfoes.Add(createTemplateQuestionsInfoInsert);
+
+                try
+                {
+                    _db.SaveChanges();
+                    CreateSubTemplateByRefKey CreateSubTemplateByRefKey = new CreateSubTemplateByRefKey();
+                    CreateSubTemplateByRefKey.CreateSubTemplateByRefKeyService(req, username, refKey);
+
+                    var signalRHub = new SignalRHub();
+                    string totalProjects = new ProjectDAO().totalAvailableProjects();
+                    string successRate = "";
+                    string totalUsers = "";
+                    string projectCategories = "";
+                    var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRHub>();
+                    hubContext.Clients.All.updateBeforeLoginUserProjectDetails(totalProjects, successRate, totalUsers, projectCategories);
+
+                    response.Status = 200;
+                    response.Message = "success-" + digitKey;
+                    response.Payload = refKey;
+                }
+                catch (DbEntityValidationException e)
+                {
+                    DbContextException.LogDbContextException(e);
+                    response.Status = 500;
+                    response.Message = "Failed";
+                    response.Payload = "Exception Occured";
+                }
+            }
             
-            try
-            {
-                _db.SaveChanges();
-                CreateSubTemplateByRefKey CreateSubTemplateByRefKey = new CreateSubTemplateByRefKey();
-                CreateSubTemplateByRefKey.CreateSubTemplateByRefKeyService(req, username, refKey);
-
-                var signalRHub = new SignalRHub();
-                string totalProjects = _db.CreateTemplateQuestionInfoes.Count().ToString(CultureInfo.InvariantCulture);
-                string successRate = "";
-                string totalUsers = "";
-                string projectCategories = "";
-                var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRHub>();
-                hubContext.Clients.All.updateBeforeLoginUserProjectDetails(totalProjects, successRate, totalUsers, projectCategories);                
-
-                response.Status = 200;
-                response.Message = "success-"+digitKey;
-                response.Payload = refKey;
-            }
-            catch (DbEntityValidationException e)
-            {
-                DbContextException.LogDbContextException(e);
-                response.Status = 500;
-                response.Message = "Failed";
-                response.Payload = "Exception Occured";
-            }
-
             return response;
         }
 

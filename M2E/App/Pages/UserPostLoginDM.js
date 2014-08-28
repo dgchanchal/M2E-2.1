@@ -140,9 +140,9 @@ appRequire = require
             userAfterLoginSurvey: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox"]
             },
-//            userAfterLoginTranscriptionTemplate: {
-//                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox","jquery_panzoom"]
-//            },
+            UserAfterLoginFacebookLike: {
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox"]
+            },
             UserAfterLoginAngularTranscriptionTemplate: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox","PanZoomService","panzoomwidget"]
             },
@@ -206,6 +206,7 @@ appRequire = require
             //userAfterLoginTranscriptionTemplate: "../../App/Pages/UserAfterLogin/DataEntry/TranscriptionTemplate/TranscriptionTemplate",//used
             UserAfterLoginAngularTranscriptionTemplate: "../../App/Pages/UserAfterLogin/DataEntry/TranscriptionTemplate/AngularTranscriptionTemplate",//used
             UserAfterLoginImageModeration: "../../App/Pages/UserAfterLogin/Moderation/Moderation",//used
+            UserAfterLoginFacebookLike: "../../App/Pages/UserAfterLogin/Ads/facebookLike/facebookLike"//used
             
         },
         urlArgs: ""
@@ -217,7 +218,7 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "userAfterLoginIndex", "userAfterLoginShowTemplate", "userAfterLoginCookieService", "userAfterLoginEditPage", "fancybox", "filedrop","wysihtml5",
     "fileDropScript", "domReady", "userAfterLoginTemplateSample", "idangerous_swiper_2_1_min","userAfterLoginShowTemplateDetail","userAfterLoginSurvey",
     "userAfterLoginActiveThreads","UserAfterLoginAngularTranscriptionTemplate","hamster","mousewheel",
-    "panzoom","PanZoomService","panzoomwidget","angular_route","sanitize","angular_animate","UserAfterLoginImageModeration"
+    "panzoom", "PanZoomService", "panzoomwidget", "angular_route", "sanitize", "angular_animate", "UserAfterLoginImageModeration", "UserAfterLoginFacebookLike"
 ], function() {
     angular.bootstrap(document.getElementById("mainUser"), ["afterLoginUserApp"]);
 });

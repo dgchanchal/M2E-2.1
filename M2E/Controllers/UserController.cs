@@ -11,6 +11,7 @@ using M2E.Models;
 using M2E.Service.UserService.dataEntry;
 using Newtonsoft.Json;
 using M2E.Service.UserService.Moderation;
+using M2E.Service.UserService.facebookLike;
 
 namespace M2E.Controllers
 {
@@ -45,6 +46,29 @@ namespace M2E.Controllers
             }
             
            
+        }
+
+        [HttpPost]
+        public JsonResult GetAllFacebookLikeTemplateInformation()
+        {
+            //var username = "sumitchourasia91@gmail.com";
+            var headers = new HeaderManager(Request);
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
+            var UserfacebookLikesList = new UserfacebookLikeServices();
+            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+            if (isValidToken)
+            {
+                return Json(UserfacebookLikesList.GetAllFacebookLikeTemplateInformation(session.UserName));
+            }
+            else
+            {
+                ResponseModel<string> response = new ResponseModel<string>();
+                response.Status = 401;
+                response.Message = "Unauthorized";
+                return Json(response);
+            }
+
+
         }
 
         [HttpPost]

@@ -12,5 +12,7 @@ namespace M2E.Models.DataWrapper
         public string description { get; set; }
         public string totalThreads { get; set; }
         public string amountEachThread { get; set; }
+        public string pageUrl { get; set; }
+        public string pageId { get; set; }
     }
 }

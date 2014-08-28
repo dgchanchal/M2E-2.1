@@ -170,7 +170,7 @@ define([appLocation.postLogin], function (app) {
                 showToastMessage("Error", "First Try to render the page, if you are able to see your page below then only submit your job. Please contact us if you have any issue.");
             }
             else {
-                var clientCreateTranscriptionTemplateData = { Data: $scope.jobTemplate, TemplateInfo: { type: TemplateInfoModel.type_contentWritting, subType: TemplateInfoModel.subType_articleWritting, description: $('#createTemplateDescriptionText').val(), totalThreads: $("#totalNumberOfThreads").val(), amountEachThread: $("#amountPerThreadTextBoxInput").val()} };
+                var clientCreateTranscriptionTemplateData = { Data: $scope.jobTemplate, TemplateInfo: { type: TemplateInfoModel.type_Ads, subType: TemplateInfoModel.subType_facebookLike, description: $('#createTemplateDescriptionText').val(), totalThreads: $("#totalNumberOfThreads").val(), amountEachThread: $("#amountPerThreadTextBoxInput").val(), pageId: $scope.facebookData.id, pageUrl: $scope.facebookLikeIframe} };
                 //var currentTemplateId = new Date().getTime();
 
                 var url = ServerContextPah + '/Client/CreateTemplate';

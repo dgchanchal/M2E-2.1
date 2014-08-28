@@ -10,6 +10,7 @@ using M2E.Models;
 using M2E.Models.DataResponse;
 using M2E.signalRPushNotifications;
 using Microsoft.AspNet.SignalR;
+using M2E.DAO;
 
 namespace M2E.Controllers
 {
@@ -44,7 +45,7 @@ namespace M2E.Controllers
             var beforeLoginUserProjectDetailsServiceData = new BeforeLoginUserProjectDetailsModel
             {
                 TotalUsers = _db.Users.Count().ToString(CultureInfo.InvariantCulture),
-                TotalProjects = _db.CreateTemplateQuestionInfoes.Count().ToString(CultureInfo.InvariantCulture),
+                TotalProjects = new ProjectDAO().totalAvailableProjects(),
                 SuccessRate = "94.3",
                 ProjectCategories = "35"
             };

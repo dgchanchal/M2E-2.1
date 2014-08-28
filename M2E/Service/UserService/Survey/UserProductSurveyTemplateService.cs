@@ -538,7 +538,7 @@ namespace M2E.Service.UserService.Survey
                         refKey = job.referenceId,
                         creationTime = job.creationTime,
                         earningPerThreads = earningPerThreadTemp,
-                        currency = "INR", // hard coded currency
+                        currency = Constants.currency_INR, // hard coded currency
                         totalThreads = job.totalThreads
                     };
 

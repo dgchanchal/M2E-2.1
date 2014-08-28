@@ -19,6 +19,7 @@ define([appLocation.userPostLogin], function (app) {
                        when("/mobileSlide", { templateUrl: "../../App/Pages/UserAfterLogin/MobileSlide/MobileSlide.html" }).
                        when("/mobileSlide2", { templateUrl: "../../App/Pages/UserAfterLogin/MobileSlide2/MobileSlide2.html" }).
                        when("/mobileSlide3", { templateUrl: "../../App/Pages/UserAfterLogin/MobileSlide2/MobileSlide3.html" }).
+                       when("/facebookLikePage", { templateUrl: "../../App/Pages/UserAfterLogin/Ads/facebookLike/facebookLike.html" }).
                        otherwise({ templateUrl: "../../Resource/templates/beforeLogin/contentView/404.html" });
 
     });
@@ -95,7 +96,7 @@ define([appLocation.userPostLogin], function (app) {
            {
                value: "Ads", dropDownMenuShow: true, dropDownSubMenuClass: "dropdown-submenu", dropDownMenuClass: "dropdown-menu", dropDownSubMenuArrow: "dropdown", dropDownMenuList: [
                  { value: "Facebook Views", link: "#" },
-                 { value: "Facebook likes", link: "#" },
+                 { value: "Facebook likes", link: "#/facebookLikePage" },
                  { value: "Video reviewing", link: "#" },
                  { value: "Comments on social media", link: "#" }
                ]
