@@ -1342,6 +1342,7 @@ div.main-content {
     position: absolute;
     top: 98%;
     width: 3px;
+    left: 50%;
 }
     /*Row padding*/
     .row-padding {

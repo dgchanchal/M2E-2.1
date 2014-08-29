@@ -110,7 +110,7 @@ define([appLocation.preLogin], function (app) {
                         $scope.showHeaderErrors = true;
                         $scope.HeaderAlert.visible = true;
                         $scope.HeaderAlert.classType = "danger";
-                        $scope.HeaderAlert.message = "Username/password is incorrect.";
+                        $scope.HeaderAlert.message = "The username/password combination you entered is incorrect. Please try again(make sure your caps lock is off).";
                         $scope.ForgetPasswordAlert.visible = true;
                         $scope.ForgetPasswordAlert.message = "Forgot your password?";
                     } else if (data.Status == "500") {

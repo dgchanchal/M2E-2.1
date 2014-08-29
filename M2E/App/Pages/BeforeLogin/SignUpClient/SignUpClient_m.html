@@ -1,20 +1,7 @@
-﻿<div class="container" ng-controller="signUpUserController">
-<div class="row">
-                     <div class="col-md-7 row-padding-login" ng-show="!mobileDevice">
-
-                         <img alt="Requester" src="../../App/img/cautom.jpg" border="0" class="responsive-image">
-
-                     </div>
-        
-                     <div class="col-md-1 row-padding1" ng-show="!mobileDevice">
-                         <div class="timeline1">
-
-
-                         </div>
-                     </div>
-
+﻿<div class="container" ng-controller="signUpClientController">
+                 <div class="row">
                      <div class="col-md-4 row-padding1">
-                         <h2 class="text-aqua" style="font-size: 21px">Crowd Automation | Accepter</h2>
+                         <h2 class="text-aqua" style="font-size: 21px">Crowd Automation | Requester</h2>
                          <div class="body">
                              <div class="form-group">
                                  <input type="text" name="name" class="form-control" ng-model="ClientFormData.FirstName" placeholder="First name">
@@ -38,14 +25,21 @@
                                      <li ng-show="EmailIdAlert.visible" ng-bind="EmailIdAlert.message"></li>
                                      <li ng-show="PasswordAlert.visible" ng-bind="PasswordAlert.message"></li>
                                  </ul>
+                                <div class="form-group">
+                                    Register as a Company?<div style="float:right"><input type="checkbox" name="sliding_client_company_checkbox"  data-size="small" data-on-text="yes" data-off-text="no"></div>
+                                </div>
+                                 <div class="form-group" id="client_signup_company_textBox_id">
+                                                                          <div class="div_c"></div>
+                                     <input type="text" name="userid" class="form-control" ng-model="ClientFormData.CompanyName" placeholder="Company Name">
+                                 </div>
                              </div>
                              <div class="footer">
                                  <div class="div_c"></div>                                
-                                 <button type="submit" ng-click="ClientSignUp()" class="btn bg-uni btn-block">Create Accepter Account</button>  
+                                 <button type="submit" ng-click="ClientSignUp()" class="btn bg-uni btn-block">Create Requester Account</button>  
                                  <div class="div_c"></div>                     
                                  <a href="#/login" class="text-center">I already have a membership</a>
                                  <div class="div_c"></div>
-                                 <p>Create an account as<i class="fa fa-fw fa-long-arrow-right"></i> <a class="text-center" href="#/signup/client">Requester</a></p>
+                                 <p>Register a new membership as<i class="fa fa-fw fa-long-arrow-right"></i> <a class="text-center" href="#/signup/user">Accepter</a></p>
                              </div>
 
                              <div class="margin text-center">
@@ -60,4 +54,5 @@
                          </div>
                      </div>
                  </div>
-</div>
+
+             </div>

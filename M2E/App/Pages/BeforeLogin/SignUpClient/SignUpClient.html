@@ -1,80 +1,71 @@
-﻿<div class="form-box" id="login-box" ng-controller="signUpClientController">
-<div class="row">
-    <div class="col-md-8 row-padding-login" ng-show="!mobileDevice">
-        <div class="responsive-image innerDivCenterAlign row-padding-login" ng-switch='slideshow'>
-            <div ng-switch-when='1'>
-                <img class="responsive-image" src="../../App/img/login/for_institutions.png"/></div>
-            <div ng-switch-when='2'>
-                <img class="responsive-image" src="../../App/img/login/for_participants.png"/></div>
+﻿<div class="container" ng-controller="signUpClientController">
+                 <div class="row">
+                     <div class="col-md-7 row-padding-login" ng-show="!mobileDevice">
 
-            <!--                <div class="slider-buttons">
-                                    <a ng-click='slideshow = 1'>
-                                        <div class="circle"></div>
-                                    </a>
-                                    <a ng-click='slideshow = 2'>
-                                        <div class="circle"></div>
-                                    </a>
+                         <img alt="Requester" src="../../App/img/cautom.jpg" border="0" class="responsive-image">
 
-                                </div>-->
-        </div>
-    </div>
+                     </div>
         
-    <div class="col-md-1 row-padding1" ng-show="!mobileDevice">
-        <div class="timeline1">
+                     <div class="col-md-1 row-padding1" ng-show="!mobileDevice">
+                         <div class="timeline1">
 
 
-        </div>
-    </div>
+                         </div>
+                     </div>
 
-    <div class="col-md-3 row-padding1">
-        <h2 class="text-aqua">Crowd Automation | Requester</h2>
-        <div class="body bg-gray">
-            <div class="form-group">
-                <input type="text" name="name" class="form-control" ng-model="ClientFormData.FirstName" placeholder="First name">
-            </div>            
-            <div class="form-group">
-                <div class="form-group">
-                    <input type="text" name="name" class="form-control" ng-model="ClientFormData.LastName" placeholder="Lastname">
-                </div>            
-                <div class="form-group">
-                    <input type="text" name="userid" class="form-control" ng-model="ClientFormData.EmailId" placeholder="Email ID">                
-                </div>            
-                <div class="form-group">
-                    <input type="password" name="password" class="form-control" ng-model="ClientFormData.Password" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <input type="password" name="password2" class="form-control" ng-model="ClientFormData.ConfirmPassword" placeholder="Retype password">
-                </div>
-                <ul class="alert alert-danger alert-dismissable"  ng-show="showErrors" style="margin-left: 0;">                                                                               
-                    <li ng-show="FirstNameAlert.visible" ng-bind="FirstNameAlert.message"></li>
-                    <li ng-show="LastNameAlert.visible" ng-bind="LastNameAlert.message"></li>
-                    <li ng-show="EmailIdAlert.visible" ng-bind="EmailIdAlert.message"></li>
-                    <li ng-show="PasswordAlert.visible" ng-bind="PasswordAlert.message"></li>
-                </ul>
-                <div class="form-group">
-                    Register as a Company?<div style="float:right"><input type="checkbox" name="sliding_client_company_checkbox"  data-size="small" data-on-text="yes" data-off-text="no"></div>
-                </div>
-                <div class="form-group" id="client_signup_company_textBox_id">
-                    <input type="text" name="userid" class="form-control" ng-model="ClientFormData.CompanyName" placeholder="Company Name">
-                </div>
-            </div>
-            <div class="footer">                                
-                <button type="submit" ng-click="ClientSignUp()" class="btn bg-olive btn-block">Sign me up</button>                       
-                <a href="#/login" class="text-center">I already have a membership</a>
-                <p>Register a new membership as<i class="fa fa-fw fa-long-arrow-right"></i> <a class="text-center" href="#/signup/user">User</a></p>
-            </div>
+                     <div class="col-md-4 row-padding1">
+                         <h2 class="text-aqua" style="font-size: 21px">Crowd Automation | Requester</h2>
+                         <div class="body">
+                             <div class="form-group">
+                                 <input type="text" name="name" class="form-control" ng-model="ClientFormData.FirstName" placeholder="First name">
+                             </div>            
+                             <div class="form-group">
+                                 <div class="form-group">
+                                     <input type="text" name="name" class="form-control" ng-model="ClientFormData.LastName" placeholder="Lastname">
+                                 </div>            
+                                 <div class="form-group">
+                                     <input type="text" name="userid" class="form-control" ng-model="ClientFormData.EmailId" placeholder="Email ID">                
+                                 </div>            
+                                 <div class="form-group">
+                                     <input type="password" name="password" class="form-control" ng-model="ClientFormData.Password" placeholder="Password">
+                                 </div>
+                                 <div class="form-group">
+                                     <input type="password" name="password2" class="form-control" ng-model="ClientFormData.ConfirmPassword" placeholder="Retype password">
+                                 </div>
+                                 <ul class="alert alert-danger alert-dismissable"  ng-show="showErrors" style="margin-left: 0;">                                                                               
+                                     <li ng-show="FirstNameAlert.visible" ng-bind="FirstNameAlert.message"></li>
+                                     <li ng-show="LastNameAlert.visible" ng-bind="LastNameAlert.message"></li>
+                                     <li ng-show="EmailIdAlert.visible" ng-bind="EmailIdAlert.message"></li>
+                                     <li ng-show="PasswordAlert.visible" ng-bind="PasswordAlert.message"></li>
+                                 </ul>
+                                <div class="form-group">
+                                    Register as a Company?<div style="float:right"><input type="checkbox" name="sliding_client_company_checkbox"  data-size="small" data-on-text="yes" data-off-text="no"></div>
+                                </div>
+                                 <div class="form-group" id="client_signup_company_textBox_id">
+                                                                          <div class="div_c"></div>
+                                     <input type="text" name="userid" class="form-control" ng-model="ClientFormData.CompanyName" placeholder="Company Name">
+                                 </div>
+                             </div>
+                             <div class="footer">
+                                 <div class="div_c"></div>                                
+                                 <button type="submit" ng-click="ClientSignUp()" class="btn bg-uni btn-block">Create Requester Account</button>  
+                                 <div class="div_c"></div>                     
+                                 <a href="#/login" class="text-center">I already have a membership</a>
+                                 <div class="div_c"></div>
+                                 <p>Register a new membership as<i class="fa fa-fw fa-long-arrow-right"></i> <a class="text-center" href="#/signup/user">Accepter</a></p>
+                             </div>
 
-            <div class="margin text-center">
+                             <div class="margin text-center">
                     
-                <span>Create an account using social networks</span>
-                <br>
-                <button class="btn bg-light-blue btn-circle"><i class="fa fa-facebook"></i></button>
-                <button class="btn bg-aqua btn-circle"><i class="fa fa-twitter"></i></button>
-                <button class="btn bg-red btn-circle"><i class="fa fa-google-plus"></i></button>
+                                 <span>Create an account using social networks</span>
+                                 <div class="div_c"></div>
+                                 <button class="btn bg-light-blue btn-circle"><i class="fa fa-facebook"></i></button>
+                                 <button class="btn bg-aqua btn-circle"><i class="fa fa-twitter"></i></button>
+                                 <button class="btn bg-red btn-circle"><i class="fa fa-google-plus"></i></button>
 
-            </div>
-        </div>
-    </div>
-</div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
 
-    </div>
+             </div>
