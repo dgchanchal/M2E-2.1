@@ -405,9 +405,11 @@
     <Content Include="App\js\underscore-min.js" />
     <Content Include="App\Pages\BeforeLogin\ClientMoreInfo\ClientMoreInfo.html" />
     <Content Include="App\Pages\BeforeLogin\ContactUs\contactus.html" />
+    <Content Include="App\Pages\BeforeLogin\Index\Index_m.html" />
     <Content Include="App\Pages\BeforeLogin\LiveSupport\LiveSupport.html" />
     <Content Include="App\Pages\BeforeLogin\LiveSupport\LiveSupport.js" />
     <Content Include="App\Pages\BeforeLogin\css\BeforeLoginStyle.css" />
+    <Content Include="App\Pages\BeforeLogin\Login\Login_m.html" />
     <Content Include="App\Pages\BeforeLogin\TnC\TnC.html" />
     <Content Include="App\Pages\BeforeLogin\TnC\TnC.js" />
     <Content Include="App\Pages\BeforeLogin\UserMoreInfo\UserMoreInfo.html" />

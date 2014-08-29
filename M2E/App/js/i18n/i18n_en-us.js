@@ -4,7 +4,7 @@ window.madetoearn.i18n = {
     // before login master page
     "beforeLoginCompanyTitle":"Crowd Automation",
     "beforeLoginMasterPageAboutM2E": "About us?",
-    "beforeLoginMasterPageSignIn": "Sign In",
+    "beforeLoginMasterPageSignIn": "Log In",
     "beforeLoginMasterPageContactUs": "Contact us",
     "beforeLoginMasterPageFAQ": "FAQ",
     "beforeLoginMasterPageTnC": "Terms & Privacy",

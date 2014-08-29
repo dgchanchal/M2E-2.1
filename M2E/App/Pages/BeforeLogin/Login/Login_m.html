@@ -1,32 +1,6 @@
 ﻿<div class="container" ng-controller="beforeLoginSignInController" onload="beginAdPage()">
 
     <div class="row">
-        <div class="col-md-8 row-padding-login" ng-show="!mobileDevice">
-            <div class="responsive-image innerDivCenterAlign row-padding-login" ng-switch='slideshow'>
-                <div ng-switch-when='1'>
-                    <img class="responsive-image" src="../../App/img/login/for_institutions.png"/></div>
-                <div ng-switch-when='2'>
-                    <img class="responsive-image" src="../../App/img/login/for_participants.png"/></div>
-
-                <!--                <div class="slider-buttons">
-                                        <a ng-click='slideshow = 1'>
-                                            <div class="circle"></div>
-                                        </a>
-                                        <a ng-click='slideshow = 2'>
-                                            <div class="circle"></div>
-                                        </a>
-
-                                    </div>-->
-            </div>
-        </div>
-        
-        <div class="col-md-1 row-padding1" ng-show="!mobileDevice">
-            <div class="timeline1">
-
-
-            </div>
-        </div>
-
         <div class="col-md-3 row-padding1">
             <h2 class="text-aqua">Login</h2>
                 <div class="body">
@@ -54,7 +28,7 @@
                     <div class="div_c"></div>
                     <p><a href="#/forgetpassword">I forgot my password</a></p>
                     
-                    <p>Sign Up as<i class="fa fa-fw fa-long-arrow-right"></i><a class="text-center" href="#/signup/client" ng-bind="clientConstants.name_abb"></a> or <a class="text-center" href="#/signup/user" ng-bind="userConstants.name_abb"></a></p>
+                    <p>Create an account<i class="fa fa-fw fa-long-arrow-right"></i><a class="text-center" href="#/signup/client" ng-bind="clientConstants.name_abb"></a> or <a class="text-center" href="#/signup/user" ng-bind="userConstants.name_abb"></a></p>
                 </div>
 
                 <div class="margin text-center">
@@ -71,3 +45,11 @@
 
 </div>
 
+<style>
+    /*Row padding*/
+        .row-padding1 {
+        padding-top: 4%;
+        padding-bottom: 0;
+    }
+
+</style>

@@ -1137,7 +1137,7 @@ div.main-content {
 .Description {
     color: #524d52;
     font-family: Segoe UI,sans-serif;
-    font-size: 0.78em;
+    font-size: 0.899em;
     font-weight: normal;
     line-height: 1.5em;
     margin-top: 0.5em;
@@ -1183,10 +1183,15 @@ div.main-content {
     color: #b63b00 !important;
     display: inline-block;
     font-family: Segoe UI,sans-serif;
-    font-size: 2em;
     margin-left: -0.02em;
     margin-right: 0.3em !important;
     vertical-align: top;
+}
+.PsTitle_Font_m {
+    font-size: 1.5em;
+}
+.PsTitle_Font_w {
+    font-size: 2em;
 }
 /*row 2 Column3*/
 .right-div-column {
@@ -1319,13 +1324,30 @@ div.main-content {
   opacity:1;
 }
 
-/* scaleup ng-view -------------------------- */
-.page-scaleuppage.ng-leave         {
-    
+    /*Row padding*/
+    .row-padding-login {
+        padding-top: 6%;
+        padding-bottom: 0;
+    }
+        .row-padding1 {
+        padding-top: 4%;
+        padding-bottom: 0;
+    }
+
+.timeline1 {
+    background: none repeat scroll 1px 0 #ddd;
+    border: 1px solid #eee;
+    content: "";
+    height: 390px;
+    position: absolute;
+    top: 98%;
+    width: 3px;
 }
-.page-scaleuppage.ng-enter 		{  
-       
-}
+    /*Row padding*/
+    .row-padding {
+        padding-top: 6%;
+        padding-bottom: 3%;
+    }
 
 /* home -------------------------- */
 .page-home.ng-leave         {

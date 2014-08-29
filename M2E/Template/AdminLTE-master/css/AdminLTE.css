@@ -20,14 +20,14 @@ body {
   background: #f9f9f9;
 }
 a {
-  color: #3c8dbc;
+  color: #0090bf;
 }
 a:hover,
 a:active,
 a:focus {
   outline: none;
   text-decoration: none;
-  color: #72afd2;
+  color: #016d9c;
 }
 /* Layouts */
 .wrapper {
@@ -213,7 +213,14 @@ img {
 .bg-olive {
   background-color: #0571a6 !important;
 }
-
+.bg-uni {
+  background-color: #07b8e7 !important;
+  color: #fff !important;
+}
+.bg-uni:hover {
+  background-color: #00b0df !important;
+  color: #fff !important;
+}
 
 .bg-olive:hover {
     background: -moz-linear-gradient(center top , #73aec9 0px, #73aec9 1px, #338ab0 1px, #0571a6 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
@@ -1751,7 +1758,7 @@ Component: timeline
 -------------------------
 */
 .btn {
-  font-weight: 500;
+  font-weight: 600;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -1781,7 +1788,7 @@ Component: timeline
 .btn.btn-primary:hover,
 .btn.btn-primary:active,
 .btn.btn-primary.hover {
-  background-color: #367fa9;
+  background-color: #007ead;
 }
 .btn.btn-success {
   background-color: #00a65a;
@@ -1932,7 +1939,7 @@ Component: timeline
     background-color: #d88100 !important;
 }
  .bg-aqua:hover {
-    background-color: #0096c5 !important;
+    background-color: #0090bf !important;
 }
  .bg-red:hover {
     background-color: #c9614c !important;

@@ -3,18 +3,18 @@ define([appLocation.preLogin], function (app) {
 
     app.controller('beforeLoginSignInController', function ($scope, $http, $route, $rootScope, $routeParams, $timeout, CookieUtil) {
         // Login Silder
-            var slidesInSlideshow = 2;
-            var slidesTimeIntervalInMs = 3000;
-
-            $scope.slideshow = 1;
-            var slideTimer =
-            $timeout(function interval() {
-                  $scope.slideshow = ($scope.slideshow % slidesInSlideshow) + 1;
-                  slideTimer = $timeout(interval, slidesTimeIntervalInMs);
-              }, slidesTimeIntervalInMs);
+        var slidesInSlideshow = 2;
+        var slidesTimeIntervalInMs = 3000;
+        $scope.slideshow = 1;
+        var slideTimer =
+        $timeout(function interval() {
+                $scope.slideshow = ($scope.slideshow % slidesInSlideshow) + 1;
+                slideTimer = $timeout(interval, slidesTimeIntervalInMs);
+            }, slidesTimeIntervalInMs);
 
         //alert(mobileDevice);
         // Login Sign In Form
+        $scope.mobileDevice = mobileDevice != null ? true:false;
         $scope.EmailId = "";
         $scope.Password = "";
         $scope.KeepMeSignedInCheckBox = false;
@@ -110,7 +110,7 @@ define([appLocation.preLogin], function (app) {
                         $scope.showHeaderErrors = true;
                         $scope.HeaderAlert.visible = true;
                         $scope.HeaderAlert.classType = "danger";
-                        $scope.HeaderAlert.message = "The username/password combination you entered is incorrect. Please try again(make sure your caps lock is off).";
+                        $scope.HeaderAlert.message = "Username/password is incorrect.";
                         $scope.ForgetPasswordAlert.visible = true;
                         $scope.ForgetPasswordAlert.message = "Forgot your password?";
                     } else if (data.Status == "500") {
