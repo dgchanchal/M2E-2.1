@@ -78,7 +78,7 @@
                     </ul>
                 </nav>
                 <div id="menu_header">
-                    <a id="responsive-menu-button" class="menu_anchor" href="#sidr-main">                        
+                    <a id="responsive-menu-button" class="menu_anchor">                        
                         <span class="screen-reader-text">Menu</span>
                         <span class="icon-menu"></span>
                     </a>
@@ -205,13 +205,30 @@
                 jQuery("#preloader").delay(1000).fadeOut("medium");
 
                 $('#responsive-menu-button').sidr({
-                    name: 'sidr-right',
+                    name: 'sidr-main',
                     side: 'right',
                     source: '#nav2'
                 });
-            });
 
-           
+                $("body").swipe({
+                    //Generic swipe handler for all directions
+                    swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+                        if (direction == "left" && $('#sidr-main').css('display') == "none") {                            
+                            $.sidr('open', 'sidr-main');
+                        }
+                        else if (direction == "left") {
+                            // do nothing if it is only left swipe
+                        } else {                            
+                            $.sidr('close', 'sidr-main');
+                        }
+                        // alert("You swiped " + direction);
+                        
+                    },
+                    //Default is 75px, set to 0 for demo so any distance triggers swipe
+                    threshold: 0
+                });
+            });
+            
         </script>
            
     </body>

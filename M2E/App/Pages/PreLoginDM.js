@@ -74,8 +74,11 @@ appRequire = require
             jquery_sidr_min: {
                 deps: ["jquery"]
             },
+            jquery_touchSwipe: {
+                deps: ["jquery"]
+            },
             beforeLoginApp: {
-                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "jquery_sidr_min"]
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "jquery_sidr_min", "jquery_touchSwipe"]
             },
             showMessageTemplate: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
@@ -118,7 +121,7 @@ appRequire = require
             underscore: "../../App/js/underscore-min",
             jquery: "../../App/js/jquery.min",
             jquery_ui_min: "../../App/js/jquery-ui.min",
-            jquery_mobile: "http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min",
+            jquery_touchSwipe: "../../App/js/jquery.touchSwipe",
             angular: "../../App/js/angular.1.2.13",
             //m2ei18n: "../../App/js/m2ei18n",
             jquery_toastmessage: "../../App/third-Party/toastmessage/js/jquery.toastmessage",
@@ -167,7 +170,7 @@ appRequire(["jquery", "angular", "jquery_toastmessage", "toastMessage", "jquery_
     "jquery_blockUI", "restangular","angular_route", "angular_animate", "bootstrap", "bootstrap_switch", //"beforeLoginAdminLTEApp", "moment","iCheck",
     "beforeLoginApp", "beforeLoginIndex", "beforeLoginFAQ", "beforeLoginLogin", "beforeLoginCookieService", "beforeLoginSignUpClient", "beforeLoginSignUpUser",
     "beforeLoginValidateEmail", "beforeLoginForgetPassword", "beforeLoginResetPassword", "showMessageTemplate", "underscore", "angular_cookies", "termsPrivacyController",
-    "sanitize", "bannerscollection_zoominout", "jquery_ui_touch_punch_min", "jquery_ui_min", "jquery_sidr_min"
+    "sanitize", "bannerscollection_zoominout", "jquery_ui_touch_punch_min", "jquery_ui_min", "jquery_sidr_min", "jquery_touchSwipe"
 ], function() {
     angular.bootstrap(document.getElementById("main"), ["beforeLoginApp"]);
 });
