@@ -210,23 +210,7 @@
                     source: '#nav2'
                 });
 
-                $("body").swipe({
-                    //Generic swipe handler for all directions
-                    swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
-                        if (direction == "left" && $('#sidr-main').css('display') == "none") {                            
-                            $.sidr('open', 'sidr-main');
-                        }
-                        else if (direction == "left") {
-                            // do nothing if it is only left swipe
-                        } else {                            
-                            $.sidr('close', 'sidr-main');
-                        }
-                        // alert("You swiped " + direction);
-                        
-                    },
-                    //Default is 75px, set to 0 for demo so any distance triggers swipe
-                    threshold: 0
-                });
+                
             });
             
         </script>
