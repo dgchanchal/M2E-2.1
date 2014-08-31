@@ -796,20 +796,32 @@ pre code {
 
 .container:after {
   clear: both;
+
 }
 
-.container:before,
-.container:after {
+.containerCopy {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.containerCopy:before,
+.containerCopy:after {
   display: table;
   content: " ";
+    height: 20px;
 }
 
-.container:after {
+.containerCopy:after {
   clear: both;
 }
 
 @media (min-width: 768px) {
   .container {
+    width: 750px;
+  }
+    .containerCopy {
     width: 750px;
   }
 }
@@ -818,10 +830,16 @@ pre code {
   .container {
     width: 970px;
   }
+      .containerCopy {
+    width: 970px;
+  }
 }
 
 @media (min-width: 1200px) {
   .container {
+    width: 1170px;
+  }
+      .containerCopy {
     width: 1170px;
   }
 }

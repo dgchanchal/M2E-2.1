@@ -333,6 +333,7 @@
     <Content Include="App\css\bannerscollection_zoominout.css" />
     <Content Include="App\css\magic.css" />
     <Content Include="App\img\cautom.jpg" />
+    <Content Include="App\img\list_menu.png" />
     <Content Include="App\img\loading\load1.gif" />
     <Content Include="App\img\loading\loading.gif" />
     <Content Include="App\img\loading\loading100x100.gif" />
@@ -410,6 +411,8 @@
     <Content Include="App\Pages\BeforeLogin\LiveSupport\LiveSupport.js" />
     <Content Include="App\Pages\BeforeLogin\css\BeforeLoginStyle.css" />
     <Content Include="App\Pages\BeforeLogin\Login\Login_m.html" />
+    <Content Include="App\Pages\BeforeLogin\SignUpClient\SignUpClient_m.html" />
+    <Content Include="App\Pages\BeforeLogin\SignUpUser\SignUpUser_m.html" />
     <Content Include="App\Pages\BeforeLogin\TnC\TnC.html" />
     <Content Include="App\Pages\BeforeLogin\TnC\TnC.js" />
     <Content Include="App\Pages\BeforeLogin\UserMoreInfo\UserMoreInfo.html" />
@@ -654,6 +657,9 @@
     <Content Include="App\third-Party\ng-table-master\test\tableControllerSpec.js" />
     <Content Include="App\third-Party\ng-table-master\test\tableParamsSpec.js" />
     <Content Include="App\third-Party\ng-table-master\test\tableSpec.js" />
+    <Content Include="App\third-Party\sidr-package\jquery.sidr.min.js" />
+    <Content Include="App\third-Party\sidr-package\stylesheets\jquery.sidr.dark.css" />
+    <Content Include="App\third-Party\sidr-package\stylesheets\jquery.sidr.light.css" />
     <Content Include="App\third-Party\Swiper-master\demo-apps\appstore\css\appstore.css" />
     <Content Include="App\third-Party\Swiper-master\demo-apps\appstore\css\idangerous.swiper.3dflow.css" />
     <Content Include="App\third-Party\Swiper-master\demo-apps\appstore\css\idangerous.swiper.css" />
@@ -1033,6 +1039,7 @@
     <Content Include="Template\AdminLTE-master\css\iCheck\square\yellow.css" />
     <Content Include="Template\AdminLTE-master\css\iCheck\square\yellow.png" />
     <Content Include="Template\AdminLTE-master\css\iCheck\square\_all.css" />
+    <Content Include="Template\AdminLTE-master\css\icons\Human_resource_icons-09-128 %281%29.png" />
     <Content Include="Template\AdminLTE-master\css\images\animated-overlay.gif" />
     <Content Include="Template\AdminLTE-master\css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Template\AdminLTE-master\css\images\ui-bg_flat_55_fbec88_40x100.png" />
@@ -1090,6 +1097,7 @@
     <Content Include="Template\AdminLTE-master\img\bootstrap-colorpicker\hue-horizontal.png" />
     <Content Include="Template\AdminLTE-master\img\bootstrap-colorpicker\hue.png" />
     <Content Include="Template\AdminLTE-master\img\bootstrap-colorpicker\saturation.png" />
+    <Content Include="Template\AdminLTE-master\img\cautomLogo.png" />
     <Content Include="Template\AdminLTE-master\img\ClientPresentation2.gif" />
     <Content Include="Template\AdminLTE-master\img\credit\american-express.png" />
     <Content Include="Template\AdminLTE-master\img\credit\cirrus.png" />
@@ -1106,9 +1114,7 @@
     <Content Include="Template\AdminLTE-master\img\sprite-skin-nice.png" />
     <Content Include="Template\AdminLTE-master\img\user-bg.png" />
     <Content Include="Template\AdminLTE-master\img\user.jpg" />
-    <Content Include="Template\AdminLTE-master\img\user2.jpg" />
     <Content Include="Template\AdminLTE-master\img\UserPresentation2.gif" />
-    <Content Include="Template\AdminLTE-master\img\zestorkLogo.gif" />
     <Content Include="Template\AdminLTE-master\index.html" />
     <Content Include="Template\AdminLTE-master\js\AdminLTE\app.js" />
     <Content Include="Template\AdminLTE-master\js\AdminLTE\tree.js" />

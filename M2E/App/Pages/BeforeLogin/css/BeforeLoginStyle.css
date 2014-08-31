@@ -1,4 +1,4 @@
-.row-fluid:before, .row-fluid:after {
+﻿.row-fluid:before, .row-fluid:after {
     content: "";
     display: table;
     line-height: 0;
@@ -1499,4 +1499,119 @@ div.main-content {
 }
 @keyframes rotateOutNewspaper {
 	to { transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
+}
+
+
+
+
+    #header1 {
+ 
+    background: #e7e7e7;
+    width: 100%;
+    height: 76px;
+    top: 0;
+    left: 0;
+}
+    #menu_header {
+        display: none;
+    }
+#logo{
+ 
+    margin-left: 20px;
+    float: left;
+    width: auto;
+    height: auto;
+    /*background: url(images/logo.png) no-repeat center;*/
+    display: block;
+ 
+}
+ 
+#nav2 {
+ 
+    float: right;
+    padding: 20px;    
+ 
+}
+ 
+#menu-icon {
+ 
+    visibility: hidden;
+    width: 40px;
+    height: 40px;
+}
+ 
+#nav2 ul {
+ 
+    list-style: none;
+ 
+}
+ 
+#nav2 li {
+ 
+    display: inline-block;
+    float: left;
+    padding: 10px
+ 
+}
+ 
+.current {
+ 
+    color: #2262AD;
+ 
+}
+ 
+#nav2 section {
+ 
+    margin: 80px auto 40px;
+    max-width: 980px;
+    position: relative;
+    padding: 20px
+ 
+}
+
+@media only screen and (max-width : 640px) { /*If device width is higher than 640px use this css and if less than 640px use above */
+ #nav2 {
+        display: none;
+    }
+    #menu_header {
+        display: inline-block;
+        float: right;
+
+    }
+
+a {
+    color: #1570a6;
+    text-decoration: none;
+    transition: color 0.1s linear 0s;
+}
+
+.icon-menu{
+    background-image: url('../../../../App/img/list_menu.png');
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    font-family: wf_icons_normal;
+}
+
+.fontface .icon-menu:after {
+    content: "≡";
+}
+ .menu_anchor {
+     font-size: 1.5em;
+ } 
+ #header1 {
+    content: "";
+    display: table;
+    line-height: 0;
+     height: auto;
+ }
+ #logo {
+     margin-left: 0;
+     width: 49%;
+     height: auto;
+ }
+ .container-copy {
+     height: 20px !important;
+ }
+
 }
