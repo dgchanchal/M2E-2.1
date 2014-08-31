@@ -10,6 +10,11 @@ var userSession = {
     imgurImageTemplateModeratingPhotos :[],
     imgurImageTranscriptionTemplate: [] 
 };
+
+var userType  = {
+    requester: "requester",
+    accepter: "accepter"
+}
 var TemplateInfoModel = {
                
         type_survey : "survey",

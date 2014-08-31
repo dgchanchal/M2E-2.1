@@ -10,7 +10,7 @@ define([appLocation.preLogin], function (app) {
                        when("/signup/user", { templateUrl: (mobileDevice) ? "../../App/Pages/BeforeLogin/SignUpUser/SignUpUser_m.html" : "../../App/Pages/BeforeLogin/SignUpUser/SignUpUser.html" }).
                        when("/signup/client", { templateUrl: (mobileDevice) ? "../../App/Pages/BeforeLogin/SignUpClient/SignUpClient_m.html" : "../../App/Pages/BeforeLogin/SignUpClient/SignUpClient.html" }).
                        when("/login", { templateUrl: "../../App/Pages/BeforeLogin/Login/Login.html" }).
-                       when("/login/:code", { templateUrl: "../../App/Pages/BeforeLogin/Login/Login.html" }).
+                       when("/login/:code", { templateUrl: "../../App/Pages/BeforeLogin/Login/Login.html" }).                       
                        when("/faq", { templateUrl: "../../App/Pages/BeforeLogin/FAQ/FAQ.html" }).
                        when("/facebookLogin/:userType", { templateUrl: "../../Resource/templates/beforeLogin/contentView/facebookLogin.html" }).
                        when("/facebookLogin", { templateUrl: "../../Resource/templates/beforeLogin/contentView/facebookLogin.html" }).

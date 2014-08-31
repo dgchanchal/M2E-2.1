@@ -1501,22 +1501,18 @@ div.main-content {
 	to { transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
 }
 
-
-
-
+   
     #header1 {
- 
-    background: #e7e7e7;
+    background: #1a1a1a;
     width: 100%;
     height: 76px;
     top: 0;
     left: 0;
 }
-    #menu_header {
+    #responsive-menu-button {
         display: none;
     }
 #logo{
- 
     margin-left: 20px;
     float: left;
     width: auto;
@@ -1533,13 +1529,6 @@ div.main-content {
  
 }
  
-#menu-icon {
- 
-    visibility: hidden;
-    width: 40px;
-    height: 40px;
-}
- 
 #nav2 ul {
  
     list-style: none;
@@ -1552,6 +1541,10 @@ div.main-content {
     float: left;
     padding: 10px
  
+}
+#nav2 li
+a:hover {
+    color: #fff; 
 }
  
 .current {
@@ -1566,17 +1559,19 @@ div.main-content {
     max-width: 980px;
     position: relative;
     padding: 20px
- 
+}
+
+#nav_mobi {
+    display: none;
 }
 
 @media only screen and (max-width : 640px) { /*If device width is higher than 640px use this css and if less than 640px use above */
  #nav2 {
         display: none;
     }
-    #menu_header {
+    #responsive-menu-button {
         display: inline-block;
         float: right;
-
     }
 
 a {
@@ -1584,20 +1579,12 @@ a {
     text-decoration: none;
     transition: color 0.1s linear 0s;
 }
-
-.icon-menu{
-    background-image: url('../../../../App/img/list_menu.png');
-    display: inline-block;
-    height: 15px;
-    width: 15px;
-    font-family: wf_icons_normal;
-}
-
-.fontface .icon-menu:after {
-    content: "≡";
-}
  .menu_anchor {
+     display: inline-block;
+     float: right;
      font-size: 1.5em;
+     padding: 15px 16px;
+     cursor: pointer;
  } 
  #header1 {
     content: "";
@@ -1610,8 +1597,5 @@ a {
      width: 49%;
      height: auto;
  }
- .container-copy {
-     height: 20px !important;
- }
-
 }
+

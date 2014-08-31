@@ -70,31 +70,28 @@
             <a href="#" id="logo"></a>
                 <nav id="nav2">
                     <ul>
-                        <li><a href="http://www.phpgang.com/" class="current">Home</a></li>
-                        <li><a href="demo.phpgang.com/">Demos</a></li>
-                        <li><a href="http://www.phpgang.com/category/jquery">jQuery</a></li>
-                        <li><a href="http://www.phpgang.com/category/php">PHP</a></li>
-                        <li><a href="http://www.phpgang.com/request-tutorials-here">Contact</a></li>
+                        <li style="color: #cccccc;">Sign up as <a href="#/signup/client"> Requester</a>  |  <a href="#/signup/user">Accepter</a>
+                       
+                        </li>
+                        <li><a href="#/AboutUs" class="current">About us</a></li>
+                        <li><a href="#/login">Login</a></li>
                     </ul>
                 </nav>
-                <div id="menu_header">
+
                     <a id="responsive-menu-button" class="menu_anchor">                        
-                        <span class="screen-reader-text">Menu</span>
-                        <span class="icon-menu"></span>
+                        <img height="20px" src="../../App/img/login/menu-wht.png">
                     </a>
-                </div>
-@*                <div id="navigation2">
-                    <nav class="nav">
+
+                    <nav id="nav_mobi">
                         <ul>
-                            <li><a href="#download">Download</a></li>
-                            <li><a href="#getstarted">Get started</a></li>
-                            <li><a href="#usage">Demos &amp; Usage</a></li>
-                            <li><a href="#documentation">Documentation</a></li>
-                            <li><a href="#themes">Themes</a></li>
-                            <li><a href="#support">Support</a></li>
+                            <li><a href="#/login">Login</a></li>
+                            <li><a href="#/signup/client">Signup - Client</a></li>
+                            <li><a href="#/signup/user">Signup - User</a></li>
+                            <li><a href="#/AboutUs">About Us</a></li>
+                            <li><a href="#/contactus">Feedback</a></li>
+                            <li><a href="#">More</a></li>
                         </ul>
                     </nav>
-                </div>*@
             </div>
         </header>
         
@@ -207,7 +204,7 @@
                 $('#responsive-menu-button').sidr({
                     name: 'sidr-main',
                     side: 'right',
-                    source: '#nav2'
+                    source: '#nav_mobi'
                 });
 
                 $("body").click(function () {

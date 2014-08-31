@@ -800,8 +800,6 @@ pre code {
 }
 
 .containerCopy {
-  padding-right: 15px;
-  padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -810,7 +808,6 @@ pre code {
 .containerCopy:after {
   display: table;
   content: " ";
-    height: 20px;
 }
 
 .containerCopy:after {
