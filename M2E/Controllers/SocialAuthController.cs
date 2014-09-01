@@ -12,6 +12,9 @@ using System.Reflection;
 using M2E.CommonMethods;
 using System.Data.Entity.Validation;
 using M2E.Session;
+using M2E.Encryption;
+using M2E.Models.DataResponse;
+using System.Globalization;
 
 namespace M2E.Controllers
 {
@@ -35,29 +38,80 @@ namespace M2E.Controllers
 
         public JsonResult userMapping()
         {
-            var response = new ResponseModel<string>();
+            var response = new ResponseModel<LoginResponse>();
 
             String fid = Request.QueryString["fid"];
             var headers = new HeaderManager(Request);
-            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);            
-            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
-            if (isValidToken)
+            if (headers.AuthToken != null)
             {
-                var facebookUserMap = _db.FacebookAuths.SingleOrDefault(x => x.facebookId == fid);
-                facebookUserMap.username = session.UserName;
-                try
+                M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
+                var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+                if (isValidToken)
                 {
-                    _db.SaveChanges();
-                    response.Status = 200;
-                    response.Message = "success-";
-                }
-                catch (DbEntityValidationException e)
-                {
-                    DbContextException.LogDbContextException(e);
-                    response.Status = 500;
-                    response.Message = "Failed";
+                    var facebookUserMap = _db.FacebookAuths.SingleOrDefault(x => x.facebookId == fid);
+                    facebookUserMap.username = session.UserName;
+                    try
+                    {
+                        _db.SaveChanges();
+                        response.Status = 200;
+                        response.Message = "success-";
+                    }
+                    catch (DbEntityValidationException e)
+                    {
+                        DbContextException.LogDbContextException(e);
+                        response.Status = 500;
+                        response.Message = "Failed";
+                    }
                 }
             }
+            else
+            {
+                var ifFacebookUserAlreadyRegistered = _db.FacebookAuths.SingleOrDefault(x => x.facebookId == fid);
+                if (ifFacebookUserAlreadyRegistered != null)
+                {
+                    if (_db.Users.Any(x => x.Username == ifFacebookUserAlreadyRegistered.username))
+                    {
+                        var user = _db.Users.SingleOrDefault(x => x.Username == ifFacebookUserAlreadyRegistered.username);
+                        if (user != null)
+                        {
+                            string Authkey = ConfigurationManager.AppSettings["AuthKey"];
+                            response.Payload = new LoginResponse();
+                            response.Payload.UTMZK = EncryptionClass.GetEncryptionKey(user.Username, Authkey);
+                            response.Payload.UTMZV = EncryptionClass.GetEncryptionKey(user.Password, Authkey);
+                            response.Payload.TimeStamp = DateTime.Now.ToString(CultureInfo.InvariantCulture);
+                            response.Payload.Code = "210";
+                            response.Status = 210;
+                            response.Message = "user Login via facebook";
+                            try
+                            {
+                                user.KeepMeSignedIn = "true";//keepMeSignedIn.Equals("true", StringComparison.OrdinalIgnoreCase) ? "true" : "false";
+                                _db.SaveChanges();
+
+                                var session = new M2ESession(ifFacebookUserAlreadyRegistered.username);
+                                TokenManager.CreateSession(session);
+                                response.Payload.UTMZT = session.SessionId;
+                                return Json(response, JsonRequestBehavior.AllowGet);
+                                
+                            }
+                            catch (DbEntityValidationException e)
+                            {
+                                DbContextException.LogDbContextException(e);
+                                response.Payload.Code = "500";
+                                
+                                return Json(response, JsonRequestBehavior.AllowGet);
+                            }
+                        }
+                        else
+                            response.Payload.Code = "403";
+                    }
+                }
+                else
+                {
+                    //save user details in database ..
+                }
+                
+            }
+            
             return Json(response, JsonRequestBehavior.AllowGet);
         }
 

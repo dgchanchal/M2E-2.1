@@ -27,7 +27,16 @@
 						url: url,
 						method: "GET",
                         headers: headers
-						}).done(function() {
+						}).done(function(data,status) {
+							console.log(data);
+							if(data.Status == "210")
+							{
+								$.cookie('utmzt', data.Payload.UTMZT, { expires: 365, path: '/' });
+								$.cookie('utmzk', data.Payload.UTMZK, { expires: 365, path: '/' });
+								$.cookie('utmzv', data.Payload.UTMZV, { expires: 365, path: '/' });
+								$.cookie('kmsi', true, { expires: 365, path: '/' });
+							}
+							
 							window.close();
 						});
 	});
