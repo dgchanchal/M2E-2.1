@@ -64,7 +64,7 @@ define([appLocation.userPostLogin], function (app) {
         }
 
         $scope.openFacebookAuthWindow = function () {
-            var win = window.open("/SocialAuth/FBLogin/facebook", "Ratting", "width=550,height=400,0,status=0,scrollbars=1");
+            var win = window.open("/SocialAuth/FBLogin/facebook", "Ratting", "width=800,height=480,0,status=0,scrollbars=1");
             win.onunload = onun;
 
             function onun() {
@@ -72,7 +72,8 @@ define([appLocation.userPostLogin], function (app) {
                 // doesn't do anything when the 
                 // window is first opened.
                 {
-                    $route.reload();
+                    //$route.reload();
+                    location.reload();
                     //alert("closed");
                 }
             }
