@@ -138,7 +138,19 @@ namespace M2E.Controllers
                 
                 //var fb = new FacebookClient();
                 //dynamic result = fb.Get("fql",
-                    //new { q = "SELECT page_id FROM page_fan WHERE uid=100001648098091 AND page_id=223215721036909" });                   
+                    //new { q = "SELECT page_id FROM page_fan WHERE uid=100001648098091 AND page_id=223215721036909" });  
+                
+ 
+                //To obtain an App Access Token, invoke the following HTTP GET request
+
+                //GET https://graph.facebook.com/oauth/access_token?
+                //            client_id=YOUR_APP_ID
+                //           &client_secret=YOUR_APP_SECRET
+                //           &grant_type=client_credentials
+
+                //The API will respond with a query-string formatted string of the form:
+
+                //    access_token=YOUR_APP_ACCESS_TOKEN
             }
             return View();
         }

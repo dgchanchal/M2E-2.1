@@ -69,7 +69,7 @@
 
                                        </div>
 
-                                       <div ng-show="!isUserConnectedToFacebook">
+                                       <div ng-show="!isUserConnectedToFacebook && !isFacebookAuthCookieExpired">
 
                                          <div class="alert alert-success alert-dismissable innerDivCenterAlign">
                                                                 <i class="fa fa-check"></i>
@@ -81,8 +81,22 @@
                                                  <a class="btn btn-block btn-social btn-facebook" ng-click="openFacebookAuthWindow()">
                                                     <i class="fa fa-facebook"></i> Sign in with Facebook
                                                 </a>                                            
-                                             </div>
-                                            
+                                             </div>                                            
+                                   </div>
+
+                                   <div ng-show="!isUserConnectedToFacebook && isFacebookAuthCookieExpired">
+
+                                         <div class="alert alert-success alert-dismissable innerDivCenterAlign">
+                                                                <i class="fa fa-check"></i>
+                                                                <b>Alert!</b> Your Facebook Auth cookie is expired.
+                                                            </div> 
+                                                                                 
+                                             <div class="error-content callout callout-info innerDivCenterAlign">
+                                                 <h3 class="ng-binding"> <i class="fa fa-info"></i> Re-Generate your facebook Auth Cookie.</h3>
+                                                 <a class="btn btn-block btn-social btn-facebook" ng-click="openFacebookAuthWindow()">
+                                                    <i class="fa fa-facebook"></i> Connect to Facebook
+                                                </a>                                            
+                                             </div>                                            
                                    </div>
                                </section>
 

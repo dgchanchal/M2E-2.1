@@ -9,6 +9,7 @@ define([appLocation.userPostLogin], function (app) {
         $scope.facebookLikePageUrl = "";
         $scope.facebookLikePageId = "";
         $scope.isUserConnectedToFacebook = true;
+        $scope.isFacebookAuthCookieExpired = false;
 
         $scope.showFacebookDetailDiv = false;
         $scope.facebookData = {};
@@ -45,7 +46,10 @@ define([appLocation.userPostLogin], function (app) {
             else if (data.Status == "205") {
                 $scope.isUserConnectedToFacebook = false;
             }
-
+            else if (data.Status == "206") {
+                $scope.isUserConnectedToFacebook = false;
+                $scope.isFacebookAuthCookieExpired = true;
+            }
         }).error(function (data, status, headers, config) {
 
         });

@@ -9,6 +9,7 @@ using System.Reflection;
 using M2E.CommonMethods;
 using M2E.Models.Constants;
 using M2E.DAO;
+using Facebook;
 
 namespace M2E.Service.UserService.facebookLike
 {
@@ -29,9 +30,33 @@ namespace M2E.Service.UserService.facebookLike
                 response.Message = "User is not connected with facebook";
                 return response;
             }
+            else
+            {
+                //checkIfUserConnectedWithFacebook.AuthToken;
+            }
             var facebookLikeTemplateDataList = _db.CreateTemplateFacebookLikes.OrderByDescending(x => x.creationTime).ToList();
             foreach (var facebookLikeTemplateData in facebookLikeTemplateDataList)
             {
+                var fb = new FacebookClient(checkIfUserConnectedWithFacebook.AuthToken);
+                bool alreadyLikedByUser = false;
+                try
+                {
+                    dynamic result = fb.Get("fql",
+                                new { q = "SELECT page_id FROM page_fan WHERE uid=" + checkIfUserConnectedWithFacebook.facebookId + " AND page_id=" + facebookLikeTemplateData.pageId });
+                    foreach (var item in result.data)
+                    {
+                        alreadyLikedByUser = true; // exists   
+                    }
+                }
+                catch (Exception)
+                {
+                    response.Status = 206;
+                    response.Message = "Facebook Auth Token Expired";
+                    return response; ;
+                }
+                                               
+                if (alreadyLikedByUser) continue; // do not add in list if user already liked the page.
+
                 var UserFacebookLikeTemplateModelData = new UserFacebookLikeTemplateModel();
                 var ifAlreadyLiked = _db.UserFacebookLikeJobMappings.SingleOrDefault(x => x.refKey == facebookLikeTemplateData.referenceId && x.username == username);
                 if (ifAlreadyLiked == null)
@@ -51,7 +76,7 @@ namespace M2E.Service.UserService.facebookLike
                     UserFacebookLikeTemplateModelData.userStatus = Constants.status_open;
                     UserFacebookLikeTemplateModelData.description = facebookLikeTemplateData.description;
                     response.Payload.Add(UserFacebookLikeTemplateModelData);
-                }                
+                }
             }
 
             try
@@ -65,7 +90,7 @@ namespace M2E.Service.UserService.facebookLike
                 response.Status = 500;
                 response.Message = "Internal Server Error";
                 return response;
-            }            
+            }
         }
     }
 }
