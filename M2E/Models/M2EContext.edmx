@@ -31,6 +31,7 @@
     <EntitySet Name="UserMultipleJobMappings" EntityType="M2EModel.Store.UserMultipleJobMappings" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CreateTemplateFacebookLikes" EntityType="M2EModel.Store.CreateTemplateFacebookLikes" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserFacebookLikeJobMappings" EntityType="M2EModel.Store.UserFacebookLikeJobMappings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FacebookAuths" EntityType="M2EModel.Store.FacebookAuths" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
   <EntityType Name="ClientDetails">
     <Key>
@@ -352,6 +353,17 @@
     <Property Name="pageId" Type="nvarchar(max)" Nullable="false" />
     <Property Name="pageUrl" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="FacebookAuths">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="datetime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="facebookId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="facebookUsername" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AuthToken" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -382,6 +394,7 @@
           <EntitySet Name="UserMultipleJobMappings" EntityType="M2EModel.UserMultipleJobMapping" />
           <EntitySet Name="CreateTemplateFacebookLikes" EntityType="M2EModel.CreateTemplateFacebookLike" />
           <EntitySet Name="UserFacebookLikeJobMappings" EntityType="M2EModel.UserFacebookLikeJobMapping" />
+          <EntitySet Name="FacebookAuths" EntityType="M2EModel.FacebookAuth" />
         </EntityContainer>
         <EntityType Name="ClientDetail">
           <Key>
@@ -702,6 +715,17 @@
           <Property Type="String" Name="status" Nullable="false" />
           <Property Type="String" Name="pageId" Nullable="false" />
           <Property Type="String" Name="pageUrl" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FacebookAuth">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="username" Nullable="false" />
+          <Property Type="String" Name="datetime" Nullable="false" />
+          <Property Type="String" Name="facebookId" Nullable="false" />
+          <Property Type="String" Name="facebookUsername" Nullable="false" />
+          <Property Type="String" Name="AuthToken" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1054,6 +1078,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="FacebookAuths">
+      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.FacebookAuth)">
+        <MappingFragment StoreEntitySet="FacebookAuths">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="facebookId" ColumnName="facebookId" />
+          <ScalarProperty Name="facebookUsername" ColumnName="facebookUsername" />
+          <ScalarProperty Name="AuthToken" ColumnName="AuthToken" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -1100,6 +1136,7 @@
         <EntityTypeShape EntityType="M2EModel.UserMultipleJobMapping" Width="1.5" PointX="8.875" PointY="2.375" Height="3.1340950520833326" />
         <EntityTypeShape EntityType="M2EModel.CreateTemplateFacebookLike" Width="1.5" PointX="8.875" PointY="5.75" Height="3.9033007812499996" />
         <EntityTypeShape EntityType="M2EModel.UserFacebookLikeJobMapping" Width="1.5" PointX="2.625" PointY="11" Height="2.7494921874999996" />
+        <EntityTypeShape EntityType="M2EModel.FacebookAuth" Width="1.5" PointX="7.375" PointY="13.125" Height="2.1725878906249996" />
       </Diagram>
     </Diagrams>
   </Designer>

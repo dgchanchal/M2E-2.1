@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 08/28/2014 12:10:09
+-- Date Created: 09/01/2014 14:08:24
 -- Generated from EDMX file: F:\temp2\branches\M2E-2.0\M2E\Models\M2EContext.edmx
 -- --------------------------------------------------
 
@@ -90,6 +90,12 @@ IF OBJECT_ID(N'[dbo].[UserJobMappings]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[UserMultipleJobMappings]', 'U') IS NOT NULL
     DROP TABLE [dbo].[UserMultipleJobMappings];
+GO
+IF OBJECT_ID(N'[dbo].[CreateTemplateFacebookLikes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[CreateTemplateFacebookLikes];
+GO
+IF OBJECT_ID(N'[dbo].[UserFacebookLikeJobMappings]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserFacebookLikeJobMappings];
 GO
 
 -- --------------------------------------------------
@@ -416,6 +422,17 @@ CREATE TABLE [dbo].[UserFacebookLikeJobMappings] (
 );
 GO
 
+-- Creating table 'FacebookAuths'
+CREATE TABLE [dbo].[FacebookAuths] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [username] nvarchar(max)  NOT NULL,
+    [datetime] nvarchar(max)  NOT NULL,
+    [facebookId] nvarchar(max)  NOT NULL,
+    [facebookUsername] nvarchar(max)  NOT NULL,
+    [AuthToken] nvarchar(max)  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -567,6 +584,12 @@ GO
 -- Creating primary key on [Id] in table 'UserFacebookLikeJobMappings'
 ALTER TABLE [dbo].[UserFacebookLikeJobMappings]
 ADD CONSTRAINT [PK_UserFacebookLikeJobMappings]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'FacebookAuths'
+ALTER TABLE [dbo].[FacebookAuths]
+ADD CONSTRAINT [PK_FacebookAuths]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 

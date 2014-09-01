@@ -240,6 +240,9 @@
     <Compile Include="Models\DataWrapper\UserSurvey\UserSurveyAnswerKeyValuePairRequest.cs" />
     <Compile Include="Models\DataWrapper\UserSurvey\UserSurveyResultRequest.cs" />
     <Compile Include="Models\DataWrapper\ValidateAccountRequest.cs" />
+    <Compile Include="Models\FacebookAuth.cs">
+      <DependentUpon>M2EContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ForgetPassword.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>

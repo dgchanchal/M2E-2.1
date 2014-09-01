@@ -34,7 +34,7 @@ namespace M2E.Controllers
             String code = Request.QueryString["code"];
             string app_id = string.Empty;
             string app_secret = string.Empty;
-            string returnUrl = "http://localhost:8111/SocialAuth/FBLogin/facebook/";
+            string returnUrl = "http://localhost:60769/SocialAuth/FBLogin/facebook/";
             app_id = ConfigurationManager.AppSettings["FacebookAppID"].ToString();
             app_secret = ConfigurationManager.AppSettings["FacebookAppSecret"].ToString();
 
@@ -47,7 +47,8 @@ namespace M2E.Controllers
                     "https://graph.facebook.com/oauth/authorize?client_id={0}&redirect_uri={1}&scope={2}",
                     app_id, returnUrl, scope));
                 
-                return Json(response,JsonRequestBehavior.AllowGet);
+                //return Json(response,JsonRequestBehavior.AllowGet);
+                Response.Redirect(response.Payload);
             }
             else
             {

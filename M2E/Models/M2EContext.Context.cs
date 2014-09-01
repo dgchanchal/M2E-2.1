@@ -50,5 +50,6 @@ namespace M2E.Models
         public DbSet<UserMultipleJobMapping> UserMultipleJobMappings { get; set; }
         public DbSet<CreateTemplateFacebookLike> CreateTemplateFacebookLikes { get; set; }
         public DbSet<UserFacebookLikeJobMapping> UserFacebookLikeJobMappings { get; set; }
+        public DbSet<FacebookAuth> FacebookAuths { get; set; }
     }
 }

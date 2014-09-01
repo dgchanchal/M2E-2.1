@@ -207,9 +207,17 @@
                     source: '#nav_mobi'
                 });
 
-                $("body").click(function () {
-                    $.sidr('close', 'sidr-main');
-                });
+				if (typeof (OnLoad) != "undefined")
+				{
+					OnLoad();
+				}
+				function OnLoad()
+				{
+					$("body").click(function () {
+						$.sidr('close', 'sidr-main');
+					});
+				}
+                
                 
             });
             
