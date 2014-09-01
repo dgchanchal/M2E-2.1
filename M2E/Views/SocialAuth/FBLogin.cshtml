@@ -1,0 +1,44 @@
+﻿@model M2E.Models.FacebookAuth
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FBLogin</title>
+	<script src="../../../App/js/jquery.min.js"></script> 
+    <script src="../../../App/Property/m2eProperties.js" type="text/javascript"></script>
+	<script src="../../../App/js/jquery.cookie.js" type="text/javascript"></script>
+	<script>
+	$(document).ready(function($) {
+	var url = ServerContextPah + '/SocialAuth/userMapping?fid='+ '@ViewBag.facebookId';
+                    var headers = {
+                        'Content-Type': 'application/json',
+						'UTMZT': $.cookie('utmzt'),
+						'UTMZK': $.cookie('utmzk'),
+						'UTMZV': $.cookie('utmzv')                       
+                    };
+                    
+					$.ajax({
+						url: url,
+						method: "GET",
+                        headers: headers
+						}).done(function() {
+							window.close();
+						});
+	});
+		
+                    
+				
+</script>
+</head>
+<body>
+    <div>
+		Please Wait..
+    </div>
+</body>
+</html>

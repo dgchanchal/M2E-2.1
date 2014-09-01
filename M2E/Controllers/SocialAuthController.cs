@@ -7,6 +7,11 @@ using System.Configuration;
 using M2E.Models;
 using zestork.Service;
 using Facebook;
+using M2E.Common.Logger;
+using System.Reflection;
+using M2E.CommonMethods;
+using System.Data.Entity.Validation;
+using M2E.Session;
 
 namespace M2E.Controllers
 {
@@ -14,6 +19,9 @@ namespace M2E.Controllers
     {
         //
         // GET: /SocialAuth/
+        private static readonly ILogger logger = new Logger(Convert.ToString(MethodBase.GetCurrentMethod().DeclaringType));
+        private DbContextException _dbContextException = new DbContextException();
+        private readonly M2EContext _db = new M2EContext();
 
         public ActionResult Index()
         {
@@ -21,20 +29,46 @@ namespace M2E.Controllers
         }
         
         public JsonResult Login(string type)
-        {
-            
-
+        {            
             return Json("test",JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult FBLogin(string type)
+        public JsonResult userMapping()
+        {
+            var response = new ResponseModel<string>();
+
+            String fid = Request.QueryString["fid"];
+            var headers = new HeaderManager(Request);
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);            
+            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+            if (isValidToken)
+            {
+                var facebookUserMap = _db.FacebookAuths.SingleOrDefault(x => x.facebookId == fid);
+                facebookUserMap.username = session.UserName;
+                try
+                {
+                    _db.SaveChanges();
+                    response.Status = 200;
+                    response.Message = "success-";
+                }
+                catch (DbEntityValidationException e)
+                {
+                    DbContextException.LogDbContextException(e);
+                    response.Status = 500;
+                    response.Message = "Failed";
+                }
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult FBLogin(string type)
         {
             var response = new ResponseModel<string>();
 
             String code = Request.QueryString["code"];
             string app_id = string.Empty;
             string app_secret = string.Empty;
-            string returnUrl = "http://localhost:60769/SocialAuth/FBLogin/facebook/";
+            string returnUrl = "http://"+Request.Url.Authority+"/SocialAuth/FBLogin/facebook/";
             app_id = ConfigurationManager.AppSettings["FacebookAppID"].ToString();
             app_secret = ConfigurationManager.AppSettings["FacebookAppSecret"].ToString();
 
@@ -52,14 +86,61 @@ namespace M2E.Controllers
             }
             else
             {
-                string access_token = new FacebookService().getFacebookAuthToken(returnUrl, scope, code, app_id, app_secret);
-                var fb = new FacebookClient(access_token);
-                //var fb = new FacebookClient();
-                dynamic result = fb.Get("fql",
-                    new { q = "SELECT page_id FROM page_fan WHERE uid=100001648098091 AND page_id=223215721036909" });
+                try
+                {
+                    string access_token = new FacebookService().getFacebookAuthToken(returnUrl, scope, code, app_id, app_secret);
+                    var fb = new FacebookClient(access_token);
+                    //dynamic result = fb.Get("fql",
+                    //            new { q = "SELECT uid, name, first_name, middle_name, last_name, sex, locale, pic_small_with_logo, pic_big_with_logo, pic_square_with_logo, pic_with_logo, username FROM user WHERE uid=me()" });
 
+                    dynamic fqlResponse = fb.Get("fql",
+                                new { q = "SELECT uid, username FROM user WHERE uid=me()" });
+                    var FacebookAuthData = new FacebookAuth();
+                    string fid = Convert.ToString(fqlResponse.data[0].uid);
+                    FacebookAuthData.username = "NA";
+                    FacebookAuthData.AuthToken = access_token;
+                    FacebookAuthData.datetime = DateTime.Now.ToString();
+                    FacebookAuthData.facebookId = Convert.ToString(fqlResponse.data[0].uid);
+                    FacebookAuthData.facebookUsername = fqlResponse.data[0].username;
+
+                    var ifAlreadyExists = _db.FacebookAuths.SingleOrDefault(x => x.facebookId == fid);
+                    if (ifAlreadyExists == null)
+                    {                        
+                        _db.FacebookAuths.Add(FacebookAuthData);
+                    }
+                    else
+                    {
+                        // refresh the token
+                        ifAlreadyExists.AuthToken = access_token;
+                        ifAlreadyExists.datetime = DateTime.Now.ToString();
+                    }
+                    try
+                    {
+                        _db.SaveChanges();                        
+                        response.Status = 200;
+                        response.Message = "success-";                        
+                    }
+                    catch (DbEntityValidationException e)
+                    {
+                        DbContextException.LogDbContextException(e);
+                        response.Status = 500;
+                        response.Message = "Failed";                        
+                    }
+
+                    ViewBag.facebookId = fqlResponse.data[0].uid;
+                    return View(FacebookAuthData);
+                }
+                catch (Exception ex)
+                {
+
+                    logger.Error("Error Occured while getting Facebook Auth Token",ex);
+                }
+                
+                //var fb = new FacebookClient();
+                //dynamic result = fb.Get("fql",
+                    //new { q = "SELECT page_id FROM page_fan WHERE uid=100001648098091 AND page_id=223215721036909" });                   
             }
-            return Json("", JsonRequestBehavior.AllowGet);
+            return View();
         }
 
         

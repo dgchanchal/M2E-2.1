@@ -27,7 +27,7 @@ namespace M2E.Service.Client
                     {
                         FirstName = clientDetailDbResult.FirstName,
                         LastName = clientDetailDbResult.LastName,
-                        Username = clientDetailDbResult.Username
+                        Username = clientDetailDbResult.Username                       
                     };
                     response.Status = 200;
                     response.Message = "success";

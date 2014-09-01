@@ -436,6 +436,7 @@ namespace M2E.Controllers
             if (isValidToken)
             {
                 var clientDetailResponse = clientTemplate.GetClientDetails(session.UserName);
+                clientDetailResponse.Payload.RequestUrlAuthority = "\"http://"+Request.Url.Authority+"/SocialAuth/FBLogin/facebook/\"";
                 return Json(clientDetailResponse);
             }
             else

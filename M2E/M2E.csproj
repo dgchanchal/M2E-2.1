@@ -1603,6 +1603,7 @@
     <None Include="Views\Client\Index.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <None Include="Views\SocialAuth\FBLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

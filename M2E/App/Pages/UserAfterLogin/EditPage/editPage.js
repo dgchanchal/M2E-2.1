@@ -22,7 +22,7 @@ define([appLocation.userPostLogin], function (app) {
                 //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
                 stopBlockUI();
                 if (data.Status == "200") {
-                    $rootScope.clientDetailResponse = data.Payload;
+                    $scope.clientDetailResponse = data.Payload;
                 }
                 else if (data.Status == "404") {
 
@@ -36,6 +36,22 @@ define([appLocation.userPostLogin], function (app) {
 
             });
         }
+
+        $scope.openFacebookAuthWindow = function () {
+            var win = window.open("/SocialAuth/FBLogin/facebook", "Ratting", "width=550,height=400,0,status=0,scrollbars=1");
+            win.onunload = onun;
+
+            function onun() {
+                if (win.location != "about:blank") // This is so that the function 
+                // doesn't do anything when the 
+                // window is first opened.
+                {
+                    
+                    //alert("closed");
+                }
+            }
+        }
     });
 
 });
+
