@@ -46,7 +46,7 @@ define([appLocation.userPostLogin], function (app) {
                 // doesn't do anything when the 
                 // window is first opened.
                 {
-                    
+                    $route.reload();
                     //alert("closed");
                 }
             }

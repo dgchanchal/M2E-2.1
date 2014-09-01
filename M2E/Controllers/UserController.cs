@@ -58,7 +58,8 @@ namespace M2E.Controllers
             var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
             if (isValidToken)
             {
-                return Json(UserfacebookLikesList.GetAllFacebookLikeTemplateInformation(session.UserName));
+                var response = UserfacebookLikesList.GetAllFacebookLikeTemplateInformation(session.UserName);
+                return Json(response);
             }
             else
             {

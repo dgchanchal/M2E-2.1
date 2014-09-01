@@ -22,6 +22,13 @@ namespace M2E.Service.UserService.facebookLike
         {
             var response = new ResponseModel<List<UserFacebookLikeTemplateModel>>();
             response.Payload = new List<UserFacebookLikeTemplateModel>();
+            var checkIfUserConnectedWithFacebook = _db.FacebookAuths.SingleOrDefault(x => x.username == username);
+            if (checkIfUserConnectedWithFacebook == null)
+            {
+                response.Status = 205;
+                response.Message = "User is not connected with facebook";
+                return response;
+            }
             var facebookLikeTemplateDataList = _db.CreateTemplateFacebookLikes.OrderByDescending(x => x.creationTime).ToList();
             foreach (var facebookLikeTemplateData in facebookLikeTemplateDataList)
             {

@@ -35,7 +35,7 @@
                                            </h3>
                                        </div>
                                        <div class="box-content nopadding">
-                                             <div class="search-results">
+                                             <div class="search-results" ng-show="isUserConnectedToFacebook">
 									            <ul>
 										            <li ng-repeat="Thread in FacebookLikeList">
                                                         <article  class="oJobTile callout callout-warning">
@@ -55,7 +55,7 @@
                                                                 <span data-ng-bind-html="Thread.pageUrl"></span>
                                                             </div>
                                                             <div class="col-md-2">
-                                                                <button class="btn btn-success">Validate your page like</button>
+                                                                <button class="btn btn-success">Validate like</button>
                                                             </div>
                                                         </div>
 										                <div class="oSupportInfo">
@@ -68,6 +68,21 @@
 									            </ul>
 
                                        </div>
+
+                                       <div ng-show="!isUserConnectedToFacebook">
+
+                                         <div class="alert alert-success alert-dismissable innerDivCenterAlign">
+                                                                <i class="fa fa-check"></i>
+                                                                <b>Alert!</b> You are not connected to facebook via Cautom.
+                                                            </div> 
+                                                                                 
+                                             <div class="error-content callout callout-info innerDivCenterAlign">
+                                                 <h3 class="ng-binding"> <i class="fa fa-info"></i> Connect To facebook.</h3>
+                                                 <a class="btn btn-block btn-social btn-facebook" ng-click="openFacebookAuthWindow()">
+                                                    <i class="fa fa-facebook"></i> Sign in with Facebook
+                                                </a>                                            
+                                             </div>
+                                            
                                    </div>
                                </section>
 

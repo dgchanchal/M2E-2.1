@@ -8,6 +8,7 @@ define([appLocation.userPostLogin], function (app) {
         $scope.facebookLikeIframe = "";
         $scope.facebookLikePageUrl = "";
         $scope.facebookLikePageId = "";
+        $scope.isUserConnectedToFacebook = true;
 
         $scope.showFacebookDetailDiv = false;
         $scope.facebookData = {};
@@ -30,16 +31,19 @@ define([appLocation.userPostLogin], function (app) {
             stopBlockUI();
             if (data.Status == "200") {
                 var i = 0;
-                console.log(data.Payload);
+                //console.log(data.Payload);
                 $.each(data.Payload, function (key, value) {
                     $scope.FacebookLikeList[i] = this;
                     $scope.FacebookLikeList[i].pageUrl = $sce.trustAsHtml(this.pageUrl);
                     i++;
                 });
-                console.log($scope.FacebookLikeList);
+                //console.log($scope.FacebookLikeList);
             }
             else if (data.Status == "401") {
                 location.href = "/?type=info&mssg=your session is expired/#/login";
+            }
+            else if (data.Status == "205") {
+                $scope.isUserConnectedToFacebook = false;
             }
 
         }).error(function (data, status, headers, config) {
@@ -53,6 +57,21 @@ define([appLocation.userPostLogin], function (app) {
             else
                 $scope.showUserActiveThreads = true;
 
+        }
+
+        $scope.openFacebookAuthWindow = function () {
+            var win = window.open("/SocialAuth/FBLogin/facebook", "Ratting", "width=550,height=400,0,status=0,scrollbars=1");
+            win.onunload = onun;
+
+            function onun() {
+                if (win.location != "about:blank") // This is so that the function 
+                // doesn't do anything when the 
+                // window is first opened.
+                {
+                    $route.reload();
+                    //alert("closed");
+                }
+            }
         }
 
     });
