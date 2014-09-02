@@ -11,6 +11,10 @@ var userSession = {
     imgurImageTranscriptionTemplate: [] 
 };
 
+var popWindow = {
+    width:800,
+    height:480
+};
 var userType  = {
     requester: "requester",
     accepter: "accepter"
@@ -98,4 +102,36 @@ function replaceImageWithFancyBoxImage(text, smallImage, largeImage) {
 function getParameterByName(name) {
     var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
     return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
+function updateMe( data ) {
+    if(data == 'login')
+        location.href="/"+$.cookie('loginType');   
+    else if(data == 'fblikepage')
+        location.href="/user#/facebookLikePage";
+    else if(data == 'error')
+        alert("Internal Server Error Occured !! Try Again");
+}
+
+function detectIfUserLoggedIn(){
+        var headers = {
+                        'Content-Type': 'application/json',
+						'UTMZT': $.cookie('utmzt'),
+						'UTMZK': $.cookie('utmzk'),
+						'UTMZV': $.cookie('utmzv')                       
+                    };
+         if($.cookie('utmzt') != null && $.cookie('utmzt') != "")
+         {
+            var  url = ServerContextPah + '/Auth/IsValidSession';
+                 $.ajax({
+						url: url,
+						type: "POST",
+                        headers: headers
+						}).done(function(data,status) {
+							console.log(data);
+                            if(data == true)
+                                location.href="/"+$.cookie('loginType');					
+						});
+         }     
+					
 }

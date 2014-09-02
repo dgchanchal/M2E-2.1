@@ -40,11 +40,19 @@
                         <li ng-show="HeaderAlert.visible" ng-bind="HeaderAlert.message"></li>
                         <li ng-show="ForgetPasswordAlert.visible"> <span ng-bind="ForgetPasswordAlert.message"></span> <a href="#"> Request a new one.</a></li>
                     </ul>
-                    <div class="form-group">
-                        <input type="text" name="emailid" class="form-control ng-pristine ng-valid" placeholder="Email Id" data-i18n="beforeLoginLoginPageEmailIdText" id="LoginEmailId" ng-model="EmailId">
+                    <div class="row">                       
+                        <div class="col-md-6">
+                             Accepter <input type="radio" class="loginUserTypeRadioButton" name="loginUserType" id="loginUserTypeRadioButtonId" value="user" checked="checked" />                            
+                        </div>
+                        <div class="col-md-6">
+                             Requester <input type="radio" class="loginUserTypeRadioButton"  name="loginUserType" id="loginClientTypeRadioButtonId" value="client" />                                
+                        </div>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" class="form-control ng-pristine ng-valid" placeholder="Password" data-i18n="beforeLoginLoginPagePasswordText" id="LoginPasswordId" ng-model="Password">
+                        <input type="text" name="emailid" class="form-control ng-pristine ng-valid TextBoxBeforeLoginFormSubmitButtonClass" placeholder="Email Id" data-i18n="beforeLoginLoginPageEmailIdText" id="LoginEmailId" ng-model="EmailId">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control ng-pristine ng-valid TextBoxBeforeLoginFormSubmitButtonClass" placeholder="Password" data-i18n="beforeLoginLoginPagePasswordText" id="LoginPasswordId" ng-model="Password">
                     </div>          
                     <div class="form-group">
                         <input type="checkbox" name="remember_me" ng-model="KeepMeSignedInCheckBox" class="ng-pristine ng-valid"> Remember me
@@ -56,7 +64,7 @@
                         <li ng-show="EmailIdAlert.visible" ng-bind="EmailIdAlert.message"></li>
                         <li ng-show="PasswordAlert.visible" ng-bind="PasswordAlert.message"></li>
                     </ul>                                                               
-                    <button class="btn bg-uni btn-block" type="submit" ng-click="Login()">Sign me in</button>  
+                    <button class="btn bg-uni btn-block" type="submit" id="LoginFormSubmitButtonId" ng-click="Login()">Sign me in</button>  
                     <div class="div_c"></div>
                     <p><a href="#/forgetpassword">I forgot my password</a></p>
                     <p>Create an Account<i class="fa fa-fw fa-long-arrow-right"></i><a class="text-center" href="#/signup/client" ng-bind="clientConstants.name_abb"></a> or <a class="text-center" href="#/signup/user" ng-bind="userConstants.name_abb"></a></p>

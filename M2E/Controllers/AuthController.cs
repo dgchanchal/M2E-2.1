@@ -53,10 +53,12 @@ namespace M2E.Controllers
         }
 
         [HttpPost]
-        public JsonResult IsValidSession(isValidSessionRequest req)
+        public JsonResult IsValidSession()
         {
-            var response = new ResponseModel<bool> { Status = 200, Message = "success", Payload = TokenManager.IsValidSession(req.UTMZT) };
-            return Json(response);
+            var headers = new HeaderManager(Request);
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);            
+            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+            return Json(isValidToken);
         }
 
         [HttpPost]

@@ -44,6 +44,14 @@ define([appLocation.userPostLogin], function(app) {
                     $.cookie('kmsi', KMSI, { path: '/' });
                 }
             },
+            setLoginType: function (LoginType, keepMeSignedIn) {
+                if (keepMeSignedIn) {
+                    $.cookie('loginType', LoginType, { expires: 365, path: '/' });
+                }
+                else {
+                    $.cookie('loginType', LoginType, { path: '/' });
+                }
+            },
             getUTMZT: function () {
                 return $.cookie('utmzt');
             },
@@ -58,6 +66,9 @@ define([appLocation.userPostLogin], function(app) {
             },
             getKMSI: function () {
                 return $.cookie('kmsi');
+            },
+            getLoginType: function () {
+                return $.cookie('loginType');
             },
             removeUTMZT: function () {
                 $.removeCookie('utmzt', { path: '/' });

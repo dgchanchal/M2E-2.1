@@ -67,6 +67,16 @@ define([appLocation.postLogin], function (app) {
             location.href = id;
         }
 
+        $scope.signOut = function () {
+            CookieUtil.removeUTMZT();
+            CookieUtil.removeUTMZK();
+            CookieUtil.removeUTMZV();
+            CookieUtil.removeUTIME();
+            CookieUtil.removeKMSI();
+            CookieUtil.removeKMSI();            
+            location.href = "/";
+        }
+
         $scope.ClientCategoryList = [
        {
            MainCategory: "Category",

@@ -1,7 +1,9 @@
 'use strict';
 define([appLocation.preLogin], function (app) {
-    app.controller('beforeLoginIndex', function ($scope, $http, $rootScope,Restangular, CookieUtil) {
+    app.controller('beforeLoginIndex', function ($scope, $http, $rootScope, Restangular, CookieUtil) {
         $('title').html("index"); //TODO: change the title so cann't be tracked in log
+        
+        detectIfUserLoggedIn();
 
         $scope.projectDetailsDivShow = false;
         $scope.totalProjects = "124";
@@ -10,10 +12,10 @@ define([appLocation.preLogin], function (app) {
         $scope.projectCategories = "25";
         getBeforeLoginUserProjectDetails();
         function getBeforeLoginUserProjectDetails() {
-                        
+
             Restangular.one('Home/BeforeLoginUserProjectDetailsService').get().then(
                 function (success) {
-                    
+
                     if (success.Status == "200") {
                         $scope.totalProjects = success.Payload.TotalProjects;
                         $scope.successRate = success.Payload.SuccessRate;
@@ -21,9 +23,9 @@ define([appLocation.preLogin], function (app) {
                         $scope.projectCategories = success.Payload.ProjectCategories;
                         $scope.projectDetailsDivShow = true;
                     }
-                    
+
                 }, function (failure) {
-                    
+
                 });
             $scope.$$phase || $scope.$apply();
         };

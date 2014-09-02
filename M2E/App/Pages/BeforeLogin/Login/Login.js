@@ -8,13 +8,12 @@ define([appLocation.preLogin], function (app) {
         $scope.slideshow = 1;
         var slideTimer =
         $timeout(function interval() {
-                $scope.slideshow = ($scope.slideshow % slidesInSlideshow) + 1;
-                slideTimer = $timeout(interval, slidesTimeIntervalInMs);
-            }, slidesTimeIntervalInMs);
-
+            $scope.slideshow = ($scope.slideshow % slidesInSlideshow) + 1;
+            slideTimer = $timeout(interval, slidesTimeIntervalInMs);
+        }, slidesTimeIntervalInMs);
         //alert(mobileDevice);
         // Login Sign In Form
-        $scope.mobileDevice = mobileDevice != null ? true:false;
+        $scope.mobileDevice = mobileDevice != null ? true : false;
         $scope.EmailId = "";
         $scope.Password = "";
         $scope.KeepMeSignedInCheckBox = false;
@@ -52,6 +51,16 @@ define([appLocation.preLogin], function (app) {
             $scope.HeaderAlert.visible = true;
             $scope.HeaderAlert.classType = "success";
             $scope.HeaderAlert.message = "Your Password has been successfully changed. To continue, please login.";
+        }
+        if (CookieUtil.getLoginType() == null || CookieUtil.getLoginType() == "")
+            CookieUtil.setLoginType("user", $scope.KeepMeSignedInCheckBox); // by default set type as user..
+        else {
+            if (CookieUtil.getLoginType() == "user") {
+                $('#loginUserTypeRadioButtonId').attr('checked', true);
+            }
+            else {
+                $('#loginClientTypeRadioButtonId').attr('checked', true);
+            }
         }
 
         $scope.Login = function () {
@@ -134,7 +143,7 @@ define([appLocation.preLogin], function (app) {
                         CookieUtil.setUTMZV(data.Payload.UTMZV, userSession.keepMeSignedIn);
                         CookieUtil.setUTIME(data.Payload.TimeStamp, userSession.keepMeSignedIn);
                         CookieUtil.setKMSI(userSession.keepMeSignedIn, true); // to store KMSI value for maximum possible time.
-                        location.href = "/client";
+                        location.href = "/" + CookieUtil.getLoginType();  
                     }
 
                 }).error(function (data, status, headers, config) {
@@ -148,7 +157,7 @@ define([appLocation.preLogin], function (app) {
         }
 
         $scope.openFacebookAuthWindow = function () {
-            var win = window.open("/SocialAuth/FBLogin/facebook", "Ratting", "width=800,height=480,0,status=0,scrollbars=1");
+            var win = window.open("/SocialAuth/FBLogin/facebook", "Ratting", "width=" + popWindow.width + ",height=" + popWindow.height + ",0,status=0,scrollbars=1");
             win.onunload = onun;
 
             function onun() {
@@ -157,12 +166,31 @@ define([appLocation.preLogin], function (app) {
                 // window is first opened.
                 {
                     //$route.reload();
-                    location.reload();
+                    //alert("working");
+                    //location.reload();
                     //alert("closed");
                 }
             }
         }
 
+        $('.TextBoxBeforeLoginFormSubmitButtonClass').keypress(function (e) {
+            if (e.keyCode == 13)
+                $('#LoginFormSubmitButtonId').click();
+        });
+
+        //radiobutton
+        $('.loginUserTypeRadioButton').on('change', function () {
+            CookieUtil.setLoginType(this.value, userSession.keepMeSignedIn);
+            //var data = this.value;
+            console.log(this.value);
+        });
+
+        //        $('.loginUserTypeRadioButton').on('ifChecked', function (event) {
+        //            //var a = "ifChecked "+ $(this).val();
+        //            //console.log(a + "---" + this.value);
+        //            var data = this.value;
+        //            console.log("2 " + data);
+        //        });
     });
 
     function isValidEmailAddress(emailAddress) {

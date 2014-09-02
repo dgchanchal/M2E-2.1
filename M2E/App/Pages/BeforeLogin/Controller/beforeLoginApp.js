@@ -81,6 +81,15 @@ define([appLocation.preLogin], function (app) {
             $location.hash(id);
         };
 
+        $('#responsive-menu-button').sidr({
+            name: 'sidr-main',
+            side: 'right',
+            source: '#nav_mobi'
+        });
+        $("body").click(function () {
+            $.sidr('close', 'sidr-main');
+        });
+
     });
 
     function loadjscssfile(filename, filetype) {
