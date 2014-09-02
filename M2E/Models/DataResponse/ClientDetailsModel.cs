@@ -11,5 +11,7 @@ namespace M2E.Models.DataResponse
         public string LastName { get; set; }
         public string Username { get; set; }
         public string RequestUrlAuthority { get; set; }
+        public string imageUrl { get; set; }
+        public string gender { get; set; }        
     }
 }

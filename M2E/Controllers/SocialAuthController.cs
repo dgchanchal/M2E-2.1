@@ -115,7 +115,7 @@ namespace M2E.Controllers
 
                     var fb = new FacebookClient(ifFacebookUserAlreadyRegistered.AuthToken);
                     dynamic result = fb.Get("fql",
-                                new { q = "SELECT uid, name, first_name, middle_name, last_name, sex, locale, pic_small_with_logo, pic_big_with_logo, pic_square_with_logo, pic_with_logo, username FROM user WHERE uid=me()" });
+                                new { q = "SELECT uid, first_name, last_name, sex, pic_big_with_logo, username FROM user WHERE uid=me()" });
                     
                     var guid = Guid.NewGuid().ToString();
                     var user = new User
@@ -129,7 +129,7 @@ namespace M2E.Controllers
                         FirstName = result.data[0].first_name,
                         LastName = result.data[0].last_name,
                         gender = result.data[0].sex,
-                        ImageUrl = result.data[0].pic_square_with_logo
+                        ImageUrl = result.data[0].pic_big_with_logo
                     };
                     _db.Users.Add(user);
 

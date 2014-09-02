@@ -5,6 +5,7 @@ using M2E.Models.DataResponse;
 using M2E.Common.Logger;
 using System.Reflection;
 using M2E.CommonMethods;
+using M2E.Models.Constants;
 
 namespace M2E.Service.Client
 {
@@ -27,7 +28,9 @@ namespace M2E.Service.Client
                     {
                         FirstName = clientDetailDbResult.FirstName,
                         LastName = clientDetailDbResult.LastName,
-                        Username = clientDetailDbResult.Username                       
+                        Username = clientDetailDbResult.Username,
+                        imageUrl = clientDetailDbResult.ImageUrl == Constants.NA ? Constants.clientImageUrl : clientDetailDbResult.ImageUrl,
+                        gender = clientDetailDbResult.gender
                     };
                     response.Status = 200;
                     response.Message = "success";
