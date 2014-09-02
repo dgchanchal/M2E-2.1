@@ -198,8 +198,17 @@ namespace M2E.Controllers
             string app_id = string.Empty;
             string app_secret = string.Empty;
             string returnUrl = "http://"+Request.Url.Authority+"/SocialAuth/FBLogin/facebook/";
-            app_id = ConfigurationManager.AppSettings["FacebookAppID"].ToString();
-            app_secret = ConfigurationManager.AppSettings["FacebookAppSecret"].ToString();
+            if(Request.Url.Authority.Contains("localhost"))
+            {
+                app_id = ConfigurationManager.AppSettings["FacebookAppID"].ToString();
+                app_secret = ConfigurationManager.AppSettings["FacebookAppSecret"].ToString();
+            }
+            else
+            {
+                app_id = ConfigurationManager.AppSettings["FacebookAppIDCautom"].ToString();
+                app_secret = ConfigurationManager.AppSettings["FacebookAppSecretCautom"].ToString();
+            }
+            
 
             string scope = "";
             if (code == null)
