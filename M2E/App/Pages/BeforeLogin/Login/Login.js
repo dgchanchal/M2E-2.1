@@ -173,6 +173,23 @@ define([appLocation.preLogin], function (app) {
             }
         }
 
+        $scope.openLinkedinAuthWindow = function () {
+            var win = window.open("/SocialAuth/LinkedinLogin", "Ratting", "width=" + popWindow.width + ",height=" + popWindow.height + ",0,status=0,scrollbars=1");
+            win.onunload = onun;
+
+            function onun() {
+                if (win.location != "about:blank") // This is so that the function 
+                // doesn't do anything when the 
+                // window is first opened.
+                {
+                    //$route.reload();
+                    //alert("working");
+                    //location.reload();
+                    //alert("closed");
+                }
+            }
+        }
+
         $('.TextBoxBeforeLoginFormSubmitButtonClass').keypress(function (e) {
             if (e.keyCode == 13)
                 $('#LoginFormSubmitButtonId').click();

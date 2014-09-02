@@ -32,6 +32,7 @@
     <EntitySet Name="CreateTemplateFacebookLikes" EntityType="M2EModel.Store.CreateTemplateFacebookLikes" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserFacebookLikeJobMappings" EntityType="M2EModel.Store.UserFacebookLikeJobMappings" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="FacebookAuths" EntityType="M2EModel.Store.FacebookAuths" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="linkedinAuths" EntityType="M2EModel.Store.linkedinAuths" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
   <EntityType Name="ClientDetails">
     <Key>
@@ -364,6 +365,15 @@
     <Property Name="facebookUsername" Type="nvarchar(max)" Nullable="false" />
     <Property Name="AuthToken" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="linkedinAuths">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="oauth_Token" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="oauth_TokenSecret" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="oauth_verifier" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -395,6 +405,7 @@
           <EntitySet Name="CreateTemplateFacebookLikes" EntityType="M2EModel.CreateTemplateFacebookLike" />
           <EntitySet Name="UserFacebookLikeJobMappings" EntityType="M2EModel.UserFacebookLikeJobMapping" />
           <EntitySet Name="FacebookAuths" EntityType="M2EModel.FacebookAuth" />
+          <EntitySet Name="linkedinAuths" EntityType="M2EModel.linkedinAuth" />
         </EntityContainer>
         <EntityType Name="ClientDetail">
           <Key>
@@ -726,6 +737,15 @@
           <Property Type="String" Name="facebookId" Nullable="false" />
           <Property Type="String" Name="facebookUsername" Nullable="false" />
           <Property Type="String" Name="AuthToken" Nullable="false" />
+        </EntityType>
+        <EntityType Name="linkedinAuth">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="oauth_Token" Nullable="false" />
+          <Property Type="String" Name="oauth_TokenSecret" Nullable="false" />
+          <Property Type="String" Name="oauth_verifier" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1090,6 +1110,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="linkedinAuths">
+      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.linkedinAuth)">
+        <MappingFragment StoreEntitySet="linkedinAuths">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="oauth_Token" ColumnName="oauth_Token" />
+          <ScalarProperty Name="oauth_TokenSecret" ColumnName="oauth_TokenSecret" />
+          <ScalarProperty Name="oauth_verifier" ColumnName="oauth_verifier" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -1137,6 +1167,7 @@
         <EntityTypeShape EntityType="M2EModel.CreateTemplateFacebookLike" Width="1.5" PointX="8.875" PointY="5.75" Height="3.9033007812499996" />
         <EntityTypeShape EntityType="M2EModel.UserFacebookLikeJobMapping" Width="1.5" PointX="2.625" PointY="11" Height="2.7494921874999996" />
         <EntityTypeShape EntityType="M2EModel.FacebookAuth" Width="1.5" PointX="7.375" PointY="13.125" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="M2EModel.linkedinAuth" Width="1.5" PointX="9.625" PointY="13.25" Height="1.7879850260416657" />
       </Diagram>
     </Diagrams>
   </Designer>

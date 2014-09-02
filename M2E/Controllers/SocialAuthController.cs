@@ -18,6 +18,10 @@ using System.Globalization;
 using M2E.signalRPushNotifications;
 using Microsoft.AspNet.SignalR;
 using M2E.Models.Constants;
+using M2E.Service.SocialNetwork.linkedin;
+using System.Xml;
+using Newtonsoft.Json;
+using M2E.Models.DataWrapper;
 
 namespace M2E.Controllers
 {
@@ -28,6 +32,7 @@ namespace M2E.Controllers
         private static readonly ILogger logger = new Logger(Convert.ToString(MethodBase.GetCurrentMethod().DeclaringType));
         private DbContextException _dbContextException = new DbContextException();
         private readonly M2EContext _db = new M2EContext();
+        private oAuthLinkedIn _oauth = new oAuthLinkedIn();
 
         public ActionResult Index()
         {
@@ -143,7 +148,6 @@ namespace M2E.Controllers
                         _db.RecommendedBies.Add(dbRecommedBy);
                     }
                                                            
-
                     try
                     {
                         ifFacebookUserAlreadyRegistered.username = user.Username;
@@ -187,6 +191,189 @@ namespace M2E.Controllers
                 
             }
             
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+        
+        public ActionResult LinkedinLogin(string type)
+        {
+            var response = new ResponseModel<LoginResponse>();
+
+            String AbsoluteUri = Request.Url.AbsoluteUri;
+            string oauth_token = Request.QueryString["oauth_token"];
+            string oauth_verifier = Request.QueryString["oauth_verifier"];
+            String refKey = Request.QueryString["refKey"];
+            string authLink = string.Empty;
+            if (oauth_token != null && oauth_verifier != null)
+            {
+                var linkedinApiDataResponse = _db.linkedinAuths.SingleOrDefault(x => x.oauth_Token == oauth_token);
+                if (linkedinApiDataResponse != null)
+                {
+                    GetAccessToken(oauth_token, linkedinApiDataResponse.oauth_TokenSecret, oauth_verifier);
+                    String UserDetailString = RequestProfile(_oauth.Token, _oauth.TokenSecret, oauth_verifier);
+                    var linkedinUserDetails = JsonConvert.DeserializeObject<linkedinUserDataWrapper>(Convert.ToString(UserDetailString));
+                    _db.linkedinAuths.Attach(linkedinApiDataResponse);
+                    _db.linkedinAuths.Remove(linkedinApiDataResponse);
+                    var ifUserAlreadyRegistered = _db.Users.SingleOrDefault(x => x.Username == linkedinUserDetails.emailAddress);
+                    if (ifUserAlreadyRegistered != null)
+                    {
+                        string Authkey = ConfigurationManager.AppSettings["AuthKey"];
+                        response.Payload = new LoginResponse();
+                        response.Payload.UTMZK = EncryptionClass.GetEncryptionKey(ifUserAlreadyRegistered.Username, Authkey);
+                        response.Payload.UTMZV = EncryptionClass.GetEncryptionKey(ifUserAlreadyRegistered.Password, Authkey);
+                        response.Payload.TimeStamp = DateTime.Now.ToString(CultureInfo.InvariantCulture);
+                        response.Payload.Code = "210";
+                        response.Status = 210;
+                        response.Message = "user Login via facebook";
+                        try
+                        {
+                            ifUserAlreadyRegistered.KeepMeSignedIn = "true";//keepMeSignedIn.Equals("true", StringComparison.OrdinalIgnoreCase) ? "true" : "false";
+                            _db.SaveChanges();
+
+                            var session = new M2ESession(ifUserAlreadyRegistered.Username);
+                            TokenManager.CreateSession(session);
+                            response.Payload.UTMZT = session.SessionId;
+                            ViewBag.umtzt = response.Payload.UTMZT;
+                            ViewBag.umtzk = response.Payload.UTMZK;
+                            ViewBag.umtzv = response.Payload.UTMZV;
+                            return View();
+
+                        }
+                        catch (DbEntityValidationException e)
+                        {
+                            DbContextException.LogDbContextException(e);
+                            response.Payload.Code = "500";
+
+                            return Json(response, JsonRequestBehavior.AllowGet);
+                        }
+                    }
+                    else
+                    {
+                        //add user to database.
+
+                        var guid = Guid.NewGuid().ToString();
+                        
+                        if (linkedinUserDetails.pictureUrl == null || linkedinUserDetails.pictureUrl == "") linkedinUserDetails.pictureUrl = Constants.NA; // if picture is not available.
+                        
+                        var user = new User
+                        {
+                            Username = linkedinUserDetails.emailAddress,
+                            Password = EncryptionClass.Md5Hash(Guid.NewGuid().ToString()),
+                            Source = "linkedin",
+                            isActive = "true",
+                            Type = "user",
+                            guid = Guid.NewGuid().ToString(),
+                            FirstName = linkedinUserDetails.firstName,
+                            LastName = linkedinUserDetails.lastName,
+                            gender = Constants.NA,
+                            ImageUrl = linkedinUserDetails.pictureUrl
+                        };
+                        _db.Users.Add(user);
+
+                        if (!string.IsNullOrEmpty(refKey))
+                        {
+                            var dbRecommedBy = new RecommendedBy
+                            {
+                                RecommendedFrom = refKey,
+                                RecommendedTo = user.Username
+                            };
+                            _db.RecommendedBies.Add(dbRecommedBy);
+                        }
+
+                        try
+                        {                            
+                            _db.SaveChanges();
+                            string Authkey = ConfigurationManager.AppSettings["AuthKey"];
+                            response.Payload = new LoginResponse();
+                            response.Payload.UTMZK = EncryptionClass.GetEncryptionKey(user.Username, Authkey);
+                            response.Payload.UTMZV = EncryptionClass.GetEncryptionKey(user.Password, Authkey);
+                            response.Payload.TimeStamp = DateTime.Now.ToString(CultureInfo.InvariantCulture);
+                            response.Payload.Code = "210";
+                            response.Status = 210;
+                            response.Message = "user Login via linkedin";
+                            try
+                            {
+                                var session = new M2ESession(user.Username);
+                                TokenManager.CreateSession(session);
+                                response.Payload.UTMZT = session.SessionId;
+
+                                ViewBag.umtzt = response.Payload.UTMZT;
+                                ViewBag.umtzk = response.Payload.UTMZK;
+                                ViewBag.umtzv = response.Payload.UTMZV;
+                                return View();
+                            }
+                            catch (DbEntityValidationException e)
+                            {
+                                DbContextException.LogDbContextException(e);
+                                response.Status = 500;
+                                response.Message = "Internal Server Error !!";
+                            }
+                            var signalRHub = new SignalRHub();
+                            string totalProjects = "";
+                            string successRate = "";
+                            string totalUsers = _db.Users.Count().ToString(CultureInfo.InvariantCulture);
+                            string projectCategories = "";
+                            var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRHub>();
+                            hubContext.Clients.All.updateBeforeLoginUserProjectDetails(totalProjects, successRate, totalUsers, projectCategories);
+                        }
+                        catch (DbEntityValidationException e)
+                        {
+                            DbContextException.LogDbContextException(e);
+                            response.Status = 500;
+                            response.Message = "Internal Server Error !!!";
+                        }
+                    }
+                }
+            }
+            else
+            {
+                authLink = CreateAuthorization();
+                var linkedInApiData = new linkedinAuth
+                {
+                    oauth_Token = _oauth.Token,
+                    oauth_TokenSecret = _oauth.TokenSecret,
+                    oauth_verifier = ""
+                };
+                _db.linkedinAuths.Add(linkedInApiData);
+                try
+                {
+                    _db.SaveChanges();
+                    Response.Redirect(authLink);
+                }
+                catch (DbEntityValidationException e)
+                {
+                    DbContextException.LogDbContextException(e);
+                    response.Status = 500;
+                    response.Message = "Internal Server Error !!!";
+                }                
+                                
+            }
+            ViewBag.code = response.Status;            
+            return View();
+        }
+
+        public ActionResult LinkedinLoginCancelled(string type)
+        {
+            var response = new ResponseModel<LoginResponse>();
+
+            String AbsoluteUri = Request.Url.AbsoluteUri;
+            string oauth_token = Request.QueryString["oauth_token"];
+            string oauth_verifier = Request.QueryString["oauth_verifier"];
+            string authLink = string.Empty;
+            if (oauth_token != null && oauth_verifier != null)
+            {
+
+            }
+            else
+            {
+                authLink = CreateAuthorization();
+                //var linkedInApiData = new LinkedInAuthApiData
+                //{
+                //    oauth_Token = _oauth.Token,
+                //    oauth_TokenSecret = _oauth.TokenSecret,
+                //    oauth_verifier = ""
+                //};
+                Response.Redirect(authLink);
+            }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
 
@@ -293,6 +480,50 @@ namespace M2E.Controllers
             return View();
         }
 
-        
+        protected string CreateAuthorization()
+        {
+            return _oauth.AuthorizationLinkGet();
+        }
+
+        protected void GetAccessToken(string Auth_token, string TokenSecret, string Auth_verifier)
+        {
+            _oauth.Token = Auth_token;
+            _oauth.TokenSecret = TokenSecret;
+            _oauth.Verifier = Auth_verifier;
+            _oauth.AccessTokenGet(Auth_token);
+        }
+
+        protected void SendStatusUpdate(string AccessToken, string AccessTokenSecret, string Auth_verifier)
+        {
+            _oauth.Token = AccessToken;
+            _oauth.TokenSecret = AccessTokenSecret;
+            _oauth.Verifier = Auth_verifier;
+
+            string xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+            xml += "<current-status>It's really working .</current-status>";
+
+            string response = _oauth.APIWebRequest("PUT", "http://api.linkedin.com/v1/people/~/current-status", xml);
+            //if (response == "")
+            //    txtApiResponse.Text = "Your new status updated";
+
+        }
+
+        protected string RequestProfile(string AccessToken, string AccessTokenSecret, string Auth_verifier)
+        {
+            _oauth.Token = AccessToken;
+            _oauth.TokenSecret = AccessTokenSecret;
+            _oauth.Verifier = Auth_verifier;
+            return _oauth.APIWebRequest("GET", "https://api.linkedin.com/v1/people/~:(id,first-name,last-name,industry,email-address,picture-url)?format=json", null);
+        }
+
+        protected string RequestProfileImage(string AccessToken, string AccessTokenSecret, string Auth_verifier)
+        {
+            _oauth.Token = AccessToken;
+            _oauth.TokenSecret = AccessTokenSecret;
+            _oauth.Verifier = Auth_verifier;
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(_oauth.APIWebRequest("GET", "http://api.linkedin.com/v1/people/~/picture-urls::(original)", null));
+            return JsonConvert.SerializeXmlNode(doc).Replace(@"@", @"").Remove(1, 44);
+        }
     }
 }

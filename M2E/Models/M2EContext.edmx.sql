@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/01/2014 14:08:24
+-- Date Created: 09/02/2014 18:38:27
 -- Generated from EDMX file: F:\temp2\branches\M2E-2.0\M2E\Models\M2EContext.edmx
 -- --------------------------------------------------
 
@@ -96,6 +96,9 @@ IF OBJECT_ID(N'[dbo].[CreateTemplateFacebookLikes]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[UserFacebookLikeJobMappings]', 'U') IS NOT NULL
     DROP TABLE [dbo].[UserFacebookLikeJobMappings];
+GO
+IF OBJECT_ID(N'[dbo].[FacebookAuths]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[FacebookAuths];
 GO
 
 -- --------------------------------------------------
@@ -433,6 +436,15 @@ CREATE TABLE [dbo].[FacebookAuths] (
 );
 GO
 
+-- Creating table 'linkedinAuths'
+CREATE TABLE [dbo].[linkedinAuths] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [oauth_Token] nvarchar(max)  NOT NULL,
+    [oauth_TokenSecret] nvarchar(max)  NOT NULL,
+    [oauth_verifier] nvarchar(max)  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -590,6 +602,12 @@ GO
 -- Creating primary key on [Id] in table 'FacebookAuths'
 ALTER TABLE [dbo].[FacebookAuths]
 ADD CONSTRAINT [PK_FacebookAuths]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'linkedinAuths'
+ALTER TABLE [dbo].[linkedinAuths]
+ADD CONSTRAINT [PK_linkedinAuths]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 

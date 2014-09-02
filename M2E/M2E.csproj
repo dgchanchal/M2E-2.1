@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ASPSnippets.LinkedInAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\ASPSnippets.LinkedInAPI.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
@@ -233,6 +237,7 @@
     <Compile Include="Models\DataWrapper\CreateTemplate\CreateTemplateSingleQuestionsListModel.cs" />
     <Compile Include="Models\DataWrapper\CreateTemplate\CreateTemplateTextBoxQuestionsListModel.cs" />
     <Compile Include="Models\DataWrapper\isValidSessionRequest.cs" />
+    <Compile Include="Models\DataWrapper\linkedinUserDataWrapper.cs" />
     <Compile Include="Models\DataWrapper\LoginRequest.cs" />
     <Compile Include="Models\DataWrapper\RegisterationRequest.cs" />
     <Compile Include="Models\DataWrapper\ResetPasswordRequest.cs" />
@@ -247,6 +252,9 @@
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\JobData.cs">
+      <DependentUpon>M2EContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\linkedinAuth.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LinkedInAuthApiData.cs">
@@ -317,6 +325,9 @@
     <Compile Include="Service\Register\WebRegister.cs" />
     <Compile Include="Service\SocialNetwork\facebook\FacebookHelper.cs" />
     <Compile Include="Service\SocialNetwork\facebook\FacebookService.cs" />
+    <Compile Include="Service\SocialNetwork\linkedin\linkedinService.cs" />
+    <Compile Include="Service\SocialNetwork\linkedin\oAuthBase2.cs" />
+    <Compile Include="Service\SocialNetwork\linkedin\oAuthLinkedIn.cs" />
     <Compile Include="Service\UploadImages\imgurService.cs" />
     <Compile Include="Service\UserService\dataEntry\Transcription.cs" />
     <Compile Include="Service\UserService\facebookLike\UserfacebookLikeServices.cs" />
@@ -901,7 +912,6 @@
     <Content Include="App\third-Party\toastmessage\images\success.png" />
     <Content Include="App\third-Party\toastmessage\images\warning.png" />
     <Content Include="App\third-Party\toastmessage\js\jquery.toastmessage.js" />
-    <Content Include="dll\ASPSnippets.LinkedInAPI.dll" />
     <Content Include="dll\GaDotNet.Common.dll" />
     <Content Include="dll\log4net.dll" />
     <Content Include="dll\Microsoft.AspNet.SignalR.Core.dll" />
@@ -1604,6 +1614,7 @@
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <None Include="Views\SocialAuth\FBLogin.cshtml" />
+    <None Include="Views\SocialAuth\LinkedinLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
