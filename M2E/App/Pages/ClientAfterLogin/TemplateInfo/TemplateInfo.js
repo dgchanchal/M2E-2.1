@@ -46,6 +46,9 @@ define([appLocation.postLogin], function (app) {
                     render_container_highcharts_completed_vs_assigned_vs_remaining(data.Payload.editId, JobCompleted_int, JobAssigned_int, JobRemaining_int);
                     render_container_highcharts_horizontal_bar_chart_ratio_completed_reviewed_remaining(data.Payload.editId, JobCompleted_int, JobAssigned_int, JobReviewed_int, JobRemaining_int, JobTotal_int);
                 }
+                else if (data.Status == "401") {
+                    location.href = "/?type=info&mssg=your session is expired/#/login";
+                }
             }).error(function (data, status, headers, config) {
 
             });

@@ -105,6 +105,9 @@ define([appLocation.postLogin], function (app) {
 
                     alert("Internal Server Error Occured");
                 }
+                else if (data.Status == "401") {
+                    location.href = "/?type=info&mssg=your session is expired/#/login";
+                }
             }).error(function (data, status, headers, config) {
 
             });
