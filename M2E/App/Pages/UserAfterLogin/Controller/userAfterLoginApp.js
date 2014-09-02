@@ -53,8 +53,7 @@ define([appLocation.userPostLogin], function (app) {
             CookieUtil.removeUTMZK();
             CookieUtil.removeUTMZV();
             CookieUtil.removeUTIME();
-            CookieUtil.removeKMSI();
-            CookieUtil.removeKMSI();
+            CookieUtil.removeKMSI();            
             location.href = "/";
         }
 

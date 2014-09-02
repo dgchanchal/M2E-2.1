@@ -130,7 +130,16 @@ function detectIfUserLoggedIn(){
 						}).done(function(data,status) {
 							console.log(data);
                             if(data == true)
-                                location.href="/"+$.cookie('loginType');					
+                                location.href="/"+$.cookie('loginType');
+                            else
+                            {
+                                $.removeCookie('utmzt', { path: '/' });
+                                $.removeCookie('utmzk', { path: '/' });
+                                $.removeCookie('utmzv', { path: '/' });
+                                $.removeCookie('utime', { path: '/' });
+                                $.removeCookie('kmsi', { path: '/' });
+                                $.removeCookie('utmzt', { path: '/' });                                
+                            }					
 						});
          }     
 					

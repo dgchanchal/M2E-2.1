@@ -10,7 +10,7 @@ define([appLocation.preLogin], function (app) {
                        when("/signup/user", { templateUrl: (mobileDevice) ? "../../App/Pages/BeforeLogin/SignUpUser/SignUpUser_m.html" : "../../App/Pages/BeforeLogin/SignUpUser/SignUpUser.html" }).
                        when("/signup/client", { templateUrl: (mobileDevice) ? "../../App/Pages/BeforeLogin/SignUpClient/SignUpClient_m.html" : "../../App/Pages/BeforeLogin/SignUpClient/SignUpClient.html" }).
                        when("/login", { templateUrl: "../../App/Pages/BeforeLogin/Login/Login.html" }).
-                       when("/login/:code", { templateUrl: "../../App/Pages/BeforeLogin/Login/Login.html" }).                       
+                       when("/login/:code", { templateUrl: "../../App/Pages/BeforeLogin/Login/Login.html" }).
                        when("/faq", { templateUrl: "../../App/Pages/BeforeLogin/FAQ/FAQ.html" }).
                        when("/facebookLogin/:userType", { templateUrl: "../../Resource/templates/beforeLogin/contentView/facebookLogin.html" }).
                        when("/facebookLogin", { templateUrl: "../../Resource/templates/beforeLogin/contentView/facebookLogin.html" }).
@@ -35,6 +35,7 @@ define([appLocation.preLogin], function (app) {
     app.run(function ($rootScope, $location) { //Insert in the function definition the dependencies you need.
 
         $rootScope.$on("$locationChangeStart", function (event, next, current) {
+            detectIfUserLoggedIn();
             gaWeb("BeforeLogin-Page Visited", "Page Visited", next);
             var path = next.split('#');
             var contextPath = path[1];
@@ -49,7 +50,7 @@ define([appLocation.preLogin], function (app) {
             }
         });
     });
-    app.controller('beforeLoginMasterPageController', function ($scope,$location, $http, $rootScope, CookieUtil) {
+    app.controller('beforeLoginMasterPageController', function ($scope, $location, $http, $rootScope, CookieUtil) {
 
         _.defer(function () { $scope.$apply(); });
 
@@ -63,8 +64,8 @@ define([appLocation.preLogin], function (app) {
             TnC: "Terms, Privacy & Cookies",
             aboutus: "About Us",
             home: "Home",
-            footerMost: "Crowd Automation, All rights reserved"       
-    };
+            footerMost: "Crowd Automation, All rights reserved"
+        };
         if (mobileDevice || isAndroidDevice) {
             $rootScope.headeClassName = "headerSize-Mobile";
         }

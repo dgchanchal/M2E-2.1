@@ -15,6 +15,9 @@ using M2E.Session;
 using M2E.Encryption;
 using M2E.Models.DataResponse;
 using System.Globalization;
+using M2E.signalRPushNotifications;
+using Microsoft.AspNet.SignalR;
+using M2E.Models.Constants;
 
 namespace M2E.Controllers
 {
@@ -41,6 +44,7 @@ namespace M2E.Controllers
             var response = new ResponseModel<LoginResponse>();
 
             String fid = Request.QueryString["fid"];
+            String refKey = Request.QueryString["refKey"];
             var headers = new HeaderManager(Request);
             if (headers.AuthToken != null)
             {
@@ -67,7 +71,7 @@ namespace M2E.Controllers
             else
             {
                 var ifFacebookUserAlreadyRegistered = _db.FacebookAuths.SingleOrDefault(x => x.facebookId == fid);
-                if (ifFacebookUserAlreadyRegistered != null)
+                if (ifFacebookUserAlreadyRegistered.username != Constants.NA)
                 {
                     if (_db.Users.Any(x => x.Username == ifFacebookUserAlreadyRegistered.username))
                     {
@@ -108,6 +112,77 @@ namespace M2E.Controllers
                 else
                 {
                     //save user details in database ..
+
+                    var fb = new FacebookClient(ifFacebookUserAlreadyRegistered.AuthToken);
+                    dynamic result = fb.Get("fql",
+                                new { q = "SELECT uid, name, first_name, middle_name, last_name, sex, locale, pic_small_with_logo, pic_big_with_logo, pic_square_with_logo, pic_with_logo, username FROM user WHERE uid=me()" });
+                    
+                    var guid = Guid.NewGuid().ToString();
+                    var user = new User
+                    {
+                        Username = result.data[0].username+"@facebook.com",
+                        Password = EncryptionClass.Md5Hash(Guid.NewGuid().ToString()),
+                        Source = "facebook",
+                        isActive = "true",
+                        Type = "user",
+                        guid = Guid.NewGuid().ToString(),
+                        FirstName = result.data[0].first_name,
+                        LastName = result.data[0].last_name,
+                        gender = result.data[0].sex,
+                        ImageUrl = result.data[0].pic_square_with_logo
+                    };
+                    _db.Users.Add(user);
+
+                    if (!string.IsNullOrEmpty(refKey))
+                    {
+                        var dbRecommedBy = new RecommendedBy
+                        {
+                            RecommendedFrom = refKey,
+                            RecommendedTo = user.Username
+                        };
+                        _db.RecommendedBies.Add(dbRecommedBy);
+                    }
+                                                           
+
+                    try
+                    {
+                        ifFacebookUserAlreadyRegistered.username = user.Username;
+                        _db.SaveChanges();
+                        string Authkey = ConfigurationManager.AppSettings["AuthKey"];
+                        response.Payload = new LoginResponse();
+                        response.Payload.UTMZK = EncryptionClass.GetEncryptionKey(user.Username, Authkey);
+                        response.Payload.UTMZV = EncryptionClass.GetEncryptionKey(user.Password, Authkey);
+                        response.Payload.TimeStamp = DateTime.Now.ToString(CultureInfo.InvariantCulture);
+                        response.Payload.Code = "210";
+                        response.Status = 210;
+                        response.Message = "user Login via facebook";
+                        try
+                        {                           
+                            var session = new M2ESession(ifFacebookUserAlreadyRegistered.username);
+                            TokenManager.CreateSession(session);
+                            response.Payload.UTMZT = session.SessionId;                            
+                        }
+                        catch (DbEntityValidationException e)
+                        {
+                            DbContextException.LogDbContextException(e);
+                            response.Status = 500;
+                            response.Message = "Internal Server Error !!";
+                        }
+                        var signalRHub = new SignalRHub();
+                        string totalProjects = "";
+                        string successRate = "";
+                        string totalUsers = _db.Users.Count().ToString(CultureInfo.InvariantCulture);
+                        string projectCategories = "";
+                        var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRHub>();
+                        hubContext.Clients.All.updateBeforeLoginUserProjectDetails(totalProjects, successRate, totalUsers, projectCategories);                        
+                    }
+                    catch (DbEntityValidationException e)
+                    {
+                        DbContextException.LogDbContextException(e);
+                        response.Status = 500;
+                        response.Message = "Internal Server Error !!!";                        
+                    }
+
                 }
                 
             }
@@ -151,7 +226,7 @@ namespace M2E.Controllers
                                 new { q = "SELECT uid, username FROM user WHERE uid=me()" });
                     var FacebookAuthData = new FacebookAuth();
                     string fid = Convert.ToString(fqlResponse.data[0].uid);
-                    FacebookAuthData.username = "NA";
+                    FacebookAuthData.username = Constants.NA;
                     FacebookAuthData.AuthToken = access_token;
                     FacebookAuthData.datetime = DateTime.Now.ToString();
                     FacebookAuthData.facebookId = Convert.ToString(fqlResponse.data[0].uid);
