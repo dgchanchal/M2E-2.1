@@ -1,0 +1,47 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GoogleLogin</title>
+	<script src="../../../App/js/jquery.min.js"></script> 
+    <script src="../../../App/Property/m2eProperties.js" type="text/javascript"></script>
+	<script src="../../../App/js/jquery.cookie.js" type="text/javascript"></script>
+	<script>
+	$(document).ready(function($) {
+		$.cookie('utmzt', '@ViewBag.umtzt', { expires: 365, path: '/' });
+		$.cookie('utmzk', '@ViewBag.umtzk', { expires: 365, path: '/' });
+		$.cookie('utmzv', '@ViewBag.umtzv', { expires: 365, path: '/' });
+		$.cookie('kmsi', true, { expires: 365, path: '/' });
+
+		 var headers = {
+                        'Content-Type': 'application/json',
+						'UTMZT': $.cookie('utmzt'),
+						'UTMZK': $.cookie('utmzk'),
+						'UTMZV': $.cookie('utmzv')                       
+                    };
+		 var  url = '/Auth/IsValidSession';
+                 $.ajax({
+						url: url,
+						type: "POST",
+                        headers: headers
+						}).done(function(data,status) {
+							window.opener.updateMe( 'login' );
+							window.close();			
+						});		
+	});
+		
+                    
+				
+</script>
+</head>
+<body>
+    <div>
+        please wait..
+    </div>
+</body>
+</html>

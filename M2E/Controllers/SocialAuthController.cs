@@ -22,6 +22,10 @@ using M2E.Service.SocialNetwork.linkedin;
 using System.Xml;
 using Newtonsoft.Json;
 using M2E.Models.DataWrapper;
+using System.Net;
+using System.IO;
+using M2E.Service.SocialNetwork.google;
+using System.Text;
 
 namespace M2E.Controllers
 {
@@ -193,7 +197,163 @@ namespace M2E.Controllers
             
             return Json(response, JsonRequestBehavior.AllowGet);
         }
-        
+
+        public ActionResult GoogleLogin(string type)
+        {
+            var response = new ResponseModel<LoginResponse>();
+            String code = Request.QueryString["code"];
+            String refKey = Request.QueryString["refKey"];
+            string app_id = "";
+            string app_secret = "";
+            
+            if (Request.Url.Authority.Contains("localhost"))
+            {
+                app_id = ConfigurationManager.AppSettings["googleAppID"].ToString();
+                app_secret = ConfigurationManager.AppSettings["googleAppSecret"].ToString();
+            }
+            else
+            {
+                app_id = ConfigurationManager.AppSettings["googleAppIDCautom"].ToString();
+                app_secret = ConfigurationManager.AppSettings["googleAppSecretCautom"].ToString();
+            }
+
+            string scope = "email%20profile";
+            string returnUrl = "http://" + Request.Url.Authority + "/SocialAuth/GoogleLogin";
+            if (code == null)
+            {
+                var ReturnUrl = (string.Format(
+                    "https://accounts.google.com/o/oauth2/auth?scope={0}&state=%2Fprofile&redirect_uri={1}&response_type=code&client_id={2}&approval_prompt=force",
+                    scope, returnUrl, app_id));                
+                Response.Redirect(ReturnUrl);
+            }
+            else
+            {
+                string access_token = getGoogleAuthToken(returnUrl, scope, code, app_id, app_secret);
+                String URI = "https://www.googleapis.com/oauth2/v1/userinfo?access_token=" + access_token;                
+                WebClient webClient = new WebClient();
+                Stream stream = webClient.OpenRead(URI);
+                string googleUserDetailString;
+
+                /*I have not used any JSON parser because I do not want to use any extra dll/3rd party dll*/
+                using (StreamReader br = new StreamReader(stream))
+                {
+                    googleUserDetailString = br.ReadToEnd();
+                }
+                var googleUserDetails = JsonConvert.DeserializeObject<googleUserDetails>(Convert.ToString(googleUserDetailString));
+                var ifUserAlreadyRegistered = _db.Users.SingleOrDefault(x => x.Username == googleUserDetails.email);
+                if (ifUserAlreadyRegistered != null)
+                {
+                    string Authkey = ConfigurationManager.AppSettings["AuthKey"];
+                    response.Payload = new LoginResponse();
+                    response.Payload.UTMZK = EncryptionClass.GetEncryptionKey(ifUserAlreadyRegistered.Username, Authkey);
+                    response.Payload.UTMZV = EncryptionClass.GetEncryptionKey(ifUserAlreadyRegistered.Password, Authkey);
+                    response.Payload.TimeStamp = DateTime.Now.ToString(CultureInfo.InvariantCulture);
+                    response.Payload.Code = "210";
+                    response.Status = 210;
+                    response.Message = "user Login via google";
+                    try
+                    {
+                        ifUserAlreadyRegistered.KeepMeSignedIn = "true";//keepMeSignedIn.Equals("true", StringComparison.OrdinalIgnoreCase) ? "true" : "false";
+                        _db.SaveChanges();
+
+                        var session = new M2ESession(ifUserAlreadyRegistered.Username);
+                        TokenManager.CreateSession(session);
+                        response.Payload.UTMZT = session.SessionId;
+                        ViewBag.umtzt = response.Payload.UTMZT;
+                        ViewBag.umtzk = response.Payload.UTMZK;
+                        ViewBag.umtzv = response.Payload.UTMZV;
+                        return View();
+
+                    }
+                    catch (DbEntityValidationException e)
+                    {
+                        DbContextException.LogDbContextException(e);
+                        response.Payload.Code = "500";
+
+                        return Json(response, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                else
+                {
+                    //add user to database.
+
+                    var guid = Guid.NewGuid().ToString();
+
+                    if (googleUserDetails.picture == null || googleUserDetails.picture == "") googleUserDetails.picture = Constants.NA; // if picture is not available.
+                    if (googleUserDetails.gender == null || googleUserDetails.gender == "") googleUserDetails.gender = Constants.NA; // if picture is not available.
+
+                    var user = new User
+                    {
+                        Username = googleUserDetails.email,
+                        Password = EncryptionClass.Md5Hash(Guid.NewGuid().ToString()),
+                        Source = "google",
+                        isActive = "true",
+                        Type = "user",
+                        guid = Guid.NewGuid().ToString(),
+                        FirstName = googleUserDetails.given_name,
+                        LastName = googleUserDetails.family_name,
+                        gender = googleUserDetails.gender,
+                        ImageUrl = googleUserDetails.picture
+                    };
+                    _db.Users.Add(user);
+
+                    if (!string.IsNullOrEmpty(refKey))
+                    {
+                        var dbRecommedBy = new RecommendedBy
+                        {
+                            RecommendedFrom = refKey,
+                            RecommendedTo = user.Username
+                        };
+                        _db.RecommendedBies.Add(dbRecommedBy);
+                    }
+
+                    try
+                    {
+                        _db.SaveChanges();
+                        string Authkey = ConfigurationManager.AppSettings["AuthKey"];
+                        response.Payload = new LoginResponse();
+                        response.Payload.UTMZK = EncryptionClass.GetEncryptionKey(user.Username, Authkey);
+                        response.Payload.UTMZV = EncryptionClass.GetEncryptionKey(user.Password, Authkey);
+                        response.Payload.TimeStamp = DateTime.Now.ToString(CultureInfo.InvariantCulture);
+                        response.Payload.Code = "210";
+                        response.Status = 210;
+                        response.Message = "user Login via google";
+                        try
+                        {
+                            var session = new M2ESession(user.Username);
+                            TokenManager.CreateSession(session);
+                            response.Payload.UTMZT = session.SessionId;
+
+                            ViewBag.umtzt = response.Payload.UTMZT;
+                            ViewBag.umtzk = response.Payload.UTMZK;
+                            ViewBag.umtzv = response.Payload.UTMZV;
+                            return View();
+                        }
+                        catch (DbEntityValidationException e)
+                        {
+                            DbContextException.LogDbContextException(e);
+                            response.Status = 500;
+                            response.Message = "Internal Server Error !!";
+                        }
+                        var signalRHub = new SignalRHub();
+                        string totalProjects = "";
+                        string successRate = "";
+                        string totalUsers = _db.Users.Count().ToString(CultureInfo.InvariantCulture);
+                        string projectCategories = "";
+                        var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRHub>();
+                        hubContext.Clients.All.updateBeforeLoginUserProjectDetails(totalProjects, successRate, totalUsers, projectCategories);
+                    }
+                    catch (DbEntityValidationException e)
+                    {
+                        DbContextException.LogDbContextException(e);
+                        response.Status = 500;
+                        response.Message = "Internal Server Error !!!";
+                    }
+                }
+            }
+            return Json(response,JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult LinkedinLogin(string type)
         {
             var response = new ResponseModel<LoginResponse>();
@@ -365,13 +525,7 @@ namespace M2E.Controllers
             }
             else
             {
-                authLink = CreateAuthorization();
-                //var linkedInApiData = new LinkedInAuthApiData
-                //{
-                //    oauth_Token = _oauth.Token,
-                //    oauth_TokenSecret = _oauth.TokenSecret,
-                //    oauth_verifier = ""
-                //};
+                authLink = CreateAuthorization();               
                 Response.Redirect(authLink);
             }
             return Json(response, JsonRequestBehavior.AllowGet);
@@ -525,5 +679,27 @@ namespace M2E.Controllers
             doc.LoadXml(_oauth.APIWebRequest("GET", "http://api.linkedin.com/v1/people/~/picture-urls::(original)", null));
             return JsonConvert.SerializeXmlNode(doc).Replace(@"@", @"").Remove(1, 44);
         }
+
+        private string getGoogleAuthToken(string returnUrl, string scope, string code, string app_id, string app_secret)
+        {
+            byte[] buffer = Encoding.ASCII.GetBytes("code=" + code + "&client_id=" + app_id + "&client_secret=" + app_secret + "&redirect_uri=" + returnUrl + "&grant_type=authorization_code");
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://accounts.google.com/o/oauth2/token");
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = buffer.Length;
+
+            Stream strm = request.GetRequestStream();
+            strm.Write(buffer, 0, buffer.Length);
+            strm.Close();
+
+            HttpWebResponse webResponse = (HttpWebResponse)request.GetResponse();
+            Stream responseStream = webResponse.GetResponseStream();
+            StreamReader responseStreamReader = new StreamReader(responseStream);
+            string result = responseStreamReader.ReadToEnd();//parse token from result
+            var googleAccessTokenResponse = JsonConvert.DeserializeObject<googleAccessTokenWrapper>(Convert.ToString(result));
+            return googleAccessTokenResponse.access_token;
+        }
+
+        
     }
 }
