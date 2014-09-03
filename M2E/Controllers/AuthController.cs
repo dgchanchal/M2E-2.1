@@ -60,6 +60,14 @@ namespace M2E.Controllers
             var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
             return Json(isValidToken);
         }
+        
+        public JsonResult CheckValidSession()
+        {
+            var headers = new HeaderManager(Request);
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
+            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+            return Json(isValidToken,JsonRequestBehavior.AllowGet);
+        }
 
         [HttpPost]
         public JsonResult Logout()

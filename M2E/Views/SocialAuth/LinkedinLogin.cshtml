@@ -8,9 +8,9 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>LinkedinLogin</title>
-	<script src="../../../App/js/jquery.min.js"></script> 
-    <script src="../../../App/Property/m2eProperties.js" type="text/javascript"></script>
-	<script src="../../../App/js/jquery.cookie.js" type="text/javascript"></script>
+	<script src="../../App/js/jquery.min.js"></script> 
+    <script src="../../App/Property/m2eProperties.js" type="text/javascript"></script>
+	<script src="../../App/js/jquery.cookie.js" type="text/javascript"></script>
 	<script>
 	$(document).ready(function($) {
 		$.cookie('utmzt', '@ViewBag.umtzt', { expires: 365, path: '/' });
@@ -24,12 +24,13 @@
 						'UTMZK': $.cookie('utmzk'),
 						'UTMZV': $.cookie('utmzv')                       
                     };
-		 var  url = '/Auth/IsValidSession';
+		 var url = '/Auth/CheckValidSession';
                  $.ajax({
 						url: url,
-						type: "POST",
+						method: "GET",
                         headers: headers
-						}).done(function(data,status) {
+                 }).done(function (data, status) {
+                            console.log(data);
 							window.opener.updateMe( 'login' );
 							window.close();			
 						});		
