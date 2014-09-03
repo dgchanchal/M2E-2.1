@@ -137,9 +137,20 @@ function detectIfUserLoggedIn(){
                                 $.removeCookie('utmzk', { path: '/' });
                                 $.removeCookie('utmzv', { path: '/' });
                                 $.removeCookie('utime', { path: '/' });
-                                $.removeCookie('kmsi', { path: '/' });                                                              
+                                $.removeCookie('kmsi', { path: '/' });
+                                // will first fade out the loading animation
+                                jQuery("#status").fadeOut();
+                                // will fade out the whole DIV that covers the website.
+                                jQuery("#preloader").delay(1000).fadeOut("medium");                                                           
                             }					
 						});
+         }
+         else
+         {
+                // will first fade out the loading animation
+                jQuery("#status").fadeOut();
+                // will fade out the whole DIV that covers the website.
+                jQuery("#preloader").delay(1000).fadeOut("medium");
          }
 					
 }
