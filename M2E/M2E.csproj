@@ -377,6 +377,7 @@
     <Content Include="App\img\login\for_institutions.png" />
     <Content Include="App\img\login\for_participants.png" />
     <Content Include="App\img\login\inactive.png" />
+    <Content Include="App\img\login\Logo10.png" />
     <Content Include="App\img\movies\1.jpg" />
     <Content Include="App\img\movies\2.jpg" />
     <Content Include="App\img\movies\3.jpg" />

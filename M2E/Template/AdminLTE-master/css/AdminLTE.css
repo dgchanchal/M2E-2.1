@@ -215,10 +215,10 @@ img {
 }
 .bg-uni {
   background-color: #00bcf2 !important;
-  color: #fff !important;
+  color: #1a1a1a !important;
 }
 .bg-uni:hover {
-  background-color: #00b0df !important;
+  background-color: #1a1a1a !important;
   color: #fff !important;
 }
 
@@ -1761,7 +1761,7 @@ Component: timeline
 -------------------------
 */
 .btn {
-  font-weight: 600;
+  font-weight: 500;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
