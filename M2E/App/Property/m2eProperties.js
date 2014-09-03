@@ -50,7 +50,7 @@ var TemplateInfoModel = {
 
 var clientConstants = {
     name: "Crowd Automation Requester",
-    name_abb: "Requeater"
+    name_abb: "Requester"
 };
 var companyConstants = {
     name: "cautom",

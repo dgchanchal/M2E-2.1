@@ -19,6 +19,7 @@ define([appLocation.preLogin], function (app) {
         $scope.KeepMeSignedInCheckBox = false;
         $scope.showHeaderErrors = false;
         $scope.showFooterErrors = false;
+
         $scope.EmailIdAlert = {
             visible: false,
             message: ''
@@ -57,9 +58,13 @@ define([appLocation.preLogin], function (app) {
         else {
             if (CookieUtil.getLoginType() == "user") {
                 $('#loginUserTypeRadioButtonId').attr('checked', true);
+                $('#userTypeId').html(userConstants.name_abb);
+                //console.log(userConstants.name_abb);
             }
             else {
                 $('#loginClientTypeRadioButtonId').attr('checked', true);
+                $('#userTypeId').html(clientConstants.name_abb);
+                //$scope.userType = clientConstants.name_abb;
             }
         }
 
@@ -143,7 +148,7 @@ define([appLocation.preLogin], function (app) {
                         CookieUtil.setUTMZV(data.Payload.UTMZV, userSession.keepMeSignedIn);
                         CookieUtil.setUTIME(data.Payload.TimeStamp, userSession.keepMeSignedIn);
                         CookieUtil.setKMSI(userSession.keepMeSignedIn, true); // to store KMSI value for maximum possible time.
-                        location.href = "/" + CookieUtil.getLoginType();  
+                        location.href = "/" + CookieUtil.getLoginType();
                     }
 
                 }).error(function (data, status, headers, config) {
@@ -216,7 +221,16 @@ define([appLocation.preLogin], function (app) {
         $('.loginUserTypeRadioButton').on('change', function () {
             CookieUtil.setLoginType(this.value, userSession.keepMeSignedIn);
             //var data = this.value;
-            console.log(this.value);
+            if (this.value == "user") {
+                //$scope.userType = userConstants.name_abb;
+                $('#userTypeId').html(userConstants.name_abb);
+
+            }
+            else {
+                $('#userTypeId').html(clientConstants.name_abb);
+                //$scope.userType = clientConstants.name_abb;
+            }
+            //console.log(this.value);
         });
 
         //        $('.loginUserTypeRadioButton').on('ifChecked', function (event) {
