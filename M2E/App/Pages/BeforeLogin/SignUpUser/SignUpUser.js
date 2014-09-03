@@ -26,6 +26,8 @@ define([appLocation.preLogin], function (app) {
             visible: false,
             message: ''
         };
+        
+        CookieUtil.setLoginType("user", $scope.KeepMeSignedInCheckBox); // by default set type as user..
 
         $scope.UserSignUp = function () {
             var userSignUpData = {

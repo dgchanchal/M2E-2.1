@@ -27,6 +27,9 @@ define([appLocation.preLogin], function (app) {
             visible: false,
             message: ''
         };
+        
+        CookieUtil.setLoginType("client", $scope.KeepMeSignedInCheckBox); // by default set type as user..
+
         $('#client_signup_company_textBox_id').hide();
         $("[name='sliding_client_company_checkbox']").bootstrapSwitch();
         $('input[name="sliding_client_company_checkbox"]').on({
