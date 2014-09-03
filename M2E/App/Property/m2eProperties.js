@@ -137,10 +137,55 @@ function detectIfUserLoggedIn(){
                                 $.removeCookie('utmzk', { path: '/' });
                                 $.removeCookie('utmzv', { path: '/' });
                                 $.removeCookie('utime', { path: '/' });
-                                $.removeCookie('kmsi', { path: '/' });
-                                $.removeCookie('utmzt', { path: '/' });                                
+                                $.removeCookie('kmsi', { path: '/' });                                                              
                             }					
 						});
-         }     
+         }
 					
+}
+
+
+function logout(){
+    var headers = {
+                        'Content-Type': 'application/json',
+						'UTMZT': $.cookie('utmzt'),
+						'UTMZK': $.cookie('utmzk'),
+						'UTMZV': $.cookie('utmzv')                       
+                    };
+         if($.cookie('utmzt') != null && $.cookie('utmzt') != "")
+         {
+            var  url = ServerContextPah + '/Auth/Logout';
+//                 $.ajax({
+//						url: url,
+//						type: "POST",
+//                        headers: headers
+//						}).done(function(data,status) {							                                                                              
+//                           					
+//						});
+//                
+
+                    $.ajax({
+                       type: "POST",
+                       url: url,
+                       headers: headers,                       
+                       success: function(result){
+                            $.removeCookie('utmzt', { path: '/' });
+                            $.removeCookie('utmzk', { path: '/' });
+                            $.removeCookie('utmzv', { path: '/' });
+                            $.removeCookie('utime', { path: '/' });
+                            $.removeCookie('kmsi', { path: '/' });
+                            location.href = "/";
+                       },
+                       error: function(request,status,errorThrown) {
+                            $.removeCookie('utmzt', { path: '/' });
+                            $.removeCookie('utmzk', { path: '/' });
+                            $.removeCookie('utmzv', { path: '/' });
+                            $.removeCookie('utime', { path: '/' });
+                            $.removeCookie('kmsi', { path: '/' });
+                            location.href = "/";
+                       }
+                     });
+
+
+         }            
 }

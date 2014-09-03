@@ -106,6 +106,20 @@ namespace M2E.Session
             return IsValidSession(sessionId, out session);
         }
 
+        public static bool Logout(string sessionId)
+        {
+            if (sessionId == null)
+                return false;
+
+            M2ESession session = null;
+            if (MemoryCache.Default.Contains(sessionId))
+            {
+                //session = (M2ESession)MemoryCache.Default.Get(sessionId);
+                MemoryCache.Default.Remove(sessionId);
+            }
+            return true;
+        }
+
         private static bool IsValidSession(string sessionId, out  M2ESession session)
         {
             session = null;

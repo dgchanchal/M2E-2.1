@@ -35,13 +35,13 @@
 								$.cookie('utmzk', data.Payload.UTMZK, { expires: 365, path: '/' });
 								$.cookie('utmzv', data.Payload.UTMZV, { expires: 365, path: '/' });
 								$.cookie('kmsi', true, { expires: 365, path: '/' });
-								opener.updateMe( 'login' );
+								window.opener.updateMe( 'login' );
 							}
 							else if(data.Status == "209"){
-								opener.updateMe( 'fblikepage' );
+								window.opener.updateMe( 'fblikepage' );
 							}
 							else if(data.Status == "500"){
-							opener.updateMe( 'error' );
+								window.opener.updateMe( 'error' );
 							}							
 							window.close();
 						});

@@ -62,6 +62,14 @@ namespace M2E.Controllers
         }
 
         [HttpPost]
+        public JsonResult Logout()
+        {
+            var headers = new HeaderManager(Request);            
+            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+            return Json(isValidToken);
+        }
+
+        [HttpPost]
         public JsonResult GetUsernameFromSessionId()
         {
             var headers = new HeaderManager(Request);

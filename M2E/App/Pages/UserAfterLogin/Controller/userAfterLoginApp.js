@@ -4,7 +4,7 @@ define([appLocation.userPostLogin], function (app) {
         //(mobileDevice) ? "../../App/Pages/UserAfterLogin/Index/MobileIndex.html"  : "../../App/Pages/UserAfterLogin/Index/Index.html" }).
         $routeProvider.when("/", { templateUrl: "../../App/Pages/UserAfterLogin/Index/Index.html" }).
                        when("/edit", { templateUrl: "../../App/Pages/UserAfterLogin/EditPage/EditPage.html" }).
-                       //when("/showTemplateDetail/:refKey", { templateUrl: "../../App/Pages/UserAfterLogin/ShowTemplateDetail/ShowTemplateDetail.html" }).
+        //when("/showTemplateDetail/:refKey", { templateUrl: "../../App/Pages/UserAfterLogin/ShowTemplateDetail/ShowTemplateDetail.html" }).
                        when("/showTemplateDetail/:type/:subType/:refKey", { templateUrl: "../../App/Pages/UserAfterLogin/ShowTemplateDetail/ShowTemplateDetail.html" }).
                        when("/userThreads/:status", { templateUrl: "../../App/Pages/UserAfterLogin/UserActiveThreads/UserActiveThreads.html" }).
                        when("/startSurvey/:refKey", { templateUrl: (mobileDevice) ? "../../App/Pages/UserAfterLogin/Survey/MobileSurvey.html" : "../../App/Pages/UserAfterLogin/Survey/WebSurvey.html" }).
@@ -28,11 +28,11 @@ define([appLocation.userPostLogin], function (app) {
 
         $rootScope.$on("$locationChangeStart", function (event, next, current) {
 
-//            var headerSessionData = {
-//                UTMZT: CookieUtil.getUTMZT(),
-//                UTMZK: CookieUtil.getUTMZK(),
-//                UTMZV: CookieUtil.getUTMZV()
-//            }
+            //            var headerSessionData = {
+            //                UTMZT: CookieUtil.getUTMZT(),
+            //                UTMZK: CookieUtil.getUTMZK(),
+            //                UTMZV: CookieUtil.getUTMZV()
+            //            }
 
             //SessionManagementUtil.isValidSession(headerSessionData);
             /* Sidebar tree view */
@@ -49,12 +49,7 @@ define([appLocation.userPostLogin], function (app) {
         _.defer(function () { $scope.$apply(); });
 
         $scope.signOut = function () {
-            CookieUtil.removeUTMZT();
-            CookieUtil.removeUTMZK();
-            CookieUtil.removeUTMZV();
-            CookieUtil.removeUTIME();
-            CookieUtil.removeKMSI();            
-            location.href = "/";
+            logout();
         }
 
         loadClientDetails();

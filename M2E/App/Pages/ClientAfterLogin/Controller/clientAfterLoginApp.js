@@ -68,12 +68,7 @@ define([appLocation.postLogin], function (app) {
         }
 
         $scope.signOut = function () {
-            CookieUtil.removeUTMZT();
-            CookieUtil.removeUTMZK();
-            CookieUtil.removeUTMZV();
-            CookieUtil.removeUTIME();
-            CookieUtil.removeKMSI();             
-            location.href = "/";
+            logout();            
         }
 
         loadClientDetails();
