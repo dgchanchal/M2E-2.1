@@ -12,6 +12,7 @@ using System.Reflection;
 using M2E.Session;
 using M2E.Models.DataResponse;
 using System.Collections.Generic;
+using M2E.Models.Constants;
 
 namespace M2E.Service.Auth
 {
@@ -69,9 +70,7 @@ namespace M2E.Service.Auth
                 bool logoutStatus = new TokenManager().Logout(headers.AuthToken);
                 var user = _db.Users.SingleOrDefault(x => x.Username == session.UserName);
                 if (user != null)
-                {                    
-                    
-                    
+                {                                        
                     var data = new Dictionary<string, string>();
                     data["Username"] = user.Username;
                     data["Password"] = user.Password;
@@ -90,7 +89,16 @@ namespace M2E.Service.Auth
                     var newUserSession = new M2ESession(user.Username);
                     TokenManager.CreateSession(newUserSession);
                     response.Payload.UTMZT = newUserSession.SessionId;
+                    user.Locked = Constants.status_true;
 
+                    try
+                    {
+                        _db.SaveChanges();
+                    }
+                    catch (DbEntityValidationException e)
+                    {
+                        DbContextException.LogDbContextException(e);                        
+                    }
                 }
                 else
                 {
@@ -99,6 +107,47 @@ namespace M2E.Service.Auth
                 }
             }
                         
+            return response;
+        }
+
+        public ResponseModel<LoginResponse> unlockAccountService(HeaderManager headers, M2ESession session,string password)
+        {
+            var response = new ResponseModel<LoginResponse>();
+            if (session == null)
+            {
+                response.Status = 201;
+                response.Message = "user session not available";
+            }
+            else if (session.UserName != null)
+            {
+                var user = _db.Users.SingleOrDefault(x => x.Username == session.UserName && x.Password == password);
+                if (user != null)
+                {
+                    user.Locked = Constants.status_false;
+                    try
+                    {
+                        _db.SaveChanges();
+                        response.Status = 200;
+                        response.Message = "successfully unlocked";
+                    }
+                    catch (DbEntityValidationException e)
+                    {
+                        DbContextException.LogDbContextException(e);
+                        response.Status = 500;
+                        response.Message = "Exception occured";
+                    }
+                }
+                else
+                {
+                    response.Status = 424;
+                    response.Message = "user detail not available";
+                }
+            }
+            else
+            {
+                response.Status = 201;
+                response.Message = "user session not available";
+            }
             return response;
         }
 
@@ -148,7 +197,6 @@ namespace M2E.Service.Auth
             return response;
         }
 
-
         public ResponseModel<String> ForgetPasswordService(string id, HttpRequestBase request)
         {
             var response = new ResponseModel<string>();
@@ -197,7 +245,6 @@ namespace M2E.Service.Auth
                 response.Message = "Success";
                 return response;
         }
-
 
         public ResponseModel<String> ResetPasswordService(ResetPasswordRequest req)
         {

@@ -42,6 +42,9 @@ namespace M2E.Models.Constants
 
         public const string NA = "NA";
 
+        public const string status_true = "true";
+        public const string status_false = "false";
+
         public const string clientImageUrl = "http://i.imgur.com/Y5DauNCm.jpg";
 
         public const string currency_INR = "INR";

@@ -52,6 +52,22 @@ define([appLocation.postLogin], function(app) {
                     $.cookie('loginType', LoginType, { path: '/' });
                 }
             },
+            setUserName: function (userName, keepMeSignedIn) {
+                if (keepMeSignedIn) {
+                    $.cookie('userName', userName, { expires: 365, path: '/' });
+                }
+                else {
+                    $.cookie('userName', userName, { path: '/' });
+                }
+            },
+            setUserImageUrl: function (userImageUrl, keepMeSignedIn) {
+                if (keepMeSignedIn) {
+                    $.cookie('userImageUrl', userImageUrl, { expires: 365, path: '/' });
+                }
+                else {
+                    $.cookie('userImageUrl', userImageUrl, { path: '/' });
+                }
+            },
             getUTMZT: function () {
                 return $.cookie('utmzt');
             },

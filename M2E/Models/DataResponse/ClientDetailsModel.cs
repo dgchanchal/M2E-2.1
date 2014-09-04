@@ -12,6 +12,7 @@ namespace M2E.Models.DataResponse
         public string Username { get; set; }
         public string RequestUrlAuthority { get; set; }
         public string imageUrl { get; set; }
-        public string gender { get; set; }        
+        public string gender { get; set; }
+        public string isLocked { get; set; }
     }
 }

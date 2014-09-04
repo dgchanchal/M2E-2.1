@@ -30,7 +30,8 @@ namespace M2E.Service.Client
                         LastName = clientDetailDbResult.LastName,
                         Username = clientDetailDbResult.Username,
                         imageUrl = clientDetailDbResult.ImageUrl == Constants.NA ? Constants.clientImageUrl : clientDetailDbResult.ImageUrl,
-                        gender = clientDetailDbResult.gender
+                        gender = clientDetailDbResult.gender,
+                        isLocked = clientDetailDbResult.Locked
                     };
                     response.Status = 200;
                     response.Message = "success";

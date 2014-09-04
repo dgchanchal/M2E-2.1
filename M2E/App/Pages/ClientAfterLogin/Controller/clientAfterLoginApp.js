@@ -59,7 +59,7 @@ define([appLocation.postLogin], function (app) {
     app.controller('ClientAfterMasterPage', function ($scope, $http, $rootScope, CookieUtil) {
 
         _.defer(function () { $scope.$apply(); });
-        
+
         $scope.openTemplateSamplePageWithId = function (id) {
             if (mobileDevice)
                 $('#sideBarMenuToggleButtonId').click();
@@ -91,6 +91,11 @@ define([appLocation.postLogin], function (app) {
                 stopBlockUI();
                 if (data.Status == "200") {
                     $rootScope.clientDetailResponse = data.Payload;
+                    CookieUtil.setUserName(data.Payload.FirstName + ' ' + data.Payload.LastName, userSession.keepMeSignedIn);
+                    CookieUtil.setUserImageUrl(data.Payload.imageUrl, userSession.keepMeSignedIn);
+                    if (data.Payload.isLocked == "true") {
+                        location.href = "/Auth/LockAccount?status=true";
+                    }
                 }
                 else if (data.Status == "404") {
 

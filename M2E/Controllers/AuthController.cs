@@ -47,6 +47,17 @@ namespace M2E.Controllers
         }
 
         [HttpPost]
+        public JsonResult UnlockAccount(string pass)
+        {
+            var response = new ResponseModel<LoginResponse>();
+            var headers = new HeaderManager(Request);
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
+            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+            response = new AuthService().unlockAccountService(headers, session,EncryptionClass.Md5Hash(pass));
+            return Json(response);
+        }
+
+        [HttpPost]
         public JsonResult Login(LoginRequest req)
         {
             var returnUrl = "/";
