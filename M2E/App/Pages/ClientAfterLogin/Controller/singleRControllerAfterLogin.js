@@ -17,8 +17,9 @@
     // Declare a function on the hub so the server can invoke it
 
     notificationClientHub.client.addMessage = function (message) {
-
-        $("#messages2").append("<li>" + message + "</li>");
+        $('#userRealTimeStatusId').removeClass('text-warning').addClass('text-success');
+        $('#userRealTimeStatusId').prop('title', 'Contant server-client connection established. You will be able to receive real time data.');
+        //$("#messages2").append("<li>" + message + "</li>");
 
     };
 

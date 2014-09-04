@@ -18,21 +18,7 @@
 		$.cookie('utmzv', '@ViewBag.umtzv', { expires: 365, path: '/' });
 		$.cookie('kmsi', true, { expires: 365, path: '/' });
 
-		 var headers = {
-                        'Content-Type': 'application/json',
-						'UTMZT': $.cookie('utmzt'),
-						'UTMZK': $.cookie('utmzk'),
-						'UTMZV': $.cookie('utmzv')                       
-                    };
-		 var  url = '/Auth/IsValidSession';
-                 $.ajax({
-						url: url,
-						type: "POST",
-                        headers: headers
-						}).done(function(data,status) {
-							window.opener.updateMe( 'login' );
-							window.close();			
-						});		
+		updateMe( 'login' );	
 	});
 		
                     

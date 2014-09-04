@@ -162,54 +162,111 @@ define([appLocation.preLogin], function (app) {
         }
 
         $scope.openFacebookAuthWindow = function () {
-            var win = window.open("/SocialAuth/FBLogin/facebook", "Ratting", "width=" + popWindow.width + ",height=" + popWindow.height + ",0,status=0,scrollbars=1");
-            win.onunload = onun;
-
-            function onun() {
-                if (win.location != "about:blank") // This is so that the function 
-                // doesn't do anything when the 
-                // window is first opened.
-                {
-                    //$route.reload();
-                    //alert("working");
-                    //location.reload();
-                    //alert("closed");
+            var url = '/SocialAuth/FBLoginGetRedirectUri';
+            startBlockUI('wait..', 3);
+            $http({
+                url: url,
+                method: "GET",
+                headers: { 'Content-Type': 'application/json' }
+            }).success(function (data, status, headers, config) {
+                //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
+                stopBlockUI();
+                if (data.Status == "199") {
+                    location.href = data.Message;
                 }
-            }
+                else {
+                    alert("some error occured");
+                }
+
+            }).error(function (data, status, headers, config) {
+                alert("internal server error occured");
+            });
+//            var win = window.open("/SocialAuth/FBLogin/facebook", "Ratting", "width=" + popWindow.width + ",height=" + popWindow.height + ",0,status=0,scrollbars=1");
+//            win.onunload = onun;
+
+//            function onun() {
+//                if (win.location != "about:blank") // This is so that the function 
+//                // doesn't do anything when the 
+//                // window is first opened.
+//                {
+//                    //$route.reload();
+//                    //alert("working");
+//                    //location.reload();
+//                    //alert("closed");
+//                }
+//            }
         }
 
         $scope.openLinkedinAuthWindow = function () {
-            var win = window.open("/SocialAuth/LinkedinLogin", "Ratting", "width=" + popWindow.width + ",height=" + popWindow.height + ",0,status=0,scrollbars=1");
-            win.onunload = onun;
-
-            function onun() {
-                if (win.location != "about:blank") // This is so that the function 
-                // doesn't do anything when the 
-                // window is first opened.
-                {
-                    //$route.reload();
-                    //alert("working");
-                    //location.reload();
-                    //alert("closed");
+            var url = '/SocialAuth/LinkedinLoginGetRedirectUri';
+            startBlockUI('wait..', 3);
+            $http({
+                url: url,
+                method: "GET",
+                headers: { 'Content-Type': 'application/json' }
+            }).success(function (data, status, headers, config) {
+                //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
+                stopBlockUI();
+                if (data.Status == "199") {
+                    location.href = data.Message;
                 }
-            }
+                else {
+                    alert("some error occured");
+                }
+
+            }).error(function (data, status, headers, config) {
+                alert("internal server error occured");
+            });
+//            var win = window.open("/SocialAuth/LinkedinLogin", "Ratting", "width=" + popWindow.width + ",height=" + popWindow.height + ",0,status=0,scrollbars=1");
+//            win.onunload = onun;
+
+//            function onun() {
+//                if (win.location != "about:blank") // This is so that the function 
+//                // doesn't do anything when the 
+//                // window is first opened.
+//                {
+//                    //$route.reload();
+//                    //alert("working");
+//                    //location.reload();
+//                    //alert("closed");
+//                }
+//            }
         }
 
         $scope.openGoogleAuthWindow = function () {
-            var win = window.open("/SocialAuth/GoogleLogin/", "Ratting", "width=" + popWindow.width + ",height=" + popWindow.height + ",0,status=0,scrollbars=1");
-            win.onunload = onun;
-
-            function onun() {
-                if (win.location != "about:blank") // This is so that the function 
-                // doesn't do anything when the 
-                // window is first opened.
-                {
-                    //$route.reload();
-                    //alert("working");
-                    //location.reload();
-                    //alert("closed");
+            var url = '/SocialAuth/GoogleLoginGetRedirectUri';
+            startBlockUI('wait..', 3);
+            $http({
+                url: url,
+                method: "GET",
+                headers: { 'Content-Type': 'application/json' }
+            }).success(function (data, status, headers, config) {
+                //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
+                stopBlockUI();
+                if (data.Status == "199") {
+                    location.href = data.Message;
                 }
-            }
+                else {
+                    alert("some error occured");
+                }
+
+            }).error(function (data, status, headers, config) {
+                alert("internal server error occured");
+            });
+            //            var win = window.open("/SocialAuth/GoogleLogin/", "Ratting", "width=" + popWindow.width + ",height=" + popWindow.height + ",0,status=0,scrollbars=1");
+            //            win.onunload = onun;
+
+            //            function onun() {
+            //                if (win.location != "about:blank") // This is so that the function 
+            //                // doesn't do anything when the 
+            //                // window is first opened.
+            //                {
+            //                    //$route.reload();
+            //                    //alert("working");
+            //                    //location.reload();
+            //                    //alert("closed");
+            //                }
+            //            }
         }
 
         $('.TextBoxBeforeLoginFormSubmitButtonClass').keypress(function (e) {

@@ -59,7 +59,7 @@ define([appLocation.postLogin], function (app) {
     app.controller('ClientAfterMasterPage', function ($scope, $http, $rootScope, CookieUtil) {
 
         _.defer(function () { $scope.$apply(); });
-
+        
         $scope.openTemplateSamplePageWithId = function (id) {
             if (mobileDevice)
                 $('#sideBarMenuToggleButtonId').click();
@@ -68,7 +68,7 @@ define([appLocation.postLogin], function (app) {
         }
 
         $scope.signOut = function () {
-            logout();            
+            logout();
         }
 
         loadClientDetails();

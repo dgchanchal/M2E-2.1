@@ -198,6 +198,38 @@ namespace M2E.Controllers
             return Json(response, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult GoogleLoginGetRedirectUri(string type)
+        {
+            var response = new ResponseModel<LoginResponse>();
+            String code = Request.QueryString["code"];
+            String refKey = Request.QueryString["refKey"];
+            string app_id = "";
+            string app_secret = "";
+
+            if (Request.Url.Authority.Contains("localhost"))
+            {
+                app_id = ConfigurationManager.AppSettings["googleAppID"].ToString();
+                app_secret = ConfigurationManager.AppSettings["googleAppSecret"].ToString();
+            }
+            else
+            {
+                app_id = ConfigurationManager.AppSettings["googleAppIDCautom"].ToString();
+                app_secret = ConfigurationManager.AppSettings["googleAppSecretCautom"].ToString();
+            }
+
+            string scope = "email%20profile";
+            string returnUrl = "http://" + Request.Url.Authority + "/SocialAuth/GoogleLogin";
+            if (code == null)
+            {
+                response.Status = 199;
+                response.Message = (string.Format(
+                    "https://accounts.google.com/o/oauth2/auth?scope={0}&state=%2Fprofile&redirect_uri={1}&response_type=code&client_id={2}&approval_prompt=force",
+                    scope, returnUrl, app_id));
+                //Response.Redirect(ReturnUrl);
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult GoogleLogin(string type)
         {
             var response = new ResponseModel<LoginResponse>();
@@ -352,6 +384,42 @@ namespace M2E.Controllers
                 }
             }
             return Json(response,JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult LinkedinLoginGetRedirectUri(string type)
+        {
+            var response = new ResponseModel<LoginResponse>();
+
+            String AbsoluteUri = Request.Url.AbsoluteUri;
+            string oauth_token = Request.QueryString["oauth_token"];
+            string oauth_verifier = Request.QueryString["oauth_verifier"];
+            String refKey = Request.QueryString["refKey"];
+            string authLink = string.Empty;
+            if (oauth_token == null || oauth_verifier == null)
+            {
+                authLink = CreateAuthorization();
+                var linkedInApiData = new linkedinAuth
+                {
+                    oauth_Token = _oauth.Token,
+                    oauth_TokenSecret = _oauth.TokenSecret,
+                    oauth_verifier = ""
+                };
+                _db.linkedinAuths.Add(linkedInApiData);
+                try
+                {
+                    _db.SaveChanges();
+                    response.Status = 199;
+                    response.Message = authLink;
+                    //Response.Redirect(authLink);
+                }
+                catch (DbEntityValidationException e)
+                {
+                    DbContextException.LogDbContextException(e);
+                    response.Status = 500;
+                    response.Message = "Internal Server Error !!!";
+                }
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult LinkedinLogin(string type)
@@ -527,6 +595,37 @@ namespace M2E.Controllers
             {
                 authLink = CreateAuthorization();               
                 Response.Redirect(authLink);
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult FBLoginGetRedirectUri(string type)
+        {
+            var response = new ResponseModel<string>();
+
+            String code = Request.QueryString["code"];
+            string app_id = string.Empty;
+            string app_secret = string.Empty;
+            string returnUrl = "http://" + Request.Url.Authority + "/SocialAuth/FBLogin/facebook/";
+            if (Request.Url.Authority.Contains("localhost"))
+            {
+                app_id = ConfigurationManager.AppSettings["FacebookAppID"].ToString();
+                app_secret = ConfigurationManager.AppSettings["FacebookAppSecret"].ToString();
+            }
+            else
+            {
+                app_id = ConfigurationManager.AppSettings["FacebookAppIDCautom"].ToString();
+                app_secret = ConfigurationManager.AppSettings["FacebookAppSecretCautom"].ToString();
+            }
+            string scope = "";
+            if (code == null)
+            {
+                response.Status = 199;
+                response.Message = (string.Format(
+                    "https://graph.facebook.com/oauth/authorize?client_id={0}&redirect_uri={1}&scope={2}",
+                    app_id, returnUrl, scope));
+                
+                //Response.Redirect(response.Payload);
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
