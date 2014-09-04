@@ -104,6 +104,7 @@ namespace M2E.Controllers
                             try
                             {
                                 user.KeepMeSignedIn = "true";//keepMeSignedIn.Equals("true", StringComparison.OrdinalIgnoreCase) ? "true" : "false";
+                                user.Locked = Constants.status_false;
                                 _db.SaveChanges();
 
                                 var session = new M2ESession(ifFacebookUserAlreadyRegistered.username);
@@ -305,6 +306,7 @@ namespace M2E.Controllers
                     try
                     {
                         ifUserAlreadyRegistered.KeepMeSignedIn = "true";//keepMeSignedIn.Equals("true", StringComparison.OrdinalIgnoreCase) ? "true" : "false";
+                        ifUserAlreadyRegistered.Locked = Constants.status_false;
                         _db.SaveChanges();
 
                         var session = new M2ESession(ifUserAlreadyRegistered.Username);
@@ -488,6 +490,7 @@ namespace M2E.Controllers
                         try
                         {
                             ifUserAlreadyRegistered.KeepMeSignedIn = "true";//keepMeSignedIn.Equals("true", StringComparison.OrdinalIgnoreCase) ? "true" : "false";
+                            ifUserAlreadyRegistered.Locked = Constants.status_false;
                             _db.SaveChanges();
 
                             var session = new M2ESession(ifUserAlreadyRegistered.Username);
