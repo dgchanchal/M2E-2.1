@@ -87,10 +87,16 @@ namespace M2E.Controllers
                         var user = _db.Users.SingleOrDefault(x => x.Username == ifFacebookUserAlreadyRegistered.username);
                         if (user != null)
                         {
-                            string Authkey = ConfigurationManager.AppSettings["AuthKey"];
+                            var data = new Dictionary<string, string>();
+                            data["Username"] = user.Username;
+                            data["Password"] = user.Password;
+                            data["userGuid"] = user.guid;
+
+                            var encryptedData = EncryptionClass.encryptUserDetails(data);                           
+                            
                             response.Payload = new LoginResponse();
-                            response.Payload.UTMZK = EncryptionClass.GetEncryptionKey(user.Username, Authkey);
-                            response.Payload.UTMZV = EncryptionClass.GetEncryptionKey(user.Password, Authkey);
+                            response.Payload.UTMZK = encryptedData["UTMZK"];
+                            response.Payload.UTMZV = encryptedData["UTMZV"];
                             response.Payload.TimeStamp = DateTime.Now.ToString(CultureInfo.InvariantCulture);
                             response.Payload.Code = "210";
                             response.Status = 210;
@@ -156,10 +162,17 @@ namespace M2E.Controllers
                     {
                         ifFacebookUserAlreadyRegistered.username = user.Username;
                         _db.SaveChanges();
-                        string Authkey = ConfigurationManager.AppSettings["AuthKey"];
+                        
+                        var data = new Dictionary<string, string>();
+                        data["Username"] = user.Username;
+                        data["Password"] = user.Password;
+                        data["userGuid"] = user.guid;
+
+                        var encryptedData = EncryptionClass.encryptUserDetails(data);                        
+
                         response.Payload = new LoginResponse();
-                        response.Payload.UTMZK = EncryptionClass.GetEncryptionKey(user.Username, Authkey);
-                        response.Payload.UTMZV = EncryptionClass.GetEncryptionKey(user.Password, Authkey);
+                        response.Payload.UTMZK = encryptedData["UTMZK"];
+                        response.Payload.UTMZV = encryptedData["UTMZV"];
                         response.Payload.TimeStamp = DateTime.Now.ToString(CultureInfo.InvariantCulture);
                         response.Payload.Code = "210";
                         response.Status = 210;
@@ -274,11 +287,17 @@ namespace M2E.Controllers
                 var googleUserDetails = JsonConvert.DeserializeObject<googleUserDetails>(Convert.ToString(googleUserDetailString));
                 var ifUserAlreadyRegistered = _db.Users.SingleOrDefault(x => x.Username == googleUserDetails.email);
                 if (ifUserAlreadyRegistered != null)
-                {
-                    string Authkey = ConfigurationManager.AppSettings["AuthKey"];
+                {                   
+                    var data = new Dictionary<string, string>();
+                    data["Username"] = ifUserAlreadyRegistered.Username;
+                    data["Password"] = ifUserAlreadyRegistered.Password;
+                    data["userGuid"] = ifUserAlreadyRegistered.guid;
+
+                    var encryptedData = EncryptionClass.encryptUserDetails(data);                    
+
                     response.Payload = new LoginResponse();
-                    response.Payload.UTMZK = EncryptionClass.GetEncryptionKey(ifUserAlreadyRegistered.Username, Authkey);
-                    response.Payload.UTMZV = EncryptionClass.GetEncryptionKey(ifUserAlreadyRegistered.Password, Authkey);
+                    response.Payload.UTMZK = encryptedData["UTMZK"];
+                    response.Payload.UTMZV = encryptedData["UTMZV"];
                     response.Payload.TimeStamp = DateTime.Now.ToString(CultureInfo.InvariantCulture);
                     response.Payload.Code = "210";
                     response.Status = 210;
@@ -341,11 +360,18 @@ namespace M2E.Controllers
 
                     try
                     {
-                        _db.SaveChanges();
-                        string Authkey = ConfigurationManager.AppSettings["AuthKey"];
+                        _db.SaveChanges();                        
+
+                        var data = new Dictionary<string, string>();
+                        data["Username"] = user.Username;
+                        data["Password"] = user.Password;
+                        data["userGuid"] = user.guid;
+
+                        var encryptedData = EncryptionClass.encryptUserDetails(data);                       
+
                         response.Payload = new LoginResponse();
-                        response.Payload.UTMZK = EncryptionClass.GetEncryptionKey(user.Username, Authkey);
-                        response.Payload.UTMZV = EncryptionClass.GetEncryptionKey(user.Password, Authkey);
+                        response.Payload.UTMZK = encryptedData["UTMZK"];
+                        response.Payload.UTMZV = encryptedData["UTMZV"];
                         response.Payload.TimeStamp = DateTime.Now.ToString(CultureInfo.InvariantCulture);
                         response.Payload.Code = "210";
                         response.Status = 210;
@@ -444,10 +470,17 @@ namespace M2E.Controllers
                     var ifUserAlreadyRegistered = _db.Users.SingleOrDefault(x => x.Username == linkedinUserDetails.emailAddress);
                     if (ifUserAlreadyRegistered != null)
                     {
-                        string Authkey = ConfigurationManager.AppSettings["AuthKey"];
+                        
+                        var data = new Dictionary<string, string>();
+                        data["Username"] = ifUserAlreadyRegistered.Username;
+                        data["Password"] = ifUserAlreadyRegistered.Password;
+                        data["userGuid"] = ifUserAlreadyRegistered.guid;
+
+                        var encryptedData = EncryptionClass.encryptUserDetails(data);                        
+
                         response.Payload = new LoginResponse();
-                        response.Payload.UTMZK = EncryptionClass.GetEncryptionKey(ifUserAlreadyRegistered.Username, Authkey);
-                        response.Payload.UTMZV = EncryptionClass.GetEncryptionKey(ifUserAlreadyRegistered.Password, Authkey);
+                        response.Payload.UTMZK = encryptedData["UTMZK"];
+                        response.Payload.UTMZV = encryptedData["UTMZV"];
                         response.Payload.TimeStamp = DateTime.Now.ToString(CultureInfo.InvariantCulture);
                         response.Payload.Code = "210";
                         response.Status = 210;
@@ -510,10 +543,17 @@ namespace M2E.Controllers
                         try
                         {                            
                             _db.SaveChanges();
-                            string Authkey = ConfigurationManager.AppSettings["AuthKey"];
+                            
+                            var data = new Dictionary<string, string>();
+                            data["Username"] = user.Username;
+                            data["Password"] = user.Password;
+                            data["userGuid"] = user.guid;
+
+                            var encryptedData = EncryptionClass.encryptUserDetails(data);                            
+
                             response.Payload = new LoginResponse();
-                            response.Payload.UTMZK = EncryptionClass.GetEncryptionKey(user.Username, Authkey);
-                            response.Payload.UTMZV = EncryptionClass.GetEncryptionKey(user.Password, Authkey);
+                            response.Payload.UTMZK = encryptedData["UTMZK"];
+                            response.Payload.UTMZV = encryptedData["UTMZV"];
                             response.Payload.TimeStamp = DateTime.Now.ToString(CultureInfo.InvariantCulture);
                             response.Payload.Code = "210";
                             response.Status = 210;

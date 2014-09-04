@@ -9,6 +9,7 @@ using M2E.Models;
 using M2E.Models.DataResponse;
 using M2E.Encryption;
 using System.Configuration;
+using System.Collections.Generic;
 
 namespace M2E.Service.Login
 {
@@ -25,10 +26,15 @@ namespace M2E.Service.Login
             {
                 var user = _db.Users.SingleOrDefault(x => x.Username == userName && x.isActive == "true");
                 if (user != null)
-                {                    
-                    string Authkey = ConfigurationManager.AppSettings["AuthKey"];
-                    userData.UTMZK = EncryptionClass.GetEncryptionKey(user.Username, Authkey);
-                    userData.UTMZV = EncryptionClass.GetEncryptionKey(user.Password, Authkey);
+                {
+                    var data = new Dictionary<string, string>();                    
+                    data["Username"] = user.Username;
+                    data["Password"] = user.Password;
+                    data["userGuid"] = user.guid;
+
+                    var encryptedData = EncryptionClass.encryptUserDetails(data);
+                    userData.UTMZK = encryptedData["UTMZK"];
+                    userData.UTMZV = encryptedData["UTMZV"];
                     userData.TimeStamp = DateTime.Now.ToString(CultureInfo.InvariantCulture);
                     userData.Code = "200";
                     try

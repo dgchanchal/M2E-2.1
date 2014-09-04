@@ -57,14 +57,20 @@ namespace M2E.Session
                     return null;
                 if (sessionId == null)
                     return null;
-                string Authkey = ConfigurationManager.AppSettings["AuthKey"];
+                string Authkey = ConfigurationManager.AppSettings["AuthKey"];                
+
                 string username = EncryptionClass.GetDecryptionValue(headers.AuthKey, Authkey);
                 M2EContext _db = new M2EContext();
                 var dbUserInfo = _db.Users.SingleOrDefault(x=>x.Username == username);
                 if (dbUserInfo != null)
                 {
-                    string password = EncryptionClass.GetDecryptionValue(headers.AuthValue, Authkey);
-                    if (dbUserInfo.KeepMeSignedIn == "true" && dbUserInfo.Password == password)
+                    var data = new Dictionary<string, string>();                    
+                    data["Password"] = headers.AuthValue;
+                    data["userGuid"] = dbUserInfo.guid;
+
+                    var decryptedData = EncryptionClass.decryptUserDetails(data);                   
+                    
+                    if (dbUserInfo.KeepMeSignedIn == "true" && dbUserInfo.Password == decryptedData["UTMZV"])
                     {
                         var NewSession = new M2ESession(username, sessionId);
                         TokenManager.CreateSession(NewSession);

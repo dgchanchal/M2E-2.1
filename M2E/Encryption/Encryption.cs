@@ -1,5 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using System.Collections.Generic;
+using System.Configuration;
 namespace M2E.Encryption
 {
     public class EncryptionClass
@@ -31,6 +33,21 @@ namespace M2E.Encryption
             }
 
             return strBuilder.ToString();
+        }
+        public static Dictionary<string, string> encryptUserDetails(Dictionary<string, string> data)
+        {
+            var encryptedData = new Dictionary<string, string>();
+            string Authkey = ConfigurationManager.AppSettings["AuthKey"];
+            encryptedData["UTMZK"] = EncryptionClass.GetEncryptionKey(data["Username"], Authkey);
+            encryptedData["UTMZV"] = EncryptionClass.GetEncryptionKey(data["Password"], data["userGuid"]);
+            return encryptedData;
+        }
+
+        public static Dictionary<string, string> decryptUserDetails(Dictionary<string, string> data)
+        {
+            var decryptedData = new Dictionary<string, string>();
+            decryptedData["UTMZV"] = EncryptionClass.GetDecryptionValue(data["Password"], data["userGuid"]);
+            return decryptedData;
         }
     }
 }
