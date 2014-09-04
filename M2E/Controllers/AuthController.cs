@@ -30,6 +30,11 @@ namespace M2E.Controllers
             return View();
         }
 
+        public ActionResult LockAccount()
+        {
+            return View();
+        }
+
         [HttpPost]
         public JsonResult Login(LoginRequest req)
         {

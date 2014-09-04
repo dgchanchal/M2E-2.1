@@ -1630,6 +1630,7 @@
     <None Include="Template\AdminLTE-master\less\vars.less" />
     <None Include="Template\AdminLTE-master\LICENSE" />
     <None Include="Template\AdminLTE-master\README.md" />
+    <None Include="Views\Auth\LockAccount.cshtml" />
     <None Include="Views\Client\DownloadAllCompletedTranscriptionInformation.cshtml" />
     <None Include="Views\Client\Index.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
