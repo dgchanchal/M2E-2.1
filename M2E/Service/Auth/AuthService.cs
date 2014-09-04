@@ -9,6 +9,9 @@ using M2E.Models.DataWrapper;
 using M2E.CommonMethods;
 using System.Data.Entity.Validation;
 using System.Reflection;
+using M2E.Session;
+using M2E.Models.DataResponse;
+using System.Collections.Generic;
 
 namespace M2E.Service.Auth
 {
@@ -58,6 +61,46 @@ namespace M2E.Service.Auth
             return response;
         }
 
+        public ResponseModel<LoginResponse> LockAccountService(HeaderManager headers, M2ESession session)
+        {
+            var response = new ResponseModel<LoginResponse>();
+            if (session.UserName != null)
+            {
+                bool logoutStatus = new TokenManager().Logout(headers.AuthToken);
+                var user = _db.Users.SingleOrDefault(x => x.Username == session.UserName);
+                if (user != null)
+                {                    
+                    
+                    
+                    var data = new Dictionary<string, string>();
+                    data["Username"] = user.Username;
+                    data["Password"] = user.Password;
+                    data["userGuid"] = user.guid;
+
+                    var encryptedData = EncryptionClass.encryptUserDetails(data);
+
+                    response.Payload = new LoginResponse();
+                    response.Payload.UTMZK = encryptedData["UTMZK"];
+                    response.Payload.UTMZV = encryptedData["UTMZV"];
+                    response.Payload.TimeStamp = DateTime.Now.ToString(CultureInfo.InvariantCulture);
+                    response.Payload.Code = "200";
+                    response.Status = 200;
+                    response.Message = "Account Locked";
+
+                    var newUserSession = new M2ESession(user.Username);
+                    TokenManager.CreateSession(newUserSession);
+                    response.Payload.UTMZT = newUserSession.SessionId;
+
+                }
+                else
+                {
+                    response.Status = 424;
+                    response.Message = "user detail not available";
+                }
+            }
+                        
+            return response;
+        }
 
         public ResponseModel<String> ResendValidationCodeService(ValidateAccountRequest req, HttpRequestBase request)
         {

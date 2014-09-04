@@ -30,9 +30,20 @@ namespace M2E.Controllers
             return View();
         }
 
-        public ActionResult LockAccount()
+        public ActionResult LockAccount(string id)
         {
             return View();
+        }
+
+        [HttpPost]
+        public JsonResult LockUserAccount()
+        {
+            var response = new ResponseModel<LoginResponse>();
+            var headers = new HeaderManager(Request);
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
+            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+            response = new AuthService().LockAccountService(headers, session);
+            return Json(response);
         }
 
         [HttpPost]
@@ -77,8 +88,22 @@ namespace M2E.Controllers
         [HttpPost]
         public JsonResult Logout()
         {
-            var headers = new HeaderManager(Request);            
-            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+            var headers = new HeaderManager(Request);
+            M2ESession session = TokenManager.getLogoutSessionInfo(headers.AuthToken);
+            if (session != null)
+            {
+                var user = _db.Users.SingleOrDefault(x => x.Username == session.UserName);
+                user.KeepMeSignedIn = "false";
+                try
+                {
+                    _db.SaveChanges();                    
+                }
+                catch (DbEntityValidationException e)
+                {
+                    DbContextException.LogDbContextException(e);                                     
+                }
+            }
+            var isValidToken = new TokenManager().Logout(headers.AuthToken);
             return Json(isValidToken);
         }
 

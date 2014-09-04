@@ -6,11 +6,19 @@ using System.Runtime.Caching;
 using M2E.Models;
 using System.Configuration;
 using M2E.Encryption;
+using M2E.Common.Logger;
+using System.Reflection;
+using M2E.CommonMethods;
+using System.Data.Entity.Validation;
 
 namespace M2E.Session
 {
     public class TokenManager
-    {        
+    {
+        private static readonly ILogger Logger = new Logger(Convert.ToString(MethodBase.GetCurrentMethod().DeclaringType));
+        private DbContextException _dbContextException = new DbContextException();
+        private readonly M2EContext _db = new M2EContext();
+
         public static void CreateSession(M2ESession session)
         {
             var sessionId = session.SessionId;
@@ -44,6 +52,16 @@ namespace M2E.Session
             setMemoryCacheValue(session.SessionId, session, hours, 0, 0);
         }
 
+        public static M2ESession getLogoutSessionInfo(string sessionId)
+        {
+            M2ESession session = null;
+            if (IsValidSession(sessionId, out session))
+            {
+                return session;
+            }
+            return null;
+        }
+
         public static M2ESession getSessionInfo(string sessionId, HeaderManager headers)
         {
             M2ESession session = null;
@@ -68,18 +86,28 @@ namespace M2E.Session
                     data["Password"] = headers.AuthValue;
                     data["userGuid"] = dbUserInfo.guid;
 
-                    var decryptedData = EncryptionClass.decryptUserDetails(data);                   
-                    
-                    if (dbUserInfo.KeepMeSignedIn == "true" && dbUserInfo.Password == decryptedData["UTMZV"])
+                    try
                     {
-                        var NewSession = new M2ESession(username, sessionId);
-                        TokenManager.CreateSession(NewSession);
-                        return getSessionInfo(sessionId, headers);
+                        var decryptedData = EncryptionClass.decryptUserDetails(data);
+
+                        if (dbUserInfo.KeepMeSignedIn == "true" && dbUserInfo.Password == decryptedData["UTMZV"])
+                        {
+                            var NewSession = new M2ESession(username, sessionId);
+                            TokenManager.CreateSession(NewSession);
+                            return getSessionInfo(sessionId, headers);
+                        }
+                        else
+                        {
+                            return null;
+                        }
+
                     }
-                    else
+                    catch (Exception)
                     {
+
                         return null;
                     }
+                    
 
                 }
                 else
@@ -112,7 +140,7 @@ namespace M2E.Session
             return IsValidSession(sessionId, out session);
         }
 
-        public static bool Logout(string sessionId)
+        public bool Logout(string sessionId)
         {
             if (sessionId == null)
                 return false;
@@ -120,7 +148,18 @@ namespace M2E.Session
             M2ESession session = null;
             if (MemoryCache.Default.Contains(sessionId))
             {
-                //session = (M2ESession)MemoryCache.Default.Get(sessionId);
+                session = (M2ESession)MemoryCache.Default.Get(sessionId);
+                var user = _db.Users.SingleOrDefault(x => x.Username == session.UserName);
+                user.guid = Guid.NewGuid().ToString();
+                try
+                {
+                    _db.SaveChanges();
+                }
+                catch (DbEntityValidationException e)
+                {
+                    DbContextException.LogDbContextException(e);                    
+                }
+
                 MemoryCache.Default.Remove(sessionId);
             }
             return true;
