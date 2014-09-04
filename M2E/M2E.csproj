@@ -416,6 +416,7 @@
     <Content Include="App\js\dragend.js" />
     <Content Include="App\js\angular.1.2.13.js" />
     <Content Include="App\js\jquery-ui.min.js" />
+    <Content Include="App\js\jquery.hotkeys.js" />
     <Content Include="App\js\jquery.nivo.slider.js" />
     <Content Include="App\js\jquery.panzoom.js" />
     <Content Include="App\js\jquery.panzoom.min.js" />
