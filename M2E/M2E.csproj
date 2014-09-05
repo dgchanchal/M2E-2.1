@@ -194,6 +194,9 @@
     <Compile Include="Models\ClientDetail.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClientWallet.cs">
+      <DependentUpon>M2EContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Constants\Constants.cs" />
     <Compile Include="Models\CreateTemplateeditableInstructionsList.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
@@ -267,6 +270,9 @@
     <Compile Include="Models\FacebookAuth.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\facebookPageLikeMapping.cs">
+      <DependentUpon>M2EContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ForgetPassword.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
@@ -307,6 +313,9 @@
     <Compile Include="Models\UserDetail.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserEarning.cs">
+      <DependentUpon>M2EContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserFacebookLikeJobMapping.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
@@ -320,6 +329,9 @@
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserRecommendation.cs">
+      <DependentUpon>M2EContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserReputation.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserSkill.cs">

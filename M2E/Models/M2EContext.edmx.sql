@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/02/2014 18:38:27
+-- Date Created: 09/05/2014 15:24:45
 -- Generated from EDMX file: F:\temp2\branches\M2E-2.0\M2E\Models\M2EContext.edmx
 -- --------------------------------------------------
 
@@ -99,6 +99,15 @@ IF OBJECT_ID(N'[dbo].[UserFacebookLikeJobMappings]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FacebookAuths]', 'U') IS NOT NULL
     DROP TABLE [dbo].[FacebookAuths];
+GO
+IF OBJECT_ID(N'[dbo].[linkedinAuths]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[linkedinAuths];
+GO
+IF OBJECT_ID(N'[dbo].[facebookPageLikeMappings]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[facebookPageLikeMappings];
+GO
+IF OBJECT_ID(N'[dbo].[UserReputations]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserReputations];
 GO
 
 -- --------------------------------------------------
@@ -445,6 +454,50 @@ CREATE TABLE [dbo].[linkedinAuths] (
 );
 GO
 
+-- Creating table 'facebookPageLikeMappings'
+CREATE TABLE [dbo].[facebookPageLikeMappings] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [refKey] nvarchar(max)  NOT NULL,
+    [username] nvarchar(max)  NOT NULL,
+    [DateTime] datetime  NOT NULL,
+    [PageId] nvarchar(max)  NOT NULL,
+    [UserFacebookId] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'UserReputations'
+CREATE TABLE [dbo].[UserReputations] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [username] nvarchar(max)  NOT NULL,
+    [ReputationScore] nvarchar(max)  NOT NULL,
+    [GoldEarned] nvarchar(max)  NOT NULL,
+    [SilverEarned] nvarchar(max)  NOT NULL,
+    [BronzeEarned] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'UserEarnings'
+CREATE TABLE [dbo].[UserEarnings] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [username] nvarchar(max)  NOT NULL,
+    [total] nvarchar(max)  NOT NULL,
+    [approved] nvarchar(max)  NOT NULL,
+    [pending] nvarchar(max)  NOT NULL,
+    [currency] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'ClientWallets'
+CREATE TABLE [dbo].[ClientWallets] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [username] nvarchar(max)  NOT NULL,
+    [total] nvarchar(max)  NOT NULL,
+    [approved] nvarchar(max)  NOT NULL,
+    [pending] nvarchar(max)  NOT NULL,
+    [currency] nvarchar(max)  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -608,6 +661,30 @@ GO
 -- Creating primary key on [Id] in table 'linkedinAuths'
 ALTER TABLE [dbo].[linkedinAuths]
 ADD CONSTRAINT [PK_linkedinAuths]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'facebookPageLikeMappings'
+ALTER TABLE [dbo].[facebookPageLikeMappings]
+ADD CONSTRAINT [PK_facebookPageLikeMappings]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'UserReputations'
+ALTER TABLE [dbo].[UserReputations]
+ADD CONSTRAINT [PK_UserReputations]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'UserEarnings'
+ALTER TABLE [dbo].[UserEarnings]
+ADD CONSTRAINT [PK_UserEarnings]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'ClientWallets'
+ALTER TABLE [dbo].[ClientWallets]
+ADD CONSTRAINT [PK_ClientWallets]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 

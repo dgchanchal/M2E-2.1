@@ -10,6 +10,7 @@ using M2E.CommonMethods;
 using M2E.Models.Constants;
 using M2E.DAO;
 using Facebook;
+using System.Data.Entity.Validation;
 
 namespace M2E.Service.UserService.facebookLike
 {
@@ -91,6 +92,81 @@ namespace M2E.Service.UserService.facebookLike
                 response.Message = "Internal Server Error";
                 return response;
             }
+        }
+
+        public ResponseModel<String> ValidateFacebookLike(string username, string refKey)
+        {
+            var response = new ResponseModel<String>();            
+            var checkIfUserConnectedWithFacebook = _db.FacebookAuths.SingleOrDefault(x => x.username == username);
+            if (checkIfUserConnectedWithFacebook == null)
+            {
+                response.Status = 205;
+                response.Message = "User is not connected with facebook";
+                return response;
+            }
+            else
+            {
+                //checkIfUserConnectedWithFacebook.AuthToken;
+            }
+            var facebookLikeTemplateData = _db.CreateTemplateFacebookLikes.SingleOrDefault(x => x.referenceId == refKey);
+            
+            var fb = new FacebookClient(checkIfUserConnectedWithFacebook.AuthToken);
+            bool alreadyLikedByUser = false;
+            try
+            {
+                dynamic result = fb.Get("fql",
+                            new { q = "SELECT page_id FROM page_fan WHERE uid=" + checkIfUserConnectedWithFacebook.facebookId + " AND page_id=" + facebookLikeTemplateData.pageId });
+                foreach (var item in result.data)
+                {
+                    alreadyLikedByUser = true; // exists   
+                }
+            }
+            catch (Exception)
+            {
+                response.Status = 206;
+                response.Message = "Facebook Auth Token Expired";
+                return response; ;
+            }
+            if (alreadyLikedByUser)
+            {
+                var facebookLikeListMap = _db.facebookPageLikeMappings.SingleOrDefault(x => x.username == username && x.refKey == refKey);
+                if (facebookLikeListMap != null)
+                {
+                    response.Status = 208;
+                    response.Message = "You have already earned for this page like.";
+                }
+                else
+                {
+                    var facebookPageLikeMapData = new facebookPageLikeMapping
+                    {
+                        PageId = facebookLikeTemplateData.pageId,
+                        refKey = facebookLikeTemplateData.referenceId,
+                        UserFacebookId = checkIfUserConnectedWithFacebook.facebookId,
+                        username = checkIfUserConnectedWithFacebook.username,
+                        DateTime = DateTime.Now
+                    };
+
+                    _db.facebookPageLikeMappings.Add(facebookPageLikeMapData);
+
+                    try
+                    {
+                        _db.SaveChanges();
+                    }
+                    catch (DbEntityValidationException e)
+                    {
+                        DbContextException.LogDbContextException(e);                        
+                    }
+                    response.Status = 200;
+                    response.Message = "User liked the page";
+                }                
+                
+            }
+            else
+            {
+                response.Status = 207;
+                response.Message = "User didn't like the page yet";
+            }
+            return response;
         }
     }
 }

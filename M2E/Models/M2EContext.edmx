@@ -33,6 +33,10 @@
     <EntitySet Name="UserFacebookLikeJobMappings" EntityType="M2EModel.Store.UserFacebookLikeJobMappings" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="FacebookAuths" EntityType="M2EModel.Store.FacebookAuths" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="linkedinAuths" EntityType="M2EModel.Store.linkedinAuths" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="facebookPageLikeMappings" EntityType="M2EModel.Store.facebookPageLikeMappings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserReputations" EntityType="M2EModel.Store.UserReputations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserEarnings" EntityType="M2EModel.Store.UserEarnings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ClientWallets" EntityType="M2EModel.Store.ClientWallets" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
   <EntityType Name="ClientDetails">
     <Key>
@@ -374,6 +378,50 @@
     <Property Name="oauth_TokenSecret" Type="nvarchar(max)" Nullable="false" />
     <Property Name="oauth_verifier" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="facebookPageLikeMappings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="refKey" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="PageId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserFacebookId" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserReputations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ReputationScore" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GoldEarned" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SilverEarned" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BronzeEarned" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserEarnings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="total" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="approved" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="pending" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="currency" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClientWallets">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="total" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="approved" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="pending" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="currency" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -406,6 +454,10 @@
           <EntitySet Name="UserFacebookLikeJobMappings" EntityType="M2EModel.UserFacebookLikeJobMapping" />
           <EntitySet Name="FacebookAuths" EntityType="M2EModel.FacebookAuth" />
           <EntitySet Name="linkedinAuths" EntityType="M2EModel.linkedinAuth" />
+          <EntitySet Name="facebookPageLikeMappings" EntityType="M2EModel.facebookPageLikeMapping" />
+          <EntitySet Name="UserReputations" EntityType="M2EModel.UserReputation" />
+          <EntitySet Name="UserEarnings" EntityType="M2EModel.UserEarning" />
+          <EntitySet Name="ClientWallets" EntityType="M2EModel.ClientWallet" />
         </EntityContainer>
         <EntityType Name="ClientDetail">
           <Key>
@@ -746,6 +798,50 @@
           <Property Type="String" Name="oauth_Token" Nullable="false" />
           <Property Type="String" Name="oauth_TokenSecret" Nullable="false" />
           <Property Type="String" Name="oauth_verifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="facebookPageLikeMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="refKey" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="false" />
+          <Property Type="DateTime" Name="DateTime" Nullable="false" />
+          <Property Type="String" Name="PageId" Nullable="false" />
+          <Property Type="String" Name="UserFacebookId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserReputation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="username" Nullable="false" />
+          <Property Type="String" Name="ReputationScore" Nullable="false" />
+          <Property Type="String" Name="GoldEarned" Nullable="false" />
+          <Property Type="String" Name="SilverEarned" Nullable="false" />
+          <Property Type="String" Name="BronzeEarned" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserEarning">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="username" Nullable="false" />
+          <Property Type="String" Name="total" Nullable="false" />
+          <Property Type="String" Name="approved" Nullable="false" />
+          <Property Type="String" Name="pending" Nullable="false" />
+          <Property Type="String" Name="currency" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientWallet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="username" Nullable="false" />
+          <Property Type="String" Name="total" Nullable="false" />
+          <Property Type="String" Name="approved" Nullable="false" />
+          <Property Type="String" Name="pending" Nullable="false" />
+          <Property Type="String" Name="currency" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1120,6 +1216,54 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="facebookPageLikeMappings">
+      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.facebookPageLikeMapping)">
+        <MappingFragment StoreEntitySet="facebookPageLikeMappings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="refKey" ColumnName="refKey" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="PageId" ColumnName="PageId" />
+          <ScalarProperty Name="UserFacebookId" ColumnName="UserFacebookId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserReputations">
+      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserReputation)">
+        <MappingFragment StoreEntitySet="UserReputations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="ReputationScore" ColumnName="ReputationScore" />
+          <ScalarProperty Name="GoldEarned" ColumnName="GoldEarned" />
+          <ScalarProperty Name="SilverEarned" ColumnName="SilverEarned" />
+          <ScalarProperty Name="BronzeEarned" ColumnName="BronzeEarned" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserEarnings">
+      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserEarning)">
+        <MappingFragment StoreEntitySet="UserEarnings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="approved" ColumnName="approved" />
+          <ScalarProperty Name="pending" ColumnName="pending" />
+          <ScalarProperty Name="currency" ColumnName="currency" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientWallets">
+      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.ClientWallet)">
+        <MappingFragment StoreEntitySet="ClientWallets">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="approved" ColumnName="approved" />
+          <ScalarProperty Name="pending" ColumnName="pending" />
+          <ScalarProperty Name="currency" ColumnName="currency" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -1168,6 +1312,10 @@
         <EntityTypeShape EntityType="M2EModel.UserFacebookLikeJobMapping" Width="1.5" PointX="2.625" PointY="11" Height="2.7494921874999996" />
         <EntityTypeShape EntityType="M2EModel.FacebookAuth" Width="1.5" PointX="7.375" PointY="13.125" Height="2.1725878906249996" />
         <EntityTypeShape EntityType="M2EModel.linkedinAuth" Width="1.5" PointX="9.625" PointY="13.25" Height="1.7879850260416657" />
+        <EntityTypeShape EntityType="M2EModel.facebookPageLikeMapping" Width="1.5" PointX="5.375" PointY="13" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="M2EModel.UserReputation" Width="1.5" PointX="0.625" PointY="11.625" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="M2EModel.UserEarning" Width="1.5" PointX="0.5" PointY="14.125" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="M2EModel.ClientWallet" Width="1.5" PointX="2.75" PointY="14.5" Height="2.1725878906250031" />
       </Diagram>
     </Diagrams>
   </Designer>

@@ -36,6 +36,22 @@ namespace M2E.Service.Client
                     response.Status = 200;
                     response.Message = "success";
                     response.Payload = createClientDetailResponse;
+
+                    var userReputation = _db.UserReputations.SingleOrDefault(x => x.username == clientDetailDbResult.Username);
+                    if (userReputation == null)
+                    {
+                        createClientDetailResponse.totalReputation = "0";
+                        createClientDetailResponse.gold = "0";
+                        createClientDetailResponse.silver = "0";
+                        createClientDetailResponse.bronze = "0";
+                    }
+                    else
+                    {
+                        createClientDetailResponse.totalReputation = userReputation.ReputationScore;
+                        createClientDetailResponse.gold = userReputation.GoldEarned;
+                        createClientDetailResponse.silver = userReputation.SilverEarned;
+                        createClientDetailResponse.bronze = userReputation.BronzeEarned;
+                    }
                 }
                 else
                 {

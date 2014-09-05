@@ -14,5 +14,9 @@ namespace M2E.Models.DataResponse
         public string imageUrl { get; set; }
         public string gender { get; set; }
         public string isLocked { get; set; }
+        public string totalReputation { get; set; }
+        public string gold { get; set; }
+        public string silver { get; set; }
+        public string bronze { get; set; }
     }
 }

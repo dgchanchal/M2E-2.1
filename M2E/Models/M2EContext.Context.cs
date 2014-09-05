@@ -52,5 +52,9 @@ namespace M2E.Models
         public DbSet<UserFacebookLikeJobMapping> UserFacebookLikeJobMappings { get; set; }
         public DbSet<FacebookAuth> FacebookAuths { get; set; }
         public DbSet<linkedinAuth> linkedinAuths { get; set; }
+        public DbSet<facebookPageLikeMapping> facebookPageLikeMappings { get; set; }
+        public DbSet<UserReputation> UserReputations { get; set; }
+        public DbSet<UserEarning> UserEarnings { get; set; }
+        public DbSet<ClientWallet> ClientWallets { get; set; }
     }
 }

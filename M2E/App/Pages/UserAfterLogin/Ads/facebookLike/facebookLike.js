@@ -54,6 +54,53 @@ define([appLocation.userPostLogin], function (app) {
 
         });
 
+        $scope.validateFacebookLike = function (id) {
+            //console.log(id);
+            //alert($scope.FacebookLikeList[id].refKey);
+            validateFacebookLikeFunction($scope.FacebookLikeList[id].refKey);
+
+        }
+
+        function validateFacebookLikeFunction(refKey) {
+            var url = ServerContextPah + '/User/ValidateFacebookLike';
+            var headers = {
+                'Content-Type': 'application/json',
+                'UTMZT': CookieUtil.getUTMZT(),
+                'UTMZK': CookieUtil.getUTMZK(),
+                'UTMZV': CookieUtil.getUTMZV()
+            };
+            startBlockUI('wait..', 3);
+            $http({
+                url: url,
+                method: "POST",
+                data: JSON.stringify({ refKey: refKey }),
+                headers: headers
+            }).success(function (data, status, headers, config) {
+                //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
+                stopBlockUI();
+                if (data.Status == "200") {
+                    showToastMessage("Success", "Congrats !! you are credited for you job.");		
+                }
+                else if (data.Status == "401") {
+                    showToastMessage("Error", "Username or Password is incorrect !!!");		
+                }
+                else if (data.Status == "205") {
+                    $scope.isUserConnectedToFacebook = false;
+                }
+                else if (data.Status == "206") {
+                    $scope.isUserConnectedToFacebook = false;
+                    $scope.isFacebookAuthCookieExpired = true;
+                }
+                else if (data.Status == "207") {
+                    showToastMessage("Error", "You haven't liked this page yet. !!!");
+                }
+                else if (data.Status == "208") {
+                    showToastMessage("Error", "You have already earned from this page like !!!");
+                }
+            }).error(function (data, status, headers, config) {
+
+            });
+        }
         $scope.toggleActiveThreads = function () {
             console.log($scope.showUserActiveThreads);
             if ($scope.showUserActiveThreads == true)
@@ -85,19 +132,19 @@ define([appLocation.userPostLogin], function (app) {
                 alert("internal server error occured");
             });
 
-//            var win = window.open("/SocialAuth/FBLogin/facebook", "Ratting", "width=800,height=480,0,status=0,scrollbars=1");
-//            win.onunload = onun;
+            //            var win = window.open("/SocialAuth/FBLogin/facebook", "Ratting", "width=800,height=480,0,status=0,scrollbars=1");
+            //            win.onunload = onun;
 
-//            function onun() {
-//                if (win.location != "about:blank") // This is so that the function 
-//                // doesn't do anything when the 
-//                // window is first opened.
-//                {
-//                    //$route.reload();
-//                    location.reload();
-//                    //alert("closed");
-//                }
-//            }
+            //            function onun() {
+            //                if (win.location != "about:blank") // This is so that the function 
+            //                // doesn't do anything when the 
+            //                // window is first opened.
+            //                {
+            //                    //$route.reload();
+            //                    location.reload();
+            //                    //alert("closed");
+            //                }
+            //            }
         }
 
     });

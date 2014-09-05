@@ -878,3 +878,81 @@ b, strong {
     font-weight: 400;
     line-height: 16px;
 }
+
+
+.profile-me {
+    background-color: transparent;
+    display: inline-block;
+    height: 34px;
+    margin-right: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.topbar .topbar-links .profile-me .avatar-me {
+    height: 24px;
+    margin-top: 1px;
+    padding: 4px;
+    width: 24px;
+}
+
+.profile-me > div {
+    display: inline-block;
+}
+.links-container {
+    display: inline-block;
+    padding-top: 10px;
+    vertical-align: top;
+}
+.topbar-flair {
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif !important;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.topbar-flair .reputation, .topbar .topbar-links .topbar-flair .badgecount {
+    color: #e0e0e0;
+}
+.topbar-flair .reputation {
+    padding-right: 5px;
+}
+
+ .topbar-flair .badge1, .topbar .topbar-links .topbar-flair .badge2, .topbar .topbar-links .topbar-flair .badge3 {
+    padding-right: 3px;
+}
+.badge1, .badge2, .badge3 {
+    background-position: -40px -1034px;
+    display: inline-block;
+    height: 11px;
+    line-height: inherit;
+    margin: 0 1px 1px 3px;
+    overflow: hidden;
+    vertical-align: text-bottom;
+    width: 6px;
+}
+#hlogo a, .envelope-on, .envelope-off, .vote-up-off, .vote-up-on, .vote-down-off, .vote-down-on, .star-on, .star-off, .comment-up-off, .comment-up-on, .comment-flag, .edited-yes, .feed-icon, .statsarrow, .vote-accepted-off, .vote-accepted-on, .vote-accepted-bounty, .badge-earned-check, .delete-tag, .grippie, .expander-arrow-hide, .expander-arrow-show, .expander-arrow-small-hide, .expander-arrow-small-show, .anonymous-gravatar, .badge1, .badge2, .badge3, .add-interesting-tag-on, .add-interesting-tag-off, .fb-share, .twitter-share, .gp-share {
+    background-image: url("../../../img/sprites.png?v=3c6263c3453b");
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+ .topbar-flair .reputation, .topbar .topbar-links .topbar-flair .badgecount {
+    color: #e0e0e0;
+}
+.topbar-flair .badgecount {
+    font-size: 13px;
+    font-weight: normal;
+    padding-right: 4px;
+}
+.badgecount {
+    color: #808185;
+    padding-left: 1px;
+}
+
+.badge2 {
+    background-position: -20px -1034px;
+}
+
+.badge3 {
+    background-position: 0 -1034px;
+}

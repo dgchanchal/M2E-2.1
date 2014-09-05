@@ -73,6 +73,30 @@ namespace M2E.Controllers
         }
 
         [HttpPost]
+        public JsonResult ValidateFacebookLike(string refKey)
+        {
+            //var username = "sumitchourasia91@gmail.com";
+            var headers = new HeaderManager(Request);
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
+            var UserfacebookLikesList = new UserfacebookLikeServices();
+            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+            if (isValidToken)
+            {
+                var response = UserfacebookLikesList.ValidateFacebookLike(session.UserName, refKey);
+                return Json(response);
+            }
+            else
+            {
+                ResponseModel<string> response = new ResponseModel<string>();
+                response.Status = 401;
+                response.Message = "Unauthorized";
+                return Json(response);
+            }
+
+
+        }
+
+        [HttpPost]
         public JsonResult GetTemplateInformationByRefKey()
         {
             //var username = "sumitchourasia91@gmail.com";
