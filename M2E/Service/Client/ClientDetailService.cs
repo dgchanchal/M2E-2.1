@@ -52,6 +52,20 @@ namespace M2E.Service.Client
                         createClientDetailResponse.silver = userReputation.SilverEarned;
                         createClientDetailResponse.bronze = userReputation.BronzeEarned;
                     }
+
+                    var userBalance = _db.UserEarnings.SingleOrDefault(x => x.username == username);
+                    if (userBalance == null)
+                    {
+                        createClientDetailResponse.availableBalance = "0";
+                        createClientDetailResponse.pendingBalance = "0";
+                        createClientDetailResponse.currency = "INR";
+                    }
+                    else
+                    {
+                        createClientDetailResponse.availableBalance = userBalance.approved;
+                        createClientDetailResponse.pendingBalance = userBalance.pending;
+                        createClientDetailResponse.currency = userBalance.currency;
+                    }
                 }
                 else
                 {
