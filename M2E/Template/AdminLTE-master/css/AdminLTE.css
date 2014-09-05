@@ -1974,6 +1974,12 @@ Component: timeline
   background-color: #fefbed;
   border-color: #f1e7bc;
 }
+
+.callout.callout-lightBlue {
+    background-color: #d4d4ff;
+    border-color: #f1e7bc;
+}
+
 .callout.callout-info {
   background-color: #f0f7fd;
   border-color: #d0e3f0;
