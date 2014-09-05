@@ -120,7 +120,7 @@ function detectIfUserLoggedIn(){
 						'UTMZK': $.cookie('utmzk'),
 						'UTMZV': $.cookie('utmzv')                       
                     };
-         if($.cookie('utmzt') != null && $.cookie('utmzt') != "")
+         if($.cookie('utmzt') != null && $.cookie('utmzt') != "" && $.cookie('loginType') != null && $.cookie('loginType') != "")
          {
             var  url = ServerContextPah + '/Auth/IsValidSession';
                  $.ajax({
@@ -147,6 +147,11 @@ function detectIfUserLoggedIn(){
          }
          else
          {
+                 $.removeCookie('utmzt', { path: '/' });
+                 $.removeCookie('utmzk', { path: '/' });
+                 $.removeCookie('utmzv', { path: '/' });
+                 $.removeCookie('utime', { path: '/' });
+                 $.removeCookie('kmsi', { path: '/' });
                 // will first fade out the loading animation
                 jQuery("#status").fadeOut();
                 // will fade out the whole DIV that covers the website.

@@ -98,10 +98,13 @@ namespace M2E.Service.JobTemplate
                 {
                     foreach (var facebookJob in FacebookLikeTemplateData)
                     {
-                        long JobCompleted = new FacebookDAO().facebookLikeCompletedThreadsWithRefKey(facebookJob.referenceId);                        
+                        //var clientFacebookLikeJobInfo = _db.CreateTemplateFacebookLikes.SingleOrDefault(x => x.Id == id && x.username == username);
+
+                        long JobCompleted = _db.facebookPageLikeMappings.Where(x => x.refKey == facebookJob.referenceId).Count();
                         if (JobCompleted > Convert.ToInt32(facebookJob.totalThreads))
                             JobCompleted = Convert.ToInt32(facebookJob.totalThreads);
-                        long JobAssigned = JobCompleted;
+
+                        long JobAssigned = 0;
                         long JobReviewed = JobCompleted;
                         var clientTemplate = new ClientTemplateResponse
                         {
@@ -147,11 +150,11 @@ namespace M2E.Service.JobTemplate
                 {
                     var clientFacebookLikeJobInfo = _db.CreateTemplateFacebookLikes.SingleOrDefault(x => x.Id == id && x.username == username);
 
-                    long JobCompleted = new FacebookDAO().facebookLikeCompletedThreadsWithRefKey(clientFacebookLikeJobInfo.referenceId);
+                    long JobCompleted = _db.facebookPageLikeMappings.Where(x => x.refKey == clientFacebookLikeJobInfo.referenceId).Count();
                     if (JobCompleted > Convert.ToInt32(clientFacebookLikeJobInfo.totalThreads))
                         JobCompleted = Convert.ToInt32(clientFacebookLikeJobInfo.totalThreads);
 
-                    long JobAssigned = JobCompleted;
+                    long JobAssigned = 0;
                     long JobReviewed = JobCompleted;
                     
                     var clientTemplate = new ClientTemplateResponse

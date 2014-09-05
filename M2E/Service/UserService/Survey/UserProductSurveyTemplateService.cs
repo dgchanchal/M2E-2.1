@@ -260,19 +260,19 @@ namespace M2E.Service.UserService.Survey
                 var clientJobInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey);
                 long JobId = clientJobInfo.Id;
                 long JobCompleted = _db.UserJobMappings.Where(x => x.refKey == refKey && x.status == status_done).Count();
-                long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == refKey && x.status == status_assigned).Count();                
+                long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == refKey && x.status == status_assigned).Count();
                 long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
 
-                var SignalRClientHub = new SignalRClientHub();                
-                var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
-                dynamic client = SignalRManager.getSignalRDetail(clientJobInfo.username);
-                if (client != null)
-                {
-                    client.updateClientProgressChart(Convert.ToString(JobId), clientJobInfo.totalThreads, Convert.ToString(JobCompleted), Convert.ToString(JobAssigned), Convert.ToString(JobReviewed));
-                    //client.updateClientProgressChart("8", "20", "10", "8", "5");
-                    //client.addMessage("add message signalR");
-                }
-
+                //var SignalRClientHub = new SignalRClientHub();                
+                //var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
+                //dynamic client = SignalRManager.getSignalRDetail(clientJobInfo.username);
+                //if (client != null)
+                //{
+                //    client.updateClientProgressChart(Convert.ToString(JobId), clientJobInfo.totalThreads, Convert.ToString(JobCompleted), Convert.ToString(JobAssigned), Convert.ToString(JobReviewed));
+                //    //client.updateClientProgressChart("8", "20", "10", "8", "5");
+                //    //client.addMessage("add message signalR");
+                //}
+                bool status = new UserUpdatesClientRealTimeData().UpdateClientRealTimeData(JobId, JobCompleted, JobAssigned, JobReviewed, clientJobInfo.totalThreads, clientJobInfo.username);
                 response.Status = 200;
                 response.Message = "success-";
                 response.Payload = refKey;
@@ -434,16 +434,16 @@ namespace M2E.Service.UserService.Survey
                     long JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == refKey && x.status == Constants.status_assigned).Count();
                     long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
 
-                    var SignalRClientHub = new SignalRClientHub();
-                    var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
-                    dynamic client = SignalRManager.getSignalRDetail(clientJobInfo.username);
-                    if (client != null)
-                    {
-                        client.updateClientProgressChart(Convert.ToString(JobId), clientJobInfo.totalThreads, Convert.ToString(JobCompleted), Convert.ToString(JobAssigned), Convert.ToString(JobReviewed));
-                        //client.updateClientProgressChart("8", "20", "10", "8", "5");
-                        //client.addMessage("add message signalR");
-                    }
-
+                    //var SignalRClientHub = new SignalRClientHub();
+                    //var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
+                    //dynamic client = SignalRManager.getSignalRDetail(clientJobInfo.username);
+                    //if (client != null)
+                    //{
+                    //    client.updateClientProgressChart(Convert.ToString(JobId), clientJobInfo.totalThreads, Convert.ToString(JobCompleted), Convert.ToString(JobAssigned), Convert.ToString(JobReviewed));
+                    //    //client.updateClientProgressChart("8", "20", "10", "8", "5");
+                    //    //client.addMessage("add message signalR");
+                    //}
+                    bool status = new UserUpdatesClientRealTimeData().UpdateClientRealTimeData(JobId, JobCompleted, JobAssigned, JobReviewed, clientJobInfo.totalThreads, clientJobInfo.username);
                     response.Status = 200;
                     response.Message = "success-";
                     response.Payload = refKey;
@@ -491,15 +491,16 @@ namespace M2E.Service.UserService.Survey
                 long JobAssigned = _db.UserJobMappings.Where(x => x.refKey == refKey && x.status == Constants.status_assigned).Count();
                 long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
 
-                var SignalRClientHub = new SignalRClientHub();
-                var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
-                dynamic client = SignalRManager.getSignalRDetail(clientJobInfo.username);
-                if (client != null)
-                {
-                    client.updateClientProgressChart(Convert.ToString(JobId), clientJobInfo.totalThreads, Convert.ToString(JobCompleted), Convert.ToString(JobAssigned), Convert.ToString(JobReviewed));
-                    //client.updateClientProgressChart("8", "20", "10", "8", "5");
-                    //client.addMessage("add message signalR");
-                }
+                //var SignalRClientHub = new SignalRClientHub();
+                //var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
+                //dynamic client = SignalRManager.getSignalRDetail(clientJobInfo.username);
+                //if (client != null)
+                //{
+                //    client.updateClientProgressChart(Convert.ToString(JobId), clientJobInfo.totalThreads, Convert.ToString(JobCompleted), Convert.ToString(JobAssigned), Convert.ToString(JobReviewed));
+                //    //client.updateClientProgressChart("8", "20", "10", "8", "5");
+                //    //client.addMessage("add message signalR");
+                //}
+                bool status = new UserUpdatesClientRealTimeData().UpdateClientRealTimeData(JobId, JobCompleted, JobAssigned, JobReviewed, clientJobInfo.totalThreads, clientJobInfo.username);
 
                 response.Status = 200;
                 response.Message = "success-";

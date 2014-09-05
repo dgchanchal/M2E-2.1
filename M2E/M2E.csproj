@@ -366,6 +366,7 @@
     <Compile Include="Service\UserService\Moderation\ImageModeration.cs" />
     <Compile Include="Service\UserService\Survey\UserProductSurveyTemplateService.cs" />
     <Compile Include="Service\UserService\UserReputationService.cs" />
+    <Compile Include="Service\UserService\UserUpdatesClientRealTimeData.cs" />
     <Compile Include="Session\HeaderManager.cs" />
     <Compile Include="Session\M2ESession.cs" />
     <Compile Include="Session\SignalRManager.cs" />

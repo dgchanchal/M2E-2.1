@@ -1,7 +1,7 @@
 ﻿<!-- Content Header (Page header) -->
 <div ng-controller="ClientAfterLoginTemplateInfo">
                 <section class="content-header" >
-                    <span><button class="btn btn-success btn-flat" ng-click="openTemplateResponseDetailPageWithId()">Show Detail</button> </span>
+                    <span><button class="btn btn-success btn-flat" ng-show="templateInfoShowDetailButtonShow" ng-click="openTemplateResponseDetailPageWithId()">Show Detail</button> </span>
                         <!--<span class="active"><button ng-click="openTemplateEditPageWithId(templateId)" class="btn btn-warning">Edit</button></span>-->
                         <span class="active"><button ng-click="deleteTemplatePageWithId(templateId)" class="btn btn-danger">Delete</button></span>
                 </section>

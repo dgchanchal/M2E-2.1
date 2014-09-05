@@ -4,6 +4,7 @@ define([appLocation.postLogin], function (app) {
     app.controller('ClientAfterLoginTemplateInfo', function ($scope, $http, $rootScope, $routeParams, CookieUtil, $route) {
         $('title').html("Template Info page"); //TODO: change the title so cann't be tracked in log
         $scope.templateId = $routeParams.templateId;
+        $scope.templateInfoShowDetailButtonShow = true;
         //console.log("template info page");
         initializeClientChart();
         function initializeClientChart() {
@@ -45,6 +46,10 @@ define([appLocation.postLogin], function (app) {
                     render_container_highcharts_completed_vs_reviewed(data.Payload.editId, JobTotal_int, JobReviewed_int, JobReviewRemaining);
                     render_container_highcharts_completed_vs_assigned_vs_remaining(data.Payload.editId, JobCompleted_int, JobAssigned_int, JobRemaining_int);
                     render_container_highcharts_horizontal_bar_chart_ratio_completed_reviewed_remaining(data.Payload.editId, JobCompleted_int, JobAssigned_int, JobReviewed_int, JobRemaining_int, JobTotal_int);
+
+                    if ($scope.templateInfo.type == TemplateInfoModel.type_Ads && $scope.templateInfo.subType == TemplateInfoModel.subType_facebookLike) {
+                        $scope.templateInfoShowDetailButtonShow = false;
+                    }
                 }
                 else if (data.Status == "401") {
                     location.href = "/?type=info&mssg=your session is expired/#/login";

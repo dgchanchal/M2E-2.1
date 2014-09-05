@@ -151,6 +151,26 @@ namespace M2E.Service.UserService.facebookLike
                     try
                     {
                         _db.SaveChanges();
+
+                        long JobId = facebookLikeTemplateData.Id;
+                        long JobCompleted = _db.facebookPageLikeMappings.Where(x => x.refKey == refKey).Count();
+                        if (JobCompleted > Convert.ToInt32(facebookLikeTemplateData.totalThreads))
+                            JobCompleted = Convert.ToInt32(facebookLikeTemplateData.totalThreads);
+
+                        long JobAssigned = 0;
+                        long JobReviewed = JobCompleted;
+
+                        //var SignalRClientHub = new SignalRClientHub();
+                        //var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
+                        //dynamic client = SignalRManager.getSignalRDetail(clientJobInfo.username);
+                        //if (client != null)
+                        //{
+                        //    client.updateClientProgressChart(Convert.ToString(JobId), clientJobInfo.totalThreads, Convert.ToString(JobCompleted), Convert.ToString(JobAssigned), Convert.ToString(JobReviewed));
+                        //    //client.updateClientProgressChart("8", "20", "10", "8", "5");
+                        //    //client.addMessage("add message signalR");
+                        //}
+                        bool status = new UserUpdatesClientRealTimeData().UpdateClientRealTimeData(JobId, JobCompleted, JobAssigned, JobReviewed, facebookLikeTemplateData.totalThreads, facebookLikeTemplateData.username);
+
                     }
                     catch (DbEntityValidationException e)
                     {
