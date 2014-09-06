@@ -380,8 +380,14 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="App\css\bannerscollection_zoominout.css" />
     <Content Include="App\css\magic.css" />
-    <Content Include="App\img\cautom.jpg" />
-    <Content Include="App\img\list_menu.png" />
+    <Content Include="App\img\Accepter.png" />
+    <Content Include="App\img\cautom.png" />
+    <Content Include="App\img\indexPageSlider\slider_0_low.jpg" />
+    <Content Include="App\img\indexPageSlider\slider_1_low.jpg" />
+    <Content Include="App\img\indexPageSlider\slider_2_low.jpg" />
+    <Content Include="App\img\indexPageSlider\slider_3_low.jpg" />
+    <Content Include="App\img\indexPageSlider\slider_4_low.jpg" />
+    <Content Include="App\img\indexPageSlider\slider_5_low.jpg" />
     <Content Include="App\img\loading\load1.gif" />
     <Content Include="App\img\loading\loading.gif" />
     <Content Include="App\img\loading\loading100x100.gif" />
@@ -391,7 +397,6 @@
     <Content Include="App\img\login\for_institutions.png" />
     <Content Include="App\img\login\for_participants.png" />
     <Content Include="App\img\login\inactive.png" />
-    <Content Include="App\img\login\Logo10.png" />
     <Content Include="App\img\movies\1.jpg" />
     <Content Include="App\img\movies\2.jpg" />
     <Content Include="App\img\movies\3.jpg" />
@@ -413,6 +418,7 @@
     <Content Include="App\img\opportuneFullWidth\thumbs\05_opportune.jpg" />
     <Content Include="App\img\opportuneFullWidth\thumbs\06_opportune.jpg" />
     <Content Include="App\img\panzoom\shark_attack.jpg" />
+    <Content Include="App\img\Requester.png" />
     <Content Include="App\img\sprites.png" />
     <Content Include="App\img\swipeImage\Touch_Gestures_4-20.png" />
     <Content Include="App\img\swipeImage\Touch_Gestures_4-32.png" />
@@ -431,7 +437,6 @@
     <Content Include="App\js\dragend.js" />
     <Content Include="App\js\angular.1.2.13.js" />
     <Content Include="App\js\jquery-ui.min.js" />
-    <Content Include="App\js\jquery.nivo.slider.js" />
     <Content Include="App\js\jquery.panzoom.js" />
     <Content Include="App\js\jquery.panzoom.min.js" />
     <Content Include="App\js\hammer.min.js" />
@@ -959,7 +964,6 @@
     <Content Include="Models\M2EContext.edmx.sql" />
     <Content Include="Template\AdminLTE-master\.gitignore" />
     <Content Include="Template\AdminLTE-master\css\AdminLTE.css" />
-    <Content Include="Template\AdminLTE-master\css\bootstrap-responsive.css" />
     <Content Include="Template\AdminLTE-master\css\bootstrap-slider\slider.css" />
     <Content Include="Template\AdminLTE-master\css\bootstrap-switch.css" />
     <Content Include="Template\AdminLTE-master\css\bootstrap-wysihtml5\bootstrap3-wysihtml5.css" />
@@ -1593,6 +1597,7 @@
     <None Include="App\third-Party\wysihtml5\test\lib" />
     <None Include="App\third-Party\wysihtml5\test\README" />
     <None Include="App\third-Party\wysihtml5\VERSION" />
+    <None Include="Properties\PublishProfiles\M2E.pubxml" />
     <None Include="Template\AdminLTE-master\ajax\dashboard-boxrefresh-demo.php" />
     <None Include="Template\AdminLTE-master\fonts\fontawesome-webfont.eot" />
     <None Include="Template\AdminLTE-master\fonts\fontawesome-webfont.svg" />
