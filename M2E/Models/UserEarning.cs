@@ -20,5 +20,6 @@ namespace M2E.Models
         public string approved { get; set; }
         public string pending { get; set; }
         public string currency { get; set; }
+        public Nullable<System.DateTime> LastUpdated { get; set; }
     }
 }

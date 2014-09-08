@@ -12,14 +12,14 @@ namespace M2E.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ClientWallet
+    public partial class UserReputationMapping
     {
         public int Id { get; set; }
         public string username { get; set; }
-        public string total { get; set; }
-        public string approved { get; set; }
-        public string pending { get; set; }
-        public string currency { get; set; }
-        public Nullable<System.DateTime> LastUpdated { get; set; }
+        public string type { get; set; }
+        public string code { get; set; }
+        public string description { get; set; }
+        public Nullable<System.DateTime> DateTime { get; set; }
+        public string refKey { get; set; }
     }
 }

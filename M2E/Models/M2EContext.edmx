@@ -37,6 +37,7 @@
     <EntitySet Name="UserReputations" EntityType="M2EModel.Store.UserReputations" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserEarnings" EntityType="M2EModel.Store.UserEarnings" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ClientWallets" EntityType="M2EModel.Store.ClientWallets" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserReputationMappings" EntityType="M2EModel.Store.UserReputationMappings" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
   <EntityType Name="ClientDetails">
     <Key>
@@ -240,6 +241,9 @@
     <Property Name="KeepMeSignedIn" Type="nvarchar(max)" Nullable="true" />
     <Property Name="RegistrationTime" Type="nvarchar(max)" Nullable="true" />
     <Property Name="DateTime" Type="datetime" Nullable="true" />
+    <Property Name="FacebookLink" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="LinkedinLink" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="GoogleLink" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="UserSkills">
     <Key>
@@ -410,6 +414,7 @@
     <Property Name="approved" Type="nvarchar(max)" Nullable="false" />
     <Property Name="pending" Type="nvarchar(max)" Nullable="false" />
     <Property Name="currency" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastUpdated" Type="datetime" Nullable="true" />
   </EntityType>
   <EntityType Name="ClientWallets">
     <Key>
@@ -421,6 +426,19 @@
     <Property Name="approved" Type="nvarchar(max)" Nullable="false" />
     <Property Name="pending" Type="nvarchar(max)" Nullable="false" />
     <Property Name="currency" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastUpdated" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="UserReputationMappings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="code" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="true" />
+    <Property Name="refKey" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -458,6 +476,7 @@
           <EntitySet Name="UserReputations" EntityType="M2EModel.UserReputation" />
           <EntitySet Name="UserEarnings" EntityType="M2EModel.UserEarning" />
           <EntitySet Name="ClientWallets" EntityType="M2EModel.ClientWallet" />
+          <EntitySet Name="UserReputationMappings" EntityType="M2EModel.UserReputationMapping" />
         </EntityContainer>
         <EntityType Name="ClientDetail">
           <Key>
@@ -661,6 +680,9 @@
           <Property Name="KeepMeSignedIn" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="RegistrationTime" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Type="DateTime" Name="DateTime" Nullable="true" />
+          <Property Type="String" Name="FacebookLink" Nullable="true" />
+          <Property Type="String" Name="LinkedinLink" Nullable="true" />
+          <Property Type="String" Name="GoogleLink" Nullable="true" />
         </EntityType>
         <EntityType Name="UserSkill">
           <Key>
@@ -831,6 +853,7 @@
           <Property Type="String" Name="approved" Nullable="false" />
           <Property Type="String" Name="pending" Nullable="false" />
           <Property Type="String" Name="currency" Nullable="false" />
+          <Property Type="DateTime" Name="LastUpdated" Nullable="true" />
         </EntityType>
         <EntityType Name="ClientWallet">
           <Key>
@@ -842,6 +865,19 @@
           <Property Type="String" Name="approved" Nullable="false" />
           <Property Type="String" Name="pending" Nullable="false" />
           <Property Type="String" Name="currency" Nullable="false" />
+          <Property Type="DateTime" Name="LastUpdated" Nullable="true" />
+        </EntityType>
+        <EntityType Name="UserReputationMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="username" Nullable="false" />
+          <Property Type="String" Name="type" Nullable="false" />
+          <Property Type="String" Name="code" Nullable="false" />
+          <Property Type="String" Name="description" Nullable="false" />
+          <Property Type="DateTime" Name="DateTime" Nullable="true" />
+          <Property Type="String" Name="refKey" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1065,6 +1101,9 @@
           <ScalarProperty Name="KeepMeSignedIn" ColumnName="KeepMeSignedIn" />
           <ScalarProperty Name="RegistrationTime" ColumnName="RegistrationTime" />
           <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="FacebookLink" ColumnName="FacebookLink" />
+          <ScalarProperty Name="LinkedinLink" ColumnName="LinkedinLink" />
+          <ScalarProperty Name="GoogleLink" ColumnName="GoogleLink" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1249,6 +1288,7 @@
           <ScalarProperty Name="approved" ColumnName="approved" />
           <ScalarProperty Name="pending" ColumnName="pending" />
           <ScalarProperty Name="currency" ColumnName="currency" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1261,6 +1301,20 @@
           <ScalarProperty Name="approved" ColumnName="approved" />
           <ScalarProperty Name="pending" ColumnName="pending" />
           <ScalarProperty Name="currency" ColumnName="currency" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserReputationMappings">
+      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserReputationMapping)">
+        <MappingFragment StoreEntitySet="UserReputationMappings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="refKey" ColumnName="refKey" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1300,7 +1354,7 @@
         <EntityTypeShape EntityType="M2EModel.UserDetail" Width="1.5" PointX="10.75" PointY="6.875" Height="1.5956835937500031" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.UserPageSetting" Width="1.5" PointX="8.75" PointY="10.5" Height="2.1725878906250031" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.UserRecommendation" Width="1.5" PointX="10.75" PointY="10.5" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.User" Width="1.5" PointX="10.75" PointY="0.75" Height="3.9033007812499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="M2EModel.User" Width="1.5" PointX="10.75" PointY="0.75" Height="4.480205078125" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.UserSkill" Width="1.5" PointX="10.75" PointY="4.875" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.ValidateUserKey" Width="1.5" PointX="10.75" PointY="8.75" Height="1.5956835937500031" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.CreateTemplateImgurImagesList" Width="1.5" PointX="0.875" PointY="2.5" Height="3.1340950520833326" />
@@ -1314,8 +1368,9 @@
         <EntityTypeShape EntityType="M2EModel.linkedinAuth" Width="1.5" PointX="9.625" PointY="13.25" Height="1.7879850260416657" />
         <EntityTypeShape EntityType="M2EModel.facebookPageLikeMapping" Width="1.5" PointX="5.375" PointY="13" Height="2.1725878906249996" />
         <EntityTypeShape EntityType="M2EModel.UserReputation" Width="1.5" PointX="0.625" PointY="11.625" Height="2.1725878906249996" />
-        <EntityTypeShape EntityType="M2EModel.UserEarning" Width="1.5" PointX="0.5" PointY="14.125" Height="2.1725878906250031" />
-        <EntityTypeShape EntityType="M2EModel.ClientWallet" Width="1.5" PointX="2.75" PointY="14.5" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="M2EModel.UserEarning" Width="1.5" PointX="0.5" PointY="14.125" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="M2EModel.ClientWallet" Width="1.5" PointX="2.75" PointY="14.5" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="M2EModel.UserReputationMapping" Width="1.5" PointX="5.875" PointY="16" Height="2.3648893229166674" />
       </Diagram>
     </Diagrams>
   </Designer>

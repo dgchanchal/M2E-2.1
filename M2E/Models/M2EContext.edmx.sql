@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/05/2014 15:24:45
+-- Date Created: 09/08/2014 13:23:08
 -- Generated from EDMX file: F:\temp2\branches\M2E-2.0\M2E\Models\M2EContext.edmx
 -- --------------------------------------------------
 
@@ -108,6 +108,12 @@ IF OBJECT_ID(N'[dbo].[facebookPageLikeMappings]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[UserReputations]', 'U') IS NOT NULL
     DROP TABLE [dbo].[UserReputations];
+GO
+IF OBJECT_ID(N'[dbo].[UserEarnings]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserEarnings];
+GO
+IF OBJECT_ID(N'[dbo].[ClientWallets]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ClientWallets];
 GO
 
 -- --------------------------------------------------
@@ -313,7 +319,10 @@ CREATE TABLE [dbo].[Users] (
     [Locked] nvarchar(max)  NULL,
     [KeepMeSignedIn] nvarchar(max)  NULL,
     [RegistrationTime] nvarchar(max)  NULL,
-    [DateTime] datetime  NULL
+    [DateTime] datetime  NULL,
+    [FacebookLink] nvarchar(max)  NULL,
+    [LinkedinLink] nvarchar(max)  NULL,
+    [GoogleLink] nvarchar(max)  NULL
 );
 GO
 
@@ -483,7 +492,8 @@ CREATE TABLE [dbo].[UserEarnings] (
     [total] nvarchar(max)  NOT NULL,
     [approved] nvarchar(max)  NOT NULL,
     [pending] nvarchar(max)  NOT NULL,
-    [currency] nvarchar(max)  NOT NULL
+    [currency] nvarchar(max)  NOT NULL,
+    [LastUpdated] datetime  NULL
 );
 GO
 
@@ -494,7 +504,20 @@ CREATE TABLE [dbo].[ClientWallets] (
     [total] nvarchar(max)  NOT NULL,
     [approved] nvarchar(max)  NOT NULL,
     [pending] nvarchar(max)  NOT NULL,
-    [currency] nvarchar(max)  NOT NULL
+    [currency] nvarchar(max)  NOT NULL,
+    [LastUpdated] datetime  NULL
+);
+GO
+
+-- Creating table 'UserReputationMappings'
+CREATE TABLE [dbo].[UserReputationMappings] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [username] nvarchar(max)  NOT NULL,
+    [type] nvarchar(max)  NOT NULL,
+    [code] nvarchar(max)  NOT NULL,
+    [description] nvarchar(max)  NOT NULL,
+    [DateTime] datetime  NULL,
+    [refKey] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -685,6 +708,12 @@ GO
 -- Creating primary key on [Id] in table 'ClientWallets'
 ALTER TABLE [dbo].[ClientWallets]
 ADD CONSTRAINT [PK_ClientWallets]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'UserReputationMappings'
+ALTER TABLE [dbo].[UserReputationMappings]
+ADD CONSTRAINT [PK_UserReputationMappings]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 

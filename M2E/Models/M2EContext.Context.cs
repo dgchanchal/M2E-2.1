@@ -56,5 +56,6 @@ namespace M2E.Models
         public DbSet<UserReputation> UserReputations { get; set; }
         public DbSet<UserEarning> UserEarnings { get; set; }
         public DbSet<ClientWallet> ClientWallets { get; set; }
+        public DbSet<UserReputationMapping> UserReputationMappings { get; set; }
     }
 }

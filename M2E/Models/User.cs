@@ -29,5 +29,8 @@ namespace M2E.Models
         public string KeepMeSignedIn { get; set; }
         public string RegistrationTime { get; set; }
         public Nullable<System.DateTime> DateTime { get; set; }
+        public string FacebookLink { get; set; }
+        public string LinkedinLink { get; set; }
+        public string GoogleLink { get; set; }
     }
 }

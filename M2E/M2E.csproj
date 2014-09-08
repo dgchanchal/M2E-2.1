@@ -334,6 +334,9 @@
     <Compile Include="Models\UserReputation.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserReputationMapping.cs">
+      <DependentUpon>M2EContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserSkill.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
