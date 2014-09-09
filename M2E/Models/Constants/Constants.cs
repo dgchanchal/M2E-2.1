@@ -53,5 +53,7 @@ namespace M2E.Models.Constants
         public const string questionTypeMAQ = "MAQ";
         public const string questionTypeLAQ = "LAQ";
         public const string questionTypeTAQ = "TAQ";
+
+        public const int picPerUserImageModeration = 5;
     }
 }

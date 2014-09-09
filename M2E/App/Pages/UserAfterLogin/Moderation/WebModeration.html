@@ -28,38 +28,30 @@
                                    <div class="box box-color box-bordered">
                                        <div class="box-title">
                                            <h3>
-                                               <i class="icon-user"></i>Transcription Template
+                                               <i class="icon-user"></i><span data-ng-bind-html="TranscriptionTemplateInfo[0].question"></span>
                                            </h3>
                                        </div>
                                        <div class="box-content nopadding">
-                                           <div class="row row-padding">                                        
-                                                <div class="{{TranscriptionImageWidthClass}}">
-                                                    <!-- small box -->
-                                                    <div style="position:relative">
-                                                        <panzoomwidget panzoom-id="PanZoom" style="position:absolute;top:10px;left:10px;z-index:1"></panzoomwidget>
-                                                        <panzoom id="PanZoom" config="panzoomConfig" model="panzoomModel" style="height: 800px">
-                                                            <!--<img src="http://engrenages.blog.lemonde.fr/files/2010/03/photo-061d.1269391401.jpg" style="position:absolute" />-->
-                                                            <img src="{{TranscriptionTemplateInfo.imageUrl}}" style="position:absolute" />
-                                                            <svg style="position:absolute" width="800px" height="600px">
-                                                                <rect ng-repeat="rect in rects" ng-attr-x="{{rect.x}}" ng-attr-y="{{rect.y}}" ng-attr-width="{{rect.width}}" ng-attr-height="{{rect.height}}" rx="10" ry="10" style="fill:none;stroke-width:2;stroke:rgb(255,0,0)" />
-                                                            </svg>
-                                                        </panzoom>
-                                                    </div>
-                                                </div><!-- ./col -->
+                                           <div class="row row-padding">                                                
+                                               <div class="col-md-12" ng-repeat="TranscriptionTemplateInfoData in TranscriptionTemplateInfo">
+                                                          <div class="{{TranscriptionImageWidthClass}}">
+                                                            <!-- small box -->                                                                                                                           
+                                                                    <img src="{{TranscriptionTemplateInfoData.imageUrl}}" style="width: 100%;"/>                                                                                                                                                                                                
+                                                        </div><!-- ./col -->
  
-                                                <div class="{{TranscriptionInputWidthClass}}">
-                                                    <div class="box-body">
-                                                        <fieldset>
-                                                        <label><b><span data-ng-bind-html="TranscriptionTemplateInfo.question"></span></b></label>
-                                                        <div style="padding: 0px 0px 0px 20px;" class="radio" ng-repeat="options in TranscriptionTemplateInfo.optionsList">
-                                                            <input type="radio" value="{{$index}}" name="Image_Moderation" class="userImageModerationRadioButton"> 
-                                                            <span data-ng-bind-html="options"></span>
-                                                        </div>
-                                                        </fieldset>
-                                                    </div>                                                        
-                                                        <button class="{{TranscriptionRowToggleButtonClass}}" ng-click="AlignTranscriptionBoxToggle()"><span ng-bind="TranscriptionRowToggleText"></span></button>
-                                                        <button class="btn btn-danger" ng-click="SubmitImageModerationInputTableData()">Submit</button>
-                                                </div> 
+                                                        <div class="{{TranscriptionInputWidthClass}}">
+                                                            <div class="box-body">
+                                                                <fieldset>                                                                
+                                                                <div style="padding: 0px 0px 0px 20px;" class="radio" ng-repeat="options in TranscriptionTemplateInfoData.optionsList">
+                                                                    <input type="radio" value="{{$index}}" name="{{TranscriptionTemplateInfoData.imageUrl}}" class="userImageModerationRadioButton"> 
+                                                                    <span data-ng-bind-html="options"></span>
+                                                                </div>
+                                                                </fieldset>
+                                                            </div>                                                                                                                        
+                                                        </div>       
+                                                </div>
+                                                <button class="{{TranscriptionRowToggleButtonClass}}" ng-click="AlignTranscriptionBoxToggle()"><span ng-bind="TranscriptionRowToggleText"></span></button>
+                                                                <button class="btn btn-danger" ng-click="SubmitImageModerationInputTableData()">Submit</button>                                                                                
                                             </div>
                                        </div>
                                    </div>

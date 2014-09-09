@@ -40,10 +40,11 @@ namespace M2E.Service.JobTemplate
             {
                 foreach (var job in templateData)
                 {
-                    if (job.type == Constants.type_dataEntry && job.subType == Constants.subType_Transcription)
+                    if ((job.type == Constants.type_dataEntry && job.subType == Constants.subType_Transcription) ||
+                   (job.type == Constants.type_moderation && job.subType == Constants.subType_moderatingPhotos))
                     {
-                        long JobCompleted = _db.UserMultipleJobMappings.Where(x => x.refKey == job.referenceId && x.status == Constants.status_done).Count();
-                        long JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == job.referenceId && x.status == Constants.status_assigned).Count();
+                        long JobCompleted = _db.UserMultipleJobMappings.Where(x => x.refKey == job.referenceId && x.status == Constants.status_done && x.isFirst == Constants.status_true).Count();
+                        long JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == job.referenceId && x.status == Constants.status_assigned && x.isFirst == Constants.status_true).Count();
                         long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
                         if (JobCompleted > Convert.ToInt32(job.totalThreads))
                             JobCompleted = Convert.ToInt32(job.totalThreads);
@@ -183,8 +184,8 @@ namespace M2E.Service.JobTemplate
                     if ((clientJobInfo.type == Constants.type_dataEntry && clientJobInfo.subType == Constants.subType_Transcription) ||
                     (clientJobInfo.type == Constants.type_moderation && clientJobInfo.subType == Constants.subType_moderatingPhotos))
                     {
-                        long JobCompleted = _db.UserMultipleJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == Constants.status_done).Count();
-                        long JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == Constants.status_assigned).Count();
+                        long JobCompleted = _db.UserMultipleJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == Constants.status_done && x.isFirst == Constants.status_true).Count();
+                        long JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == Constants.status_assigned && x.isFirst == Constants.status_true).Count();
                         long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
 
                         if (JobCompleted > Convert.ToInt32(clientJobInfo.totalThreads))
@@ -494,7 +495,7 @@ namespace M2E.Service.JobTemplate
                 var ClientImageModerationResultResponseListData = new ClientAllImageModerationResultResponse();
                 ClientImageModerationResultResponseListData.data = new List<ClientImageModerationResponseData>();
                 var templateData = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.Id == id);
-
+                var hashMap = new Dictionary<string, string>();
                 if (templateData != null)
                 {
                     var ImageModerationResultList = _db.UserMultipleJobMappings.Where(x => x.refKey == templateData.referenceId && x.status == Constants.status_done).ToList();
@@ -507,11 +508,33 @@ namespace M2E.Service.JobTemplate
                     ClientImageModerationResultResponseListData.question = ImageModerationDescription.Question;
                     foreach (var ImageModerationResult in ImageModerationResultList)
                     {
+                        if (hashMap.ContainsKey(ImageModerationResult.imageKey)) continue;
+
                         var ClientImageModerationResponseDataResponse = new ClientImageModerationResponseData();
                         ClientImageModerationResponseDataResponse.imageUrl = ImageModerationResult.imageKey;
-                        ClientImageModerationResponseDataResponse.userResponse = ImageModerationResult.surveyResult;
-                        ClientImageModerationResponseDataResponse.userResponseValue = ImageModerationDescription.Options.Split(';')[Convert.ToInt32(ImageModerationResult.surveyResult)];
+
+                        var currentRefKey = ImageModerationResultList.Where(x => x.imageKey == ImageModerationResult.imageKey).ToList();
+
+                        var distinct = currentRefKey.GroupBy(x => x.surveyResult).Select(group => new
+                        {
+                            surveyResult = group.Key,
+                            Count = group.Count()
+                        }).OrderBy(x => x.surveyResult);
+                        var maxCountKey = "0";
+                        var maxCountValue = 0;
+                        foreach (var item in distinct)
+                        {
+                            if (item.Count > maxCountValue)
+                            {
+                                maxCountValue = item.Count;
+                                maxCountKey = item.surveyResult;
+                            }
+                        }
+
+                        ClientImageModerationResponseDataResponse.userResponse = maxCountKey;
+                        ClientImageModerationResponseDataResponse.userResponseValue = ImageModerationDescription.Options.Split(';')[Convert.ToInt32(maxCountKey)];
                         ClientImageModerationResultResponseListData.data.Add(ClientImageModerationResponseDataResponse);
+                        hashMap[ImageModerationResult.imageKey] = Constants.status_done;
                     }
                     response.Status = 200;
                     response.Message = "success";

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/08/2014 13:23:08
+-- Date Created: 09/09/2014 12:53:02
 -- Generated from EDMX file: F:\temp2\branches\M2E-2.0\M2E\Models\M2EContext.edmx
 -- --------------------------------------------------
 
@@ -114,6 +114,9 @@ IF OBJECT_ID(N'[dbo].[UserEarnings]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[ClientWallets]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ClientWallets];
+GO
+IF OBJECT_ID(N'[dbo].[UserReputationMappings]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserReputationMappings];
 GO
 
 -- --------------------------------------------------
@@ -355,7 +358,8 @@ CREATE TABLE [dbo].[CreateTemplateImgurImagesLists] (
     [referenceKey] nvarchar(max)  NOT NULL,
     [imgurId] nvarchar(max)  NOT NULL,
     [imgurDeleteHash] nvarchar(max)  NOT NULL,
-    [imgurLink] nvarchar(max)  NOT NULL
+    [imgurLink] nvarchar(max)  NOT NULL,
+    [alocatedCount] int  NULL
 );
 GO
 
@@ -405,7 +409,8 @@ CREATE TABLE [dbo].[UserMultipleJobMappings] (
     [endTime] nvarchar(max)  NOT NULL,
     [expectedDelivery] nvarchar(max)  NOT NULL,
     [surveyResult] nvarchar(max)  NOT NULL,
-    [imageKey] nvarchar(max)  NOT NULL
+    [imageKey] nvarchar(max)  NOT NULL,
+    [isFirst] nvarchar(max)  NULL
 );
 GO
 
@@ -481,7 +486,8 @@ CREATE TABLE [dbo].[UserReputations] (
     [ReputationScore] nvarchar(max)  NOT NULL,
     [GoldEarned] nvarchar(max)  NOT NULL,
     [SilverEarned] nvarchar(max)  NOT NULL,
-    [BronzeEarned] nvarchar(max)  NOT NULL
+    [BronzeEarned] nvarchar(max)  NOT NULL,
+    [UserBadge] nvarchar(max)  NULL
 );
 GO
 

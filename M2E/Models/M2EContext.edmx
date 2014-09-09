@@ -277,6 +277,7 @@
     <Property Name="imgurId" Type="nvarchar(max)" Nullable="false" />
     <Property Name="imgurDeleteHash" Type="nvarchar(max)" Nullable="false" />
     <Property Name="imgurLink" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="alocatedCount" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="UserSurveyResultToBeRevieweds1">
     <Key>
@@ -327,6 +328,7 @@
     <Property Name="expectedDelivery" Type="nvarchar(max)" Nullable="false" />
     <Property Name="surveyResult" Type="nvarchar(max)" Nullable="false" />
     <Property Name="imageKey" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="isFirst" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="CreateTemplateFacebookLikes">
     <Key>
@@ -403,6 +405,7 @@
     <Property Name="GoldEarned" Type="nvarchar(max)" Nullable="false" />
     <Property Name="SilverEarned" Type="nvarchar(max)" Nullable="false" />
     <Property Name="BronzeEarned" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserBadge" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="UserEarnings">
     <Key>
@@ -716,6 +719,7 @@
           <Property Type="String" Name="imgurId" Nullable="false" />
           <Property Type="String" Name="imgurDeleteHash" Nullable="false" />
           <Property Type="String" Name="imgurLink" Nullable="false" />
+          <Property Type="Int32" Name="alocatedCount" Nullable="true" />
         </EntityType>
         <EntityType Name="UserSurveyResultToBeReviewed">
           <Key>
@@ -766,6 +770,7 @@
           <Property Type="String" Name="expectedDelivery" Nullable="false" />
           <Property Type="String" Name="surveyResult" Nullable="false" />
           <Property Type="String" Name="imageKey" Nullable="false" />
+          <Property Type="String" Name="isFirst" Nullable="true" />
         </EntityType>
         <EntityType Name="CreateTemplateFacebookLike">
           <Key>
@@ -842,6 +847,7 @@
           <Property Type="String" Name="GoldEarned" Nullable="false" />
           <Property Type="String" Name="SilverEarned" Nullable="false" />
           <Property Type="String" Name="BronzeEarned" Nullable="false" />
+          <Property Type="String" Name="UserBadge" Nullable="true" />
         </EntityType>
         <EntityType Name="UserEarning">
           <Key>
@@ -1140,6 +1146,7 @@
           <ScalarProperty Name="imgurId" ColumnName="imgurId" />
           <ScalarProperty Name="imgurDeleteHash" ColumnName="imgurDeleteHash" />
           <ScalarProperty Name="imgurLink" ColumnName="imgurLink" />
+          <ScalarProperty Name="alocatedCount" ColumnName="alocatedCount" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1194,6 +1201,7 @@
           <ScalarProperty Name="expectedDelivery" ColumnName="expectedDelivery" />
           <ScalarProperty Name="surveyResult" ColumnName="surveyResult" />
           <ScalarProperty Name="imageKey" ColumnName="imageKey" />
+          <ScalarProperty Name="isFirst" ColumnName="isFirst" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1276,6 +1284,7 @@
           <ScalarProperty Name="GoldEarned" ColumnName="GoldEarned" />
           <ScalarProperty Name="SilverEarned" ColumnName="SilverEarned" />
           <ScalarProperty Name="BronzeEarned" ColumnName="BronzeEarned" />
+          <ScalarProperty Name="UserBadge" ColumnName="UserBadge" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1357,17 +1366,17 @@
         <EntityTypeShape EntityType="M2EModel.User" Width="1.5" PointX="10.75" PointY="0.75" Height="4.480205078125" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.UserSkill" Width="1.5" PointX="10.75" PointY="4.875" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.ValidateUserKey" Width="1.5" PointX="10.75" PointY="8.75" Height="1.5956835937500031" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.CreateTemplateImgurImagesList" Width="1.5" PointX="0.875" PointY="2.5" Height="3.1340950520833326" />
+        <EntityTypeShape EntityType="M2EModel.CreateTemplateImgurImagesList" Width="1.5" PointX="0.875" PointY="2.5" Height="3.3263964843749996" />
         <EntityTypeShape EntityType="M2EModel.UserSurveyResultToBeReviewed" Width="1.5" PointX="2.875" PointY="4.125" Height="2.1725878906249996" />
         <EntityTypeShape EntityType="M2EModel.UserSurveyResult" Width="1.5" PointX="2.875" PointY="6.375" Height="2.1725878906249996" />
         <EntityTypeShape EntityType="M2EModel.UserJobMapping" Width="1.5" PointX="6.75" PointY="6.5" Height="2.3648893229166656" />
-        <EntityTypeShape EntityType="M2EModel.UserMultipleJobMapping" Width="1.5" PointX="8.875" PointY="2.375" Height="3.1340950520833326" />
+        <EntityTypeShape EntityType="M2EModel.UserMultipleJobMapping" Width="1.5" PointX="8.875" PointY="2.375" Height="3.3263964843749996" />
         <EntityTypeShape EntityType="M2EModel.CreateTemplateFacebookLike" Width="1.5" PointX="8.875" PointY="5.75" Height="3.9033007812499996" />
         <EntityTypeShape EntityType="M2EModel.UserFacebookLikeJobMapping" Width="1.5" PointX="2.625" PointY="11" Height="2.7494921874999996" />
         <EntityTypeShape EntityType="M2EModel.FacebookAuth" Width="1.5" PointX="7.375" PointY="13.125" Height="2.1725878906249996" />
         <EntityTypeShape EntityType="M2EModel.linkedinAuth" Width="1.5" PointX="9.625" PointY="13.25" Height="1.7879850260416657" />
         <EntityTypeShape EntityType="M2EModel.facebookPageLikeMapping" Width="1.5" PointX="5.375" PointY="13" Height="2.1725878906249996" />
-        <EntityTypeShape EntityType="M2EModel.UserReputation" Width="1.5" PointX="0.625" PointY="11.625" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="M2EModel.UserReputation" Width="1.5" PointX="0.625" PointY="11.625" Height="2.3648893229166656" />
         <EntityTypeShape EntityType="M2EModel.UserEarning" Width="1.5" PointX="0.5" PointY="14.125" Height="2.3648893229166674" />
         <EntityTypeShape EntityType="M2EModel.ClientWallet" Width="1.5" PointX="2.75" PointY="14.5" Height="2.3648893229166674" />
         <EntityTypeShape EntityType="M2EModel.UserReputationMapping" Width="1.5" PointX="5.875" PointY="16" Height="2.3648893229166674" />

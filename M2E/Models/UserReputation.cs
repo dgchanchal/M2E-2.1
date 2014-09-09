@@ -20,5 +20,6 @@ namespace M2E.Models
         public string GoldEarned { get; set; }
         public string SilverEarned { get; set; }
         public string BronzeEarned { get; set; }
+        public string UserBadge { get; set; }
     }
 }

@@ -156,7 +156,7 @@ namespace M2E.Controllers
             var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
             if (isValidToken)
             {
-                return Json(userTemplateList.GetImageModerationTemplateInformationByRefKey(session.UserName, refKey));
+                return Json(userTemplateList.GetMultipleImageModerationTemplateInformationByRefKey(session.UserName, refKey));
             }
             else
             {
@@ -209,18 +209,17 @@ namespace M2E.Controllers
         }
 
         [HttpPost]
-        public JsonResult SubmitImageModerationInputTableDataByRefKey()
+        public JsonResult SubmitImageModerationInputTableDataByRefKey(List<UserSubmitImageModerationResult> res)
         {
             //var username = "sumitchourasia91@gmail.com";
-            var refKey = Request.QueryString["refKey"].ToString(CultureInfo.InvariantCulture);
-            var data = Request.QueryString["data"].ToString(CultureInfo.InvariantCulture);         
+            var refKey = Request.QueryString["refKey"].ToString(CultureInfo.InvariantCulture);                   
             var headers = new HeaderManager(Request);
             M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
             var UserImageModeration = new UserImageModeration();
             var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
             if (isValidToken)
             {
-                return Json(UserImageModeration.SubmitImageModerationInputTableDataByRefKey(session.UserName, refKey, data));                
+                return Json(UserImageModeration.SubmitMultipleImageModerationInputTableDataByRefKey(session.UserName, refKey, res));                
             }
             else
             {

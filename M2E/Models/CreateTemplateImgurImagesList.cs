@@ -25,5 +25,6 @@ namespace M2E.Models
         public string imgurId { get; set; }
         public string imgurDeleteHash { get; set; }
         public string imgurLink { get; set; }
+        public Nullable<int> alocatedCount { get; set; }
     }
 }

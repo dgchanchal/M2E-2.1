@@ -264,6 +264,7 @@
     <Compile Include="Models\DataWrapper\RegisterationRequest.cs" />
     <Compile Include="Models\DataWrapper\ResetPasswordRequest.cs" />
     <Compile Include="Models\DataWrapper\TemplateInfoModel.cs" />
+    <Compile Include="Models\DataWrapper\UserSurvey\UserSubmitImageModerationResult.cs" />
     <Compile Include="Models\DataWrapper\UserSurvey\UserSurveyAnswerKeyValuePairRequest.cs" />
     <Compile Include="Models\DataWrapper\UserSurvey\UserSurveyResultRequest.cs" />
     <Compile Include="Models\DataWrapper\ValidateAccountRequest.cs" />
