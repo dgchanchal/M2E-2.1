@@ -43,7 +43,7 @@ namespace M2E.Service.UserService.Survey
                 string remainingThreadsTemp = string.Empty;
                 if ((job.type == Constants.type_dataEntry && job.subType == Constants.subType_Transcription)||
                         (job.type == Constants.type_moderation && job.subType == Constants.subType_moderatingPhotos))
-                    remainingThreadsTemp = Convert.ToString(Convert.ToInt32(job.totalThreads) - _db.UserMultipleJobMappings.Where(x => x.refKey == job.referenceId).Count());
+                    remainingThreadsTemp = Convert.ToString(Convert.ToInt32(job.totalThreads) - _db.UserMultipleJobMappings.Where(x => x.refKey == job.referenceId && x.isFirst==Constants.status_true).Count());
                 else
                     remainingThreadsTemp = Convert.ToString(Convert.ToInt32(job.totalThreads) - _db.UserJobMappings.Where(x => x.refKey == job.referenceId).Count());
                     
