@@ -4,7 +4,7 @@ define([appLocation.postLogin], function (app) {
     app.controller('ClientAfterLoginTemplateResponseDetail', function ($scope, $http, $rootScope, $routeParams, CookieUtil, $route) {
         $('title').html("Template Info page"); //TODO: change the title so cann't be tracked in log
         $scope.templateId = $routeParams.templateId;
-
+        $scope.showHighcharts = true;
         
 
         initializeGetTemplateSurveyResponseResultById();
@@ -23,7 +23,9 @@ define([appLocation.postLogin], function (app) {
                 headers: headers
             }).success(function (data, status, headers, config) {
                 stopBlockUI();
-                $scope.ClientTemplateResponseDetailModel = data.Payload;                
+                $scope.ClientTemplateResponseDetailModel = data.Payload;
+                if (data.Payload.type == TemplateInfoModel.type_contentWritting)
+                    $scope.showHighcharts = false;              
                 $.each($scope.ClientTemplateResponseDetailModel.resultList, function () {
                     //console.log(this.index);
                     this.dataList=[];

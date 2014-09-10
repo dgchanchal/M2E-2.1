@@ -27,7 +27,7 @@
                     </h3>
                 </div>
                 <div class="box-content nopadding"> 
-                            <div id="accordion2" class="accordion">
+                            <div id="accordion2" class="accordion" ng-show="showHighcharts">
 										<div class="accordion-group" ng-repeat="questionInfo in ClientTemplateResponseDetailModel.resultList">
 											<div class="accordion-heading">
 												<a href="#{{questionInfo.UniqueId}}Collapse" id="{{questionInfo.UniqueId}}" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle faqQuestionDivBackgroundColor">
@@ -55,6 +55,33 @@
                                                     <div class="col-md-9">                                                      
                                                       <div high-chart="questionInfo.highCharts"></div>
                                                     </div> 
+												</div>
+											</div>
+										</div>
+										
+									</div>
+
+                                    <div class="accordion" ng-show="!showHighcharts">
+										<div class="accordion-group" ng-repeat="questionInfo in ClientTemplateResponseDetailModel.resultList">
+											<div class="accordion-heading">
+												<a  class="accordion-toggle faqQuestionDivBackgroundColor">
+													<b><span data-ng-bind-html="questionInfo.question"></span></b> 
+												</a>
+											</div>
+											<div class="accordion-body" >
+												<div class="accordion-inner">
+													<div class="col-md-12">                                                                                    
+                                                        <div class="box-body">
+                                                            <table class="table table-bordered">
+                                                                <tbody><tr>                                                                    
+                                                                    <th>User Response</th>                                                                                                                
+                                                                </tr>
+                                                                <tr ng-repeat="data in questionInfo.dataListUI">                                                                   
+                                                                    <td><span data-ng-bind-html="data.text"></span></td>                                                                                                               
+                                                                </tr>                                        
+                                                            </tbody></table>
+                                                        </div>
+                                                    </div>                                                    
 												</div>
 											</div>
 										</div>

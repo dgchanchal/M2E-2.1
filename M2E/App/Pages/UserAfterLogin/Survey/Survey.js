@@ -146,7 +146,8 @@ define([appLocation.userPostLogin], function (app) {
                 $scope.surveyInfoMultipleAnswerQuestion = data.Payload.MultipleAnswerQuestion;
                 $scope.surveyInfoListBoxAnswerQuestion = data.Payload.ListBoxAnswerQuestion;
                 $scope.surveyInfoTextBoxAnswerQuestion = data.Payload.TextBoxAnswerQuestion;
-
+                $scope.type = data.Payload.type;
+                $scope.subType = data.Payload.subType;
                 renderPageAfterAjaxCall();
                 console.log($scope.attemptedSurveyQuestions);
             }
@@ -337,7 +338,7 @@ define([appLocation.userPostLogin], function (app) {
                     renderSurveyQuestion += "</div>";
                     renderSurveyQuestion += "</div>";
                 }
-                
+
                 // single answer question..
                 if ($scope.surveyInfoSingleAnswerQuestion.data.length != 0) {
                     renderSurveyQuestion += "<div style='' class='control-group'>";
@@ -447,7 +448,13 @@ define([appLocation.userPostLogin], function (app) {
                         renderSurveyQuestion += "<b>" + this.question; +"</b>";
                         renderSurveyQuestion += "</label><br/>";
                         insertAttemptedSurveyQuestionsList(this.id);
-                        renderSurveyQuestion += "<textarea style='height: 150px; width: 100%' type='textarea' class='userSurveyTextBoxButton textarea' name='" + this.id + "' placeholder='Enter Your Answer'/><br/>";
+                        if ($scope.type == TemplateInfoModel.type_contentWritting) {
+                            renderSurveyQuestion += "<textarea style='height: 150px; width: 100%' type='textarea' class='userSurveyTextBoxButton textarea' name='" + this.id + "' placeholder='Enter Your Answer'/><br/>";
+                        }
+                        else {
+                            renderSurveyQuestion += "<input type='text' class='userSurveyTextBoxButton' name='" + this.id + "' placeholder='Enter Your Answer'/><br/>";
+                        }
+                        
 
                         renderSurveyQuestion += "</fieldset>";
 
@@ -485,7 +492,7 @@ define([appLocation.userPostLogin], function (app) {
                     "image": false, //Button to insert an image. Default true,
                     "color": false //Button to change color of font  
                 });
-                
+
                 initializeSwiperFunction();
             }
         }
@@ -665,7 +672,17 @@ define([appLocation.userPostLogin], function (app) {
 
             //submit button
             $('#userSurveySubmitButtonId').on('click', function () {
-                if (checkEveryQuestionsAttempted()) {
+                var isValidInput = checkEveryQuestionsAttempted();
+                if ($scope.type == TemplateInfoModel.type_contentWritting) {
+                    if (confirm("You won't be able to edit after submitted. Are you sure you want to submit?") == true) {
+                        $scope.userSurveyResult.surveyTextBoxAnswerQuestion.push(commonUserSurveyTextBoxFunction($scope.surveyInfoTextBoxAnswerQuestion.data[0].id, $('.userSurveyTextBoxButton').val()));
+                        isValidInput = true;
+                    }
+                    else {
+                        isValidInput = false;
+                    }
+                }
+                if (isValidInput) {
                     var url = ServerContextPah + '/User/SubmitTemplateSurveyResultByRefKey?refKey=' + $routeParams.refKey;
                     var userSurveyResultData = $scope.userSurveyResult;
                     var headers = {
@@ -691,7 +708,10 @@ define([appLocation.userPostLogin], function (app) {
 
                     });
                 } else {
-                    showToastMessage("Warning", "Attempt All Questions Before Submitting.");
+                    if ($scope.type != TemplateInfoModel.type_contentWritting) {
+                        showToastMessage("Warning", "Attempt All Questions Before Submitting.");
+                    }
+
                 }
 
             });
