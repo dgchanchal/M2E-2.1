@@ -37,7 +37,9 @@ define([appLocation.userPostLogin], function (app) {
             //SessionManagementUtil.isValidSession(headerSessionData);
             /* Sidebar tree view */
             $(".sidebar .treeview").tree();
-
+            var htmlQRImage = "";
+            //htmlQRImage = "<img src=\"http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=" + next.replace("#", "%23") + "\"/>";
+            $("#QRPageImageId").html(htmlQRImage);
             gaWeb("BeforeLogin-Page Visited", "Page Visited", next);
             var path = next.split('#');
             gaPageView(path, 'title');
