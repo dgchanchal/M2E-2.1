@@ -447,7 +447,7 @@ define([appLocation.userPostLogin], function (app) {
                         renderSurveyQuestion += "<b>" + this.question; +"</b>";
                         renderSurveyQuestion += "</label><br/>";
                         insertAttemptedSurveyQuestionsList(this.id);
-                        renderSurveyQuestion += "<input type='text' class='userSurveyTextBoxButton' name='" + this.id + "' placeholder='Enter Your Answer'/><br/>";
+                        renderSurveyQuestion += "<textarea style='height: 150px; width: 100%' type='textarea' class='userSurveyTextBoxButton textarea' name='" + this.id + "' placeholder='Enter Your Answer'/><br/>";
 
                         renderSurveyQuestion += "</fieldset>";
 
@@ -475,6 +475,17 @@ define([appLocation.userPostLogin], function (app) {
                 renderSurveyQuestion += "</div>";
 
                 $('#userSurveyWebViewId').html(renderSurveyQuestion);
+
+                $('.textarea').wysihtml5({
+                    "font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+                    "emphasis": true, //Italics, bold, etc. Default true
+                    "lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+                    "html": false, //Button which allows you to edit the generated HTML. Default false
+                    "link": true, //Button to insert a link. Default true
+                    "image": false, //Button to insert an image. Default true,
+                    "color": false //Button to change color of font  
+                });
+                
                 initializeSwiperFunction();
             }
         }

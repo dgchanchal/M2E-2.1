@@ -181,7 +181,7 @@ define([appLocation.postLogin], function (app) {
         $scope.ClientCreateArticleWritingTemplateFunction = function () {
             $scope.jobTemplate[0].title = $('#createTemplateTitleTextArticleWritingTemplate').val();
             //console.log(userSession.imgurImageTranscriptionTemplate);
-            var clientCreateTranscriptionTemplateData = { Data: $scope.jobTemplate, TemplateInfo: { type: TemplateInfoModel.type_contentWritting, subType: TemplateInfoModel.subType_articleWritting, description: $('#createTemplateDescriptionText').val(), totalThreads: $("#totalNumberOfThreads").val(), amountEachThread: $("#amountPerThreadTextBoxInput").val()} };
+            var clientCreateTranscriptionTemplateData = { Data: $scope.jobTemplate, TemplateInfo: { type: $routeParams.type, subType: $routeParams.subType, description: $('#createTemplateDescriptionText').val(), totalThreads: $("#totalNumberOfThreads").val(), amountEachThread: $("#amountPerThreadTextBoxInput").val()} };
             //var currentTemplateId = new Date().getTime();
 
             var url = ServerContextPah + '/Client/CreateTemplate';
