@@ -37,11 +37,14 @@ namespace M2E.Service.Auth
                 }
                 if (user.isActive == "true")
                 {
-                    response.Status = 402;
-                    response.Message = "link expired";
+                    response.Status = 405;
+                    response.Message = "already active user";
                     return response;
                 }
                 user.isActive = "true";
+                var Recommendations = _db.RecommendedBies.SingleOrDefault(x => x.RecommendedTo == user.Username);
+                if (Recommendations != null)
+                    Recommendations.isValid = Constants.status_true;
                 try
                 {
                     _db.SaveChanges();

@@ -98,7 +98,9 @@ define([appLocation.preLogin], function (app) {
             if (validateEmail && validatePassword && validateFirstName && validateLastName) {
                 startBlockUI('wait..', 3);
                 if(CookieUtil.getRefKey("refKey") != null && CookieUtil.getRefKey("refKey") != "")
-                    userSignUpData.Referral = CookieUtil.getRefKey("refKey");                             
+                    userSignUpData.Referral = CookieUtil.getRefKey("refKey");
+                else
+                    userSignUpData.Referral = "NA";                            
                 $http({
                     url: url,
                     method: "POST",

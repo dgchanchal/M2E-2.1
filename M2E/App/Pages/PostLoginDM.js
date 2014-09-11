@@ -155,6 +155,9 @@ appRequire = require
             ClientAfterLoginArticleWrittingTemplate: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService"]
             },
+            ClientAfterLoginReferralPage: {
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService"]
+            },
             AngularFileUploadController: {
                 deps: ["angularjs_fileUpload_shim","angularjs_fileUpload"]
             },
@@ -231,6 +234,7 @@ appRequire = require
             ClientAfterLoginTemplateResponseDetail: "../../App/Pages/ClientAfterLogin/TemplateResponseDetail/TemplateResponseDetail",//used
             ClientAfterLoginTranscriptionResponseDetail: "../../App/Pages/ClientAfterLogin/DataEntry/TranscriptionResponseDetail/TranscriptionResponseDetail",//used
             ClientAfterLoginArticleWrittingTemplate: "../../App/Pages/ClientAfterLogin/ContentWritting/articleWritting/articleWritting",
+            ClientAfterLoginReferralPage: "../../App/Pages/ClientAfterLogin/Referrals/Referrals",
             ClientAfterLoginFacebookLikeTemplate: "../../App/Pages/ClientAfterLogin/Ads/facebookLike/facebookLike"
         },
         urlArgs: "123"
@@ -243,7 +247,8 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "fileDropScript", "domReady","prettify","bootstrap_wysihtml5","angularjs_fileUpload_shim","angularjs_fileUpload","AngularFileUploadController",
     "clientAfterLoginTemplateInfo","ng_table","clientAfterLoginTemplateSample","ClientAfterLoginModeratingPhotos","ClientAfterLoginTranscriptionTemplate",
     "bootstrap_slider","ion_rangeSlider_min","highcharts_3d","highcharts","highcharts_exporting","ClientAfterLoginTemplateResponseDetail","ClientAfterLoginTranscriptionResponseDetail",
-    "angular_route","sanitize","angular_animate","ClientAfterLoginModeratingPhotosResponseDetail","ClientAfterLoginArticleWrittingTemplate","ClientAfterLoginFacebookLikeTemplate"
+    "angular_route","sanitize","angular_animate","ClientAfterLoginModeratingPhotosResponseDetail","ClientAfterLoginArticleWrittingTemplate","ClientAfterLoginFacebookLikeTemplate",
+    "ClientAfterLoginReferralPage"
 ], function() {
     angular.bootstrap(document.getElementById("mainClient"), ["afterLoginClientApp"]);
 });

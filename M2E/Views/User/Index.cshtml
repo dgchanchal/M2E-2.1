@@ -399,7 +399,7 @@
                             <a href="#/userThreads/completed">
                                 <i class="fa fa-dashboard"></i> <span>My Completed Jobs</span>
                             </a>
-                        </li>
+                        </li>						
                         <li class="treeview" ng-repeat="category in ClientCategoryList[0].subCategoryList">
                             <a href="#">
                                 <i class="fa fa-bar-chart-o"></i>
@@ -409,6 +409,11 @@
                             <ul class="treeview-menu">
                                 <li ng-repeat="subCategory in category.dropDownMenuList"><a href={{subCategory.link}}><i class="fa fa-angle-double-right"></i><span ng-bind="subCategory.value"></span></a></li>                                
                             </ul>
+                        </li>
+						<li>
+                            <a href="#/myReferrals">
+                                <i class="fa fa-dashboard"></i> <span>My Referrals</span>
+                            </a>
                         </li>
                         <li>
 							<div id="QRPageImageId"></div>                           							

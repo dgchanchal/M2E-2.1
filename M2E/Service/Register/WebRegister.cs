@@ -40,6 +40,7 @@ namespace M2E.Service.Register
                 isActive = "false",
                 Type = req.Type,
                 guid = Guid.NewGuid().ToString(),
+                fixedGuid= Guid.NewGuid().ToString(),
                 FirstName = req.FirstName,
                 LastName = req.LastName,
                 gender = "NA",
@@ -52,7 +53,9 @@ namespace M2E.Service.Register
                 var dbRecommedBy = new RecommendedBy
                 {
                     RecommendedFrom = req.Referral,
-                    RecommendedTo = req.Username
+                    RecommendedTo = req.Username,
+                    DateTime = DateTime.Now,
+                    isValid = Constants.status_false
                 };
                 _db.RecommendedBies.Add(dbRecommedBy);
             }

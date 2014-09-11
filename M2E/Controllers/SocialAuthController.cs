@@ -142,6 +142,7 @@ namespace M2E.Controllers
                         isActive = "true",
                         Type = "user",
                         guid = Guid.NewGuid().ToString(),
+                        fixedGuid = Guid.NewGuid().ToString(),
                         FirstName = result.data[0].first_name,
                         LastName = result.data[0].last_name,
                         gender = result.data[0].sex,
@@ -154,7 +155,9 @@ namespace M2E.Controllers
                         var dbRecommedBy = new RecommendedBy
                         {
                             RecommendedFrom = refKey,
-                            RecommendedTo = user.Username
+                            RecommendedTo = user.Username,
+                            DateTime = DateTime.Now,
+                            isValid = Constants.status_true
                         };
                         _db.RecommendedBies.Add(dbRecommedBy);
                     }
@@ -262,7 +265,9 @@ namespace M2E.Controllers
                         var dbRecommedBy = new RecommendedBy
                         {
                             RecommendedFrom = refKey,
-                            RecommendedTo = session.UserName
+                            RecommendedTo = session.UserName,
+                            DateTime = DateTime.Now,
+                            isValid = Constants.status_true
                         };
                         _db.RecommendedBies.Add(dbRecommedBy);
                     }
@@ -383,6 +388,7 @@ namespace M2E.Controllers
                         isActive = "true",
                         Type = "user",
                         guid = Guid.NewGuid().ToString(),
+                        fixedGuid = Guid.NewGuid().ToString(),
                         FirstName = googleUserDetails.given_name,
                         LastName = googleUserDetails.family_name,
                         gender = googleUserDetails.gender,
@@ -557,6 +563,7 @@ namespace M2E.Controllers
                             isActive = "true",
                             Type = "user",
                             guid = Guid.NewGuid().ToString(),
+                            fixedGuid = Guid.NewGuid().ToString(),
                             FirstName = linkedinUserDetails.firstName,
                             LastName = linkedinUserDetails.lastName,
                             gender = Constants.NA,

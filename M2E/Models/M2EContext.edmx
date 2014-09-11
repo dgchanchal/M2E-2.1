@@ -182,6 +182,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RecommendedTo" Type="nvarchar(max)" Nullable="false" />
     <Property Name="RecommendedFrom" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="true" />
+    <Property Name="isValid" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="ThirdPartyLogins">
     <Key>
@@ -244,6 +246,7 @@
     <Property Name="FacebookLink" Type="nvarchar(max)" Nullable="true" />
     <Property Name="LinkedinLink" Type="nvarchar(max)" Nullable="true" />
     <Property Name="GoogleLink" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="fixedGuid" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="UserSkills">
     <Key>
@@ -624,6 +627,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RecommendedTo" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="RecommendedFrom" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="DateTime" Name="DateTime" Nullable="true" />
+          <Property Type="String" Name="isValid" Nullable="true" />
         </EntityType>
         <EntityType Name="ThirdPartyLogin">
           <Key>
@@ -686,6 +691,7 @@
           <Property Type="String" Name="FacebookLink" Nullable="true" />
           <Property Type="String" Name="LinkedinLink" Nullable="true" />
           <Property Type="String" Name="GoogleLink" Nullable="true" />
+          <Property Type="String" Name="fixedGuid" Nullable="true" />
         </EntityType>
         <EntityType Name="UserSkill">
           <Key>
@@ -1043,6 +1049,8 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="RecommendedTo" ColumnName="RecommendedTo" />
           <ScalarProperty Name="RecommendedFrom" ColumnName="RecommendedFrom" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="isValid" ColumnName="isValid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1110,6 +1118,7 @@
           <ScalarProperty Name="FacebookLink" ColumnName="FacebookLink" />
           <ScalarProperty Name="LinkedinLink" ColumnName="LinkedinLink" />
           <ScalarProperty Name="GoogleLink" ColumnName="GoogleLink" />
+          <ScalarProperty Name="fixedGuid" ColumnName="fixedGuid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1358,13 +1367,13 @@
         <EntityTypeShape EntityType="M2EModel.ForgetPassword" Width="1.5" PointX="6.75" PointY="4.75" Height="1.5956835937499996" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.JobData" Width="1.5" PointX="6.875" PointY="9.375" Height="2.5571907552083317" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.LinkedInAuthApiData" Width="1.5" PointX="8.75" PointY="0.75" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.RecommendedBy" Width="1.5" PointX="0.75" PointY="9.125" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="M2EModel.RecommendedBy" Width="1.5" PointX="0.75" PointY="9.125" Height="1.9802864583333335" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.ThirdPartyLogin" Width="1.5" PointX="2.75" PointY="8.75" Height="2.1725878906250031" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.UserDetail" Width="1.5" PointX="10.75" PointY="6.875" Height="1.5956835937500031" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.UserPageSetting" Width="1.5" PointX="8.75" PointY="10.5" Height="2.1725878906250031" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.UserRecommendation" Width="1.5" PointX="10.75" PointY="10.5" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.User" Width="1.5" PointX="10.75" PointY="0.75" Height="4.480205078125" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.UserSkill" Width="1.5" PointX="10.75" PointY="4.875" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="M2EModel.User" Width="1.5" PointX="10.625" PointY="0.5" Height="4.6725065104166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="M2EModel.UserSkill" Width="1.5" PointX="10.75" PointY="5.25" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.ValidateUserKey" Width="1.5" PointX="10.75" PointY="8.75" Height="1.5956835937500031" IsExpanded="true" />
         <EntityTypeShape EntityType="M2EModel.CreateTemplateImgurImagesList" Width="1.5" PointX="0.875" PointY="2.5" Height="3.3263964843749996" />
         <EntityTypeShape EntityType="M2EModel.UserSurveyResultToBeReviewed" Width="1.5" PointX="2.875" PointY="4.125" Height="2.1725878906249996" />

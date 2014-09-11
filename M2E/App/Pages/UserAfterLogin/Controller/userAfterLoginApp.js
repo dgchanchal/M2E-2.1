@@ -20,6 +20,7 @@ define([appLocation.userPostLogin], function (app) {
                        when("/mobileSlide2", { templateUrl: "../../App/Pages/UserAfterLogin/MobileSlide2/MobileSlide2.html" }).
                        when("/mobileSlide3", { templateUrl: "../../App/Pages/UserAfterLogin/MobileSlide2/MobileSlide3.html" }).
                        when("/facebookLikePage", { templateUrl: "../../App/Pages/UserAfterLogin/Ads/facebookLike/facebookLike.html" }).
+                       when("/myReferrals", { templateUrl: "../../App/Pages/UserAfterLogin/Referrals/Referrals.html" }).
                        otherwise({ templateUrl: "../../Resource/templates/beforeLogin/contentView/404.html" });
 
     });

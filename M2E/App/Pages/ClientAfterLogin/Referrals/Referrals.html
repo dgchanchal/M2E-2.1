@@ -27,10 +27,10 @@
                            <div class="box box-color box-bordered">
                 <div class="box-title">
                     <h3>
-                        <i class="icon-user"></i>Edit user profile
+                        <i class="icon-user"></i>My Referrals
                     </h3>
                 </div>
-                <div class="box-content nopadding" ng-controller="UserAfterLoginRefrralPage">
+                <div class="box-content nopadding" ng-controller="ClientAfterLoginReferralPage">
                     <ul class="tabs tabs-inline tabs-top">
                         <li class="active"><a><i class="icon-user"></i>Refrrals</a></li>                      
                     </ul>
@@ -41,8 +41,28 @@
                                     <div class="widget no-margin">                 
                                       <div class="widget-body">
                                         <div class="row">
-                                            
-                     
+                                            Provide this url for earning referral benefits.<br />
+                                            <div ng-bind="UserReferenceDetail.myReferralLink" style="background-color: yellow;"> </div>                                                                                                                                                                  
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            Your Recommendations in Past<br />
+                                                <table class="table table-bordered">
+                                                    <tbody><tr>
+                                                        <th style="width: 10px">#</th>
+                                                        <th>UserName</th>
+                                                        <th>Created On</th>
+                                                        <th>Validated</th>
+                                                        <th>Your Earning</th>
+                                                    </tr>
+                                                    <tr ng-repeat="referralUser in UserReferenceDetail.myReferenceList">
+                                                        <td ng-bind="$index+1"></td>
+                                                        <td ng-bind="referralUser.username"></td>
+                                                        <td ng-bind="referralUser.AccountCreationDate"></td>
+                                                        <td ng-bind="referralUser.isValid"></td>
+                                                        <td ng-bind="referralUser.earning"></td>
+                                                    </tr>                                                 
+                                                </tbody></table>                                                                                                                                                              
                                         </div>
                                       </div>
                                     </div>

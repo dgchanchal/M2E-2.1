@@ -6,6 +6,9 @@ using M2E.Common.Logger;
 using System.Reflection;
 using M2E.CommonMethods;
 using M2E.Models.Constants;
+using M2E.Encryption;
+using System.Configuration;
+using System.Collections.Generic;
 
 namespace M2E.Service.Client
 {
@@ -72,6 +75,36 @@ namespace M2E.Service.Client
                     response.Status = 404;
                     response.Message = "username not found";
                 }
+            }
+            catch (Exception)
+            {
+                response.Status = 500;
+                response.Message = "exception occured !!!";
+            }
+            return response;
+        }
+
+        public ResponseModel<UserReferenceDetailResponse> getReferralKey(string username)
+        {
+            var response = new ResponseModel<UserReferenceDetailResponse>();
+            response.Payload = new UserReferenceDetailResponse();
+            response.Payload.myReferenceList = new List<UserReferenceDetails>();            
+            try
+            {
+                response.Status = 200;
+                response.Message = "success !!!";
+                var user = _db.Users.SingleOrDefault(x => x.Username == username);
+                response.Payload.myReferralLink = user.fixedGuid;
+                var referredUserList = _db.RecommendedBies.Where(x => x.RecommendedFrom == user.fixedGuid).ToList();
+                foreach (var referredUser in referredUserList)
+                {
+                    var UserReferenceData = new UserReferenceDetails();
+                    UserReferenceData.username = referredUser.RecommendedTo;
+                    UserReferenceData.AccountCreationDate = referredUser.DateTime.ToString();
+                    UserReferenceData.isValid = referredUser.isValid;
+                    UserReferenceData.earning = "INR 1"; // currently hard coded.
+                    response.Payload.myReferenceList.Add(UserReferenceData);
+                }                                            
             }
             catch (Exception)
             {

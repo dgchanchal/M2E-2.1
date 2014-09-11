@@ -19,8 +19,11 @@
 		$.cookie('kmsi', true, { expires: 365, path: '/' });
 		console.log($.cookie('refKey'));
 		if($.cookie('refKey') != null && $.cookie('refKey') != "" && '@ViewBag.isNewUser' == 'true')
-        {			
-			var url = ServerContextPah + '/SocialAuth/UpdateUserRefKey?refKey='+$.cookie('refKey');
+        {	
+			var refKey = "NA";
+			if($.cookie('refKey') != null && $.cookie('refKey') != "")
+				refKey = $.cookie('refKey');		
+			var url = ServerContextPah + '/SocialAuth/UpdateUserRefKey?refKey='+refKey;
 			 var headers = {
                         'Content-Type': 'application/json',
 						'UTMZT': $.cookie('utmzt'),

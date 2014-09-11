@@ -15,7 +15,10 @@
 	<script src="../../../App/js/jquery.cookie.js" type="text/javascript"></script>
 	<script>
 	$(document).ready(function($) {
-	var url = ServerContextPah + '/SocialAuth/userMapping?fid='+ '@ViewBag.facebookId' + '&refKey='+$.cookie('refKey');
+	var refKey = "NA";
+	if($.cookie('refKey') != null && $.cookie('refKey') != "")
+		refKey = $.cookie('refKey');
+	var url = ServerContextPah + '/SocialAuth/userMapping?fid='+ '@ViewBag.facebookId' + '&refKey='+refKey;
                     var headers = {
                         'Content-Type': 'application/json',
 						'UTMZT': $.cookie('utmzt'),

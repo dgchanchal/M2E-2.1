@@ -32,5 +32,6 @@ namespace M2E.Models
         public string FacebookLink { get; set; }
         public string LinkedinLink { get; set; }
         public string GoogleLink { get; set; }
+        public string fixedGuid { get; set; }
     }
 }

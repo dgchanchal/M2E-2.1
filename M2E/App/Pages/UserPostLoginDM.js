@@ -143,7 +143,7 @@ appRequire = require
             UserAfterLoginFacebookLike: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox"]
             },
-            UserAfterLoginRefrralPage: {
+            UserAfterLoginReferralPage: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox"]
             },
             UserAfterLoginAngularTranscriptionTemplate: {
@@ -209,7 +209,7 @@ appRequire = require
             //userAfterLoginTranscriptionTemplate: "../../App/Pages/UserAfterLogin/DataEntry/TranscriptionTemplate/TranscriptionTemplate",//used
             UserAfterLoginAngularTranscriptionTemplate: "../../App/Pages/UserAfterLogin/DataEntry/TranscriptionTemplate/AngularTranscriptionTemplate",//used
             UserAfterLoginImageModeration: "../../App/Pages/UserAfterLogin/Moderation/Moderation", //used
-            UserAfterLoginRefrralPage: "../../App/Pages/UserAfterLogin/Refrrals/Refrrals", //used
+            UserAfterLoginReferralPage: "../../App/Pages/UserAfterLogin/Referrals/Referrals", //used
             UserAfterLoginFacebookLike: "../../App/Pages/UserAfterLogin/Ads/facebookLike/facebookLike"//used
             
         },
@@ -223,7 +223,7 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "fileDropScript", "domReady", "userAfterLoginTemplateSample", "idangerous_swiper_2_1_min","userAfterLoginShowTemplateDetail","userAfterLoginSurvey",
     "userAfterLoginActiveThreads","UserAfterLoginAngularTranscriptionTemplate","hamster","mousewheel",
     "panzoom", "PanZoomService", "panzoomwidget", "angular_route", "sanitize", "angular_animate", "UserAfterLoginImageModeration", "UserAfterLoginFacebookLike",
-    "UserAfterLoginRefrralPage"
+    "UserAfterLoginReferralPage"
 ], function() {
     angular.bootstrap(document.getElementById("mainUser"), ["afterLoginUserApp"]);
 });

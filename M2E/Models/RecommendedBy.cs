@@ -17,5 +17,7 @@ namespace M2E.Models
         public int Id { get; set; }
         public string RecommendedTo { get; set; }
         public string RecommendedFrom { get; set; }
+        public Nullable<System.DateTime> DateTime { get; set; }
+        public string isValid { get; set; }
     }
 }

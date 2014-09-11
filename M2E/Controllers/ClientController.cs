@@ -12,6 +12,7 @@ using M2E.Session;
 using System.IO;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using M2E.Encryption;
 
 namespace M2E.Controllers
 {
@@ -303,6 +304,30 @@ namespace M2E.Controllers
             }
             
         }
+       
+        public JsonResult getReferralKey()
+        {            
+            var headers = new HeaderManager(Request);
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);            
+
+            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+            if (isValidToken)
+            {                
+                var response = new ClientDetailService().getReferralKey(session.UserName);
+                if(response != null)
+                    response.Payload.myReferralLink = "http://" + Request.Url.Authority + "/#/signup/user/"+response.Payload.myReferralLink;
+                return Json(response, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                ResponseModel<string> response = new ResponseModel<string>();
+                response.Status = 401;
+                response.Message = "Unauthorized";
+                return Json(response);
+            }
+
+        }
+
 
         //[HttpPost]
         //public JsonResult CreateTemplateModeratingPhotos(CreateTemplateRequest req)

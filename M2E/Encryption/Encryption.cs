@@ -49,5 +49,12 @@ namespace M2E.Encryption
             decryptedData["UTMZV"] = EncryptionClass.GetDecryptionValue(data["Password"], data["userGuid"]);
             return decryptedData;
         }
+
+        public static string decryptRefKey(string username)
+        {
+            string Authkey = ConfigurationManager.AppSettings["AuthKey"];
+            string decryptedData = EncryptionClass.GetDecryptionValue(username, Authkey);
+            return decryptedData;
+        }
     }
 }
