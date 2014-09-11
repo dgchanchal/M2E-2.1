@@ -55,7 +55,7 @@
                                                         <th>Validated</th>
                                                         <th>Your Earning</th>
                                                     </tr>
-                                                    <tr ng-repeat="referralUser in UserReferenceDetail.myReferenceList">
+                                                    <tr ng-repeat="referralUser in UserReferenceDetail.myReferenceList" ng-class="{true:'backgroundColorRaferralRowValidated',false:'backgroundColorRaferralRowNotValidated'}[referralUser.isValid]">
                                                         <td ng-bind="$index+1"></td>
                                                         <td ng-bind="referralUser.username"></td>
                                                         <td ng-bind="referralUser.AccountCreationDate"></td>

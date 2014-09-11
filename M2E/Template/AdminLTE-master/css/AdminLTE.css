@@ -3495,3 +3495,13 @@ fieldset[disabled] .btn-vk.active {
 a:hover {
  cursor:pointer;
 }
+
+.backgroundColorRaferralRowValidated
+{
+    background-color: #D8FFD8
+;
+}
+.backgroundColorRaferralRowNotValidated
+{
+    background-color: #FFE1E1;
+}
