@@ -102,7 +102,7 @@ namespace M2E.Service.Client
                     UserReferenceData.username = referredUser.RecommendedTo;
                     UserReferenceData.AccountCreationDate = referredUser.DateTime.ToString();
                     UserReferenceData.isValid = referredUser.isValid;
-                    UserReferenceData.earning = "INR 1"; // currently hard coded.
+                    UserReferenceData.earning = (referredUser.isValid == Constants.status_true)?"INR 1":"NIL"; // currently hard coded.
                     response.Payload.myReferenceList.Add(UserReferenceData);
                 }                                            
             }
