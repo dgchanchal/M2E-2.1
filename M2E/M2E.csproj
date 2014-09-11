@@ -197,6 +197,7 @@
     <Compile Include="Models\ClientWallet.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Constants\ConstantReputationMapping.cs" />
     <Compile Include="Models\Constants\Constants.cs" />
     <Compile Include="Models\CreateTemplateeditableInstructionsList.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
@@ -497,6 +498,8 @@
     <Content Include="App\Pages\ClientAfterLogin\DataEntry\TranscriptionResponseDetail\TranscriptionResponseDetail.js" />
     <Content Include="App\Pages\ClientAfterLogin\Moderation\ModeratingPhotosResponseDetail\ModeratingPhotosResponseDetail.html" />
     <Content Include="App\Pages\ClientAfterLogin\Moderation\ModeratingPhotosResponseDetail\ModeratingPhotosResponseDetail.js" />
+    <Content Include="App\Pages\ClientAfterLogin\Referrals\Referrals.html" />
+    <Content Include="App\Pages\ClientAfterLogin\Referrals\Referrals.js" />
     <Content Include="App\Pages\ClientAfterLogin\Survey\SurveyLink\SurveyLink.html" />
     <Content Include="App\Pages\ClientAfterLogin\Survey\SurveyLink\SurveyLink.js" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateResponseDetail\TemplateResponseDetail.html" />
