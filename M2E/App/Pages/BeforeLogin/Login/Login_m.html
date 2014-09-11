@@ -11,8 +11,6 @@
                     <div class="row">                       
                         <div class="col-md-6">
                              Accepter <input type="radio" class="loginUserTypeRadioButton" name="loginUserType" id="loginUserTypeRadioButtonId" value="user" checked="checked" />                            
-                        </div>
-                        <div class="col-md-6">
                              Requester <input type="radio" class="loginUserTypeRadioButton"  name="loginUserType" id="loginClientTypeRadioButtonId" value="client" />                                
                         </div>
                     </div>
@@ -32,7 +30,7 @@
                         <li ng-show="EmailIdAlert.visible" ng-bind="EmailIdAlert.message"></li>
                         <li ng-show="PasswordAlert.visible" ng-bind="PasswordAlert.message"></li>
                     </ul>                                                               
-                    <button class="btn bg-uni btn-block" id="LoginFormSubmitButtonId" type="submit" ng-click="Login()">Sign me in</button>  
+                    <button class="btn bg-uni btn-block" id="LoginFormSubmitButtonId" type="submit" ng-click="Login()">Sign me in as <span class="userTypeId"></span></button>  
                     <div class="div_c"></div>
                     <p><a href="#/forgetpassword">I forgot my password</a></p>
                     
@@ -41,7 +39,7 @@
 
                 <div class="margin text-center">
                     
-                    <span>Login as <b><span id="userTypeId"></span></b> using social networks</span>
+                    <span>Login as <b><span class="userTypeId"></span></b> using social networks</span>
                     <br>
                     <button class="btn bg-light-blue btn-circle" ng-click="openFacebookAuthWindow()"><i class="fa fa-facebook"></i></button>
                     <button class="btn bg-aqua btn-circle" ng-click="openLinkedinAuthWindow()"><i class="fa fa-twitter"></i></button>

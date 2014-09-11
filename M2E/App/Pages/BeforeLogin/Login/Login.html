@@ -34,11 +34,9 @@
                         <li ng-show="ForgetPasswordAlert.visible"> <span ng-bind="ForgetPasswordAlert.message"></span> <a href="#"> Request a new one.</a></li>
                     </ul>
                     <div class="row">                       
-                        <div class="col-md-6">
-                             Accepter <input type="radio" class="loginUserTypeRadioButton" name="loginUserType" id="loginUserTypeRadioButtonId" value="user" checked="checked" />                            
-                        </div>
-                        <div class="col-md-6">
-                             Requester <input type="radio" class="loginUserTypeRadioButton"  name="loginUserType" id="loginClientTypeRadioButtonId" value="client" />                                
+                        <div class="col-md-12">
+                            <span class="fl">Accepter <input type="radio" class="loginUserTypeRadioButton" name="loginUserType" id="loginUserTypeRadioButtonId" value="user" checked="checked" /></span>                          
+                            <span class="fr">Requester <input type="radio" class="loginUserTypeRadioButton "  name="loginUserType" id="loginClientTypeRadioButtonId" value="client" /> </span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -57,7 +55,7 @@
                         <li ng-show="EmailIdAlert.visible" ng-bind="EmailIdAlert.message"></li>
                         <li ng-show="PasswordAlert.visible" ng-bind="PasswordAlert.message"></li>
                     </ul>                                                               
-                    <button class="btn bg-uni btn-block" type="submit" id="LoginFormSubmitButtonId" ng-click="Login()">Sign me in</button>  
+                    <button class="btn bg-uni btn-block" type="submit" id="LoginFormSubmitButtonId" ng-click="Login()">Sign me in as <b><span class="userTypeId"></span></b></button>  
                     <div class="div_c"></div>
                     <p><a href="#/forgetpassword">I forgot my password</a></p>
                     <p>Create an Account<i class="fa fa-fw fa-long-arrow-right"></i><a class="text-center" href="#/signup/client" ng-bind="clientConstants.name_abb"></a> or <a class="text-center" href="#/signup/user" ng-bind="userConstants.name_abb"></a></p>
@@ -65,7 +63,7 @@
 
                 <div class="margin text-center">
                     
-                    <span>Login as <b><span id="userTypeId"></span></b> using social networks</span>
+                    <span>Login as <b><span class="userTypeId"></span></b> using social networks</span>
                     <div class="div_c"></div>
                     <button class="btn bg-light-blue btn-circle" ng-click="openFacebookAuthWindow()"><i class="fa fa-facebook"></i></button>
                     <button class="btn bg-aqua btn-circle" ng-click="openLinkedinAuthWindow()"><i class="fa fa-linkedin"></i></button>

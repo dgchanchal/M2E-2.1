@@ -1,41 +1,41 @@
 ﻿<div class="container padding-class" ng-controller="beforeLoginFAQ">
-    <div class="row">                      
-        <div class="col-md-12">        
-            <div class="pageIntro">
-                <div class="PsTitle">
-                    <span>       FAQs    </span>
-                </div>
-                <div class="div_c"></div>
+    <div class="row border_line">
+        <div class="pageIntro col-md-12" style="text-align: center">
+            <div class="PsTitle PsTitle_Font_w" ng-class="{true:'PsTitle PsTitle_Font_m', false:'PsTitle PsTitle_Font_w'}[IsMobileDevice]">
+                FAQ > Overview    
             </div>
-            <ul><li><h3>General</h3>
-                            </li>
-                            <li> <a style="cursor: pointer;" ng-click="scrollTo('HowToJoinM2E')">How can I join M2E?</a></li>
-                            <li> <a style="cursor: pointer;" ng-click="scrollTo('MultipleAccounts')">Can I have multiple accounts?</a></li>
-                            <li> <a style="cursor: pointer;" ng-click="scrollTo('CostToJoinM2E')">Does it cost to join M2E?</a></li>
-                            <li> <a style="cursor: pointer;" ng-click="scrollTo('ForgotMyPassword')">What if I forgot my password?</a></li>
-                            <li> <a style="cursor: pointer;" ng-click="scrollTo('UpdatePersonalInformation')">How to update my personal information?</a></li>
-                            <li> <a style="cursor: pointer;" ng-click="scrollTo('DeleteMyAccount')">Can I delete my account?</a></li>
-                            <li> <a style="cursor: pointer;" ng-click="scrollTo('HowMuchICanEarnPerDay')">How much can I earn per day?</a></li>
-                            <li> <a style="cursor: pointer;" ng-click="scrollTo('TrackingSystem')">Do you have a tracking system?</a></li>
-                        </ul>
-                        <ul><li><h3>Payment related</h3>
-                            </li>
-                            <li> <a style="cursor: pointer;" ng-click="scrollTo('HowDoIGetPaid')">How do I get paid?</a></li>
-                            <li> <a style="cursor: pointer;" ng-click="scrollTo('MinBalanceForWithdrawal')">What are the minimum amount required to withdraw money to a bank account?</a></li>
-                            <li> <a style="cursor: pointer;" ng-click="scrollTo('CheckMyBalance')">How can I check the amount of money in my account?</a></li>
-                            <li> <a style="cursor: pointer;" ng-click="scrollTo('DaysToCreditAmountInMyAccount')">Once I complete a job, how many days it will take to credit my account?</a></li>
-                            <li> <a style="cursor: pointer;" ng-click="scrollTo('DaysToCreditAmountInMyBankAccount')">How many days it takes to credit money to my bank account?</a></li>
-                            <li> <a style="cursor: pointer;" ng-click="scrollTo('CustomerServiceNumber')">Do you have customer service number?</a></li>  
-                        </ul>
-
-
+            <div class="div_c"></div>       
+        </div>
+                                  
+        <div class="col-md-6">     
+            <h3>General queries</h3>
+            <ul>
+                <li ng-repeat="faq in FAQGeneralList"> <a style="cursor: pointer;" ng-click="scrollTo(faq.id)"><span ng-bind="faq.question"></span></a></li>
+            </ul>
+        </div>
+        <div class="col-md-6"> 
+            <h3>General policies</h3>
+            <ul>
+                <li> <a style="cursor: pointer;" ng-click="scrollTo('HowDoIGetPaid')">How do I get paid?</a></li>
+                <li> <a style="cursor: pointer;" ng-click="scrollTo('MinBalanceForWithdrawal')">What are the minimum amount required to withdraw money to a bank account?</a></li>
+                <li> <a style="cursor: pointer;" ng-click="scrollTo('CheckMyBalance')">How can I check the amount of money in my account?</a></li>
+                <li> <a style="cursor: pointer;" ng-click="scrollTo('DaysToCreditAmountInMyAccount')">Once I complete a job, how many days it will take to credit my account?</a></li>
+                <li> <a style="cursor: pointer;" ng-click="scrollTo('DaysToCreditAmountInMyBankAccount')">How many days it takes to credit money to my bank account?</a></li>
+                <li> <a style="cursor: pointer;" ng-click="scrollTo('CustomerServiceNumber')">Do you have customer service number?</a></li>  
+            </ul>
         </div>
     </div><!-- /.row --> 
+
+        <h3>Accepter FAQs</h3>
+            <ul>
+                <li ng-repeat="faq in FAQGeneralList"> <a style="cursor: pointer;" ng-click="scrollTo('faq.id')"><span ng-bind="faq.question"></span></a></li>
+            </ul>
+            <h3>General queries</h3>
+            <ul>
+                <li ng-repeat="faq in FAQGeneralList"> <a style="cursor: pointer;" ng-click="scrollTo('faq.id')"><span ng-bind="faq.question"></span></a></li>
+            </ul>
+
     <div class="row">
-        
-        
-        
-        
         <div class ="col-md-12">
             <div id="accordion2" class="Description aside_css">
                 <div class="" ng-repeat="faq in FAQGeneralList">
@@ -54,8 +54,8 @@
             </div>
         </div>
     </div><!-- /.row -->  
-
 </div>
+
 <style>
     
     .box-content:after {

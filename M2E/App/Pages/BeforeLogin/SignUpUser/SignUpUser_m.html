@@ -4,20 +4,20 @@
         <h2 class="text-aqua" style="font-size: 21px">Crowd Automation | Accepter</h2>
         <div class="body">
             <div class="form-group">
-                <input type="text" name="name" class="form-control" ng-model="ClientFormData.FirstName" placeholder="First name">
+                <input type="text" name="name" class="form-control" ng-model="UserFormData.FirstName" placeholder="First name">
             </div>            
             <div class="form-group">
                 <div class="form-group">
-                    <input type="text" name="name" class="form-control" ng-model="ClientFormData.LastName" placeholder="Lastname">
+                    <input type="text" name="name" class="form-control" ng-model="UserFormData.LastName" placeholder="Lastname">
                 </div>            
                 <div class="form-group">
-                    <input type="text" name="userid" class="form-control" ng-model="ClientFormData.EmailId" placeholder="Email ID">                
+                    <input type="text" name="userid" class="form-control" ng-model="UserFormData.EmailId" placeholder="Email ID">                
                 </div>            
                 <div class="form-group">
-                    <input type="password" name="password" class="form-control" ng-model="ClientFormData.Password" placeholder="Password">
+                    <input type="password" name="password" class="form-control" ng-model="UserFormData.Password" placeholder="Password">
                 </div>
                 <div class="form-group">
-                    <input type="password" name="password2" class="form-control" ng-model="ClientFormData.ConfirmPassword" placeholder="Retype password">
+                    <input type="password" name="password2" class="form-control" ng-model="UserFormData.ConfirmPassword" placeholder="Retype password">
                 </div>
                 <ul class="alert alert-danger alert-dismissable"  ng-show="showErrors" style="margin-left: 0;">                                                                               
                     <li ng-show="FirstNameAlert.visible" ng-bind="FirstNameAlert.message"></li>
@@ -28,7 +28,7 @@
             </div>
             <div class="footer">
                 <div class="div_c"></div>                                
-                <button type="submit" ng-click="ClientSignUp()" class="btn bg-uni btn-block">Create Accepter Account</button>  
+                <button type="submit" ng-click="UserSignUp()" class="btn bg-uni btn-block">Create Accepter Account</button>  
                 <div class="div_c"></div>                     
                 <a href="#/login" class="text-center">I already have a membership</a>
                 <div class="div_c"></div>

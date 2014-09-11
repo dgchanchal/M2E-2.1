@@ -2,7 +2,7 @@
 define([appLocation.preLogin], function (app) {
     app.controller('termsPrivacyController', function ($scope, $http, $rootScope,Restangular, CookieUtil) {
         $('title').html("index"); //TODO: change the title so cann't be tracked in log
-        $scope.IsMobileDevice = mobileDevice ? true : false;
+        
         $scope.isAllExpanded = true;
         $scope.tncContents = [            
             {

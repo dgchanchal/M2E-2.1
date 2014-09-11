@@ -58,12 +58,12 @@ define([appLocation.preLogin], function (app) {
         else {
             if (CookieUtil.getLoginType() == "user") {
                 $('#loginUserTypeRadioButtonId').attr('checked', true);
-                $('#userTypeId').html(userConstants.name_abb);
+                $('.userTypeId').html(userConstants.name_abb);
                 //console.log(userConstants.name_abb);
             }
             else {
                 $('#loginClientTypeRadioButtonId').attr('checked', true);
-                $('#userTypeId').html(clientConstants.name_abb);
+                $('.userTypeId').html(clientConstants.name_abb);
                 //$scope.userType = clientConstants.name_abb;
             }
         }
@@ -280,11 +280,11 @@ define([appLocation.preLogin], function (app) {
             //var data = this.value;
             if (this.value == "user") {
                 //$scope.userType = userConstants.name_abb;
-                $('#userTypeId').html(userConstants.name_abb);
+                $('.userTypeId').html(userConstants.name_abb);
 
             }
             else {
-                $('#userTypeId').html(clientConstants.name_abb);
+                $('.userTypeId').html(clientConstants.name_abb);
                 //$scope.userType = clientConstants.name_abb;
             }
             //console.log(this.value);

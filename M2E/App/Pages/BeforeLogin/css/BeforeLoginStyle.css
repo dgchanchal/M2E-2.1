@@ -1512,6 +1512,15 @@ div.main-content {
 	to { transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
 }
 
+.responsive-image{
+        max-width:100%
+    }
+.fr {
+    float: right;
+}
+.fl {
+    float: left;
+}
    
     #header1 {
     background: #fff;
