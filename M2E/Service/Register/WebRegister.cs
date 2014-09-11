@@ -11,6 +11,7 @@ using M2E.Models;
 using M2E.Models.DataWrapper;
 using M2E.signalRPushNotifications;
 using Microsoft.AspNet.SignalR;
+using M2E.Models.Constants;
 
 namespace M2E.Service.Register
 {
@@ -46,7 +47,7 @@ namespace M2E.Service.Register
             };
             _db.Users.Add(user);
 
-            if (!string.IsNullOrEmpty(req.Referral))
+            if (!Constants.NA.Equals(req.Referral))
             {
                 var dbRecommedBy = new RecommendedBy
                 {

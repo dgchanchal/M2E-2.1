@@ -518,6 +518,8 @@
     <Content Include="App\Pages\UserAfterLogin\Controller\userAfterLoginApp.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\CookieServiceUserView.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\SessionManagement.js" />
+    <Content Include="App\Pages\UserAfterLogin\Refrrals\Refrrals.html" />
+    <Content Include="App\Pages\UserAfterLogin\Refrrals\Refrrals.js" />
     <Content Include="App\Pages\UserAfterLogin\DataEntry\TranscriptionTemplate\AngularTranscriptionTemplate.html" />
     <Content Include="App\Pages\UserAfterLogin\DataEntry\TranscriptionTemplate\AngularTranscriptionTemplate.js" />
     <Content Include="App\Pages\UserAfterLogin\DataEntry\TranscriptionTemplate\TranscriptionTemplate.html" />

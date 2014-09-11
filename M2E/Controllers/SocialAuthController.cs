@@ -149,7 +149,7 @@ namespace M2E.Controllers
                     };
                     _db.Users.Add(user);
 
-                    if (!string.IsNullOrEmpty(refKey))
+                    if (!Constants.NA.Equals(refKey))
                     {
                         var dbRecommedBy = new RecommendedBy
                         {
@@ -244,6 +244,45 @@ namespace M2E.Controllers
             return Json(response, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult UpdateUserRefKey()
+        {
+            var response = new ResponseModel<string>();
+            response.Status = 201;
+            var headers = new HeaderManager(Request);
+            if (headers.AuthToken != null)
+            {
+                M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
+                var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+                if (isValidToken)
+                {
+                    String refKey = Request.QueryString["refKey"];
+                    
+                    if (!string.IsNullOrEmpty(refKey))
+                    {
+                        var dbRecommedBy = new RecommendedBy
+                        {
+                            RecommendedFrom = refKey,
+                            RecommendedTo = session.UserName
+                        };
+                        _db.RecommendedBies.Add(dbRecommedBy);
+                    }
+                    try
+                    {
+                        _db.SaveChanges();
+                        response.Status = 200;
+                        response.Message = "success-";
+                    }
+                    catch (DbEntityValidationException e)
+                    {
+                        DbContextException.LogDbContextException(e);
+                        response.Status = 500;
+                        response.Message = "Failed";
+                    }
+                }
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult GoogleLogin(string type)
         {
             var response = new ResponseModel<LoginResponse>();
@@ -315,6 +354,7 @@ namespace M2E.Controllers
                         ViewBag.umtzt = response.Payload.UTMZT;
                         ViewBag.umtzk = response.Payload.UTMZK;
                         ViewBag.umtzv = response.Payload.UTMZV;
+                        ViewBag.isNewUser = "false";
                         return View();
 
                     }
@@ -350,16 +390,6 @@ namespace M2E.Controllers
                     };
                     _db.Users.Add(user);
 
-                    if (!string.IsNullOrEmpty(refKey))
-                    {
-                        var dbRecommedBy = new RecommendedBy
-                        {
-                            RecommendedFrom = refKey,
-                            RecommendedTo = user.Username
-                        };
-                        _db.RecommendedBies.Add(dbRecommedBy);
-                    }
-
                     try
                     {
                         _db.SaveChanges();                        
@@ -387,6 +417,7 @@ namespace M2E.Controllers
                             ViewBag.umtzt = response.Payload.UTMZT;
                             ViewBag.umtzk = response.Payload.UTMZK;
                             ViewBag.umtzv = response.Payload.UTMZV;
+                            ViewBag.isNewUser = "true";
                             return View();
                         }
                         catch (DbEntityValidationException e)
@@ -533,16 +564,6 @@ namespace M2E.Controllers
                         };
                         _db.Users.Add(user);
 
-                        if (!string.IsNullOrEmpty(refKey))
-                        {
-                            var dbRecommedBy = new RecommendedBy
-                            {
-                                RecommendedFrom = refKey,
-                                RecommendedTo = user.Username
-                            };
-                            _db.RecommendedBies.Add(dbRecommedBy);
-                        }
-
                         try
                         {                            
                             _db.SaveChanges();
@@ -570,6 +591,7 @@ namespace M2E.Controllers
                                 ViewBag.umtzt = response.Payload.UTMZT;
                                 ViewBag.umtzk = response.Payload.UTMZK;
                                 ViewBag.umtzv = response.Payload.UTMZV;
+                                ViewBag.isNewUser = "true";
                                 return View();
                             }
                             catch (DbEntityValidationException e)

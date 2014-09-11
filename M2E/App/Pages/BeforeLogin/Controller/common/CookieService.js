@@ -59,6 +59,14 @@ define([appLocation.preLogin], function (app) {
                     $.cookie('userName', userName, { path: '/' });
                 }
             },
+            setRefKey: function (RefKey, keepMeSignedIn) {
+                if (keepMeSignedIn) {
+                    $.cookie('refKey', RefKey, { expires: 365, path: '/' });
+                }
+                else {
+                    $.cookie('refKey', RefKey, { path: '/' });
+                }
+            },
             setUserImageUrl: function (userImageUrl, keepMeSignedIn) {
                 if (keepMeSignedIn) {
                     $.cookie('userImageUrl', userImageUrl, { expires: 365, path: '/' });
@@ -82,6 +90,9 @@ define([appLocation.preLogin], function (app) {
             getKMSI: function () {
                 return $.cookie('kmsi');
             },
+            getRefKey: function () {
+                return $.cookie('refKey');
+            },
             getLoginType: function () {
                 return $.cookie('loginType');
             },
@@ -96,6 +107,9 @@ define([appLocation.preLogin], function (app) {
             },
             removeUTIME: function () {
                 $.removeCookie('utime', { path: '/' });
+            },
+            removeRefKey: function () {
+                $.removeCookie('refKey', { path: '/' });
             },
             removeKMSI: function () {
                 $.removeCookie('kmsi', { path: '/' });

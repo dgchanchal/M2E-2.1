@@ -203,5 +203,10 @@ function logout(){
                      });
 
 
-         }            
+         }
+         else
+         {
+            location.href = "/";
+         }
+                     
 }

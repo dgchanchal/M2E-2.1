@@ -129,8 +129,7 @@ namespace M2E.Controllers
         [HttpPost]
         public JsonResult CreateAccount(RegisterationRequest req)
         {
-            var returnUrl = "/";
-            var referral = Request.QueryString["ref"];
+            var returnUrl = "/";           
             if (req.Source != "web") return Json("Not Web");
             var webRegisterService = new WebRegister();
             return Json(webRegisterService.WebRegisterService(req, Request));

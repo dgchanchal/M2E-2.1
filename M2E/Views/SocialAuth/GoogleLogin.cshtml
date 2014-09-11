@@ -17,8 +17,28 @@
 		$.cookie('utmzk', '@ViewBag.umtzk', { expires: 365, path: '/' });
 		$.cookie('utmzv', '@ViewBag.umtzv', { expires: 365, path: '/' });
 		$.cookie('kmsi', true, { expires: 365, path: '/' });
-
-		updateMe( 'login' );	
+		console.log($.cookie('refKey'));
+		if($.cookie('refKey') != null && $.cookie('refKey') != "" && '@ViewBag.isNewUser' == 'true')
+        {			
+			var url = ServerContextPah + '/SocialAuth/UpdateUserRefKey?refKey='+$.cookie('refKey');
+			 var headers = {
+                        'Content-Type': 'application/json',
+						'UTMZT': $.cookie('utmzt'),
+						'UTMZK': $.cookie('utmzk'),
+						'UTMZV': $.cookie('utmzv')                       
+                    };
+				$.ajax({
+						url: url,
+						method: "GET",
+                        headers: headers
+						}).done(function(data,status) {
+							console.log(data);
+							$.removeCookie('refKey', { path: '/' });
+							updateMe( 'login' );																				
+						});
+		}
+		else
+			updateMe( 'login' );	
 	});
 		
                     
