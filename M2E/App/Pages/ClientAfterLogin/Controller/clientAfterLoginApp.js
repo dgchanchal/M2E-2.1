@@ -146,8 +146,8 @@ define([appLocation.postLogin], function (app) {
            {
                value: "Survey", dropDownMenuShow: true, dropDownSubMenuClass: "dropdown-submenu", dropDownMenuClass: "dropdown-menu", dropDownSubMenuArrow: "dropdown", dropDownMenuList: [
                  { value: "Product survey", link: "#/templateSample/" + TemplateInfoModel.type_survey + "/" + TemplateInfoModel.subType_productSurvey },
-                 { value: "User feedback survey", link: "#/templateSample/" + TemplateInfoModel.type_survey + "/" + TemplateInfoModel.subType_productSurvey },
-                 { value: "Pools", link: "#/templateSample/" + TemplateInfoModel.type_survey + "/" + TemplateInfoModel.subType_productSurvey },
+                 { value: "User feedback survey", link: "#/templateSample/" + TemplateInfoModel.type_survey + "/" + TemplateInfoModel.subType_userFeedbackSurvey },
+                 { value: "Pools", link: "#/templateSample/" + TemplateInfoModel.type_survey + "/" + TemplateInfoModel.subType_pools },
                  { value: "Survey Link", link: "#/surveyLinkTemplate/" + TemplateInfoModel.type_survey + "/" + TemplateInfoModel.subType_surveyLink }
                ]
            },

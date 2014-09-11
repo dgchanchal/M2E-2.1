@@ -103,6 +103,7 @@ define([appLocation.userPostLogin], function (app) {
                     stopBlockUI();
                     if (data.Status == "200") {
                         showToastMessage("Success", "Successfully Submitted");
+                        location.href = "#/";
                     }
 
                 }).error(function (data, status, headers, config) {

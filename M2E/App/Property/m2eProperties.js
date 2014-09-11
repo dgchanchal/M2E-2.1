@@ -24,6 +24,8 @@ var TemplateInfoModel = {
         type_survey : "survey",
         subType_productSurvey : "productSurvey",
         subType_surveyLink : "surveyLink",
+        subType_userFeedbackSurvey : "userFeedbackSurvey",
+        subType_pools : "pools",
         
         type_dataEntry : "dataEntry",
         subType_Transcription : "Transcription",        

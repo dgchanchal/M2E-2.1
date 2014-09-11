@@ -6,9 +6,10 @@ define([appLocation.postLogin], function (app) {
         $scope.type = $routeParams.type;
         $scope.subType = $routeParams.subType;
         if ($routeParams.type == TemplateInfoModel.type_survey) {
-            if ($routeParams.subType == TemplateInfoModel.subType_productSurvey) {
-                $scope.TemplateUrl = "#/createTemplate/" + $routeParams.type + "/" + $routeParams.subType;
-            }
+            $scope.TemplateUrl = "#/createTemplate/" + $routeParams.type + "/" + $routeParams.subType;
+//            if ($routeParams.subType == TemplateInfoModel.subType_productSurvey) {
+//                $scope.TemplateUrl = "#/createTemplate/" + $routeParams.type + "/" + $routeParams.subType;
+//            }
         }
         else if ($routeParams.type == TemplateInfoModel.type_moderation) {
             if ($routeParams.subType == TemplateInfoModel.subType_imageModeration) {

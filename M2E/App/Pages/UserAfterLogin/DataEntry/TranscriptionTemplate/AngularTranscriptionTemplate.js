@@ -114,6 +114,7 @@ define([appLocation.userPostLogin], function (app) {
                 stopBlockUI();
                 if (data.Status == "200") {
                     alert("successfully submitted");
+                    location.href = "#/";
                 }
 
             }).error(function (data, status, headers, config) {

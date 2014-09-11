@@ -702,6 +702,7 @@ define([appLocation.userPostLogin], function (app) {
                         stopBlockUI();
                         if (data.Status == "200") {
                             showToastMessage("Success", "Survey Successfully submitted");
+                            location.href = "#/";
                         }
 
                     }).error(function (data, status, headers, config) {
