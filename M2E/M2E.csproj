@@ -211,6 +211,9 @@
     <Compile Include="Models\CreateTemplateListBoxQuestionsList.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CreateTemplateModeratingImagesList.cs">
+      <DependentUpon>M2EContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CreateTemplateMultipleQuestionsList.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
@@ -347,7 +350,7 @@
     <Compile Include="Models\UserSurveyResult.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserSurveyResultToBeReviewed.cs">
+    <Compile Include="Models\UserSurveyResultToBeRevieweds1.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ValidateUserKey.cs">
@@ -972,7 +975,6 @@
     <Content Include="dll\Microsoft.Owin.Host.SystemWeb.dll" />
     <Content Include="dll\Owin.dll" />
     <Content Include="Global.asax" />
-    <Content Include="Models\M2EContext.edmx.sql" />
     <Content Include="Template\AdminLTE-master\.gitignore" />
     <Content Include="Template\AdminLTE-master\css\AdminLTE.css" />
     <Content Include="Template\AdminLTE-master\css\bootstrap-slider\slider.css" />
@@ -1537,23 +1539,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Models\M2EContext.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>M2EContext.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\M2EContext.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>M2EContext.edmx</DependentUpon>
-      <LastGenOutput>M2EContext.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\M2EContext.edmx.diagram">
-      <DependentUpon>M2EContext.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\M2EContext.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>M2EContext.edmx</DependentUpon>
-      <LastGenOutput>M2EContext.cs</LastGenOutput>
-    </Content>
     <Content Include="App\js\angular\ngSanitize\.jshintrc" />
     <None Include="App\third-Party\angular-file-upload-master\demo\.classpath" />
     <None Include="App\third-Party\angular-file-upload-master\demo\.project" />
@@ -1608,6 +1593,23 @@
     <None Include="App\third-Party\wysihtml5\test\lib" />
     <None Include="App\third-Party\wysihtml5\test\README" />
     <None Include="App\third-Party\wysihtml5\VERSION" />
+    <EntityDeploy Include="Models\M2EContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>M2EContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\M2EContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>M2EContext.edmx</DependentUpon>
+      <LastGenOutput>M2EContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\M2EContext.edmx.diagram">
+      <DependentUpon>M2EContext.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\M2EContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>M2EContext.edmx</DependentUpon>
+      <LastGenOutput>M2EContext.cs</LastGenOutput>
+    </Content>
     <None Include="Properties\PublishProfiles\M2E.pubxml" />
     <None Include="Template\AdminLTE-master\ajax\dashboard-boxrefresh-demo.php" />
     <None Include="Template\AdminLTE-master\fonts\fontawesome-webfont.eot" />

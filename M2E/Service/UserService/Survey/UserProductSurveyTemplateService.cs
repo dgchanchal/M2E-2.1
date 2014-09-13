@@ -193,7 +193,7 @@ namespace M2E.Service.UserService.Survey
             {
                 foreach (var userSurveyResult in EntireSurveyResult.surveySingleAnswerQuestion)
                 {
-                    var surveyResponse = new UserSurveyResultToBeReviewed();
+                    var surveyResponse = new UserSurveyResultToBeRevieweds1();
                     surveyResponse.questionId = userSurveyResult.key.Split('-')[1];
                     surveyResponse.type = userSurveyResult.key.Split('-')[0];
                     surveyResponse.answer = userSurveyResult.value;
@@ -210,7 +210,7 @@ namespace M2E.Service.UserService.Survey
                     string[] optionValues = userSurveyResult.value.Split(';');
                     for (int i = 0; i < optionValues.Length - 1; i++)
                     {
-                        var surveyResponse = new UserSurveyResultToBeReviewed();
+                        var surveyResponse = new UserSurveyResultToBeRevieweds1();
                         surveyResponse.questionId = userSurveyResult.key.Split('-')[1];
                         surveyResponse.type = userSurveyResult.key.Split('-')[0];
                         surveyResponse.answer = optionValues[i];
@@ -226,7 +226,7 @@ namespace M2E.Service.UserService.Survey
             {
                 foreach (var userSurveyResult in EntireSurveyResult.surveyListBoxAnswerQuestion)
                 {
-                    var surveyResponse = new UserSurveyResultToBeReviewed();
+                    var surveyResponse = new UserSurveyResultToBeRevieweds1();
                     surveyResponse.questionId = userSurveyResult.key.Split('-')[1];
                     surveyResponse.type = userSurveyResult.key.Split('-')[0];
                     surveyResponse.answer = userSurveyResult.value;
@@ -240,7 +240,7 @@ namespace M2E.Service.UserService.Survey
             {
                 foreach (var userSurveyResult in EntireSurveyResult.surveyTextBoxAnswerQuestion)
                 {
-                    var surveyResponse = new UserSurveyResultToBeReviewed();
+                    var surveyResponse = new UserSurveyResultToBeRevieweds1();
                     surveyResponse.questionId = userSurveyResult.key.Split('-')[1];
                     surveyResponse.type = userSurveyResult.key.Split('-')[0];
                     surveyResponse.answer = userSurveyResult.value;

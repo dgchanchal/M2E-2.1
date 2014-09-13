@@ -26,36 +26,37 @@ namespace M2E.Models
         }
     
         public DbSet<ClientDetail> ClientDetails { get; set; }
+        public DbSet<ClientWallet> ClientWallets { get; set; }
         public DbSet<CreateTemplateeditableInstructionsList> CreateTemplateeditableInstructionsLists { get; set; }
+        public DbSet<CreateTemplateFacebookLike> CreateTemplateFacebookLikes { get; set; }
+        public DbSet<CreateTemplateImgurImagesList> CreateTemplateImgurImagesLists { get; set; }
         public DbSet<CreateTemplateListBoxQuestionsList> CreateTemplateListBoxQuestionsLists { get; set; }
+        public DbSet<CreateTemplateModeratingImagesList> CreateTemplateModeratingImagesLists { get; set; }
         public DbSet<CreateTemplateMultipleQuestionsList> CreateTemplateMultipleQuestionsLists { get; set; }
         public DbSet<CreateTemplateQuestionInfo> CreateTemplateQuestionInfoes { get; set; }
         public DbSet<CreateTemplateSingleQuestionsList> CreateTemplateSingleQuestionsLists { get; set; }
         public DbSet<CreateTemplateTextBoxQuestionsList> CreateTemplateTextBoxQuestionsLists { get; set; }
+        public DbSet<FacebookAuth> FacebookAuths { get; set; }
+        public DbSet<facebookPageLikeMapping> facebookPageLikeMappings { get; set; }
         public DbSet<ForgetPassword> ForgetPasswords { get; set; }
         public DbSet<JobData> JobDatas { get; set; }
         public DbSet<LinkedInAuthApiData> LinkedInAuthApiDatas { get; set; }
+        public DbSet<linkedinAuth> linkedinAuths { get; set; }
         public DbSet<RecommendedBy> RecommendedBies { get; set; }
         public DbSet<ThirdPartyLogin> ThirdPartyLogins { get; set; }
         public DbSet<UserDetail> UserDetails { get; set; }
-        public DbSet<UserPageSetting> UserPageSettings { get; set; }
-        public DbSet<UserRecommendation> UserRecommendations { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<UserSkill> UserSkills { get; set; }
-        public DbSet<ValidateUserKey> ValidateUserKeys { get; set; }
-        public DbSet<CreateTemplateImgurImagesList> CreateTemplateImgurImagesLists { get; set; }
-        public DbSet<UserSurveyResultToBeReviewed> UserSurveyResultToBeRevieweds1 { get; set; }
-        public DbSet<UserSurveyResult> UserSurveyResults { get; set; }
+        public DbSet<UserEarning> UserEarnings { get; set; }
+        public DbSet<UserFacebookLikeJobMapping> UserFacebookLikeJobMappings { get; set; }
         public DbSet<UserJobMapping> UserJobMappings { get; set; }
         public DbSet<UserMultipleJobMapping> UserMultipleJobMappings { get; set; }
-        public DbSet<CreateTemplateFacebookLike> CreateTemplateFacebookLikes { get; set; }
-        public DbSet<UserFacebookLikeJobMapping> UserFacebookLikeJobMappings { get; set; }
-        public DbSet<FacebookAuth> FacebookAuths { get; set; }
-        public DbSet<linkedinAuth> linkedinAuths { get; set; }
-        public DbSet<facebookPageLikeMapping> facebookPageLikeMappings { get; set; }
-        public DbSet<UserReputation> UserReputations { get; set; }
-        public DbSet<UserEarning> UserEarnings { get; set; }
-        public DbSet<ClientWallet> ClientWallets { get; set; }
+        public DbSet<UserPageSetting> UserPageSettings { get; set; }
+        public DbSet<UserRecommendation> UserRecommendations { get; set; }
         public DbSet<UserReputationMapping> UserReputationMappings { get; set; }
+        public DbSet<UserReputation> UserReputations { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserSkill> UserSkills { get; set; }
+        public DbSet<UserSurveyResult> UserSurveyResults { get; set; }
+        public DbSet<UserSurveyResultToBeRevieweds1> UserSurveyResultToBeRevieweds1 { get; set; }
+        public DbSet<ValidateUserKey> ValidateUserKeys { get; set; }
     }
 }

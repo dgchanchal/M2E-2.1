@@ -4,485 +4,501 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="M2EModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-  <EntityContainer Name="M2EModelStoreContainer">
-    <EntitySet Name="ClientDetails" EntityType="M2EModel.Store.ClientDetails" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CreateTemplateeditableInstructionsLists" EntityType="M2EModel.Store.CreateTemplateeditableInstructionsLists" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CreateTemplateListBoxQuestionsLists" EntityType="M2EModel.Store.CreateTemplateListBoxQuestionsLists" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CreateTemplateMultipleQuestionsLists" EntityType="M2EModel.Store.CreateTemplateMultipleQuestionsLists" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CreateTemplateQuestionInfoes" EntityType="M2EModel.Store.CreateTemplateQuestionInfoes" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CreateTemplateSingleQuestionsLists" EntityType="M2EModel.Store.CreateTemplateSingleQuestionsLists" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CreateTemplateTextBoxQuestionsLists" EntityType="M2EModel.Store.CreateTemplateTextBoxQuestionsLists" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ForgetPasswords" EntityType="M2EModel.Store.ForgetPasswords" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="JobDatas" EntityType="M2EModel.Store.JobDatas" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="LinkedInAuthApiDatas" EntityType="M2EModel.Store.LinkedInAuthApiDatas" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="RecommendedBies" EntityType="M2EModel.Store.RecommendedBies" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ThirdPartyLogins" EntityType="M2EModel.Store.ThirdPartyLogins" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="UserDetails" EntityType="M2EModel.Store.UserDetails" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="UserPageSettings" EntityType="M2EModel.Store.UserPageSettings" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="UserRecommendations" EntityType="M2EModel.Store.UserRecommendations" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Users" EntityType="M2EModel.Store.Users" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="UserSkills" EntityType="M2EModel.Store.UserSkills" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ValidateUserKeys" EntityType="M2EModel.Store.ValidateUserKeys" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CreateTemplateImgurImagesLists" EntityType="M2EModel.Store.CreateTemplateImgurImagesLists" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="UserSurveyResultToBeRevieweds1" EntityType="M2EModel.Store.UserSurveyResultToBeRevieweds1" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="UserSurveyResults" EntityType="M2EModel.Store.UserSurveyResults" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="UserJobMappings" EntityType="M2EModel.Store.UserJobMappings" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="UserMultipleJobMappings" EntityType="M2EModel.Store.UserMultipleJobMappings" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CreateTemplateFacebookLikes" EntityType="M2EModel.Store.CreateTemplateFacebookLikes" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="UserFacebookLikeJobMappings" EntityType="M2EModel.Store.UserFacebookLikeJobMappings" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="FacebookAuths" EntityType="M2EModel.Store.FacebookAuths" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="linkedinAuths" EntityType="M2EModel.Store.linkedinAuths" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="facebookPageLikeMappings" EntityType="M2EModel.Store.facebookPageLikeMappings" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="UserReputations" EntityType="M2EModel.Store.UserReputations" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="UserEarnings" EntityType="M2EModel.Store.UserEarnings" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ClientWallets" EntityType="M2EModel.Store.ClientWallets" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="UserReputationMappings" EntityType="M2EModel.Store.UserReputationMappings" store:Type="Tables" Schema="dbo" />
-  </EntityContainer>
-  <EntityType Name="ClientDetails">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CompanyName" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="CreateTemplateeditableInstructionsLists">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="CreateTemplateListBoxQuestionsLists">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Options" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="CreateTemplateMultipleQuestionsLists">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Options" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="CreateTemplateQuestionInfoes">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="type" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="visible" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="referenceId" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="totalThreads" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="completed" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="creationTime" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="title" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="subType" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="payPerUser" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="DateTime" Type="datetime" Nullable="true" />
-  </EntityType>
-  <EntityType Name="CreateTemplateSingleQuestionsLists">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Options" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="CreateTemplateTextBoxQuestionsLists">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Options" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="ForgetPasswords">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="guid" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="JobDatas">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Category" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="SubCategory" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Data" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="PostedBy" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="StartDate" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="EndDate" Type="nvarchar(max)" Nullable="true" />
-  </EntityType>
-  <EntityType Name="LinkedInAuthApiDatas">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="oauth_Token" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="oauth_TokenSecret" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="oauth_verifier" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="RecommendedBies">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="RecommendedTo" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="RecommendedFrom" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="DateTime" Type="datetime" Nullable="true" />
-    <Property Name="isValid" Type="nvarchar(max)" Nullable="true" />
-  </EntityType>
-  <EntityType Name="ThirdPartyLogins">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FacebookId" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FacebookAccessToken" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="GoogleId" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="GoogleAccessToken" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="UserDetails">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Country" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="UserPageSettings">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="PageThemeColor" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="LayoutWidth" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="TopBar" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="SideBar" Type="nvarchar(max)" Nullable="true" />
-  </EntityType>
-  <EntityType Name="UserRecommendations">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="TotalRecommendation" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="UsefulRecommendation" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Users">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="isActive" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Source" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="guid" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ImageUrl" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="gender" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Locked" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="KeepMeSignedIn" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="RegistrationTime" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="DateTime" Type="datetime" Nullable="true" />
-    <Property Name="FacebookLink" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="LinkedinLink" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="GoogleLink" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="fixedGuid" Type="nvarchar(max)" Nullable="true" />
-  </EntityType>
-  <EntityType Name="UserSkills">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Skill" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Rating" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="ValidateUserKeys">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="guid" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="CreateTemplateImgurImagesLists">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="imgurId" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="imgurDeleteHash" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="imgurLink" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="alocatedCount" Type="int" Nullable="true" />
-  </EntityType>
-  <EntityType Name="UserSurveyResultToBeRevieweds1">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="refKey" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="type" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="answer" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="questionId" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="UserSurveyResults">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="refKey" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="type" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="answer" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="questionId" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="UserJobMappings">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="refKey" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="startTime" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="endTime" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="expectedDeliveryTime" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="UserMultipleJobMappings">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="refKey" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="startTime" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="type" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="subType" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="endTime" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="expectedDelivery" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="surveyResult" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="imageKey" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="isFirst" Type="nvarchar(max)" Nullable="true" />
-  </EntityType>
-  <EntityType Name="CreateTemplateFacebookLikes">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="type" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="referenceId" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="totalThreads" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="completed" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="creationTime" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="title" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="subType" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="payPerUser" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="DateTime" Type="datetime" Nullable="true" />
-    <Property Name="pageId" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="pageUrl" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="UserFacebookLikeJobMappings">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="refKey" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="pageLikeTime" Type="datetime" Nullable="true" />
-    <Property Name="type" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="subType" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="pageId" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="pageUrl" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="FacebookAuths">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="datetime" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="facebookId" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="facebookUsername" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="AuthToken" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="linkedinAuths">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="oauth_Token" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="oauth_TokenSecret" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="oauth_verifier" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="facebookPageLikeMappings">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="refKey" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="DateTime" Type="datetime" Nullable="false" />
-    <Property Name="PageId" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="UserFacebookId" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="UserReputations">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ReputationScore" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="GoldEarned" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="SilverEarned" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="BronzeEarned" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="UserBadge" Type="nvarchar(max)" Nullable="true" />
-  </EntityType>
-  <EntityType Name="UserEarnings">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="total" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="approved" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="pending" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="currency" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="LastUpdated" Type="datetime" Nullable="true" />
-  </EntityType>
-  <EntityType Name="ClientWallets">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="total" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="approved" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="pending" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="currency" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="LastUpdated" Type="datetime" Nullable="true" />
-  </EntityType>
-  <EntityType Name="UserReputationMappings">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="type" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="code" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="DateTime" Type="datetime" Nullable="true" />
-    <Property Name="refKey" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-</Schema></edmx:StorageModels>
+      <Schema Namespace="M2E.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="M2EStoreContainer">
+          <EntitySet Name="ClientDetails" EntityType="M2E.Store.ClientDetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClientWallets" EntityType="M2E.Store.ClientWallets" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CreateTemplateeditableInstructionsLists" EntityType="M2E.Store.CreateTemplateeditableInstructionsLists" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CreateTemplateFacebookLikes" EntityType="M2E.Store.CreateTemplateFacebookLikes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CreateTemplateImgurImagesLists" EntityType="M2E.Store.CreateTemplateImgurImagesLists" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CreateTemplateListBoxQuestionsLists" EntityType="M2E.Store.CreateTemplateListBoxQuestionsLists" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CreateTemplateModeratingImagesLists" EntityType="M2E.Store.CreateTemplateModeratingImagesLists" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CreateTemplateMultipleQuestionsLists" EntityType="M2E.Store.CreateTemplateMultipleQuestionsLists" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CreateTemplateQuestionInfoes" EntityType="M2E.Store.CreateTemplateQuestionInfoes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CreateTemplateSingleQuestionsLists" EntityType="M2E.Store.CreateTemplateSingleQuestionsLists" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CreateTemplateTextBoxQuestionsLists" EntityType="M2E.Store.CreateTemplateTextBoxQuestionsLists" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FacebookAuths" EntityType="M2E.Store.FacebookAuths" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="facebookPageLikeMappings" EntityType="M2E.Store.facebookPageLikeMappings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ForgetPasswords" EntityType="M2E.Store.ForgetPasswords" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="JobDatas" EntityType="M2E.Store.JobDatas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LinkedInAuthApiDatas" EntityType="M2E.Store.LinkedInAuthApiDatas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="linkedinAuths" EntityType="M2E.Store.linkedinAuths" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RecommendedBies" EntityType="M2E.Store.RecommendedBies" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ThirdPartyLogins" EntityType="M2E.Store.ThirdPartyLogins" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserDetails" EntityType="M2E.Store.UserDetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserEarnings" EntityType="M2E.Store.UserEarnings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserFacebookLikeJobMappings" EntityType="M2E.Store.UserFacebookLikeJobMappings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserJobMappings" EntityType="M2E.Store.UserJobMappings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserMultipleJobMappings" EntityType="M2E.Store.UserMultipleJobMappings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserPageSettings" EntityType="M2E.Store.UserPageSettings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserRecommendations" EntityType="M2E.Store.UserRecommendations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserReputationMappings" EntityType="M2E.Store.UserReputationMappings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserReputations" EntityType="M2E.Store.UserReputations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="M2E.Store.Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserSkills" EntityType="M2E.Store.UserSkills" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserSurveyResults" EntityType="M2E.Store.UserSurveyResults" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserSurveyResultToBeRevieweds1" EntityType="M2E.Store.UserSurveyResultToBeRevieweds1" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ValidateUserKeys" EntityType="M2E.Store.ValidateUserKeys" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="ClientDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="nvarchar(max)" />
+          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientWallets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="total" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="approved" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="pending" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="currency" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CreateTemplateeditableInstructionsLists">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CreateTemplateFacebookLikes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="type" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="referenceId" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="totalThreads" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="completed" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="creationTime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="subType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="payPerUser" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="pageId" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="pageUrl" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CreateTemplateImgurImagesLists">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="imgurId" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="imgurDeleteHash" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="imgurLink" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="alocatedCount" Type="int" />
+        </EntityType>
+        <EntityType Name="CreateTemplateListBoxQuestionsLists">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Options" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CreateTemplateModeratingImagesLists">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="deletehash" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="link" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CreateTemplateMultipleQuestionsLists">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Options" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CreateTemplateQuestionInfoes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="type" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="visible" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="referenceId" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="totalThreads" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="completed" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="creationTime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="subType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="payPerUser" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CreateTemplateSingleQuestionsLists">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Options" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CreateTemplateTextBoxQuestionsLists">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Options" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="verified" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="assignedTo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="assignTime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="completedAt" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="referenceKey" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FacebookAuths">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="datetime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="facebookId" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="facebookUsername" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AuthToken" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="facebookPageLikeMappings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="refKey" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" Nullable="false" />
+          <Property Name="PageId" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserFacebookId" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ForgetPasswords">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="guid" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JobDatas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Category" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SubCategory" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Data" Type="nvarchar(max)" />
+          <Property Name="PostedBy" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="StartDate" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EndDate" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LinkedInAuthApiDatas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="oauth_Token" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="oauth_TokenSecret" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="oauth_verifier" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="linkedinAuths">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="oauth_Token" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="oauth_TokenSecret" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="oauth_verifier" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RecommendedBies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RecommendedTo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RecommendedFrom" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="isValid" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ThirdPartyLogins">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FacebookId" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FacebookAccessToken" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="GoogleId" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="GoogleAccessToken" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Country" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserEarnings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="total" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="approved" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="pending" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="currency" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserFacebookLikeJobMappings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="refKey" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="pageLikeTime" Type="datetime" />
+          <Property Name="type" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="subType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="pageId" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="pageUrl" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserJobMappings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="refKey" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="startTime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="endTime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="expectedDeliveryTime" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserMultipleJobMappings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="refKey" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="startTime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="type" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="subType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="endTime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="expectedDelivery" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="surveyResult" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="imageKey" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="isFirst" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserPageSettings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PageThemeColor" Type="nvarchar(max)" />
+          <Property Name="LayoutWidth" Type="nvarchar(max)" />
+          <Property Name="TopBar" Type="nvarchar(max)" />
+          <Property Name="SideBar" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserRecommendations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TotalRecommendation" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UsefulRecommendation" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserReputationMappings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="type" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="code" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="refKey" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserReputations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ReputationScore" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="GoldEarned" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SilverEarned" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BronzeEarned" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserBadge" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="isActive" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Source" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="guid" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ImageUrl" Type="nvarchar(max)" />
+          <Property Name="gender" Type="nvarchar(max)" />
+          <Property Name="Locked" Type="nvarchar(max)" />
+          <Property Name="KeepMeSignedIn" Type="nvarchar(max)" />
+          <Property Name="RegistrationTime" Type="nvarchar(max)" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="FacebookLink" Type="nvarchar(max)" />
+          <Property Name="LinkedinLink" Type="nvarchar(max)" />
+          <Property Name="GoogleLink" Type="nvarchar(max)" />
+          <Property Name="fixedGuid" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserSkills">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Skill" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Rating" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSurveyResults">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="refKey" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="type" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="answer" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="questionId" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSurveyResultToBeRevieweds1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="refKey" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="type" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="answer" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="questionId" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ValidateUserKeys">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="guid" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="M2EModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <Schema Namespace="M2E" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="M2EContext" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ClientDetails" EntityType="M2EModel.ClientDetail" />
-          <EntitySet Name="CreateTemplateeditableInstructionsLists" EntityType="M2EModel.CreateTemplateeditableInstructionsList" />
-          <EntitySet Name="CreateTemplateListBoxQuestionsLists" EntityType="M2EModel.CreateTemplateListBoxQuestionsList" />
-          <EntitySet Name="CreateTemplateMultipleQuestionsLists" EntityType="M2EModel.CreateTemplateMultipleQuestionsList" />
-          <EntitySet Name="CreateTemplateQuestionInfoes" EntityType="M2EModel.CreateTemplateQuestionInfo" />
-          <EntitySet Name="CreateTemplateSingleQuestionsLists" EntityType="M2EModel.CreateTemplateSingleQuestionsList" />
-          <EntitySet Name="CreateTemplateTextBoxQuestionsLists" EntityType="M2EModel.CreateTemplateTextBoxQuestionsList" />
-          <EntitySet Name="ForgetPasswords" EntityType="M2EModel.ForgetPassword" />
-          <EntitySet Name="JobDatas" EntityType="M2EModel.JobData" />
-          <EntitySet Name="LinkedInAuthApiDatas" EntityType="M2EModel.LinkedInAuthApiData" />
-          <EntitySet Name="RecommendedBies" EntityType="M2EModel.RecommendedBy" />
-          <EntitySet Name="ThirdPartyLogins" EntityType="M2EModel.ThirdPartyLogin" />
-          <EntitySet Name="UserDetails" EntityType="M2EModel.UserDetail" />
-          <EntitySet Name="UserPageSettings" EntityType="M2EModel.UserPageSetting" />
-          <EntitySet Name="UserRecommendations" EntityType="M2EModel.UserRecommendation" />
-          <EntitySet Name="Users" EntityType="M2EModel.User" />
-          <EntitySet Name="UserSkills" EntityType="M2EModel.UserSkill" />
-          <EntitySet Name="ValidateUserKeys" EntityType="M2EModel.ValidateUserKey" />
-          <EntitySet Name="CreateTemplateImgurImagesLists" EntityType="M2EModel.CreateTemplateImgurImagesList" />
-          <EntitySet Name="UserSurveyResultToBeRevieweds1" EntityType="M2EModel.UserSurveyResultToBeReviewed" />
-          <EntitySet Name="UserSurveyResults" EntityType="M2EModel.UserSurveyResult" />
-          <EntitySet Name="UserJobMappings" EntityType="M2EModel.UserJobMapping" />
-          <EntitySet Name="UserMultipleJobMappings" EntityType="M2EModel.UserMultipleJobMapping" />
-          <EntitySet Name="CreateTemplateFacebookLikes" EntityType="M2EModel.CreateTemplateFacebookLike" />
-          <EntitySet Name="UserFacebookLikeJobMappings" EntityType="M2EModel.UserFacebookLikeJobMapping" />
-          <EntitySet Name="FacebookAuths" EntityType="M2EModel.FacebookAuth" />
-          <EntitySet Name="linkedinAuths" EntityType="M2EModel.linkedinAuth" />
-          <EntitySet Name="facebookPageLikeMappings" EntityType="M2EModel.facebookPageLikeMapping" />
-          <EntitySet Name="UserReputations" EntityType="M2EModel.UserReputation" />
-          <EntitySet Name="UserEarnings" EntityType="M2EModel.UserEarning" />
-          <EntitySet Name="ClientWallets" EntityType="M2EModel.ClientWallet" />
-          <EntitySet Name="UserReputationMappings" EntityType="M2EModel.UserReputationMapping" />
+          <EntitySet Name="ClientDetails" EntityType="M2E.ClientDetail" />
+          <EntitySet Name="ClientWallets" EntityType="M2E.ClientWallet" />
+          <EntitySet Name="CreateTemplateeditableInstructionsLists" EntityType="M2E.CreateTemplateeditableInstructionsList" />
+          <EntitySet Name="CreateTemplateFacebookLikes" EntityType="M2E.CreateTemplateFacebookLike" />
+          <EntitySet Name="CreateTemplateImgurImagesLists" EntityType="M2E.CreateTemplateImgurImagesList" />
+          <EntitySet Name="CreateTemplateListBoxQuestionsLists" EntityType="M2E.CreateTemplateListBoxQuestionsList" />
+          <EntitySet Name="CreateTemplateModeratingImagesLists" EntityType="M2E.CreateTemplateModeratingImagesList" />
+          <EntitySet Name="CreateTemplateMultipleQuestionsLists" EntityType="M2E.CreateTemplateMultipleQuestionsList" />
+          <EntitySet Name="CreateTemplateQuestionInfoes" EntityType="M2E.CreateTemplateQuestionInfo" />
+          <EntitySet Name="CreateTemplateSingleQuestionsLists" EntityType="M2E.CreateTemplateSingleQuestionsList" />
+          <EntitySet Name="CreateTemplateTextBoxQuestionsLists" EntityType="M2E.CreateTemplateTextBoxQuestionsList" />
+          <EntitySet Name="FacebookAuths" EntityType="M2E.FacebookAuth" />
+          <EntitySet Name="facebookPageLikeMappings" EntityType="M2E.facebookPageLikeMapping" />
+          <EntitySet Name="ForgetPasswords" EntityType="M2E.ForgetPassword" />
+          <EntitySet Name="JobDatas" EntityType="M2E.JobData" />
+          <EntitySet Name="LinkedInAuthApiDatas" EntityType="M2E.LinkedInAuthApiData" />
+          <EntitySet Name="linkedinAuths" EntityType="M2E.linkedinAuth" />
+          <EntitySet Name="RecommendedBies" EntityType="M2E.RecommendedBy" />
+          <EntitySet Name="ThirdPartyLogins" EntityType="M2E.ThirdPartyLogin" />
+          <EntitySet Name="UserDetails" EntityType="M2E.UserDetail" />
+          <EntitySet Name="UserEarnings" EntityType="M2E.UserEarning" />
+          <EntitySet Name="UserFacebookLikeJobMappings" EntityType="M2E.UserFacebookLikeJobMapping" />
+          <EntitySet Name="UserJobMappings" EntityType="M2E.UserJobMapping" />
+          <EntitySet Name="UserMultipleJobMappings" EntityType="M2E.UserMultipleJobMapping" />
+          <EntitySet Name="UserPageSettings" EntityType="M2E.UserPageSetting" />
+          <EntitySet Name="UserRecommendations" EntityType="M2E.UserRecommendation" />
+          <EntitySet Name="UserReputationMappings" EntityType="M2E.UserReputationMapping" />
+          <EntitySet Name="UserReputations" EntityType="M2E.UserReputation" />
+          <EntitySet Name="Users" EntityType="M2E.User" />
+          <EntitySet Name="UserSkills" EntityType="M2E.UserSkill" />
+          <EntitySet Name="UserSurveyResults" EntityType="M2E.UserSurveyResult" />
+          <EntitySet Name="UserSurveyResultToBeRevieweds1" EntityType="M2E.UserSurveyResultToBeRevieweds1" />
+          <EntitySet Name="ValidateUserKeys" EntityType="M2E.ValidateUserKey" />
         </EntityContainer>
         <EntityType Name="ClientDetail">
           <Key>
@@ -491,6 +507,18 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CompanyName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ClientWallet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="total" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="approved" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="pending" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="currency" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="CreateTemplateeditableInstructionsList">
           <Key>
@@ -507,6 +535,43 @@
           <Property Name="completedAt" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="referenceKey" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
+        <EntityType Name="CreateTemplateFacebookLike">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="referenceId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="totalThreads" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="completed" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="verified" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="creationTime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="subType" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="payPerUser" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="pageId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="pageUrl" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="CreateTemplateImgurImagesList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="verified" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="assignedTo" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="assignTime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="completedAt" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="referenceKey" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="imgurId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="imgurDeleteHash" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="imgurLink" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="alocatedCount" Type="Int32" />
+        </EntityType>
         <EntityType Name="CreateTemplateListBoxQuestionsList">
           <Key>
             <PropertyRef Name="Id" />
@@ -522,6 +587,19 @@
           <Property Name="completedAt" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Number" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="referenceKey" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="CreateTemplateModeratingImagesList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="assignedTo" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="assignTime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="completedAt" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="referenceKey" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="deletehash" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="link" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="CreateTemplateMultipleQuestionsList">
           <Key>
@@ -553,10 +631,10 @@
           <Property Name="completed" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="verified" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="creationTime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Type="String" Name="title" Nullable="false" />
-          <Property Type="String" Name="subType" Nullable="false" />
-          <Property Type="String" Name="payPerUser" Nullable="false" />
-          <Property Type="DateTime" Name="DateTime" Nullable="true" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="subType" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="payPerUser" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="CreateTemplateSingleQuestionsList">
           <Key>
@@ -590,6 +668,28 @@
           <Property Name="Number" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="referenceKey" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
+        <EntityType Name="FacebookAuth">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="datetime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="facebookId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="facebookUsername" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="AuthToken" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="facebookPageLikeMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="refKey" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PageId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="UserFacebookId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
         <EntityType Name="ForgetPassword">
           <Key>
             <PropertyRef Name="Id" />
@@ -620,6 +720,15 @@
           <Property Name="oauth_TokenSecret" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="oauth_verifier" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
+        <EntityType Name="linkedinAuth">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="oauth_Token" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="oauth_TokenSecret" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="oauth_verifier" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
         <EntityType Name="RecommendedBy">
           <Key>
             <PropertyRef Name="Id" />
@@ -627,8 +736,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RecommendedTo" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="RecommendedFrom" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Type="DateTime" Name="DateTime" Nullable="true" />
-          <Property Type="String" Name="isValid" Nullable="true" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="isValid" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="ThirdPartyLogin">
           <Key>
@@ -648,6 +757,61 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Country" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserEarning">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="total" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="approved" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="pending" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="currency" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="UserFacebookLikeJobMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="refKey" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="pageLikeTime" Type="DateTime" Precision="3" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="subType" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="pageId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="pageUrl" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserJobMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="refKey" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="startTime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="endTime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="expectedDeliveryTime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserMultipleJobMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="refKey" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="startTime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="subType" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="endTime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="expectedDelivery" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="surveyResult" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="imageKey" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="isFirst" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="UserPageSetting">
           <Key>
@@ -669,6 +833,30 @@
           <Property Name="TotalRecommendation" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="UsefulRecommendation" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
+        <EntityType Name="UserReputationMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="code" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="refKey" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserReputation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ReputationScore" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="GoldEarned" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="SilverEarned" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="BronzeEarned" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="UserBadge" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
@@ -687,11 +875,11 @@
           <Property Name="Locked" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="KeepMeSignedIn" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="RegistrationTime" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Type="DateTime" Name="DateTime" Nullable="true" />
-          <Property Type="String" Name="FacebookLink" Nullable="true" />
-          <Property Type="String" Name="LinkedinLink" Nullable="true" />
-          <Property Type="String" Name="GoogleLink" Nullable="true" />
-          <Property Type="String" Name="fixedGuid" Nullable="true" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="FacebookLink" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="LinkedinLink" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="GoogleLink" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fixedGuid" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="UserSkill">
           <Key>
@@ -702,6 +890,28 @@
           <Property Name="Skill" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Rating" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
+        <EntityType Name="UserSurveyResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="refKey" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="answer" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="questionId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserSurveyResultToBeRevieweds1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="refKey" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="answer" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="questionId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
         <EntityType Name="ValidateUserKey">
           <Key>
             <PropertyRef Name="Id" />
@@ -710,634 +920,468 @@
           <Property Name="Username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="guid" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
-        <EntityType Name="CreateTemplateImgurImagesList">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="username" Nullable="false" />
-          <Property Type="String" Name="status" Nullable="false" />
-          <Property Type="String" Name="verified" Nullable="false" />
-          <Property Type="String" Name="assignedTo" Nullable="false" />
-          <Property Type="String" Name="assignTime" Nullable="false" />
-          <Property Type="String" Name="completedAt" Nullable="false" />
-          <Property Type="String" Name="referenceKey" Nullable="false" />
-          <Property Type="String" Name="imgurId" Nullable="false" />
-          <Property Type="String" Name="imgurDeleteHash" Nullable="false" />
-          <Property Type="String" Name="imgurLink" Nullable="false" />
-          <Property Type="Int32" Name="alocatedCount" Nullable="true" />
-        </EntityType>
-        <EntityType Name="UserSurveyResultToBeReviewed">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="refKey" Nullable="false" />
-          <Property Type="String" Name="type" Nullable="false" />
-          <Property Type="String" Name="answer" Nullable="false" />
-          <Property Type="String" Name="username" Nullable="false" />
-          <Property Type="String" Name="questionId" Nullable="false" />
-        </EntityType>
-        <EntityType Name="UserSurveyResult">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="refKey" Nullable="false" />
-          <Property Type="String" Name="type" Nullable="false" />
-          <Property Type="String" Name="answer" Nullable="false" />
-          <Property Type="String" Name="username" Nullable="false" />
-          <Property Type="String" Name="questionId" Nullable="false" />
-        </EntityType>
-        <EntityType Name="UserJobMapping">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="refKey" Nullable="false" />
-          <Property Type="String" Name="username" Nullable="false" />
-          <Property Type="String" Name="startTime" Nullable="false" />
-          <Property Type="String" Name="status" Nullable="false" />
-          <Property Type="String" Name="endTime" Nullable="false" />
-          <Property Type="String" Name="expectedDeliveryTime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="UserMultipleJobMapping">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="refKey" Nullable="false" />
-          <Property Type="String" Name="username" Nullable="false" />
-          <Property Type="String" Name="startTime" Nullable="false" />
-          <Property Type="String" Name="type" Nullable="false" />
-          <Property Type="String" Name="subType" Nullable="false" />
-          <Property Type="String" Name="status" Nullable="false" />
-          <Property Type="String" Name="endTime" Nullable="false" />
-          <Property Type="String" Name="expectedDelivery" Nullable="false" />
-          <Property Type="String" Name="surveyResult" Nullable="false" />
-          <Property Type="String" Name="imageKey" Nullable="false" />
-          <Property Type="String" Name="isFirst" Nullable="true" />
-        </EntityType>
-        <EntityType Name="CreateTemplateFacebookLike">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="username" Nullable="false" />
-          <Property Type="String" Name="type" Nullable="false" />
-          <Property Type="String" Name="description" Nullable="false" MaxLength="Max" />
-          <Property Type="String" Name="referenceId" Nullable="false" />
-          <Property Type="String" Name="totalThreads" Nullable="false" />
-          <Property Type="String" Name="completed" Nullable="false" />
-          <Property Type="String" Name="verified" Nullable="false" />
-          <Property Type="String" Name="creationTime" Nullable="false" />
-          <Property Type="String" Name="title" Nullable="false" />
-          <Property Type="String" Name="subType" Nullable="false" />
-          <Property Type="String" Name="payPerUser" Nullable="false" />
-          <Property Type="DateTime" Name="DateTime" Nullable="true" />
-          <Property Type="String" Name="pageId" Nullable="false" />
-          <Property Type="String" Name="pageUrl" Nullable="false" />
-        </EntityType>
-        <EntityType Name="UserFacebookLikeJobMapping">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="refKey" Nullable="false" />
-          <Property Type="String" Name="username" Nullable="false" />
-          <Property Type="DateTime" Name="pageLikeTime" Nullable="true" />
-          <Property Type="String" Name="type" Nullable="false" />
-          <Property Type="String" Name="subType" Nullable="false" />
-          <Property Type="String" Name="status" Nullable="false" />
-          <Property Type="String" Name="pageId" Nullable="false" />
-          <Property Type="String" Name="pageUrl" Nullable="false" />
-        </EntityType>
-        <EntityType Name="FacebookAuth">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="username" Nullable="false" />
-          <Property Type="String" Name="datetime" Nullable="false" />
-          <Property Type="String" Name="facebookId" Nullable="false" />
-          <Property Type="String" Name="facebookUsername" Nullable="false" />
-          <Property Type="String" Name="AuthToken" Nullable="false" />
-        </EntityType>
-        <EntityType Name="linkedinAuth">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="oauth_Token" Nullable="false" />
-          <Property Type="String" Name="oauth_TokenSecret" Nullable="false" />
-          <Property Type="String" Name="oauth_verifier" Nullable="false" />
-        </EntityType>
-        <EntityType Name="facebookPageLikeMapping">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="refKey" Nullable="false" />
-          <Property Type="String" Name="username" Nullable="false" />
-          <Property Type="DateTime" Name="DateTime" Nullable="false" />
-          <Property Type="String" Name="PageId" Nullable="false" />
-          <Property Type="String" Name="UserFacebookId" Nullable="false" />
-        </EntityType>
-        <EntityType Name="UserReputation">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="username" Nullable="false" />
-          <Property Type="String" Name="ReputationScore" Nullable="false" />
-          <Property Type="String" Name="GoldEarned" Nullable="false" />
-          <Property Type="String" Name="SilverEarned" Nullable="false" />
-          <Property Type="String" Name="BronzeEarned" Nullable="false" />
-          <Property Type="String" Name="UserBadge" Nullable="true" />
-        </EntityType>
-        <EntityType Name="UserEarning">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="username" Nullable="false" />
-          <Property Type="String" Name="total" Nullable="false" />
-          <Property Type="String" Name="approved" Nullable="false" />
-          <Property Type="String" Name="pending" Nullable="false" />
-          <Property Type="String" Name="currency" Nullable="false" />
-          <Property Type="DateTime" Name="LastUpdated" Nullable="true" />
-        </EntityType>
-        <EntityType Name="ClientWallet">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="username" Nullable="false" />
-          <Property Type="String" Name="total" Nullable="false" />
-          <Property Type="String" Name="approved" Nullable="false" />
-          <Property Type="String" Name="pending" Nullable="false" />
-          <Property Type="String" Name="currency" Nullable="false" />
-          <Property Type="DateTime" Name="LastUpdated" Nullable="true" />
-        </EntityType>
-        <EntityType Name="UserReputationMapping">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="username" Nullable="false" />
-          <Property Type="String" Name="type" Nullable="false" />
-          <Property Type="String" Name="code" Nullable="false" />
-          <Property Type="String" Name="description" Nullable="false" />
-          <Property Type="DateTime" Name="DateTime" Nullable="true" />
-          <Property Type="String" Name="refKey" Nullable="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="M2EModelStoreContainer" CdmEntityContainer="M2EContext">
-    <EntitySetMapping Name="ClientDetails">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.ClientDetail)">
-        <MappingFragment StoreEntitySet="ClientDetails">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CreateTemplateeditableInstructionsLists">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.CreateTemplateeditableInstructionsList)">
-        <MappingFragment StoreEntitySet="CreateTemplateeditableInstructionsLists">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="Number" ColumnName="Number" />
-          <ScalarProperty Name="Text" ColumnName="Text" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="verified" ColumnName="verified" />
-          <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
-          <ScalarProperty Name="assignTime" ColumnName="assignTime" />
-          <ScalarProperty Name="completedAt" ColumnName="completedAt" />
-          <ScalarProperty Name="referenceKey" ColumnName="referenceKey" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CreateTemplateListBoxQuestionsLists">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.CreateTemplateListBoxQuestionsList)">
-        <MappingFragment StoreEntitySet="CreateTemplateListBoxQuestionsLists">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="Question" ColumnName="Question" />
-          <ScalarProperty Name="Options" ColumnName="Options" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="verified" ColumnName="verified" />
-          <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
-          <ScalarProperty Name="assignTime" ColumnName="assignTime" />
-          <ScalarProperty Name="completedAt" ColumnName="completedAt" />
-          <ScalarProperty Name="Number" ColumnName="Number" />
-          <ScalarProperty Name="referenceKey" ColumnName="referenceKey" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CreateTemplateMultipleQuestionsLists">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.CreateTemplateMultipleQuestionsList)">
-        <MappingFragment StoreEntitySet="CreateTemplateMultipleQuestionsLists">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="Question" ColumnName="Question" />
-          <ScalarProperty Name="Options" ColumnName="Options" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="verified" ColumnName="verified" />
-          <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
-          <ScalarProperty Name="assignTime" ColumnName="assignTime" />
-          <ScalarProperty Name="completedAt" ColumnName="completedAt" />
-          <ScalarProperty Name="Number" ColumnName="Number" />
-          <ScalarProperty Name="referenceKey" ColumnName="referenceKey" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CreateTemplateQuestionInfoes">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.CreateTemplateQuestionInfo)">
-        <MappingFragment StoreEntitySet="CreateTemplateQuestionInfoes">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="visible" ColumnName="visible" />
-          <ScalarProperty Name="description" ColumnName="description" />
-          <ScalarProperty Name="referenceId" ColumnName="referenceId" />
-          <ScalarProperty Name="totalThreads" ColumnName="totalThreads" />
-          <ScalarProperty Name="completed" ColumnName="completed" />
-          <ScalarProperty Name="verified" ColumnName="verified" />
-          <ScalarProperty Name="creationTime" ColumnName="creationTime" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="subType" ColumnName="subType" />
-          <ScalarProperty Name="payPerUser" ColumnName="payPerUser" />
-          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CreateTemplateSingleQuestionsLists">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.CreateTemplateSingleQuestionsList)">
-        <MappingFragment StoreEntitySet="CreateTemplateSingleQuestionsLists">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="Question" ColumnName="Question" />
-          <ScalarProperty Name="Options" ColumnName="Options" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="verified" ColumnName="verified" />
-          <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
-          <ScalarProperty Name="assignTime" ColumnName="assignTime" />
-          <ScalarProperty Name="completedAt" ColumnName="completedAt" />
-          <ScalarProperty Name="Number" ColumnName="Number" />
-          <ScalarProperty Name="referenceKey" ColumnName="referenceKey" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CreateTemplateTextBoxQuestionsLists">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.CreateTemplateTextBoxQuestionsList)">
-        <MappingFragment StoreEntitySet="CreateTemplateTextBoxQuestionsLists">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="Question" ColumnName="Question" />
-          <ScalarProperty Name="Options" ColumnName="Options" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="verified" ColumnName="verified" />
-          <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
-          <ScalarProperty Name="assignTime" ColumnName="assignTime" />
-          <ScalarProperty Name="completedAt" ColumnName="completedAt" />
-          <ScalarProperty Name="Number" ColumnName="Number" />
-          <ScalarProperty Name="referenceKey" ColumnName="referenceKey" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ForgetPasswords">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.ForgetPassword)">
-        <MappingFragment StoreEntitySet="ForgetPasswords">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="guid" ColumnName="guid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="JobDatas">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.JobData)">
-        <MappingFragment StoreEntitySet="JobDatas">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Category" ColumnName="Category" />
-          <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
-          <ScalarProperty Name="Data" ColumnName="Data" />
-          <ScalarProperty Name="PostedBy" ColumnName="PostedBy" />
-          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="LinkedInAuthApiDatas">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.LinkedInAuthApiData)">
-        <MappingFragment StoreEntitySet="LinkedInAuthApiDatas">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="oauth_Token" ColumnName="oauth_Token" />
-          <ScalarProperty Name="oauth_TokenSecret" ColumnName="oauth_TokenSecret" />
-          <ScalarProperty Name="oauth_verifier" ColumnName="oauth_verifier" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="RecommendedBies">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.RecommendedBy)">
-        <MappingFragment StoreEntitySet="RecommendedBies">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="RecommendedTo" ColumnName="RecommendedTo" />
-          <ScalarProperty Name="RecommendedFrom" ColumnName="RecommendedFrom" />
-          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-          <ScalarProperty Name="isValid" ColumnName="isValid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ThirdPartyLogins">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.ThirdPartyLogin)">
-        <MappingFragment StoreEntitySet="ThirdPartyLogins">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="FacebookId" ColumnName="FacebookId" />
-          <ScalarProperty Name="FacebookAccessToken" ColumnName="FacebookAccessToken" />
-          <ScalarProperty Name="GoogleId" ColumnName="GoogleId" />
-          <ScalarProperty Name="GoogleAccessToken" ColumnName="GoogleAccessToken" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UserDetails">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserDetail)">
-        <MappingFragment StoreEntitySet="UserDetails">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="Country" ColumnName="Country" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UserPageSettings">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserPageSetting)">
-        <MappingFragment StoreEntitySet="UserPageSettings">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="PageThemeColor" ColumnName="PageThemeColor" />
-          <ScalarProperty Name="LayoutWidth" ColumnName="LayoutWidth" />
-          <ScalarProperty Name="TopBar" ColumnName="TopBar" />
-          <ScalarProperty Name="SideBar" ColumnName="SideBar" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UserRecommendations">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserRecommendation)">
-        <MappingFragment StoreEntitySet="UserRecommendations">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="TotalRecommendation" ColumnName="TotalRecommendation" />
-          <ScalarProperty Name="UsefulRecommendation" ColumnName="UsefulRecommendation" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.User)">
-        <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="isActive" ColumnName="isActive" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="Source" ColumnName="Source" />
-          <ScalarProperty Name="guid" ColumnName="guid" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
-          <ScalarProperty Name="gender" ColumnName="gender" />
-          <ScalarProperty Name="Locked" ColumnName="Locked" />
-          <ScalarProperty Name="KeepMeSignedIn" ColumnName="KeepMeSignedIn" />
-          <ScalarProperty Name="RegistrationTime" ColumnName="RegistrationTime" />
-          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-          <ScalarProperty Name="FacebookLink" ColumnName="FacebookLink" />
-          <ScalarProperty Name="LinkedinLink" ColumnName="LinkedinLink" />
-          <ScalarProperty Name="GoogleLink" ColumnName="GoogleLink" />
-          <ScalarProperty Name="fixedGuid" ColumnName="fixedGuid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UserSkills">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserSkill)">
-        <MappingFragment StoreEntitySet="UserSkills">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="Skill" ColumnName="Skill" />
-          <ScalarProperty Name="Rating" ColumnName="Rating" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ValidateUserKeys">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.ValidateUserKey)">
-        <MappingFragment StoreEntitySet="ValidateUserKeys">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="guid" ColumnName="guid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CreateTemplateImgurImagesLists">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.CreateTemplateImgurImagesList)">
-        <MappingFragment StoreEntitySet="CreateTemplateImgurImagesLists">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="verified" ColumnName="verified" />
-          <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
-          <ScalarProperty Name="assignTime" ColumnName="assignTime" />
-          <ScalarProperty Name="completedAt" ColumnName="completedAt" />
-          <ScalarProperty Name="referenceKey" ColumnName="referenceKey" />
-          <ScalarProperty Name="imgurId" ColumnName="imgurId" />
-          <ScalarProperty Name="imgurDeleteHash" ColumnName="imgurDeleteHash" />
-          <ScalarProperty Name="imgurLink" ColumnName="imgurLink" />
-          <ScalarProperty Name="alocatedCount" ColumnName="alocatedCount" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UserSurveyResultToBeRevieweds1">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserSurveyResultToBeReviewed)">
-        <MappingFragment StoreEntitySet="UserSurveyResultToBeRevieweds1">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="refKey" ColumnName="refKey" />
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="answer" ColumnName="answer" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="questionId" ColumnName="questionId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UserSurveyResults">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserSurveyResult)">
-        <MappingFragment StoreEntitySet="UserSurveyResults">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="refKey" ColumnName="refKey" />
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="answer" ColumnName="answer" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="questionId" ColumnName="questionId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UserJobMappings">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserJobMapping)">
-        <MappingFragment StoreEntitySet="UserJobMappings">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="refKey" ColumnName="refKey" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="startTime" ColumnName="startTime" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="endTime" ColumnName="endTime" />
-          <ScalarProperty Name="expectedDeliveryTime" ColumnName="expectedDeliveryTime" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UserMultipleJobMappings">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserMultipleJobMapping)">
-        <MappingFragment StoreEntitySet="UserMultipleJobMappings">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="refKey" ColumnName="refKey" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="startTime" ColumnName="startTime" />
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="subType" ColumnName="subType" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="endTime" ColumnName="endTime" />
-          <ScalarProperty Name="expectedDelivery" ColumnName="expectedDelivery" />
-          <ScalarProperty Name="surveyResult" ColumnName="surveyResult" />
-          <ScalarProperty Name="imageKey" ColumnName="imageKey" />
-          <ScalarProperty Name="isFirst" ColumnName="isFirst" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CreateTemplateFacebookLikes">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.CreateTemplateFacebookLike)">
-        <MappingFragment StoreEntitySet="CreateTemplateFacebookLikes">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="description" ColumnName="description" />
-          <ScalarProperty Name="referenceId" ColumnName="referenceId" />
-          <ScalarProperty Name="totalThreads" ColumnName="totalThreads" />
-          <ScalarProperty Name="completed" ColumnName="completed" />
-          <ScalarProperty Name="verified" ColumnName="verified" />
-          <ScalarProperty Name="creationTime" ColumnName="creationTime" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="subType" ColumnName="subType" />
-          <ScalarProperty Name="payPerUser" ColumnName="payPerUser" />
-          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-          <ScalarProperty Name="pageId" ColumnName="pageId" />
-          <ScalarProperty Name="pageUrl" ColumnName="pageUrl" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UserFacebookLikeJobMappings">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserFacebookLikeJobMapping)">
-        <MappingFragment StoreEntitySet="UserFacebookLikeJobMappings">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="refKey" ColumnName="refKey" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="pageLikeTime" ColumnName="pageLikeTime" />
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="subType" ColumnName="subType" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="pageId" ColumnName="pageId" />
-          <ScalarProperty Name="pageUrl" ColumnName="pageUrl" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="FacebookAuths">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.FacebookAuth)">
-        <MappingFragment StoreEntitySet="FacebookAuths">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="datetime" ColumnName="datetime" />
-          <ScalarProperty Name="facebookId" ColumnName="facebookId" />
-          <ScalarProperty Name="facebookUsername" ColumnName="facebookUsername" />
-          <ScalarProperty Name="AuthToken" ColumnName="AuthToken" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="linkedinAuths">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.linkedinAuth)">
-        <MappingFragment StoreEntitySet="linkedinAuths">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="oauth_Token" ColumnName="oauth_Token" />
-          <ScalarProperty Name="oauth_TokenSecret" ColumnName="oauth_TokenSecret" />
-          <ScalarProperty Name="oauth_verifier" ColumnName="oauth_verifier" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="facebookPageLikeMappings">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.facebookPageLikeMapping)">
-        <MappingFragment StoreEntitySet="facebookPageLikeMappings">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="refKey" ColumnName="refKey" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-          <ScalarProperty Name="PageId" ColumnName="PageId" />
-          <ScalarProperty Name="UserFacebookId" ColumnName="UserFacebookId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UserReputations">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserReputation)">
-        <MappingFragment StoreEntitySet="UserReputations">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="ReputationScore" ColumnName="ReputationScore" />
-          <ScalarProperty Name="GoldEarned" ColumnName="GoldEarned" />
-          <ScalarProperty Name="SilverEarned" ColumnName="SilverEarned" />
-          <ScalarProperty Name="BronzeEarned" ColumnName="BronzeEarned" />
-          <ScalarProperty Name="UserBadge" ColumnName="UserBadge" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UserEarnings">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserEarning)">
-        <MappingFragment StoreEntitySet="UserEarnings">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="total" ColumnName="total" />
-          <ScalarProperty Name="approved" ColumnName="approved" />
-          <ScalarProperty Name="pending" ColumnName="pending" />
-          <ScalarProperty Name="currency" ColumnName="currency" />
-          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ClientWallets">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.ClientWallet)">
-        <MappingFragment StoreEntitySet="ClientWallets">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="total" ColumnName="total" />
-          <ScalarProperty Name="approved" ColumnName="approved" />
-          <ScalarProperty Name="pending" ColumnName="pending" />
-          <ScalarProperty Name="currency" ColumnName="currency" />
-          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UserReputationMappings">
-      <EntityTypeMapping TypeName="IsTypeOf(M2EModel.UserReputationMapping)">
-        <MappingFragment StoreEntitySet="UserReputationMappings">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="code" ColumnName="code" />
-          <ScalarProperty Name="description" ColumnName="description" />
-          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-          <ScalarProperty Name="refKey" ColumnName="refKey" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-  </EntityContainerMapping>
-</Mapping></edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="M2EStoreContainer" CdmEntityContainer="M2EContext">
+          <EntitySetMapping Name="ClientDetails">
+            <EntityTypeMapping TypeName="M2E.ClientDetail">
+              <MappingFragment StoreEntitySet="ClientDetails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientWallets">
+            <EntityTypeMapping TypeName="M2E.ClientWallet">
+              <MappingFragment StoreEntitySet="ClientWallets">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="approved" ColumnName="approved" />
+                <ScalarProperty Name="pending" ColumnName="pending" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreateTemplateeditableInstructionsLists">
+            <EntityTypeMapping TypeName="M2E.CreateTemplateeditableInstructionsList">
+              <MappingFragment StoreEntitySet="CreateTemplateeditableInstructionsLists">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="verified" ColumnName="verified" />
+                <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
+                <ScalarProperty Name="assignTime" ColumnName="assignTime" />
+                <ScalarProperty Name="completedAt" ColumnName="completedAt" />
+                <ScalarProperty Name="referenceKey" ColumnName="referenceKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreateTemplateFacebookLikes">
+            <EntityTypeMapping TypeName="M2E.CreateTemplateFacebookLike">
+              <MappingFragment StoreEntitySet="CreateTemplateFacebookLikes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="referenceId" ColumnName="referenceId" />
+                <ScalarProperty Name="totalThreads" ColumnName="totalThreads" />
+                <ScalarProperty Name="completed" ColumnName="completed" />
+                <ScalarProperty Name="verified" ColumnName="verified" />
+                <ScalarProperty Name="creationTime" ColumnName="creationTime" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="subType" ColumnName="subType" />
+                <ScalarProperty Name="payPerUser" ColumnName="payPerUser" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="pageId" ColumnName="pageId" />
+                <ScalarProperty Name="pageUrl" ColumnName="pageUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreateTemplateImgurImagesLists">
+            <EntityTypeMapping TypeName="M2E.CreateTemplateImgurImagesList">
+              <MappingFragment StoreEntitySet="CreateTemplateImgurImagesLists">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="verified" ColumnName="verified" />
+                <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
+                <ScalarProperty Name="assignTime" ColumnName="assignTime" />
+                <ScalarProperty Name="completedAt" ColumnName="completedAt" />
+                <ScalarProperty Name="referenceKey" ColumnName="referenceKey" />
+                <ScalarProperty Name="imgurId" ColumnName="imgurId" />
+                <ScalarProperty Name="imgurDeleteHash" ColumnName="imgurDeleteHash" />
+                <ScalarProperty Name="imgurLink" ColumnName="imgurLink" />
+                <ScalarProperty Name="alocatedCount" ColumnName="alocatedCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreateTemplateListBoxQuestionsLists">
+            <EntityTypeMapping TypeName="M2E.CreateTemplateListBoxQuestionsList">
+              <MappingFragment StoreEntitySet="CreateTemplateListBoxQuestionsLists">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Options" ColumnName="Options" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="verified" ColumnName="verified" />
+                <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
+                <ScalarProperty Name="assignTime" ColumnName="assignTime" />
+                <ScalarProperty Name="completedAt" ColumnName="completedAt" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="referenceKey" ColumnName="referenceKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreateTemplateModeratingImagesLists">
+            <EntityTypeMapping TypeName="M2E.CreateTemplateModeratingImagesList">
+              <MappingFragment StoreEntitySet="CreateTemplateModeratingImagesLists">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
+                <ScalarProperty Name="assignTime" ColumnName="assignTime" />
+                <ScalarProperty Name="completedAt" ColumnName="completedAt" />
+                <ScalarProperty Name="referenceKey" ColumnName="referenceKey" />
+                <ScalarProperty Name="deletehash" ColumnName="deletehash" />
+                <ScalarProperty Name="link" ColumnName="link" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreateTemplateMultipleQuestionsLists">
+            <EntityTypeMapping TypeName="M2E.CreateTemplateMultipleQuestionsList">
+              <MappingFragment StoreEntitySet="CreateTemplateMultipleQuestionsLists">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Options" ColumnName="Options" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="verified" ColumnName="verified" />
+                <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
+                <ScalarProperty Name="assignTime" ColumnName="assignTime" />
+                <ScalarProperty Name="completedAt" ColumnName="completedAt" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="referenceKey" ColumnName="referenceKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreateTemplateQuestionInfoes">
+            <EntityTypeMapping TypeName="M2E.CreateTemplateQuestionInfo">
+              <MappingFragment StoreEntitySet="CreateTemplateQuestionInfoes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="visible" ColumnName="visible" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="referenceId" ColumnName="referenceId" />
+                <ScalarProperty Name="totalThreads" ColumnName="totalThreads" />
+                <ScalarProperty Name="completed" ColumnName="completed" />
+                <ScalarProperty Name="verified" ColumnName="verified" />
+                <ScalarProperty Name="creationTime" ColumnName="creationTime" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="subType" ColumnName="subType" />
+                <ScalarProperty Name="payPerUser" ColumnName="payPerUser" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreateTemplateSingleQuestionsLists">
+            <EntityTypeMapping TypeName="M2E.CreateTemplateSingleQuestionsList">
+              <MappingFragment StoreEntitySet="CreateTemplateSingleQuestionsLists">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Options" ColumnName="Options" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="verified" ColumnName="verified" />
+                <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
+                <ScalarProperty Name="assignTime" ColumnName="assignTime" />
+                <ScalarProperty Name="completedAt" ColumnName="completedAt" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="referenceKey" ColumnName="referenceKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreateTemplateTextBoxQuestionsLists">
+            <EntityTypeMapping TypeName="M2E.CreateTemplateTextBoxQuestionsList">
+              <MappingFragment StoreEntitySet="CreateTemplateTextBoxQuestionsLists">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Options" ColumnName="Options" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="verified" ColumnName="verified" />
+                <ScalarProperty Name="assignedTo" ColumnName="assignedTo" />
+                <ScalarProperty Name="assignTime" ColumnName="assignTime" />
+                <ScalarProperty Name="completedAt" ColumnName="completedAt" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="referenceKey" ColumnName="referenceKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FacebookAuths">
+            <EntityTypeMapping TypeName="M2E.FacebookAuth">
+              <MappingFragment StoreEntitySet="FacebookAuths">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="facebookId" ColumnName="facebookId" />
+                <ScalarProperty Name="facebookUsername" ColumnName="facebookUsername" />
+                <ScalarProperty Name="AuthToken" ColumnName="AuthToken" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="facebookPageLikeMappings">
+            <EntityTypeMapping TypeName="M2E.facebookPageLikeMapping">
+              <MappingFragment StoreEntitySet="facebookPageLikeMappings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="refKey" ColumnName="refKey" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
+                <ScalarProperty Name="UserFacebookId" ColumnName="UserFacebookId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ForgetPasswords">
+            <EntityTypeMapping TypeName="M2E.ForgetPassword">
+              <MappingFragment StoreEntitySet="ForgetPasswords">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="guid" ColumnName="guid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobDatas">
+            <EntityTypeMapping TypeName="M2E.JobData">
+              <MappingFragment StoreEntitySet="JobDatas">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="PostedBy" ColumnName="PostedBy" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LinkedInAuthApiDatas">
+            <EntityTypeMapping TypeName="M2E.LinkedInAuthApiData">
+              <MappingFragment StoreEntitySet="LinkedInAuthApiDatas">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="oauth_Token" ColumnName="oauth_Token" />
+                <ScalarProperty Name="oauth_TokenSecret" ColumnName="oauth_TokenSecret" />
+                <ScalarProperty Name="oauth_verifier" ColumnName="oauth_verifier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="linkedinAuths">
+            <EntityTypeMapping TypeName="M2E.linkedinAuth">
+              <MappingFragment StoreEntitySet="linkedinAuths">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="oauth_Token" ColumnName="oauth_Token" />
+                <ScalarProperty Name="oauth_TokenSecret" ColumnName="oauth_TokenSecret" />
+                <ScalarProperty Name="oauth_verifier" ColumnName="oauth_verifier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecommendedBies">
+            <EntityTypeMapping TypeName="M2E.RecommendedBy">
+              <MappingFragment StoreEntitySet="RecommendedBies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RecommendedTo" ColumnName="RecommendedTo" />
+                <ScalarProperty Name="RecommendedFrom" ColumnName="RecommendedFrom" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="isValid" ColumnName="isValid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ThirdPartyLogins">
+            <EntityTypeMapping TypeName="M2E.ThirdPartyLogin">
+              <MappingFragment StoreEntitySet="ThirdPartyLogins">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="FacebookId" ColumnName="FacebookId" />
+                <ScalarProperty Name="FacebookAccessToken" ColumnName="FacebookAccessToken" />
+                <ScalarProperty Name="GoogleId" ColumnName="GoogleId" />
+                <ScalarProperty Name="GoogleAccessToken" ColumnName="GoogleAccessToken" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDetails">
+            <EntityTypeMapping TypeName="M2E.UserDetail">
+              <MappingFragment StoreEntitySet="UserDetails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserEarnings">
+            <EntityTypeMapping TypeName="M2E.UserEarning">
+              <MappingFragment StoreEntitySet="UserEarnings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="approved" ColumnName="approved" />
+                <ScalarProperty Name="pending" ColumnName="pending" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserFacebookLikeJobMappings">
+            <EntityTypeMapping TypeName="M2E.UserFacebookLikeJobMapping">
+              <MappingFragment StoreEntitySet="UserFacebookLikeJobMappings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="refKey" ColumnName="refKey" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="pageLikeTime" ColumnName="pageLikeTime" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="subType" ColumnName="subType" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="pageId" ColumnName="pageId" />
+                <ScalarProperty Name="pageUrl" ColumnName="pageUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserJobMappings">
+            <EntityTypeMapping TypeName="M2E.UserJobMapping">
+              <MappingFragment StoreEntitySet="UserJobMappings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="refKey" ColumnName="refKey" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="startTime" ColumnName="startTime" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="endTime" ColumnName="endTime" />
+                <ScalarProperty Name="expectedDeliveryTime" ColumnName="expectedDeliveryTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMultipleJobMappings">
+            <EntityTypeMapping TypeName="M2E.UserMultipleJobMapping">
+              <MappingFragment StoreEntitySet="UserMultipleJobMappings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="refKey" ColumnName="refKey" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="startTime" ColumnName="startTime" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="subType" ColumnName="subType" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="endTime" ColumnName="endTime" />
+                <ScalarProperty Name="expectedDelivery" ColumnName="expectedDelivery" />
+                <ScalarProperty Name="surveyResult" ColumnName="surveyResult" />
+                <ScalarProperty Name="imageKey" ColumnName="imageKey" />
+                <ScalarProperty Name="isFirst" ColumnName="isFirst" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPageSettings">
+            <EntityTypeMapping TypeName="M2E.UserPageSetting">
+              <MappingFragment StoreEntitySet="UserPageSettings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="PageThemeColor" ColumnName="PageThemeColor" />
+                <ScalarProperty Name="LayoutWidth" ColumnName="LayoutWidth" />
+                <ScalarProperty Name="TopBar" ColumnName="TopBar" />
+                <ScalarProperty Name="SideBar" ColumnName="SideBar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRecommendations">
+            <EntityTypeMapping TypeName="M2E.UserRecommendation">
+              <MappingFragment StoreEntitySet="UserRecommendations">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="TotalRecommendation" ColumnName="TotalRecommendation" />
+                <ScalarProperty Name="UsefulRecommendation" ColumnName="UsefulRecommendation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserReputationMappings">
+            <EntityTypeMapping TypeName="M2E.UserReputationMapping">
+              <MappingFragment StoreEntitySet="UserReputationMappings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="refKey" ColumnName="refKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserReputations">
+            <EntityTypeMapping TypeName="M2E.UserReputation">
+              <MappingFragment StoreEntitySet="UserReputations">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="ReputationScore" ColumnName="ReputationScore" />
+                <ScalarProperty Name="GoldEarned" ColumnName="GoldEarned" />
+                <ScalarProperty Name="SilverEarned" ColumnName="SilverEarned" />
+                <ScalarProperty Name="BronzeEarned" ColumnName="BronzeEarned" />
+                <ScalarProperty Name="UserBadge" ColumnName="UserBadge" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="M2E.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="guid" ColumnName="guid" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="Locked" ColumnName="Locked" />
+                <ScalarProperty Name="KeepMeSignedIn" ColumnName="KeepMeSignedIn" />
+                <ScalarProperty Name="RegistrationTime" ColumnName="RegistrationTime" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="FacebookLink" ColumnName="FacebookLink" />
+                <ScalarProperty Name="LinkedinLink" ColumnName="LinkedinLink" />
+                <ScalarProperty Name="GoogleLink" ColumnName="GoogleLink" />
+                <ScalarProperty Name="fixedGuid" ColumnName="fixedGuid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSkills">
+            <EntityTypeMapping TypeName="M2E.UserSkill">
+              <MappingFragment StoreEntitySet="UserSkills">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Skill" ColumnName="Skill" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSurveyResults">
+            <EntityTypeMapping TypeName="M2E.UserSurveyResult">
+              <MappingFragment StoreEntitySet="UserSurveyResults">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="refKey" ColumnName="refKey" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="answer" ColumnName="answer" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="questionId" ColumnName="questionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSurveyResultToBeRevieweds1">
+            <EntityTypeMapping TypeName="M2E.UserSurveyResultToBeRevieweds1">
+              <MappingFragment StoreEntitySet="UserSurveyResultToBeRevieweds1">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="refKey" ColumnName="refKey" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="answer" ColumnName="answer" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="questionId" ColumnName="questionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ValidateUserKeys">
+            <EntityTypeMapping TypeName="M2E.ValidateUserKey">
+              <MappingFragment StoreEntitySet="ValidateUserKeys">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="guid" ColumnName="guid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
@@ -1355,41 +1399,6 @@
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams>
-      <Diagram Name="M2EContext">
-        <EntityTypeShape EntityType="M2EModel.ClientDetail" Width="1.5" PointX="0.75" PointY="0.75" Height="1.59568359375" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.CreateTemplateeditableInstructionsList" Width="1.5" PointX="2.75" PointY="0.75" Height="2.9417936197916656" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.CreateTemplateListBoxQuestionsList" Width="1.5" PointX="4.75" PointY="0.75" Height="3.1340950520833335" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.CreateTemplateMultipleQuestionsList" Width="1.5" PointX="0.875" PointY="5.875" Height="3.1340950520833335" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.CreateTemplateQuestionInfo" Width="1.5" PointX="4.875" PointY="8.375" Height="3.7109993489583335" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.CreateTemplateSingleQuestionsList" Width="1.5" PointX="4.75" PointY="4.75" Height="3.1340950520833317" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.CreateTemplateTextBoxQuestionsList" Width="1.5" PointX="6.75" PointY="0.75" Height="3.1340950520833317" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.ForgetPassword" Width="1.5" PointX="6.75" PointY="4.75" Height="1.5956835937499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.JobData" Width="1.5" PointX="6.875" PointY="9.375" Height="2.5571907552083317" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.LinkedInAuthApiData" Width="1.5" PointX="8.75" PointY="0.75" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.RecommendedBy" Width="1.5" PointX="0.75" PointY="9.125" Height="1.9802864583333335" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.ThirdPartyLogin" Width="1.5" PointX="2.75" PointY="8.75" Height="2.1725878906250031" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.UserDetail" Width="1.5" PointX="10.75" PointY="6.875" Height="1.5956835937500031" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.UserPageSetting" Width="1.5" PointX="8.75" PointY="10.5" Height="2.1725878906250031" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.UserRecommendation" Width="1.5" PointX="10.75" PointY="10.5" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.User" Width="1.5" PointX="10.625" PointY="0.5" Height="4.6725065104166656" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.UserSkill" Width="1.5" PointX="10.75" PointY="5.25" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.ValidateUserKey" Width="1.5" PointX="10.75" PointY="8.75" Height="1.5956835937500031" IsExpanded="true" />
-        <EntityTypeShape EntityType="M2EModel.CreateTemplateImgurImagesList" Width="1.5" PointX="0.875" PointY="2.5" Height="3.3263964843749996" />
-        <EntityTypeShape EntityType="M2EModel.UserSurveyResultToBeReviewed" Width="1.5" PointX="2.875" PointY="4.125" Height="2.1725878906249996" />
-        <EntityTypeShape EntityType="M2EModel.UserSurveyResult" Width="1.5" PointX="2.875" PointY="6.375" Height="2.1725878906249996" />
-        <EntityTypeShape EntityType="M2EModel.UserJobMapping" Width="1.5" PointX="6.75" PointY="6.5" Height="2.3648893229166656" />
-        <EntityTypeShape EntityType="M2EModel.UserMultipleJobMapping" Width="1.5" PointX="8.875" PointY="2.375" Height="3.3263964843749996" />
-        <EntityTypeShape EntityType="M2EModel.CreateTemplateFacebookLike" Width="1.5" PointX="8.875" PointY="5.75" Height="3.9033007812499996" />
-        <EntityTypeShape EntityType="M2EModel.UserFacebookLikeJobMapping" Width="1.5" PointX="2.625" PointY="11" Height="2.7494921874999996" />
-        <EntityTypeShape EntityType="M2EModel.FacebookAuth" Width="1.5" PointX="7.375" PointY="13.125" Height="2.1725878906249996" />
-        <EntityTypeShape EntityType="M2EModel.linkedinAuth" Width="1.5" PointX="9.625" PointY="13.25" Height="1.7879850260416657" />
-        <EntityTypeShape EntityType="M2EModel.facebookPageLikeMapping" Width="1.5" PointX="5.375" PointY="13" Height="2.1725878906249996" />
-        <EntityTypeShape EntityType="M2EModel.UserReputation" Width="1.5" PointX="0.625" PointY="11.625" Height="2.3648893229166656" />
-        <EntityTypeShape EntityType="M2EModel.UserEarning" Width="1.5" PointX="0.5" PointY="14.125" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="M2EModel.ClientWallet" Width="1.5" PointX="2.75" PointY="14.5" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="M2EModel.UserReputationMapping" Width="1.5" PointX="5.875" PointY="16" Height="2.3648893229166674" />
-      </Diagram>
-    </Diagrams>
+    <Diagrams></Diagrams>
   </Designer>
 </edmx:Edmx>
