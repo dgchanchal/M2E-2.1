@@ -43,17 +43,11 @@ namespace M2E.Service.Client
                     var userReputation = _db.UserReputations.SingleOrDefault(x => x.username == clientDetailDbResult.Username);
                     if (userReputation == null)
                     {
-                        createClientDetailResponse.totalReputation = "0";
-                        createClientDetailResponse.gold = "0";
-                        createClientDetailResponse.silver = "0";
-                        createClientDetailResponse.bronze = "0";
+                        createClientDetailResponse.totalReputation = "0";                       
                     }
                     else
                     {
-                        createClientDetailResponse.totalReputation = userReputation.ReputationScore;
-                        createClientDetailResponse.gold = userReputation.GoldEarned;
-                        createClientDetailResponse.silver = userReputation.SilverEarned;
-                        createClientDetailResponse.bronze = userReputation.BronzeEarned;
+                        createClientDetailResponse.totalReputation = userReputation.ReputationScore;                        
                     }
 
                     var userBalance = _db.UserEarnings.SingleOrDefault(x => x.username == username);

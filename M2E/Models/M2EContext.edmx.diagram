@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="47a96ed8df424af1af68347e528de73e" Name="Diagram1" ZoomLevel="64">
+      <Diagram DiagramId="47a96ed8df424af1af68347e528de73e" Name="Diagram1" ZoomLevel="83">
         <EntityTypeShape EntityType="M2E.ClientDetail" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="M2E.ClientWallet" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="M2E.CreateTemplateeditableInstructionsList" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />

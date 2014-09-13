@@ -975,6 +975,7 @@
     <Content Include="dll\Microsoft.Owin.Host.SystemWeb.dll" />
     <Content Include="dll\Owin.dll" />
     <Content Include="Global.asax" />
+    <Content Include="Models\M2EContext.edmx.sql" />
     <Content Include="Template\AdminLTE-master\.gitignore" />
     <Content Include="Template\AdminLTE-master\css\AdminLTE.css" />
     <Content Include="Template\AdminLTE-master\css\bootstrap-slider\slider.css" />

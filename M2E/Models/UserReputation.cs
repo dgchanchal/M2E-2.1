@@ -17,9 +17,6 @@ namespace M2E.Models
         public int Id { get; set; }
         public string username { get; set; }
         public string ReputationScore { get; set; }
-        public string GoldEarned { get; set; }
-        public string SilverEarned { get; set; }
-        public string BronzeEarned { get; set; }
         public string UserBadge { get; set; }
     }
 }

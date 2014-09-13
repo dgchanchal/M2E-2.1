@@ -33,5 +33,6 @@ namespace M2E.Models
         public string LinkedinLink { get; set; }
         public string GoogleLink { get; set; }
         public string fixedGuid { get; set; }
+        public string isVerified { get; set; }
     }
 }

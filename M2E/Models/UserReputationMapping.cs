@@ -17,9 +17,9 @@ namespace M2E.Models
         public int Id { get; set; }
         public string username { get; set; }
         public string type { get; set; }
-        public string code { get; set; }
+        public string subType { get; set; }
         public string description { get; set; }
         public Nullable<System.DateTime> DateTime { get; set; }
-        public string refKey { get; set; }
+        public string reputation { get; set; }
     }
 }

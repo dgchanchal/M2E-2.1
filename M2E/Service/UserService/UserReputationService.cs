@@ -17,42 +17,23 @@ namespace M2E.Service.UserService
         private DbContextException _dbContextException = new DbContextException();
         private readonly M2EContext _db = new M2EContext();
 
-        public bool UpdateUserReputation(string username, int reputationVal,int goldVal,int silverVal,int bronzeVal,string type)
+        public bool UpdateUserReputation(string username, int reputationVal,string type,string subType)
         {
-            var userReputation = _db.UserReputations.SingleOrDefault(x => x.username == username);
-            int goldCount = 0;
+            var userReputation = _db.UserReputations.SingleOrDefault(x => x.username == username);            
             if (userReputation == null)
             {
                 var UserReputationData = new UserReputation
                 {
-                    username = username,
-                    ReputationScore = Convert.ToString(reputationVal),
-                    GoldEarned = Convert.ToString(goldVal),
-                    SilverEarned = Convert.ToString(silverVal),
-                    BronzeEarned = Convert.ToString(bronzeVal)
+                    
                 };
-                goldCount = goldVal;
+                
                 _db.UserReputations.Add(UserReputationData);
             }
             else
             {
-                userReputation.ReputationScore = Convert.ToString(Convert.ToInt32(userReputation.ReputationScore) + reputationVal);
-                userReputation.GoldEarned = Convert.ToString(Convert.ToInt32(userReputation.GoldEarned) + goldVal);
-                userReputation.SilverEarned = Convert.ToString(Convert.ToInt32(userReputation.SilverEarned) + silverVal);
-                userReputation.BronzeEarned = Convert.ToString(Convert.ToInt32(userReputation.BronzeEarned) + bronzeVal);
-                userReputation.UserBadge = Constants.NA;
-                goldCount = Convert.ToInt32(userReputation.GoldEarned);
+                
             }
-            //if (goldCount == 1)
-            //{
-            //    var UserReputationMapping = new UserReputationMapping();
-            //    UserReputationMapping.code = ConstantReputationMapping.FirstUserRecommendation;
-            //    UserReputationMapping.DateTime = DateTime.Now;
-            //    UserReputationMapping.description = "Made First Recommendation";
-            //    UserReputationMapping.refKey = "NA";
-            //    UserReputationMapping.type = "NA";
-            //    UserReputationMapping.username = username;
-            //}
+            
             try
             {
                 _db.SaveChanges();
