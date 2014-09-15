@@ -15,7 +15,7 @@ define([appLocation.preLogin], function (app) {
                         paragraphList: [
                             {
                                 isUnderline: false,
-                                text: "Our websites use cookies', which are small pieces of data that are stored on your computer, mobile phone or other device. For instance, we use cookies to store your preferences and settings; help with sign-in; provide targeted ads; combat fraud; and analyze site operations."
+                                text: "" + companyConstants.fullName + " website uses cookies', which are small pieces of data that are stored on your computer, mobile phone or other device. For instance, we use cookies to store your preferences and settings; help with sign-in; provide targeted ads; combat fraud; and analyze site operations."
                             },
                             {
                                 isUnderline: false,
@@ -24,10 +24,10 @@ define([appLocation.preLogin], function (app) {
                         ],
                         dataList: [
                             {
-                                text: "make Crowd Automation site easier or faster to use;"
+                                text: "make " + companyConstants.fullName + " site easier or faster to use;"
                             },
                             {
-                                text: "enable features and store information about you (including on your device or in your browser cache) and your use of Crowd Automation site;"
+                                text: "enable features and store information about you (including on your device or in your browser cache) and your use of " + companyConstants.fullName + " site;"
                             },
                             {
                                 text: "deliver, understand and improve advertising;"
@@ -36,7 +36,7 @@ define([appLocation.preLogin], function (app) {
                                 text: "monitor and understand the use of our products and services; and,"
                             },
                             {
-                                text: "protect you, others and Crowd Automation site."
+                                text: "protect you, others and " + companyConstants.fullName + " site."
                             }
                         ]
                     }
@@ -52,27 +52,27 @@ define([appLocation.preLogin], function (app) {
                         paragraphList: [
                             {
                                 isUnderline: false,
-                                text: "By Registering for and using the Crowd Automation site:"
+                                text: "By Registering for and using the " + companyConstants.fullName + " site:"
                             }
                         ],
                         dataList: [
                             {
-                                text: "All participants should be at-least 18 years old to receive a payment from the company."
+                                text: "All participants should be at-least 18 years old to receive a payment from the " + companyConstants.fullName + "."
                             },
                             {
-                                text: "All transactions involving higher amounts( as set by the company) will require proper tax verification( not limited to PAN card alone)"
+                                text: "All transactions involving higher amounts( as set by the " + companyConstants.fullName + ") will require proper tax verification(for Indians, not limited to PAN card alone)"
                             },
                             {
                                 text: "You should not be banned/restricted by Indian Government to use our services."
                             },
                             {
-                                text: "All Crowd Automation Requester and Crowd Automation Accepter should abide to our code of conduct and terms & conditions."
+                                text: "All " + clientConstants.name + " and " + userConstants.name + " should abide to our code of conduct and terms & conditions."
                             },
                             {
                                 text: "You should not use this service as a way to trick people or get jobs/actions done that are prohibited by Indian law."
                             },
                             {
-                                text: "You should be proud to be an independent earner!"
+                                text: "" + userConstants.name + " should be proud to be an independent earner!"
                             }
                         ]
                     }
@@ -93,13 +93,13 @@ define([appLocation.preLogin], function (app) {
                         ],
                         dataList: [
                             {
-                                text: "By accessing/ registering on Crowd Automation site, you agree to all policies laid down by the website and should be aware that we form time to time change these policies to keep the website running."
+                                text: "By accessing/registering on  " + companyConstants.fullName + " site, you agree to all policies laid down by the website and should be aware that we form time to time change these policies to keep the website running."
                             },
                             {
                                 text: "Your email ID, name and phone numbers will be used for promotional/third party services for receiving monetary benefits. However you can always stop this by mailing us at help@cautom.com"
                             },
                             {
-                                text: "We legitimately will be using your personal information to provide you with better suited jobs, decided by our algorithms."
+                                text: "We legitimately will be using your personal information to provide you with better suited CITs, decided by our algorithms."
                             }
                         ]
                     }
@@ -115,7 +115,7 @@ define([appLocation.preLogin], function (app) {
                         paragraphList: [
                             {
                                 isUnderline: false,
-                                text: "Crowd Automation or its Affiliates will process all payments made by Requesters to Providers (the 'Payment Service'). Requester payments made through the Payment Service are received by Crowd Automation or its Affiliates on behalf of Providers, and may be disbursed only in accordance with the terms outlined below."
+                                text: "" + companyConstants.fullName + " or its affiliates will process all payments made by " + clientConstants.name_abb + " to Providers (the 'Payment Service'). Requester payments made through the Payment Service are received by Crowd Automation or its Affiliates on behalf of Providers, and may be disbursed only in accordance with the terms outlined below."
                             }
                         ],
                         dataList: [
@@ -145,7 +145,7 @@ define([appLocation.preLogin], function (app) {
                         paragraphList: [
                             {
                                 isUnderline: false,
-                                text: "Crowd Automation site is committed to protecting the security of your personal information. We use a variety of security technologies and procedures to help protect your personal information from unauthorized access, use or disclosure. For example, we store the personal information you provide on computer systems that have limited access and are in controlled facilities. When we transmit highly confidential information (such as a credit card number or password) over the Internet, we protect it through the use of encryption, such as the Secure Socket Layer (SSL) protocol."
+                                text: "" + companyConstants.fullName + " site is committed to protecting the security of your personal information. We use a variety of security technologies and procedures to help protect your personal information from unauthorized access, use or disclosure. For example, we store the personal information you provide on computer systems that have limited access and are in controlled facilities. When we transmit highly confidential information (such as a credit card number or password) over the Internet, we protect it through the use of encryption, such as the Secure Socket Layer (SSL) protocol."
                             }
                         ],
                         dataList: [
@@ -188,18 +188,18 @@ define([appLocation.preLogin], function (app) {
                         paragraphList: [
                             {
                                 isUnderline: false,
-                                text: "This is defined by company and changes from time to time. Typically we take 10% of the total cost involved from the Crowd Automation Requester. The Crowd Automation Requester is never charged."
+                                text: "This is defined by company and changes from time to time. Typically we take 10% of the total cost involved from the " + companyConstants.fullName + ". The " + userConstants.name + " is never charged."
                             }
                         ],
                         dataList: [
                             {
-                                text: "We are not responsible for nay conversion / processing charges that your bank/financial institution charges for any transaction with us."
+                                text: "We are not responsible for any conversion/processing charges that your bank/financial institution charges for any transaction with us."
                             },
                             {
-                                text: "For direct deposit of money to the user bank account, the user to furnish all details accurately. In-case he/she fails to do so we, will charge a 10% fee for all extra attempts to be done."
+                                text: "For direct deposit of money to the " + userConstants.name_abb + " bank account, the " + userConstants.name_abb + " to furnish all details accurately. In-case he/she fails to do so we, will charge a 10% fee for all extra attempts to be done."
                             },
                             {
-                                text: "The fees to be paid by clients are described by Individuals within our company, concentrating on fair trade practices."
+                                text: "The fees to be paid by " + clientConstants.name_abb + " are described by Individuals within our company, concentrating on fair trade practices."
                             }
                         ]
                     }
@@ -224,7 +224,7 @@ define([appLocation.preLogin], function (app) {
                         ],
                         dataList: [
                             {
-                                text: "You are not supposed to advertise any services / website as a part of usage on this site. However promotion of company videos/ logo/ teaser can be done as a part of our paid services. But you should be a registered Crowd Automation Requester or Accepter and these facts should be clearly stated during the submission of work proposal."
+                                text: "You are not supposed to advertise any services/website as a part of usage on " + companyConstants.fullName + " site. However promotion of company videos/logo/ teaser can be done as a part of our paid services. But you should be a registered " + clientConstants.name + " or " + userConstants.name_abb + " and these facts should be clearly stated during the submission of work proposal."
                             },
                             {
                                 text: "Brand creation/promotion is accepted as a part of our paid services and should be stated clearly during submission of our work."
@@ -269,10 +269,10 @@ define([appLocation.preLogin], function (app) {
                         ],
                         dataList: [
                             {
-                                text: "The website reserves all rights, un-conditionally to take down any work/stop payments/ delete a user or client account without any notice, in-case we find any illegal activities associated with your account. However all hearing in this regard will be dealt in the Bangalore high court, India."
+                                text: "The website reserves all rights, un-conditionally to take down any CITs/stop payments/delete a " + clientConstants.name_abb + " or " + userConstants.name_abb + " account without any notice, in-case we find any illegal activities associated with your account. However all hearing in this regard will be dealt in the Bangalore high court, India."
                             },
                             {
-                                text: "We will be terminating a user/client account or payment if a law enforcement agency asks us to do so."
+                                text: "We will be terminating a " + userConstants.name_abb + "/" + clientConstants.name_abb + " account or payment if a law enforcement agency asks us to do so."
                             }
                         ]
                     }
@@ -288,7 +288,7 @@ define([appLocation.preLogin], function (app) {
                         paragraphList: [
                             {
                                 isUnderline: false,
-                                text: "As we try to ensure fair trade, any disputes that arise will be solved within the company. Any user/client can mail help@cautom.com to do so. We will get back to you in 24h and will try to resolve the issue."
+                                text: "As we try to ensure fair trade, any disputes that arise will be solved within the company. Any " + userConstants.name_abb + "/" + clientConstants.name_abb + " can mail help@cautom.com to do so. We will get back to you in 24h and will try to resolve the issue."
                             },
                             {
                                 isUnderline: false,
@@ -311,7 +311,7 @@ define([appLocation.preLogin], function (app) {
                         paragraphList: [
                             {
                                 isUnderline: false,
-                                text: "Crowd Automation site do not offer any form of insurance, or other Buyer or Seller protection."
+                                text: "" + companyConstants.fullName + " site do not offer any form of insurance, or other Buyer or Seller protection."
                             }
                         ],
                         dataList: [
@@ -330,7 +330,7 @@ define([appLocation.preLogin], function (app) {
                         paragraphList: [
                             {
                                 isUnderline: false,
-                                text: "Crowd Automation site has unconditional rights to access/review all materials uploaded and written on our website by any party involved."
+                                text: "" + companyConstants.fullName + " site has unconditional rights to access/review all materials uploaded and written on our website by any party involved."
                             }
                         ],
                         dataList: [
@@ -367,7 +367,7 @@ define([appLocation.preLogin], function (app) {
                         ],
                         dataList: [
                             {
-                                text: "This website shall not be liable to any damages, direct, indirect, incidental, and consequential caused due to usage of our website."
+                                text: "" + companyConstants.fullName + " site shall not be liable to any damages, direct, indirect, incidental, and consequential caused due to usage of our website."
                             }
                         ]
                     }

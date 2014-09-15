@@ -809,6 +809,9 @@ element.style {
     border-top: 1px solid #e5e5e5;
     padding: 9px 15px;
 }
+.accordion-inner:hover {
+    background-color: #ebebeb;
+}
 
     .accordion .accordion-group .accordion-heading .accordion-toggle .faqQuestionDivBackgroundColor {
         background: #f6f6f6;

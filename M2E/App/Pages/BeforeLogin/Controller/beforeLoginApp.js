@@ -32,7 +32,7 @@ define([appLocation.preLogin], function (app) {
 
     });
 
-    app.run(function ($rootScope, $location) { //Insert in the function definition the dependencies you need.
+    app.run(function ($rootScope, $location, $window) { //Insert in the function definition the dependencies you need.
 
         $rootScope.$on("$locationChangeStart", function (event, next, current) {
             detectIfUserLoggedIn();
@@ -48,6 +48,7 @@ define([appLocation.preLogin], function (app) {
                 $rootScope.showSignUpButton = true;
                 $rootScope.showLabelAlreadyRegistered = false;
             }
+            $window.scrollTo(0, 0);
         });
     });
     app.controller('beforeLoginMasterPageController', function ($scope, $location, $http, $rootScope, CookieUtil) {

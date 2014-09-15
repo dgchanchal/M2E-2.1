@@ -8,36 +8,106 @@
         </div>
                                   
         <div class="col-md-6">     
+            <h3>Crowd Automation Overview</h3>
+            <ul>
+                <li ng-repeat="faq in FAQOverviewList"> <a style="cursor: pointer;" ng-click="scrollTo(faq.id)"><span ng-bind="faq.question"></span></a></li>
+            </ul>
+        </div>
+        <div class="col-md-6">     
             <h3>General queries</h3>
             <ul>
                 <li ng-repeat="faq in FAQGeneralList"> <a style="cursor: pointer;" ng-click="scrollTo(faq.id)"><span ng-bind="faq.question"></span></a></li>
             </ul>
         </div>
-        <div class="col-md-6"> 
-            <h3>General policies</h3>
+    </div><!-- /.row --> 
+
+    <div class="div_c"></div>
+    <div class="div_c"></div>
+
+    <div class="row border_line">
+        <div class="pageIntro col-md-12" style="text-align: center">
+            <div class="PsTitle PsTitle_Font_w" ng-class="{true:'PsTitle PsTitle_Font_m', false:'PsTitle PsTitle_Font_w'}[IsMobileDevice]">
+                FAQ > Requester    
+            </div>
+            <div class="div_c"></div>       
+        </div>
+                                  
+        <div class="col-md-6">     
+            <h3>Policies</h3>
             <ul>
-                <li> <a style="cursor: pointer;" ng-click="scrollTo('HowDoIGetPaid')">How do I get paid?</a></li>
-                <li> <a style="cursor: pointer;" ng-click="scrollTo('MinBalanceForWithdrawal')">What are the minimum amount required to withdraw money to a bank account?</a></li>
-                <li> <a style="cursor: pointer;" ng-click="scrollTo('CheckMyBalance')">How can I check the amount of money in my account?</a></li>
-                <li> <a style="cursor: pointer;" ng-click="scrollTo('DaysToCreditAmountInMyAccount')">Once I complete a job, how many days it will take to credit my account?</a></li>
-                <li> <a style="cursor: pointer;" ng-click="scrollTo('DaysToCreditAmountInMyBankAccount')">How many days it takes to credit money to my bank account?</a></li>
-                <li> <a style="cursor: pointer;" ng-click="scrollTo('CustomerServiceNumber')">Do you have customer service number?</a></li>  
+                <li ng-repeat="faq in FAQRequesterGeneralPoliciesList"> <a style="cursor: pointer;" ng-click="scrollTo(faq.id)"><span ng-bind="faq.question"></span></a></li>
+            </ul>
+            <h3>Payment & Fees</h3>
+            <ul>
+                <li ng-repeat="faq in FAQRequesterPaymentList"> <a style="cursor: pointer;" ng-click="scrollTo(faq.id)"><span ng-bind="faq.question"></span></a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-6">
+            <h3>Design & Publish CITs</h3>
+            <ul>
+                <li ng-repeat="faq in FAQRequesterCITRelatedtList"> <a style="cursor: pointer;" ng-click="scrollTo(faq.id)"><span ng-bind="faq.question"></span></a></li>
+            </ul>
+        </div>
+    </div><!-- /.row --> 
+    
+    <div class="div_c"></div>
+    <div class="div_c"></div>
+
+    <div class="row border_line">
+        <div class="pageIntro col-md-12" style="text-align: center">
+            <div class="PsTitle PsTitle_Font_w" ng-class="{true:'PsTitle PsTitle_Font_m', false:'PsTitle PsTitle_Font_w'}[IsMobileDevice]">
+                FAQ > Accepter    
+            </div>
+            <div class="div_c"></div>       
+        </div>
+                                  
+        <div class="col-md-6">     
+            <h3>Working on CITs</h3>
+            <ul>
+                <li ng-repeat="faq in FAQAccepterList"> <a style="cursor: pointer;" ng-click="scrollTo(faq.id)"><span ng-bind="faq.question"></span></a></li>
+            </ul>
+        </div>
+         <div class="col-md-6"> 
+            <h3>Payment & bonus</h3>
+            <ul>
+                <li ng-repeat="faq in FAQAccepterPayList"> <a style="cursor: pointer;" ng-click="scrollTo(faq.id)"><span ng-bind="faq.question"></span></a></li>
             </ul>
         </div>
     </div><!-- /.row --> 
 
-        <h3>Accepter FAQs</h3>
-            <ul>
-                <li ng-repeat="faq in FAQGeneralList"> <a style="cursor: pointer;" ng-click="scrollTo('faq.id')"><span ng-bind="faq.question"></span></a></li>
-            </ul>
-            <h3>General queries</h3>
-            <ul>
-                <li ng-repeat="faq in FAQGeneralList"> <a style="cursor: pointer;" ng-click="scrollTo('faq.id')"><span ng-bind="faq.question"></span></a></li>
-            </ul>
 
     <div class="row">
         <div class ="col-md-12">
             <div id="accordion2" class="Description aside_css">
+                <div class="div_c"></div> 
+                <div class="pageIntro" style="background-color: #f5f5f5;">
+                    <div ng-class="{true:'PsTitle PsTitle_Font_m', false:'PsTitle PsTitle_Font_w'}[IsMobileDevice]">
+                        <div>Crowd Automation Overview</div>  
+                    </div> 
+                    <div class="div_c"></div>      
+                </div>
+                <div class="div_c"></div>
+                <div class="" ng-repeat="faqOverview in FAQOverviewList">
+                    <div class="{{faqOverview.className}} div_heading_gen">
+                        <a id="{{faqOverview.id}}" >
+                            <span ng-bind="faqOverview.question"></span>
+                        </a>
+                    </div>	
+                    <div class="in box-content">
+                        <div class="accordion-inner">
+                            <span class=" aside_css1" data-ng-bind-html="faqOverview.answer"></span>
+                        </div>
+                    </div>
+                    <div class="div_c"></div><div class="div_c"></div>
+                </div> 
+                <div class="pageIntro" style="background-color: #f5f5f5;">
+                    <div ng-class="{true:'PsTitle PsTitle_Font_m', false:'PsTitle PsTitle_Font_w'}[IsMobileDevice]">
+                        <div>General Queries</div>  
+                    </div> 
+                    <div class="div_c"></div>      
+                </div>
+                <div class="div_c"></div>
                 <div class="" ng-repeat="faq in FAQGeneralList">
                     <div class="{{faq.className}} div_heading_gen">
                         <a id="{{faq.id}}" >
@@ -49,8 +119,113 @@
                             <span class=" aside_css1" data-ng-bind-html="faq.answer"></span>
                         </div>
                     </div>
+                    <div class="div_c"></div><div class="div_c"></div>
+                </div>  
+                <div class="pageIntro" style="background-color: #f5f5f5;">
+                    <div ng-class="{true:'PsTitle PsTitle_Font_m', false:'PsTitle PsTitle_Font_w'}[IsMobileDevice]">
+                        <div>Requester > Policies</div>
+                    </div> 
+                    <div class="div_c"></div>      
+                </div>
+                <div class="div_c"></div>
+                 
+                <div class="" ng-repeat="faqPolicies in FAQRequesterGeneralPoliciesList">
+                    <div class="{{faqPolicies.className}} div_heading_gen">
+                        <a id="{{faqPolicies.id}}" >
+                            <span ng-bind="faqPolicies.question"></span>
+                        </a>
+                    </div>	
+                    <div class="in box-content">
+                        <div class="accordion-inner">
+                            <span class=" aside_css1" data-ng-bind-html="faqPolicies.answer"></span>
+                        </div>
+                    </div>
+                    <div class="div_c"></div><div class="div_c"></div>
+                </div>  
+                <div class="pageIntro" style="background-color: #f5f5f5;">
+                    <div ng-class="{true:'PsTitle PsTitle_Font_m', false:'PsTitle PsTitle_Font_w'}[IsMobileDevice]">
+                        <div>Requester > Payments & Fees</div>
+                    </div>
+                        <div class="div_c"></div>                           
+                </div> 
+                <div class="div_c"></div> 
+                <div class="" ng-repeat="faqPayment in FAQRequesterPaymentList">
+                    <div class="{{faqPayment.className}} div_heading_gen">
+                        <a id="{{faqPayment.id}}" >
+                            <span ng-bind="faqPayment.question"></span>
+                        </a>
+                    </div>	
+                    <div class="in box-content">
+                        <div class="accordion-inner">
+                            <span class=" aside_css1" data-ng-bind-html="faqPayment.answer"></span>
+                        </div>
+                    </div>
+                    <div class="div_c"></div><div class="div_c"></div>
+                </div>  
+                
+                <div class="pageIntro" style="background-color: #f5f5f5;">
+                    <div ng-class="{true:'PsTitle PsTitle_Font_m', false:'PsTitle PsTitle_Font_w'}[IsMobileDevice]">
+                        <div>Requester > Design & Publich CITs</div>
+                    </div>
+                    <div class="div_c"></div>     
+                </div>
+                <div class="div_c"></div>  
+                <div class="" ng-repeat="faqCitList in FAQRequesterCITRelatedtList">
+                    <div class="{{faqCitList.className}} div_heading_gen">
+                        <a id="{{faqCitList.id}}" >
+                            <span ng-bind="faqCitList.question"></span>
+                        </a>
+                    </div>	
+                    <div class="in box-content">
+                        <div class="accordion-inner">
+                            <span class=" aside_css1" data-ng-bind-html="faqCitList.answer"></span>
+                        </div>
+                    </div>
                     <div class="div_c"></div><div class="div_c"></div><div class="div_c"></div>
-                </div>                		           					
+                </div>
+            
+                <div class="pageIntro" style="background-color: #f5f5f5;">
+                    <div ng-class="{true:'PsTitle PsTitle_Font_m', false:'PsTitle PsTitle_Font_w'}[IsMobileDevice]">
+                        <div>Accepter > Working on CITs</div>  
+                    </div> 
+                    <div class="div_c"></div>      
+                </div>
+                <div class="div_c"></div>
+                <div class="" ng-repeat="faqAccepter in FAQAccepterList">
+                    <div class="{{faqAccepter.className}} div_heading_gen">
+                        <a id="{{faqAccepter.id}}" >
+                            <span ng-bind="faqAccepter.question"></span>
+                        </a>
+                    </div>	
+                    <div class="in box-content">
+                        <div class="accordion-inner">
+                            <span class=" aside_css1" data-ng-bind-html="faqAccepter.answer"></span>
+                        </div>
+                    </div>
+                    <div class="div_c"></div><div class="div_c"></div>
+                </div>  
+                <div class="pageIntro" style="background-color: #f5f5f5;">
+                    <div ng-class="{true:'PsTitle PsTitle_Font_m', false:'PsTitle PsTitle_Font_w'}[IsMobileDevice]">
+                        <div>Accepter > Payment & bonus</div>
+                    </div> 
+                    <div class="div_c"></div>      
+                </div>
+                <div class="div_c"></div>
+                 
+                <div class="" ng-repeat="faqAccepterPay in FAQAccepterPayList">
+                    <div class="{{faqAccepterPay.className}} div_heading_gen">
+                        <a id="{{faqAccepterPay.id}}" >
+                            <span ng-bind="faqAccepterPay.question"></span>
+                        </a>
+                    </div>	
+                    <div class="in box-content">
+                        <div class="accordion-inner">
+                            <span class=" aside_css1" data-ng-bind-html="faqAccepterPay.answer"></span>
+                        </div>
+                    </div>
+                    <div class="div_c"></div><div class="div_c"></div>
+                </div> 
+                              		           					
             </div>
         </div>
     </div><!-- /.row -->  
