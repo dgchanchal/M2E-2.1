@@ -8,6 +8,7 @@ define([appLocation.userPostLogin], function (app) {
                        when("/showTemplateDetail/:type/:subType/:refKey", { templateUrl: "../../App/Pages/UserAfterLogin/ShowTemplateDetail/ShowTemplateDetail.html" }).
                        when("/userThreads/:status", { templateUrl: "../../App/Pages/UserAfterLogin/UserActiveThreads/UserActiveThreads.html" }).
                        when("/startSurvey/:refKey", { templateUrl: (mobileDevice) ? "../../App/Pages/UserAfterLogin/Survey/MobileSurvey.html" : "../../App/Pages/UserAfterLogin/Survey/WebSurvey.html" }).
+                       when("/startSurvey/:refKey/:isDemo", { templateUrl: (mobileDevice) ? "../../App/Pages/UserAfterLogin/Survey/MobileSurvey.html" : "../../App/Pages/UserAfterLogin/Survey/WebSurvey.html" }).
                        when("/startTranscription/:refKey", { templateUrl: "../../App/Pages/UserAfterLogin/DataEntry/TranscriptionTemplate/TranscriptionTemplate.html" }).
                        when("/startAngularTranscription/:refKey", { templateUrl: "../../App/Pages/UserAfterLogin/DataEntry/TranscriptionTemplate/AngularTranscriptionTemplate.html" }).
                        when("/mobileModeration", { templateUrl: "../../App/Pages/UserAfterLogin/Moderation/MobileModeration.html" }).

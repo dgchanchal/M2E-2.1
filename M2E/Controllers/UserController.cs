@@ -12,6 +12,7 @@ using M2E.Service.UserService.dataEntry;
 using Newtonsoft.Json;
 using M2E.Service.UserService.Moderation;
 using M2E.Service.UserService.facebookLike;
+using M2E.Models.Constants;
 
 namespace M2E.Controllers
 {
@@ -236,14 +237,14 @@ namespace M2E.Controllers
         public JsonResult GetTemplateSurveyQuestionsByRefKey()
         {
             //var username = "sumitchourasia91@gmail.com";
-            var refKey = Request.QueryString["refKey"].ToString(CultureInfo.InvariantCulture);
+            var refKey = Request.QueryString["refKey"].ToString(CultureInfo.InvariantCulture);            
             var headers = new HeaderManager(Request);
             M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
             var userTemplateList = new UserProductSurveyTemplateService();            
             var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
             if (isValidToken)
             {
-                return Json(userTemplateList.GetTemplateSurveyQuestionsByRefKey(session.UserName, refKey));
+                return Json(userTemplateList.GetTemplateSurveyQuestionsByRefKey(refKey));
             }
             else
             {

@@ -73,7 +73,7 @@ namespace M2E.Service.UserService.Survey
 
         }
 
-        public ResponseModel<UserSurveyResponse> GetTemplateSurveyQuestionsByRefKey(string username, string refKey)
+        public ResponseModel<UserSurveyResponse> GetTemplateSurveyQuestionsByRefKey(string refKey)
         {
             var response = new ResponseModel<UserSurveyResponse>();
             var surveyJobInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey);

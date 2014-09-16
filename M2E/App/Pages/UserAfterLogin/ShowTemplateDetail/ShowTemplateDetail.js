@@ -2,7 +2,7 @@
 define([appLocation.userPostLogin], function (app) {
 
     //getting user info..
-    app.controller('showTemplateDetailController', function ($scope, $http, $rootScope, $routeParams, CookieUtil) {
+    app.controller('showTemplateDetailController', function ($scope, $http, $rootScope, $routeParams, CookieUtil, $sce) {
 
         $scope.TemplateDetailShowRulesAndRegulationInfoDiv = false;
         $scope.userShowTemplateDetailsIWillDoItAndReportAbuseButton = true;
@@ -30,9 +30,26 @@ define([appLocation.userPostLogin], function (app) {
 
         });
 
-        $scope.TemplateDetailShowRulesAndRegulationInfoDivFunction = function () {
+        $scope.TemplateDetailShowRulesAndRegulationInfoDivFunction = function () {            
             $scope.TemplateDetailShowRulesAndRegulationInfoDiv = true;
             $scope.userShowTemplateDetailsIWillDoItAndReportAbuseButton = false;
+        }
+
+        $scope.showSurveyQuestionDetails = function () {
+            var win = window.open(window.location.protocol + "//" + window.location.host + "/user#/startSurvey/" + $routeParams.refKey + "/demo", "Ratting", "width=" + popWindow.width + ",height=" + popWindow.height + ",0,status=0,scrollbars=1");
+                        win.onunload = onun;
+
+                        function onun() {
+                            if (win.location != "about:blank") // This is so that the function 
+                            // doesn't do anything when the 
+                            // window is first opened.
+                            {
+                                //$route.reload();
+                                //alert("working");
+                                //location.reload();
+                                //alert("closed");
+                            }
+                        }
         }
 
         $scope.userShowTemplateDetailFinalAcceptance = function (type, subType, refKey) {

@@ -122,7 +122,10 @@ define([appLocation.userPostLogin], function (app) {
         $scope.surveyInfoMultipleAnswerQuestion = {};
         $scope.surveyInfoListBoxAnswerQuestion = {};
         $scope.surveyInfoTextBoxAnswerQuestion = {};
-
+        var isDemo = false;
+        if ($routeParams.isDemo == "demo") {
+            isDemo = true;
+        }
         var url = ServerContextPah + '/User/GetTemplateSurveyQuestionsByRefKey?refKey=' + $routeParams.refKey;
         var headers = {
             'Content-Type': 'application/json',
@@ -463,23 +466,26 @@ define([appLocation.userPostLogin], function (app) {
                     renderSurveyQuestion += "</div>";
                 }
 
-                // adding button at last
-                renderSurveyQuestion += "<div style='' class='control-group'>";
-                renderSurveyQuestion += "<label for=\"textfield\" class=\"control-label\">";
-                renderSurveyQuestion += "<b>Submit</b></label>";
-                renderSurveyQuestion += "<div class='controls'>";
+                if (!isDemo) {
+                    // adding button at last
+                    renderSurveyQuestion += "<div style='' class='control-group'>";
+                    renderSurveyQuestion += "<label for=\"textfield\" class=\"control-label\">";
+                    renderSurveyQuestion += "<b>Submit</b></label>";
+                    renderSurveyQuestion += "<div class='controls'>";
 
-                renderSurveyQuestion += "<fieldset>";
-                renderSurveyQuestion += "<label>";
+                    renderSurveyQuestion += "<fieldset>";
+                    renderSurveyQuestion += "<label>";
 
-                renderSurveyQuestion += "</label><br/>";
+                    renderSurveyQuestion += "</label><br/>";
 
-                renderSurveyQuestion += "<button  class=\"btn btn-success btn-sm\" id='userSurveySubmitButtonId'>submit</button>";
+                    renderSurveyQuestion += "<button  class=\"btn btn-success btn-sm\" id='userSurveySubmitButtonId'>submit</button>";
 
-                renderSurveyQuestion += "</fieldset>";
+                    renderSurveyQuestion += "</fieldset>";
 
-                renderSurveyQuestion += "</div>";
-                renderSurveyQuestion += "</div>";
+                    renderSurveyQuestion += "</div>";
+                    renderSurveyQuestion += "</div>";
+                }
+                
 
                 $('#userSurveyWebViewId').html(renderSurveyQuestion);
 

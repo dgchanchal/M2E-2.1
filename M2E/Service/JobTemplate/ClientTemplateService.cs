@@ -19,6 +19,7 @@ using M2E.Models.DataResponse.ClientResponse;
 using M2E.Models.Constants;
 using Newtonsoft.Json;
 using M2E.DAO;
+using M2E.Service.UserService.Survey;
 
 namespace M2E.Service.JobTemplate
 {
@@ -833,6 +834,7 @@ namespace M2E.Service.JobTemplate
                 try
                 {
                     _db.SaveChanges();
+                    
                     CreateSubTemplateByRefKey CreateSubTemplateByRefKey = new CreateSubTemplateByRefKey();
                     CreateSubTemplateByRefKey.CreateSubTemplateByRefKeyService(req, username, refKey);
 
