@@ -1541,11 +1541,10 @@ div.main-content {
 #logo{
     margin-left: 20px;
     float: left;
-    width: 30%;
     height: auto;
     /*background: url(('../../../../App/img/login/Cautom_logo.png') no-repeat center;*/
     display: block;
-    padding: 11px 0px 0px 0px;
+    padding: 5px 0px 0px 0px;
 }
  
 #nav2 {
@@ -1609,7 +1608,7 @@ a {
     cursor: pointer;
     display: inline-block;
     float: right;
-    padding: 12px 15px;
+    padding: 16px 19px;
  } 
  #header1 {
     content: "";
@@ -1621,7 +1620,8 @@ a {
  #logo {
     height: auto;
     margin-left: 0;
-    padding: 4px 0 7px;
+    padding: 5px 4px 4px;
+     width: 60%;
  }
 }
 
