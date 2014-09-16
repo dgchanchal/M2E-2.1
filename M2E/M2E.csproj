@@ -404,6 +404,7 @@
     <Content Include="App\img\loading\loading123.gif" />
     <Content Include="App\img\loading\loading70x70.gif" />
     <Content Include="App\img\login\active.png" />
+    <Content Include="App\img\login\cautomLogo.gif" />
     <Content Include="App\img\login\for_institutions.png" />
     <Content Include="App\img\login\for_participants.png" />
     <Content Include="App\img\login\inactive.png" />
