@@ -1,13 +1,13 @@
 ﻿<div class="container" ng-controller="signUpUserController">
 <div class="row">
-                     <div class="col-md-8 row-padding-login" ng-show="!mobileDevice">
+                     <div class="col-md-8 row-padding-login" ng-show="!{{IsMobileDevice}}">
 
                          <img alt="Requester" src="../../App/img/cautom.png" border="0" class="responsive-image">
 
                      </div>
 
                      <div class="col-md-4 row-padding1">
-                         <h2 class="text-aqua" style="font-size: 21px">Crowd Automation | Accepter</h2>
+                         <h2 class="text-accepter" style="font-size: 21px">Crowd Automation | Accepter</h2>
                          <div class="body">
                              <div class="form-group">
                                  <input type="text" name="name" class="form-control" ng-model="UserFormData.FirstName" placeholder="First name">
@@ -34,11 +34,11 @@
                              </div>
                              <div class="footer">
                                  <div class="div_c"></div>                                
-                                 <button type="submit" ng-click="UserSignUp()" class="btn bg-uni btn-block">Create Accepter Account</button>  
+                                 <button type="submit" ng-click="UserSignUp()" class="btn bg-accepter btn-block">Create Accepter Account</button>  
                                  <div class="div_c"></div>                     
-                                 <a href="#/login" class="text-center">I already have a membership</a>
+                                 <a href="#/login" class="text-center text-accepter">I already have a membership</a>
                                  <div class="div_c"></div>
-                                 <p>Create an account as<i class="fa fa-fw fa-long-arrow-right"></i> <a class="text-center" href="#/signup/client">Requester</a></p>
+                                 <p>Create an account as<i class="fa fa-fw fa-long-arrow-right"></i> <a class="text-center text-requester" href="#/signup/client">Requester</a></p>
                              </div>
 
                              <div class="margin text-center">

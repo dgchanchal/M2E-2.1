@@ -4,13 +4,13 @@ define([appLocation.preLogin], function (app) {
     app.controller('beforeLoginSignInController', function ($scope, $http, $route, $rootScope, $routeParams, $timeout, CookieUtil) {
         // Login Silder
         var slidesInSlideshow = 2;
-        var slidesTimeIntervalInMs = 3000;
-        $scope.slideshow = 1;
-        var slideTimer =
-        $timeout(function interval() {
-            $scope.slideshow = ($scope.slideshow % slidesInSlideshow) + 1;
-            slideTimer = $timeout(interval, slidesTimeIntervalInMs);
-        }, slidesTimeIntervalInMs);
+        //var slidesTimeIntervalInMs = 3000;
+        //$scope.slideshow = 1;
+        //var slideTimer =
+        //$timeout(function interval() {
+        //    $scope.slideshow = ($scope.slideshow % slidesInSlideshow) + 1;
+        //    slideTimer = $timeout(interval, slidesTimeIntervalInMs);
+        //}, slidesTimeIntervalInMs);
         //alert(mobileDevice);
         // Login Sign In Form
         $scope.mobileDevice = mobileDevice != null ? true : false;
@@ -59,12 +59,15 @@ define([appLocation.preLogin], function (app) {
             if (CookieUtil.getLoginType() == "user") {
                 $('#loginUserTypeRadioButtonId').attr('checked', true);
                 $('.userTypeId').html(userConstants.name_abb);
+                $scope.userType = userConstants.name_abb;
+                $scope.isUser = true;
                 //console.log(userConstants.name_abb);
             }
             else {
                 $('#loginClientTypeRadioButtonId').attr('checked', true);
                 $('.userTypeId').html(clientConstants.name_abb);
-                //$scope.userType = clientConstants.name_abb;
+                $scope.userType = clientConstants.name_abb;
+                $scope.isUser = false;
             }
         }
 
@@ -279,13 +282,21 @@ define([appLocation.preLogin], function (app) {
             CookieUtil.setLoginType(this.value, userSession.keepMeSignedIn);
             //var data = this.value;
             if (this.value == "user") {
-                //$scope.userType = userConstants.name_abb;
+                $scope.userType = userConstants.name_abb;
+                $scope.$apply(function () {
+                    $scope.isUser = true;
+                });
+                //$scope.isUser = true;
                 $('.userTypeId').html(userConstants.name_abb);
 
             }
             else {
                 $('.userTypeId').html(clientConstants.name_abb);
-                //$scope.userType = clientConstants.name_abb;
+                $scope.userType = clientConstants.name_abb;
+                $scope.$apply(function () {
+                    $scope.isUser = false;
+                });
+                //$scope.isUser = false;
             }
             //console.log(this.value);
         });

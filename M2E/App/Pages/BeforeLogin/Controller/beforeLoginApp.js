@@ -4,11 +4,11 @@ define([appLocation.preLogin], function (app) {
 
     app.config(function ($routeProvider) {
 
-        $routeProvider.when("/", { templateUrl: (mobileDevice) ? "../../App/Pages/BeforeLogin/Index/Index_m.html" : "../../App/Pages/BeforeLogin/Index/Index.html" }).
-                       when("/signup/user/:ref", { templateUrl: (mobileDevice) ? "../../App/Pages/BeforeLogin/SignUpUser/SignUpUser_m.html" : "../../App/Pages/BeforeLogin/SignUpUser/SignUpUser.html" }).
-                       when("/signup/client/:ref", { templateUrl: (mobileDevice) ? "../../App/Pages/BeforeLogin/SignUpClient/SignUpClient_m.html" : "../../App/Pages/BeforeLogin/SignUpClient/SignUpClient.html" }).
-                       when("/signup/user", { templateUrl: (mobileDevice) ? "../../App/Pages/BeforeLogin/SignUpUser/SignUpUser_m.html" : "../../App/Pages/BeforeLogin/SignUpUser/SignUpUser.html" }).
-                       when("/signup/client", { templateUrl: (mobileDevice) ? "../../App/Pages/BeforeLogin/SignUpClient/SignUpClient_m.html" : "../../App/Pages/BeforeLogin/SignUpClient/SignUpClient.html" }).
+        $routeProvider.when("/", { templateUrl : "../../App/Pages/BeforeLogin/Index/Index.html" }).
+                       when("/signup/user/:ref", { templateUrl: "../../App/Pages/BeforeLogin/SignUpUser/SignUpUser.html" }).
+                       when("/signup/client/:ref", { templateUrl: "../../App/Pages/BeforeLogin/SignUpClient/SignUpClient.html" }).
+                       when("/signup/user", { templateUrl: "../../App/Pages/BeforeLogin/SignUpUser/SignUpUser.html" }).
+                       when("/signup/client", { templateUrl: "../../App/Pages/BeforeLogin/SignUpClient/SignUpClient.html" }).
                        when("/login", { templateUrl: "../../App/Pages/BeforeLogin/Login/Login.html" }).
                        when("/login/:code", { templateUrl: "../../App/Pages/BeforeLogin/Login/Login.html" }).
                        when("/faq", { templateUrl: "../../App/Pages/BeforeLogin/FAQ/FAQ.html" }).
@@ -54,7 +54,7 @@ define([appLocation.preLogin], function (app) {
     app.controller('beforeLoginMasterPageController', function ($scope, $location, $http, $rootScope, CookieUtil) {
 
         _.defer(function () { $scope.$apply(); });
-        $rootScope.IsMobileDevice = mobileDevice ? true : false;
+        $rootScope.IsMobileDevice = (mobileDevice || isAndroidDevice) ? true : false;
         $rootScope.logoImage = { url: logoImage };
         $('title').html("index"); //TODO: change the title so cann't be tracked in log
         $rootScope.beforeLoginFooterInfo = {

@@ -217,6 +217,22 @@ img {
   background-color: #00bcf2 !important;
   color: #1a1a1a !important;
 }
+.bg-requester {
+  background-color: #ee8722 !important;
+  color: #fff !important;
+}
+.bg-requester:hover {
+  background-color: #d2d2d2 !important;
+  color: #000 !important;
+}
+.bg-accepter {
+  background-color: #0563ac !important;
+  color: #fff !important;
+}
+.bg-accepter:hover {
+  background-color: #d2d2d2 !important;
+  color: #000 !important;
+}
 .bg-uni:hover {
   background-color: #1a1a1a !important;
   color: #fff !important;
@@ -253,6 +269,12 @@ img {
 }
 .text-aqua {
   color: #00bcf2  !important;
+}
+.text-requester {
+    color: #ee8722;
+}
+.text-accepter {
+    color: #0563ac;
 }
 .text-blacki {
   color: #000018 !important;

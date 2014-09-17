@@ -1,33 +1,23 @@
 ﻿<div class="container" ng-controller="beforeLoginSignInController">
 
     <div class="row">
-        <div class="col-md-8 row-padding-login" ng-show="!mobileDevice">
+        <div class="col-md-8 row-padding-login" ng-show="!{{IsMobileDevice}}">
             <div class="responsive-image innerDivCenterAlign row-padding-login" ng-switch='slideshow'>
-                <div ng-switch-when='1'>
-                    <div class="text-blacki">Crowd Automation Requester</div>
+                <div ng-show="isUser">
+                    <div class="text-requester"><b>Crowd Automation Requester</b></div>
                     <div class="div_c"></div>
                     <img class="responsive-image" src="../../App/img/login/for_institutions.png"/>
                 </div>
-                <div ng-switch-when='2'>
-                    <div class="text-blacki">Crowd Automation Accepter</div>
+                <div ng-show="!isUser">
+                    <div class="text-accepter"><b>Crowd Automation Accepter</b></div>
                     <div class="div_c"></div>
                     <img class="responsive-image" src="../../App/img/login/for_participants.png"/>
                 </div>
-
-                <!--                <div class="slider-buttons">
-                                        <a ng-click='slideshow = 1'>
-                                            <div class="circle"></div>
-                                        </a>
-                                        <a ng-click='slideshow = 2'>
-                                            <div class="circle"></div>
-                                        </a>
-
-                                    </div>-->
             </div>
         </div>
 
         <div class="col-md-4 row-padding1">
-            <h2 class="text-aqua">Login</h2>
+            <h2 class="textType">Login as</h2>
                 <div class="body">
                     <ul style="margin-left: 0;" ng-show="showHeaderErrors" class="alert alert-{{HeaderAlert.classType}} alert-dismissable ng-hide">                                                                               
                         <li ng-show="HeaderAlert.visible" ng-bind="HeaderAlert.message"></li>
@@ -35,8 +25,8 @@
                     </ul>
                     <div class="row">                       
                         <div class="col-md-12">
-                            <span class="fl">Accepter <input type="radio" class="loginUserTypeRadioButton" name="loginUserType" id="loginUserTypeRadioButtonId" value="user" checked="checked" /></span>                          
-                            <span class="fr">Requester <input type="radio" class="loginUserTypeRadioButton "  name="loginUserType" id="loginClientTypeRadioButtonId" value="client" /> </span>
+                            <span class="fl text-accepter"><b>Accepter </b><input type="radio" class="loginUserTypeRadioButton" name="loginUserType" id="loginUserTypeRadioButtonId" value="user" checked="checked" /></span>                          
+                            <span class="fr text-requester"><b>Requester </b><input type="radio" class="loginUserTypeRadioButton "  name="loginUserType" id="loginClientTypeRadioButtonId" value="client" /> </span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -46,7 +36,7 @@
                         <input type="password" name="password" class="form-control ng-pristine ng-valid TextBoxBeforeLoginFormSubmitButtonClass" placeholder="Password" data-i18n="beforeLoginLoginPagePasswordText" id="LoginPasswordId" ng-model="Password">
                     </div>          
                     <div class="form-group">
-                        <input type="checkbox" name="remember_me" ng-model="KeepMeSignedInCheckBox" class="ng-pristine ng-valid"> Remember me
+                        <input type="checkbox" name="remember_me" ng-model="KeepMeSignedInCheckBox" > <span ng-class="{true:'text-requester ng-pristine ng-valid', false:'text-accepter ng-pristine ng-valid'}[!isUser]">Remember me</span>
                     </div>
                 </div>
 
@@ -55,7 +45,7 @@
                         <li ng-show="EmailIdAlert.visible" ng-bind="EmailIdAlert.message"></li>
                         <li ng-show="PasswordAlert.visible" ng-bind="PasswordAlert.message"></li>
                     </ul>                                                               
-                    <button class="btn bg-uni btn-block" type="submit" id="LoginFormSubmitButtonId" ng-click="Login()">Sign me in as <b><span class="userTypeId"></span></b></button>  
+                    <button ng-class="{true:'bg-requester btn btn-block', false:'bg-accepter btn btn-block'}[!isUser]" type="submit" id="LoginFormSubmitButtonId" ng-click="Login()">Sign me in as <b><span class="userTypeId"></span></b></button>  
                     <div class="div_c"></div>
                     <p><a href="#/forgetpassword">I forgot my password</a></p>
                     <p>Create an Account<i class="fa fa-fw fa-long-arrow-right"></i><a class="text-center" href="#/signup/client" ng-bind="clientConstants.name_abb"></a> or <a class="text-center" href="#/signup/user" ng-bind="userConstants.name_abb"></a></p>

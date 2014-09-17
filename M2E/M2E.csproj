@@ -392,6 +392,7 @@
     <Content Include="App\css\magic.css" />
     <Content Include="App\img\Accepter.png" />
     <Content Include="App\img\cautom.png" />
+    <Content Include="App\img\indexPageSlider\newSlider_0.png" />
     <Content Include="App\img\indexPageSlider\slider_0_low.jpg" />
     <Content Include="App\img\indexPageSlider\slider_1_low.jpg" />
     <Content Include="App\img\indexPageSlider\slider_2_low.jpg" />
@@ -408,6 +409,7 @@
     <Content Include="App\img\login\for_institutions.png" />
     <Content Include="App\img\login\for_participants.png" />
     <Content Include="App\img\login\inactive.png" />
+    <Content Include="App\img\login\menu-blck.jpg" />
     <Content Include="App\img\movies\1.jpg" />
     <Content Include="App\img\movies\2.jpg" />
     <Content Include="App\img\movies\3.jpg" />
@@ -476,13 +478,9 @@
     <Content Include="App\js\underscore-min.js" />
     <Content Include="App\Pages\BeforeLogin\ClientMoreInfo\ClientMoreInfo.html" />
     <Content Include="App\Pages\BeforeLogin\ContactUs\contactus.html" />
-    <Content Include="App\Pages\BeforeLogin\Index\Index_m.html" />
     <Content Include="App\Pages\BeforeLogin\LiveSupport\LiveSupport.html" />
     <Content Include="App\Pages\BeforeLogin\LiveSupport\LiveSupport.js" />
     <Content Include="App\Pages\BeforeLogin\css\BeforeLoginStyle.css" />
-    <Content Include="App\Pages\BeforeLogin\Login\Login_m.html" />
-    <Content Include="App\Pages\BeforeLogin\SignUpClient\SignUpClient_m.html" />
-    <Content Include="App\Pages\BeforeLogin\SignUpUser\SignUpUser_m.html" />
     <Content Include="App\Pages\BeforeLogin\TnC\TnC.html" />
     <Content Include="App\Pages\BeforeLogin\TnC\TnC.js" />
     <Content Include="App\Pages\BeforeLogin\UserMoreInfo\UserMoreInfo.html" />
