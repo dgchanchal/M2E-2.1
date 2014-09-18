@@ -27,7 +27,20 @@ a:active,
 a:focus {
   outline: none;
   text-decoration: none;
-  color: #016d9c;
+    color: #000;
+}
+/*Home page Requester & Accepter Div Header Style*/
+.header-requester {
+    background-color: rgb(237, 123, 38);
+    color: #fff;
+    height: 42px;
+    margin-left: -20px;
+}
+.header-accepter {
+    background-color: #1570a6;
+    color: #fff;
+    height: 42px;
+    margin-left: -20px;
 }
 /* Layouts */
 .wrapper {

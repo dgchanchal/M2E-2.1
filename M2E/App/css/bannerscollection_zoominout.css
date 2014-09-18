@@ -485,13 +485,13 @@ skins available:
 	font: bold 24px 'Droid Sans', Verdana, Helvetica, sans-serif;
 	line-height:34px;
 	text-transform:uppercase;
-	color:#333333;
+	color:#ffffff;
 }
 .textElement12_opportune {
 	font: bold 16px 'Droid Sans', Verdana, Helvetica, sans-serif;
 	line-height:23px;
 	text-transform:uppercase;
-	color:#333333;
+	color:#ffffff;
 }
 
 .textElement12_opportune a {
@@ -625,10 +625,10 @@ skins available:
 
 
 .textElement21_opportuneFullWidth {
-	font: bold 64px 'Droid Sans', Verdana, Helvetica, sans-serif;
+	font: bold 44px 'Droid Sans', Verdana, Helvetica, sans-serif;
 	line-height:90px;
 	text-transform:uppercase;
-	color:#FFFFFF;
+	color:#1570a6;
 }
 
 .textElement21_opportuneFullWidth a {
@@ -645,45 +645,45 @@ skins available:
 	font: bold 24px 'Droid Sans', Verdana, Helvetica, sans-serif;
 	line-height:34px;
 	text-transform:uppercase;
-	color:#FFFFFF;
+    color: #00a65a ;
 }
 
 .textElement41_opportuneFullWidth {
 	font: bold 28px 'Droid Sans', Verdana, Helvetica, sans-serif;
 	line-height:40px;
-	color:#000000;
+	color:#ffffff;
 }
 
 .textElement42_opportuneFullWidth {
 	font: bold 48px 'Droid Sans', Verdana, Helvetica, sans-serif;
 	line-height:68px;
 	text-transform:uppercase;
-	color:#000000;
+	color:#ffffff;
 }
 
 .textElement43_opportuneFullWidth {
 	font: bold 28px 'Droid Sans', Verdana, Helvetica, sans-serif;
 	line-height:40px;
-	color:#000000;
+	color:#ffffff;
 }
 
 
 .textElement51_opportuneFullWidth {
 	font: bold 22px 'Droid Sans', Verdana, Helvetica, sans-serif;
 	line-height:31px;
-	color:#000000;
+	color:#ffffff;
 }
 .textElement51B_opportuneFullWidth {
 	font: bold 22px 'Droid Sans', Verdana, Helvetica, sans-serif;
 	line-height:31px;
-	color:#000000;
+	color:#ffffff;
 }
 
 .textElement52_opportuneFullWidth {
 	font: bold 74px 'Lato', Verdana, Helvetica, sans-serif;
 	line-height:60px;
 	text-transform:uppercase;
-	color:#000000;
+	color:#ffffff;
 }
 
 
@@ -691,19 +691,19 @@ skins available:
 	font: 298px 'Arial', Verdana, Helvetica, sans-serif;
 	line-height:298px;
 	text-transform:uppercase;
-	color:#000000;
+	color:#ffffff;
 }
 
 .textElement54_opportuneFullWidth {
 	font: 24px 'Droid Sans', Verdana, Helvetica, sans-serif;
 	line-height:34px;
 	text-transform:uppercase;
-	color:#000000;
+	color:#ffffff;
 }
 
 
 .textElement54_opportuneFullWidth a {
-	color:#000000;
+	color:#ffffff;
 }
 
 .textElement54_opportuneFullWidth a:hover {
