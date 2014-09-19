@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using M2E.Models.DataResponse.UserResponse.FacebookLike;
@@ -49,7 +50,7 @@ namespace M2E.Service.UserService.facebookLike
                         alreadyLikedByUser = true; // exists   
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     response.Status = 206;
                     response.Message = "Facebook Auth Token Expired";
@@ -64,7 +65,7 @@ namespace M2E.Service.UserService.facebookLike
                 {
                     UserFacebookLikeTemplateModelData.creationTime = facebookLikeTemplateData.creationTime;
                     UserFacebookLikeTemplateModelData.currency = Constants.currency_INR;
-                    UserFacebookLikeTemplateModelData.earningPerThreads = facebookLikeTemplateData.payPerUser;
+                    UserFacebookLikeTemplateModelData.earningPerThreads = Convert.ToString(Convert.ToDouble(facebookLikeTemplateData.payPerUser) * (Convert.ToDouble(Convert.ToString(ConfigurationManager.AppSettings["dollarToRupeesValue"]))));
                     UserFacebookLikeTemplateModelData.pageId = facebookLikeTemplateData.pageId;
                     UserFacebookLikeTemplateModelData.pageUrl = facebookLikeTemplateData.pageUrl;
                     UserFacebookLikeTemplateModelData.refKey = facebookLikeTemplateData.referenceId;
@@ -121,7 +122,7 @@ namespace M2E.Service.UserService.facebookLike
                     alreadyLikedByUser = true; // exists   
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 response.Status = 206;
                 response.Message = "Facebook Auth Token Expired";
@@ -151,6 +152,10 @@ namespace M2E.Service.UserService.facebookLike
                     try
                     {
                         _db.SaveChanges();
+
+                        var payment = new UserReputationService().UpdateUserBalance(username, Convert.ToDouble(_db.CreateTemplateFacebookLikes.SingleOrDefault(x => x.referenceId == refKey).payPerUser), 0);
+                        if (!payment)
+                            logger.Info("payment failed for user : " + username + " of amount : " + _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey).payPerUser);
 
                         long JobId = facebookLikeTemplateData.Id;
                         long JobCompleted = _db.facebookPageLikeMappings.Where(x => x.refKey == refKey).Count();

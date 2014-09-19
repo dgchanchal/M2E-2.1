@@ -50,6 +50,10 @@ namespace M2E.Service.UserService.Moderation
             {
                 _db.SaveChanges();
 
+                var payment = new UserReputationService().UpdateUserBalance(username, Convert.ToDouble(_db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey).payPerUser), 0);
+                if (!payment)
+                    logger.Info("payment failed for user : " + username + " of amount : " + _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey).payPerUser);
+
                 long JobId = clientJobInfo.Id;
                 long JobCompleted = _db.UserMultipleJobMappings.Where(x => x.refKey == refKey && x.status == Constants.status_done && x.isFirst == Constants.status_true).Count();
                 long JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == refKey && x.status == Constants.status_assigned && x.isFirst == Constants.status_true).Count();

@@ -769,6 +769,7 @@ namespace M2E.Service.JobTemplate
 
             if (TemplateInfo.type == Constants.type_Ads && TemplateInfo.subType == Constants.subType_facebookLike)
             {
+                var facebookFindPageId = TemplateInfo.pageId.Split('/');
                 var createTemplateFacebookLikeInsert = new CreateTemplateFacebookLike
                 {                    
                     username = username,
@@ -783,7 +784,7 @@ namespace M2E.Service.JobTemplate
                     payPerUser = TemplateInfo.amountEachThread,
                     DateTime = DateTime.Now,
                     description = (req[3].textBoxQuestionsList[0].Question) == null ? Constants.NA : req[3].textBoxQuestionsList[0].Question,
-                    pageId = TemplateInfo.pageId,
+                    pageId = facebookFindPageId[facebookFindPageId.Length-1],
                     pageUrl = TemplateInfo.pageUrl
                 };
                 _db.CreateTemplateFacebookLikes.Add(createTemplateFacebookLikeInsert);

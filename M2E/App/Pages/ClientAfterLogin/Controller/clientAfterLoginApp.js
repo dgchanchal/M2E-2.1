@@ -120,13 +120,13 @@ define([appLocation.postLogin], function (app) {
            subCategoryList: [
            {
                value: "Data entry", dropDownMenuShow: true, dropDownSubMenuClass: "dropdown-submenu", dropDownMenuClass: "dropdown-menu", dropDownSubMenuArrow: "dropdown", dropDownMenuList: [
-               { value: "Verification & Duplication", link: "#/VerificationAndDuplicationSample" },
+               //{ value: "Verification & Duplication", link: "#/VerificationAndDuplicationSample" },
                { value: "Data Collection", link: "#/dataCollectionTemplate/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_dataCollection },
                { value: "Tagging of an Image", link: "#/taggingImageTemplate/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_taggingImage },
                { value: "Search the web", link: "#" },
                { value: "Do Excel work", link: "#" },
-               { value: "Find information", link: "#" },
-               { value: "Post advertisements", link: "#" },
+               //{ value: "Find information", link: "#" },
+               //{ value: "Post advertisements", link: "#" },
                { value: "Transcription", link: "#/templateSample/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_Transcription },
                { value: "Transcription from A/V", link: "#/transcribeAVTemplate/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_transcribeAV }
                ]
@@ -153,7 +153,7 @@ define([appLocation.postLogin], function (app) {
            },
            {
                value: "Moderation", dropDownMenuShow: true, dropDownSubMenuClass: "dropdown-submenu", dropDownMenuClass: "dropdown-menu", dropDownSubMenuArrow: "dropdown", dropDownMenuList: [
-                 { value: "Moderating Ads", link: "#" },
+                 //{ value: "Moderating Ads", link: "#" },
                  { value: "Moderating Photos", link: "#/templateSample/" + TemplateInfoModel.type_moderation + "/" + TemplateInfoModel.subType_imageModeration },
                  { value: "Moderating Music", link: "#" },
                  { value: "Moderating Video", link: "#" }
@@ -161,10 +161,10 @@ define([appLocation.postLogin], function (app) {
            },
            {
                value: "Ads", dropDownMenuShow: true, dropDownSubMenuClass: "dropdown-submenu", dropDownMenuClass: "dropdown-menu", dropDownSubMenuArrow: "dropdown", dropDownMenuList: [
-                 { value: "Facebook Views", link: "#" },
+                 //{ value: "Facebook Views", link: "#" },
                  { value: "Facebook likes", link: "#/facebookLikeTemplate/" + TemplateInfoModel.type_Ads + "/" + TemplateInfoModel.subType_facebookLike },
-                 { value: "Video reviewing", link: "#" },
-                 { value: "Comments on social media", link: "#" }
+                 //{ value: "Video reviewing", link: "#" },
+                 //{ value: "Comments on social media", link: "#" }
                ]
            }
            ]
