@@ -1530,7 +1530,6 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\Pages\ClientAfterLogin\ContentWriting\" />
     <Folder Include="App\third-Party\html5-file-upload\uploads\" />
     <Folder Include="App_Data\" />
     <Folder Include="Upload\Images\" />

@@ -8,6 +8,7 @@ using M2E.CommonMethods;
 using M2E.Models;
 using System.Data.Entity.Validation;
 using M2E.Models.Constants;
+using System.Configuration;
 
 namespace M2E.Service.UserService
 {
@@ -49,6 +50,8 @@ namespace M2E.Service.UserService
         public bool UpdateUserBalance(string username, double approved, double pending)
         {
             var userBalance = _db.UserEarnings.SingleOrDefault(x => x.username == username);
+            approved *= (Convert.ToDouble(Convert.ToString(ConfigurationManager.AppSettings["dollarToRupeesValue"])));
+            pending *= (Convert.ToDouble(Convert.ToString(ConfigurationManager.AppSettings["dollarToRupeesValue"])));
             if (userBalance == null)
             {
                 var UserEarningData = new UserEarning
