@@ -159,7 +159,7 @@ namespace M2E.Service.Client
                     var earningReputationData = new ReputationHistoryResponse
                     {
                         username = username,
-                        dateTime = DateTime.Now.ToString(CultureInfo.InvariantCulture),
+                        dateTime = earningReputation.DateTime.ToString(),
                         description = Constants.NA,
                         type = earningReputation.type,
                         subType = earningReputation.subType,
