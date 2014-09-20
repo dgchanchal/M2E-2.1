@@ -107,5 +107,39 @@ namespace M2E.Service.Client
             }
             return response;
         }
+
+        public ResponseModel<List<EarningHistoryResponse>> GetEarningHistory(string username)
+        {
+            var response = new ResponseModel<List<EarningHistoryResponse>>();
+            response.Payload = new List<EarningHistoryResponse>();
+            
+            try
+            {
+                response.Status = 200;
+                response.Message = "success !!!";
+                
+                var earningHistoryList = _db.UserEarningHistories.OrderByDescending(x=>x.dateTime).Where(x => x.username == username).ToList();
+                foreach (var earningHistory in earningHistoryList)
+                {
+                    var earningHistoryData = new EarningHistoryResponse
+                    {
+                        amount = earningHistory.amount,
+                        PaymentMode = earningHistory.paymentMode,
+                        dateTime = Convert.ToString(earningHistory.dateTime),
+                        subType = earningHistory.subtype,
+                        title = earningHistory.title,
+                        type = earningHistory.type
+                    };
+
+                    response.Payload.Add(earningHistoryData);
+                }
+            }
+            catch (Exception)
+            {
+                response.Status = 500;
+                response.Message = "exception occured !!!";
+            }
+            return response;
+        }
     }
 }

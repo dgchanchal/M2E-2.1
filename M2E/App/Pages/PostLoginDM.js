@@ -172,7 +172,10 @@ appRequire = require
             },
             ClientAfterLoginTranscriptionTemplate: {
                 deps: ["jquery","angular","filedrop"]
-            },      
+            },
+            ClientAfterLoginEarningHistory: {
+                deps: ["jquery", "angular", "filedrop"]
+            },
         },
         paths: {
             //==============================================================================================================
@@ -235,7 +238,8 @@ appRequire = require
             ClientAfterLoginTranscriptionResponseDetail: "../../App/Pages/ClientAfterLogin/DataEntry/TranscriptionResponseDetail/TranscriptionResponseDetail",//used
             ClientAfterLoginArticleWrittingTemplate: "../../App/Pages/ClientAfterLogin/ContentWritting/articleWritting/articleWritting",
             ClientAfterLoginReferralPage: "../../App/Pages/ClientAfterLogin/Referrals/Referrals",
-            ClientAfterLoginFacebookLikeTemplate: "../../App/Pages/ClientAfterLogin/Ads/facebookLike/facebookLike"
+            ClientAfterLoginFacebookLikeTemplate: "../../App/Pages/ClientAfterLogin/Ads/facebookLike/facebookLike",
+            ClientAfterLoginEarningHistory: "../../App/Pages/ClientAfterLogin/ClientEarningHistory/ClientEarningHistory"
         },
         urlArgs: "123"
     });
@@ -248,7 +252,7 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "clientAfterLoginTemplateInfo","ng_table","clientAfterLoginTemplateSample","ClientAfterLoginModeratingPhotos","ClientAfterLoginTranscriptionTemplate",
     "bootstrap_slider","ion_rangeSlider_min","highcharts_3d","highcharts","highcharts_exporting","ClientAfterLoginTemplateResponseDetail","ClientAfterLoginTranscriptionResponseDetail",
     "angular_route","sanitize","angular_animate","ClientAfterLoginModeratingPhotosResponseDetail","ClientAfterLoginArticleWrittingTemplate","ClientAfterLoginFacebookLikeTemplate",
-    "ClientAfterLoginReferralPage"
+    "ClientAfterLoginReferralPage", "ClientAfterLoginEarningHistory"
 ], function() {
     angular.bootstrap(document.getElementById("mainClient"), ["afterLoginClientApp"]);
 });

@@ -22,6 +22,7 @@ define([appLocation.userPostLogin], function (app) {
                        when("/mobileSlide3", { templateUrl: "../../App/Pages/UserAfterLogin/MobileSlide2/MobileSlide3.html" }).
                        when("/facebookLikePage", { templateUrl: "../../App/Pages/UserAfterLogin/Ads/facebookLike/facebookLike.html" }).
                        when("/myReferrals", { templateUrl: "../../App/Pages/UserAfterLogin/Referrals/Referrals.html" }).
+                       when("/myEarningHistory", { templateUrl: "../../App/Pages/UserAfterLogin/UserEarningHistory/UserEarningHistory.html" }).
                        otherwise({ templateUrl: "../../Resource/templates/beforeLogin/contentView/404.html" });
 
     });

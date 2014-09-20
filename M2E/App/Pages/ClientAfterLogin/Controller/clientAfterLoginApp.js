@@ -20,6 +20,7 @@ define([appLocation.postLogin], function (app) {
                        when("/articleWrittingTemplate/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/ContentWritting/articleWritting/articleWritting.html" }).
                        when("/facebookLikeTemplate/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/Ads/facebookLike/facebookLike.html" }).
                        when("/myReferrals", { templateUrl: "../../App/Pages/ClientAfterLogin/Referrals/Referrals.html" }).
+                       when("/myEarningHistory", { templateUrl: "../../App/Pages/ClientAfterLogin/ClientEarningHistory/ClientEarningHistory.html" }).
                        otherwise({ templateUrl: "../../Resource/templates/beforeLogin/contentView/404.html" });
 
     });

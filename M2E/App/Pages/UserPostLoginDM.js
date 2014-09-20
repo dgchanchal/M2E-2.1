@@ -149,6 +149,9 @@ appRequire = require
             UserAfterLoginAngularTranscriptionTemplate: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox","PanZoomService","panzoomwidget"]
             },
+            UserAfterLoginEarningHistory: {
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService"]
+            },
             UserAfterLoginImageModeration: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox","PanZoomService","panzoomwidget"]
             }
@@ -210,7 +213,8 @@ appRequire = require
             UserAfterLoginAngularTranscriptionTemplate: "../../App/Pages/UserAfterLogin/DataEntry/TranscriptionTemplate/AngularTranscriptionTemplate",//used
             UserAfterLoginImageModeration: "../../App/Pages/UserAfterLogin/Moderation/Moderation", //used
             UserAfterLoginReferralPage: "../../App/Pages/UserAfterLogin/Referrals/Referrals", //used
-            UserAfterLoginFacebookLike: "../../App/Pages/UserAfterLogin/Ads/facebookLike/facebookLike"//used
+            UserAfterLoginFacebookLike: "../../App/Pages/UserAfterLogin/Ads/facebookLike/facebookLike",//used
+            UserAfterLoginEarningHistory: "../../App/Pages/UserAfterLogin/UserEarningHistory/UserEarningHistory"//used
             
         },
         urlArgs: ""
@@ -223,7 +227,7 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "fileDropScript", "domReady", "userAfterLoginTemplateSample", "idangerous_swiper_2_1_min","userAfterLoginShowTemplateDetail","userAfterLoginSurvey",
     "userAfterLoginActiveThreads","UserAfterLoginAngularTranscriptionTemplate","hamster","mousewheel",
     "panzoom", "PanZoomService", "panzoomwidget", "angular_route", "sanitize", "angular_animate", "UserAfterLoginImageModeration", "UserAfterLoginFacebookLike",
-    "UserAfterLoginReferralPage"
+    "UserAfterLoginReferralPage", "UserAfterLoginEarningHistory"
 ], function() {
     angular.bootstrap(document.getElementById("mainUser"), ["afterLoginUserApp"]);
 });

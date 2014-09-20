@@ -237,6 +237,7 @@
     <Compile Include="Models\DataResponse\ClientResponse\ClientTranscriptionTableResponseData.cs" />
     <Compile Include="Models\DataResponse\ClientTemplateDetailById.cs" />
     <Compile Include="Models\DataResponse\ClientTemplateResponse.cs" />
+    <Compile Include="Models\DataResponse\EarningHistoryResponse.cs" />
     <Compile Include="Models\DataResponse\ImgurImageResponse.cs" />
     <Compile Include="Models\DataResponse\ImgurImageUploadResponse.cs" />
     <Compile Include="Models\DataResponse\LoginResponse.cs" />
@@ -523,6 +524,8 @@
     <Content Include="App\Pages\ClientAfterLogin\TemplateInfo\TemplateInfo.js" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateSample\TemplateSample.js" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateSample\TemplateSample.html" />
+    <Content Include="App\Pages\ClientAfterLogin\ClientEarningHistory\ClientEarningHistory.html" />
+    <Content Include="App\Pages\ClientAfterLogin\ClientEarningHistory\ClientEarningHistory.js" />
     <Content Include="App\Pages\UserAfterLogin\Ads\facebookLike\facebookLike.html" />
     <Content Include="App\Pages\UserAfterLogin\Ads\facebookLike\facebookLike.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\panzoom\controllers\TestController.js" />
@@ -534,6 +537,8 @@
     <Content Include="App\Pages\UserAfterLogin\Controller\userAfterLoginApp.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\CookieServiceUserView.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\SessionManagement.js" />
+    <Content Include="App\Pages\UserAfterLogin\UserEarningHistory\UserEarningHistory.html" />
+    <Content Include="App\Pages\UserAfterLogin\UserEarningHistory\UserEarningHistory.js" />
     <Content Include="App\Pages\UserAfterLogin\Referrals\Referrals.html" />
     <Content Include="App\Pages\UserAfterLogin\Referrals\Referrals.js" />
     <Content Include="App\Pages\UserAfterLogin\DataEntry\TranscriptionTemplate\AngularTranscriptionTemplate.html" />

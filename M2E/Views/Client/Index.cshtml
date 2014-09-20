@@ -311,6 +311,9 @@
 
                             <a><i id="userRealTimeStatusId" class="fa fa-circle text-danger" title="Some unforeseen error occured while establishing client-server connection. You won't be able to receive real time updates. Please refresh the page."></i> Online</a>
                         </div>
+                        <div class="pull-left info">                           
+                            <a href="#/myEarningHistory"> Balance : <span ng-bind="clientDetailResponse.currency"></span> <b><span ng-bind="clientDetailResponse.availableBalance"></span></b></a>
+                        </div>
                     </div>
                     <!-- search form -->
                     <form action="#" method="get" class="sidebar-form">
@@ -355,8 +358,7 @@
                 
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
-
-		<div>	
+	
 
 		<div id="preloader">
 		  <div id="status">&nbsp;</div>
