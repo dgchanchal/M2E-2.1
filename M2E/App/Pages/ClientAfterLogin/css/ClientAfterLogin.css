@@ -491,7 +491,7 @@ button, input, select, textarea {
 
 
 .dropbox .preview{
-	width:150px;;
+	width:150px;
 	height: 108px;
 	float:left;
 	margin: 5px 0 0 6px;
@@ -601,6 +601,9 @@ max-height: 100px;
 }
 .box.box-color .box-title {
     background: none repeat scroll 0 0 #368ee0;
+}
+.box.box-color_requester .box-title_requester {
+    background: none repeat scroll 0 0 #ee8722;
 }
 .box .box-title {
     border-bottom: 1px solid #ddd;
@@ -882,4 +885,20 @@ element.style {
 .hide-fade.ng-hide-add,
 .hide-fade.ng-hide-remove.ng-hide-remove-active {
   opacity:1;
+}
+
+
+#hdr-fb-sub.hdr-2c-collapse {
+    background: none repeat scroll 0 0 #eee;
+    max-height: 10px;
+    position: absolute;
+    width: 100%;
+}
+#hdr-fb-sub {
+    background-color: #ffffff;
+    height: 33px;
+    margin: 0 auto;
+    opacity: 0.9;
+    width: 100%;
+    z-index: 9;
 }

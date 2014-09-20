@@ -73,10 +73,10 @@
         <header class="header">
             <a href="#" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
-                <img src="../../Template/AdminLTE-master/img/m2eV3.png" alt="Logo" width="125" height="39"/>
+                <img height="45px" src="../../App/img/login/cautom_logo.png"/>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
-            <nav class="navbar navbar-static-top" role="navigation">
+            <nav class="navbar bg_accepter navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->
                 <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
@@ -85,7 +85,7 @@
                     <span class="icon-bar"></span>
                 </a>
 
-                <a class="profile-me navbar-btn" style="width: 220px; position: absolute;  padding: 0px 20px;">	
+@*                <a class="profile-me navbar-btn" style="width: 220px; position: absolute;  padding: 0px 20px;">	
                     <div title="Sumit Chourasia">
                         <img src="{{clientDetailResponse.imageUrl}}" class="img-circle" alt="Repo" style="max-width: 30px; max-height: 30px;" />
                     </div>		        
@@ -94,7 +94,28 @@
                         </span>	
                         <a href=""> Qualifications</a>																														                    
                     </div>                    
-                </a>
+                </a>*@
+                
+                
+                <div class="navbar-left">
+                    <ul class="nav navbar-nav">
+                        <!-- Messages: style can be found in dropdown.less-->
+                        <li>
+                            <a href="#/edit">
+                                <img src="{{clientDetailResponse.imageUrl}}" alt="Repo" style="max-height: 23px;" />
+                            </a>
+                        </li>
+                        <!-- Notifications: style can be found in dropdown.less -->
+                        <li>
+                            <a title="your reputation: {{clientDetailResponse.totalReputation}}" class="reputation" ng-bind="clientDetailResponse.totalReputation"></a>
+                        </li>
+                        <!-- Tasks: style can be found in dropdown.less -->
+                        <li>
+                            <a href=""><b>Batch</b></a>
+                        </li>
+                    </ul>
+                </div>
+
 
                 <div class="navbar-right">
                     <ul class="nav navbar-nav">
@@ -337,13 +358,24 @@
                 </div>
             </nav>
         </header>
+       @* /*Header back side*/*@
+        <div class="div_c"></div>
+        <div class="div_c"></div>
+        <div class="div_c"></div>
+        <div class="div_c"></div>
+        <div class="div_c"></div>
+        <div class="div_c"></div>
+        <div class="div_c"></div>
+        
+
         <div class="right-side">
-        <div class="alert alert-danger alert-dismissable">
-                                        <i class="fa fa-ban"></i>
-                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <b>Alert!</b> You Identity is not verified yet !! please submit your ID Proof at <a href="">this link.</a>
-                                    </div>
+            <div class="alert alert-danger alert-dismissable">
+                <i class="fa fa-ban"></i>
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <b>Alert!</b> You Identity is not verified yet !! please submit your ID Proof at <a href="">this link.</a>
+            </div>
         </div>
+
         <div class="wrapper row-offcanvas row-offcanvas-left">
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="left-side sidebar-offcanvas">                

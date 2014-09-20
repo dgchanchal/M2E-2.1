@@ -81,7 +81,7 @@ body > .header {
 }
 @media screen and (min-width: 992px) {
   .left-side {
-    top: 50px;
+    top: 58px;
   }
   /*Right side strech mode*/
   .right-side.strech {
@@ -386,12 +386,12 @@ table.text-center th {
 -------------------------------------------------
 */
 body > .header {
-  position: relative;
+  position: fixed;
   max-height: 100px;
   z-index: 1030;
 }
 body > .header .navbar {
-  height: 50px;
+  height: 56px;
   margin-bottom: 0;
   margin-left: 220px;
 }
@@ -451,14 +451,11 @@ body > .header .navbar .nav > li > a:hover > .label {
 }
 body > .header .logo {
   float: left;
-  font-size: 20px;
   line-height: 50px;
   text-align: center;
   padding: 0 10px;
   width: 220px;
-  font-family: 'Kaushan Script', cursive;
-  font-weight: 500;
-  height: 50px;
+  height: 56px;
   display: block;
 }
 body > .header .logo .icon {
@@ -2481,6 +2478,11 @@ Component: timeline
     white-space: normal!important;
   }
 }
+/*for line*/
+.div_c {
+    clear: both;
+    padding-top: 0.8em;
+}
 /* 
     Skins
     -----
@@ -2490,12 +2492,15 @@ Component: timeline
     ---------
 */
 /* skin-blue navbar */
-.skin-blue .navbar {
-    background-color: #1a1a1a ;
-    background-image: -moz-linear-gradient(center top , #1a1a1a  0%, #1a1a1a  0%);
-    background-image: -webkit-linear-gradient(top, #1a1a1a  0%, #1a1a1a  0%, #1a1a1a  0%);
-    border-radius: 0px 0px 0 0;
-    box-shadow: 0 -0.5px 0 rgba(0, 0, 0, 0.78) inset;
+.bg_requester {
+    background: none repeat scroll 0 0 #ee8722;
+    border-bottom: 1px solid #cdcdcd;
+    box-shadow: 0 1px 4px #ccc;
+}
+.bg_accepter {
+    background-color: #0563ac ;
+        border-bottom: 1px solid #cdcdcd;
+    box-shadow: 0 1px 4px #ccc;
 }
 .skin-blue .navbar .nav a {
   color: rgba(255, 255, 255, 0.8);
@@ -2520,19 +2525,12 @@ Component: timeline
 }
 /* skin-blue logo */
 .skin-blue .logo {
-  background-color: #003778;
-  color: #f9f9f9;
-
-    background-image: -moz-linear-gradient(center top , #003778 0%, #003778 0%);
-    background-image: -webkit-linear-gradient(top, #003778 0%, #003778 0%, #003778 0%);
-    border-radius: 0px 0px 0 0;
-    box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.2) inset;
-}
-.skin-blue .logo > a {
-  color: #003778;
+background: none repeat scroll 0 0 #f4f4f4;
+    border-bottom: 1px solid #cdcdcd;
+    box-shadow: 0 1px 4px #ccc;
 }
 .skin-blue .logo:hover {
-  background: #173c7d;
+  background: #fff;
 }
 /* skin-blue content header */
 .skin-blue .right-side > .content-header {

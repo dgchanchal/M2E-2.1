@@ -53,21 +53,26 @@ define([appLocation.preLogin], function (app) {
             $scope.HeaderAlert.classType = "success";
             $scope.HeaderAlert.message = "Your Password has been successfully changed. To continue, please login.";
         }
-        if (CookieUtil.getLoginType() == null || CookieUtil.getLoginType() == "")
-            CookieUtil.setLoginType("user", $scope.KeepMeSignedInCheckBox); // by default set type as user..
+        if (CookieUtil.getLoginType() == null || CookieUtil.getLoginType() == "") {
+            CookieUtil.setLoginType("user", $scope.KeepMeSignedInCheckBox); // by default set type as user..           
+            $scope.isUser = true;            
+        }           
         else {
             if (CookieUtil.getLoginType() == "user") {
                 $('#loginUserTypeRadioButtonId').attr('checked', true);
                 $('.userTypeId').html(userConstants.name_abb);
                 $scope.userType = userConstants.name_abb;
-                $scope.isUser = true;
+                //$scope.isUser = true;                
+                $scope.isUser = true;               
                 //console.log(userConstants.name_abb);
             }
             else {
                 $('#loginClientTypeRadioButtonId').attr('checked', true);
                 $('.userTypeId').html(clientConstants.name_abb);
                 $scope.userType = clientConstants.name_abb;
+                //$scope.isUser = false;                
                 $scope.isUser = false;
+                
             }
         }
 
