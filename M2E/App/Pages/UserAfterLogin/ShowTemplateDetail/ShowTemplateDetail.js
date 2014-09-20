@@ -6,6 +6,10 @@ define([appLocation.userPostLogin], function (app) {
 
         $scope.TemplateDetailShowRulesAndRegulationInfoDiv = false;
         $scope.userShowTemplateDetailsIWillDoItAndReportAbuseButton = true;
+        $scope.viewThisSurveyDisplay = false;
+        if ($routeParams.type == TemplateInfoModel.type_survey) {
+            $scope.viewThisSurveyDisplay = true;
+        }
         var url = ServerContextPah + '/User/GetTemplateInformationByRefKey?refKey=' + $routeParams.refKey;
         var headers = {
             'Content-Type': 'application/json',
@@ -71,7 +75,7 @@ define([appLocation.userPostLogin], function (app) {
                 stopBlockUI();
                 console.log(type + "  " + TemplateInfoModel.type_moderation + "   " + subType + "   " + TemplateInfoModel.subType_imageModeration);
                 if (data.Status == "200") {
-                    if (type == TemplateInfoModel.type_survey && subType == TemplateInfoModel.subType_productSurvey)
+                    if (type == TemplateInfoModel.type_survey)
                         location.href = "#/startSurvey/" + refKey;
                     else if (type == TemplateInfoModel.type_dataEntry && subType == TemplateInfoModel.subType_Transcription) {
                         location.href = "#/startAngularTranscription/" + refKey;

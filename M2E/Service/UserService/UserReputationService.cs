@@ -85,8 +85,40 @@ namespace M2E.Service.UserService
                     username = username
  
                 };
+
                 _db.UserEarningHistories.Add(userEarningHistoryUpdate);
+
+                if (type == Constants.type_survey)
+                {
+                    var userReputation = _db.UserReputations.SingleOrDefault(x => x.username == username);
+                    var reputationScore = Math.Round((approved/5),2);
+                    if (userReputation == null)
+                    {
+                        var userReputationData = new UserReputation
+                        {
+                            username = username,
+                            ReputationScore = Convert.ToString(reputationScore),
+                            UserBadge = Constants.NA
+                        };
+                        _db.UserReputations.Add(userReputationData);
+                    }
+                    else
+                    {
+                        userReputation.ReputationScore = Convert.ToString(Convert.ToDouble(userReputation.ReputationScore)+reputationScore);
+                    }
+                    var UserReputationMappingData = new UserReputationMapping
+                    {
+                        DateTime = DateTime.Now,
+                        description = Constants.NA,
+                        type = type,
+                        subType = subType,
+                        username = username,
+                        reputation = Convert.ToString(reputationScore)
+                    };
+                    _db.UserReputationMappings.Add(UserReputationMappingData);
+                }                
             }
+
             
             try
             {

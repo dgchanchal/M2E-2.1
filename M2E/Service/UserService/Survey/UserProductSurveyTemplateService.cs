@@ -287,14 +287,18 @@ namespace M2E.Service.UserService.Survey
             
             var clientJobInfo = _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey);
             var response = new ResponseModel<string>();
-            if ((clientJobInfo.type == Constants.type_dataEntry && clientJobInfo.subType == Constants.subType_Transcription) ||
-                (clientJobInfo.type == Constants.type_moderation && clientJobInfo.subType == Constants.subType_moderatingPhotos))
+            if ((clientJobInfo.type == Constants.type_moderation && clientJobInfo.subType == Constants.subType_moderatingPhotos))
             {
                 response = AllocateMultipleTasksMultipleAssignTypeThreadToUserByRefKey(clientJobInfo, refKey, username);
             }
+            else if ((clientJobInfo.type == Constants.type_dataEntry &&
+                      clientJobInfo.subType == Constants.subType_Transcription))
+            {
+                response = AllocateMultipleAssignTypeThreadToUserByRefKey(clientJobInfo, refKey, username);
+            }
             else
             {
-                response = AllocateSingleAssignTypeThreadToUserByRefKey(clientJobInfo,refKey, username);
+                response = AllocateSingleAssignTypeThreadToUserByRefKey(clientJobInfo, refKey, username);
             }
             return response;
         }
@@ -367,94 +371,94 @@ namespace M2E.Service.UserService.Survey
             return response;
         }
 
-        //private ResponseModel<string> AllocateMultipleAssignTypeThreadToUserByRefKey(CreateTemplateQuestionInfo clientJobInfo, string refKey, string username)
-        //{
-        //    var response = new ResponseModel<string>();
-        //    var ifAlreadyAllocated = _db.UserMultipleJobMappings.SingleOrDefault(x => x.refKey == refKey && x.username == username);
-        //    if (ifAlreadyAllocated != null)
-        //    {
-        //        response.Status = 403;
-        //        response.Message = "You have already applied for this job";
-        //        return response;
-        //    }
-        //    const int expectedDeliveryTimeInMinutes = 15;
-                        
-        //    var UserMultipleJobMapping = new UserMultipleJobMapping();
-        //    UserMultipleJobMapping.endTime = Constants.NA;
-        //    UserMultipleJobMapping.expectedDelivery = DateTime.Now.AddMinutes(expectedDeliveryTimeInMinutes).ToString();
-        //    UserMultipleJobMapping.refKey = refKey;
-        //    UserMultipleJobMapping.startTime = DateTime.Now.ToString();
-        //    UserMultipleJobMapping.status = Constants.status_assigned;
+        private ResponseModel<string> AllocateMultipleAssignTypeThreadToUserByRefKey(CreateTemplateQuestionInfo clientJobInfo, string refKey, string username)
+        {
+            var response = new ResponseModel<string>();
+            var ifAlreadyAllocated = _db.UserMultipleJobMappings.SingleOrDefault(x => x.refKey == refKey && x.username == username);
+            if (ifAlreadyAllocated != null)
+            {
+                response.Status = 403;
+                response.Message = "You have already applied for this job";
+                return response;
+            }
+            const int expectedDeliveryTimeInMinutes = 15;
 
-        //    if (clientJobInfo.type == Constants.type_moderation && clientJobInfo.subType == Constants.subType_moderatingPhotos)
-        //    {
-        //        UserMultipleJobMapping.subType = Constants.subType_moderatingPhotos;
-        //        UserMultipleJobMapping.type = Constants.type_moderation;
-        //    }
-        //    else if (clientJobInfo.type == Constants.type_dataEntry && clientJobInfo.subType == Constants.subType_Transcription)
-        //    {
-        //        UserMultipleJobMapping.subType = Constants.subType_Transcription;
-        //        UserMultipleJobMapping.type = Constants.type_dataEntry;
-        //    }
-        //    UserMultipleJobMapping.surveyResult = Constants.NA;
-        //    UserMultipleJobMapping.username = username;
+            var UserMultipleJobMapping = new UserMultipleJobMapping();
+            UserMultipleJobMapping.endTime = Constants.NA;
+            UserMultipleJobMapping.expectedDelivery = DateTime.Now.AddMinutes(expectedDeliveryTimeInMinutes).ToString();
+            UserMultipleJobMapping.refKey = refKey;
+            UserMultipleJobMapping.startTime = DateTime.Now.ToString();
+            UserMultipleJobMapping.status = Constants.status_assigned;
 
-        //    var availableJobLists = _db.CreateTemplateImgurImagesLists.Where(x => x.referenceKey == refKey && x.status == Constants.status_open).ToList();
-        //    if (availableJobLists != null)
-        //    {
-        //        if (availableJobLists.Count == 0)
-        //        {
-        //            response.Status = 406;
-        //            response.Message = "All Threads of this job is already assigned.";
-        //            return response;
-        //        }
-        //        var transcriptionTask = availableJobLists.First();
-        //        try
-        //        {
-        //            //to be inclucded in lock
-        //            lock (this)
-        //            {
-        //                UserMultipleJobMapping.imageKey = transcriptionTask.imgurLink;
-        //                var updateImgurImageMapAfterAssigning = _db.CreateTemplateImgurImagesLists.SingleOrDefault(x => x.Id == transcriptionTask.Id);
-        //                updateImgurImageMapAfterAssigning.status = Constants.status_assigned;
-        //                _db.UserMultipleJobMappings.Add(UserMultipleJobMapping);
-        //                _db.SaveChanges();
-        //            }                    
-        //            //to be inclucded in lock
-                    
+            if (clientJobInfo.type == Constants.type_moderation && clientJobInfo.subType == Constants.subType_moderatingPhotos)
+            {
+                UserMultipleJobMapping.subType = Constants.subType_moderatingPhotos;
+                UserMultipleJobMapping.type = Constants.type_moderation;
+            }
+            else if (clientJobInfo.type == Constants.type_dataEntry && clientJobInfo.subType == Constants.subType_Transcription)
+            {
+                UserMultipleJobMapping.subType = Constants.subType_Transcription;
+                UserMultipleJobMapping.type = Constants.type_dataEntry;
+            }
+            UserMultipleJobMapping.surveyResult = Constants.NA;
+            UserMultipleJobMapping.username = username;
 
-        //            long JobId = clientJobInfo.Id;
-        //            long JobCompleted = _db.UserMultipleJobMappings.Where(x => x.refKey == refKey && x.status == Constants.status_done).Count();
-        //            long JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == refKey && x.status == Constants.status_assigned).Count();
-        //            long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
+            var availableJobLists = _db.CreateTemplateImgurImagesLists.Where(x => x.referenceKey == refKey && x.status == Constants.status_open).ToList();
+            if (availableJobLists != null)
+            {
+                if (availableJobLists.Count == 0)
+                {
+                    response.Status = 406;
+                    response.Message = "All Threads of this job is already assigned.";
+                    return response;
+                }
+                var transcriptionTask = availableJobLists.First();
+                try
+                {
+                    //to be inclucded in lock
+                    lock (this)
+                    {
+                        UserMultipleJobMapping.imageKey = transcriptionTask.imgurLink;
+                        var updateImgurImageMapAfterAssigning = _db.CreateTemplateImgurImagesLists.SingleOrDefault(x => x.Id == transcriptionTask.Id);
+                        updateImgurImageMapAfterAssigning.status = Constants.status_assigned;
+                        _db.UserMultipleJobMappings.Add(UserMultipleJobMapping);
+                        _db.SaveChanges();
+                    }
+                    //to be inclucded in lock
 
-        //            //var SignalRClientHub = new SignalRClientHub();
-        //            //var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
-        //            //dynamic client = SignalRManager.getSignalRDetail(clientJobInfo.username);
-        //            //if (client != null)
-        //            //{
-        //            //    client.updateClientProgressChart(Convert.ToString(JobId), clientJobInfo.totalThreads, Convert.ToString(JobCompleted), Convert.ToString(JobAssigned), Convert.ToString(JobReviewed));
-        //            //    //client.updateClientProgressChart("8", "20", "10", "8", "5");
-        //            //    //client.addMessage("add message signalR");
-        //            //}
-        //            bool status = new UserUpdatesClientRealTimeData().UpdateClientRealTimeData(JobId, JobCompleted, JobAssigned, JobReviewed, clientJobInfo.totalThreads, clientJobInfo.username);
-        //            response.Status = 200;
-        //            response.Message = "success-";
-        //            response.Payload = refKey;
-        //        }
-        //        catch (DbEntityValidationException e)
-        //        {
-        //            DbContextException.LogDbContextException(e);
-        //            response.Status = 500;
-        //            response.Message = "Failed";
-        //            response.Payload = "Exception Occured";
-        //        }
-        //    }
-        //    //UserMultipleJobMapping.imageKey = 
-            
 
-        //    return response;
-        //}
+                    long JobId = clientJobInfo.Id;
+                    long JobCompleted = _db.UserMultipleJobMappings.Where(x => x.refKey == refKey && x.status == Constants.status_done).Count();
+                    long JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == refKey && x.status == Constants.status_assigned).Count();
+                    long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
+
+                    //var SignalRClientHub = new SignalRClientHub();
+                    //var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
+                    //dynamic client = SignalRManager.getSignalRDetail(clientJobInfo.username);
+                    //if (client != null)
+                    //{
+                    //    client.updateClientProgressChart(Convert.ToString(JobId), clientJobInfo.totalThreads, Convert.ToString(JobCompleted), Convert.ToString(JobAssigned), Convert.ToString(JobReviewed));
+                    //    //client.updateClientProgressChart("8", "20", "10", "8", "5");
+                    //    //client.addMessage("add message signalR");
+                    //}
+                    bool status = new UserUpdatesClientRealTimeData().UpdateClientRealTimeData(JobId, JobCompleted, JobAssigned, JobReviewed, clientJobInfo.totalThreads, clientJobInfo.username);
+                    response.Status = 200;
+                    response.Message = "success-";
+                    response.Payload = refKey;
+                }
+                catch (DbEntityValidationException e)
+                {
+                    DbContextException.LogDbContextException(e);
+                    response.Status = 500;
+                    response.Message = "Failed";
+                    response.Payload = "Exception Occured";
+                }
+            }
+            //UserMultipleJobMapping.imageKey = 
+
+
+            return response;
+        }
 
         private ResponseModel<string> AllocateMultipleTasksMultipleAssignTypeThreadToUserByRefKey(CreateTemplateQuestionInfo clientJobInfo, string refKey, string username)
         {
