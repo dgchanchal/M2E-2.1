@@ -47,9 +47,10 @@ namespace M2E.Service.UserService
             }
         }
 
-        public bool UpdateUserBalance(string username, double approved, double pending)
+        public bool UpdateUserBalance(string username, double approved, double pending, string paymentMode, string title, string type, string subType)
         {
             var userBalance = _db.UserEarnings.SingleOrDefault(x => x.username == username);
+            bool addToUserBalanceHistory = approved > 0;
             approved *= (Convert.ToDouble(Convert.ToString(ConfigurationManager.AppSettings["dollarToRupeesValue"])));
             pending *= (Convert.ToDouble(Convert.ToString(ConfigurationManager.AppSettings["dollarToRupeesValue"])));
             if (userBalance == null)
@@ -69,6 +70,22 @@ namespace M2E.Service.UserService
                 userBalance.total = Convert.ToString(Convert.ToDouble(userBalance.total) + Convert.ToDouble(approved) + Convert.ToDouble(pending));
                 userBalance.approved = Convert.ToString(Convert.ToDouble(userBalance.approved) + Convert.ToDouble(approved));
                 userBalance.pending = Convert.ToString(Convert.ToDouble(userBalance.pending) + Convert.ToDouble(pending));                 
+            }
+
+            if (addToUserBalanceHistory)
+            {
+                var userEarningHistoryUpdate = new UserEarningHistory
+                {
+                    amount = Convert.ToString(approved),
+                    dateTime = DateTime.Now,
+                    paymentMode = paymentMode,
+                    subtype = subType,
+                    type = type,
+                    title = title,
+                    username = username
+ 
+                };
+                _db.UserEarningHistories.Add(userEarningHistoryUpdate);
             }
             
             try

@@ -317,16 +317,25 @@
     <Compile Include="Models\User.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserAlerts.cs">
+      <DependentUpon>M2EContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserDetail.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserEarning.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserEarningHistory.cs">
+      <DependentUpon>M2EContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserFacebookLikeJobMapping.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserJobMapping.cs">
+      <DependentUpon>M2EContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserMessages.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserMultipleJobMapping.cs">

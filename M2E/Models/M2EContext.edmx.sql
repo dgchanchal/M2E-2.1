@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/13/2014 11:26:27
+-- Date Created: 09/20/2014 10:52:01
 -- Generated from EDMX file: F:\PcOnGo_SVN\branches\M2E-2.0\M2E\Models\M2EContext.edmx
 -- --------------------------------------------------
 
@@ -120,6 +120,15 @@ IF OBJECT_ID(N'[dbo].[UserSurveyResultToBeRevieweds1]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[ValidateUserKeys]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ValidateUserKeys];
+GO
+IF OBJECT_ID(N'[dbo].[UserEarningHistories]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserEarningHistories];
+GO
+IF OBJECT_ID(N'[dbo].[UserMessages]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserMessages];
+GO
+IF OBJECT_ID(N'[dbo].[UserAlerts]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserAlerts];
 GO
 
 -- --------------------------------------------------
@@ -544,6 +553,44 @@ CREATE TABLE [dbo].[ValidateUserKeys] (
 );
 GO
 
+-- Creating table 'UserEarningHistories'
+CREATE TABLE [dbo].[UserEarningHistories] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [username] nvarchar(max)  NOT NULL,
+    [type] nvarchar(max)  NOT NULL,
+    [subtype] nvarchar(max)  NOT NULL,
+    [paymentMode] nvarchar(max)  NOT NULL,
+    [title] nvarchar(max)  NOT NULL,
+    [amount] nvarchar(max)  NOT NULL,
+    [dateTime] datetime  NOT NULL
+);
+GO
+
+-- Creating table 'UserMessages'
+CREATE TABLE [dbo].[UserMessages] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [userType] nvarchar(max)  NOT NULL,
+    [username] nvarchar(max)  NOT NULL,
+    [titleText] nvarchar(max)  NOT NULL,
+    [bodyText] nvarchar(max)  NOT NULL,
+    [dateTime] datetime  NOT NULL,
+    [priority] nvarchar(max)  NOT NULL,
+    [iconUrl] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'UserAlerts'
+CREATE TABLE [dbo].[UserAlerts] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [userType] nvarchar(max)  NOT NULL,
+    [username] nvarchar(max)  NOT NULL,
+    [titleText] nvarchar(max)  NOT NULL,
+    [dateTime] nvarchar(max)  NOT NULL,
+    [priority] nvarchar(max)  NOT NULL,
+    [iconUrl] nvarchar(max)  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -743,6 +790,24 @@ GO
 -- Creating primary key on [Id] in table 'ValidateUserKeys'
 ALTER TABLE [dbo].[ValidateUserKeys]
 ADD CONSTRAINT [PK_ValidateUserKeys]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'UserEarningHistories'
+ALTER TABLE [dbo].[UserEarningHistories]
+ADD CONSTRAINT [PK_UserEarningHistories]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'UserMessages'
+ALTER TABLE [dbo].[UserMessages]
+ADD CONSTRAINT [PK_UserMessages]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'UserAlerts'
+ALTER TABLE [dbo].[UserAlerts]
+ADD CONSTRAINT [PK_UserAlerts]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 

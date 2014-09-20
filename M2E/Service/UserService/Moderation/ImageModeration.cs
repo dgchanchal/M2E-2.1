@@ -50,7 +50,7 @@ namespace M2E.Service.UserService.Moderation
             {
                 _db.SaveChanges();
 
-                var payment = new UserReputationService().UpdateUserBalance(username, Convert.ToDouble(_db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey).payPerUser), 0);
+                var payment = new UserReputationService().UpdateUserBalance(username, Convert.ToDouble(_db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey).payPerUser), 0,Constants.payment_debit,clientJobInfo.title,clientJobInfo.type,clientJobInfo.subType);
                 if (!payment)
                     logger.Info("payment failed for user : " + username + " of amount : " + _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey).payPerUser);
 

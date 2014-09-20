@@ -153,7 +153,7 @@ namespace M2E.Service.UserService.facebookLike
                     {
                         _db.SaveChanges();
 
-                        var payment = new UserReputationService().UpdateUserBalance(username, Convert.ToDouble(_db.CreateTemplateFacebookLikes.SingleOrDefault(x => x.referenceId == refKey).payPerUser), 0);
+                        var payment = new UserReputationService().UpdateUserBalance(username, Convert.ToDouble(_db.CreateTemplateFacebookLikes.SingleOrDefault(x => x.referenceId == refKey).payPerUser), 0, Constants.payment_debit, facebookLikeTemplateData.title, facebookLikeTemplateData.type, facebookLikeTemplateData.subType);
                         if (!payment)
                             logger.Info("payment failed for user : " + username + " of amount : " + _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey).payPerUser);
 

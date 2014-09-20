@@ -58,5 +58,8 @@ namespace M2E.Models
         public DbSet<UserSurveyResult> UserSurveyResults { get; set; }
         public DbSet<UserSurveyResultToBeRevieweds1> UserSurveyResultToBeRevieweds1 { get; set; }
         public DbSet<ValidateUserKey> ValidateUserKeys { get; set; }
+        public DbSet<UserEarningHistory> UserEarningHistories { get; set; }
+        public DbSet<UserMessages> UserMessages { get; set; }
+        public DbSet<UserAlerts> UserAlerts { get; set; }
     }
 }
