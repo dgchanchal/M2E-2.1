@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using M2E.Models;
 using M2E.Models.DataResponse;
@@ -132,6 +133,41 @@ namespace M2E.Service.Client
                     };
 
                     response.Payload.Add(earningHistoryData);
+                }
+            }
+            catch (Exception)
+            {
+                response.Status = 500;
+                response.Message = "exception occured !!!";
+            }
+            return response;
+        }
+
+        public ResponseModel<List<ReputationHistoryResponse>> GetReputationHistory(string username)
+        {
+            var response = new ResponseModel<List<ReputationHistoryResponse>>();
+            response.Payload = new List<ReputationHistoryResponse>();
+
+            try
+            {
+                response.Status = 200;
+                response.Message = "success !!!";
+
+                var earningReputationList = _db.UserReputationMappings.OrderByDescending(x => x.DateTime).Where(x => x.username == username).ToList();
+                foreach (var earningReputation in earningReputationList)
+                {
+                    var earningReputationData = new ReputationHistoryResponse
+                    {
+                        username = username,
+                        dateTime = DateTime.Now.ToString(CultureInfo.InvariantCulture),
+                        description = Constants.NA,
+                        type = earningReputation.type,
+                        subType = earningReputation.subType,
+                        reputation = earningReputation.reputation
+
+                    };
+
+                    response.Payload.Add(earningReputationData);
                 }
             }
             catch (Exception)

@@ -349,6 +349,27 @@ namespace M2E.Controllers
 
         }
 
+        public JsonResult GetReputationHistory()
+        {
+            var headers = new HeaderManager(Request);
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
+
+            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+            if (isValidToken)
+            {
+                var response = new ClientDetailService().GetReputationHistory(session.UserName);
+                return Json(response, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                ResponseModel<string> response = new ResponseModel<string>();
+                response.Status = 401;
+                response.Message = "Unauthorized";
+                return Json(response);
+            }
+
+        }
+
         //[HttpPost]
         //public JsonResult CreateTemplateModeratingPhotos(CreateTemplateRequest req)
         //{

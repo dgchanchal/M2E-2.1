@@ -241,6 +241,7 @@
     <Compile Include="Models\DataResponse\ImgurImageResponse.cs" />
     <Compile Include="Models\DataResponse\ImgurImageUploadResponse.cs" />
     <Compile Include="Models\DataResponse\LoginResponse.cs" />
+    <Compile Include="Models\DataResponse\ReputationHistoryResponse.cs" />
     <Compile Include="Models\DataResponse\UserReferenceDetailResponse.cs" />
     <Compile Include="Models\DataResponse\UserReferenceDetails.cs" />
     <Compile Include="Models\DataResponse\UserResponse\DataEntry\Transcription\UserTranscriptionTemplateModel.cs" />
@@ -537,6 +538,8 @@
     <Content Include="App\Pages\UserAfterLogin\Controller\userAfterLoginApp.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\CookieServiceUserView.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\SessionManagement.js" />
+    <Content Include="App\Pages\UserAfterLogin\UserReputationHistory\UserReputationHistory.html" />
+    <Content Include="App\Pages\UserAfterLogin\UserReputationHistory\UserReputationHistory.js" />
     <Content Include="App\Pages\UserAfterLogin\UserEarningHistory\UserEarningHistory.html" />
     <Content Include="App\Pages\UserAfterLogin\UserEarningHistory\UserEarningHistory.js" />
     <Content Include="App\Pages\UserAfterLogin\Referrals\Referrals.html" />

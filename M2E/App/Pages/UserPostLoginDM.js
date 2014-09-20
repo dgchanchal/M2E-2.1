@@ -122,6 +122,9 @@ appRequire = require
             userAfterLoginIndex: { //used
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox"]
             },
+            UserAfterLoginReputationHistory: { //used
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox"]
+            },
             showAfterLoginShowTemplate: { //used
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox"]
             },
@@ -214,6 +217,7 @@ appRequire = require
             UserAfterLoginImageModeration: "../../App/Pages/UserAfterLogin/Moderation/Moderation", //used
             UserAfterLoginReferralPage: "../../App/Pages/UserAfterLogin/Referrals/Referrals", //used
             UserAfterLoginFacebookLike: "../../App/Pages/UserAfterLogin/Ads/facebookLike/facebookLike",//used
+            UserAfterLoginReputationHistory: "../../App/Pages/UserAfterLogin/UserReputationHistory/UserReputationHistory",//used
             UserAfterLoginEarningHistory: "../../App/Pages/UserAfterLogin/UserEarningHistory/UserEarningHistory"//used
             
         },
@@ -227,7 +231,7 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "fileDropScript", "domReady", "userAfterLoginTemplateSample", "idangerous_swiper_2_1_min","userAfterLoginShowTemplateDetail","userAfterLoginSurvey",
     "userAfterLoginActiveThreads","UserAfterLoginAngularTranscriptionTemplate","hamster","mousewheel",
     "panzoom", "PanZoomService", "panzoomwidget", "angular_route", "sanitize", "angular_animate", "UserAfterLoginImageModeration", "UserAfterLoginFacebookLike",
-    "UserAfterLoginReferralPage", "UserAfterLoginEarningHistory"
+    "UserAfterLoginReferralPage", "UserAfterLoginEarningHistory", "UserAfterLoginReputationHistory"
 ], function() {
     angular.bootstrap(document.getElementById("mainUser"), ["afterLoginUserApp"]);
 });
