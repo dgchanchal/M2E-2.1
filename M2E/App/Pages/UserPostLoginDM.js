@@ -29,6 +29,12 @@ appRequire = require
             jquery_cookie: {//used
                 deps: ["jquery"]
             },
+            angularjs_fileUpload_shim: {//new
+                deps: ["angular", "jquery"]
+            },
+            angularjs_fileUpload: {//new
+                deps: ["angular", "jquery", "angularjs_fileUpload_shim"]
+            },
             angular_route: {//new
                 deps: ["angular", "jquery"]
             },
@@ -116,6 +122,9 @@ appRequire = require
             userAfterLoginApp: { //new
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox"]
             },
+            AngularFileUploadController: { //new
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox", "angularjs_fileUpload", "angularjs_fileUpload_shim"]
+            },
             SessionManagement: { //used
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox"]
             },
@@ -148,6 +157,9 @@ appRequire = require
             },
             UserAfterLoginReferralPage: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox"]
+            },
+            UserAfterLoginSubmitIdProofPage: {
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox", "AngularFileUploadController"]
             },
             UserAfterLoginAngularTranscriptionTemplate: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox","PanZoomService","panzoomwidget"]
@@ -192,6 +204,8 @@ appRequire = require
             //jquery_panzoom: "../../App/js/jquery.panzoom",//used..
             hamster: "../../App/Pages/UserAfterLogin/Controller/panzoom/hamster",//used..
             mousewheel: "../../App/Pages/UserAfterLogin/Controller/panzoom/mousewheel",//used..
+            angularjs_fileUpload_shim: "../../App/third-Party/angular-file-upload-master/dist/angular-file-upload-shim.min",
+            angularjs_fileUpload: "../../App/third-Party/angular-file-upload-master/dist/angular-file-upload.min",
             panzoom: "../../App/Pages/UserAfterLogin/Controller/panzoom/directives/panzoom",//used..
             PanZoomService: "../../App/Pages/UserAfterLogin/Controller/panzoom/services/PanZoomService",//used..
             panzoomwidget: "../../App/Pages/UserAfterLogin/Controller/panzoom/directives/panzoomwidget",//used..
@@ -203,6 +217,7 @@ appRequire = require
             //==============================================================================================================
             userAfterLoginApp: ".././../App/Pages/UserAfterLogin/Controller/userAfterLoginApp",//changed..
             SessionManagement: "../../App/Pages/UserAfterLogin/Controller/common/SessionManagement",//new
+            AngularFileUploadController: "../../App/Pages/UserAfterLogin/Controller/common/AngularFileUploadController",//new
             userAfterLoginIndex: "../../App/Pages/UserAfterLogin/index/index",//new
             userAfterLoginShowTemplate: "../../App/Pages/UserAfterLogin/ShowTemplate/ShowTemplate",//new
             userAfterLoginShowTemplateDetail: "../../App/Pages/UserAfterLogin/ShowTemplateDetail/ShowTemplateDetail",//new
@@ -218,6 +233,7 @@ appRequire = require
             UserAfterLoginReferralPage: "../../App/Pages/UserAfterLogin/Referrals/Referrals", //used
             UserAfterLoginFacebookLike: "../../App/Pages/UserAfterLogin/Ads/facebookLike/facebookLike",//used
             UserAfterLoginReputationHistory: "../../App/Pages/UserAfterLogin/UserReputationHistory/UserReputationHistory",//used
+            UserAfterLoginSubmitIdProofPage: "../../App/Pages/UserAfterLogin/SubmitIdProof/SubmitIdProof",//used
             UserAfterLoginEarningHistory: "../../App/Pages/UserAfterLogin/UserEarningHistory/UserEarningHistory"//used
             
         },
@@ -231,7 +247,8 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "fileDropScript", "domReady", "userAfterLoginTemplateSample", "idangerous_swiper_2_1_min","userAfterLoginShowTemplateDetail","userAfterLoginSurvey",
     "userAfterLoginActiveThreads","UserAfterLoginAngularTranscriptionTemplate","hamster","mousewheel",
     "panzoom", "PanZoomService", "panzoomwidget", "angular_route", "sanitize", "angular_animate", "UserAfterLoginImageModeration", "UserAfterLoginFacebookLike",
-    "UserAfterLoginReferralPage", "UserAfterLoginEarningHistory", "UserAfterLoginReputationHistory"
+    "UserAfterLoginReferralPage", "UserAfterLoginEarningHistory", "UserAfterLoginReputationHistory", "angularjs_fileUpload_shim", "angularjs_fileUpload",
+    "UserAfterLoginSubmitIdProofPage"
 ], function() {
     angular.bootstrap(document.getElementById("mainUser"), ["afterLoginUserApp"]);
 });

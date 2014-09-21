@@ -529,6 +529,7 @@
     <Content Include="App\Pages\ClientAfterLogin\ClientEarningHistory\ClientEarningHistory.js" />
     <Content Include="App\Pages\UserAfterLogin\Ads\facebookLike\facebookLike.html" />
     <Content Include="App\Pages\UserAfterLogin\Ads\facebookLike\facebookLike.js" />
+    <Content Include="App\Pages\UserAfterLogin\Controller\common\AngularFileUploadController.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\panzoom\controllers\TestController.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\panzoom\directives\panzoom.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\panzoom\directives\panzoomwidget.js" />
@@ -538,6 +539,8 @@
     <Content Include="App\Pages\UserAfterLogin\Controller\userAfterLoginApp.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\CookieServiceUserView.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\SessionManagement.js" />
+    <Content Include="App\Pages\UserAfterLogin\SubmitIdProof\SubmitIdProof.js" />
+    <Content Include="App\Pages\UserAfterLogin\SubmitIdProof\SubmitIdProof.html" />
     <Content Include="App\Pages\UserAfterLogin\UserReputationHistory\UserReputationHistory.html" />
     <Content Include="App\Pages\UserAfterLogin\UserReputationHistory\UserReputationHistory.js" />
     <Content Include="App\Pages\UserAfterLogin\UserEarningHistory\UserEarningHistory.html" />
@@ -1550,6 +1553,7 @@
     <Folder Include="App\third-Party\html5-file-upload\uploads\" />
     <Folder Include="App_Data\" />
     <Folder Include="Upload\Images\" />
+    <Folder Include="Upload\UserID\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

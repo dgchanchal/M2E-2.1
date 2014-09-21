@@ -37,7 +37,7 @@ namespace M2E.Controllers
         public ContentResult UploadAngularFile(HttpPostedFileBase file)
         {
             var filename = Path.GetFileName(file.FileName);
-            const string rootfolder = @"~/Upload/Images/";
+            const string rootfolder = @"~/Upload/UserID/";
             const string startingDir = rootfolder; //@"c:\Temp";
             string filePath = Path.Combine(startingDir, file.FileName);
 

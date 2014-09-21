@@ -1,5 +1,5 @@
 'use strict';
-define([appLocation.postLogin], function (app) {
+define([appLocation.userPostLogin], function (app) {
 
     //getting user info..
     app.controller('AngularFileUploadController', function ($scope,$rootScope, $upload) {        
@@ -11,7 +11,7 @@ define([appLocation.postLogin], function (app) {
             for (var i = 0; i < $files.length; i++) {
               var file = $files[i];
               $scope.upload = $upload.upload({
-                url: '/Upload/UploadAngularFileOnImgUr', //UploadAngularFileOnImgUr
+                  url: '/Upload/UploadAngularFile', //UploadAngularFileOnImgUr
                 //method: 'POST' or 'PUT',
                 //headers: {'header-key': 'header-value'},
                 //withCredentials: true,
@@ -27,11 +27,7 @@ define([appLocation.postLogin], function (app) {
               }).success(function(data, status, headers, config) {
                 
                 stopBlockUI();
-                
-                userSession.wysiHtml5UploadedInstructionsImageUrlLink.push(data.data);
-
-
-                  $(".bootstrap-wysihtml5-insert-image-url").val(data.data.link_s);
+                  alert("uploaded");
               });              
               //.error(...)
               //.then(success, error, progress); 

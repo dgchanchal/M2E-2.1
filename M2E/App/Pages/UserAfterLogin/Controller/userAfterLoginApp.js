@@ -24,6 +24,7 @@ define([appLocation.userPostLogin], function (app) {
                        when("/myReferrals", { templateUrl: "../../App/Pages/UserAfterLogin/Referrals/Referrals.html" }).
                        when("/myEarningHistory", { templateUrl: "../../App/Pages/UserAfterLogin/UserEarningHistory/UserEarningHistory.html" }).
                        when("/myReputationHistory", { templateUrl: "../../App/Pages/UserAfterLogin/UserReputationHistory/UserReputationHistory.html" }).
+                       when("/submitIdProof", { templateUrl: "../../App/Pages/UserAfterLogin/SubmitIdProof/SubmitIdProof.html" }).
                        otherwise({ templateUrl: "../../Resource/templates/beforeLogin/contentView/404.html" });
 
     });
