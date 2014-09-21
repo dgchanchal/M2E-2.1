@@ -594,13 +594,13 @@ max-height: 100px;
     display: table;
 }
 .box.box-bordered.box-color .box-title {
-    border-color: #368ee0;
+    border-color: #ee8722;
 }
 .box.box-bordered .box-title {
     border: 2px solid #ddd;
 }
 .box.box-color .box-title {
-    background: none repeat scroll 0 0 #368ee0;
+    background: none repeat scroll 0 0 #ee8722;
 }
 .box.box-color_requester .box-title_requester {
     background: none repeat scroll 0 0 #ee8722;
@@ -617,7 +617,7 @@ max-height: 100px;
     display: table;
 }
 .box.box-bordered.box-color .box-content {
-    border-color: #368ee0;
+    border-color: #ee8722;
 }
 .box.box-bordered .box-content {
     -moz-border-bottom-colors: none;

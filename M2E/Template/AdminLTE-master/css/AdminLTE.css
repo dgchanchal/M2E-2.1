@@ -246,6 +246,14 @@ img {
   background-color: #d2d2d2 !important;
   color: #000 !important;
 }
+.bg-accepter-btn {
+  background-color: #0563ac !important;
+  color: #fff !important;
+}
+.bg-accepter-btn:hover {
+  background-color: #00236c !important;
+  color: #ffffff !important;
+}
 .bg-uni:hover {
   background-color: #1a1a1a !important;
   color: #fff !important;
@@ -512,6 +520,9 @@ body > .header .logo .icon {
   }
 }
 @media (max-width: 767px) {
+    .navbar-left {
+        display: none;
+    }
   .navbar .navbar-nav > li {
     float: left;
   }
@@ -529,6 +540,9 @@ body > .header .logo .icon {
   }
 }
 @media screen and (max-width: 560px) {
+  .navbar-left {
+        display: none;
+    }
   body > .header {
     position: relative;
   }
@@ -898,7 +912,7 @@ body > .header .logo .icon {
   border-radius: 0;
   padding: 1px 0 0 0;
   border-top-width: 0;
-  width: 280px;
+  width: 292px;
 }
 .navbar-nav > .user-menu > .dropdown-menu:after {
   bottom: 100%;
@@ -915,9 +929,8 @@ body > .header .logo .icon {
   margin-left: -10px;
 }
 .navbar-nav > .user-menu > .dropdown-menu > li.user-header {
-  height: 175px;
-  padding: 10px;
-  background: #3c8dbc;
+  height: 156px;
+  padding: 9px;
   text-align: center;
 }
 .navbar-nav > .user-menu > .dropdown-menu > li.user-header > img {
@@ -1191,6 +1204,19 @@ body > .header .logo .icon {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+/*Lock Button*/
+.lock_button {
+    float: left; 
+    margin-left: 3%; 
+}
+.lock_btn_anchor {
+    background: #e15b46 ! important;
+    color: rgb(255, 255, 255);
+}
+.lock_btn_anchor:hover {
+    background: #ba341f ! important;
+    color: #000;
 }
 /*
     Component: Small boxes
@@ -2243,12 +2269,23 @@ Component: timeline
     Page: locked screen
 */
 /* ADD THIS CLASS TO THE <HTML> TAG */
-.lockscreen {
-  background: url(../img/blur-background09.jpg) repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+.lockScreenAccepter {
+    background: #c3c3c3;
+}
+.lockScreenAccepter a {
+    color: #004992;
+}
+.lockScreenAccepter a:hover {
+    color: #0563ac;
+}
+.lockScreenRequester {
+    background: #ee8722;
+}
+.lockScreenRequester a {
+    color: #ffffff;
+}
+.lockScreenRequester a:hover {
+    color: #000;
 }
 /* Remove the background from the body element */
 .lockscreen > body {
@@ -2272,6 +2309,8 @@ Component: timeline
 }
 /* User name [optional] */
 .lockscreen .lockscreen-name {
+  color: #004992;
+  padding: 0 0 0 17px;
   text-align: center;
   font-weight: 600;
   font-size: 16px;
@@ -2328,6 +2367,7 @@ Component: timeline
 /* Extra to give the user an option to navigate the website [optional]*/
 .lockscreen-link {
   margin-top: 30px;
+  padding: 0px 0px 0px 69px;
   text-align: center;
 }
 /* 
@@ -2493,17 +2533,17 @@ Component: timeline
 */
 /* skin-blue navbar */
 .bg_requester {
-    background: none repeat scroll 0 0 #ee8722;
+    background: none repeat scroll 0 0 #ee8722 !important;
     border-bottom: 1px solid #cdcdcd;
     box-shadow: 0 1px 4px #ccc;
 }
 .bg_accepter {
-    background-color: #0563ac ;
-        border-bottom: 1px solid #cdcdcd;
+    background-color: #0563ac !important;
+    border-bottom: 1px solid #cdcdcd;
     box-shadow: 0 1px 4px #ccc;
 }
 .skin-blue .navbar .nav a {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 1.0);
 }
 .skin-blue .navbar .nav > li > a:hover,
 .skin-blue .navbar .nav > li > a:active,
@@ -3537,4 +3577,10 @@ a:hover {
 .backgroundColorRaferralRowNotValidated
 {
     background-color: #FFE1E1;
+}
+
+/*After Login Header*/
+@media only screen and (max-width : 640px)
+{ /*If device width is lesser than 640px use this css and if higher than 640px use above */
+
 }

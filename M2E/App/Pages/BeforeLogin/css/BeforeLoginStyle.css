@@ -1080,10 +1080,6 @@ div.main-content {
     margin: 0.3em auto 0;
     width: 100%;
 }
-.div_c {
-    clear: both;
-    padding-top: 0.8em;
-}
 .div_heading_gen {
     -moz-border-bottom-colors: none;
     -moz-border-left-colors: none;
@@ -1590,7 +1586,7 @@ a:hover {
     display: none;
 }
 
-@media only screen and (max-width : 640px) { /*If device width is higher than 640px use this css and if less than 640px use above */
+@media only screen and (max-width : 640px) { /*If device width is lesser than 640px use this css and if higher than 640px use above */
  #nav2 {
         display: none;
     }

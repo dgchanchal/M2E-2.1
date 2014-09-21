@@ -42,7 +42,7 @@ define([appLocation.userPostLogin], function (app) {
             /* Sidebar tree view */
             $(".sidebar .treeview").tree();
             var htmlQRImage = "";
-            //htmlQRImage = "<img src=\"http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=" + next.replace("#", "%23") + "\"/>";
+            htmlQRImage = "<img src=\"http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=" + next.replace("#", "%23") + "\"/>";
             $("#QRPageImageId").html(htmlQRImage);
             gaWeb("BeforeLogin-Page Visited", "Page Visited", next);
             var path = next.split('#');
@@ -53,6 +53,7 @@ define([appLocation.userPostLogin], function (app) {
     app.controller('UserAfterMasterPage', function ($scope, $http, $rootScope, CookieUtil) {
 
         _.defer(function () { $scope.$apply(); });
+        $rootScope.IsMobileDevice = (mobileDevice || isAndroidDevice) ? true : false;
 
         $scope.signOut = function () {
             logout();

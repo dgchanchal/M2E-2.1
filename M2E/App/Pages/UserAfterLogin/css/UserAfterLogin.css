@@ -916,7 +916,9 @@ b, strong {
 .topbar-flair .reputation {
     padding-right: 5px;
 }
-
+.reputation_accepter {
+    margin-left: 6px;
+}
  .topbar-flair .badge1, .topbar .topbar-links .topbar-flair .badge2, .topbar .topbar-links .topbar-flair .badge3 {
     padding-right: 3px;
 }

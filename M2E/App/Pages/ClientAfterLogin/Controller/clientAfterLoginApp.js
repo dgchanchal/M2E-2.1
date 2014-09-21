@@ -61,6 +61,7 @@ define([appLocation.postLogin], function (app) {
     app.controller('ClientAfterMasterPage', function ($scope, $http, $rootScope, CookieUtil) {
 
         _.defer(function () { $scope.$apply(); });
+        $rootScope.IsMobileDevice = (mobileDevice || isAndroidDevice) ? true : false;
 
         $scope.openTemplateSamplePageWithId = function (id) {
             if (mobileDevice)

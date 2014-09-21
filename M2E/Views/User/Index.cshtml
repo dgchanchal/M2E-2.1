@@ -71,7 +71,7 @@
         <script data-main="../../App/Pages/UserPostLoginDM.js" src="../../App/js/require.min.js"></script>
         <!-- header logo: style can be found in header.less -->
         <header class="header">
-            <a href="#" class="logo">
+            <a href="#" class="logo" ng-show="!IsMobileDevice">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 <img height="45px" src="../../App/img/login/cautom_logo.png"/>
             </a>
@@ -84,30 +84,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-
-@*                <a class="profile-me navbar-btn" style="width: 220px; position: absolute;  padding: 0px 20px;">	
-                    <div title="Sumit Chourasia">
-                        <img src="{{clientDetailResponse.imageUrl}}" class="img-circle" alt="Repo" style="max-width: 30px; max-height: 30px;" />
-                    </div>		        
-                    <div class="links-container topbar-flair">					
-                        <span title="your reputation: {{clientDetailResponse.totalReputation}}" class="reputation" ng-bind="clientDetailResponse.totalReputation">                           
-                        </span>	
-                        <a href=""> Qualifications</a>																														                    
-                    </div>                    
-                </a>*@
-                
                 
                 <div class="navbar-left">
                     <ul class="nav navbar-nav">
                         <!-- Messages: style can be found in dropdown.less-->
                         <li>
-                            <a href="#/edit">
+                            <a href="#/myReputationHistory">
                                 <img src="{{clientDetailResponse.imageUrl}}" alt="Repo" style="max-height: 23px;" />
+                                <span class="reputation_accepter" ng-bind="clientDetailResponse.totalReputation" title="your reputation: {{clientDetailResponse.totalReputation}}"></span>
                             </a>
-                        </li>
-                        <!-- Notifications: style can be found in dropdown.less -->
-                        <li>
-                            <a href="#/myReputationHistory" title="your reputation: {{clientDetailResponse.totalReputation}}" class="reputation" ng-bind="clientDetailResponse.totalReputation"></a>
+                            
                         </li>
                         <!-- Tasks: style can be found in dropdown.less -->
                         <li>
@@ -115,7 +101,7 @@
                         </li>
                     </ul>
                 </div>
-
+                 
 
                 <div class="navbar-right">
                     <ul class="nav navbar-nav">
@@ -315,41 +301,33 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
-                                <li class="user-header bg-light-blue">
+                                <li class="user-header bg_accepter">
                                     <img src="{{clientDetailResponse.imageUrl}}" class="img-circle" alt="User Image" />
                                     <p>
                                         <span ng-bind="clientDetailResponse.FirstName"></span>  <span ng-bind="clientDetailResponse.LastName"></span>
-                                        <a class="profile-me navbar-btn" style="width: 220px; position: absolute;  padding: 0px 20px;">	
-                                            <div title="Sumit Chourasia">
-											
-                                            </div>		        
-                                            <div class="links-container topbar-flair">					
-                                                <span title="your reputation: {{clientDetailResponse.totalReputation}}" class="reputation" ng-bind="clientDetailResponse.totalReputation">                           
-                                                </span>
-                                                <a href=""> Qualifications</a>	                    
-                                            </div>
-                                        </a>
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
+                                
                                 <li class="user-body">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="/Auth/LockAccount"><button class="btn btn-danger btn-sm">Lock</button></a>
+                                    <div class="pull-left">					
+                                        <a class="btn-default btn btn-flat" href="#/myReputationHistory" title="your reputation: 5.52">Repo : <span ng-bind="clientDetailResponse.totalReputation"></span></a>
                                     </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Friends</a>
+                                    <div class="pull-right">
+                                        <a class="btn btn-default btn-flat" href="#/myEarningHistory">Wallet : INR <span ng-bind="clientDetailResponse.availableBalance"></span></a>
                                     </div>
                                 </li>
+                                
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#/edit" class="btn btn-default btn-flat">Profile</a>
+                                        <a class="btn bg-accepter-btn btn-flat" href="#/edit">Profile</a>
+                                    </div>
+                                    <div class="lock_button">
+                                        <a href="/Auth/LockAccount" class="btn btn-flat lock_btn_anchor">Lock account</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a ng-click="signOut()" class="btn btn-default btn-flat">Sign out</a>
+                                        <a class="btn bg-accepter-btn btn-flat" ng-click="signOut()">Sign out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -358,23 +336,15 @@
                 </div>
             </nav>
         </header>
-       @* /*Header back side*/*@
+        @* /*Header back side*/*@
+        <div ng-show="!IsMobileDevice">
         <div class="div_c"></div>
         <div class="div_c"></div>
         <div class="div_c"></div>
-        <div class="div_c"></div>
-        <div class="div_c"></div>
-        <div class="div_c"></div>
-        <div class="div_c"></div>
-        
-
-        <div class="right-side">
-            <div class="alert alert-danger alert-dismissable">
-                <i class="fa fa-ban"></i>
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <b>Alert!</b> You Identity is not verified yet !! please submit your ID Proof at <a href="">this link.</a>
-            </div>
-        </div>
+        <div class="div_c"></div> 
+        <div class="div_c"></div> 
+        </div>    
+            
 
         <div class="wrapper row-offcanvas row-offcanvas-left">
             <!-- Left side column. contains the logo and sidebar -->
@@ -392,7 +362,7 @@
                             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                         </div>
 						<div class="pull-left info">                           
-                            <a href="#/myEarningHistory"> Balance : <span ng-bind="clientDetailResponse.currency"></span> <b><span ng-bind="clientDetailResponse.availableBalance"></span></b></a>
+                            <a href="#/myEarningHistory"><b>Wallet : </b><span ng-bind="clientDetailResponse.currency"></span> <b><span style="font-size: 14px; color: #00549d;" ng-bind="clientDetailResponse.availableBalance"></span></b></a>
                         </div>
                     </div>
                     <!-- search form -->
@@ -409,12 +379,12 @@
                     <ul class="sidebar-menu">
                         <li>
                             <a href="#/userThreads/active">
-                                <i class="fa fa-dashboard"></i> <span>My Active Jobs</span>
+                                <i class="fa fa-dashboard"></i> <span>My Active CITs</span>
                             </a>
                         </li>
 						<li>
                             <a href="#/userThreads/completed">
-                                <i class="fa fa-dashboard"></i> <span>My Completed Jobs</span>
+                                <i class="fa fa-dashboard"></i> <span>My Completed CITs</span>
                             </a>
                         </li>						
                         <li class="treeview" ng-repeat="category in ClientCategoryList[0].subCategoryList">
