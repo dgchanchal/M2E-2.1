@@ -18,38 +18,67 @@
 
         <div class="col-md-4 row-padding1">
             <h2 ng-class="{true:'text-accepter', false:'text-requester'}[isUser]">Login as</h2>
-                <div class="body">
-                    <ul style="margin-left: 0;" ng-show="showHeaderErrors" class="alert alert-{{HeaderAlert.classType}} alert-dismissable ng-hide">                                                                               
-                        <li ng-show="HeaderAlert.visible" ng-bind="HeaderAlert.message"></li>
-                        <li ng-show="ForgetPasswordAlert.visible"> <span ng-bind="ForgetPasswordAlert.message"></span> <a href="#"> Request a new one.</a></li>
-                    </ul>
-                    <div class="row">                       
-                        <div class="col-md-12">
-                            <span class="fl text-accepter"><b>Accepter </b><input type="radio" class="loginUserTypeRadioButton" name="loginUserType" id="loginUserTypeRadioButtonId" value="user" checked="checked" /></span>                          
-                            <span class="fr text-requester"><b>Requester </b><input type="radio" class="loginUserTypeRadioButton "  name="loginUserType" id="loginClientTypeRadioButtonId" value="client" /> </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="emailid" class="form-control ng-pristine ng-valid" placeholder="Email Id" data-i18n="beforeLoginLoginPageEmailIdText" id="LoginEmailId" ng-model="EmailId">
-                    </div>
+            <div class="field_group">
+                <ul style="margin-left: 0;" ng-show="showHeaderErrors" class="alert alert-{{HeaderAlert.classType}} alert-dismissable ng-hide">                                                                               
+                    <li ng-show="HeaderAlert.visible" ng-bind="HeaderAlert.message"></li>
+                    <li ng-show="ForgetPasswordAlert.visible"> <span ng-bind="ForgetPasswordAlert.message"></span> <a href="#"> Request a new one.</a></li>
+                </ul>
+                <!--                    <div class="row">                       
+                                            <div class="col-md-12">
+                                                <span class="fl text-accepter"><b>Accepter </b><input type="radio" class="loginUserTypeRadioButton" name="loginUserType" id="loginUserTypeRadioButtonId" value="user" checked="checked" /></span>                          
+                                                <span class="fr text-requester"><b>Requester </b><input type="radio" class="loginUserTypeRadioButton "  name="loginUserType" id="loginClientTypeRadioButtonId" value="client" /> </span>
+                                            </div>
+                                        </div>-->
+                <!-- <div class="form-group">
+                         <input type="text" name="emailid" class="form-control ng-pristine ng-valid" placeholder="Email Id" data-i18n="beforeLoginLoginPageEmailIdText" id="LoginEmailId" ng-model="EmailId">
+                     </div>
                     <div class="form-group">
                         <input type="password" name="password" class="form-control ng-pristine ng-valid TextBoxBeforeLoginFormSubmitButtonClass" placeholder="Password" data-i18n="beforeLoginLoginPagePasswordText" id="LoginPasswordId" ng-model="Password">
                     </div>          
                     <div class="form-group">
                         <input type="checkbox" name="remember_me" ng-model="KeepMeSignedInCheckBox" > <span ng-class="{true:'text-requester ng-pristine ng-valid', false:'text-accepter ng-pristine ng-valid'}[!isUser]">Remember me</span>
-                    </div>
+                    </div>-->
+                   
+                <!-- Login categories -->
+                <div class="field innerDivCenterAlign">
+			<!-- Contact input and label -->
+			    <input type="radio" class="loginUserTypeRadioButton" name="loginUserType" id="loginUserTypeRadioButtonId" value="user" />
+			    <label for="loginUserTypeRadioButtonId" class="tabs tabs_accepter"><i class="fa fa-fw fa-users"></i><span> Accepter</span></label>
+			    <!-- Feedback input and label -->
+			    <input type="radio" class="loginUserTypeRadioButton "  name="loginUserType" id="loginClientTypeRadioButtonId" value="client" />
+			    <label class="tabs tabs_requester" for="loginClientTypeRadioButtonId">
+                <i class="fa fa-fw fa-user"></i> Requester</label>
                 </div>
+		
 
-                <div class="footer">
+                <!-- Username input -->
+                <div class="field">
+                    <input name="username" class="ng-pristine ng-valid" placeholder="Email Id" data-i18n="beforeLoginLoginPageEmailIdText" id="LoginEmailId" ng-model="EmailId">
+                    <span class="entypo-user icon"></span> 
+                    <span ng-class="{true:'slick-tip left bg_requester_inputBox', false:'slick-tip left bg_accepter_inputBox'}[!isUser]">Enter your username</span>                       
+                </div>
+                <!-- Password input -->
+                <div class="field">
+                    <input name="password" class="ng-pristine ng-valid TextBoxBeforeLoginFormSubmitButtonClass" placeholder="Password" data-i18n="beforeLoginLoginPagePasswordText" id="LoginPasswordId" ng-model="Password">
+                    <span class="entypo-lock icon"></span>
+                    <span ng-class="{true:'slick-tip left bg_requester_inputBox', false:'slick-tip left bg_accepter_inputBox'}[!isUser]">Enter your password</span>
+                </div>
+                <!-- Signed in button -->
+                <input id="signed-in" type="checkbox" name="signed-in" checked="checked">
+                <label class="tick" for="signed-in"><span>Keep me signed in</span></label>
+                
+                <div class="field_group">
                     <ul class="alert alert-danger alert-dismissable"  ng-show="showFooterErrors" style="margin-left: 0;">                                                                               
                         <li ng-show="EmailIdAlert.visible" ng-bind="EmailIdAlert.message"></li>
                         <li ng-show="PasswordAlert.visible" ng-bind="PasswordAlert.message"></li>
-                    </ul>                                                               
-                    <button ng-class="{true:'bg-requester btn btn-block', false:'bg-accepter btn btn-block'}[!isUser]" type="submit" id="LoginFormSubmitButtonId" ng-click="Login()">Sign me in as <b><span class="userTypeId"></span></b></button>  
+                    </ul>
+                    <button ng-class="{true:'bg-requester btn btn-block', false:'bg-accepter btn btn-block'}[!isUser]" type="submit" id="LoginFormSubmitButtonId" ng-click="Login()">Sign me in as <b><span class="userTypeId"></span></b></button>                                                                 
                     <div class="div_c"></div>
                     <p><a href="#/forgetpassword" ng-class="{true:'text-accepter', false:'text-requester'}[isUser]">I forgot my password</a></p>
                     <p>Create an Account<i class="fa fa-fw fa-long-arrow-right"></i><a class="text-center text-requester" href="#/signup/client" ng-bind="clientConstants.name_abb"></a> or <a class="text-center text-accepter" href="#/signup/user" ng-bind="userConstants.name_abb"></a></p>
                 </div>
+            </div>
+
 
                 <div class="margin text-center">
                     
