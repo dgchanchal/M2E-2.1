@@ -31,7 +31,9 @@ var TemplateInfoModel = {
         subType_Transcription : "Transcription",        
         subType_dataCollection : "dataCollection",
         subType_taggingImage : "taggingImage",
-        subType_transcribeAV : "transcribeAV",        
+        subType_transcribeAV: "transcribeAV",
+        subType_searchTheWeb: "searchTheWeb",
+        subType_doExcelWork: "doExcelWork",
 
         type_contentWritting : "contentWriting",        
         subType_articleWritting : "articleWriting",

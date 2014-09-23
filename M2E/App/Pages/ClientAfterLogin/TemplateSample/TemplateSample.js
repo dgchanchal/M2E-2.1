@@ -19,7 +19,12 @@ define([appLocation.postLogin], function (app) {
         else if ($routeParams.type == TemplateInfoModel.type_dataEntry) {
             if ($routeParams.subType == TemplateInfoModel.subType_Transcription) {
                 $scope.TemplateUrl = "#/transcriptionTemplate/" + $routeParams.type + "/" + $routeParams.subType;
+            } else {
+                $scope.TemplateUrl = "#/articleWrittingTemplate/" + $routeParams.type + "/" + $routeParams.subType;
             }
+        }
+        else if ($routeParams.type == TemplateInfoModel.type_contentWritting) {
+            $scope.TemplateUrl = "#/articleWrittingTemplate/" + $routeParams.type + "/" + $routeParams.subType;
         }
         console.log($routeParams.type + "   " + TemplateInfoModel.type_dataEntry + "   " + $routeParams.subType + "   " + TemplateInfoModel.subType_Transcription);
     });

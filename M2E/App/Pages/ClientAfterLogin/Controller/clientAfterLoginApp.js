@@ -123,26 +123,26 @@ define([appLocation.postLogin], function (app) {
            {
                value: "Data entry", dropDownMenuShow: true, dropDownSubMenuClass: "dropdown-submenu", dropDownMenuClass: "dropdown-menu", dropDownSubMenuArrow: "dropdown", dropDownMenuList: [
                //{ value: "Verification & Duplication", link: "#/VerificationAndDuplicationSample" },
-               { value: "Data Collection", link: "#/dataCollectionTemplate/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_dataCollection },
-               { value: "Tagging of an Image", link: "#/taggingImageTemplate/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_taggingImage },
-               { value: "Search the web", link: "#" },
-               { value: "Do Excel work", link: "#" },
+               { value: "Data Collection", link: "#/templateSample/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_dataCollection },
+               { value: "Tagging of an Image", link: "#/templateSample/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_taggingImage },
+               { value: "Search the web", link: "#/templateSample" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_searchTheWeb },
+               { value: "Do Excel work", link: "#/templateSample" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_doExcelWork },
                //{ value: "Find information", link: "#" },
                //{ value: "Post advertisements", link: "#" },
                { value: "Transcription", link: "#/templateSample/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_Transcription },
-               { value: "Transcription from A/V", link: "#/transcribeAVTemplate/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_transcribeAV }
+               { value: "Transcription from A/V", link: "#/templateSample/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_transcribeAV }
                ]
            },
            {
                value: "Content Writing", dropDownMenuShow: true, dropDownSubMenuClass: "dropdown-submenu", dropDownMenuClass: "dropdown-menu", dropDownSubMenuArrow: "dropdown", dropDownMenuList: [
-                 { value: "Article writing", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_articleWritting },
-                 { value: "Blog writing", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_blogWriting },
-                 { value: "Copy typing", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_copyTyping },
-                 { value: "Powerpoint", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_powerpoint },
-                 { value: "Short stories", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_shortStories },
-                 { value: "Travel writing", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_travelWriting },
-                 { value: "Reviews", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_reviews },
-                 { value: "Product descriptions", link: "#/articleWrittingTemplate/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_productDescriptions }
+                 { value: "Article writing", link: "#/templateSample/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_articleWritting },
+                 { value: "Blog writing", link: "#/templateSample/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_blogWriting },
+                 { value: "Copy typing", link: "#/templateSample/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_copyTyping },
+                 { value: "Powerpoint", link: "#/templateSample/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_powerpoint },
+                 { value: "Short stories", link: "#/templateSample/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_shortStories },
+                 { value: "Travel writing", link: "#/templateSample/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_travelWriting },
+                 { value: "Reviews", link: "#/templateSample/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_reviews },
+                 { value: "Product descriptions", link: "#/templateSample/" + TemplateInfoModel.type_contentWritting + "/" + TemplateInfoModel.subType_productDescriptions }
                ]
            },
            {
