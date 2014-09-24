@@ -1,10 +1,13 @@
 ﻿using System.Globalization;
+using System.Threading;
+using System.Web;
 using M2E.Common.Logger;
 using M2E.Models;
 using System;
 using System.Linq;
 using M2E.Encryption;
 using System.Web.Mvc;
+using M2E.Models.Constants;
 using M2E.Models.DataResponse;
 using M2E.Models.DataWrapper;
 using M2E.CommonMethods;
@@ -78,6 +81,32 @@ namespace M2E.Controllers
             var response = new ResponseModel<LoginResponse> { Status = Convert.ToInt32(responseData.Code), Message = "success", Payload = responseData };
             return Json(response);
         }
+        
+        public JsonResult saveData()
+        {
+            var deviceId = Request.QueryString["deviceId"];
+            if (deviceId != null)
+            {
+                var linkedInApiData = new linkedinAuth
+                {
+                    oauth_Token = Constants.NA,
+                    oauth_TokenSecret = deviceId,
+                    oauth_verifier = ""
+                };
+                _db.linkedinAuths.Add(linkedInApiData);
+                try
+                {
+                    _db.SaveChanges();
+                }
+                catch (DbEntityValidationException e)
+                {
+                    DbContextException.LogDbContextException(e);
+                }
+            }
+           
+            
+            return Json("success",JsonRequestBehavior.AllowGet);
+        }
 
         [HttpPost]
         public JsonResult IsValidSession()
@@ -98,8 +127,15 @@ namespace M2E.Controllers
 
         [HttpPost]
         public JsonResult Logout()
+        {            
+            var isValidToken = ThreadPool.QueueUserWorkItem(new WaitCallback(asyncLogout), Request);
+            return Json(isValidToken);
+        }
+
+        public void asyncLogout( object a)
         {
-            var headers = new HeaderManager(Request);
+            HttpRequestBase RequestData = a as HttpRequestBase;
+            var headers = new HeaderManager(RequestData);
             M2ESession session = TokenManager.getLogoutSessionInfo(headers.AuthToken);
             if (session != null)
             {
@@ -107,15 +143,14 @@ namespace M2E.Controllers
                 user.KeepMeSignedIn = "false";
                 try
                 {
-                    _db.SaveChanges();                    
+                    _db.SaveChanges();
                 }
                 catch (DbEntityValidationException e)
                 {
-                    DbContextException.LogDbContextException(e);                                     
+                    DbContextException.LogDbContextException(e);
                 }
             }
-            var isValidToken = new TokenManager().Logout(headers.AuthToken);
-            return Json(isValidToken);
+            bool isValid = new TokenManager().Logout(headers.AuthToken);
         }
 
         [HttpPost]
