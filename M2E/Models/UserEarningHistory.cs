@@ -22,5 +22,7 @@ namespace M2E.Models
         public string title { get; set; }
         public string amount { get; set; }
         public System.DateTime dateTime { get; set; }
+        public string userType { get; set; }
+        public string currency { get; set; }
     }
 }

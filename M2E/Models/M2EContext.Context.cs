@@ -61,5 +61,6 @@ namespace M2E.Models
         public DbSet<UserEarningHistory> UserEarningHistories { get; set; }
         public DbSet<UserMessages> UserMessages { get; set; }
         public DbSet<UserAlerts> UserAlerts { get; set; }
+        public DbSet<contactUs> contactUs { get; set; }
     }
 }

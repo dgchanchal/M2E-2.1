@@ -41,6 +41,7 @@
         <EntityTypeShape EntityType="M2E.UserEarningHistory" Width="1.5" PointX="2.25" PointY="15.625" />
         <EntityTypeShape EntityType="M2E.UserMessages" Width="1.5" PointX="4.125" PointY="15.625" />
         <EntityTypeShape EntityType="M2E.UserAlerts" Width="1.5" PointX="6.75" PointY="16.25" />
+        <EntityTypeShape EntityType="M2E.contactUs" Width="1.5" PointX="8.75" PointY="16.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -42,6 +42,7 @@
     <EntitySet Name="UserEarningHistories" EntityType="M2E.Store.UserEarningHistories" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserMessages" EntityType="M2E.Store.UserMessages" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserAlerts" EntityType="M2E.Store.UserAlerts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="contactUs" EntityType="M2E.Store.contactUs" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
   <EntityType Name="ClientDetails">
     <Key>
@@ -312,6 +313,7 @@
     <Property Name="pending" Type="nvarchar(max)" Nullable="false" />
     <Property Name="currency" Type="nvarchar(max)" Nullable="false" />
     <Property Name="LastUpdated" Type="datetime" Nullable="true" />
+    <Property Name="userType" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="UserFacebookLikeJobMappings">
     <Key>
@@ -473,6 +475,8 @@
     <Property Name="title" Type="nvarchar(max)" Nullable="false" />
     <Property Name="amount" Type="nvarchar(max)" Nullable="false" />
     <Property Name="dateTime" Type="datetime" Nullable="false" />
+    <Property Name="userType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="currency" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="UserMessages">
     <Key>
@@ -498,6 +502,17 @@
     <Property Name="dateTime" Type="nvarchar(max)" Nullable="false" />
     <Property Name="priority" Type="nvarchar(max)" Nullable="false" />
     <Property Name="iconUrl" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="contactUs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="emailId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="heading" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="message" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="dateTime" Type="datetime" Nullable="false" />
   </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -540,6 +555,7 @@
           <EntitySet Name="UserEarningHistories" EntityType="M2E.UserEarningHistory" />
           <EntitySet Name="UserMessages" EntityType="M2E.UserMessages" />
           <EntitySet Name="UserAlerts" EntityType="M2E.UserAlerts" />
+          <EntitySet Name="contactUs" EntityType="M2E.contactUs" />
         </EntityContainer>
         <EntityType Name="ClientDetail">
           <Key>
@@ -810,6 +826,7 @@
           <Property Name="pending" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="currency" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Type="String" Name="userType" Nullable="false" />
         </EntityType>
         <EntityType Name="UserFacebookLikeJobMapping">
           <Key>
@@ -971,6 +988,8 @@
           <Property Type="String" Name="title" Nullable="false" />
           <Property Type="String" Name="amount" Nullable="false" />
           <Property Type="DateTime" Name="dateTime" Nullable="false" />
+          <Property Type="String" Name="userType" Nullable="false" />
+          <Property Type="String" Name="currency" Nullable="false" />
         </EntityType>
         <EntityType Name="UserMessages">
           <Key>
@@ -996,6 +1015,17 @@
           <Property Type="String" Name="dateTime" Nullable="false" />
           <Property Type="String" Name="priority" Nullable="false" />
           <Property Type="String" Name="iconUrl" Nullable="false" />
+        </EntityType>
+        <EntityType Name="contactUs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="username" Nullable="false" />
+          <Property Type="String" Name="emailId" Nullable="false" />
+          <Property Type="String" Name="heading" Nullable="false" />
+          <Property Type="String" Name="message" Nullable="false" />
+          <Property Type="DateTime" Name="dateTime" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1291,6 +1321,7 @@
           <ScalarProperty Name="pending" ColumnName="pending" />
           <ScalarProperty Name="currency" ColumnName="currency" />
           <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="userType" ColumnName="userType" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1465,6 +1496,8 @@
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="amount" ColumnName="amount" />
           <ScalarProperty Name="dateTime" ColumnName="dateTime" />
+          <ScalarProperty Name="userType" ColumnName="userType" />
+          <ScalarProperty Name="currency" ColumnName="currency" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1492,6 +1525,18 @@
           <ScalarProperty Name="dateTime" ColumnName="dateTime" />
           <ScalarProperty Name="priority" ColumnName="priority" />
           <ScalarProperty Name="iconUrl" ColumnName="iconUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="contactUs">
+      <EntityTypeMapping TypeName="IsTypeOf(M2E.contactUs)">
+        <MappingFragment StoreEntitySet="contactUs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="emailId" ColumnName="emailId" />
+          <ScalarProperty Name="heading" ColumnName="heading" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="dateTime" ColumnName="dateTime" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -20,7 +20,7 @@ define([appLocation.postLogin], function (app) {
             if ($routeParams.subType == TemplateInfoModel.subType_Transcription) {
                 $scope.TemplateUrl = "#/transcriptionTemplate/" + $routeParams.type + "/" + $routeParams.subType;
             } else {
-                $scope.TemplateUrl = "#/articleWrittingTemplate/" + $routeParams.type + "/" + $routeParams.subType;
+                $scope.TemplateUrl = "#/dataEntryTemplate/" + $routeParams.type + "/" + $routeParams.subType;
             }
         }
         else if ($routeParams.type == TemplateInfoModel.type_contentWritting) {

@@ -171,7 +171,7 @@ namespace M2E.Service.UserService.dataEntry
                 {
                     _db.SaveChanges();
 
-                    var payment = new UserReputationService().UpdateUserBalance(username, Convert.ToDouble(_db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey).payPerUser), 0, Constants.payment_credit, clientJobInfo.title, clientJobInfo.type, clientJobInfo.subType);
+                    var payment = new UserReputationService().UpdateUserBalance(Constants.userType_user, username, Convert.ToDouble(_db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey).payPerUser), 0, Constants.payment_credit, clientJobInfo.title, clientJobInfo.type, clientJobInfo.subType);
                     if (!payment)
                         logger.Info("payment failed for user : " + username + " of amount : " + _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.referenceId == refKey).payPerUser);
 

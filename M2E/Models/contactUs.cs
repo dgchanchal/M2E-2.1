@@ -12,15 +12,13 @@ namespace M2E.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class UserEarning
+    public partial class contactUs
     {
         public int Id { get; set; }
         public string username { get; set; }
-        public string total { get; set; }
-        public string approved { get; set; }
-        public string pending { get; set; }
-        public string currency { get; set; }
-        public Nullable<System.DateTime> LastUpdated { get; set; }
-        public string userType { get; set; }
+        public string emailId { get; set; }
+        public string heading { get; set; }
+        public string message { get; set; }
+        public System.DateTime dateTime { get; set; }
     }
 }

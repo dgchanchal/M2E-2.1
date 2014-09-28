@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/20/2014 10:52:01
+-- Date Created: 09/28/2014 12:01:13
 -- Generated from EDMX file: F:\PcOnGo_SVN\branches\M2E-2.0\M2E\Models\M2EContext.edmx
 -- --------------------------------------------------
 
@@ -129,6 +129,9 @@ IF OBJECT_ID(N'[dbo].[UserMessages]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[UserAlerts]', 'U') IS NOT NULL
     DROP TABLE [dbo].[UserAlerts];
+GO
+IF OBJECT_ID(N'[dbo].[contactUs]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[contactUs];
 GO
 
 -- --------------------------------------------------
@@ -401,7 +404,8 @@ CREATE TABLE [dbo].[UserEarnings] (
     [approved] nvarchar(max)  NOT NULL,
     [pending] nvarchar(max)  NOT NULL,
     [currency] nvarchar(max)  NOT NULL,
-    [LastUpdated] datetime  NULL
+    [LastUpdated] datetime  NULL,
+    [userType] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -562,7 +566,9 @@ CREATE TABLE [dbo].[UserEarningHistories] (
     [paymentMode] nvarchar(max)  NOT NULL,
     [title] nvarchar(max)  NOT NULL,
     [amount] nvarchar(max)  NOT NULL,
-    [dateTime] datetime  NOT NULL
+    [dateTime] datetime  NOT NULL,
+    [userType] nvarchar(max)  NOT NULL,
+    [currency] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -588,6 +594,17 @@ CREATE TABLE [dbo].[UserAlerts] (
     [dateTime] nvarchar(max)  NOT NULL,
     [priority] nvarchar(max)  NOT NULL,
     [iconUrl] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'contactUs'
+CREATE TABLE [dbo].[contactUs] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [username] nvarchar(max)  NOT NULL,
+    [emailId] nvarchar(max)  NOT NULL,
+    [heading] nvarchar(max)  NOT NULL,
+    [message] nvarchar(max)  NOT NULL,
+    [dateTime] datetime  NOT NULL
 );
 GO
 
@@ -808,6 +825,12 @@ GO
 -- Creating primary key on [Id] in table 'UserAlerts'
 ALTER TABLE [dbo].[UserAlerts]
 ADD CONSTRAINT [PK_UserAlerts]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'contactUs'
+ALTER TABLE [dbo].[contactUs]
+ADD CONSTRAINT [PK_contactUs]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 

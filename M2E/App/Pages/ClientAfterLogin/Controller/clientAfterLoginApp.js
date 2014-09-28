@@ -18,6 +18,7 @@ define([appLocation.postLogin], function (app) {
                        when("/taggingImageTemplate/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/DataEntry/taggingImage/taggingImage.html" }).
                        when("/transcribeAVTemplate/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/DataEntry/TranscribeAV/TranscribeAV.html" }).
                        when("/articleWrittingTemplate/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/ContentWritting/articleWritting/articleWritting.html" }).
+                       when("/dataEntryTemplate/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/ContentWritting/articleWritting/articleWritting.html" }).
                        when("/facebookLikeTemplate/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/Ads/facebookLike/facebookLike.html" }).
                        when("/myReferrals", { templateUrl: "../../App/Pages/ClientAfterLogin/Referrals/Referrals.html" }).
                        when("/myEarningHistory", { templateUrl: "../../App/Pages/ClientAfterLogin/ClientEarningHistory/ClientEarningHistory.html" }).
@@ -125,8 +126,8 @@ define([appLocation.postLogin], function (app) {
                //{ value: "Verification & Duplication", link: "#/VerificationAndDuplicationSample" },
                { value: "Data Collection", link: "#/templateSample/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_dataCollection },
                { value: "Tagging of an Image", link: "#/templateSample/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_taggingImage },
-               { value: "Search the web", link: "#/templateSample" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_searchTheWeb },
-               { value: "Do Excel work", link: "#/templateSample" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_doExcelWork },
+               { value: "Search the web", link: "#/templateSample/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_searchTheWeb },
+               { value: "Do Excel work", link: "#/templateSample/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_doExcelWork },
                //{ value: "Find information", link: "#" },
                //{ value: "Post advertisements", link: "#" },
                { value: "Transcription", link: "#/templateSample/" + TemplateInfoModel.type_dataEntry + "/" + TemplateInfoModel.subType_Transcription },
