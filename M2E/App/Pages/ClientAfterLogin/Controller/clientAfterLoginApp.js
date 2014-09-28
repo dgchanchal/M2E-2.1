@@ -78,7 +78,7 @@ define([appLocation.postLogin], function (app) {
         loadClientDetails();
 
         function loadClientDetails() {
-            var url = ServerContextPah + '/Client/GetClientDetails';
+            var url = ServerContextPah + '/Client/GetClientDetails?userType=' + M2EConstants.userType_client;
             var headers = {
                 'Content-Type': 'application/json',
                 'UTMZT': CookieUtil.getUTMZT(),

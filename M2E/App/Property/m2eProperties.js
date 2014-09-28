@@ -19,6 +19,11 @@ var userType  = {
     requester: "requester",
     accepter: "accepter"
 }
+
+var M2EConstants = {
+    userType_user: "user",
+    userType_client:"client"
+}
 var TemplateInfoModel = {
                
         type_survey : "survey",

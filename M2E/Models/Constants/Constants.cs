@@ -51,7 +51,7 @@ namespace M2E.Models.Constants
         public const string clientImageUrl = "http://i.imgur.com/Y5DauNCm.jpg";
 
         public const string currency_INR = "INR";
-        public const string currency_Dollar = "Dollar";
+        public const string currency_Dollar = "$";
 
         public const string userType_user = "user";
         public const string userType_client = "client";

@@ -494,14 +494,14 @@ namespace M2E.Controllers
         [HttpPost]
         public JsonResult GetClientDetails()
         {
-            //var username = Request.QueryString["username"].ToString(CultureInfo.InvariantCulture);
+            var userType = Request.QueryString["userType"].ToString(CultureInfo.InvariantCulture);
             var headers = new HeaderManager(Request);
             M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
             var clientTemplate = new ClientDetailService();
             var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
             if (isValidToken)
             {
-                var clientDetailResponse = clientTemplate.GetClientDetails(session.UserName);
+                var clientDetailResponse = clientTemplate.GetClientDetails(session.UserName, userType);
                 //clientDetailResponse.Payload.RequestUrlAuthority = "\"http://"+Request.Url.Authority+"/SocialAuth/FBLogin/facebook/\"";
                 return Json(clientDetailResponse);
             }

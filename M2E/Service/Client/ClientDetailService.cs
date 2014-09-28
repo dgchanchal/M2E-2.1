@@ -19,7 +19,7 @@ namespace M2E.Service.Client
         private DbContextException _dbContextException = new DbContextException();
         private readonly M2EContext _db = new M2EContext();
 
-        public ResponseModel<ClientDetailsModel> GetClientDetails(string username)
+        public ResponseModel<ClientDetailsModel> GetClientDetails(string username, string userType)
         {
             var response = new ResponseModel<ClientDetailsModel>();
                         
@@ -51,12 +51,12 @@ namespace M2E.Service.Client
                         createClientDetailResponse.totalReputation = userReputation.ReputationScore;                        
                     }
 
-                    var userBalance = _db.UserEarnings.SingleOrDefault(x => x.username == username);
+                    var userBalance = _db.UserEarnings.SingleOrDefault(x => x.username == username && x.userType == userType);
                     if (userBalance == null)
                     {
                         createClientDetailResponse.availableBalance = "0";
                         createClientDetailResponse.pendingBalance = "0";
-                        createClientDetailResponse.currency = "INR";
+                        createClientDetailResponse.currency = userType == Constants.userType_client ? Constants.currency_Dollar : Constants.currency_INR;
                     }
                     else
                     {
