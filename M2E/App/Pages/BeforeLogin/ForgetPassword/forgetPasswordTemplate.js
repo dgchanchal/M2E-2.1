@@ -34,7 +34,7 @@ define([appLocation.preLogin], function (app) {
                     else if (data.Status == "402") {
                         $scope.ForgetPasswordContent = false;
                         $scope.ForgetPasswordForm = false;
-                        $scope.ForgetPasswordAlertContent.visible = true; $scope.ForgetPasswordAlertContent.message = "Email Address-" + $('#forgetPasswordInputBoxId').val() + " is not valideted yet. please Please check your email for validation.";
+                        $scope.ForgetPasswordAlertContent.visible = true; $scope.ForgetPasswordAlertContent.message = "Email Address-" + $('#forgetPasswordInputBoxId').val() + " is not valideted yet. please check your email for validation.";
                         $scope.ResendValidationOrSignup.visible = true;
                         $scope.ResendValidationOrSignup.title = "Don't have emaill address validation Link?";
                         $scope.ResendValidationOrSignup.buttonName = "Resend validation link";
@@ -44,14 +44,15 @@ define([appLocation.preLogin], function (app) {
                         location.href = "/?email=" + $('#forgetPasswordInputBoxId').val() + "#/showmessage/3/";
                     }
                 }).error(function (data, status, headers, config) {
-                    alert("Not Working");
+                    //alert("Not Working");
+                    showToastMessage("Error", "Unable to reach the server. Refresh the page and try again");
                 });
             }
                 // Check Status, Email Id is valid or registered or not 
             else {
                 $scope.ForgetPasswordContent = false;
                 $scope.ForgetPasswordAlertContent.visible = true;
-                $scope.ForgetPasswordAlertContent.message = "Please enter valid email address to set new password.";
+                $scope.ForgetPasswordAlertContent.message = "Please enter a valid email address to set new password.";
                 showToastMessage("Error", "Email id field cann't be empty.");
             }
         }

@@ -1538,16 +1538,6 @@
     <Content Include="Template\AdminLTE-master\pages\UI\timeline.html" />
     <Content Include="Template\AdminLTE-master\pages\widgets.html" />
     <Content Include="Template\AdminLTE-master\UINotificationSamples.htm" />
-    <Content Include="Template\UI_Template\checkout_order_form.html" />
-    <Content Include="Template\UI_Template\checkout_order_form_popup.html" />
-    <Content Include="Template\UI_Template\comment_form.html" />
-    <Content Include="Template\UI_Template\comment_form_popup.html" />
-    <Content Include="Template\UI_Template\contact_forms_in_tabs.html" />
-    <Content Include="Template\UI_Template\contact_forms_in_tabs_popup.html" />
-    <Content Include="Template\UI_Template\contact_form_simple.html" />
-    <Content Include="Template\UI_Template\contact_form_simple_popup.html" />
-    <Content Include="Template\UI_Template\contact_form_with_map.html" />
-    <Content Include="Template\UI_Template\contact_form_with_map_popup.html" />
     <Content Include="Template\UI_Template\css\icons\entypo\entypo.svg" />
     <Content Include="Template\UI_Template\css\img\focused.png" />
     <Content Include="Template\UI_Template\css\img\invalid.png" />
@@ -1583,28 +1573,6 @@
     <Content Include="Template\UI_Template\css\slick_rsfp.css" />
     <Content Include="Template\UI_Template\css\slick_sf.css" />
     <Content Include="Template\UI_Template\css\slick_sfp.css" />
-    <Content Include="Template\UI_Template\demo\bg.jpg" />
-    <Content Include="Template\UI_Template\demo\demo.css" />
-    <Content Include="Template\UI_Template\feedback_form_basic.html" />
-    <Content Include="Template\UI_Template\feedback_form_basic_popup.html" />
-    <Content Include="Template\UI_Template\feedback_form_simple.html" />
-    <Content Include="Template\UI_Template\feedback_form_simple_popup.html" />
-    <Content Include="Template\UI_Template\index.html" />
-    <Content Include="Template\UI_Template\js\gmaps.js" />
-    <Content Include="Template\UI_Template\login_form.html" />
-    <Content Include="Template\UI_Template\login_form_popup.html" />
-    <Content Include="Template\UI_Template\questionnaire_form_basic.html" />
-    <Content Include="Template\UI_Template\questionnaire_form_basic_popup.html" />
-    <Content Include="Template\UI_Template\questionnaire_form_extended.html" />
-    <Content Include="Template\UI_Template\questionnaire_form_extended_popup.html" />
-    <Content Include="Template\UI_Template\registration_form.html" />
-    <Content Include="Template\UI_Template\registration_forms_in_tabs.html" />
-    <Content Include="Template\UI_Template\registration_forms_in_tabs_popup.html" />
-    <Content Include="Template\UI_Template\registration_form_popup.html" />
-    <Content Include="Template\UI_Template\reset_form.html" />
-    <Content Include="Template\UI_Template\reset_form_popup.html" />
-    <Content Include="Template\UI_Template\search_form.html" />
-    <Content Include="Template\UI_Template\search_form_popup.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

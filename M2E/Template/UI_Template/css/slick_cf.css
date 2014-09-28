@@ -135,7 +135,7 @@ p.intro {
 	font-size: 12px;
 	line-height: 16px;
 	display: block;
-	color: #bbb;
+	color: #474747;
 	margin: 20px 0;
 	float: left;
 	clear: both;
@@ -166,11 +166,16 @@ p.small {
 	display: block;
 	float: left;
 	font-size: 10px;
-	color: #bbb;
+	color: #474747;
 	line-height: 14px;
 	margin: -10px 0 20px 0;
 }
-
+.margin_left_top {
+    margin: 21px 0 0 5px;
+}
+.marign_zero_left {
+    margin-left: 0px;
+}
 
 
 /***** Social icons *****/
@@ -180,6 +185,9 @@ p.small {
 	top: 17%;
 	right: 8%;*/
 	/*z-index: 999;*/
+}
+.text-grey {
+    color: #bbb;
 }
 .sb a {
     background: none repeat scroll 0 0 #b1b1b1;
@@ -237,6 +245,12 @@ span.slick-tip {
 }
 .bg_requester_inputBox:before {
     border-top: 6px solid #ee8722;
+}
+.bg_inputBox {
+    background-color: #000;
+}
+.bg_inputBox:before {
+    border-top: 6px solid #000;
 }
 span.slick-tip.right {
 	right: -30px;
@@ -379,6 +393,7 @@ textarea:focus ~ span.icon {
 	outline: none;
 	background: #333;
 }
+
 
 /***** Placeholders *****/
 
@@ -645,4 +660,16 @@ textarea ~ span.icon {
 		line-height: 22px;
 		padding: 2px 6px 0 0;
 	}
+    .sb a {
+    background: none repeat scroll 0 0 #b1b1b1;
+    color: #fff;
+    display: inline-block;
+    font-size: 17px;
+    height: 34px;
+    line-height: 34px;
+    margin: 0px 5px 0px 12px;
+    position: relative;
+    text-align: center;
+    width: 34px;
+}
 }

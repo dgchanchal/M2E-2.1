@@ -8,31 +8,31 @@
             <div class="field_group">
                 <h2 class="text-accepter" style="font-size: 21px"><i class="fa fa-fw fa-users"></i> Crowd Automation | Accepter</h2>
                 <div class="field">
-                    <input name="firstname" placeholder="First name" ng-model="UserFormData.FirstName">
+                    <input name="firstname" required="" placeholder="First name" ng-model="UserFormData.FirstName">
                     <span class="entypo-user icon"></span> 
                     <span class="slick-tip left bg_accepter_inputBox">Enter first name</span>                       
                 </div>
                                        
                 <div class="field">
-                    <input name="lastname" placeholder="Last name" ng-model="UserFormData.LastName">
+                    <input name="lastname" required="" placeholder="Last name" ng-model="UserFormData.LastName">
                     <span class="entypo-user icon"></span> 
                     <span class="slick-tip left bg_accepter_inputBox">Enter last name</span>                       
                 </div>
                                      
                 <div class="field">
-                    <input name="userid" placeholder="Email ID" ng-model="UserFormData.EmailId">
+                    <input name="userid" required="" placeholder="Email ID" ng-model="UserFormData.EmailId">
                     <span class="entypo-mail icon"></span>
                     <span class="slick-tip left bg_accepter_inputBox">Enter valid email</span>                       
                 </div>
                                      
                 <div class="field">
-                    <input name="password" placeholder="Password" id="LoginPasswordId" ng-model="UserFormData.Password">
+                    <input name="password" required="" placeholder="Password" id="LoginPasswordId" ng-model="UserFormData.Password">
                     <span class="entypo-lock icon"></span>
                     <span class="slick-tip left bg_accepter_inputBox">Enter password</span>
                 </div>
                              
                 <div class="field">
-                    <input name="password2" placeholder="Retype Password" ng-model="UserFormData.ConfirmPassword">
+                    <input name="password2" required="" placeholder="Retype Password" ng-model="UserFormData.ConfirmPassword">
                     <span class="entypo-lock icon"></span>
                     <span class="slick-tip left bg_accepter_inputBox">Confirm password</span>
                 </div>
@@ -46,7 +46,7 @@
                     <button type="submit" ng-click="UserSignUp()" class="btn bg-accepter btn-block">Create Accepter Account</button>                      
                     <a href="#/login" class="text-center text-accepter">I already have a membership</a>
                     <div class="div_c"></div>
-                    <p>Create an Account as<i class="fa fa-fw fa-long-arrow-right"></i> <a class="text-center text-requester" href="#/signup/client">Requester</a></p>
+                    <p class="text-grey">Create an Account as<i class="fa fa-fw fa-long-arrow-right"></i> <a class="text-center text-requester" href="#/signup/client">Requester</a></p>
                     <div class="field">
                         <div class="clrfx mb-20 bt"><span class="inner-title">social media</span></div>
                         <!-- Social Media Buttons -->

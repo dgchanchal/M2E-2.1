@@ -9,36 +9,36 @@
             <div class="field_group"> 
                              
                 <div class="field">
-                    <input name="firstname" placeholder="First name" ng-model="ClientFormData.FirstName">
+                    <input name="firstname" required="" placeholder="First name" ng-model="ClientFormData.FirstName">
                     <span class="entypo-user icon"></span> 
                     <span class="slick-tip left bg_requester_inputBox">Enter first name</span>                       
                 </div>
                                        
                 <div class="field">
-                    <input name="lastname" placeholder="Last name" ng-model="ClientFormData.LastName">
+                    <input name="lastname" required="" placeholder="Last name" ng-model="ClientFormData.LastName">
                     <span class="entypo-user icon"></span> 
                     <span class="slick-tip left bg_requester_inputBox">Enter last name</span>                       
                 </div>
                                      
                 <div class="field">
-                    <input name="userid" placeholder="Email ID" ng-model="ClientFormData.EmailId">
+                    <input name="userid" required="" placeholder="Email ID" ng-model="ClientFormData.EmailId">
                     <span class="entypo-mail icon"></span>
                     <span class="slick-tip left bg_requester_inputBox">Enter valid email</span>                       
                 </div>
                                      
                 <div class="field">
-                    <input name="password" placeholder="Password" id="LoginPasswordId" ng-model="ClientFormData.Password">
+                    <input name="password" required="" placeholder="Password" id="LoginPasswordId" ng-model="ClientFormData.Password">
                     <span class="entypo-lock icon"></span>
                     <span class="slick-tip left bg_requester_inputBox">Enter password</span>
                 </div>
                              
                 <div class="field">
-                    <input name="password2" placeholder="Retype Password" ng-model="ClientFormData.ConfirmPassword">
+                    <input name="password2" required="" placeholder="Retype Password" ng-model="ClientFormData.ConfirmPassword">
                     <span class="entypo-lock icon"></span>
                     <span class="slick-tip left bg_requester_inputBox">Confirm password</span>
                 </div>
 
-                <div class="form-group text-requester">
+                <div class="field text-requester">
                     Register as a Company?<div style="float:right"><input type="checkbox" name="sliding_client_company_checkbox" data-size="small" data-on-text="yes" data-off-text="no"></div>
                 </div>
                 <div class="form-group" id="client_signup_company_textBox_id">
@@ -56,7 +56,7 @@
                     <button type="submit" ng-click="ClientSignUp()" class="btn bg-requester btn-block">Create Requester Account</button>                    
                     <a href="#/login" class="text-center text-requester">I already have a membership</a>
                     <div class="div_c"></div>
-                    <p>Create an Account as<i class="fa fa-fw fa-long-arrow-right"></i> <a class="text-center text-accepter" href="#/signup/user">Accepter</a></p>
+                    <p class="text-grey">Create an Account as<i class="fa fa-fw fa-long-arrow-right"></i> <a class="text-center text-accepter" href="#/signup/user">Accepter</a></p>
                     <div class="field">
                         <div class="clrfx mb-20 bt"><span class="inner-title">social media</span></div>
                         <!-- Social Media Buttons -->

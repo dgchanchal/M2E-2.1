@@ -54,7 +54,10 @@ define([appLocation.preLogin], function (app) {
             $scope.HeaderAlert.message = "Your Password has been successfully changed. To continue, please login.";
         }
         if (CookieUtil.getLoginType() == null || CookieUtil.getLoginType() == "") {
-            CookieUtil.setLoginType("user", $scope.KeepMeSignedInCheckBox); // by default set type as user..           
+            CookieUtil.setLoginType("user", $scope.KeepMeSignedInCheckBox); // by default set type as user..       
+            $('#loginUserTypeRadioButtonId').attr('checked', true);
+            $('.userTypeId').html(userConstants.name_abb);
+            $scope.userType = userConstants.name_abb;
             $scope.isUser = true;            
         }           
         else {

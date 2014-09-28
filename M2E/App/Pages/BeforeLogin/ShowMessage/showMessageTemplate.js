@@ -23,7 +23,7 @@ define([appLocation.preLogin], function (app) {
             $scope.Header.className = "alert-success";
             $scope.Header.iconClassName = "fa-check";
             $scope.Content.header1 = "Welcome to";
-            $scope.Content.companyName = "MadeToEarn";
+            $scope.Content.companyName = "Crowd Automation";
             $scope.Content.contentClasstheme = "callout-info";
             $scope.Content.header2IconClassName = "fa fa-info";
             $scope.Content.header2 = "Confirm Your Email Address.";
@@ -34,7 +34,7 @@ define([appLocation.preLogin], function (app) {
             $scope.Header.message = "Password reset link has been sent.";
             $scope.Header.className = "alert-success";
             $scope.Header.iconClassName = "fa-check";
-            $scope.Content.header1 = "MadeToEarn";
+            $scope.Content.header1 = "Crowd Automation";
             $scope.Content.companyName = "";
             $scope.Content.contentClasstheme = "callout-info";
             $scope.Content.header2IconClassName = "fa fa-info";
@@ -47,7 +47,7 @@ define([appLocation.preLogin], function (app) {
             $scope.Header.message = "Internal server error has occured.";
             $scope.Header.className = "alert-danger";
             $scope.Header.iconClassName = "fa-ban";
-            $scope.Content.header1 = "MadeToEarn";
+            $scope.Content.header1 = "Crowd Automation";
             $scope.Content.companyName = "";
             $scope.Content.contentClasstheme = "callout-danger";
             $scope.Content.header2IconClassName = "fa fa-warning text-yellow";
@@ -56,7 +56,7 @@ define([appLocation.preLogin], function (app) {
             $scope.Header.message = "Link Expired";
             $scope.Header.className = "alert-warning";
             $scope.Header.iconClassName = "fa-warning";
-            $scope.Content.header1 = "MadeToEarn";
+            $scope.Content.header1 = "Crowd Automation";
             $scope.Content.companyName = "";
             $scope.Content.contentClasstheme = "callout-warning";
             $scope.Content.header2IconClassName = "fa fa-warning text-yellow";

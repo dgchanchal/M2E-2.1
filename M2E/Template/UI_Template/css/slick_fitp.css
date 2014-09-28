@@ -248,19 +248,6 @@ input:checked + label.tabs_requester {
 
 /***** Paragraphs *****/
 
-p.intro {
-	font-size: 12px;
-	line-height: 16px;
-	display: block;
-	color: #bbb;
-	margin: 20px 0;
-	float: left;
-	clear: both;
-	width: 100%;
-}
-p.intro b {
-	color: #FF2424;
-}
 p.tick-text {
 	font-size: 10px;
 	color: #999;

@@ -46,13 +46,13 @@
                 <div class="clrfx mb-20 bt"><span class="inner-title">Or</span></div>
                 <!-- Username input -->
                 <div class="field">
-                    <input name="username" class="ng-pristine ng-valid" placeholder="Email Id" data-i18n="beforeLoginLoginPageEmailIdText" id="LoginEmailId" ng-model="EmailId">
+                    <input name="username" required="" class="ng-pristine ng-valid" placeholder="Email Id" data-i18n="beforeLoginLoginPageEmailIdText" id="LoginEmailId" ng-model="EmailId">
                     <span class="entypo-user icon"></span> 
                     <span ng-class="{true:'slick-tip left bg_requester_inputBox', false:'slick-tip left bg_accepter_inputBox'}[!isUser]">Enter your email</span>                       
                 </div>
                 <!-- Password input -->
                 <div class="field">
-                    <input name="password" type="password" class="ng-pristine ng-valid TextBoxBeforeLoginFormSubmitButtonClass" placeholder="Password" data-i18n="beforeLoginLoginPagePasswordText" id="LoginPasswordId" ng-model="Password">
+                    <input name="password" required="" type="password" class="ng-pristine ng-valid TextBoxBeforeLoginFormSubmitButtonClass" placeholder="Password" data-i18n="beforeLoginLoginPagePasswordText" id="LoginPasswordId" ng-model="Password">
                     <span class="entypo-lock icon"></span>
                     <span ng-class="{true:'slick-tip left bg_requester_inputBox', false:'slick-tip left bg_accepter_inputBox'}[!isUser]">Enter your password</span>
                 </div>
@@ -67,7 +67,7 @@
                     </ul>
                     <button ng-class="{true:'bg-requester btn btn-block', false:'bg-accepter btn btn-block'}[!isUser]" type="submit" id="LoginFormSubmitButtonId" ng-click="Login()">Sign me in as <b><span class="userTypeId"></span></b></button>                                                                 
                     <p><a href="#/forgetpassword" ng-class="{true:'text-accepter', false:'text-requester'}[isUser]">I forgot my password</a></p>
-                    <p>Create an Account<i class="fa fa-fw fa-long-arrow-right"></i><a class="text-center text-requester" href="#/signup/client" ng-bind="clientConstants.name_abb"></a> or <a class="text-center text-accepter" href="#/signup/user" ng-bind="userConstants.name_abb"></a></p>
+                    <p class="text-grey">Create an Account<i class="fa fa-fw fa-long-arrow-right"></i><a class="text-center text-requester" href="#/signup/client" ng-bind="clientConstants.name_abb"></a> or <a class="text-center text-accepter" href="#/signup/user" ng-bind="userConstants.name_abb"></a></p>
                 </div>
             </div>
         </div>
