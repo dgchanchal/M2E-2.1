@@ -191,7 +191,7 @@ p.small {
 }
 .sb a {
     background: none repeat scroll 0 0 #b1b1b1;
-    color: #fff;
+    color: #fff !important;
     display: inline-block;
     font-size: 14px;
     height: 28px;
@@ -245,6 +245,14 @@ span.slick-tip {
 }
 .bg_requester_inputBox:before {
     border-top: 6px solid #ee8722;
+}
+.bg_uni_inputBox {
+    background-color: #00bcf2;
+    color: #000 !important;
+}
+.bg_uni_inputBox:before {
+    border-top: 6px solid #00bcf2;
+    color: #000 !important;
 }
 .bg_inputBox {
     background-color: #000;
@@ -667,7 +675,7 @@ textarea ~ span.icon {
     font-size: 17px;
     height: 34px;
     line-height: 34px;
-    margin: 0px 5px 0px 12px;
+    margin: 0px 5px 0px 4px;
     position: relative;
     text-align: center;
     width: 34px;

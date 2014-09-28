@@ -109,6 +109,9 @@ appRequire = require
             },
             termsPrivacyController: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
+            },
+            contactUsController: {
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage"]
             }
         },
         paths: {
@@ -157,6 +160,7 @@ appRequire = require
             beforeLoginResetPassword: "../../App/Pages/BeforeLogin/ResetPassword/resetpasswordTemplate",
             showMessageTemplate: "../../App/Pages/BeforeLogin/ShowMessage/showMessageTemplate",
             termsPrivacyController: "../../App/Pages/BeforeLogin/TnC/TnC",
+            contactUsController: "../../App/Pages/BeforeLogin/ContactUs/contactUs",
             //TweenMax_min: "http://cdnjs.cloudflare.com/ajax/libs/gsap/1.9.7/TweenMax.min",
             
         },
@@ -167,7 +171,7 @@ appRequire(["jquery", "angular", "jquery_toastmessage", "toastMessage", "jquery_
     "jquery_blockUI", "restangular","angular_route", "angular_animate", "bootstrap", "bootstrap_switch", //"beforeLoginAdminLTEApp", "moment","iCheck",
     "beforeLoginApp", "beforeLoginIndex", "beforeLoginFAQ", "beforeLoginLogin", "beforeLoginCookieService", "beforeLoginSignUpClient", "beforeLoginSignUpUser",
     "beforeLoginValidateEmail", "beforeLoginForgetPassword", "beforeLoginResetPassword", "showMessageTemplate", "underscore", "angular_cookies", "termsPrivacyController",
-    "sanitize", "bannerscollection_zoominout", "jquery_ui_touch_punch_min", "jquery_ui_min", "jquery_sidr_min"
+    "sanitize", "bannerscollection_zoominout", "jquery_ui_touch_punch_min", "jquery_ui_min", "jquery_sidr_min", "contactUsController"
 ], function() {
     angular.bootstrap(document.getElementById("main"), ["beforeLoginApp"]);
 });

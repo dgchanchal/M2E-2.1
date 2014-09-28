@@ -492,6 +492,7 @@
     <Content Include="App\js\underscore-min.js" />
     <Content Include="App\Pages\BeforeLogin\ClientMoreInfo\ClientMoreInfo.html" />
     <Content Include="App\Pages\BeforeLogin\ContactUs\contactus.html" />
+    <Content Include="App\Pages\BeforeLogin\ContactUs\contactUs.js" />
     <Content Include="App\Pages\BeforeLogin\LiveSupport\LiveSupport.html" />
     <Content Include="App\Pages\BeforeLogin\LiveSupport\LiveSupport.js" />
     <Content Include="App\Pages\BeforeLogin\css\BeforeLoginStyle.css" />

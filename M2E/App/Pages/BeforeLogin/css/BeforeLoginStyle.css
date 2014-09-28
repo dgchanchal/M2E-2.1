@@ -961,7 +961,7 @@ ul.list-links li {
     padding: 0px;
  }
 #page-footer a {
-    color: #1570a6 !important;
+    color: #1570a6;
     font-size: 13px;
 }
 ul.list-links a {
@@ -977,7 +977,7 @@ a {
 }
 #page-footer 
 a:hover {
-    color: #0979cd !important;
+    color: #0979cd;
     left: 3px;
 }
 #hdr .hdr-no-accent, #hdr .hdr-no-accent:visited {
