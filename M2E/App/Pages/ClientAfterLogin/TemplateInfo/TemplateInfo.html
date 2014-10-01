@@ -3,7 +3,9 @@
                 <section class="content-header" >
                     <span><button class="btn btn-success btn-flat" ng-show="templateInfoShowDetailButtonShow" ng-click="openTemplateResponseDetailPageWithId()">Show Detail</button> </span>
                         <!--<span class="active"><button ng-click="openTemplateEditPageWithId(templateId)" class="btn btn-warning">Edit</button></span>-->
-                        <span class="active"><button ng-click="deleteTemplatePageWithId(templateId)" class="btn btn-danger">Delete</button></span>
+                    <span class="active"><button ng-click="deleteTemplatePageWithId(templateId)" class="btn btn-danger">Delete</button></span>
+                    <span><button ng-click="acceptCompleteTemplatePageWithId(templateId,type,subType,'Accepted')" class="btn btn-success">I accept the answer</button></span>
+                    <span><button ng-click="acceptCompleteTemplatePageWithId(templateId,type,subType,'Rejected')" class="btn btn-danger">I accept the answer</button></span>
                 </section>
 
                 <!-- Main content -->

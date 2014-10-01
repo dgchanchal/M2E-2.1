@@ -4,6 +4,8 @@ define([appLocation.postLogin], function (app) {
     app.controller('ClientAfterLoginTemplateInfo', function ($scope, $http, $rootScope, $routeParams, CookieUtil, $route) {
         $('title').html("Template Info page"); //TODO: change the title so cann't be tracked in log
         $scope.templateId = $routeParams.templateId;
+        $scope.type = $routeParams.type;
+        $scope.subType = $routeParams.subType;
         $scope.templateInfoShowDetailButtonShow = true;
         //console.log("template info page");
         initializeClientChart();
@@ -97,6 +99,43 @@ define([appLocation.postLogin], function (app) {
 
             }
 
+
+        }
+
+        $scope.acceptCompleteTemplatePageWithId = function (id,type,subType,userResponse) {
+            var url = ServerContextPah + '/Client/AcceptCompleteTemplateDetailById?id=' + id+'&type='+type+'&subType='+subType+'&userResponse='+userResponse;
+            var headers = {
+                'Content-Type': 'application/json',
+                'UTMZT': CookieUtil.getUTMZT(),
+                'UTMZK': CookieUtil.getUTMZK(),
+                'UTMZV': CookieUtil.getUTMZV()
+            };
+            if (confirm("Are you sure? You want to Mark this template as " + userResponse) == true) {
+                startBlockUI('wait..', 3);
+                $http({
+                    url: url,
+                    method: "POST",
+                    headers: headers
+                }).success(function (data, status, headers, config) {
+                    //$scope.persons = data; // assign  $scope.persons here as promise is resolved here
+                    stopBlockUI();
+                    if (data.Status == "200") {
+                        
+                        showToastMessage("Success", "Deleted Successfully");
+                        location.href = "#/";
+                    }
+                    else if (data.Status == "404") {                        
+                        alert("This template is not present in database");
+                    }
+                    else if (data.Status == "500") {                        
+                        alert("Internal Server Error Occured");
+                    }
+                }).error(function (data, status, headers, config) {
+
+                });
+            } else {
+
+            }
 
         }
 

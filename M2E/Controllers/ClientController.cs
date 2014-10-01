@@ -438,6 +438,34 @@ namespace M2E.Controllers
         }
 
         [HttpPost]
+        public JsonResult AcceptCompleteTemplateDetailById()
+        {
+            //var username = Request.QueryString["username"].ToString(CultureInfo.InvariantCulture);
+            ResponseModel<string> response = new ResponseModel<string>();
+
+            var headers = new HeaderManager(Request);
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
+            var id = Convert.ToInt32(Request.QueryString["id"]);
+            var type = Convert.ToString(Request.QueryString["type"]);
+            var subType = Convert.ToString(Request.QueryString["subType"]);
+            var userResponse = Convert.ToString(Request.QueryString["userResponse"]);
+            var clientTemplate = new ClientTemplateService();
+            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+            if (isValidToken)
+            {
+                return Json(clientTemplate.AcceptCompleteTemplateDetailById(session.UserName, id, type, subType,userResponse));                
+            }
+            else
+            {
+                
+                response.Status = 401;
+                response.Message = "Unauthorized";
+                return Json(response);
+            }
+
+        }
+
+        [HttpPost]
         public JsonResult DeleteTemplateImgurImageById()
         {
             //var username = Request.QueryString["username"].ToString(CultureInfo.InvariantCulture);

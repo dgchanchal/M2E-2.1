@@ -932,6 +932,31 @@ namespace M2E.Service.JobTemplate
             }
         }
 
+        public ResponseModel<string> AcceptCompleteTemplateDetailById(string username, long id, string type, string subType, string userResponse)
+        {
+            var response = new ResponseModel<string>();
+            try
+            {
+                if (type == Constants.type_Ads && subType == Constants.subType_facebookLike)
+                {
+                    //response = DeleteFacebookLikeTemplateDetailById(username, id);
+                }
+                else
+                {
+                    //response = DeleteSurveyTemplateDetailById(username, id);
+                }
+
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Status = 500;
+                response.Message = "Exception";
+                return response;
+            }
+        }
+
         private ResponseModel<string> DeleteFacebookLikeTemplateDetailById(string username, long id)
         {
             var response = new ResponseModel<string>();
