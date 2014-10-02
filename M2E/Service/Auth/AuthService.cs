@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Configuration;
+using System.Globalization;
 using System.Web;
 using M2E.Common.Logger;
 using M2E.Models;
@@ -283,6 +284,45 @@ namespace M2E.Service.Auth
             }
             response.Status = 402;
             response.Message = "link expired";
+            return response;
+        }
+
+        public ResponseModel<String> ContactUsService(ContactUsRequest req)
+        {
+            var response = new ResponseModel<string>();
+            var contactUsData = new contactUs
+            {
+                Name = req.Name,
+                Phone = req.Phone,
+                RepliedBy = Constants.NA,
+                RepliedDateTime = Constants.NA,
+                ReplyMessage = Constants.NA,
+                Status = Constants.status_open,
+                Type = req.Type,
+                dateTime = DateTime.Now,
+                emailId = req.Email,
+                heading = Constants.NA,
+                message = req.Message,
+                username = req.Email
+            };
+
+            _db.contactUs.Add(contactUsData);
+
+            try
+            {
+                _db.SaveChanges();
+                SendAccountCreationValidationEmail.SendContactUsEmailMessage(ConfigurationManager.AppSettings["ContactUsReceivingEmailIds"], req);
+            }
+            catch (DbEntityValidationException e)
+            {
+                DbContextException.LogDbContextException(e);
+                response.Status = 500;
+                response.Message = "Internal Server Error.";
+                Logger.Info("Error occured in contact us");
+                return response;
+            }
+            response.Status = 200;
+            response.Message = "success";
             return response;
         }
     }

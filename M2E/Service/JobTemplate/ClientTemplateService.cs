@@ -941,10 +941,28 @@ namespace M2E.Service.JobTemplate
                 {
                     //response = DeleteFacebookLikeTemplateDetailById(username, id);
                 }
-                else
+                else if (type == Constants.type_survey)
                 {
-                    //response = DeleteSurveyTemplateDetailById(username, id);
+                    response = AcceptCompleteSurveyTemplateDetailById(username, id,userResponse);
                 }
+
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Status = 500;
+                response.Message = "Exception";
+                return response;
+            }
+        }
+
+        public ResponseModel<string> AcceptCompleteSurveyTemplateDetailById(string username, long id, string userResponse)
+        {
+            var response = new ResponseModel<string>();
+            try
+            {
+                
 
 
                 return response;

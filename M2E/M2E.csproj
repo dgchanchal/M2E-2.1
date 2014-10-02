@@ -260,6 +260,7 @@
     <Compile Include="Models\DataResponse\UserResponse\Survey\UserSurveyResponse.cs" />
     <Compile Include="Models\DataResponse\UserResponse\UserActiveThreadsResponse.cs" />
     <Compile Include="Models\DataResponse\UserResponse\UserProductSurveyTemplateModel.cs" />
+    <Compile Include="Models\DataWrapper\ContactUsRequest.cs" />
     <Compile Include="Models\DataWrapper\CreateTemplateRequest.cs" />
     <Compile Include="Models\DataWrapper\CreateTemplate\CreateTemplateeditableInstructionsListModel.cs" />
     <Compile Include="Models\DataWrapper\CreateTemplate\CreateTemplateListBoxQuestionsListModel.cs" />

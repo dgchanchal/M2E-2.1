@@ -4,8 +4,7 @@
             <div class="col-md-12">        
                 <div class="pageIntro">
                     <div class="div_c"></div>
-                    <span class="PsTitle PsTitle_Font_m" ng-show="ForgetPasswordContent">       Hey there   </span>
-
+                    <span class="PsTitle PsTitle_Font_m" ng-show="ForgetPasswordContent">       Hey there   </span>                    
                     <!-- Intro text -->
                     <p ng-class="{true:'intro PsTitle_Font_m', false:'intro PsTitle_Font_w'}[IsMobileDevice]"><b class="PsTitle">We'd like to hear from you.</b>Send us your message or just say hi with our contact form, we love to chat.</p>
                 </div>
@@ -15,29 +14,29 @@
                 <!-- Form fields -->
                 <!-- Name input -->
                 <div class="field">
-                    <input type="text" required="" id="name" placeholder="Your name" name="name">
+                    <input type="text" required="" id="name" ng-model="ContactUsData.Name" placeholder="Your name" name="name">
                     <span class="entypo-user icon"></span>
                     <span class="slick-tip left bg_uni_inputBox">Enter your name</span>
                 </div>
                 <!-- Email input -->
                 <div class="field">
-                    <input type="email" required="" id="email" placeholder="your@domain.com" name="email">
+                    <input type="text" required="" id="email" ng-model="ContactUsData.Email" placeholder="your@domain.com" name="email">
                     <span class="entypo-mail icon"></span>
                     <span class="slick-tip left bg_uni_inputBox">Enter valid email</span>
                 </div>
                 <!-- Phone input -->
                 <div class="field">
-                    <input type="tel" id="phone" placeholder="+44 00 123" name="phone">
+                    <input type="tel" id="phone" placeholder="+44 00 123" ng-model="ContactUsData.Phone" name="phone">
                     <span class="entypo-mobile icon"></span>
                     <span class="slick-tip left bg_uni_inputBox">Contact phone</span>
                 </div>
                 <!-- Subject input -->
                 <div class="field">
-                    <select onclick="this.className=this.options[this.selectedIndex].className" class="grayed" id="subject" name="subject">
+                    <select onclick="this.className=this.options[this.selectedIndex].className" ng-model="ContactUsData.Type" class="grayed" id="subject" name="subject">
                         <option class="disabled" selected="selected" disabled="disabled" value="">Subject</option>
-                        <option >1. Investment related</option>
-                        <option>2. Support related</option>
-                        <option>3. Other</option>
+                        <option>Investment related</option>
+                        <option>Support related</option>
+                        <option>Other</option>
                     </select>
                     <div id="arrow-select"></div>
                     <svg id="arrow-select-svg"/>
@@ -46,17 +45,17 @@
                 </div>
                 <!-- Message input -->
                 <div class="field">
-                    <textarea required="" class="message" id="message" placeholder="Message" name="message"></textarea>
+                    <textarea required="" class="message" id="message" ng-model="ContactUsData.Message" placeholder="Message" name="message"></textarea>
                     <span class="entypo-comment icon"></span>
                     <span class="slick-tip left bg_uni_inputBox">Your message</span>
                 </div>
                 <!-- Message copy button -->
                 <div class="field">
-                    <input type="checkbox" checked="checked" name="send-copy" id="send-copy">
+                    <input type="checkbox" ng-model="ContactUsData.SendMeACopy" checked="checked" name="send-copy" id="send-copy">
                     <label class="tick" for="send-copy"><span>Send me a copy of this message</span></label>
 
                     <!-- Send button -->
-                    <input type="submit" name="send" form="contact" class="send bg-uni" value="Submit">
+                    <input type="button" class="send bg-uni" value="Submit" ng-click="ContactUsRequestSubmit()">
                 </div>
                 <!-- / Form fields -->
             </div>

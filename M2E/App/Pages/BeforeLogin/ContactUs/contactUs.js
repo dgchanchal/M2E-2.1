@@ -2,7 +2,16 @@
 define([appLocation.preLogin], function (app) {
 
     app.controller('contactUsController', function ($scope, $http, $routeParams, $location) {
-        
+
+        $scope.ContactUsData = {
+            Name :"",
+            Email:"",
+            Phone:"",
+            Type:"",
+            Message:"",
+            SendMeACopy:true
+        };
+
         $scope.ForgetPasswordContent = true;
         $scope.ForgetPasswordForm = true;
         $scope.ResendValidationOrSignup =
@@ -90,6 +99,36 @@ define([appLocation.preLogin], function (app) {
                         $scope.ForgetPasswordAlertContent.visible = true;
                         $scope.ForgetPasswordAlertContent.message = "Email Address-" + $('#forgetPasswordInputBoxId').val() + " has been already valideted. To continue, Please login into account.";
                         $scope.ResendValidationOrSignup.visible = false;
+                    }
+                    else if (data.Status == "500") {
+                        location.href = "/?email=" + $('#forgetPasswordInputBoxId').val() + "#/showmessage/3/";
+                    }
+                }).error(function (data, status, headers, config) {
+                    alert("false");
+                });
+            }
+
+        }
+
+        $scope.ContactUsRequestSubmit = function () {
+            
+
+            if (true) {
+                startBlockUI('wait..', 3);
+                $http({
+                    url: '/Auth/ContactUs/',
+                    data: $scope.ContactUsData,
+                    method: "POST"
+                }).success(function (data, status, headers, config) {
+                    stopBlockUI();
+                    if (data.Status == "200") {
+                        
+                    }
+                    else if (data.Status == "404") {
+                        
+                    }
+                    else if (data.Status == "402") {
+                        
                     }
                     else if (data.Status == "500") {
                         location.href = "/?email=" + $('#forgetPasswordInputBoxId').val() + "#/showmessage/3/";

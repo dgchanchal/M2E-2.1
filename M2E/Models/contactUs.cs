@@ -20,5 +20,12 @@ namespace M2E.Models
         public string heading { get; set; }
         public string message { get; set; }
         public System.DateTime dateTime { get; set; }
+        public string Name { get; set; }
+        public string Phone { get; set; }
+        public string Status { get; set; }
+        public string ReplyMessage { get; set; }
+        public string RepliedBy { get; set; }
+        public string RepliedDateTime { get; set; }
+        public string Type { get; set; }
     }
 }

@@ -22,5 +22,7 @@ namespace M2E.Models
         public System.DateTime dateTime { get; set; }
         public string priority { get; set; }
         public string iconUrl { get; set; }
+        public string messageFrom { get; set; }
+        public string messageTo { get; set; }
     }
 }

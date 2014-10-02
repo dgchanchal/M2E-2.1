@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 09/28/2014 12:01:13
+-- Date Created: 10/02/2014 18:09:41
 -- Generated from EDMX file: F:\PcOnGo_SVN\branches\M2E-2.0\M2E\Models\M2EContext.edmx
 -- --------------------------------------------------
 
@@ -581,7 +581,9 @@ CREATE TABLE [dbo].[UserMessages] (
     [bodyText] nvarchar(max)  NOT NULL,
     [dateTime] datetime  NOT NULL,
     [priority] nvarchar(max)  NOT NULL,
-    [iconUrl] nvarchar(max)  NOT NULL
+    [iconUrl] nvarchar(max)  NOT NULL,
+    [messageFrom] nvarchar(max)  NOT NULL,
+    [messageTo] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -593,7 +595,9 @@ CREATE TABLE [dbo].[UserAlerts] (
     [titleText] nvarchar(max)  NOT NULL,
     [dateTime] nvarchar(max)  NOT NULL,
     [priority] nvarchar(max)  NOT NULL,
-    [iconUrl] nvarchar(max)  NOT NULL
+    [iconUrl] nvarchar(max)  NOT NULL,
+    [messageFrom] nvarchar(max)  NOT NULL,
+    [messageTo] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -604,7 +608,14 @@ CREATE TABLE [dbo].[contactUs] (
     [emailId] nvarchar(max)  NOT NULL,
     [heading] nvarchar(max)  NOT NULL,
     [message] nvarchar(max)  NOT NULL,
-    [dateTime] datetime  NOT NULL
+    [dateTime] datetime  NOT NULL,
+    [Name] nvarchar(max)  NOT NULL,
+    [Phone] nvarchar(max)  NOT NULL,
+    [Status] nvarchar(max)  NOT NULL,
+    [ReplyMessage] nvarchar(max)  NOT NULL,
+    [RepliedBy] nvarchar(max)  NOT NULL,
+    [RepliedDateTime] nvarchar(max)  NOT NULL,
+    [Type] nvarchar(max)  NOT NULL
 );
 GO
 

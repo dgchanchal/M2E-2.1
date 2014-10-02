@@ -490,6 +490,8 @@
     <Property Name="dateTime" Type="datetime" Nullable="false" />
     <Property Name="priority" Type="nvarchar(max)" Nullable="false" />
     <Property Name="iconUrl" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="messageFrom" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="messageTo" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="UserAlerts">
     <Key>
@@ -502,6 +504,8 @@
     <Property Name="dateTime" Type="nvarchar(max)" Nullable="false" />
     <Property Name="priority" Type="nvarchar(max)" Nullable="false" />
     <Property Name="iconUrl" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="messageFrom" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="messageTo" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="contactUs">
     <Key>
@@ -513,6 +517,13 @@
     <Property Name="heading" Type="nvarchar(max)" Nullable="false" />
     <Property Name="message" Type="nvarchar(max)" Nullable="false" />
     <Property Name="dateTime" Type="datetime" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ReplyMessage" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RepliedBy" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RepliedDateTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -1003,6 +1014,8 @@
           <Property Type="DateTime" Name="dateTime" Nullable="false" />
           <Property Type="String" Name="priority" Nullable="false" />
           <Property Type="String" Name="iconUrl" Nullable="false" />
+          <Property Type="String" Name="messageFrom" Nullable="false" />
+          <Property Type="String" Name="messageTo" Nullable="false" />
         </EntityType>
         <EntityType Name="UserAlerts">
           <Key>
@@ -1015,6 +1028,8 @@
           <Property Type="String" Name="dateTime" Nullable="false" />
           <Property Type="String" Name="priority" Nullable="false" />
           <Property Type="String" Name="iconUrl" Nullable="false" />
+          <Property Type="String" Name="messageFrom" Nullable="false" />
+          <Property Type="String" Name="messageTo" Nullable="false" />
         </EntityType>
         <EntityType Name="contactUs">
           <Key>
@@ -1026,6 +1041,13 @@
           <Property Type="String" Name="heading" Nullable="false" />
           <Property Type="String" Name="message" Nullable="false" />
           <Property Type="DateTime" Name="dateTime" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Phone" Nullable="false" />
+          <Property Type="String" Name="Status" Nullable="false" />
+          <Property Type="String" Name="ReplyMessage" Nullable="false" />
+          <Property Type="String" Name="RepliedBy" Nullable="false" />
+          <Property Type="String" Name="RepliedDateTime" Nullable="false" />
+          <Property Type="String" Name="Type" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1512,6 +1534,8 @@
           <ScalarProperty Name="dateTime" ColumnName="dateTime" />
           <ScalarProperty Name="priority" ColumnName="priority" />
           <ScalarProperty Name="iconUrl" ColumnName="iconUrl" />
+          <ScalarProperty Name="messageFrom" ColumnName="messageFrom" />
+          <ScalarProperty Name="messageTo" ColumnName="messageTo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1525,6 +1549,8 @@
           <ScalarProperty Name="dateTime" ColumnName="dateTime" />
           <ScalarProperty Name="priority" ColumnName="priority" />
           <ScalarProperty Name="iconUrl" ColumnName="iconUrl" />
+          <ScalarProperty Name="messageFrom" ColumnName="messageFrom" />
+          <ScalarProperty Name="messageTo" ColumnName="messageTo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1537,6 +1563,13 @@
           <ScalarProperty Name="heading" ColumnName="heading" />
           <ScalarProperty Name="message" ColumnName="message" />
           <ScalarProperty Name="dateTime" ColumnName="dateTime" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ReplyMessage" ColumnName="ReplyMessage" />
+          <ScalarProperty Name="RepliedBy" ColumnName="RepliedBy" />
+          <ScalarProperty Name="RepliedDateTime" ColumnName="RepliedDateTime" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

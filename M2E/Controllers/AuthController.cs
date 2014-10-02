@@ -81,7 +81,16 @@ namespace M2E.Controllers
             var response = new ResponseModel<LoginResponse> { Status = Convert.ToInt32(responseData.Code), Message = "success", Payload = responseData };
             return Json(response);
         }
-        
+
+        [HttpPost]
+        public JsonResult ContactUs(ContactUsRequest req)
+        {            
+
+            var contactUsService = new AuthService();
+            var response = contactUsService.ContactUsService(req);
+            return Json(response);
+        }
+
         public JsonResult saveData()
         {
             var deviceId = Request.QueryString["deviceId"];
