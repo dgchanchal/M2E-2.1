@@ -22,7 +22,8 @@ namespace M2E.Service.Auth
         private static readonly ILogger Logger = new Logger(Convert.ToString(MethodBase.GetCurrentMethod().DeclaringType));
         private DbContextException _dbContextException = new DbContextException();
         private readonly M2EContext _db = new M2EContext();
-
+        public delegate void contactUsEmailSend_Delegate(String emails, ContactUsRequest req);
+ 
         public ResponseModel<String> ValidateAccountService(ValidateAccountRequest req)
         {
             var response = new ResponseModel<string>();
@@ -311,7 +312,20 @@ namespace M2E.Service.Auth
             try
             {
                 _db.SaveChanges();
-                SendAccountCreationValidationEmail.SendContactUsEmailMessage(ConfigurationManager.AppSettings["ContactUsReceivingEmailIds"], req);
+                contactUsEmailSend_Delegate contactUsEmail_delegate = null;
+                contactUsEmail_delegate = new contactUsEmailSend_Delegate(SendAccountCreationValidationEmail.SendContactUsEmailMessage);
+                
+                string emailIds = req.SendMeACopy.Equals(Constants.status_true,
+                    StringComparison.CurrentCultureIgnoreCase)
+                    ? ConfigurationManager.AppSettings["ContactUsReceivingEmailIds"].ToString(
+                        CultureInfo.InvariantCulture) + "," + req.Email
+                    : ConfigurationManager.AppSettings["ContactUsReceivingEmailIds"].ToString(
+                        CultureInfo.InvariantCulture);
+
+                IAsyncResult CallAsynchMethod = null;
+                CallAsynchMethod = contactUsEmail_delegate.BeginInvoke(emailIds, req,null,null); //invoking the method
+
+                //SendAccountCreationValidationEmail.SendContactUsEmailMessage(req.SendMeACopy.Equals(Constants.status_true,StringComparison.CurrentCultureIgnoreCase) ? ConfigurationManager.AppSettings["ContactUsReceivingEmailIds"].ToString(CultureInfo.InvariantCulture)+","+req.Email : ConfigurationManager.AppSettings["ContactUsReceivingEmailIds"].ToString(CultureInfo.InvariantCulture), req);
             }
             catch (DbEntityValidationException e)
             {
