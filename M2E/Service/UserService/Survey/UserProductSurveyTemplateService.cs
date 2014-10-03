@@ -381,6 +381,13 @@ namespace M2E.Service.UserService.Survey
                 response.Message = "You have already applied for this job";
                 return response;
             }
+            else if (_db.UserMultipleJobMappings.Where(x => x.refKey == refKey && x.isFirst == Constants.status_true).Count() >= Convert.ToInt32((clientJobInfo.totalThreads)))
+            {
+                response.Status = 405;
+                response.Message = "all threads are already allocated !!!";
+                return response;
+            }
+
             const int expectedDeliveryTimeInMinutes = 15;
 
             var UserMultipleJobMapping = new UserMultipleJobMapping();
@@ -468,6 +475,12 @@ namespace M2E.Service.UserService.Survey
             {
                 response.Status = 403;
                 response.Message = "You have already applied for this job";
+                return response;
+            }
+            else if (_db.UserMultipleJobMappings.Where(x => x.refKey == refKey && x.isFirst == Constants.status_true).Count() >= Convert.ToInt32((clientJobInfo.totalThreads)))
+            {
+                response.Status = 405;
+                response.Message = "all threads are already allocated !!!";
                 return response;
             }
             const int expectedDeliveryTimeInMinutes = 15;
@@ -573,6 +586,12 @@ namespace M2E.Service.UserService.Survey
                 response.Message = "already applied";
                 return response;
             }
+            else if (_db.UserJobMappings.Where(x => x.refKey == refKey).Count() >= Convert.ToInt32((clientJobInfo.totalThreads)))
+            {
+                response.Status = 405;
+                response.Message = "all threads are already allocated !!!";
+                return response;
+            }
             int expectedDeliveryTimeInMinutes = 15;
             var UserJobMapping = new UserJobMapping();
             UserJobMapping.refKey = refKey;
@@ -628,9 +647,9 @@ namespace M2E.Service.UserService.Survey
             try
             {
                 foreach (var job in templateData)
-                {
+                {                    
                     string earningPerThreadTemp = Convert.ToString(Convert.ToDouble(job.payPerUser) * (Convert.ToDouble(Convert.ToString(ConfigurationManager.AppSettings["dollarToRupeesValue"]))));
-                    string remainingThreadsTemp = string.Empty;
+                    string remainingThreadsTemp = string.Empty;                    
 
                     var userTemplate = new UserProductSurveyTemplateModel
                     {
@@ -646,12 +665,14 @@ namespace M2E.Service.UserService.Survey
 
                     if ((job.type == Constants.type_dataEntry && job.subType == Constants.subType_Transcription)||
                         (job.type == Constants.type_moderation && job.subType == Constants.subType_moderatingPhotos))
-                    {
+                    {                        
+
                         var AlreadyAppliedJobs = _db.UserMultipleJobMappings.SingleOrDefault(x => x.username == username && x.refKey == job.referenceId && x.isFirst == Constants.status_true);
                         if (AlreadyAppliedJobs != null)
                         {
-                            userTemplate.userStatus = AlreadyAppliedJobs.status;
-                            userTemplate.userDeadline = AlreadyAppliedJobs.expectedDelivery;
+                            continue; // do not add if it is already done or assigned.
+                            //userTemplate.userStatus = AlreadyAppliedJobs.status;
+                            //userTemplate.userDeadline = AlreadyAppliedJobs.expectedDelivery;
                         }
                         else
                         {
@@ -661,12 +682,13 @@ namespace M2E.Service.UserService.Survey
                         remainingThreadsTemp = Convert.ToString(Convert.ToInt32(job.totalThreads) - _db.UserMultipleJobMappings.Where(x => x.refKey == job.referenceId).GroupBy(x=>x.username).Count());
                     }
                     else
-                    {
+                    {                        
                         var AlreadyAppliedJobs = _db.UserJobMappings.SingleOrDefault(x => x.username == username && x.refKey == job.referenceId);
                         if (AlreadyAppliedJobs != null)
                         {
-                            userTemplate.userStatus = AlreadyAppliedJobs.status;
-                            userTemplate.userDeadline = AlreadyAppliedJobs.expectedDeliveryTime;
+                            continue; // do not add if it is already done or assigned.
+                            //userTemplate.userStatus = AlreadyAppliedJobs.status;
+                            //userTemplate.userDeadline = AlreadyAppliedJobs.expectedDeliveryTime;
                         }
                         else
                         {
@@ -677,7 +699,8 @@ namespace M2E.Service.UserService.Survey
                     }
 
                     userTemplate.remainingThreads = remainingThreadsTemp;
-
+                    if (Convert.ToInt32(remainingThreadsTemp) <=0)
+                        continue; // do not add if all threads are consumed.
 
                     response.Payload.Add(userTemplate);
                 }

@@ -187,8 +187,20 @@ namespace M2E.Service.JobTemplate
                     if ((clientJobInfo.type == Constants.type_dataEntry && clientJobInfo.subType == Constants.subType_Transcription) ||
                     (clientJobInfo.type == Constants.type_moderation && clientJobInfo.subType == Constants.subType_moderatingPhotos))
                     {
-                        long JobCompleted = _db.UserMultipleJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == Constants.status_done && x.isFirst == Constants.status_true).Count();
-                        long JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == Constants.status_assigned && x.isFirst == Constants.status_true).Count();
+                        long JobCompleted = 0;
+                        long JobAssigned = 0;
+                        if (clientJobInfo.type == Constants.type_dataEntry &&
+                            clientJobInfo.subType == Constants.subType_Transcription)
+                        {
+                            JobCompleted = _db.UserMultipleJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == Constants.status_done).Count();
+                            JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == Constants.status_assigned).Count();
+                        }
+                        else
+                        {
+                            JobCompleted = _db.UserMultipleJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == Constants.status_done && x.isFirst == Constants.status_true).Count();
+                            JobAssigned = _db.UserMultipleJobMappings.Where(x => x.refKey == clientJobInfo.referenceId && x.status == Constants.status_assigned && x.isFirst == Constants.status_true).Count();
+                        }
+                        
                         long JobReviewed = (JobCompleted > 1) ? (JobCompleted) / 2 : 0;  // currently hard coded.
 
                         if (JobCompleted > Convert.ToInt32(clientJobInfo.totalThreads))
