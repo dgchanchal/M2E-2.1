@@ -29,6 +29,7 @@ namespace M2E.Service.JobTemplate
         private static readonly ILogger logger = new Logger(Convert.ToString(MethodBase.GetCurrentMethod().DeclaringType));
         private DbContextException _dbContextException = new DbContextException();
         private readonly M2EContext _db = new M2EContext();
+        public delegate void AcceptCompleteSurveyTemplateDetailById_Delegate(string username, long id, string userResponse);
 
         public ResponseModel<List<ClientTemplateResponse>> GetAllTemplateInformation(string username)
         {            
@@ -944,10 +945,16 @@ namespace M2E.Service.JobTemplate
                 }
                 else if (type == Constants.type_survey)
                 {
-                    response = AcceptCompleteSurveyTemplateDetailById(username, id,userResponse);
+                    AcceptCompleteSurveyTemplateDetailById_Delegate SurveyTemplateDetailById_Delegate = null;
+                    SurveyTemplateDetailById_Delegate = new AcceptCompleteSurveyTemplateDetailById_Delegate(AcceptCompleteSurveyTemplateDetailById);
+                    IAsyncResult CallAsynchMethod = null;
+                    CallAsynchMethod = SurveyTemplateDetailById_Delegate.BeginInvoke(username, id, userResponse, null, null); //invoking the method
+
+                    //response = AcceptCompleteSurveyTemplateDetailById(username, id,userResponse);
                 }
 
-
+                response.Status = 200;
+                response.Message = "Success";
                 return response;
             }
             catch (Exception ex)
@@ -958,7 +965,7 @@ namespace M2E.Service.JobTemplate
             }
         }
 
-        public ResponseModel<string> AcceptCompleteSurveyTemplateDetailById(string username, long id, string userResponse)
+        public void AcceptCompleteSurveyTemplateDetailById(string username, long id, string userResponse)
         {
             var response = new ResponseModel<string>();
             try
@@ -1007,13 +1014,11 @@ namespace M2E.Service.JobTemplate
                     response.Status = 404;
                     response.Message = "Survey id not found !!!";
                 }
-                return response;
+                
             }
             catch (Exception ex)
             {
-                response.Status = 500;
-                response.Message = "Exception";
-                return response;
+                
             }
         }
 
