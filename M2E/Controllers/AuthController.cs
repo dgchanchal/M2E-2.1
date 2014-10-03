@@ -167,26 +167,26 @@ namespace M2E.Controllers
             bool isValid = new TokenManager().Logout(headers.AuthToken);
         }
 
-        public void asyncLogoutThread( object a)
-        {
-            HttpRequestBase RequestData = a as HttpRequestBase;
-            var headers = new HeaderManager(RequestData);
-            M2ESession session = TokenManager.getLogoutSessionInfo(headers.AuthToken);
-            if (session != null)
-            {
-                var user = _db.Users.SingleOrDefault(x => x.Username == session.UserName);
-                user.KeepMeSignedIn = "false";
-                try
-                {
-                    _db.SaveChanges();
-                }
-                catch (DbEntityValidationException e)
-                {
-                    DbContextException.LogDbContextException(e);
-                }
-            }
-            bool isValid = new TokenManager().Logout(headers.AuthToken);
-        }
+        //public void asyncLogoutThread( object a)
+        //{
+        //    HttpRequestBase RequestData = a as HttpRequestBase;
+        //    var headers = new HeaderManager(RequestData);
+        //    M2ESession session = TokenManager.getLogoutSessionInfo(headers.AuthToken);
+        //    if (session != null)
+        //    {
+        //        var user = _db.Users.SingleOrDefault(x => x.Username == session.UserName);
+        //        user.KeepMeSignedIn = "false";
+        //        try
+        //        {
+        //            _db.SaveChanges();
+        //        }
+        //        catch (DbEntityValidationException e)
+        //        {
+        //            DbContextException.LogDbContextException(e);
+        //        }
+        //    }
+        //    bool isValid = new TokenManager().Logout(headers.AuthToken);
+        //}
 
         [HttpPost]
         public JsonResult GetUsernameFromSessionId()
