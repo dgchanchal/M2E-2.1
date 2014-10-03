@@ -57,7 +57,7 @@
                     <span ng-class="{true:'slick-tip left bg_requester_inputBox', false:'slick-tip left bg_accepter_inputBox'}[!isUser]">Enter your password</span>
                 </div>
                 <!-- Signed in button -->
-                <input id="signed-in" type="checkbox" name="signed-in" checked="checked">
+                <input id="signed-in" type="checkbox" ng-model="KeepMeSignedInCheckBox" name="signed-in" checked="checked">
                 <label class="tick" for="signed-in"><span>Keep me signed in</span></label>
                 
                 <div class="field">

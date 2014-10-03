@@ -16,7 +16,7 @@ define([appLocation.preLogin], function (app) {
         $scope.mobileDevice = mobileDevice != null ? true : false;
         $scope.EmailId = "";
         $scope.Password = "";
-        $scope.KeepMeSignedInCheckBox = false;
+        $scope.KeepMeSignedInCheckBox = true;
         $scope.showHeaderErrors = false;
         $scope.showFooterErrors = false;
 
