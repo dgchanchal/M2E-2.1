@@ -11,6 +11,7 @@ using System.Globalization;
 using M2E.Models.DataWrapper.CreateTemplate;
 using System.Data.Entity.Validation;
 using M2E.Service.JobTemplate.CommonMethods;
+using M2E.Service.UserService;
 using M2E.Session;
 using M2E.Models.DataWrapper;
 using M2E.signalRPushNotifications;
@@ -962,12 +963,44 @@ namespace M2E.Service.JobTemplate
             var response = new ResponseModel<string>();
             try
             {
-
+                var HashMap = new Dictionary<string, double>();
                 var surveyDetail =
                     _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.Id == id && x.username == username);
                 if (surveyDetail != null)
                 {
-                    var SurveyResult = GetTemplateSurveyResponseResultById(username, id);
+                    var SurveyResult = GetTemplateSurveyResponseResultById(username, id);                    
+                    foreach (var resultList in SurveyResult.Payload.resultList)
+                    {
+                        double subTotalResponse = (resultList.resultMap.Sum(x => x.Value));
+                        
+                        //if (resultList.questionType == Constants.questionTypeSAQ)
+                        {
+                            foreach (var resultMap in resultList.resultMap)
+                            {
+                                HashMap[resultList.questionType + resultMap.Key] = Convert.ToDouble(Convert.ToDouble(resultMap.Value) / subTotalResponse);                                
+                            }                            
+                        }                        
+                    }
+                    var userList = _db.UserJobMappings.Where(x => x.refKey == surveyDetail.referenceId).Select(x => x.username).Distinct().ToList();
+                    foreach (var users in userList)
+                    {
+                        double userReputationTempSum = 0.0;
+                        double averageReputation;
+                        long totalQuestions = 0;
+                        var userAnswerList =
+                            _db.UserSurveyResultToBeRevieweds1.Where(x => x.refKey == surveyDetail.referenceId && x.username == users)
+                                .ToList();
+                        foreach (var userAnswer in userAnswerList)
+                        {
+                            userReputationTempSum += HashMap[userAnswer.type + userAnswer.answer];
+                            totalQuestions++;
+                        }
+                        averageReputation = userReputationTempSum/totalQuestions;
+                        var result = new UserReputationService().UpdateUserBalance(Constants.userType_user, users,
+                            Convert.ToDouble(
+                               surveyDetail.payPerUser), 0, averageReputation, Constants.payment_credit, surveyDetail.title, surveyDetail.type,
+                            surveyDetail.subType);
+                    }
                 }
                 else
                 {

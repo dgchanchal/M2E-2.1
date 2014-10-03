@@ -47,7 +47,7 @@ namespace M2E.Service.UserService
             }
         }
 
-        public bool UpdateUserBalance(string userType,string username, double approved, double pending, string paymentMode, string title, string type, string subType)
+        public bool UpdateUserBalance(string userType,string username, double approved, double pending,double averageReputationScore, string paymentMode, string title, string type, string subType)
         {
             var userBalance = _db.UserEarnings.SingleOrDefault(x => x.username == username && x.userType == userType);
             string currency = Constants.currency_INR;
@@ -100,7 +100,7 @@ namespace M2E.Service.UserService
                 if (type == Constants.type_survey)
                 {
                     var userReputation = _db.UserReputations.SingleOrDefault(x => x.username == username);
-                    var reputationScore = Math.Round((approved/5),2);
+                    var reputationScore = Math.Round(((approved * averageReputationScore)/5),2);
                     if (userReputation == null)
                     {
                         var userReputationData = new UserReputation
