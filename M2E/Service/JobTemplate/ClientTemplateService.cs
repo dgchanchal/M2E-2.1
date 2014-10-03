@@ -962,9 +962,18 @@ namespace M2E.Service.JobTemplate
             var response = new ResponseModel<string>();
             try
             {
-                
 
-
+                var surveyDetail =
+                    _db.CreateTemplateQuestionInfoes.SingleOrDefault(x => x.Id == id && x.username == username);
+                if (surveyDetail != null)
+                {
+                    var SurveyResult = GetTemplateSurveyResponseResultById(username, id);
+                }
+                else
+                {
+                    response.Status = 404;
+                    response.Message = "Survey id not found !!!";
+                }
                 return response;
             }
             catch (Exception ex)
