@@ -28,6 +28,8 @@ namespace M2E.Controllers
         // GET: /Auth/        
         private readonly M2EContext _db = new M2EContext();
         private static readonly ILogger Logger = new Logger(Convert.ToString(MethodBase.GetCurrentMethod().DeclaringType));
+        public delegate void logout_Delegate(HttpRequestBase RequestData);
+
         public ActionResult Index()
         {
             return View();
@@ -137,11 +139,35 @@ namespace M2E.Controllers
         [HttpPost]
         public JsonResult Logout()
         {            
-            var isValidToken = ThreadPool.QueueUserWorkItem(new WaitCallback(asyncLogout), Request);
-            return Json(isValidToken);
+            //var isValidToken = ThreadPool.QueueUserWorkItem(new WaitCallback(asyncLogoutThread), Request);
+            logout_Delegate logoutService_delegate = null;
+            logoutService_delegate = new logout_Delegate(asyncLogoutDelegate);
+            IAsyncResult CallAsynchMethod = null;
+            CallAsynchMethod = logoutService_delegate.BeginInvoke(Request, null, null); //invoking the method
+            return Json("success");
         }
 
-        public void asyncLogout( object a)
+        public void asyncLogoutDelegate(HttpRequestBase RequestData)
+        {            
+            var headers = new HeaderManager(RequestData);
+            M2ESession session = TokenManager.getLogoutSessionInfo(headers.AuthToken);
+            if (session != null)
+            {
+                var user = _db.Users.SingleOrDefault(x => x.Username == session.UserName);
+                user.KeepMeSignedIn = "false";
+                try
+                {
+                    _db.SaveChanges();
+                }
+                catch (DbEntityValidationException e)
+                {
+                    DbContextException.LogDbContextException(e);
+                }
+            }
+            bool isValid = new TokenManager().Logout(headers.AuthToken);
+        }
+
+        public void asyncLogoutThread( object a)
         {
             HttpRequestBase RequestData = a as HttpRequestBase;
             var headers = new HeaderManager(RequestData);
