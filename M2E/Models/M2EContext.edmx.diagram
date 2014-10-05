@@ -42,6 +42,8 @@
         <EntityTypeShape EntityType="M2E.UserMessages" Width="1.5" PointX="4.125" PointY="15.625" />
         <EntityTypeShape EntityType="M2E.UserAlerts" Width="1.5" PointX="6.75" PointY="16.25" />
         <EntityTypeShape EntityType="M2E.contactUs" Width="1.5" PointX="8.75" PointY="16.5" />
+        <EntityTypeShape EntityType="M2E.MobikwikUserPhoneList" Width="1.5" PointX="11.5" PointY="20.25" />
+        <EntityTypeShape EntityType="M2E.MobikwikUserHistory" Width="1.5" PointX="9.75" PointY="20.25" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

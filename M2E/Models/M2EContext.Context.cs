@@ -62,5 +62,7 @@ namespace M2E.Models
         public DbSet<UserMessages> UserMessages { get; set; }
         public DbSet<UserAlerts> UserAlerts { get; set; }
         public DbSet<contactUs> contactUs { get; set; }
+        public DbSet<MobikwikUserPhoneList> MobikwikUserPhoneLists { get; set; }
+        public DbSet<MobikwikUserHistory> MobikwikUserHistories { get; set; }
     }
 }

@@ -12,6 +12,8 @@ namespace M2E.Models.Constants
         public const string status_active = "active";
         public const string status_assigned = "assigned";
         public const string status_reviewed = "reviewed";
+        public const string status_accepted = "accepted";
+        public const string status_rejected = "rejected";
 
         public const string payment_credit = "credit";
         public const string payment_debit = "debit";

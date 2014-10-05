@@ -9,12 +9,12 @@ namespace M2E.CommonMethods
 {
     public class SendEmail
     {
-        private readonly ILogger _logger = new Logger(Convert.ToString(MethodBase.GetCurrentMethod().DeclaringType));
-        
+        private readonly ILogger _logger = new Logger(Convert.ToString(MethodBase.GetCurrentMethod().DeclaringType));        
+
         String _path;
         MailMessage _mail = new MailMessage();
 
-        public string SendEmailMessage(String toEmailAddrList,String senderName,String subject,String body,String attachmentsFilePathList,String logoPath, String companyDescription)
+        public void SendEmailMessage(String toEmailAddrList,String senderName,String subject,String body,String attachmentsFilePathList,String logoPath, String companyDescription)
         {
             var smtpServer = new SmtpClient
             {
@@ -58,13 +58,11 @@ namespace M2E.CommonMethods
                 _mail.IsBodyHtml = true;
                 _mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
                 //mail.ReplyToList = new MailAddress(ConfigurationManager.AppSettings["SmtpEmail"].ToString());
-                smtpServer.Send(_mail);
-                return "200";
+                smtpServer.Send(_mail);                
             }
             catch (Exception ex)
             {
-                _logger.Error("Exception occured while sending email",ex);
-                return "500";
+                _logger.Error("Exception occured while sending email",ex);                
             }
             
         }

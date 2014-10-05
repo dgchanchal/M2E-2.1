@@ -179,6 +179,7 @@
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MobileController.cs" />
     <Compile Include="Controllers\SocialAuthController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -312,6 +313,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>M2EContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MobikwikUserHistory.cs">
+      <DependentUpon>M2EContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MobikwikUserPhoneList.cs">
+      <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RecommendedBy.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>

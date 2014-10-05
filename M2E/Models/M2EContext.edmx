@@ -43,6 +43,8 @@
     <EntitySet Name="UserMessages" EntityType="M2E.Store.UserMessages" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserAlerts" EntityType="M2E.Store.UserAlerts" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="contactUs" EntityType="M2E.Store.contactUs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MobikwikUserPhoneLists" EntityType="M2E.Store.MobikwikUserPhoneLists" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MobikwikUserHistories" EntityType="M2E.Store.MobikwikUserHistories" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
   <EntityType Name="ClientDetails">
     <Key>
@@ -525,6 +527,31 @@
     <Property Name="RepliedDateTime" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="MobikwikUserPhoneLists">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MobileNumber" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="operator" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="operatorID" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="circle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="circleID" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="dateTime" Type="datetime" Nullable="false" />
+    <Property Name="nickName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MobikwikUserHistories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MobileNumber" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="nickName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="amount" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="dateTime" Type="datetime" Nullable="false" />
+  </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -567,6 +594,8 @@
           <EntitySet Name="UserMessages" EntityType="M2E.UserMessages" />
           <EntitySet Name="UserAlerts" EntityType="M2E.UserAlerts" />
           <EntitySet Name="contactUs" EntityType="M2E.contactUs" />
+          <EntitySet Name="MobikwikUserPhoneLists" EntityType="M2E.MobikwikUserPhoneList" />
+          <EntitySet Name="MobikwikUserHistories" EntityType="M2E.MobikwikUserHistory" />
         </EntityContainer>
         <EntityType Name="ClientDetail">
           <Key>
@@ -1048,6 +1077,31 @@
           <Property Type="String" Name="RepliedBy" Nullable="false" />
           <Property Type="String" Name="RepliedDateTime" Nullable="false" />
           <Property Type="String" Name="Type" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MobikwikUserPhoneList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="username" Nullable="false" />
+          <Property Type="String" Name="MobileNumber" Nullable="false" />
+          <Property Type="String" Name="operator" Nullable="false" />
+          <Property Type="String" Name="operatorID" Nullable="false" />
+          <Property Type="String" Name="circle" Nullable="false" />
+          <Property Type="String" Name="circleID" Nullable="false" />
+          <Property Type="DateTime" Name="dateTime" Nullable="false" />
+          <Property Type="String" Name="nickName" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MobikwikUserHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="username" Nullable="false" />
+          <Property Type="String" Name="MobileNumber" Nullable="false" />
+          <Property Type="String" Name="nickName" Nullable="false" />
+          <Property Type="String" Name="amount" Nullable="false" />
+          <Property Type="DateTime" Name="dateTime" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1570,6 +1624,33 @@
           <ScalarProperty Name="RepliedBy" ColumnName="RepliedBy" />
           <ScalarProperty Name="RepliedDateTime" ColumnName="RepliedDateTime" />
           <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MobikwikUserPhoneLists">
+      <EntityTypeMapping TypeName="IsTypeOf(M2E.MobikwikUserPhoneList)">
+        <MappingFragment StoreEntitySet="MobikwikUserPhoneLists">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="operator" ColumnName="operator" />
+          <ScalarProperty Name="operatorID" ColumnName="operatorID" />
+          <ScalarProperty Name="circle" ColumnName="circle" />
+          <ScalarProperty Name="circleID" ColumnName="circleID" />
+          <ScalarProperty Name="dateTime" ColumnName="dateTime" />
+          <ScalarProperty Name="nickName" ColumnName="nickName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MobikwikUserHistories">
+      <EntityTypeMapping TypeName="IsTypeOf(M2E.MobikwikUserHistory)">
+        <MappingFragment StoreEntitySet="MobikwikUserHistories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="nickName" ColumnName="nickName" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="dateTime" ColumnName="dateTime" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

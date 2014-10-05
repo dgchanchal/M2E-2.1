@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/02/2014 18:09:41
+-- Date Created: 10/05/2014 12:45:23
 -- Generated from EDMX file: F:\PcOnGo_SVN\branches\M2E-2.0\M2E\Models\M2EContext.edmx
 -- --------------------------------------------------
 
@@ -132,6 +132,12 @@ IF OBJECT_ID(N'[dbo].[UserAlerts]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[contactUs]', 'U') IS NOT NULL
     DROP TABLE [dbo].[contactUs];
+GO
+IF OBJECT_ID(N'[dbo].[MobikwikUserPhoneLists]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[MobikwikUserPhoneLists];
+GO
+IF OBJECT_ID(N'[dbo].[MobikwikUserHistories]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[MobikwikUserHistories];
 GO
 
 -- --------------------------------------------------
@@ -619,6 +625,31 @@ CREATE TABLE [dbo].[contactUs] (
 );
 GO
 
+-- Creating table 'MobikwikUserPhoneLists'
+CREATE TABLE [dbo].[MobikwikUserPhoneLists] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [username] nvarchar(max)  NOT NULL,
+    [MobileNumber] nvarchar(max)  NOT NULL,
+    [operator] nvarchar(max)  NOT NULL,
+    [operatorID] nvarchar(max)  NOT NULL,
+    [circle] nvarchar(max)  NOT NULL,
+    [circleID] nvarchar(max)  NOT NULL,
+    [dateTime] datetime  NOT NULL,
+    [nickName] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'MobikwikUserHistories'
+CREATE TABLE [dbo].[MobikwikUserHistories] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [username] nvarchar(max)  NOT NULL,
+    [MobileNumber] nvarchar(max)  NOT NULL,
+    [nickName] nvarchar(max)  NOT NULL,
+    [amount] nvarchar(max)  NOT NULL,
+    [dateTime] datetime  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -842,6 +873,18 @@ GO
 -- Creating primary key on [Id] in table 'contactUs'
 ALTER TABLE [dbo].[contactUs]
 ADD CONSTRAINT [PK_contactUs]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'MobikwikUserPhoneLists'
+ALTER TABLE [dbo].[MobikwikUserPhoneLists]
+ADD CONSTRAINT [PK_MobikwikUserPhoneLists]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'MobikwikUserHistories'
+ALTER TABLE [dbo].[MobikwikUserHistories]
+ADD CONSTRAINT [PK_MobikwikUserHistories]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 

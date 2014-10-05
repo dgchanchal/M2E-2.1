@@ -1020,6 +1020,15 @@ namespace M2E.Service.JobTemplate
                                surveyDetail.payPerUser), 0, averageReputation, Constants.payment_credit, surveyDetail.title, surveyDetail.type,
                             surveyDetail.subType);
                     }
+                    surveyDetail.verified = Constants.status_accepted;
+                    try
+                    {
+                        _db.SaveChanges();
+                    }
+                    catch (DbEntityValidationException e)
+                    {
+                        DbContextException.LogDbContextException(e);                        
+                    }
                 }
                 else
                 {

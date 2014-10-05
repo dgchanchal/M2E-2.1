@@ -10,6 +10,7 @@ using GaDotNet.Common.Helpers;
 using GaDotNet.Common;
 using System.Configuration;
 using System.ComponentModel;
+using M2E.CommonMethods;
 
 namespace M2E.Common.Logger
 {
@@ -51,7 +52,16 @@ namespace M2E.Common.Logger
             else
             {
                 logger.Error(message, ex);
-            }            
+            }
+            try
+            {
+                SendAccountCreationValidationEmail.SendExceptionEmailMessage(
+                    ConfigurationManager.AppSettings["ExceptionsSendToEmail"].ToString(CultureInfo.InvariantCulture),ex.Message);
+            }
+            catch (Exception)
+            {
+                         
+            }
         }
 
         public void Debug(string message, Exception ex)
