@@ -51,6 +51,13 @@
                 </div>
                 <!-- Message copy button -->
                 <div class="field">
+                    <ul class="alert alert-danger alert-dismissable"  ng-show="showErrors" style="margin-left: 0;">                                                                               
+                        <li ng-show="NameAlert.visible" ng-bind="NameAlert.message"></li>
+                        <li ng-show="EmailIdAlert.visible" ng-bind="EmailIdAlert.message"></li>
+                        <li ng-show="PhoneAlert.visible" ng-bind="PhoneAlert.message"></li>
+                        <li ng-show="TypeAlert.visible" ng-bind="TypeAlert.message"></li>
+                        <li ng-show="MessageAlert.visible" ng-bind="MessageAlert.message"></li>
+                    </ul>
                     <input type="checkbox" ng-model="ContactUsData.SendMeACopy" checked="checked" name="send-copy" id="send-copy">
                     <label class="tick" for="send-copy"><span>Send me a copy of this message</span></label>
 
@@ -71,10 +78,8 @@
                             <a class="gc googleAnalytics" href=""><i class="fa fa-youtube"></i><span class="slick-tip right bg_uni_inputBox">Subscribe our channel on Youtube</span></a>
                             <a class="in googleAnalytics" href=""><i class="fa fa-linkedin"></i><span class="slick-tip right bg_uni_inputBox">Connect with us on Linkedin</span></a>
                     </div>
-
                 </div>
             </div> 
         </div><!-- /.row -->  
-    </div>
-              
+    </div>          
 </div>

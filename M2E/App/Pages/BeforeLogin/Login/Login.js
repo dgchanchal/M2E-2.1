@@ -53,6 +53,13 @@ define([appLocation.preLogin], function (app) {
             $scope.HeaderAlert.classType = "success";
             $scope.HeaderAlert.message = "Your Password has been successfully changed. To continue, please login.";
         }
+        if ($routeParams.code == "ConatctUs200") {
+            showToastMessage("Success", "Your message has been successfully submitted.");
+            $scope.showHeaderErrors = true;
+            $scope.HeaderAlert.visible = true;
+            $scope.HeaderAlert.classType = "success";
+            $scope.HeaderAlert.message = "Your Message has been successfully submitted. To continue, please login.";
+        }
         if (CookieUtil.getLoginType() == null || CookieUtil.getLoginType() == "") {
             CookieUtil.setLoginType("user", $scope.KeepMeSignedInCheckBox); // by default set type as user..       
             $('#loginUserTypeRadioButtonId').attr('checked', true);

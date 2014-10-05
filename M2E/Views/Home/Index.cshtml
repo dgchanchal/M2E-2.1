@@ -134,16 +134,12 @@
                         <div class="col-md-3 col-sm-4">
                             <aside>
                                 <header>
-                                    <h4 ng-bind="beforeLoginFooterInfo.contactUs"></h4>
+                                    <h4 ng-bind="beforeLoginFooterInfo.knowMore"></h4>
                                 </header>
-                                <address>
-                                    <strong ng-bind="beforeLoginFooterInfo.companyName"></strong> <br>
-                                    <span>403, Testing,</span> <br>
-                                    <span>Testing Center, </span> <br>
-                                    <span>USA - 00000</span> <br>
-                                    <span>Missory, USA</span> <br>
-                                    <abbr title="Email">email:</abbr> <a class="googleAnalytics" ga-category="BeforeLogin" ga-event="Facebook_Footer_Button" ga-label="Click" href="mailto:info@cautom.com">info@cautom.com</a>
-                                </address>
+                                <ul class="list-links">
+                                    <li><a Class="googleAnalytics" ga-category="BeforeLogin" ga-event="KnowMoreAboutRequester_Footer_Button" ga-label="Click" href="#/RequesterDetails" ng-bind="beforeLoginFooterInfo.requester"></a></li>
+                                    <li><a Class="googleAnalytics" ga-category="BeforeLogin" ga-event="KnowMoreAboutAccepyter_Footer_Button" ga-label="Click" href="#/AccepterDetails" ng-bind="beforeLoginFooterInfo.accepter"></a></li>
+                                </ul>
                             </aside>
                         </div>
                         <!-- col-md-3 -->

@@ -21,9 +21,9 @@ define([appLocation.preLogin], function (app) {
                 id: "CITs", question: "What is a " + userConstants.task_abb + "?",
                 answer: $sce.trustAsHtml("Each question " + clientConstants.name + " asks through our application is a <b>" + userConstants.task + "</b>, or <b>" + userConstants.task_abb + "</b>. " +
                 "A " + userConstants.task + " contains all of the information an " + userConstants.name_abb + " needs to answer the question, including information about how the question is shown to the " + userConstants.name_abb + " and what " +
-                    "kinds of answers would be considered valid. " + "<p class='div_c'>Each " + userConstants.task_abb + " has a reward, an amount of money you pay to the " + userConstants.name_abb + " that successfully completes " +
-                    "the " + userConstants.task_abb + ". " + companyConstants.name + " can request that more than one " + userConstants.name_abb + " to complete a " + userConstants.task_abb + " by specifying a quantity of Workforce " +
-                    "required while creating " + userConstants.name_abb + ".</p>")
+                    "kinds of answers would be considered valid. " + "<p class='div_c'>Each " + userConstants.task_abb + " has a reward, an amount of money " + clientConstants.name_abb + " pay to the " + userConstants.name_abb + " that successfully completes " +
+                    "the " + userConstants.task_abb + ". " + clientConstants.name_abb + " can request that more than one " + userConstants.name_abb + " to complete a " + userConstants.task_abb + " by specifying a quantity of Workforce " +
+                    "required while creating " + userConstants.task_abb + ".</p>")
             },
             {
                 className: "div_heading3",
@@ -38,7 +38,7 @@ define([appLocation.preLogin], function (app) {
                 answer: $sce.trustAsHtml("A " + userConstants.name + " is a person who answers questions for Crowd Automation. A " + userConstants.name + " uses the " + companyConstants.fullName + " website" +
                     " (<a class='undeline_anchor' href='http://cautom.com'>http://cautom.com</a>) to find questions, submit answers, and manage his or her account." + "<p class='div_c'>To " + clientConstants.name + "s, " +
                     "a " + userConstants.name + " is known as the submitter of a " + userConstants.task_abb + " assignment. You can see the " + userConstants.name + "'s " + userConstants.Batch + ". </p>" +
-                    "<p>" + userConstants.Batch + "es represent the " + userConstants.name + "'s reputation and abilities in a particular domain. A " + userConstants.name + "'s " + userConstants.Batch + "es " +
+                    "<p>" + userConstants.Batch + " represent the " + userConstants.name + "'s reputation and abilities in a particular domain. A " + userConstants.name + "'s " + userConstants.Batch + "es " +
                     "are matched against a " + userConstants.task_abb + "'s " + userConstants.Batch + " requirements to allow or disallow the " + userConstants.name + " to accept the " + userConstants.task_abb + ". " +
                     "A " + userConstants.name + "'s " + userConstants.Batch + " cannot be accessed directly by other users.</p>")
             },

@@ -7,14 +7,14 @@
                 </div>
                 <div class="div_c"></div>
                     <div id="short_div Description">
-                        <label class="Description">
+                        <div class="Description">
                             <p>
                                 This privacy statement applies to Crowd Automation and its services that collect data and display these terms, as well as their offline product support services.      By visiting/registering on our website, you as a Crowd Automation Requester or Crowd Automation Accepter agree to all terms and conditions laid down in terms of fair practices and current law in the country of India.
                             </p> 
                             <p>
                                 Anyone can access the services of the website, either earn or get their work done. But all payment related aspects will be strictly restricted to the prevailing law. For example if your earnings go beyond a limit set by our company, you will be required to submit Tax details for withdrawal of the money. This website provides platform for citizens to outsource their talents as to monetize it. Also Requester get access to Accepter at a fraction of cost, but at the same time retaining the quality.
                             </p>    
-                        </label>
+                        </div>
                     </div>
                 </div>
                 </div>
@@ -25,11 +25,11 @@
             <div class="page">
                 <div ng-show="contentList.showDiv" ng-repeat="contentList in tncContents" class="hide-fade">
                     <div class="{{contentList.headerClass}} div_heading_gen">
-                        <label ><span ng-bind="contentList.headerLabel"></span></label>
+                        <div ><span ng-bind="contentList.headerLabel"></span></div>
                     </div>
                     <div class="div_c"></div>
                     <div>
-                        <label class="Description">
+                        <div class="Description">
                             <div ng-repeat="paragraph_list_data in contentList.ContentList">
                                 <p  ng-repeat="paragraph in paragraph_list_data.paragraphList">
                                     <span style="text-decoration: underline" ng-show="paragraph.isUnderline" ng-bind="paragraph.text"></span>
@@ -39,7 +39,7 @@
                                     <li ng-repeat="list in paragraph_list_data.dataList"><span ng-bind="list.text"></span></li>                                
                                 </ul>
                             </div>                            
-                        </label>
+                        </div>
                     </div>
                     <div ng-show="!isAllExpanded">
                         <div class="TopNavigation" style="visibility: visible;" title="Top of page">

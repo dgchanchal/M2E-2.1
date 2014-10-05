@@ -58,10 +58,12 @@ define([appLocation.preLogin], function (app) {
         $rootScope.logoImage = { url: logoImage };
         $('title').html("index"); //TODO: change the title so cann't be tracked in log
         $rootScope.beforeLoginFooterInfo = {
-            companyName: "Crowd Automation",
-            contactUs: "Contact Us",
+            requester: "Crowd Automation Requester",
+            accepter: "Crowd Automation Accepter",
+            knowMore: "Learn more about",
             impLinks: "Important Links",
             FAQ: "FAQs",
+            contactUs: "Contact Us",
             TnC: "Terms, Privacy & Cookies",
             aboutus: "About Us",
             home: "Home",

@@ -11,109 +11,68 @@ define([appLocation.preLogin], function (app) {
             Message:"",
             SendMeACopy:true
         };
-
-        $scope.ForgetPasswordContent = true;
-        $scope.ForgetPasswordForm = true;
-        $scope.ResendValidationOrSignup =
-        {
-            visible: false,
-            title: '',
-            buttonName: '',
-            functionName: ''
-        }
-        $scope.ForgetPasswordAlertContent = {
+        $scope.showErrors = false;
+        $scope.EmailIdAlert = {
             visible: false,
             message: ''
-        }
-        $scope.ForgetPasswordSendRequest = function () {
-            if (isValidEmailAddress($('#forgetPasswordInputBoxId').val())) {
-                startBlockUI('wait..', 3);
-                $http({
-                    url: '/Auth/ForgetPassword/' + $('#forgetPasswordInputBoxId').val(),
-                    method: "GET"
-                }).success(function (data, status, headers, config) {
-                    stopBlockUI();
-                    if (data.Status == "200") {
-                        location.href = "/?email=" + $('#forgetPasswordInputBoxId').val() + "#/showmessage/2/";
-                    }
-                    else if (data.Status == "404") {
-                        $scope.ForgetPasswordContent = false;
-                        $scope.ForgetPasswordAlertContent.visible = true;
-                        $scope.ForgetPasswordAlertContent.message = "Entered email id is not registerd with us. Please enter your email address which is registered with us to set new password.";
-                    }
-                    else if (data.Status == "402") {
-                        $scope.ForgetPasswordContent = false;
-                        $scope.ForgetPasswordForm = false;
-                        $scope.ForgetPasswordAlertContent.visible = true; $scope.ForgetPasswordAlertContent.message = "Email Address-" + $('#forgetPasswordInputBoxId').val() + " is not valideted yet. please check your email for validation.";
-                        $scope.ResendValidationOrSignup.visible = true;
-                        $scope.ResendValidationOrSignup.title = "Don't have emaill address validation Link?";
-                        $scope.ResendValidationOrSignup.buttonName = "Resend validation link";
-                        $scope.ResendValidationOrSignup.functionName = "ResendValidationCodeRequest";
-                    }
-                    else if (data.Status == "500") {
-                        location.href = "/?email=" + $('#forgetPasswordInputBoxId').val() + "#/showmessage/3/";
-                    }
-                }).error(function (data, status, headers, config) {
-                    //alert("Not Working");
-                    showToastMessage("Error", "Unable to reach the server. Refresh the page and try again");
-                });
-            }
-                // Check Status, Email Id is valid or registered or not 
-            else {
-                $scope.ForgetPasswordContent = false;
-                $scope.ForgetPasswordAlertContent.visible = true;
-                $scope.ForgetPasswordAlertContent.message = "Please enter a valid email address to set new password.";
-                showToastMessage("Error", "Email id field cann't be empty.");
-            }
-        }
-
-        $scope.ResendValidationCodeRequest = function () {
-
-            var resendValidationRequest = {
-                userName: $('#forgetPasswordInputBoxId').val()
-            };
-
-            if (isValidEmailAddress($('#forgetPasswordInputBoxId').val())) {
-                startBlockUI('wait..', 3);
-                $http({
-                    url: '/Auth/ResendValidationCode/',
-                    data: resendValidationRequest,
-                    method: "POST"
-                }).success(function (data, status, headers, config) {
-                    stopBlockUI();
-                    if (data.Status == "200") {
-                        location.href = "/?email=" + $('#forgetPasswordInputBoxId').val() + "#/showmessage/2/";
-                    }
-                    else if (data.Status == "404") {
-                        $scope.ForgetPasswordContent = false;
-                        $scope.ForgetPasswordAlertContent.visible = true;
-                        $scope.ForgetPasswordAlertContent.message = "Entered email id is not registerd with us. Please enter your email address which is registered with us to set new password.";
-                        $scope.ResendValidationOrSignup.visible = true;
-                        $scope.ResendValidationOrSignup.title = "Please go to Home page and registered yourself.";
-                        $scope.ResendValidationOrSignup.buttonName = "Home";
-                        $scope.ResendValidationOrSignup.functionName = "HomeLink()";
-                    }
-                    else if (data.Status == "402") {
-                        $scope.ForgetPasswordContent = false;
-                        $scope.ForgetPasswordForm = false;
-                        $scope.ForgetPasswordAlertContent.visible = true;
-                        $scope.ForgetPasswordAlertContent.message = "Email Address-" + $('#forgetPasswordInputBoxId').val() + " has been already valideted. To continue, Please login into account.";
-                        $scope.ResendValidationOrSignup.visible = false;
-                    }
-                    else if (data.Status == "500") {
-                        location.href = "/?email=" + $('#forgetPasswordInputBoxId').val() + "#/showmessage/3/";
-                    }
-                }).error(function (data, status, headers, config) {
-                    alert("false");
-                });
-            }
-
-        }
+        };
+        $scope.NameAlert = {
+            visible: false,
+            message: ''
+        };
+        $scope.PhoneAlert = {
+            visible: false,
+            message: ''
+        };
+        $scope.TypeAlert = {
+            visible: false,
+            message: ''
+        };
+        $scope.MessageAlert = {
+            visible: false,
+            message: ''
+        };
 
         $scope.ContactUsRequestSubmit = function () {
-            
+            if ($scope.ContactUsData.Name != "") {
+                $scope.NameAlert.visible = false;
+            }
+            else {
+                $scope.NameAlert.visible = true;
+                $scope.NameAlert.message = "Name field cannot be empty !!!";
+            }
 
-            if (true) {
+            if ($scope.ContactUsData.Phone != "") {
+                $scope.PhoneAlert.visible = false;
+            }
+            else {
+                $scope.PhoneAlert.visible = true;
+                $scope.PhoneAlert.message = "Phone field cannot be empty !!!";
+            }
+            if (isValidEmailAddress($scope.ContactUsData.Email)) {
+                $scope.EmailIdAlert.visible = false;
+            }
+            else {
+                $scope.EmailIdAlert.visible = true;
+                $scope.EmailIdAlert.message = "Incorrect Email Id !!!";
+            }
+            if ($scope.ContactUsData.Type != "") {
+                $scope.TypeAlert.visible = false;
+            }
+            else {
+                $scope.TypeAlert.visible = true;
+                $scope.TypeAlert.message = "Subject type field cannot be emoty!!!";
+            }
+
+            if ($scope.ContactUsData.Message != "") {
+                $scope.MessageAlert.visible = false;
+            }
+            else {
+                $scope.MessageAlert.visible = true;
+                $scope.MessageAlert.message = "Message field cannot be empty !!!";
+            }
+
+            if (!$scope.MessageAlert.visible && !$scope.NameAlert.visible && !$scope.PhoneAlert.visible && !$scope.EmailIdAlert.visible && !$scope.TypeAlert.visible) {
                 startBlockUI('wait..', 3);
                 $http({
                     url: '/Auth/ContactUs/',
@@ -122,7 +81,7 @@ define([appLocation.preLogin], function (app) {
                 }).success(function (data, status, headers, config) {
                     stopBlockUI();
                     if (data.Status == "200") {
-                        
+                        location.href = "#/login/ConatctUs200";
                     }
                     else if (data.Status == "404") {
                         
@@ -136,6 +95,8 @@ define([appLocation.preLogin], function (app) {
                 }).error(function (data, status, headers, config) {
                     alert("false");
                 });
+            } else {
+                $scope.showErrors = true;
             }
 
         }
