@@ -65,7 +65,8 @@ namespace M2E.Service.JobTemplate
                             JobTotal = job.totalThreads,
                             JobReviewed = Convert.ToString(JobReviewed),
                             type = job.type,
-                            subType = job.subType
+                            subType = job.subType,
+                            verified = job.verified
                         };
                         response.Payload.Add(clientTemplate);
                     }
@@ -90,7 +91,8 @@ namespace M2E.Service.JobTemplate
                             JobTotal = job.totalThreads,
                             JobReviewed = Convert.ToString(JobReviewed),
                             type = job.type,
-                            subType = job.subType
+                            subType = job.subType,
+                            verified = job.verified
                         };
                         response.Payload.Add(clientTemplate);
                     }
@@ -124,7 +126,8 @@ namespace M2E.Service.JobTemplate
                             JobTotal = facebookJob.totalThreads,
                             JobReviewed = Convert.ToString(JobReviewed),
                             type = facebookJob.type,
-                            subType = facebookJob.subType
+                            subType = facebookJob.subType,
+                            verified = facebookJob.verified
                         };
                         response.Payload.Add(clientTemplate);                 
                     }
@@ -176,7 +179,8 @@ namespace M2E.Service.JobTemplate
                         JobReviewed = Convert.ToString(JobReviewed),
                         type = clientFacebookLikeJobInfo.type,
                         subType = clientFacebookLikeJobInfo.subType,
-                        refKey = clientFacebookLikeJobInfo.referenceId
+                        refKey = clientFacebookLikeJobInfo.referenceId,
+                        verified = clientFacebookLikeJobInfo.verified
                     };
                     response.Payload = clientTemplate;                
                 }
@@ -221,7 +225,8 @@ namespace M2E.Service.JobTemplate
                             JobReviewed = Convert.ToString(JobReviewed),
                             type = clientJobInfo.type,
                             subType = clientJobInfo.subType,
-                            refKey = clientJobInfo.referenceId
+                            refKey = clientJobInfo.referenceId,
+                            verified = clientJobInfo.verified
                         };
                         response.Payload = clientTemplate;
 
@@ -249,7 +254,8 @@ namespace M2E.Service.JobTemplate
                             JobTotal = Convert.ToString(clientJobInfo.totalThreads),
                             JobReviewed = Convert.ToString(JobReviewed),
                             type = clientJobInfo.type,
-                            subType = clientJobInfo.subType
+                            subType = clientJobInfo.subType,
+                            verified = clientJobInfo.verified
                         };
                         response.Payload = clientTemplate;
                     }
@@ -1018,7 +1024,7 @@ namespace M2E.Service.JobTemplate
                         var result = new UserReputationService().UpdateUserBalance(Constants.userType_user, users,
                             Convert.ToDouble(
                                surveyDetail.payPerUser), 0, averageReputation, Constants.payment_credit, surveyDetail.title, surveyDetail.type,
-                            surveyDetail.subType);
+                            surveyDetail.subType,true);
                     }
                     surveyDetail.verified = Constants.status_accepted;
                     try

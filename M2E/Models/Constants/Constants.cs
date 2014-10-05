@@ -18,6 +18,8 @@ namespace M2E.Models.Constants
         public const string payment_credit = "credit";
         public const string payment_debit = "debit";
 
+        public const double newAccountCreationReferralBalanceAmount = 1.0;
+
         public const string type_dataEntry = "dataEntry";
         public const string subType_Transcription = "Transcription";
         public const string subType_dataCollection = "dataCollection";

@@ -47,7 +47,7 @@ namespace M2E.Service.UserService
             }
         }
 
-        public bool UpdateUserBalance(string userType,string username, double approved, double pending,double averageReputationScore, string paymentMode, string title, string type, string subType)
+        public bool UpdateUserBalance(string userType,string username, double approved, double pending,double averageReputationScore, string paymentMode, string title, string type, string subType, bool isDollar)
         {
             var userBalance = _db.UserEarnings.SingleOrDefault(x => x.username == username && x.userType == userType);
             string currency = Constants.currency_INR;
@@ -57,8 +57,11 @@ namespace M2E.Service.UserService
             }               
 
             bool addToUserBalanceHistory = approved > 0;
-            approved *= (Convert.ToDouble(Convert.ToString(ConfigurationManager.AppSettings["dollarToRupeesValue"])));
-            pending *= (Convert.ToDouble(Convert.ToString(ConfigurationManager.AppSettings["dollarToRupeesValue"])));
+            if (isDollar)
+            {
+                approved *= (Convert.ToDouble(Convert.ToString(ConfigurationManager.AppSettings["dollarToRupeesValue"])));
+                pending *= (Convert.ToDouble(Convert.ToString(ConfigurationManager.AppSettings["dollarToRupeesValue"])));
+            }            
             if (userBalance == null)
             {
                 var UserEarningData = new UserEarning

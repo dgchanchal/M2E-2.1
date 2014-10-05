@@ -9,6 +9,7 @@ using M2E.CommonMethods;
 using M2E.Encryption;
 using M2E.Models;
 using M2E.Models.DataWrapper;
+using M2E.Service.UserService;
 using M2E.signalRPushNotifications;
 using Microsoft.AspNet.SignalR;
 using M2E.Models.Constants;
@@ -58,6 +59,7 @@ namespace M2E.Service.Register
                     isValid = Constants.status_false
                 };
                 _db.RecommendedBies.Add(dbRecommedBy);
+                
             }
             if (req.Type == "client")
             {

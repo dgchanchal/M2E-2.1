@@ -10,6 +10,7 @@ using M2E.Models.DataWrapper;
 using M2E.CommonMethods;
 using System.Data.Entity.Validation;
 using System.Reflection;
+using M2E.Service.UserService;
 using M2E.Session;
 using M2E.Models.DataResponse;
 using System.Collections.Generic;
@@ -46,7 +47,13 @@ namespace M2E.Service.Auth
                 user.isActive = "true";
                 var Recommendations = _db.RecommendedBies.SingleOrDefault(x => x.RecommendedTo == user.Username);
                 if (Recommendations != null)
+                {
                     Recommendations.isValid = Constants.status_true;
+                    var result = new UserReputationService().UpdateUserBalance(Constants.userType_user, Recommendations.RecommendedFrom,
+                            Constants.newAccountCreationReferralBalanceAmount, 0, 0, Constants.payment_credit, Recommendations.RecommendedTo + " Joined Cautom", "New Account",
+                            "Referral Bonus", false);
+                }
+                    
                 try
                 {
                     _db.SaveChanges();

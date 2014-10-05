@@ -21,5 +21,6 @@ namespace M2E.Models.DataResponse
         public string type { get; set; }
         public string subType { get; set; }
         public string refKey { get; set; }
+        public string verified { get; set; }
     }
 }

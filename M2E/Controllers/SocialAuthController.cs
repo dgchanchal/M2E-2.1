@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Configuration;
 using M2E.Models;
+using M2E.Service.UserService;
 using zestork.Service;
 using Facebook;
 using M2E.Common.Logger;
@@ -160,6 +161,9 @@ namespace M2E.Controllers
                             isValid = Constants.status_true
                         };
                         _db.RecommendedBies.Add(dbRecommedBy);
+                        var result_recommendation = new UserReputationService().UpdateUserBalance(Constants.userType_user, refKey,
+                           Constants.newAccountCreationReferralBalanceAmount, 0, 0, Constants.payment_credit, user.Username + " Joined Cautom", "New Account",
+                           "Referral Bonus", false);
                     }
                                                            
                     try
@@ -270,6 +274,9 @@ namespace M2E.Controllers
                             isValid = Constants.status_true
                         };
                         _db.RecommendedBies.Add(dbRecommedBy);
+                        var result_recommendation = new UserReputationService().UpdateUserBalance(Constants.userType_user, refKey,
+                           Constants.newAccountCreationReferralBalanceAmount, 0, 0, Constants.payment_credit, session.UserName + " Joined Cautom", "New Account",
+                           "Referral Bonus", false);
                     }
                     try
                     {
