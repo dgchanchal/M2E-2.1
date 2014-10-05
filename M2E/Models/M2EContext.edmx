@@ -284,6 +284,7 @@
     <Property Name="RecommendedFrom" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DateTime" Type="datetime" Nullable="true" />
     <Property Name="isValid" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="RecommendedFromUsername" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="ThirdPartyLogins">
     <Key>
@@ -835,6 +836,7 @@
           <Property Name="RecommendedFrom" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="DateTime" Type="DateTime" Precision="3" />
           <Property Name="isValid" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="RecommendedFromUsername" Nullable="false" />
         </EntityType>
         <EntityType Name="ThirdPartyLogin">
           <Key>
@@ -1363,6 +1365,7 @@
           <ScalarProperty Name="RecommendedFrom" ColumnName="RecommendedFrom" />
           <ScalarProperty Name="DateTime" ColumnName="DateTime" />
           <ScalarProperty Name="isValid" ColumnName="isValid" />
+          <ScalarProperty Name="RecommendedFromUsername" ColumnName="RecommendedFromUsername" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

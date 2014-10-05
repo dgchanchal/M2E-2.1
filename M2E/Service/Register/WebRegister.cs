@@ -48,15 +48,27 @@ namespace M2E.Service.Register
                 ImageUrl = "NA"
             };
             _db.Users.Add(user);
-
+            
             if (!Constants.NA.Equals(req.Referral))
             {
+                var referralInfo = _db.Users.SingleOrDefault(x => x.fixedGuid == req.Referral);
+                var ReferralUsername = "";
+                if (referralInfo != null)
+                {
+                    ReferralUsername = referralInfo.Username;
+                }
+                else
+                {
+                    ReferralUsername = Constants.NA;
+                }
+
                 var dbRecommedBy = new RecommendedBy
                 {
                     RecommendedFrom = req.Referral,
                     RecommendedTo = req.Username,
                     DateTime = DateTime.Now,
-                    isValid = Constants.status_false
+                    isValid = Constants.status_false,
+                    RecommendedFromUsername = ReferralUsername
                 };
                 _db.RecommendedBies.Add(dbRecommedBy);
                 

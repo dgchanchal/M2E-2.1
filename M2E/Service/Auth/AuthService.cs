@@ -49,7 +49,7 @@ namespace M2E.Service.Auth
                 if (Recommendations != null)
                 {
                     Recommendations.isValid = Constants.status_true;
-                    var result = new UserReputationService().UpdateUserBalance(Constants.userType_user, Recommendations.RecommendedFrom,
+                    var result = new UserReputationService().UpdateUserBalance(Constants.userType_user, Recommendations.RecommendedFromUsername,
                             Constants.newAccountCreationReferralBalanceAmount, 0, 0, Constants.payment_credit, Recommendations.RecommendedTo + " Joined Cautom", "New Account",
                             "Referral Bonus", false);
                 }

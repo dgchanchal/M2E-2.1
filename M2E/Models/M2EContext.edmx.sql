@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/05/2014 12:45:23
+-- Date Created: 10/05/2014 14:55:47
 -- Generated from EDMX file: F:\PcOnGo_SVN\branches\M2E-2.0\M2E\Models\M2EContext.edmx
 -- --------------------------------------------------
 
@@ -379,7 +379,8 @@ CREATE TABLE [dbo].[RecommendedBies] (
     [RecommendedTo] nvarchar(max)  NOT NULL,
     [RecommendedFrom] nvarchar(max)  NOT NULL,
     [DateTime] datetime  NULL,
-    [isValid] nvarchar(max)  NULL
+    [isValid] nvarchar(max)  NULL,
+    [RecommendedFromUsername] nvarchar(max)  NOT NULL
 );
 GO
 

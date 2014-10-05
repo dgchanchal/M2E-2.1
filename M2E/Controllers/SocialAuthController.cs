@@ -153,15 +153,27 @@ namespace M2E.Controllers
 
                     if (!Constants.NA.Equals(refKey))
                     {
+                        var referralInfo = _db.Users.SingleOrDefault(x => x.fixedGuid == refKey);
+                        var ReferralUsername = "";
+                        if (referralInfo != null)
+                        {
+                            ReferralUsername = referralInfo.Username;
+                        }
+                        else
+                        {
+                            ReferralUsername = Constants.NA;
+                        }
+
                         var dbRecommedBy = new RecommendedBy
                         {
                             RecommendedFrom = refKey,
                             RecommendedTo = user.Username,
                             DateTime = DateTime.Now,
-                            isValid = Constants.status_true
+                            isValid = Constants.status_true,
+                            RecommendedFromUsername = ReferralUsername
                         };
                         _db.RecommendedBies.Add(dbRecommedBy);
-                        var result_recommendation = new UserReputationService().UpdateUserBalance(Constants.userType_user, refKey,
+                        var result_recommendation = new UserReputationService().UpdateUserBalance(Constants.userType_user, ReferralUsername,
                            Constants.newAccountCreationReferralBalanceAmount, 0, 0, Constants.payment_credit, user.Username + " Joined Cautom", "New Account",
                            "Referral Bonus", false);
                     }
@@ -262,19 +274,31 @@ namespace M2E.Controllers
                 var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
                 if (isValidToken)
                 {
-                    String refKey = Request.QueryString["refKey"];
-                    
+                    String refKey = Request.QueryString["refKey"];                    
+
                     if (!string.IsNullOrEmpty(refKey))
                     {
+                        var referralInfo = _db.Users.SingleOrDefault(x => x.fixedGuid == refKey);
+                        var ReferralUsername = "";
+                        if (referralInfo != null)
+                        {
+                            ReferralUsername = referralInfo.Username;
+                        }
+                        else
+                        {
+                            ReferralUsername = Constants.NA;
+                        }
+
                         var dbRecommedBy = new RecommendedBy
                         {
                             RecommendedFrom = refKey,
                             RecommendedTo = session.UserName,
                             DateTime = DateTime.Now,
-                            isValid = Constants.status_true
+                            isValid = Constants.status_true,
+                            RecommendedFromUsername = ReferralUsername
                         };
                         _db.RecommendedBies.Add(dbRecommedBy);
-                        var result_recommendation = new UserReputationService().UpdateUserBalance(Constants.userType_user, refKey,
+                        var result_recommendation = new UserReputationService().UpdateUserBalance(Constants.userType_user, ReferralUsername,
                            Constants.newAccountCreationReferralBalanceAmount, 0, 0, Constants.payment_credit, session.UserName + " Joined Cautom", "New Account",
                            "Referral Bonus", false);
                     }
