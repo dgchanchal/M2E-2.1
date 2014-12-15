@@ -1,0 +1,6 @@
+[2014-10-01 22:16:06] [FATAL] [M2E.Controllers.ClientController:89] - Google Analytics Event Tracking Exception
+System.Net.WebException: The remote name could not be resolved: 'www.google-analytics.com'
+   at System.Net.HttpWebRequest.GetResponse()
+   at GaDotNet.Common.GoogleTracking.FireTrackingEvent(TrackingRequest request)
+   at M2E.Common.Logger.Logger.AsyncTrackGoogleEvents(String category, String action, String label) in f:\PcOnGo_SVN\branches\M2E-2.0\M2E\Logger\Logger.cs:line 98
+   at M2E.Common.Logger.Logger.TrackGoogleEvents(String category, String action, String label) in f:\PcOnGo_SVN\branches\M2E-2.0\M2E\Logger\Logger.cs:line 85
