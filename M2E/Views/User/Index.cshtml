@@ -71,14 +71,14 @@
         <script data-main="../../App/Pages/UserPostLoginDM.js" src="../../App/js/require.min.js"></script>
         <!-- header logo: style can be found in header.less -->
         <header class="header">
-            <a href="/#" class="logo" ng-show="!IsMobileDevice">
+            <a href="/user#/" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 <img height="45px" src="../../App/img/login/cautom_logo.png"/>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar bg_accepter navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->
-                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                <a href="#" ng-show="IsMobileDevice" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
