@@ -483,6 +483,7 @@
           <ScalarProperty Name="iconUrl" ColumnName="iconUrl" />
           <ScalarProperty Name="messageFrom" ColumnName="messageFrom" />
           <ScalarProperty Name="messageTo" ColumnName="messageTo" />
+          <ScalarProperty Name="messageSeen" ColumnName="messageSeen" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -498,6 +499,7 @@
           <ScalarProperty Name="iconUrl" ColumnName="iconUrl" />
           <ScalarProperty Name="messageFrom" ColumnName="messageFrom" />
           <ScalarProperty Name="messageTo" ColumnName="messageTo" />
+          <ScalarProperty Name="AlertSeen" ColumnName="AlertSeen" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

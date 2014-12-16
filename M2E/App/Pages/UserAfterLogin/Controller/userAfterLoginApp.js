@@ -80,6 +80,7 @@ define([appLocation.userPostLogin], function (app) {
                 stopBlockUI();
                 if (data.Status == "200") {
                     $rootScope.clientDetailResponse = data.Payload;
+                    $scope.UserNotificationsList.Messages = data.Payload.Messages;
                     CookieUtil.setUserName(data.Payload.FirstName + ' ' + data.Payload.LastName, userSession.keepMeSignedIn);
                     CookieUtil.setUserImageUrl(data.Payload.imageUrl, userSession.keepMeSignedIn);
                     if (data.Payload.isLocked == "true") {
@@ -100,6 +101,80 @@ define([appLocation.userPostLogin], function (app) {
             }).error(function (data, status, headers, config) {
 
             });
+        }
+
+        $scope.UserNotificationsList = {
+            Messages: {
+                //UnreadMessages: "5",
+                //CountLabelType: "success",                
+                //MessageList: [
+                //    {
+                //        link: "#",
+                //        imageUrl: "../../Template/AdminLTE-master/img/avatar3.png",
+                //        messageTitle: "Support Team angular",
+                //        MessagePostedInTimeAgo: "5 mins",
+                //        messageContent: "Why not buy a new awesome theme?"
+                //    },
+                //    {
+                //        link: "#",
+                //        imageUrl: "../../Template/AdminLTE-master/img/avatar2.png",
+                //        messageTitle: "AdminLTE Design Team angular",
+                //        MessagePostedInTimeAgo: "2 hours",
+                //        messageContent: "Why not buy a new awesome theme?"
+                //    },
+                //    {
+                //        link: "#",
+                //        imageUrl: "../../Template/AdminLTE-master/img/avatar.png",
+                //        messageTitle: "Developers angular",
+                //        MessagePostedInTimeAgo: "Today",
+                //        messageContent: "Why not buy a new awesome theme?"
+                //    },
+                //    {
+                //        link: "#",
+                //        imageUrl: "../../Template/AdminLTE-master/img/avatar2.png",
+                //        messageTitle: "AdminLTE Design Team angular",
+                //        MessagePostedInTimeAgo: "2 hours",
+                //        messageContent: "Why not buy a new awesome theme?"
+                //    }
+                //]
+            },
+
+            Notifications: {
+                UnreadNotifications: "6",
+                CountLabelType: "warning",
+                NotificationList:[
+                    {
+                        link: "#",
+                        NotificationMessage: "5 new members joined today angular",
+                        NotificationClass: "ion ion-ios7-people info",
+                        NotificationPostedTimeAgo: "2 hours"
+                    },
+                    {
+                        link: "#",
+                        NotificationMessage: "Very long description here that may not fit into the page and may cause design problems",
+                        NotificationClass: "fa fa-warning danger",
+                        NotificationPostedTimeAgo: "3 hours"
+                    },
+                    {
+                        link: "#",
+                        NotificationMessage: "5 new members joined angular",
+                        NotificationClass: "fa fa-users warning",
+                        NotificationPostedTimeAgo: "5 hours"
+                    },
+                    {
+                        link: "#",
+                        NotificationMessage: "25 sales made",
+                        NotificationClass: "ion ion-ios7-cart success",
+                        NotificationPostedTimeAgo: "1 hours"
+                    },
+                    {
+                        link: "#",
+                        NotificationMessage: "You changed your username",
+                        NotificationClass: "ion ion-ios7-person danger",
+                        NotificationPostedTimeAgo: "8 hours"
+                    }
+                ]
+            }
         }
 
         $scope.ClientCategoryList = [

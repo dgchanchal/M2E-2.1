@@ -257,6 +257,8 @@
     <Compile Include="Models\DataResponse\UserResponse\Survey\UserSurveyInfoTextBoxAnswerQuestion.cs" />
     <Compile Include="Models\DataResponse\UserResponse\Survey\UserSurveyResponse.cs" />
     <Compile Include="Models\DataResponse\UserResponse\UserActiveThreadsResponse.cs" />
+    <Compile Include="Models\DataResponse\UserResponse\UserMessageList.cs" />
+    <Compile Include="Models\DataResponse\UserResponse\UserMessagesResponse.cs" />
     <Compile Include="Models\DataResponse\UserResponse\UserProductSurveyTemplateModel.cs" />
     <Compile Include="Models\DataWrapper\ContactUsRequest.cs" />
     <Compile Include="Models\DataWrapper\CreateTemplateRequest.cs" />
@@ -382,6 +384,7 @@
     <Compile Include="Service\JobTemplate\CommonMethods\CreateSubTemplateByRefKey.cs" />
     <Compile Include="Service\LoginService.cs" />
     <Compile Include="Service\Login\WebLogin.cs" />
+    <Compile Include="Service\Notifications\UserMessageService.cs" />
     <Compile Include="Service\Register\WebRegister.cs" />
     <Compile Include="Service\SocialNetwork\facebook\FacebookHelper.cs" />
     <Compile Include="Service\SocialNetwork\facebook\FacebookService.cs" />

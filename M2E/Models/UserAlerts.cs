@@ -23,5 +23,6 @@ namespace M2E.Models
         public string iconUrl { get; set; }
         public string messageFrom { get; set; }
         public string messageTo { get; set; }
+        public string AlertSeen { get; set; }
     }
 }

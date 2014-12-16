@@ -10,6 +10,7 @@ using M2E.Models.Constants;
 using M2E.Encryption;
 using System.Configuration;
 using System.Collections.Generic;
+using M2E.Models.DataResponse.UserResponse;
 
 namespace M2E.Service.Client
 {
@@ -63,6 +64,28 @@ namespace M2E.Service.Client
                         createClientDetailResponse.availableBalance = userBalance.approved;
                         createClientDetailResponse.pendingBalance = userBalance.pending;
                         createClientDetailResponse.currency = userBalance.currency;
+                    }
+
+                    var userMessages =
+                        _db.UserMessages.Where(x => x.messageTo == username && x.userType == userType).OrderByDescending(x => x.dateTime).ToList();
+                    createClientDetailResponse.Messages = new UserMessagesResponse
+                    {
+                        CountLabelType = "success",
+                        UnreadMessages = userMessages.Count(x => x.messageSeen == Constants.status_false).ToString(),
+                        MessageList = new List<UserMessageList>()
+                    };
+                    foreach (var message in userMessages)
+                    {
+                        var userMessage = new UserMessageList
+                        {
+                            link = "#",
+                            MessagePostedInTimeAgo = "5 mins",
+                            MessageSeen = message.messageSeen,
+                            imageUrl = message.iconUrl,
+                            messageTitle = message.titleText,
+                            messageContent = message.bodyText
+                        };
+                        createClientDetailResponse.Messages.MessageList.Add(userMessage);
                     }
                 }
                 else

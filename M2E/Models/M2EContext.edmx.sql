@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 12/15/2014 21:06:12
+-- Date Created: 12/16/2014 11:28:44
 -- Generated from EDMX file: F:\PcOnGo_SVN\branches\M2E-2.0\M2E\Models\M2EContext.edmx
 -- --------------------------------------------------
 
@@ -590,7 +590,8 @@ CREATE TABLE [dbo].[UserMessages] (
     [priority] nvarchar(max)  NOT NULL,
     [iconUrl] nvarchar(max)  NOT NULL,
     [messageFrom] nvarchar(max)  NOT NULL,
-    [messageTo] nvarchar(max)  NOT NULL
+    [messageTo] nvarchar(max)  NOT NULL,
+    [messageSeen] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -604,7 +605,8 @@ CREATE TABLE [dbo].[UserAlerts] (
     [priority] nvarchar(max)  NOT NULL,
     [iconUrl] nvarchar(max)  NOT NULL,
     [messageFrom] nvarchar(max)  NOT NULL,
-    [messageTo] nvarchar(max)  NOT NULL
+    [messageTo] nvarchar(max)  NOT NULL,
+    [AlertSeen] nvarchar(max)  NOT NULL
 );
 GO
 

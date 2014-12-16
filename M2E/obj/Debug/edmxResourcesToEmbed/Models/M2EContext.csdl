@@ -490,6 +490,7 @@
     <Property Type="String" Name="iconUrl" Nullable="false" />
     <Property Type="String" Name="messageFrom" Nullable="false" />
     <Property Type="String" Name="messageTo" Nullable="false" />
+    <Property Type="String" Name="messageSeen" Nullable="false" />
   </EntityType>
   <EntityType Name="UserAlerts">
     <Key>
@@ -504,6 +505,7 @@
     <Property Type="String" Name="iconUrl" Nullable="false" />
     <Property Type="String" Name="messageFrom" Nullable="false" />
     <Property Type="String" Name="messageTo" Nullable="false" />
+    <Property Type="String" Name="AlertSeen" Nullable="false" />
   </EntityType>
   <EntityType Name="contactUs">
     <Key>

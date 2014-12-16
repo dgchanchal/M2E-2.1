@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using M2E.Models.DataResponse.UserResponse;
 
 namespace M2E.Models.DataResponse
 {
@@ -21,5 +22,6 @@ namespace M2E.Models.DataResponse
         public string availableBalance { get; set; }
         public string pendingBalance { get; set; }
         public string currency { get; set; }
+        public UserMessagesResponse Messages { get; set; }
     }
 }

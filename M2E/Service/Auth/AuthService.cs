@@ -10,6 +10,7 @@ using M2E.Models.DataWrapper;
 using M2E.CommonMethods;
 using System.Data.Entity.Validation;
 using System.Reflection;
+using M2E.Service.Notifications;
 using M2E.Service.UserService;
 using M2E.Session;
 using M2E.Models.DataResponse;
@@ -46,6 +47,11 @@ namespace M2E.Service.Auth
                 }
                 user.isActive = "true";
                 var Recommendations = _db.RecommendedBies.SingleOrDefault(x => x.RecommendedTo == user.Username);
+                
+                new UserMessageService().SendUserNotificationMessageAsync(
+                    "admin", user.Username, user.Type, "Account Verified", "Contratulations !! Your Account Verification done.", DateTime.Now, Constants.avatar
+                    );
+                
                 if (Recommendations != null)
                 {
                     Recommendations.isValid = Constants.status_true;

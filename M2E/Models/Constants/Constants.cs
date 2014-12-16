@@ -60,10 +60,17 @@ namespace M2E.Models.Constants
         public const string userType_user = "user";
         public const string userType_client = "client";
 
+        public const string avatar = "../../Template/AdminLTE-master/img/avatar.png";
+        public const string avatar2 = "../../Template/AdminLTE-master/img/avatar2.png";
+        public const string avatar3 = "../../Template/AdminLTE-master/img/avatar3.png";
+        public const string avatar03 = "../../Template/AdminLTE-master/img/avatar04.png";
+        public const string avatar5 = "../../Template/AdminLTE-master/img/avatar5.png";
+
         public const string questionTypeSAQ = "SAQ";
         public const string questionTypeMAQ = "MAQ";
         public const string questionTypeLAQ = "LAQ";
         public const string questionTypeTAQ = "TAQ";
+
 
         public const string demoUserEmail = "demo@demo.com";        
 

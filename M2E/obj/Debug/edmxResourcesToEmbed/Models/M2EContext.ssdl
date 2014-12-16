@@ -490,6 +490,7 @@
     <Property Name="iconUrl" Type="nvarchar(max)" Nullable="false" />
     <Property Name="messageFrom" Type="nvarchar(max)" Nullable="false" />
     <Property Name="messageTo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="messageSeen" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="UserAlerts">
     <Key>
@@ -504,6 +505,7 @@
     <Property Name="iconUrl" Type="nvarchar(max)" Nullable="false" />
     <Property Name="messageFrom" Type="nvarchar(max)" Nullable="false" />
     <Property Name="messageTo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AlertSeen" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="contactUs">
     <Key>
