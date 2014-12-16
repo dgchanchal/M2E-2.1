@@ -18,7 +18,7 @@ namespace M2E.Models
         public string userType { get; set; }
         public string username { get; set; }
         public string titleText { get; set; }
-        public string dateTime { get; set; }
+        public System.DateTime dateTime { get; set; }
         public string priority { get; set; }
         public string iconUrl { get; set; }
         public string messageFrom { get; set; }

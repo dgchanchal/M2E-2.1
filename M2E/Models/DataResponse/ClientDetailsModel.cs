@@ -23,5 +23,6 @@ namespace M2E.Models.DataResponse
         public string pendingBalance { get; set; }
         public string currency { get; set; }
         public UserMessagesResponse Messages { get; set; }
+        public UserNotificationsResponse Notifications { get; set; }
     }
 }

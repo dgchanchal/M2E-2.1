@@ -187,6 +187,9 @@ namespace M2E.CommonMethods
 								        htmlBody.Append("<p style=\"font-size:12px; line-height:18px;\">");
                                         htmlBody.Append("<a href=\"http://" + requestUrlAuthority + "/#/" + "validate/" + toMail + "/" + guid + "\"> Click here to validate your account </a>");
 								        htmlBody.Append("</p>");
+                                        htmlBody.Append("<br> OR <br><p style=\"font-size:12px; line-height:18px;\">");
+                                        htmlBody.Append("copy given URL in your browser <br>http://" + requestUrlAuthority + "/#/" + "validate/" + toMail + "/" + guid + " <br>");
+                                        htmlBody.Append("</p>");
 							        htmlBody.Append("</td>");
 						        htmlBody.Append("</tr>");
 					        htmlBody.Append("</table>");

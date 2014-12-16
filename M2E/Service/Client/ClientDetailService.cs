@@ -71,7 +71,7 @@ namespace M2E.Service.Client
                     createClientDetailResponse.Messages = new UserMessagesResponse
                     {
                         CountLabelType = "success",
-                        UnreadMessages = userMessages.Count(x => x.messageSeen == Constants.status_false).ToString(),
+                        UnreadMessages = userMessages.Count(x => x.messageSeen == Constants.status_false).ToString(CultureInfo.InvariantCulture),
                         MessageList = new List<UserMessageList>()
                     };
                     foreach (var message in userMessages)
@@ -87,6 +87,31 @@ namespace M2E.Service.Client
                         };
                         createClientDetailResponse.Messages.MessageList.Add(userMessage);
                     }
+
+                    var userNotifications =
+                        _db.UserAlerts.Where(x => x.messageTo == username && x.userType == userType)
+                            .OrderByDescending(x => x.dateTime)
+                            .ToList();
+                    createClientDetailResponse.Notifications = new UserNotificationsResponse
+                    {
+                        CountLabelType = "warning",
+                        UnreadNotifications = userNotifications.Count(x => x.AlertSeen == Constants.status_false)
+                            .ToString(CultureInfo.InvariantCulture),
+                        NotificationList = new List<UserNotificationList>()
+                    };
+
+                    foreach (var notification in userNotifications)
+                    {
+                        var userNotification = new UserNotificationList
+                        {
+                            link = "#",
+                            NotificationClass = notification.iconUrl,
+                            NotificationMessage = notification.titleText,
+                            NotificationPostedTimeAgo = "10 mins"
+                        };
+                        createClientDetailResponse.Notifications.NotificationList.Add(userNotification);
+                    }
+
                 }
                 else
                 {
