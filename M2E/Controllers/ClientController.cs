@@ -13,6 +13,8 @@ using System.IO;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using M2E.Encryption;
+using M2E.signalRPushNotifications;
+using Microsoft.AspNet.SignalR;
 
 namespace M2E.Controllers
 {
@@ -25,7 +27,9 @@ namespace M2E.Controllers
         private readonly M2EContext _db = new M2EContext();
         public ActionResult Index()
         {
-            Logger.Info("Client Controller index page");  
+            //Logger.Info("Client Controller index page");
+            //var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
+            //hubContext.Clients.All.updateUserNotificationMessage("user", "#", "../../Template/AdminLTE-master/img/avatar5.png", "signalR Title", "5 mins ago", "signalR Content..");
             return View();
         }
 

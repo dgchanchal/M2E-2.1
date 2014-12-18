@@ -56,9 +56,9 @@ define([appLocation.userPostLogin], function (app) {
         _.defer(function () { $scope.$apply(); });
         $rootScope.IsMobileDevice = (mobileDevice || isAndroidDevice) ? true : false;
 
-        $scope.signOut = function () {
+        $scope.signOut = function() {
             logout();
-        }
+        };
 
         loadClientDetails();
 
@@ -105,9 +105,9 @@ define([appLocation.userPostLogin], function (app) {
 
         $scope.UserNotificationsList = {
             Messages: {
-                //UnreadMessages: "5",
-                //CountLabelType: "success",                
-                //MessageList: [
+                UnreadMessages: "0",
+                CountLabelType: "success",                
+                MessageList: [
                 //    {
                 //        link: "#",
                 //        imageUrl: "../../Template/AdminLTE-master/img/avatar3.png",
@@ -136,13 +136,14 @@ define([appLocation.userPostLogin], function (app) {
                 //        MessagePostedInTimeAgo: "2 hours",
                 //        messageContent: "Why not buy a new awesome theme?"
                 //    }
-                //]
+                ]
+            
             },
 
             Notifications: {
                 UnreadNotifications: "6",
                 CountLabelType: "warning",
-                NotificationList:[
+                NotificationList: [
                     {
                         link: "#",
                         NotificationMessage: "5 new members joined today angular",
@@ -175,7 +176,21 @@ define([appLocation.userPostLogin], function (app) {
                     }
                 ]
             }
-        }
+        };
+
+        $scope.updateUserNotificationMessage = function(userType, newLink, newImageUrl, newMessageTitle, newMessagePostedInTimeAgo, newMessageContent) {
+            //alert("inside angular js function updateBeforeLoginUserProjectDetailsDiv");
+            var realTimeMessage = {
+                link: newLink,
+                imageUrl: newImageUrl,
+                messageTitle: newMessageTitle,
+                MessagePostedInTimeAgo: newMessagePostedInTimeAgo,
+                messageContent: newMessageContent
+            };
+            $scope.UserNotificationsList.Messages.UnreadMessages = parseInt($scope.UserNotificationsList.Messages.UnreadMessages) + 1;
+            $scope.UserNotificationsList.Messages.MessageList.push(realTimeMessage);
+
+        };
 
         $scope.ClientCategoryList = [
        {
