@@ -27,6 +27,7 @@ using System.Net;
 using System.IO;
 using M2E.Service.SocialNetwork.google;
 using System.Text;
+using M2E.Service.Notifications;
 
 namespace M2E.Controllers
 {
@@ -214,6 +215,11 @@ namespace M2E.Controllers
                         string successRate = "";
                         string totalUsers = _db.Users.Count().ToString(CultureInfo.InvariantCulture);
                         string projectCategories = "";
+
+                        new UserMessageService().SendUserNotificationForAccountVerificationSuccess(
+                            user.Username, user.Type
+                        );
+
                         var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRHub>();
                         hubContext.Clients.All.updateBeforeLoginUserProjectDetails(totalProjects, successRate, totalUsers, projectCategories);                        
                     }
@@ -455,6 +461,20 @@ namespace M2E.Controllers
                             ViewBag.umtzk = response.Payload.UTMZK;
                             ViewBag.umtzv = response.Payload.UTMZV;
                             ViewBag.isNewUser = "true";
+
+                            var signalRHub = new SignalRHub();
+                            string totalProjects = "";
+                            string successRate = "";
+                            string totalUsers = _db.Users.Count().ToString(CultureInfo.InvariantCulture);
+                            string projectCategories = "";
+
+                            new UserMessageService().SendUserNotificationForAccountVerificationSuccess(
+                                user.Username, user.Type
+                            );
+
+                            var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRHub>();
+                            hubContext.Clients.All.updateBeforeLoginUserProjectDetails(totalProjects, successRate, totalUsers, projectCategories);
+
                             return View();
                         }
                         catch (DbEntityValidationException e)
@@ -463,13 +483,7 @@ namespace M2E.Controllers
                             response.Status = 500;
                             response.Message = "Internal Server Error !!";
                         }
-                        var signalRHub = new SignalRHub();
-                        string totalProjects = "";
-                        string successRate = "";
-                        string totalUsers = _db.Users.Count().ToString(CultureInfo.InvariantCulture);
-                        string projectCategories = "";
-                        var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRHub>();
-                        hubContext.Clients.All.updateBeforeLoginUserProjectDetails(totalProjects, successRate, totalUsers, projectCategories);
+                        
                     }
                     catch (DbEntityValidationException e)
                     {
@@ -630,6 +644,20 @@ namespace M2E.Controllers
                                 ViewBag.umtzk = response.Payload.UTMZK;
                                 ViewBag.umtzv = response.Payload.UTMZV;
                                 ViewBag.isNewUser = "true";
+
+                                var signalRHub = new SignalRHub();
+                                string totalProjects = "";
+                                string successRate = "";
+                                string totalUsers = _db.Users.Count().ToString(CultureInfo.InvariantCulture);
+                                string projectCategories = "";
+
+                                new UserMessageService().SendUserNotificationForAccountVerificationSuccess(
+                                    user.Username, user.Type
+                                );
+
+                                var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRHub>();
+                                hubContext.Clients.All.updateBeforeLoginUserProjectDetails(totalProjects, successRate, totalUsers, projectCategories);
+
                                 return View();
                             }
                             catch (DbEntityValidationException e)
@@ -638,13 +666,7 @@ namespace M2E.Controllers
                                 response.Status = 500;
                                 response.Message = "Internal Server Error !!";
                             }
-                            var signalRHub = new SignalRHub();
-                            string totalProjects = "";
-                            string successRate = "";
-                            string totalUsers = _db.Users.Count().ToString(CultureInfo.InvariantCulture);
-                            string projectCategories = "";
-                            var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRHub>();
-                            hubContext.Clients.All.updateBeforeLoginUserProjectDetails(totalProjects, successRate, totalUsers, projectCategories);
+                            
                         }
                         catch (DbEntityValidationException e)
                         {

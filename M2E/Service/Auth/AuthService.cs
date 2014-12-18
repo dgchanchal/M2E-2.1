@@ -48,10 +48,10 @@ namespace M2E.Service.Auth
                 user.isActive = "true";
                 var Recommendations = _db.RecommendedBies.SingleOrDefault(x => x.RecommendedTo == user.Username);
                 
-                new UserMessageService().SendUserNotificationMessageAsync(
-                    "admin", user.Username, user.Type, "Account Verified", "Contratulations !! Your Account Verification done.", DateTime.Now, Constants.avatar
-                    );
-                
+                new UserMessageService().SendUserNotificationForAccountVerificationSuccess(
+                            user.Username, user.Type
+                        );
+
                 if (Recommendations != null)
                 {
                     Recommendations.isValid = Constants.status_true;
