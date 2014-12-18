@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using M2E.Models.Constants;
 using M2E.signalRPushNotifications;
 using Microsoft.AspNet.SignalR;
 using M2E.Session;
@@ -14,7 +15,7 @@ namespace M2E.Service.UserService
         {           
             var SignalRClientHub = new SignalRClientHub();
             var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
-            dynamic client = SignalRManager.getSignalRDetail(username);
+            dynamic client = SignalRManager.getSignalRDetail(username+Constants.userType_client);
             if (client != null)
             {
                 client.updateClientProgressChart(Convert.ToString(JobId), totalThreads, Convert.ToString(JobCompleted), Convert.ToString(JobAssigned), Convert.ToString(JobReviewed));

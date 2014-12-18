@@ -75,8 +75,8 @@ namespace M2E.Service.Notifications
         {            
             try
             {                
-                var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
-                dynamic client = SignalRManager.getSignalRDetail(toUsername);
+                var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRUserHub>();
+                dynamic client = SignalRManager.getSignalRDetail(toUsername+Constants.userType_user);
                 client.updateUserNotificationMessage(Constants.userType_user, "#", imageUrl, messageTitle, messagePostedTime, messageBody);
             }
             catch (DbEntityValidationException ex)

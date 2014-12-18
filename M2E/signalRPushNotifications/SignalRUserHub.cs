@@ -8,16 +8,16 @@ using M2E.Session;
 
 namespace M2E.signalRPushNotifications
 {
-    public class SignalRClientHub : Hub
+    public class SignalRUserHub : Hub
     {
-        private static Dictionary<string, dynamic> connectedClients = new Dictionary<string, dynamic>();
+        private static Dictionary<string, dynamic> connectedUsers = new Dictionary<string, dynamic>();
 
-        public void RegisterClient(string tokenId)
+        public void RegisterUser(string tokenId)
         {
             M2ESession session = TokenManager.getSessionInfo(tokenId);
             if (session != null)
             {
-                SignalRManager.SignalRCreateManager(session.UserName+Constants.userType_client, Clients.Caller);
+                SignalRManager.SignalRCreateManager(session.UserName+Constants.userType_user, Clients.Caller);
                 Clients.Caller.addMessage("'" + session.UserName + "'registered.");
             }            
         }

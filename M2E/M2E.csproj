@@ -406,6 +406,7 @@
     <Compile Include="Session\M2ESession.cs" />
     <Compile Include="Session\SignalRManager.cs" />
     <Compile Include="Session\TokenManager.cs" />
+    <Compile Include="signalRPushNotifications\SignalRUserHub.cs" />
     <Compile Include="signalRPushNotifications\SignalRClientHub.cs" />
     <Compile Include="signalRPushNotifications\SignalRHub.cs" />
   </ItemGroup>
@@ -551,6 +552,7 @@
     <Content Include="App\Pages\UserAfterLogin\Controller\panzoom\hamster.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\panzoom\mousewheel.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\panzoom\services\PanZoomService.js" />
+    <Content Include="App\Pages\UserAfterLogin\Controller\singleRControllerUserAfterLogin.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\userAfterLoginApp.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\CookieServiceUserView.js" />
     <Content Include="App\Pages\UserAfterLogin\Controller\common\SessionManagement.js" />
