@@ -20,11 +20,15 @@ namespace M2E.Service.Notifications
         private static readonly ILogger Logger = new Logger(Convert.ToString(MethodBase.GetCurrentMethod().DeclaringType));
         public delegate void SendUserNotification_Delegate(string fromUsername, string toUsername, string userType, string messageTitle, DateTime messagePostedTime, string imageUrlCSSClass);
 
-        public void SendUserSurveyAcceptanceMessage(string toUsername, string messageTitle)
+        public void SendUserSurveyAcceptanceMessageAsync(string toUsername, string messageTitle)
         {
             SendUserNotificationAsync("Admin", toUsername, Constants.userType_user, messageTitle, DateTime.Now, Constants.CSSImage_success);
         }
 
+        public void SendUserSurveyAcceptanceMessage(string toUsername, string messageTitle)
+        {
+            SendUserNotification("Admin", toUsername, Constants.userType_user, messageTitle, DateTime.Now, Constants.CSSImage_success);
+        }
         public void SendUserNotificationAsync(string fromUsername, string toUsername, string userType, string messageTitle, DateTime messagePostedTime, string imageUrlCssClass)
         {
             try

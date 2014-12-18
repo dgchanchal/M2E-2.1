@@ -1021,6 +1021,8 @@ namespace M2E.Service.JobTemplate
                             userReputationTempSum += HashMap[userAnswer.type + userAnswer.answer];
                             totalQuestions++;
                         }
+                        if (totalQuestions < 1)
+                            totalQuestions = 1;
                         averageReputation = userReputationTempSum/totalQuestions;
                         var result = new UserReputationService().UpdateUserBalance(Constants.userType_user, users,
                             Convert.ToDouble(
