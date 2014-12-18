@@ -262,6 +262,8 @@
     <Compile Include="Models\DataResponse\UserResponse\UserNotificationList.cs" />
     <Compile Include="Models\DataResponse\UserResponse\UserNotificationsResponse.cs" />
     <Compile Include="Models\DataResponse\UserResponse\UserProductSurveyTemplateModel.cs" />
+    <Compile Include="Models\DataResponse\UserResponse\UserTaskList.cs" />
+    <Compile Include="Models\DataResponse\UserResponse\UserTasksResponse.cs" />
     <Compile Include="Models\DataWrapper\ContactUsRequest.cs" />
     <Compile Include="Models\DataWrapper\CreateTemplateRequest.cs" />
     <Compile Include="Models\DataWrapper\CreateTemplate\CreateTemplateeditableInstructionsListModel.cs" />

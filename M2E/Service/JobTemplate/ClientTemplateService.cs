@@ -818,8 +818,10 @@ namespace M2E.Service.JobTemplate
                     string successRate = "";
                     string totalUsers = "";
                     string projectCategories = "";
+                    
                     var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRHub>();
                     hubContext.Clients.All.updateBeforeLoginUserProjectDetails(totalProjects, successRate, totalUsers, projectCategories);
+
 
                     response.Status = 200;
                     response.Message = "success-" + digitKey;
@@ -868,6 +870,8 @@ namespace M2E.Service.JobTemplate
                     var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRHub>();
                     hubContext.Clients.All.updateBeforeLoginUserProjectDetails(totalProjects, successRate, totalUsers, projectCategories);
 
+                    new SendNewTaskService().SendUserTaskNotificationToAllAsync(createTemplateQuestionsInfoInsert.title, "Total " + createTemplateQuestionsInfoInsert.totalThreads+" available",DateTime.Now);
+                   
                     response.Status = 200;
                     response.Message = "success-" + digitKey;
                     response.Payload = refKey;

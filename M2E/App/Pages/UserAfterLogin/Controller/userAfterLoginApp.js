@@ -178,24 +178,24 @@ define([appLocation.userPostLogin], function (app) {
                 ]
             },
             Tasks: {
-                UnreadTasks: "3",
+                UnreadTasks: "0",
                 CountLabelType: "danger",
                 TaskList: [
-                    {
-                        link: "#",
-                        TaskDetail: "This is task Detail",
-                        TotalCompleted:"4% completed of 1500 Threads"
-                    },
-                    {
-                        link: "#",
-                        TaskDetail: "This 2 is task Detail",
-                        TotalCompleted: "8% completed of 1500 Threads"
-                    },
-                    {
-                        link: "#",
-                        TaskDetail: "This is task Detail",
-                        TotalCompleted: "5% completed of 1500 Threads"
-                    }
+                    //{
+                    //    link: "#",
+                    //    TaskDetail: "This is task Detail",
+                    //    TotalCompleted:"4% completed of 1500 Threads"
+                    //},
+                    //{
+                    //    link: "#",
+                    //    TaskDetail: "This 2 is task Detail",
+                    //    TotalCompleted: "8% completed of 1500 Threads"
+                    //},
+                    //{
+                    //    link: "#",
+                    //    TaskDetail: "This is task Detail",
+                    //    TotalCompleted: "5% completed of 1500 Threads"
+                    //}
                 ]
             }
         };
@@ -211,6 +211,30 @@ define([appLocation.userPostLogin], function (app) {
             };
             $scope.UserNotificationsList.Messages.UnreadMessages = parseInt($scope.UserNotificationsList.Messages.UnreadMessages) + 1;
             $scope.UserNotificationsList.Messages.MessageList.push(realTimeMessage);
+
+        };
+
+        $scope.updateAllUserTaskNotification = function (newLink, newMessageTitle, newMessagePostedInTimeAgo, newMessageBody) {
+            //alert("inside angular js function updateBeforeLoginUserProjectDetailsDiv");
+            var realTimeTask = {
+                link: newLink,
+                TaskDetail: newMessageTitle,
+                TotalCompleted: newMessagePostedInTimeAgo
+            };
+            $scope.UserNotificationsList.Tasks.UnreadTasks = parseInt($scope.UserNotificationsList.Tasks.UnreadTasks) + 1;
+            $scope.UserNotificationsList.Tasks.TaskList.push(realTimeTask);
+
+        };
+
+        $scope.updateUserTaskNotification = function (userType, newLink, newMessageTitle, newMessagePostedInTimeAgo, newMessageBody) {
+            //alert("inside angular js function updateBeforeLoginUserProjectDetailsDiv");
+            var realTimeTask = {
+                link: newLink,
+                TaskDetail: newMessageTitle,
+                TotalCompleted: newMessagePostedInTimeAgo
+            };
+            $scope.UserNotificationsList.Tasks.UnreadTasks = parseInt($scope.UserNotificationsList.Tasks.UnreadTasks) + 1;
+            $scope.UserNotificationsList.Tasks.TaskList.push(realTimeTask);
 
         };
 

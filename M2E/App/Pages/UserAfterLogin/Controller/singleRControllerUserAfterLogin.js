@@ -31,6 +31,14 @@
 
     };
 
+    notificationUserHub.client.updateAllUserTaskNotification = function (userType, newLink, newMessageTitle, newMessagePostedInTimeAgo, newMessageBody) {
+        var scope = angular.element(document.getElementById("mainUser")).scope();
+        scope.$apply(function () {
+            scope.updateAllUserTaskNotification(userType, newLink, newMessageTitle, newMessagePostedInTimeAgo, newMessageBody);
+        });
+
+    };
+
     notificationUserHub.client.updateUserNotification = function (userType, newLink, newImageUrl, newMessageTitle, newMessagePostedInTimeAgo) {
         var scope = angular.element(document.getElementById("mainUser")).scope();
         scope.$apply(function () {
