@@ -151,7 +151,7 @@
                                     <ul class="menu">
                                         <li ng-repeat="notification in UserNotificationsList.Notifications.NotificationList">
                                             <a href="{{notification.link}}">
-                                                <i ng-class="notification.NotificationClass"></i> <span ng-bind="notification.NotificationMessage"></span>
+                                                @*<i ng-class="notification.NotificationClass"></i>*@ <span data-ng-bind-html="notification.NotificationMessage"></span>
                                             </a>
                                         </li>
                                         

@@ -33,7 +33,7 @@ namespace M2E.Controllers
             //var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
             //hubContext.Clients.All.updateUserNotificationMessage("user", "#", "../../Template/AdminLTE-master/img/avatar5.png", "signalR Title", "5 mins ago", "signalR Content..");
             //new UserMessageService().SendUserNotificationMessageAsync("admin","sumitchourasia91@gmail.com",Constants.userType_user,"message title","message body",DateTime.Now,Constants.avatar3);
-            new UserNotificationService().SendUserNotificationAsync("admin","sumitchourasia91@gmail.com",Constants.userType_user,"this is notification title",DateTime.Now,Constants.CSSImage_info);
+            //new UserNotificationService().SendUserNotificationAsync("admin","sumitchourasia91@gmail.com",Constants.userType_user,"this is notification title",DateTime.Now,Constants.CSSImage_info);
             return View();
         }
 

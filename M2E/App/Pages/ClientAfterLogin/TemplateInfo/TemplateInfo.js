@@ -121,7 +121,7 @@ define([appLocation.postLogin], function (app) {
                     stopBlockUI();
                     if (data.Status == "200") {
                         
-                        showToastMessage("Success", "Deleted Successfully");
+                        showToastMessage("Success", userResponse+ " Successfully");
                         location.href = "#/";
                     }
                     else if (data.Status == "404") {                        

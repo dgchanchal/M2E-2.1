@@ -500,7 +500,7 @@
     <Property Name="userType" Type="nvarchar(max)" Nullable="false" />
     <Property Name="username" Type="nvarchar(max)" Nullable="false" />
     <Property Name="titleText" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="dateTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="dateTime" Type="datetime" Nullable="false" />
     <Property Name="priority" Type="nvarchar(max)" Nullable="false" />
     <Property Name="iconUrl" Type="nvarchar(max)" Nullable="false" />
     <Property Name="messageFrom" Type="nvarchar(max)" Nullable="false" />

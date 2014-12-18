@@ -11,6 +11,7 @@ using System.Globalization;
 using M2E.Models.DataWrapper.CreateTemplate;
 using System.Data.Entity.Validation;
 using M2E.Service.JobTemplate.CommonMethods;
+using M2E.Service.Notifications;
 using M2E.Service.UserService;
 using M2E.Session;
 using M2E.Models.DataWrapper;
@@ -1024,7 +1025,7 @@ namespace M2E.Service.JobTemplate
                         var result = new UserReputationService().UpdateUserBalance(Constants.userType_user, users,
                             Convert.ToDouble(
                                surveyDetail.payPerUser), 0, averageReputation, Constants.payment_credit, surveyDetail.title, surveyDetail.type,
-                            surveyDetail.subType,true);
+                            surveyDetail.subType,true);                        
                     }
                     surveyDetail.verified = Constants.status_accepted;
                     try

@@ -9,6 +9,7 @@ using M2E.Models;
 using System.Data.Entity.Validation;
 using M2E.Models.Constants;
 using System.Configuration;
+using M2E.Service.Notifications;
 
 namespace M2E.Service.UserService
 {
@@ -128,6 +129,7 @@ namespace M2E.Service.UserService
                         reputation = Convert.ToString(reputationScore)
                     };
                     _db.UserReputationMappings.Add(UserReputationMappingData);
+                    new UserNotificationService().SendUserSurveyAcceptanceMessage(username, "You Earned Reputation:" + Convert.ToString(reputationScore) + " <br/> Money: " + Convert.ToString(approved) + "<br/> From Survey - " + title);
                 }                
             }
 

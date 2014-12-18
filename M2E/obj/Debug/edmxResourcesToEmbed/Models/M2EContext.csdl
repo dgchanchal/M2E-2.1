@@ -500,7 +500,7 @@
     <Property Type="String" Name="userType" Nullable="false" />
     <Property Type="String" Name="username" Nullable="false" />
     <Property Type="String" Name="titleText" Nullable="false" />
-    <Property Type="String" Name="dateTime" Nullable="false" />
+    <Property Type="DateTime" Name="dateTime" Nullable="false" />
     <Property Type="String" Name="priority" Nullable="false" />
     <Property Type="String" Name="iconUrl" Nullable="false" />
     <Property Type="String" Name="messageFrom" Nullable="false" />
