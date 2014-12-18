@@ -8,6 +8,9 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 using M2E.Models.Constants;
+using M2E.Session;
+using M2E.signalRPushNotifications;
+using Microsoft.AspNet.SignalR;
 
 namespace M2E.Service.Notifications
 {
@@ -60,6 +63,21 @@ namespace M2E.Service.Notifications
             try
             {
                 _db.SaveChanges();
+                SendRealTimeUserNotificationMessage(fromUsername, toUsername, userType, messageTitle, messageBody, messagePostedTime, imageUrl);
+            }
+            catch (DbEntityValidationException ex)
+            {
+                DbContextException.LogDbContextException(ex);
+            }
+        }
+
+        public void SendRealTimeUserNotificationMessage(string fromUsername, string toUsername, string userType, string messageTitle, string messageBody, DateTime messagePostedTime, string imageUrl)
+        {            
+            try
+            {                
+                var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
+                dynamic client = SignalRManager.getSignalRDetail(toUsername);
+                client.updateUserNotificationMessage(Constants.userType_user, "#", imageUrl, messageTitle, messagePostedTime, messageBody);
             }
             catch (DbEntityValidationException ex)
             {

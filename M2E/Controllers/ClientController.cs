@@ -3,11 +3,13 @@ using System.Globalization;
 using System.Web.Mvc;
 using M2E.Common.Logger;
 using System.Reflection;
+using M2E.Models.Constants;
 using M2E.Models.DataWrapper;
 using M2E.Models;
 using M2E.CommonMethods;
 using M2E.Service.JobTemplate;
 using M2E.Service.Client;
+using M2E.Service.Notifications;
 using M2E.Session;
 using System.IO;
 using System.Web.UI;
@@ -30,6 +32,7 @@ namespace M2E.Controllers
             //Logger.Info("Client Controller index page");
             //var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
             //hubContext.Clients.All.updateUserNotificationMessage("user", "#", "../../Template/AdminLTE-master/img/avatar5.png", "signalR Title", "5 mins ago", "signalR Content..");
+            new UserMessageService().SendUserNotificationMessageAsync("admin","sumitchourasia91@gmail.com",Constants.userType_user,"message title","message body",DateTime.Now,Constants.avatar3);
             return View();
         }
 
