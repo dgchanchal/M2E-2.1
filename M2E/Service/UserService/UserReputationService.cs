@@ -131,7 +131,7 @@ namespace M2E.Service.UserService
                     _db.UserReputationMappings.Add(UserReputationMappingData);
 
                     //synchronous call in thread.
-                    new UserNotificationService().SendUserSurveyAcceptanceMessage(username, "You Earned Reputation:" + Convert.ToString(reputationScore) + " <br/> Money: " + Convert.ToString(approved) + "<br/> From Survey - " + title);
+                    new UserNotificationService().SendUserSurveyAcceptanceMessage(username, "You Have Earned Reputation:" + Convert.ToString(reputationScore) + " <br/> Money: " + Convert.ToString(approved) + "<br/> From Survey - " + title);
                 }                
             }
 

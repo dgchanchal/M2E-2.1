@@ -29,6 +29,7 @@ namespace M2E.Service.Notifications
         {
             SendUserNotification("Admin", toUsername, Constants.userType_user, messageTitle, DateTime.Now, Constants.CSSImage_success);
         }
+        
         public void SendUserNotificationAsync(string fromUsername, string toUsername, string userType, string messageTitle, DateTime messagePostedTime, string imageUrlCssClass)
         {
             try

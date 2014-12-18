@@ -176,6 +176,27 @@ define([appLocation.userPostLogin], function (app) {
                     //    NotificationPostedTimeAgo: "8 hours"
                     //}
                 ]
+            },
+            Tasks: {
+                UnreadTasks: "3",
+                CountLabelType: "danger",
+                TaskList: [
+                    {
+                        link: "#",
+                        TaskDetail: "This is task Detail",
+                        TotalCompleted:"4% completed of 1500 Threads"
+                    },
+                    {
+                        link: "#",
+                        TaskDetail: "This 2 is task Detail",
+                        TotalCompleted: "8% completed of 1500 Threads"
+                    },
+                    {
+                        link: "#",
+                        TaskDetail: "This is task Detail",
+                        TotalCompleted: "5% completed of 1500 Threads"
+                    }
+                ]
             }
         };
 

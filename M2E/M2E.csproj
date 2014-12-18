@@ -386,6 +386,7 @@
     <Compile Include="Service\JobTemplate\CommonMethods\CreateSubTemplateByRefKey.cs" />
     <Compile Include="Service\LoginService.cs" />
     <Compile Include="Service\Login\WebLogin.cs" />
+    <Compile Include="Service\Notifications\SendNewTaskService.cs" />
     <Compile Include="Service\Notifications\UserMessageService.cs" />
     <Compile Include="Service\Notifications\UserNotificationService.cs" />
     <Compile Include="Service\Register\WebRegister.cs" />
