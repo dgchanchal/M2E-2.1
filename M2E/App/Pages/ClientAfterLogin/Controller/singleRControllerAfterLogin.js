@@ -22,14 +22,7 @@
         //$("#messages2").append("<li>" + message + "</li>");
 
     };
-
-    notificationClientHub.client.updateUserNotificationMessage = function (userType, newLink, newImageUrl, newMessageTitle, newMessagePostedInTimeAgo, newMessageContent) {
-        var scope = angular.element(document.getElementById("mainUser")).scope();
-        scope.$apply(function () {
-            scope.updateUserNotificationMessage(userType, newLink, newImageUrl, newMessageTitle, newMessagePostedInTimeAgo, newMessageContent);
-        });
-
-    };
+    
 
     notificationClientHub.client.updateClientProgressChart = function (Id, JobTotal, JobCompleted, JobAssigned, JobReviewed) {
         //showToastMessage("Success", "update client progress bar Successfully");

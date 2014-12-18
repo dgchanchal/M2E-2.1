@@ -31,7 +31,14 @@
 
     };
 
-    
+    notificationUserHub.client.updateUserNotification = function (userType, newLink, newImageUrl, newMessageTitle, newMessagePostedInTimeAgo) {
+        var scope = angular.element(document.getElementById("mainUser")).scope();
+        scope.$apply(function () {
+            scope.updateUserNotification(userType, newLink, newImageUrl, newMessageTitle, newMessagePostedInTimeAgo);
+        });
+
+    };
+
     // Start the connection
 
     $.connection.hub.start().done(function () {

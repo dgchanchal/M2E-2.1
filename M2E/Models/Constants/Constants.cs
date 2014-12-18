@@ -66,6 +66,12 @@ namespace M2E.Models.Constants
         public const string avatar03 = "../../Template/AdminLTE-master/img/avatar04.png";
         public const string avatar5 = "../../Template/AdminLTE-master/img/avatar5.png";
 
+        public const string CSSImage_info = "ion ion-ios7-people info";
+        public const string CSSImage_danger = "fa fa-warning danger";
+        public const string CSSImage_warning = "fa fa-users warning";
+        public const string CSSImage_success = "ion ion-ios7-cart success";
+        
+
         public const string questionTypeSAQ = "SAQ";
         public const string questionTypeMAQ = "MAQ";
         public const string questionTypeLAQ = "LAQ";
