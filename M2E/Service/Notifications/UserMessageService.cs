@@ -43,6 +43,29 @@ namespace M2E.Service.Notifications
             }
         }
 
+
+        public ResponseModel<List<UserMessages>> GetAllNotificationMessage(string username,string userType)
+        {
+            var response = new ResponseModel<List<UserMessages>>();
+            try
+            {
+                response.Payload =
+                    _db.UserMessages.Where(x => x.messageTo == username && x.userType == userType)
+                        .OrderByDescending(x => x.dateTime)
+                        .ToList();
+                response.Message = "success";
+                response.Status = 200;
+                return response;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("GetAllNotificationMessage", ex);
+                response.Message = "Internal server Error !!";
+                response.Status = 500;
+                return response;
+            }
+        }
+
         public void SendUserNotificationMessage(string fromUsername,string toUsername,string userType,string messageTitle,string messageBody,DateTime messagePostedTime,string imageUrl)
         {
             var userMessage = new UserMessages

@@ -169,6 +169,9 @@ appRequire = require
             },
             UserAfterLoginImageModeration: {
                 deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService", "fancybox","PanZoomService","panzoomwidget"]
+            },
+            UserAfterLoginAllMessages: {
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "userAfterLoginCookieService"]
             }
                         
         },
@@ -234,7 +237,8 @@ appRequire = require
             UserAfterLoginFacebookLike: "../../App/Pages/UserAfterLogin/Ads/facebookLike/facebookLike",//used
             UserAfterLoginReputationHistory: "../../App/Pages/UserAfterLogin/UserReputationHistory/UserReputationHistory",//used
             UserAfterLoginSubmitIdProofPage: "../../App/Pages/UserAfterLogin/SubmitIdProof/SubmitIdProof",//used
-            UserAfterLoginEarningHistory: "../../App/Pages/UserAfterLogin/UserEarningHistory/UserEarningHistory"//used
+            UserAfterLoginEarningHistory: "../../App/Pages/UserAfterLogin/UserEarningHistory/UserEarningHistory",//used
+            UserAfterLoginAllMessages: "../../App/Pages/UserAfterLogin/ShowAllMessages/ShowAllMessages"//used
             
         },
         urlArgs: ""
@@ -248,7 +252,7 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "userAfterLoginActiveThreads","UserAfterLoginAngularTranscriptionTemplate","hamster","mousewheel",
     "panzoom", "PanZoomService", "panzoomwidget", "angular_route", "sanitize", "angular_animate", "UserAfterLoginImageModeration", "UserAfterLoginFacebookLike",
     "UserAfterLoginReferralPage", "UserAfterLoginEarningHistory", "UserAfterLoginReputationHistory", "angularjs_fileUpload_shim", "angularjs_fileUpload",
-    "UserAfterLoginSubmitIdProofPage"
+    "UserAfterLoginSubmitIdProofPage", "UserAfterLoginAllMessages"
 ], function() {
     angular.bootstrap(document.getElementById("mainUser"), ["afterLoginUserApp"]);
 });

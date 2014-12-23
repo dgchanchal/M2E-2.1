@@ -38,9 +38,7 @@ namespace M2E.Service.Client
                         gender = clientDetailDbResult.gender,
                         isLocked = clientDetailDbResult.Locked
                     };
-                    response.Status = 200;
-                    response.Message = "success";
-                    response.Payload = createClientDetailResponse;
+                    
 
                     var userReputation = _db.UserReputations.SingleOrDefault(x => x.username == clientDetailDbResult.Username);
                     if (userReputation == null)
@@ -111,6 +109,10 @@ namespace M2E.Service.Client
                         };
                         createClientDetailResponse.Notifications.NotificationList.Add(userNotification);
                     }
+                    
+                    response.Status = 200;
+                    response.Message = "success";
+                    response.Payload = createClientDetailResponse;
 
                 }
                 else
