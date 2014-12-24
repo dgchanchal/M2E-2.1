@@ -18,17 +18,17 @@ namespace M2E.Service.Referral
         private static readonly ILogger logger = new Logger(Convert.ToString(MethodBase.GetCurrentMethod().DeclaringType));
         private DbContextException _dbContextException = new DbContextException();
         private readonly M2EContext _db = new M2EContext();
-        public delegate void payReferralBonus_Delegate(String refKey, String recommendedToUsername);
+        public delegate void payReferralBonus_Delegate(String refKey, String recommendedToUsername,String isValidated);
 
-        public void payReferralBonusAsync(String refKey,String recommendedToUsername)
+        public void payReferralBonusAsync(String refKey,String recommendedToUsername,String isValidated)
         {
             payReferralBonus_Delegate payReferralBonusDelegate_delegate = null;
             payReferralBonusDelegate_delegate = new payReferralBonus_Delegate(payReferralBonus);
             IAsyncResult CallAsynchMethod = null;
-            CallAsynchMethod = payReferralBonusDelegate_delegate.BeginInvoke(refKey,recommendedToUsername, null, null); //invoking the method
+            CallAsynchMethod = payReferralBonusDelegate_delegate.BeginInvoke(refKey,recommendedToUsername,isValidated, null, null); //invoking the method
         }
 
-        public void payReferralBonus(String refKey,String recommendedToUsername)
+        public void payReferralBonus(String refKey,String recommendedToUsername,String isValidated)
         {
             var referralInfo = _db.Users.SingleOrDefault(x => x.fixedGuid == refKey);
             var ReferralUsername = "";
@@ -46,7 +46,7 @@ namespace M2E.Service.Referral
                 RecommendedFrom = refKey,
                 RecommendedTo = recommendedToUsername,
                 DateTime = DateTime.Now,
-                isValid = Constants.status_true,
+                isValid = isValidated,
                 RecommendedFromUsername = ReferralUsername
             };
             _db.RecommendedBies.Add(dbRecommedBy);
@@ -60,10 +60,13 @@ namespace M2E.Service.Referral
                 DbContextException.LogDbContextException(e);                
             }
 
-            var result_recommendation = new UserReputationService().UpdateUserBalance(Constants.userType_user, ReferralUsername,
+            if (isValidated == Constants.status_true)
+            {
+                var result_recommendation = new UserReputationService().UpdateUserBalance(Constants.userType_user, ReferralUsername,
                Constants.newAccountCreationReferralBalanceAmount, 0, 0, Constants.payment_credit, recommendedToUsername + " Joined Cautom", "New Account",
                "Referral Bonus", false);
-
+            }
+            
             new UserNotificationService().SendUserReferralAcceptanceNotification(ReferralUsername,recommendedToUsername);
         }
     }

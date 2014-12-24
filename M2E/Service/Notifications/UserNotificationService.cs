@@ -30,6 +30,15 @@ namespace M2E.Service.Notifications
             SendUserNotification("Admin", toUsername, Constants.userType_user, messageTitle, DateTime.Now, Constants.CSSImage_success);
         }
 
+        public void SendUserCommonNotification(String toUsername,String message)
+        {
+            SendUserNotification("Admin", toUsername, Constants.userType_user, message, DateTime.Now, Constants.CSSImage_success);
+        }
+
+        public void SendUserCommonNotificationAsync(String toUsername, String message)
+        {
+            SendUserNotificationAsync("Admin", toUsername, Constants.userType_user, message, DateTime.Now, Constants.CSSImage_success);
+        }
         public void SendUserReferralAcceptanceNotification(String toUsername,String referreralUsername)
         {
             SendUserNotification("Admin", toUsername, Constants.userType_user, "Your Referral "+referreralUsername+" Joined Cautom", DateTime.Now, Constants.CSSImage_success);

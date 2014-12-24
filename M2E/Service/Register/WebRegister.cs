@@ -52,7 +52,7 @@ namespace M2E.Service.Register
             
             if (!Constants.NA.Equals(req.Referral))
             {
-                new ReferralService().payReferralBonusAsync(req.Referral, req.Username);
+                new ReferralService().payReferralBonusAsync(req.Referral, req.Username,Constants.status_false);
             }
             if (req.Type == "client")
             {

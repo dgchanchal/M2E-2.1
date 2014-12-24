@@ -155,7 +155,7 @@ namespace M2E.Controllers
 
                     if (!Constants.NA.Equals(refKey))
                     {
-                        new ReferralService().payReferralBonusAsync(refKey, user.Username);
+                        new ReferralService().payReferralBonusAsync(refKey, user.Username,Constants.status_true);
                     }
                                                            
                     try
@@ -263,7 +263,7 @@ namespace M2E.Controllers
 
                     if (!string.IsNullOrEmpty(refKey))
                     {
-                        new ReferralService().payReferralBonusAsync(refKey, session.UserName);
+                        new ReferralService().payReferralBonusAsync(refKey, session.UserName,Constants.status_true);
                     }
                     try
                     {                        

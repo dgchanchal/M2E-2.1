@@ -212,7 +212,7 @@ define([appLocation.userPostLogin], function (app) {
             };
             $scope.UserNotificationsList.Messages.UnreadMessages = parseInt($scope.UserNotificationsList.Messages.UnreadMessages) + 1;
             $scope.UserNotificationsList.Messages.MessageList.push(realTimeMessage);
-
+            showToastMessage("Success", newMessageTitle + "<br\>" + newMessageContent);
         };
 
         $scope.updateAllUserTaskNotification = function (newLink, newMessageTitle, newMessagePostedInTimeAgo, newMessageBody) {
@@ -224,6 +224,7 @@ define([appLocation.userPostLogin], function (app) {
             };
             $scope.UserNotificationsList.Tasks.UnreadTasks = parseInt($scope.UserNotificationsList.Tasks.UnreadTasks) + 1;
             $scope.UserNotificationsList.Tasks.TaskList.push(realTimeTask);
+            showToastMessage("Success", newMessageTitle);
 
         };
 
@@ -236,7 +237,7 @@ define([appLocation.userPostLogin], function (app) {
             };
             $scope.UserNotificationsList.Tasks.UnreadTasks = parseInt($scope.UserNotificationsList.Tasks.UnreadTasks) + 1;
             $scope.UserNotificationsList.Tasks.TaskList.push(realTimeTask);
-
+            showToastMessage("Success", newMessageTitle);
         };
 
         $scope.updateUserNotification = function (userType, newLink, newImageUrl, newMessageTitle, newMessagePostedInTimeAgo) {
@@ -249,7 +250,7 @@ define([appLocation.userPostLogin], function (app) {
             };
             $scope.UserNotificationsList.Notifications.UnreadNotifications = parseInt($scope.UserNotificationsList.Notifications.UnreadNotifications) + 1;
             $scope.UserNotificationsList.Notifications.NotificationList.push(realTimeNotification);
-
+            showToastMessage("Success", newMessageTitle);
         };
 
         $scope.ClientCategoryList = [
