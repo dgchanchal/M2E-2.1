@@ -49,7 +49,7 @@
                                                     <tr ng-repeat="messages in UserAllNotificationsDetail">
                                                         <td ng-bind="$index+1"></td>
                                                         <td ng-bind="messages.messageFrom"></td>
-                                                        <td ng-bind="messages.titleText"></td>                                                        
+                                                        <td data-ng-bind-html="messages.titleText"></td>                                                        
                                                         <td ng-bind="messages.dateTime"></td>                                                                                                               
                                                     </tr>                                                 
                                                 </tbody></table>                                                                                                                                                              

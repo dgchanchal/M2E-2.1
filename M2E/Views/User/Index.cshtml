@@ -122,9 +122,9 @@
                                     <!-- inner menu: contains the actual data -->
                                     <ul class="menu">
                                         <li ng-repeat="message in UserNotificationsList.Messages.MessageList"><!-- start message -->
-                                            <a href="{{message.link}}">
+                                            <a href="#/userAllMessages">
                                                 <div class="pull-left">
-                                                    <img src="{{message.imageUrl}}" class="img-circle" alt="User Image"/>
+                                                    <img src="{{message.imageUrl}}" class="img-circle" alt="User Image" />
                                                 </div>
                                                 <h4>
                                                     <span ng-bind="message.messageTitle"></span>
@@ -150,7 +150,7 @@
                                     <!-- inner menu: contains the actual data -->
                                     <ul class="menu">
                                         <li ng-repeat="notification in UserNotificationsList.Notifications.NotificationList">
-                                            <a href="{{notification.link}}">
+                                            <a href="#/userAllNotifications">
                                                 @*<i ng-class="notification.NotificationClass"></i>*@ <span data-ng-bind-html="notification.NotificationMessage"></span>
                                             </a>
                                         </li>
