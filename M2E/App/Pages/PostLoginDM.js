@@ -176,6 +176,12 @@ appRequire = require
             ClientAfterLoginEarningHistory: {
                 deps: ["jquery", "angular", "filedrop"]
             },
+            ClientAfterLoginAllMessages: {
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService"]
+            },
+            ClientAfterLoginAllNotifications: {
+                deps: ["jquery", "angular", "restangular", "configureBlockUI", "toastMessage", "clientAfterLoginCookieService"]
+            },
         },
         paths: {
             //==============================================================================================================
@@ -239,7 +245,9 @@ appRequire = require
             ClientAfterLoginArticleWrittingTemplate: "../../App/Pages/ClientAfterLogin/ContentWritting/articleWritting/articleWritting",
             ClientAfterLoginReferralPage: "../../App/Pages/ClientAfterLogin/Referrals/Referrals",
             ClientAfterLoginFacebookLikeTemplate: "../../App/Pages/ClientAfterLogin/Ads/facebookLike/facebookLike",
-            ClientAfterLoginEarningHistory: "../../App/Pages/ClientAfterLogin/ClientEarningHistory/ClientEarningHistory"
+            ClientAfterLoginEarningHistory: "../../App/Pages/ClientAfterLogin/ClientEarningHistory/ClientEarningHistory",
+            ClientAfterLoginAllMessages: "../../App/Pages/ClientAfterLogin/ShowAllMessages/ShowAllMessages",//used
+            ClientAfterLoginAllNotifications: "../../App/Pages/ClientAfterLogin/ShowAllNotifications/ShowAllNotifications",//used
         },
         urlArgs: "123"
     });
@@ -252,7 +260,7 @@ appRequire(["underscore", "jquery", "angular", "jquery_toastmessage", "toastMess
     "clientAfterLoginTemplateInfo","ng_table","clientAfterLoginTemplateSample","ClientAfterLoginModeratingPhotos","ClientAfterLoginTranscriptionTemplate",
     "bootstrap_slider","ion_rangeSlider_min","highcharts_3d","highcharts","highcharts_exporting","ClientAfterLoginTemplateResponseDetail","ClientAfterLoginTranscriptionResponseDetail",
     "angular_route","sanitize","angular_animate","ClientAfterLoginModeratingPhotosResponseDetail","ClientAfterLoginArticleWrittingTemplate","ClientAfterLoginFacebookLikeTemplate",
-    "ClientAfterLoginReferralPage", "ClientAfterLoginEarningHistory"
+    "ClientAfterLoginReferralPage", "ClientAfterLoginEarningHistory", "ClientAfterLoginAllMessages", "ClientAfterLoginAllNotifications"
 ], function() {
     angular.bootstrap(document.getElementById("mainClient"), ["afterLoginClientApp"]);
 });

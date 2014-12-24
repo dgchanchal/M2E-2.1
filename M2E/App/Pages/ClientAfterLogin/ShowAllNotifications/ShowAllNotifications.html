@@ -1,0 +1,68 @@
+﻿<!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Dashboard
+                        <small>Control panel</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li class="active">Dashboard</li>
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">                   
+                    <!-- top row -->
+                    <div class="row">
+                        <div class="col-xs-12 connectedSortable">
+                            
+                        </div><!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+
+                    <!-- Main row -->
+                    <div class="row">
+                        <!-- Left col -->
+                        <section class="col-lg-12 connectedSortable">                            
+                           <div class="box box-color box-bordered">
+                <div class="box-title">
+                    <h3>
+                        <i class="icon-user"></i>Notification History
+                    </h3>
+                </div>
+                <div class="box-content nopadding" ng-controller="ClientAfterLoginAllNotifications">
+                    <div class="tab-content padding tab-content-inline tab-content-bottom">
+                        <div class="tab-pane active" id="profile">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="widget no-margin">                 
+                                      <div class="widget-body">                                        
+                                        <div class="row">
+                                            Your Notifications<br />
+                                                <table class="table table-bordered">
+                                                    <tbody><tr>
+                                                        <th style="width: 10px">#</th>
+                                                        <th>From</th>
+                                                        <th>Title</th>                                                        
+                                                        <th>Date</th>                                                        
+                                                    </tr>
+                                                    <tr ng-repeat="messages in ClientAllNotificationsDetail">
+                                                        <td ng-bind="$index+1"></td>
+                                                        <td ng-bind="messages.messageFrom"></td>
+                                                        <td data-ng-bind-html="messages.titleText"></td>                                                        
+                                                        <td ng-bind="messages.dateTime"></td>                                                                                                               
+                                                    </tr>                                                 
+                                                </tbody></table>                                                                                                                                                              
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+                        </section><!-- /.Left col -->                        
+                    </div><!-- /.row (main row) -->
+
+                </section><!-- /.content -->

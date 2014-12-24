@@ -22,6 +22,8 @@ define([appLocation.postLogin], function (app) {
                        when("/facebookLikeTemplate/:type/:subType", { templateUrl: "../../App/Pages/ClientAfterLogin/Ads/facebookLike/facebookLike.html" }).
                        when("/myReferrals", { templateUrl: "../../App/Pages/ClientAfterLogin/Referrals/Referrals.html" }).
                        when("/myEarningHistory", { templateUrl: "../../App/Pages/ClientAfterLogin/ClientEarningHistory/ClientEarningHistory.html" }).
+                       when("/clientAllMessages", { templateUrl: "../../App/Pages/ClientAfterLogin/ShowAllMessages/ShowAllMessages.html" }).
+                       when("/clientAllNotifications", { templateUrl: "../../App/Pages/ClientAfterLogin/ShowAllNotifications/ShowAllNotifications.html" }).
                        otherwise({ templateUrl: "../../Resource/templates/beforeLogin/contentView/404.html" });
 
     });

@@ -78,7 +78,7 @@ namespace M2E.Controllers
             }
         }
 
-        public JsonResult GetAllNOtifications()
+        public JsonResult GetAllNotifications()
         {
             //var username = "sumitchourasia91@gmail.com";            
             var headers = new HeaderManager(Request);

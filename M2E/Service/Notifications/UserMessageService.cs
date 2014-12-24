@@ -49,7 +49,7 @@ namespace M2E.Service.Notifications
             var response = new ResponseModel<List<UserMessages>>();
             try
             {
-                var NotificationList =
+                 response.Payload =
                     _db.UserMessages.Where(x => x.messageTo == username && x.userType == userType)
                         .OrderByDescending(x => x.dateTime)
                         .ToList();                

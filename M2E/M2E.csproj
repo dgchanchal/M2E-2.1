@@ -533,6 +533,10 @@
     <Content Include="App\Pages\ClientAfterLogin\Moderation\ModeratingPhotosResponseDetail\ModeratingPhotosResponseDetail.js" />
     <Content Include="App\Pages\ClientAfterLogin\Referrals\Referrals.html" />
     <Content Include="App\Pages\ClientAfterLogin\Referrals\Referrals.js" />
+    <Content Include="App\Pages\ClientAfterLogin\ShowAllMessages\ShowAllMessages.html" />
+    <Content Include="App\Pages\ClientAfterLogin\ShowAllMessages\ShowAllMessages.js" />
+    <Content Include="App\Pages\ClientAfterLogin\ShowAllNotifications\ShowAllNotifications.html" />
+    <Content Include="App\Pages\ClientAfterLogin\ShowAllNotifications\ShowAllNotifications.js" />
     <Content Include="App\Pages\ClientAfterLogin\Survey\SurveyLink\SurveyLink.html" />
     <Content Include="App\Pages\ClientAfterLogin\Survey\SurveyLink\SurveyLink.js" />
     <Content Include="App\Pages\ClientAfterLogin\TemplateResponseDetail\TemplateResponseDetail.html" />
