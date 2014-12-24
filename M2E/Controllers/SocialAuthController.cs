@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Configuration;
 using M2E.Models;
+using M2E.Service.Referral;
 using M2E.Service.UserService;
 using zestork.Service;
 using Facebook;
@@ -154,29 +155,7 @@ namespace M2E.Controllers
 
                     if (!Constants.NA.Equals(refKey))
                     {
-                        var referralInfo = _db.Users.SingleOrDefault(x => x.fixedGuid == refKey);
-                        var ReferralUsername = "";
-                        if (referralInfo != null)
-                        {
-                            ReferralUsername = referralInfo.Username;
-                        }
-                        else
-                        {
-                            ReferralUsername = Constants.NA;
-                        }
-
-                        var dbRecommedBy = new RecommendedBy
-                        {
-                            RecommendedFrom = refKey,
-                            RecommendedTo = user.Username,
-                            DateTime = DateTime.Now,
-                            isValid = Constants.status_true,
-                            RecommendedFromUsername = ReferralUsername
-                        };
-                        _db.RecommendedBies.Add(dbRecommedBy);
-                        var result_recommendation = new UserReputationService().UpdateUserBalance(Constants.userType_user, ReferralUsername,
-                           Constants.newAccountCreationReferralBalanceAmount, 0, 0, Constants.payment_credit, user.Username + " Joined Cautom", "New Account",
-                           "Referral Bonus", false);
+                        new ReferralService().payReferralBonusAsync(refKey, user.Username);
                     }
                                                            
                     try
@@ -284,33 +263,10 @@ namespace M2E.Controllers
 
                     if (!string.IsNullOrEmpty(refKey))
                     {
-                        var referralInfo = _db.Users.SingleOrDefault(x => x.fixedGuid == refKey);
-                        var ReferralUsername = "";
-                        if (referralInfo != null)
-                        {
-                            ReferralUsername = referralInfo.Username;
-                        }
-                        else
-                        {
-                            ReferralUsername = Constants.NA;
-                        }
-
-                        var dbRecommedBy = new RecommendedBy
-                        {
-                            RecommendedFrom = refKey,
-                            RecommendedTo = session.UserName,
-                            DateTime = DateTime.Now,
-                            isValid = Constants.status_true,
-                            RecommendedFromUsername = ReferralUsername
-                        };
-                        _db.RecommendedBies.Add(dbRecommedBy);
-                        var result_recommendation = new UserReputationService().UpdateUserBalance(Constants.userType_user, ReferralUsername,
-                           Constants.newAccountCreationReferralBalanceAmount, 0, 0, Constants.payment_credit, session.UserName + " Joined Cautom", "New Account",
-                           "Referral Bonus", false);
+                        new ReferralService().payReferralBonusAsync(refKey, session.UserName);
                     }
                     try
-                    {
-                        _db.SaveChanges();
+                    {                        
                         response.Status = 200;
                         response.Message = "success-";
                     }
