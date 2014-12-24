@@ -97,14 +97,26 @@ namespace M2E.Service.Notifications
         public void SendRealTimeUserNotificationMessage(string fromUsername, string toUsername, string userType, string messageTitle, string messageBody, DateTime messagePostedTime, string imageUrl)
         {            
             try
-            {                
-                var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRUserHub>();
-                dynamic client = SignalRManager.getSignalRDetail(toUsername+Constants.userType_user);
-                client.updateUserNotificationMessage(Constants.userType_user, "#", imageUrl, messageTitle, messagePostedTime, messageBody);
-            }
-            catch (DbEntityValidationException ex)
             {
-                DbContextException.LogDbContextException(ex);
+                if (userType == Constants.userType_user)
+                {
+                    var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRUserHub>();
+                    dynamic client = SignalRManager.getSignalRDetail(toUsername + Constants.userType_user);
+                    client.updateUserNotificationMessage(Constants.userType_user, "#", imageUrl, messageTitle,
+                        messagePostedTime, messageBody);
+                }
+                else
+                {
+                    var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
+                    dynamic client = SignalRManager.getSignalRDetail(toUsername + Constants.userType_client);
+                    client.updateClientNotificationMessage(Constants.userType_client, "#", imageUrl, messageTitle,
+                        messagePostedTime, messageBody);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("SendRealTimeUserNOtificationMessage",ex);
             }
         }
     }

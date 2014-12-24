@@ -58,7 +58,7 @@ namespace M2E.Service.Auth
                     var result = new UserReputationService().UpdateUserBalance(Constants.userType_user, Recommendations.RecommendedFromUsername,
                             Constants.newAccountCreationReferralBalanceAmount, 0, 0, Constants.payment_credit, Recommendations.RecommendedTo + " Joined Cautom", "New Account",
                             "Referral Bonus", false);
-                    new UserNotificationService().SendUserCommonNotificationAsync(Recommendations.RecommendedFromUsername,Recommendations.RecommendedTo +" Account Validated <br/> Referral Bonus is Credited to your account!");
+                    new UserNotificationService().SendUserCommonNotificationAsync(Recommendations.RecommendedFromUsername,Recommendations.RecommendedTo +" Account Validated <br/> Referral Bonus is Credited to your account!",Constants.userType_user);
                 }
                     
                 try

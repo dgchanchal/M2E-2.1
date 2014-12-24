@@ -22,6 +22,30 @@
         //$("#messages2").append("<li>" + message + "</li>");
 
     };
+
+    notificationClientHub.client.updateClientNotificationMessage = function (userType, newLink, newImageUrl, newMessageTitle, newMessagePostedInTimeAgo, newMessageContent) {
+        var scope = angular.element(document.getElementById("mainClient")).scope();
+        scope.$apply(function () {
+            scope.updateClientNotificationMessage(userType, newLink, newImageUrl, newMessageTitle, newMessagePostedInTimeAgo, newMessageContent);
+        });
+
+    };
+
+    notificationClientHub.client.updateAllClientTaskNotification = function (userType, newLink, newMessageTitle, newMessagePostedInTimeAgo, newMessageBody) {
+        var scope = angular.element(document.getElementById("mainClient")).scope();
+        scope.$apply(function () {
+            scope.updateAllClientTaskNotification(userType, newLink, newMessageTitle, newMessagePostedInTimeAgo, newMessageBody);
+        });
+
+    };
+
+    notificationClientHub.client.updateClientNotification = function (userType, newLink, newImageUrl, newMessageTitle, newMessagePostedInTimeAgo) {
+        var scope = angular.element(document.getElementById("mainClient")).scope();
+        scope.$apply(function () {
+            scope.updateClientNotification(userType, newLink, newImageUrl, newMessageTitle, newMessagePostedInTimeAgo);
+        });
+
+    };
     
 
     notificationClientHub.client.updateClientProgressChart = function (Id, JobTotal, JobCompleted, JobAssigned, JobReviewed) {

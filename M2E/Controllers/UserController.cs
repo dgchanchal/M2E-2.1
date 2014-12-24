@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using M2E.Service.Notifications;
 using M2E.Session;
 using M2E.Service.UserService.Survey;
 using System.Globalization;
@@ -23,6 +24,8 @@ namespace M2E.Controllers
 
         public ActionResult Index()
         {
+            //new UserNotificationService().SendUserCommonNotificationAsync("sumitchourasia91@gmail.com","this is testing <br/>for client notification",Constants.userType_client);
+            //new UserMessageService().SendUserNotificationMessageAsync("fromUser","sumitchourasia91@gmail.com",Constants.userType_client,"message title","body of message",DateTime.Now,Constants.avatar3);
             return View();
         }
 

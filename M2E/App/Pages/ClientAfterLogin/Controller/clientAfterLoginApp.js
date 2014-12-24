@@ -95,6 +95,8 @@ define([appLocation.postLogin], function (app) {
                 stopBlockUI();
                 if (data.Status == "200") {
                     $rootScope.clientDetailResponse = data.Payload;
+                    $scope.ClientNotificationsList.Messages = data.Payload.Messages;
+                    $scope.ClientNotificationsList.Notifications = data.Payload.Notifications;
                     CookieUtil.setUserName(data.Payload.FirstName + ' ' + data.Payload.LastName, userSession.keepMeSignedIn);
                     CookieUtil.setUserImageUrl(data.Payload.imageUrl, userSession.keepMeSignedIn);
                     if (data.Payload.isLocked == "true") {
@@ -116,6 +118,82 @@ define([appLocation.postLogin], function (app) {
 
             });
         }
+
+        $scope.ClientNotificationsList = {
+            Messages: {
+                UnreadMessages: "0",
+                CountLabelType: "success",
+                MessageList: [         
+                ]
+
+            },
+
+            Notifications: {
+                UnreadNotifications: "0",
+                CountLabelType: "warning",
+                NotificationList: [                 
+                ]
+            },
+            Tasks: {
+                UnreadTasks: "0",
+                CountLabelType: "danger",
+                TaskList: [                   
+                ]
+            }
+        };
+
+        $scope.updateClientNotificationMessage = function(userType, newLink, newImageUrl, newMessageTitle, newMessagePostedInTimeAgo, newMessageContent) {
+            //alert("inside angular js function updateBeforeLoginUserProjectDetailsDiv");
+            var realTimeMessage = {
+                link: newLink,
+                imageUrl: newImageUrl,
+                messageTitle: newMessageTitle,
+                MessagePostedInTimeAgo: newMessagePostedInTimeAgo,
+                messageContent: newMessageContent
+            };
+            $scope.ClientNotificationsList.Messages.UnreadMessages = parseInt($scope.ClientNotificationsList.Messages.UnreadMessages) + 1;
+            $scope.ClientNotificationsList.Messages.MessageList.push(realTimeMessage);
+            showToastMessage("Success", newMessageTitle + "<br\>" + newMessageContent);
+        };
+
+        $scope.updateAllClientTaskNotification = function (newLink, newMessageTitle, newMessagePostedInTimeAgo, newMessageBody) {
+            //alert("inside angular js function updateBeforeLoginUserProjectDetailsDiv");
+            var realTimeTask = {
+                link: newLink,
+                TaskDetail: newMessageTitle,
+                TotalCompleted: newMessagePostedInTimeAgo
+            };
+            $scope.ClientNotificationsList.Tasks.UnreadTasks = parseInt($scope.ClientNotificationsList.Tasks.UnreadTasks) + 1;
+            $scope.ClientNotificationsList.Tasks.TaskList.push(realTimeTask);
+            showToastMessage("Success", newMessageTitle);
+
+        };
+
+        $scope.updateClientTaskNotification = function (userType, newLink, newMessageTitle, newMessagePostedInTimeAgo, newMessageBody) {
+            //alert("inside angular js function updateBeforeLoginUserProjectDetailsDiv");
+            var realTimeTask = {
+                link: newLink,
+                TaskDetail: newMessageTitle,
+                TotalCompleted: newMessagePostedInTimeAgo
+            };
+            $scope.ClientNotificationsList.Tasks.UnreadTasks = parseInt($scope.ClientNotificationsList.Tasks.UnreadTasks) + 1;
+            $scope.ClientNotificationsList.Tasks.TaskList.push(realTimeTask);
+            showToastMessage("Success", newMessageTitle);
+        };
+
+        $scope.updateClientNotification = function (userType, newLink, newImageUrl, newMessageTitle, newMessagePostedInTimeAgo) {
+            //alert("inside angular js function updateBeforeLoginUserProjectDetailsDiv");
+            var realTimeNotification = {
+                link: newLink,
+                NotificationMessage: newMessageTitle,
+                NotificationClass: newImageUrl,
+                NotificationPostedTimeAgo: newMessagePostedInTimeAgo
+            };
+            $scope.ClientNotificationsList.Notifications.UnreadNotifications = parseInt($scope.ClientNotificationsList.Notifications.UnreadNotifications) + 1;
+            $scope.ClientNotificationsList.Notifications.NotificationList.push(realTimeNotification);
+            showToastMessage("Success", newMessageTitle);
+        };
+
 
         $scope.ClientCategoryList = [
        {

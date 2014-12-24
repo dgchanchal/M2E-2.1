@@ -30,15 +30,16 @@ namespace M2E.Service.Notifications
             SendUserNotification("Admin", toUsername, Constants.userType_user, messageTitle, DateTime.Now, Constants.CSSImage_success);
         }
 
-        public void SendUserCommonNotification(String toUsername,String message)
+        public void SendUserCommonNotification(String toUsername,String message,String userType)
         {
-            SendUserNotification("Admin", toUsername, Constants.userType_user, message, DateTime.Now, Constants.CSSImage_success);
+            SendUserNotification("Admin", toUsername, userType, message, DateTime.Now, Constants.CSSImage_success);
         }
 
-        public void SendUserCommonNotificationAsync(String toUsername, String message)
+        public void SendUserCommonNotificationAsync(String toUsername, String message,String userType)
         {
-            SendUserNotificationAsync("Admin", toUsername, Constants.userType_user, message, DateTime.Now, Constants.CSSImage_success);
+            SendUserNotificationAsync("Admin", toUsername, userType, message, DateTime.Now, Constants.CSSImage_success);
         }
+        
         public void SendUserReferralAcceptanceNotification(String toUsername,String referreralUsername)
         {
             SendUserNotification("Admin", toUsername, Constants.userType_user, "Your Referral "+referreralUsername+" Joined Cautom", DateTime.Now, Constants.CSSImage_success);
@@ -107,19 +108,28 @@ namespace M2E.Service.Notifications
                 DbContextException.LogDbContextException(ex);
             }
         }
-
+        
         public void SendRealTimeUserNotification(string fromUsername, string toUsername, string userType, string messageTitle, DateTime messagePostedTime, string imageUrlCss)
         {
             try
             {
-                var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRUserHub>();
-                dynamic client = SignalRManager.getSignalRDetail(toUsername + Constants.userType_user);
-                client.updateUserNotification(userType, "#", imageUrlCss, messageTitle, messagePostedTime);
+                if (userType == Constants.userType_user)
+                {
+                    var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRUserHub>();
+                    dynamic client = SignalRManager.getSignalRDetail(toUsername + Constants.userType_user);
+                    client.updateUserNotification(userType, "#", imageUrlCss, messageTitle, messagePostedTime);   
+                }
+                else
+                {
+                    var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
+                    dynamic client = SignalRManager.getSignalRDetail(toUsername + Constants.userType_client);
+                    client.updateClientNotification(userType, "#", imageUrlCss, messageTitle, messagePostedTime);
+                }
             }
-            catch (DbEntityValidationException ex)
+            catch (Exception ex)
             {
-                DbContextException.LogDbContextException(ex);
+                Logger.Error("SendRealtimeusernotificaions",ex);
             }
-        }
+        }        
     }
 }
