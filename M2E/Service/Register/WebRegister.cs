@@ -9,6 +9,7 @@ using M2E.CommonMethods;
 using M2E.Encryption;
 using M2E.Models;
 using M2E.Models.DataWrapper;
+using M2E.Service.Referral;
 using M2E.Service.UserService;
 using M2E.signalRPushNotifications;
 using Microsoft.AspNet.SignalR;
@@ -51,27 +52,7 @@ namespace M2E.Service.Register
             
             if (!Constants.NA.Equals(req.Referral))
             {
-                var referralInfo = _db.Users.SingleOrDefault(x => x.fixedGuid == req.Referral);
-                var ReferralUsername = "";
-                if (referralInfo != null)
-                {
-                    ReferralUsername = referralInfo.Username;
-                }
-                else
-                {
-                    ReferralUsername = Constants.NA;
-                }
-
-                var dbRecommedBy = new RecommendedBy
-                {
-                    RecommendedFrom = req.Referral,
-                    RecommendedTo = req.Username,
-                    DateTime = DateTime.Now,
-                    isValid = Constants.status_false,
-                    RecommendedFromUsername = ReferralUsername
-                };
-                _db.RecommendedBies.Add(dbRecommedBy);
-                
+                new ReferralService().payReferralBonusAsync(req.Referral, req.Username);
             }
             if (req.Type == "client")
             {
