@@ -27,10 +27,10 @@
                            <div class="box box-color box-bordered">
                 <div class="box-title">
                     <h3>
-                        <i class="icon-user"></i>Message History
+                        <i class="icon-user"></i>Notification History
                     </h3>
                 </div>
-                <div class="box-content nopadding" ng-controller="UserAfterLoginAllMessages">
+                <div class="box-content nopadding" ng-controller="UserAfterLoginAllNotifications">
                     <div class="tab-content padding tab-content-inline tab-content-bottom">
                         <div class="tab-pane active" id="profile">
                             <div class="row">
@@ -38,20 +38,18 @@
                                     <div class="widget no-margin">                 
                                       <div class="widget-body">                                        
                                         <div class="row">
-                                            Your Messages<br />
+                                            Your Notifications<br />
                                                 <table class="table table-bordered">
                                                     <tbody><tr>
                                                         <th style="width: 10px">#</th>
                                                         <th>From</th>
-                                                        <th>Title</th>
-                                                        <th>Message</th>
+                                                        <th>Title</th>                                                        
                                                         <th>Date</th>                                                        
                                                     </tr>
-                                                    <tr ng-repeat="messages in UserAllMessagesDetail">
+                                                    <tr ng-repeat="messages in UserAllNotificationsDetail">
                                                         <td ng-bind="$index+1"></td>
                                                         <td ng-bind="messages.messageFrom"></td>
-                                                        <td ng-bind="messages.titleText"></td>
-                                                        <td ng-bind="messages.bodyText"></td>
+                                                        <td ng-bind="messages.titleText"></td>                                                        
                                                         <td ng-bind="messages.dateTime"></td>                                                                                                               
                                                     </tr>                                                 
                                                 </tbody></table>                                                                                                                                                              

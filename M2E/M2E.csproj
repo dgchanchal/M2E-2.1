@@ -562,6 +562,8 @@
     <Content Include="App\Pages\UserAfterLogin\Controller\common\SessionManagement.js" />
     <Content Include="App\Pages\UserAfterLogin\ShowAllMessages\ShowAllMessages.html" />
     <Content Include="App\Pages\UserAfterLogin\ShowAllMessages\ShowAllMessages.js" />
+    <Content Include="App\Pages\UserAfterLogin\ShowAllNotifications\ShowAllNotifications.html" />
+    <Content Include="App\Pages\UserAfterLogin\ShowAllNotifications\ShowAllNotifications.js" />
     <Content Include="App\Pages\UserAfterLogin\SubmitIdProof\SubmitIdProof.js" />
     <Content Include="App\Pages\UserAfterLogin\SubmitIdProof\SubmitIdProof.html" />
     <Content Include="App\Pages\UserAfterLogin\UserReputationHistory\UserReputationHistory.html" />
@@ -1608,7 +1610,6 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\Pages\UserAfterLogin\ShowAllNotifications\" />
     <Folder Include="App\third-Party\html5-file-upload\uploads\" />
     <Folder Include="App_Data\" />
     <Folder Include="Upload\Images\" />
