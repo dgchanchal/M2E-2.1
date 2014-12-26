@@ -102,14 +102,16 @@ namespace M2E.Service.Notifications
                 {
                     var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRUserHub>();
                     dynamic client = SignalRManager.getSignalRDetail(toUsername + Constants.userType_user);
-                    client.updateUserNotificationMessage(Constants.userType_user, "#", imageUrl, messageTitle,
+                    if (client != null)
+                        client.updateUserNotificationMessage(Constants.userType_user, "#", imageUrl, messageTitle,
                         messagePostedTime, messageBody);
                 }
                 else
                 {
                     var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
                     dynamic client = SignalRManager.getSignalRDetail(toUsername + Constants.userType_client);
-                    client.updateClientNotificationMessage(Constants.userType_client, "#", imageUrl, messageTitle,
+                    if (client != null)
+                        client.updateClientNotificationMessage(Constants.userType_client, "#", imageUrl, messageTitle,
                         messagePostedTime, messageBody);
                 }
                 

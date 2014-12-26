@@ -86,7 +86,8 @@ namespace M2E.Service.Notifications
         {            
             var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRUserHub>();
             dynamic client = SignalRManager.getSignalRDetail(toUsername + Constants.userType_user);
-            client.updateUserTaskNotification(Constants.userType_user, "#", messageTitle, messagePostedTime, messageBody);                        
+            if (client != null)
+                client.updateUserTaskNotification(Constants.userType_user, "#", messageTitle, messagePostedTime, messageBody);                        
         }
 
         public void SendRealTimeUserTaskNotificationToAllUser(string messageTitle, string messageBody, DateTime messagePostedTime)

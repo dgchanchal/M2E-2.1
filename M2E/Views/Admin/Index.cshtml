@@ -14,51 +14,59 @@
     <script src="../../App/js/googleAnalytics.js" type="text/javascript"></script>
     <script>
     $(document).ready(function () {
-        $("#SubmitButtonId").click(function () {
-
+        $("#SubmitButtonId").click(function () {            
             var url = ServerContextPah + '/Admin/AdminPostMessage';
             var headers = {
                 'Content-Type': 'application/json'                
             };
-            var adminNotificationData = {
-                userType: "user",
-                messageType: "task",
-                sendTo: "all",
-                message: $("#textAreaMessage").val()
-            };
+            var messageType = $('#messageTypeId :selected').val();
+            var sendTo = $('#sendToId :selected').val();
+            if ((messageType == "notification" && sendTo == "all") || (messageType == "message" && sendTo == "all")) {
+                alert("currently you can't sent message to all at once, please send using email id");
+            }
+            else
+            {
+                var adminNotificationData = {
+                    userType: $('#userTypeId :selected').val(),
+                    messageType: messageType,
+                    sendTo: $("#EmailId").val(),
+                    message: $("#textAreaMessage").val()
+                };
 
-            $.ajax({
-                url: url,
-                data: adminNotificationData,
-                method: "GET",
-                headers: headers
-            }).done(function (data, status) {
-                console.log(data);
-                if (data.Status == "200") {
-                    //alert("success");
-                }               
-                else if (data.Status == "500") {
-                    alert("Error");
-                }
-            });
+                $.ajax({
+                    url: url,
+                    data: adminNotificationData,
+                    method: "GET",
+                    headers: headers
+                }).done(function (data, status) {
+                    console.log(data);
+                    if (data.Status == "200") {
+                        //alert("success");
+                    }
+                    else if (data.Status == "500") {
+                        alert("Error");
+                    }
+                });
+            }
+            
         });
     });
     </script>
 </head>
 <body>
     <div>
-        User Type : <select>
+        User Type : <select id="userTypeId">
                         <option value="user">User</option>
                         <option value="client">Client</option>            
                     </select> 
         <br />
-        Message Type<select>
+        Message Type<select id="messageTypeId">
                         <option value="notification">Notification</option>
                         <option value="message">Message</option>
                         <option value="task">Task</option>            
                     </select>
         <br/>
-        Send To<select>
+        Send To<select id="sendToId">
                    <option value="all">All</option>
                    <option value="email">Email</option>            
                </select> <input type="text" id="EmailId" placeholder="Enter Email"/>

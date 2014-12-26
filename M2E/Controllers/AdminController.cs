@@ -21,23 +21,8 @@ namespace M2E.Controllers
 
         public JsonResult AdminPostMessage(AdminPostMessageWrapper data)
         {
-            //var username = "sumitchourasia91@gmail.com";            
-            //var headers = new HeaderManager(Request);
-            //M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
-            //var userType = Convert.ToString(Request.QueryString["userType"]);
-            //var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
-            //if (isValidToken)
-            //{
-            //    return Json(new UserMessageService().GetAllNotificationMessage(session.UserName, userType), JsonRequestBehavior.AllowGet);
-            //}
-            //else
-            //{
-            //    ResponseModel<string> response = new ResponseModel<string>();
-            //    response.Status = 401;
-            //    response.Message = "Unauthorized";
-            //    return Json(response, JsonRequestBehavior.AllowGet);
-            //}
-            if (data.sendTo == "all" || data.messageType == Constants.messageTypeTask)
+            
+            if (data.messageType == Constants.messageTypeTask)
             {
                 if (data.sendTo == "all")
                 {
@@ -62,7 +47,7 @@ namespace M2E.Controllers
             }
             else if (data.messageType == Constants.messageTypeNotification)
             {
-               new UserNotificationService().SendUserNotificationAsync("admin@cautom.com",data.sendTo,data.userType,"notification",DateTime.Now,Constants.CSSImage_info);   
+               new UserNotificationService().SendUserNotificationAsync("admin@cautom.com",data.sendTo,data.userType,data.message,DateTime.Now,Constants.CSSImage_info);   
             }            
             else
             {
