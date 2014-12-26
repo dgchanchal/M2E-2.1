@@ -20,8 +20,9 @@ namespace M2E.Service.Notifications
         private static readonly ILogger Logger = new Logger(Convert.ToString(MethodBase.GetCurrentMethod().DeclaringType));
         public delegate void SendUserTaskNotificationMessage_Delegate(string toUsername, string userType, string messageTitle, string messageBody, DateTime messagePostedTime);
         public delegate void SendUserTaskNotificationToAllMessage_Delegate(string messageTitle, string messageBody, DateTime messagePostedTime);
+        public delegate void SendClientTaskNotificationToAllMessage_Delegate(string messageTitle, string messageBody, DateTime messagePostedTime);
 
-        public void SendUserTaskNotificationAsync(string fromUsername, string toUsername, string userType, string messageTitle, string messageBody, DateTime messagePostedTime, string imageUrl)
+        public void SendUserTaskNotificationAsync(string fromUsername, string toUsername, string userType, string messageTitle, string messageBody, DateTime messagePostedTime)
         {
             try
             {
@@ -53,6 +54,22 @@ namespace M2E.Service.Notifications
             }
         }
 
+        public void SendClientTaskNotificationToAllAsync(string messageTitle, string messageBody, DateTime messagePostedTime)
+        {
+            try
+            {
+                SendClientTaskNotificationToAllMessage_Delegate sendClientTaskNotificationToAllServiceDelegate = null;
+                sendClientTaskNotificationToAllServiceDelegate = new SendClientTaskNotificationToAllMessage_Delegate(SendRealTimeClientTaskNotificationToAllUser);
+                IAsyncResult CallAsynchMethod = null;
+                CallAsynchMethod = sendClientTaskNotificationToAllServiceDelegate.BeginInvoke(messageTitle, messageBody, messagePostedTime, null, null); //invoking the method
+
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("SendClientNotificationMessageAsync ", ex);
+            }
+        }
+
         public void SendUserTaskNotification(string fromUsername, string toUsername, string userType, string messageTitle, string messageBody, DateTime messagePostedTime, string imageUrl)
         {
             try
@@ -76,6 +93,12 @@ namespace M2E.Service.Notifications
         {
             var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRUserHub>();
             hubContext.Clients.All.updateAllUserTaskNotification("#", messageTitle, messagePostedTime, messageBody);
+        }
+
+        public void SendRealTimeClientTaskNotificationToAllUser(string messageTitle, string messageBody, DateTime messagePostedTime)
+        {
+            var hubContext = GlobalHost.ConnectionManager.GetHubContext<SignalRClientHub>();
+            hubContext.Clients.All.updateAllClientTaskNotification("#", messageTitle, messagePostedTime, messageBody);
         }
     }
 }

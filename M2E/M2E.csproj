@@ -173,6 +173,7 @@
     <Compile Include="CommonMethods\forgetPasswordValidationEmail.cs" />
     <Compile Include="CommonMethods\sendAccountCreationValidationEmail.cs" />
     <Compile Include="CommonMethods\sendEmail.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -264,6 +265,7 @@
     <Compile Include="Models\DataResponse\UserResponse\UserProductSurveyTemplateModel.cs" />
     <Compile Include="Models\DataResponse\UserResponse\UserTaskList.cs" />
     <Compile Include="Models\DataResponse\UserResponse\UserTasksResponse.cs" />
+    <Compile Include="Models\DataWrapper\AdminPostMessageWrapper.cs" />
     <Compile Include="Models\DataWrapper\ContactUsRequest.cs" />
     <Compile Include="Models\DataWrapper\CreateTemplateRequest.cs" />
     <Compile Include="Models\DataWrapper\CreateTemplate\CreateTemplateeditableInstructionsListModel.cs" />
@@ -1749,6 +1751,7 @@
     <Content Include="Template\UI_Template\css\icons\entypo\entypo.ttf" />
     <Content Include="Template\UI_Template\css\icons\entypo\entypo.woff" />
     <Content Include="Template\UI_Template\css\icons\entypo\entypod41d.eot" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <None Include="Views\Auth\LockAccount.cshtml" />
     <None Include="Views\Client\DownloadAllCompletedTranscriptionInformation.cshtml" />
     <None Include="Views\Client\Index.cshtml" />

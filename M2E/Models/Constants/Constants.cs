@@ -77,6 +77,9 @@ namespace M2E.Models.Constants
         public const string questionTypeLAQ = "LAQ";
         public const string questionTypeTAQ = "TAQ";
 
+        public const string messageTypeNotification = "notification";
+        public const string messageTypeMessage = "message";
+        public const string messageTypeTask = "task";        
 
         public const string demoUserEmail = "demo@demo.com";        
 
