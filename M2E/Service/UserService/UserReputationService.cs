@@ -19,22 +19,37 @@ namespace M2E.Service.UserService
         private DbContextException _dbContextException = new DbContextException();
         private readonly M2EContext _db = new M2EContext();
 
-        public bool UpdateUserReputation(string username, int reputationVal,string type,string subType)
+        public bool UpdateUserReputation(string username, double reputationVal,string type,string subType)
         {
             var userReputation = _db.UserReputations.SingleOrDefault(x => x.username == username);            
             if (userReputation == null)
             {
-                var UserReputationData = new UserReputation
+                var userReputationData = new UserReputation
                 {
-                    
+                    username = username,
+                    ReputationScore = Convert.ToString(reputationVal),
+                    UserBadge = Constants.NA
                 };
-                
-                _db.UserReputations.Add(UserReputationData);
+                _db.UserReputations.Add(userReputationData);
             }
             else
             {
-                
+                userReputation.ReputationScore = Convert.ToString(Convert.ToDouble(userReputation.ReputationScore) + reputationVal);
             }
+
+            String descriptionString = Constants.NA;
+            if (reputationVal < 0)
+                descriptionString = Constants.reputationDeducted;
+            var UserReputationMappingData = new UserReputationMapping
+            {
+                DateTime = DateTime.Now,
+                description = descriptionString,
+                type = type,
+                subType = subType,
+                username = username,
+                reputation = Convert.ToString(reputationVal)
+            };
+            _db.UserReputationMappings.Add(UserReputationMappingData);
             
             try
             {

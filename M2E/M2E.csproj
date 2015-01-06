@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common.Logging">
+      <HintPath>..\packages\Common.Logging.2.3.1\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
     <Reference Include="DotNetOpenAuth.AspNet">
       <HintPath>..\packages\DotNetOpenAuth.AspNet.4.2.2.13055\lib\net40-full\DotNetOpenAuth.AspNet.dll</HintPath>
     </Reference>
@@ -106,6 +109,9 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dll\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Quartz">
+      <HintPath>..\packages\Quartz.2.3\lib\net40\Quartz.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -393,6 +399,8 @@
     <Compile Include="Service\Notifications\SendNewTaskService.cs" />
     <Compile Include="Service\Notifications\UserMessageService.cs" />
     <Compile Include="Service\Notifications\UserNotificationService.cs" />
+    <Compile Include="Service\QuartzSchedule\HelloJob.cs" />
+    <Compile Include="Service\QuartzSchedule\QuartzSchedulerService.cs" />
     <Compile Include="Service\Referral\ReferralService.cs" />
     <Compile Include="Service\Register\WebRegister.cs" />
     <Compile Include="Service\SocialNetwork\facebook\FacebookHelper.cs" />
@@ -1694,6 +1702,9 @@
       <LastGenOutput>M2EContext.cs</LastGenOutput>
     </Content>
     <Content Include="packages.config" />
+    <None Include="job_scheduling_data_2_0.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\PublishProfiles\M2E.pubxml" />
     <None Include="Template\AdminLTE-master\ajax\dashboard-boxrefresh-demo.php" />
     <None Include="Template\AdminLTE-master\fonts\fontawesome-webfont.eot" />

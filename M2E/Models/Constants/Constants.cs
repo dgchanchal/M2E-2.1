@@ -14,11 +14,14 @@ namespace M2E.Models.Constants
         public const string status_reviewed = "reviewed";
         public const string status_accepted = "accepted";
         public const string status_rejected = "rejected";
+        public const string status_timelineMissed = "timelineMissed";
 
         public const string payment_credit = "credit";
         public const string payment_debit = "debit";
 
         public const double newAccountCreationReferralBalanceAmount = 1.0;
+        public const int allowedTimeIntervalForCompletingJobInMinutes = 15;
+        public const string reputationDeducted = "Reputation Deducted";
 
         public const string type_dataEntry = "dataEntry";
         public const string subType_Transcription = "Transcription";

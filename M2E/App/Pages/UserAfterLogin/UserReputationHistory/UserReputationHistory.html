@@ -50,15 +50,16 @@
                                                         <th>description</th>
                                                         <th>Reputation</th>
                                                         <th>Date</th>
+                                                        
                                                     </tr>
-                                                    <tr ng-repeat="UserReputation in UserReputationDetail" ng-class="{true:'backgroundColorRaferralRowValidated',false:'backgroundColorRaferralRowNotValidated'}[!(UserEarning.reputation=='0')]">
-                                                        <td ng-bind="$index+1"></td>                                                        
-                                                        <td ng-bind="UserReputation.type"></td>
-                                                        <td ng-bind="UserReputation.subType"></td>
-                                                        <td ng-bind="UserReputation.description"></td>
-                                                        <td ng-bind="UserReputation.reputation"></td>
-                                                        <td ng-bind="UserReputation.dateTime"></td>                                                        
-                                                    </tr>                                                 
+                                                        <tr ng-repeat="UserReputation in UserReputationDetail" ng-class="{true:'backgroundColorRaferralRowValidated',false:'backgroundColorRaferralRowNotValidated'}[!(UserReputation.description=='Reputation Deducted')]">
+                                                            <td ng-bind="$index+1"></td>
+                                                            <td ng-bind="UserReputation.type"></td>
+                                                            <td ng-bind="UserReputation.subType"></td>
+                                                            <td ng-bind="UserReputation.description"></td>
+                                                            <td ng-bind="UserReputation.reputation"></td>
+                                                            <td ng-bind="UserReputation.dateTime"></td>                                                            
+                                                        </tr>                                                 
                                                 </tbody></table>                                                                                                                                                              
                                         </div>
                                       </div>

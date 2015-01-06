@@ -210,7 +210,7 @@ namespace M2E.Service.Client
                     {
                         username = username,
                         dateTime = earningReputation.DateTime.ToString(),
-                        description = Constants.NA,
+                        description = earningReputation.description,
                         type = earningReputation.type,
                         subType = earningReputation.subType,
                         reputation = earningReputation.reputation

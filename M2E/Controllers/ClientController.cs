@@ -10,6 +10,7 @@ using M2E.CommonMethods;
 using M2E.Service.JobTemplate;
 using M2E.Service.Client;
 using M2E.Service.Notifications;
+using M2E.Service.QuartzSchedulerService;
 using M2E.Session;
 using System.IO;
 using System.Web.UI;
@@ -17,6 +18,8 @@ using System.Web.UI.WebControls;
 using M2E.Encryption;
 using M2E.signalRPushNotifications;
 using Microsoft.AspNet.SignalR;
+using Quartz;
+using Quartz.Impl;
 
 namespace M2E.Controllers
 {
@@ -34,6 +37,7 @@ namespace M2E.Controllers
             //hubContext.Clients.All.updateUserNotificationMessage("user", "#", "../../Template/AdminLTE-master/img/avatar5.png", "signalR Title", "5 mins ago", "signalR Content..");
             //new UserMessageService().SendUserNotificationMessageAsync("admin","sumitchourasia91@gmail.com",Constants.userType_user,"message title","message body",DateTime.Now,Constants.avatar3);
             //new UserNotificationService().SendUserNotificationAsync("admin","sumitchourasia91@gmail.com",Constants.userType_user,"this is notification title",DateTime.Now,Constants.CSSImage_info);
+            //new QuartzSchedulerService("sumitchourasia91@gmail.com","ref1234567890 "+DateTime.Now.Ticks);
             return View();
         }
 

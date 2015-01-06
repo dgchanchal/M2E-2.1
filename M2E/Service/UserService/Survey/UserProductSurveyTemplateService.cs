@@ -300,6 +300,9 @@ namespace M2E.Service.UserService.Survey
             {
                 response = AllocateSingleAssignTypeThreadToUserByRefKey(clientJobInfo, refKey, username);
             }
+            
+            var quartzScheduler = new QuartzSchedulerService.QuartzSchedulerService(username, refKey);
+            
             return response;
         }
 
@@ -311,7 +314,7 @@ namespace M2E.Service.UserService.Survey
             List<UserMultipleJobMapping> UserMultipleJobMapping = new List<UserMultipleJobMapping>(); ;
             if (status == Constants.status_active)
             {
-                UserThreads = _db.UserJobMappings.OrderBy(x => x.Id).Where(x => x.username == username && x.status != Constants.status_done).ToList();
+                UserThreads = _db.UserJobMappings.OrderBy(x => x.Id).Where(x => x.username == username && x.status == Constants.status_assigned).ToList();
                 UserMultipleJobMapping = _db.UserMultipleJobMappings.OrderBy(x => x.Id).Where(x => x.username == username && x.status != Constants.status_done && x.isFirst == Constants.status_true).ToList();
             }
             else
