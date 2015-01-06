@@ -9,8 +9,11 @@ define([appLocation.userPostLogin], function (app) {
             $scope.divClasstype = "danger";
             $scope.isActivePage = true;
         }
-        else {
+        else if ($routeParams.status == "completed") {
             $scope.divClasstype = "info";
+            $scope.isActivePage = false;
+        } else if ($routeParams.status == "timelineMissed") {
+            $scope.divClasstype = "warning";
             $scope.isActivePage = false;
         }
 

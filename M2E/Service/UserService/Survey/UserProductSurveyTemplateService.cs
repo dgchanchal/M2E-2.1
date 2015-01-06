@@ -317,10 +317,15 @@ namespace M2E.Service.UserService.Survey
                 UserThreads = _db.UserJobMappings.OrderBy(x => x.Id).Where(x => x.username == username && x.status == Constants.status_assigned).ToList();
                 UserMultipleJobMapping = _db.UserMultipleJobMappings.OrderBy(x => x.Id).Where(x => x.username == username && x.status != Constants.status_done && x.isFirst == Constants.status_true).ToList();
             }
-            else
+            else if (status == Constants.status_completed)
             {
                 UserThreads = _db.UserJobMappings.OrderBy(x => x.Id).Where(x => x.username == username && x.status == Constants.status_done).ToList();
                 UserMultipleJobMapping = _db.UserMultipleJobMappings.OrderBy(x => x.Id).Where(x => x.username == username && x.status == Constants.status_done && x.isFirst == Constants.status_true).ToList();
+            }
+            else
+            {
+                UserThreads = _db.UserJobMappings.OrderBy(x => x.Id).Where(x => x.username == username && x.status == Constants.status_timelineMissed).ToList();
+                UserMultipleJobMapping = _db.UserMultipleJobMappings.OrderBy(x => x.Id).Where(x => x.username == username && x.status == Constants.status_done && x.isFirst == Constants.status_timelineMissed).ToList();
             }
             if (UserThreads == null && UserMultipleJobMapping== null)
             {

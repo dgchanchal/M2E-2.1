@@ -10,6 +10,7 @@ namespace M2E.Models.Constants
         public const string status_done = "done";
         public const string status_open = "open";
         public const string status_active = "active";
+        public const string status_completed = "completed";
         public const string status_assigned = "assigned";
         public const string status_reviewed = "reviewed";
         public const string status_accepted = "accepted";
