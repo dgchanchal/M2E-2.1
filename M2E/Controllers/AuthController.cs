@@ -67,11 +67,19 @@ namespace M2E.Controllers
         {
             var returnUrl = "/";
             var referral = Request.QueryString["ref"];
+            var isMobileFacebookLogin = Request.QueryString["isMobileFacebookLogin"];
             var responseData = new LoginResponse();
             if (req.Type == "web")
             {
                 var loginService = new LoginService();
-                responseData = loginService.WebLogin(req.UserName, EncryptionClass.Md5Hash(req.Password), returnUrl, req.KeepMeSignedInCheckBox);                
+                if (isMobileFacebookLogin == null)
+                {
+                    responseData = loginService.WebLogin(req.UserName, EncryptionClass.Md5Hash(req.Password), returnUrl, req.KeepMeSignedInCheckBox);   
+                }                    
+                else
+                {
+                    responseData = loginService.WebLogin(req.UserName, req.Password, returnUrl, req.KeepMeSignedInCheckBox);                
+                }
             }
 
             if (responseData.Code == "200")
