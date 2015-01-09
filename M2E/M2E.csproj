@@ -365,6 +365,7 @@
     <Compile Include="Models\UserMultipleJobMapping.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\usernamePasswordDeserialize.cs" />
     <Compile Include="Models\UserPageSetting.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>

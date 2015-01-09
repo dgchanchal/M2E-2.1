@@ -70,6 +70,7 @@ namespace M2E.Controllers
 
             return Json(response, JsonRequestBehavior.AllowGet);
         }
+
         public JsonResult userMapping()
         {
             var response = new ResponseModel<LoginResponse>();

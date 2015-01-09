@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
+using System.Linq;
 using System.Web.Mvc;
 using M2E.Common.Logger;
 using System.Reflection;
 using M2E.Models.Constants;
+using M2E.Models.DataResponse;
 using M2E.Models.DataWrapper;
 using M2E.Models;
 using M2E.CommonMethods;
@@ -61,7 +65,42 @@ namespace M2E.Controllers
                 return Json(response);
             }
         }
-        
+
+        [HttpPost]
+        public JsonResult MobileApiDecryptData()
+        {
+            var headers = new HeaderManager(Request);
+            M2ESession session = TokenManager.getSessionInfo(headers.AuthToken, headers);
+            var clientTemplate = new ClientTemplateService();
+            var isValidToken = TokenManager.IsValidSession(headers.AuthToken);
+            if (isValidToken)
+            {
+                string Authkey = ConfigurationManager.AppSettings["AuthKey"];
+
+                string username = EncryptionClass.GetDecryptionValue(headers.AuthKey, Authkey);
+                var dbUserInfo = _db.Users.SingleOrDefault(x=>x.Username == username);                               
+                var data = new Dictionary<string, string>();                    
+                data["Password"] = headers.AuthValue;
+                data["userGuid"] = dbUserInfo.guid;
+                var decryptedData = EncryptionClass.decryptUserDetails(data);
+                string password = decryptedData["UTMZV"];
+                var usernamePasswordResponse = new usernamePasswordDeserialize
+                {
+                    username = username,
+                    password = password
+                };
+                return Json(usernamePasswordResponse);
+            }
+            else
+            {
+                ResponseModel<string> response = new ResponseModel<string>();
+                response.Status = 401;
+                response.Message = "Unauthorized";
+                return Json(response);
+            }
+            
+        }
+
         public JsonResult GetAllMessages()
         {
             //var username = "sumitchourasia91@gmail.com";            
