@@ -654,11 +654,14 @@ namespace M2E.Service.UserService.Survey
             response.Payload = new List<UserProductSurveyTemplateModel>();
             try
             {
+                var AlreadyAppliedMultipleJobsList = _db.UserMultipleJobMappings.Where(x => x.username == username && x.isFirst == Constants.status_true).ToList();
+                var AlreadyAppliedSingleJobsList = _db.UserJobMappings.Where(x => x.username == username).ToList();
+
                 foreach (var job in templateData)
                 {                    
                     string earningPerThreadTemp = Convert.ToString(Convert.ToDouble(job.payPerUser) * (Convert.ToDouble(Convert.ToString(ConfigurationManager.AppSettings["dollarToRupeesValue"]))));
-                    string remainingThreadsTemp = string.Empty;                    
-
+                    string remainingThreadsTemp = string.Empty;
+                    
                     var userTemplate = new UserProductSurveyTemplateModel
                     {
                         title = job.title,
@@ -673,10 +676,9 @@ namespace M2E.Service.UserService.Survey
 
                     if ((job.type == Constants.type_dataEntry && job.subType == Constants.subType_Transcription)||
                         (job.type == Constants.type_moderation && job.subType == Constants.subType_moderatingPhotos))
-                    {                        
+                    {
 
-                        var AlreadyAppliedJobs = _db.UserMultipleJobMappings.SingleOrDefault(x => x.username == username && x.refKey == job.referenceId && x.isFirst == Constants.status_true);
-                        if (AlreadyAppliedJobs != null)
+                        if (AlreadyAppliedMultipleJobsList.Any(x => x.refKey == job.referenceId))
                         {
                             continue; // do not add if it is already done or assigned.
                             //userTemplate.userStatus = AlreadyAppliedJobs.status;
@@ -690,9 +692,8 @@ namespace M2E.Service.UserService.Survey
                         remainingThreadsTemp = Convert.ToString(Convert.ToInt32(job.totalThreads) - _db.UserMultipleJobMappings.Where(x => x.refKey == job.referenceId).GroupBy(x=>x.username).Count());
                     }
                     else
-                    {                        
-                        var AlreadyAppliedJobs = _db.UserJobMappings.SingleOrDefault(x => x.username == username && x.refKey == job.referenceId);
-                        if (AlreadyAppliedJobs != null)
+                    {
+                        if (AlreadyAppliedSingleJobsList.Any(x => x.refKey == job.referenceId))
                         {
                             continue; // do not add if it is already done or assigned.
                             //userTemplate.userStatus = AlreadyAppliedJobs.status;
@@ -707,8 +708,9 @@ namespace M2E.Service.UserService.Survey
                     }
 
                     userTemplate.remainingThreads = remainingThreadsTemp;
-                    if (Convert.ToInt32(remainingThreadsTemp) <=0)
+                    if (Convert.ToInt32(remainingThreadsTemp) <= 0)
                         continue; // do not add if all threads are consumed.
+
 
                     response.Payload.Add(userTemplate);
                 }
