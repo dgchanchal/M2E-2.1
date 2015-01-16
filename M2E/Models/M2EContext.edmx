@@ -46,50 +46,6 @@
     <EntitySet Name="MobikwikUserPhoneLists" EntityType="M2E.Store.MobikwikUserPhoneLists" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="MobikwikUserHistories" EntityType="M2E.Store.MobikwikUserHistories" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserRecommendedBy" EntityType="M2E.Store.UserRecommendedBy" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="CreateTemplateQuestionInfoCreateTemplateSingleQuestionsList" Association="M2E.Store.CreateTemplateQuestionInfoCreateTemplateSingleQuestionsList">
-      <End Role="CreateTemplateQuestionInfo" EntitySet="CreateTemplateQuestionInfoes" />
-      <End Role="CreateTemplateSingleQuestionsList" EntitySet="CreateTemplateSingleQuestionsLists" />
-    </AssociationSet>
-    <AssociationSet Name="CreateTemplateQuestionInfoCreateTemplateeditableInstructionsList" Association="M2E.Store.CreateTemplateQuestionInfoCreateTemplateeditableInstructionsList">
-      <End Role="CreateTemplateQuestionInfo" EntitySet="CreateTemplateQuestionInfoes" />
-      <End Role="CreateTemplateeditableInstructionsList" EntitySet="CreateTemplateeditableInstructionsLists" />
-    </AssociationSet>
-    <AssociationSet Name="CreateTemplateQuestionInfoCreateTemplateImgurImagesList" Association="M2E.Store.CreateTemplateQuestionInfoCreateTemplateImgurImagesList">
-      <End Role="CreateTemplateQuestionInfo" EntitySet="CreateTemplateQuestionInfoes" />
-      <End Role="CreateTemplateImgurImagesList" EntitySet="CreateTemplateImgurImagesLists" />
-    </AssociationSet>
-    <AssociationSet Name="CreateTemplateQuestionInfoCreateTemplateListBoxQuestionsList" Association="M2E.Store.CreateTemplateQuestionInfoCreateTemplateListBoxQuestionsList">
-      <End Role="CreateTemplateQuestionInfo" EntitySet="CreateTemplateQuestionInfoes" />
-      <End Role="CreateTemplateListBoxQuestionsList" EntitySet="CreateTemplateListBoxQuestionsLists" />
-    </AssociationSet>
-    <AssociationSet Name="CreateTemplateQuestionInfoCreateTemplateModeratingImagesList" Association="M2E.Store.CreateTemplateQuestionInfoCreateTemplateModeratingImagesList">
-      <End Role="CreateTemplateQuestionInfo" EntitySet="CreateTemplateQuestionInfoes" />
-      <End Role="CreateTemplateModeratingImagesList" EntitySet="CreateTemplateModeratingImagesLists" />
-    </AssociationSet>
-    <AssociationSet Name="CreateTemplateQuestionInfoCreateTemplateMultipleQuestionsList" Association="M2E.Store.CreateTemplateQuestionInfoCreateTemplateMultipleQuestionsList">
-      <End Role="CreateTemplateQuestionInfo" EntitySet="CreateTemplateQuestionInfoes" />
-      <End Role="CreateTemplateMultipleQuestionsList" EntitySet="CreateTemplateMultipleQuestionsLists" />
-    </AssociationSet>
-    <AssociationSet Name="CreateTemplateQuestionInfoCreateTemplateTextBoxQuestionsList" Association="M2E.Store.CreateTemplateQuestionInfoCreateTemplateTextBoxQuestionsList">
-      <End Role="CreateTemplateQuestionInfo" EntitySet="CreateTemplateQuestionInfoes" />
-      <End Role="CreateTemplateTextBoxQuestionsList" EntitySet="CreateTemplateTextBoxQuestionsLists" />
-    </AssociationSet>
-    <AssociationSet Name="UserCreateTemplateQuestionInfo" Association="M2E.Store.UserCreateTemplateQuestionInfo">
-      <End Role="User" EntitySet="Users" />
-      <End Role="CreateTemplateQuestionInfo" EntitySet="CreateTemplateQuestionInfoes" />
-    </AssociationSet>
-    <AssociationSet Name="UserFacebookAuth" Association="M2E.Store.UserFacebookAuth">
-      <End Role="User" EntitySet="Users" />
-      <End Role="FacebookAuth" EntitySet="FacebookAuths" />
-    </AssociationSet>
-    <AssociationSet Name="UserfacebookPageLikeMapping" Association="M2E.Store.UserfacebookPageLikeMapping">
-      <End Role="User" EntitySet="Users" />
-      <End Role="facebookPageLikeMapping" EntitySet="facebookPageLikeMappings" />
-    </AssociationSet>
-    <AssociationSet Name="UserForgetPassword" Association="M2E.Store.UserForgetPassword">
-      <End Role="User" EntitySet="Users" />
-      <End Role="ForgetPassword" EntitySet="ForgetPasswords" />
-    </AssociationSet>
     <AssociationSet Name="FK_UserRecommendedBy_User" Association="M2E.Store.FK_UserRecommendedBy_User">
       <End Role="User" EntitySet="Users" />
       <End Role="UserRecommendedBy" EntitySet="UserRecommendedBy" />
@@ -97,34 +53,6 @@
     <AssociationSet Name="FK_UserRecommendedBy_RecommendedBy" Association="M2E.Store.FK_UserRecommendedBy_RecommendedBy">
       <End Role="RecommendedBy" EntitySet="RecommendedBies" />
       <End Role="UserRecommendedBy" EntitySet="UserRecommendedBy" />
-    </AssociationSet>
-    <AssociationSet Name="UserUserAlerts" Association="M2E.Store.UserUserAlerts">
-      <End Role="User" EntitySet="Users" />
-      <End Role="UserAlerts" EntitySet="UserAlerts" />
-    </AssociationSet>
-    <AssociationSet Name="UserRecommendedBy1" Association="M2E.Store.UserRecommendedBy1">
-      <End Role="User" EntitySet="Users" />
-      <End Role="RecommendedBy" EntitySet="RecommendedBies" />
-    </AssociationSet>
-    <AssociationSet Name="UserUserEarning" Association="M2E.Store.UserUserEarning">
-      <End Role="User" EntitySet="Users" />
-      <End Role="UserEarning" EntitySet="UserEarnings" />
-    </AssociationSet>
-    <AssociationSet Name="UserUserEarningHistory" Association="M2E.Store.UserUserEarningHistory">
-      <End Role="User" EntitySet="Users" />
-      <End Role="UserEarningHistory" EntitySet="UserEarningHistories" />
-    </AssociationSet>
-    <AssociationSet Name="UserUserJobMapping" Association="M2E.Store.UserUserJobMapping">
-      <End Role="User" EntitySet="Users" />
-      <End Role="UserJobMapping" EntitySet="UserJobMappings" />
-    </AssociationSet>
-    <AssociationSet Name="UserUserReputation" Association="M2E.Store.UserUserReputation">
-      <End Role="User" EntitySet="Users" />
-      <End Role="UserReputation" EntitySet="UserReputations" />
-    </AssociationSet>
-    <AssociationSet Name="UserUserReputationMapping" Association="M2E.Store.UserUserReputationMapping">
-      <End Role="User" EntitySet="Users" />
-      <End Role="UserReputationMapping" EntitySet="UserReputationMappings" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="ClientDetails">
@@ -519,10 +447,6 @@
     <Property Name="GoogleLink" Type="nvarchar(max)" Nullable="true" />
     <Property Name="fixedGuid" Type="nvarchar(max)" Nullable="true" />
     <Property Name="isVerified" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="FacebookAuth_Id" Type="int" Nullable="false" />
-    <Property Name="ForgetPassword_Id" Type="int" Nullable="false" />
-    <Property Name="UserEarning_Id" Type="int" Nullable="false" />
-    <Property Name="UserReputation_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="UserSkills">
     <Key>
@@ -656,228 +580,12 @@
   </EntityType>
   <EntityType Name="UserRecommendedBy">
     <Key>
-      <PropertyRef Name="Users_Id" />
+      <PropertyRef Name="UserRecommendedBy_RecommendedBy_Id" />
       <PropertyRef Name="UserRecommendedBy_User_Id" />
     </Key>
-    <Property Name="Users_Id" Type="int" Nullable="false" />
+    <Property Name="UserRecommendedBy_RecommendedBy_Id" Type="int" Nullable="false" />
     <Property Name="UserRecommendedBy_User_Id" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="CreateTemplateQuestionInfoCreateTemplateSingleQuestionsList">
-    <End Role="CreateTemplateQuestionInfo" Type="M2E.Store.CreateTemplateQuestionInfoes" Multiplicity="1" />
-    <End Role="CreateTemplateSingleQuestionsList" Type="M2E.Store.CreateTemplateSingleQuestionsLists" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CreateTemplateQuestionInfo">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="CreateTemplateSingleQuestionsList">
-        <PropertyRef Name="CreateTemplateQuestionInfoId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="CreateTemplateQuestionInfoCreateTemplateeditableInstructionsList">
-    <End Role="CreateTemplateQuestionInfo" Type="M2E.Store.CreateTemplateQuestionInfoes" Multiplicity="1" />
-    <End Role="CreateTemplateeditableInstructionsList" Type="M2E.Store.CreateTemplateeditableInstructionsLists" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CreateTemplateQuestionInfo">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="CreateTemplateeditableInstructionsList">
-        <PropertyRef Name="CreateTemplateQuestionInfoId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="CreateTemplateQuestionInfoCreateTemplateImgurImagesList">
-    <End Role="CreateTemplateQuestionInfo" Type="M2E.Store.CreateTemplateQuestionInfoes" Multiplicity="1" />
-    <End Role="CreateTemplateImgurImagesList" Type="M2E.Store.CreateTemplateImgurImagesLists" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CreateTemplateQuestionInfo">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="CreateTemplateImgurImagesList">
-        <PropertyRef Name="CreateTemplateQuestionInfoId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="CreateTemplateQuestionInfoCreateTemplateListBoxQuestionsList">
-    <End Role="CreateTemplateQuestionInfo" Type="M2E.Store.CreateTemplateQuestionInfoes" Multiplicity="1" />
-    <End Role="CreateTemplateListBoxQuestionsList" Type="M2E.Store.CreateTemplateListBoxQuestionsLists" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CreateTemplateQuestionInfo">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="CreateTemplateListBoxQuestionsList">
-        <PropertyRef Name="CreateTemplateQuestionInfoId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="CreateTemplateQuestionInfoCreateTemplateModeratingImagesList">
-    <End Role="CreateTemplateQuestionInfo" Type="M2E.Store.CreateTemplateQuestionInfoes" Multiplicity="1" />
-    <End Role="CreateTemplateModeratingImagesList" Type="M2E.Store.CreateTemplateModeratingImagesLists" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CreateTemplateQuestionInfo">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="CreateTemplateModeratingImagesList">
-        <PropertyRef Name="CreateTemplateQuestionInfoId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="CreateTemplateQuestionInfoCreateTemplateMultipleQuestionsList">
-    <End Role="CreateTemplateQuestionInfo" Type="M2E.Store.CreateTemplateQuestionInfoes" Multiplicity="1" />
-    <End Role="CreateTemplateMultipleQuestionsList" Type="M2E.Store.CreateTemplateMultipleQuestionsLists" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CreateTemplateQuestionInfo">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="CreateTemplateMultipleQuestionsList">
-        <PropertyRef Name="CreateTemplateQuestionInfoId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="CreateTemplateQuestionInfoCreateTemplateTextBoxQuestionsList">
-    <End Role="CreateTemplateQuestionInfo" Type="M2E.Store.CreateTemplateQuestionInfoes" Multiplicity="1" />
-    <End Role="CreateTemplateTextBoxQuestionsList" Type="M2E.Store.CreateTemplateTextBoxQuestionsLists" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CreateTemplateQuestionInfo">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="CreateTemplateTextBoxQuestionsList">
-        <PropertyRef Name="CreateTemplateQuestionInfoId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="UserCreateTemplateQuestionInfo">
-    <End Role="User" Type="M2E.Store.Users" Multiplicity="1" />
-    <End Role="CreateTemplateQuestionInfo" Type="M2E.Store.CreateTemplateQuestionInfoes" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="CreateTemplateQuestionInfo">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="UserFacebookAuth">
-    <End Role="User" Type="M2E.Store.Users" Multiplicity="*" />
-    <End Role="FacebookAuth" Type="M2E.Store.FacebookAuths" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="FacebookAuth">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="User">
-        <PropertyRef Name="FacebookAuth_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="UserfacebookPageLikeMapping">
-    <End Role="User" Type="M2E.Store.Users" Multiplicity="1" />
-    <End Role="facebookPageLikeMapping" Type="M2E.Store.facebookPageLikeMappings" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="facebookPageLikeMapping">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="UserForgetPassword">
-    <End Role="User" Type="M2E.Store.Users" Multiplicity="*" />
-    <End Role="ForgetPassword" Type="M2E.Store.ForgetPasswords" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="ForgetPassword">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="User">
-        <PropertyRef Name="ForgetPassword_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="UserUserAlerts">
-    <End Role="User" Type="M2E.Store.Users" Multiplicity="1" />
-    <End Role="UserAlerts" Type="M2E.Store.UserAlerts" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="UserAlerts">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="UserRecommendedBy1">
-    <End Role="User" Type="M2E.Store.Users" Multiplicity="1" />
-    <End Role="RecommendedBy" Type="M2E.Store.RecommendedBies" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="RecommendedBy">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="UserUserEarning">
-    <End Role="User" Type="M2E.Store.Users" Multiplicity="*" />
-    <End Role="UserEarning" Type="M2E.Store.UserEarnings" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="UserEarning">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="User">
-        <PropertyRef Name="UserEarning_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="UserUserEarningHistory">
-    <End Role="User" Type="M2E.Store.Users" Multiplicity="1" />
-    <End Role="UserEarningHistory" Type="M2E.Store.UserEarningHistories" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="UserEarningHistory">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="UserUserJobMapping">
-    <End Role="User" Type="M2E.Store.Users" Multiplicity="1" />
-    <End Role="UserJobMapping" Type="M2E.Store.UserJobMappings" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="UserJobMapping">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="UserUserReputation">
-    <End Role="User" Type="M2E.Store.Users" Multiplicity="*" />
-    <End Role="UserReputation" Type="M2E.Store.UserReputations" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="UserReputation">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="User">
-        <PropertyRef Name="UserReputation_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="UserUserReputationMapping">
-    <End Role="User" Type="M2E.Store.Users" Multiplicity="1" />
-    <End Role="UserReputationMapping" Type="M2E.Store.UserReputationMappings" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="UserReputationMapping">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_UserRecommendedBy_User">
     <End Role="User" Type="M2E.Store.Users" Multiplicity="1" />
     <End Role="UserRecommendedBy" Type="M2E.Store.UserRecommendedBy" Multiplicity="*" />
@@ -886,7 +594,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="UserRecommendedBy">
-        <PropertyRef Name="Users_Id" />
+        <PropertyRef Name="UserRecommendedBy_RecommendedBy_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -946,81 +654,9 @@
           <EntitySet Name="contactUs" EntityType="M2E.contactUs" />
           <EntitySet Name="MobikwikUserPhoneLists" EntityType="M2E.MobikwikUserPhoneList" />
           <EntitySet Name="MobikwikUserHistories" EntityType="M2E.MobikwikUserHistory" />
-          <AssociationSet Name="CreateTemplateQuestionInfoCreateTemplateSingleQuestionsList" Association="M2E.CreateTemplateQuestionInfoCreateTemplateSingleQuestionsList">
-            <End Role="CreateTemplateQuestionInfo" EntitySet="CreateTemplateQuestionInfoes" />
-            <End Role="CreateTemplateSingleQuestionsList" EntitySet="CreateTemplateSingleQuestionsLists" />
-          </AssociationSet>
-          <AssociationSet Name="CreateTemplateQuestionInfoCreateTemplateeditableInstructionsList" Association="M2E.CreateTemplateQuestionInfoCreateTemplateeditableInstructionsList">
-            <End Role="CreateTemplateQuestionInfo" EntitySet="CreateTemplateQuestionInfoes" />
-            <End Role="CreateTemplateeditableInstructionsList" EntitySet="CreateTemplateeditableInstructionsLists" />
-          </AssociationSet>
-          <AssociationSet Name="CreateTemplateQuestionInfoCreateTemplateImgurImagesList" Association="M2E.CreateTemplateQuestionInfoCreateTemplateImgurImagesList">
-            <End Role="CreateTemplateQuestionInfo" EntitySet="CreateTemplateQuestionInfoes" />
-            <End Role="CreateTemplateImgurImagesList" EntitySet="CreateTemplateImgurImagesLists" />
-          </AssociationSet>
-          <AssociationSet Name="CreateTemplateQuestionInfoCreateTemplateListBoxQuestionsList" Association="M2E.CreateTemplateQuestionInfoCreateTemplateListBoxQuestionsList">
-            <End Role="CreateTemplateQuestionInfo" EntitySet="CreateTemplateQuestionInfoes" />
-            <End Role="CreateTemplateListBoxQuestionsList" EntitySet="CreateTemplateListBoxQuestionsLists" />
-          </AssociationSet>
-          <AssociationSet Name="CreateTemplateQuestionInfoCreateTemplateModeratingImagesList" Association="M2E.CreateTemplateQuestionInfoCreateTemplateModeratingImagesList">
-            <End Role="CreateTemplateQuestionInfo" EntitySet="CreateTemplateQuestionInfoes" />
-            <End Role="CreateTemplateModeratingImagesList" EntitySet="CreateTemplateModeratingImagesLists" />
-          </AssociationSet>
-          <AssociationSet Name="CreateTemplateQuestionInfoCreateTemplateMultipleQuestionsList" Association="M2E.CreateTemplateQuestionInfoCreateTemplateMultipleQuestionsList">
-            <End Role="CreateTemplateQuestionInfo" EntitySet="CreateTemplateQuestionInfoes" />
-            <End Role="CreateTemplateMultipleQuestionsList" EntitySet="CreateTemplateMultipleQuestionsLists" />
-          </AssociationSet>
-          <AssociationSet Name="CreateTemplateQuestionInfoCreateTemplateTextBoxQuestionsList" Association="M2E.CreateTemplateQuestionInfoCreateTemplateTextBoxQuestionsList">
-            <End Role="CreateTemplateQuestionInfo" EntitySet="CreateTemplateQuestionInfoes" />
-            <End Role="CreateTemplateTextBoxQuestionsList" EntitySet="CreateTemplateTextBoxQuestionsLists" />
-          </AssociationSet>
-          <AssociationSet Name="UserCreateTemplateQuestionInfo" Association="M2E.UserCreateTemplateQuestionInfo">
-            <End Role="User" EntitySet="Users" />
-            <End Role="CreateTemplateQuestionInfo" EntitySet="CreateTemplateQuestionInfoes" />
-          </AssociationSet>
-          <AssociationSet Name="UserFacebookAuth" Association="M2E.UserFacebookAuth">
-            <End Role="User" EntitySet="Users" />
-            <End Role="FacebookAuth" EntitySet="FacebookAuths" />
-          </AssociationSet>
-          <AssociationSet Name="UserfacebookPageLikeMapping" Association="M2E.UserfacebookPageLikeMapping">
-            <End Role="User" EntitySet="Users" />
-            <End Role="facebookPageLikeMapping" EntitySet="facebookPageLikeMappings" />
-          </AssociationSet>
-          <AssociationSet Name="UserForgetPassword" Association="M2E.UserForgetPassword">
-            <End Role="User" EntitySet="Users" />
-            <End Role="ForgetPassword" EntitySet="ForgetPasswords" />
-          </AssociationSet>
           <AssociationSet Name="UserRecommendedBy" Association="M2E.UserRecommendedBy">
             <End Role="User" EntitySet="Users" />
             <End Role="RecommendedBy" EntitySet="RecommendedBies" />
-          </AssociationSet>
-          <AssociationSet Name="UserUserAlerts" Association="M2E.UserUserAlerts">
-            <End Role="User" EntitySet="Users" />
-            <End Role="UserAlerts" EntitySet="UserAlerts" />
-          </AssociationSet>
-          <AssociationSet Name="UserRecommendedBy1" Association="M2E.UserRecommendedBy1">
-            <End Role="User" EntitySet="Users" />
-            <End Role="RecommendedBy" EntitySet="RecommendedBies" />
-          </AssociationSet>
-          <AssociationSet Name="UserUserEarning" Association="M2E.UserUserEarning">
-            <End Role="User" EntitySet="Users" />
-            <End Role="UserEarning" EntitySet="UserEarnings" />
-          </AssociationSet>
-          <AssociationSet Name="UserUserEarningHistory" Association="M2E.UserUserEarningHistory">
-            <End Role="User" EntitySet="Users" />
-            <End Role="UserEarningHistory" EntitySet="UserEarningHistories" />
-          </AssociationSet>
-          <AssociationSet Name="UserUserJobMapping" Association="M2E.UserUserJobMapping">
-            <End Role="User" EntitySet="Users" />
-            <End Role="UserJobMapping" EntitySet="UserJobMappings" />
-          </AssociationSet>
-          <AssociationSet Name="UserUserReputation" Association="M2E.UserUserReputation">
-            <End Role="User" EntitySet="Users" />
-            <End Role="UserReputation" EntitySet="UserReputations" />
-          </AssociationSet>
-          <AssociationSet Name="UserUserReputationMapping" Association="M2E.UserUserReputationMapping">
-            <End Role="User" EntitySet="Users" />
-            <End Role="UserReputationMapping" EntitySet="UserReputationMappings" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="ClientDetail">
@@ -1057,7 +693,6 @@
           <Property Name="assignTime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="completedAt" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="referenceKey" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="CreateTemplateQuestionInfo" Relationship="M2E.CreateTemplateQuestionInfoCreateTemplateeditableInstructionsList" FromRole="CreateTemplateeditableInstructionsList" ToRole="CreateTemplateQuestionInfo" />
           <Property Name="CreateTemplateQuestionInfoId" Type="Int32" Nullable="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         </EntityType>
         <EntityType Name="CreateTemplateFacebookLike">
@@ -1096,7 +731,6 @@
           <Property Name="imgurDeleteHash" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="imgurLink" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="alocatedCount" Type="Int32" />
-          <NavigationProperty Name="CreateTemplateQuestionInfo" Relationship="M2E.CreateTemplateQuestionInfoCreateTemplateImgurImagesList" FromRole="CreateTemplateImgurImagesList" ToRole="CreateTemplateQuestionInfo" />
           <Property Name="CreateTemplateQuestionInfoId" Type="Int32" Nullable="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         </EntityType>
         <EntityType Name="CreateTemplateListBoxQuestionsList">
@@ -1114,7 +748,6 @@
           <Property Name="completedAt" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Number" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="referenceKey" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="CreateTemplateQuestionInfo" Relationship="M2E.CreateTemplateQuestionInfoCreateTemplateListBoxQuestionsList" FromRole="CreateTemplateListBoxQuestionsList" ToRole="CreateTemplateQuestionInfo" />
           <Property Name="CreateTemplateQuestionInfoId" Type="Int32" Nullable="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         </EntityType>
         <EntityType Name="CreateTemplateModeratingImagesList">
@@ -1129,7 +762,6 @@
           <Property Name="referenceKey" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="deletehash" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="link" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="CreateTemplateQuestionInfo" Relationship="M2E.CreateTemplateQuestionInfoCreateTemplateModeratingImagesList" FromRole="CreateTemplateModeratingImagesList" ToRole="CreateTemplateQuestionInfo" />
           <Property Name="CreateTemplateQuestionInfoId" Type="Int32" Nullable="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         </EntityType>
         <EntityType Name="CreateTemplateMultipleQuestionsList">
@@ -1147,7 +779,6 @@
           <Property Name="completedAt" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Number" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="referenceKey" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="CreateTemplateQuestionInfo" Relationship="M2E.CreateTemplateQuestionInfoCreateTemplateMultipleQuestionsList" FromRole="CreateTemplateMultipleQuestionsList" ToRole="CreateTemplateQuestionInfo" />
           <Property Name="CreateTemplateQuestionInfoId" Type="Int32" Nullable="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         </EntityType>
         <EntityType Name="CreateTemplateQuestionInfo">
@@ -1168,14 +799,6 @@
           <Property Name="subType" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="payPerUser" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="DateTime" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="CreateTemplateSingleQuestionsLists" Relationship="M2E.CreateTemplateQuestionInfoCreateTemplateSingleQuestionsList" FromRole="CreateTemplateQuestionInfo" ToRole="CreateTemplateSingleQuestionsList" />
-          <NavigationProperty Name="CreateTemplateeditableInstructionsLists" Relationship="M2E.CreateTemplateQuestionInfoCreateTemplateeditableInstructionsList" FromRole="CreateTemplateQuestionInfo" ToRole="CreateTemplateeditableInstructionsList" />
-          <NavigationProperty Name="CreateTemplateImgurImagesLists" Relationship="M2E.CreateTemplateQuestionInfoCreateTemplateImgurImagesList" FromRole="CreateTemplateQuestionInfo" ToRole="CreateTemplateImgurImagesList" />
-          <NavigationProperty Name="CreateTemplateListBoxQuestionsLists" Relationship="M2E.CreateTemplateQuestionInfoCreateTemplateListBoxQuestionsList" FromRole="CreateTemplateQuestionInfo" ToRole="CreateTemplateListBoxQuestionsList" />
-          <NavigationProperty Name="CreateTemplateModeratingImagesLists" Relationship="M2E.CreateTemplateQuestionInfoCreateTemplateModeratingImagesList" FromRole="CreateTemplateQuestionInfo" ToRole="CreateTemplateModeratingImagesList" />
-          <NavigationProperty Name="CreateTemplateMultipleQuestionsLists" Relationship="M2E.CreateTemplateQuestionInfoCreateTemplateMultipleQuestionsList" FromRole="CreateTemplateQuestionInfo" ToRole="CreateTemplateMultipleQuestionsList" />
-          <NavigationProperty Name="CreateTemplateTextBoxQuestionsLists" Relationship="M2E.CreateTemplateQuestionInfoCreateTemplateTextBoxQuestionsList" FromRole="CreateTemplateQuestionInfo" ToRole="CreateTemplateTextBoxQuestionsList" />
-          <NavigationProperty Name="User" Relationship="M2E.UserCreateTemplateQuestionInfo" FromRole="CreateTemplateQuestionInfo" ToRole="User" />
           <Property Name="UserId" Type="Int32" Nullable="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         </EntityType>
         <EntityType Name="CreateTemplateSingleQuestionsList">
@@ -1193,7 +816,6 @@
           <Property Name="completedAt" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Number" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="referenceKey" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="CreateTemplateQuestionInfo" Relationship="M2E.CreateTemplateQuestionInfoCreateTemplateSingleQuestionsList" FromRole="CreateTemplateSingleQuestionsList" ToRole="CreateTemplateQuestionInfo" />
           <Property Name="CreateTemplateQuestionInfoId" Type="Int32" Nullable="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         </EntityType>
         <EntityType Name="CreateTemplateTextBoxQuestionsList">
@@ -1211,7 +833,6 @@
           <Property Name="completedAt" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Number" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="referenceKey" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="CreateTemplateQuestionInfo" Relationship="M2E.CreateTemplateQuestionInfoCreateTemplateTextBoxQuestionsList" FromRole="CreateTemplateTextBoxQuestionsList" ToRole="CreateTemplateQuestionInfo" />
           <Property Name="CreateTemplateQuestionInfoId" Type="Int32" Nullable="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         </EntityType>
         <EntityType Name="FacebookAuth">
@@ -1224,7 +845,6 @@
           <Property Name="facebookId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="facebookUsername" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="AuthToken" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="User" Relationship="M2E.UserFacebookAuth" FromRole="FacebookAuth" ToRole="User" />
         </EntityType>
         <EntityType Name="facebookPageLikeMapping">
           <Key>
@@ -1236,7 +856,6 @@
           <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="PageId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="UserFacebookId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="User" Relationship="M2E.UserfacebookPageLikeMapping" FromRole="facebookPageLikeMapping" ToRole="User" />
           <Property Name="UserId" Type="Int32" Nullable="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         </EntityType>
         <EntityType Name="ForgetPassword">
@@ -1246,7 +865,6 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="guid" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="User" Relationship="M2E.UserForgetPassword" FromRole="ForgetPassword" ToRole="User" />
         </EntityType>
         <EntityType Name="JobData">
           <Key>
@@ -1289,8 +907,6 @@
           <Property Name="DateTime" Type="DateTime" Precision="3" />
           <Property Name="isValid" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Type="String" Name="RecommendedFromUsername" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="M2E.UserRecommendedBy" FromRole="RecommendedBy" ToRole="User" />
-          <NavigationProperty Name="User" Relationship="M2E.UserRecommendedBy1" FromRole="RecommendedBy" ToRole="User" />
           <Property Name="UserId" Type="Int32" Nullable="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         </EntityType>
         <EntityType Name="ThirdPartyLogin">
@@ -1324,7 +940,6 @@
           <Property Name="currency" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="LastUpdated" Type="DateTime" Precision="3" />
           <Property Type="String" Name="userType" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="M2E.UserUserEarning" FromRole="UserEarning" ToRole="User" />
         </EntityType>
         <EntityType Name="UserFacebookLikeJobMapping">
           <Key>
@@ -1351,7 +966,6 @@
           <Property Name="status" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="endTime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="expectedDeliveryTime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="User" Relationship="M2E.UserUserJobMapping" FromRole="UserJobMapping" ToRole="User" />
           <Property Name="UserId" Type="Int32" Nullable="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         </EntityType>
         <EntityType Name="UserMultipleJobMapping">
@@ -1402,7 +1016,6 @@
           <Property Name="description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="DateTime" Type="DateTime" Precision="3" />
           <Property Type="String" Name="reputation" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="M2E.UserUserReputationMapping" FromRole="UserReputationMapping" ToRole="User" />
           <Property Name="UserId" Type="Int32" Nullable="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         </EntityType>
         <EntityType Name="UserReputation">
@@ -1413,7 +1026,6 @@
           <Property Name="username" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="ReputationScore" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="UserBadge" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="User" Relationship="M2E.UserUserReputation" FromRole="UserReputation" ToRole="User" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -1439,17 +1051,6 @@
           <Property Name="GoogleLink" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="fixedGuid" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Type="String" Name="isVerified" Nullable="true" />
-          <NavigationProperty Name="CreateTemplateQuestionInfoes" Relationship="M2E.UserCreateTemplateQuestionInfo" FromRole="User" ToRole="CreateTemplateQuestionInfo" />
-          <NavigationProperty Name="FacebookAuth" Relationship="M2E.UserFacebookAuth" FromRole="User" ToRole="FacebookAuth" />
-          <NavigationProperty Name="facebookPageLikeMappings" Relationship="M2E.UserfacebookPageLikeMapping" FromRole="User" ToRole="facebookPageLikeMapping" />
-          <NavigationProperty Name="ForgetPassword" Relationship="M2E.UserForgetPassword" FromRole="User" ToRole="ForgetPassword" />
-          <NavigationProperty Name="UserAlerts" Relationship="M2E.UserUserAlerts" FromRole="User" ToRole="UserAlerts" />
-          <NavigationProperty Name="RecommendedBies" Relationship="M2E.UserRecommendedBy1" FromRole="User" ToRole="RecommendedBy" />
-          <NavigationProperty Name="UserEarning" Relationship="M2E.UserUserEarning" FromRole="User" ToRole="UserEarning" />
-          <NavigationProperty Name="UserEarningHistories" Relationship="M2E.UserUserEarningHistory" FromRole="User" ToRole="UserEarningHistory" />
-          <NavigationProperty Name="UserJobMappings" Relationship="M2E.UserUserJobMapping" FromRole="User" ToRole="UserJobMapping" />
-          <NavigationProperty Name="UserReputation" Relationship="M2E.UserUserReputation" FromRole="User" ToRole="UserReputation" />
-          <NavigationProperty Name="UserReputationMappings" Relationship="M2E.UserUserReputationMapping" FromRole="User" ToRole="UserReputationMapping" />
         </EntityType>
         <EntityType Name="UserSkill">
           <Key>
@@ -1504,7 +1105,6 @@
           <Property Type="DateTime" Name="dateTime" Nullable="false" />
           <Property Type="String" Name="userType" Nullable="false" />
           <Property Type="String" Name="currency" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="M2E.UserUserEarningHistory" FromRole="UserEarningHistory" ToRole="User" />
           <Property Name="UserId" Type="Int32" Nullable="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         </EntityType>
         <EntityType Name="UserMessages">
@@ -1537,7 +1137,6 @@
           <Property Type="String" Name="messageFrom" Nullable="false" />
           <Property Type="String" Name="messageTo" Nullable="false" />
           <Property Type="String" Name="AlertSeen" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="M2E.UserUserAlerts" FromRole="UserAlerts" ToRole="User" />
           <Property Name="UserId" Type="Int32" Nullable="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         </EntityType>
         <EntityType Name="contactUs">
@@ -1583,193 +1182,9 @@
           <Property Type="String" Name="amount" Nullable="false" />
           <Property Type="DateTime" Name="dateTime" Nullable="false" />
         </EntityType>
-        <Association Name="CreateTemplateQuestionInfoCreateTemplateSingleQuestionsList">
-          <End Type="M2E.CreateTemplateQuestionInfo" Role="CreateTemplateQuestionInfo" Multiplicity="1" />
-          <End Type="M2E.CreateTemplateSingleQuestionsList" Role="CreateTemplateSingleQuestionsList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CreateTemplateQuestionInfo">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CreateTemplateSingleQuestionsList">
-              <PropertyRef Name="CreateTemplateQuestionInfoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="CreateTemplateQuestionInfoCreateTemplateeditableInstructionsList">
-          <End Type="M2E.CreateTemplateQuestionInfo" Role="CreateTemplateQuestionInfo" Multiplicity="1" />
-          <End Type="M2E.CreateTemplateeditableInstructionsList" Role="CreateTemplateeditableInstructionsList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CreateTemplateQuestionInfo">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CreateTemplateeditableInstructionsList">
-              <PropertyRef Name="CreateTemplateQuestionInfoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="CreateTemplateQuestionInfoCreateTemplateImgurImagesList">
-          <End Type="M2E.CreateTemplateQuestionInfo" Role="CreateTemplateQuestionInfo" Multiplicity="1" />
-          <End Type="M2E.CreateTemplateImgurImagesList" Role="CreateTemplateImgurImagesList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CreateTemplateQuestionInfo">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CreateTemplateImgurImagesList">
-              <PropertyRef Name="CreateTemplateQuestionInfoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="CreateTemplateQuestionInfoCreateTemplateListBoxQuestionsList">
-          <End Type="M2E.CreateTemplateQuestionInfo" Role="CreateTemplateQuestionInfo" Multiplicity="1" />
-          <End Type="M2E.CreateTemplateListBoxQuestionsList" Role="CreateTemplateListBoxQuestionsList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CreateTemplateQuestionInfo">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CreateTemplateListBoxQuestionsList">
-              <PropertyRef Name="CreateTemplateQuestionInfoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="CreateTemplateQuestionInfoCreateTemplateModeratingImagesList">
-          <End Type="M2E.CreateTemplateQuestionInfo" Role="CreateTemplateQuestionInfo" Multiplicity="1" />
-          <End Type="M2E.CreateTemplateModeratingImagesList" Role="CreateTemplateModeratingImagesList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CreateTemplateQuestionInfo">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CreateTemplateModeratingImagesList">
-              <PropertyRef Name="CreateTemplateQuestionInfoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="CreateTemplateQuestionInfoCreateTemplateMultipleQuestionsList">
-          <End Type="M2E.CreateTemplateQuestionInfo" Role="CreateTemplateQuestionInfo" Multiplicity="1" />
-          <End Type="M2E.CreateTemplateMultipleQuestionsList" Role="CreateTemplateMultipleQuestionsList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CreateTemplateQuestionInfo">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CreateTemplateMultipleQuestionsList">
-              <PropertyRef Name="CreateTemplateQuestionInfoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="CreateTemplateQuestionInfoCreateTemplateTextBoxQuestionsList">
-          <End Type="M2E.CreateTemplateQuestionInfo" Role="CreateTemplateQuestionInfo" Multiplicity="1" />
-          <End Type="M2E.CreateTemplateTextBoxQuestionsList" Role="CreateTemplateTextBoxQuestionsList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CreateTemplateQuestionInfo">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CreateTemplateTextBoxQuestionsList">
-              <PropertyRef Name="CreateTemplateQuestionInfoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="UserCreateTemplateQuestionInfo">
-          <End Type="M2E.User" Role="User" Multiplicity="1" />
-          <End Type="M2E.CreateTemplateQuestionInfo" Role="CreateTemplateQuestionInfo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CreateTemplateQuestionInfo">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="UserFacebookAuth">
-          <End Type="M2E.User" Role="User" Multiplicity="1" />
-          <End Type="M2E.FacebookAuth" Role="FacebookAuth" Multiplicity="1" />
-        </Association>
-        <Association Name="UserfacebookPageLikeMapping">
-          <End Type="M2E.User" Role="User" Multiplicity="1" />
-          <End Type="M2E.facebookPageLikeMapping" Role="facebookPageLikeMapping" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="facebookPageLikeMapping">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="UserForgetPassword">
-          <End Type="M2E.User" Role="User" Multiplicity="1" />
-          <End Type="M2E.ForgetPassword" Role="ForgetPassword" Multiplicity="1" />
-        </Association>
         <Association Name="UserRecommendedBy">
           <End Type="M2E.User" Role="User" Multiplicity="*" />
           <End Type="M2E.RecommendedBy" Role="RecommendedBy" Multiplicity="*" />
-        </Association>
-        <Association Name="UserUserAlerts">
-          <End Type="M2E.User" Role="User" Multiplicity="1" />
-          <End Type="M2E.UserAlerts" Role="UserAlerts" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserAlerts">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="UserRecommendedBy1">
-          <End Type="M2E.User" Role="User" Multiplicity="1" />
-          <End Type="M2E.RecommendedBy" Role="RecommendedBy" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="RecommendedBy">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="UserUserEarning">
-          <End Type="M2E.User" Role="User" Multiplicity="1" />
-          <End Type="M2E.UserEarning" Role="UserEarning" Multiplicity="1" />
-        </Association>
-        <Association Name="UserUserEarningHistory">
-          <End Type="M2E.User" Role="User" Multiplicity="1" />
-          <End Type="M2E.UserEarningHistory" Role="UserEarningHistory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserEarningHistory">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="UserUserJobMapping">
-          <End Type="M2E.User" Role="User" Multiplicity="1" />
-          <End Type="M2E.UserJobMapping" Role="UserJobMapping" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserJobMapping">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="UserUserReputation">
-          <End Type="M2E.User" Role="User" Multiplicity="1" />
-          <End Type="M2E.UserReputation" Role="UserReputation" Multiplicity="1" />
-        </Association>
-        <Association Name="UserUserReputationMapping">
-          <End Type="M2E.User" Role="User" Multiplicity="1" />
-          <End Type="M2E.UserReputationMapping" Role="UserReputationMapping" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserReputationMapping">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -2339,44 +1754,12 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="UserFacebookAuth" TypeName="M2E.UserFacebookAuth" StoreEntitySet="Users">
-      <EndProperty Name="FacebookAuth">
-        <ScalarProperty Name="Id" ColumnName="FacebookAuth_Id" />
-      </EndProperty>
-      <EndProperty Name="User">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="UserForgetPassword" TypeName="M2E.UserForgetPassword" StoreEntitySet="Users">
-      <EndProperty Name="ForgetPassword">
-        <ScalarProperty Name="Id" ColumnName="ForgetPassword_Id" />
-      </EndProperty>
-      <EndProperty Name="User">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="UserRecommendedBy" TypeName="M2E.UserRecommendedBy" StoreEntitySet="UserRecommendedBy">
       <EndProperty Name="User">
-        <ScalarProperty Name="Id" ColumnName="Users_Id" />
+        <ScalarProperty Name="Id" ColumnName="UserRecommendedBy_RecommendedBy_Id" />
       </EndProperty>
       <EndProperty Name="RecommendedBy">
         <ScalarProperty Name="Id" ColumnName="UserRecommendedBy_User_Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="UserUserEarning" TypeName="M2E.UserUserEarning" StoreEntitySet="Users">
-      <EndProperty Name="UserEarning">
-        <ScalarProperty Name="Id" ColumnName="UserEarning_Id" />
-      </EndProperty>
-      <EndProperty Name="User">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="UserUserReputation" TypeName="M2E.UserUserReputation" StoreEntitySet="Users">
-      <EndProperty Name="UserReputation">
-        <ScalarProperty Name="Id" ColumnName="UserReputation_Id" />
-      </EndProperty>
-      <EndProperty Name="User">
-        <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

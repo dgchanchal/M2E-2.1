@@ -22,7 +22,5 @@ namespace M2E.Models
         public Nullable<System.DateTime> DateTime { get; set; }
         public string reputation { get; set; }
         public int UserId { get; set; }
-    
-        public virtual User User { get; set; }
     }
 }

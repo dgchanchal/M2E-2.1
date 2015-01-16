@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 01/16/2015 17:07:57
+-- Date Created: 01/16/2015 17:40:08
 -- Generated from EDMX file: C:\svn\pcongo_svn_16012015\M2E\Models\M2EContext.edmx
 -- --------------------------------------------------
 
@@ -17,6 +17,66 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_CreateTemplateQuestionInfoCreateTemplateSingleQuestionsList]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CreateTemplateSingleQuestionsLists] DROP CONSTRAINT [FK_CreateTemplateQuestionInfoCreateTemplateSingleQuestionsList];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CreateTemplateQuestionInfoCreateTemplateeditableInstructionsList]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CreateTemplateeditableInstructionsLists] DROP CONSTRAINT [FK_CreateTemplateQuestionInfoCreateTemplateeditableInstructionsList];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CreateTemplateQuestionInfoCreateTemplateImgurImagesList]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CreateTemplateImgurImagesLists] DROP CONSTRAINT [FK_CreateTemplateQuestionInfoCreateTemplateImgurImagesList];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CreateTemplateQuestionInfoCreateTemplateListBoxQuestionsList]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CreateTemplateListBoxQuestionsLists] DROP CONSTRAINT [FK_CreateTemplateQuestionInfoCreateTemplateListBoxQuestionsList];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CreateTemplateQuestionInfoCreateTemplateModeratingImagesList]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CreateTemplateModeratingImagesLists] DROP CONSTRAINT [FK_CreateTemplateQuestionInfoCreateTemplateModeratingImagesList];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CreateTemplateQuestionInfoCreateTemplateMultipleQuestionsList]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CreateTemplateMultipleQuestionsLists] DROP CONSTRAINT [FK_CreateTemplateQuestionInfoCreateTemplateMultipleQuestionsList];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CreateTemplateQuestionInfoCreateTemplateTextBoxQuestionsList]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CreateTemplateTextBoxQuestionsLists] DROP CONSTRAINT [FK_CreateTemplateQuestionInfoCreateTemplateTextBoxQuestionsList];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserCreateTemplateQuestionInfo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CreateTemplateQuestionInfoes] DROP CONSTRAINT [FK_UserCreateTemplateQuestionInfo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserFacebookAuth]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Users] DROP CONSTRAINT [FK_UserFacebookAuth];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserfacebookPageLikeMapping]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[facebookPageLikeMappings] DROP CONSTRAINT [FK_UserfacebookPageLikeMapping];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserForgetPassword]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Users] DROP CONSTRAINT [FK_UserForgetPassword];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserRecommendedBy_User]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserRecommendedBy] DROP CONSTRAINT [FK_UserRecommendedBy_User];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserRecommendedBy_RecommendedBy]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserRecommendedBy] DROP CONSTRAINT [FK_UserRecommendedBy_RecommendedBy];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserUserAlerts]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserAlerts] DROP CONSTRAINT [FK_UserUserAlerts];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserRecommendedBy1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RecommendedBies] DROP CONSTRAINT [FK_UserRecommendedBy1];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserUserEarning]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Users] DROP CONSTRAINT [FK_UserUserEarning];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserUserEarningHistory]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserEarningHistories] DROP CONSTRAINT [FK_UserUserEarningHistory];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserUserJobMapping]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserJobMappings] DROP CONSTRAINT [FK_UserUserJobMapping];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserUserReputation]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Users] DROP CONSTRAINT [FK_UserUserReputation];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserUserReputationMapping]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserReputationMappings] DROP CONSTRAINT [FK_UserUserReputationMapping];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -138,6 +198,9 @@ IF OBJECT_ID(N'[dbo].[MobikwikUserPhoneLists]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[MobikwikUserHistories]', 'U') IS NOT NULL
     DROP TABLE [dbo].[MobikwikUserHistories];
+GO
+IF OBJECT_ID(N'[dbo].[UserRecommendedBy]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserRecommendedBy];
 GO
 
 -- --------------------------------------------------
@@ -533,11 +596,7 @@ CREATE TABLE [dbo].[Users] (
     [LinkedinLink] nvarchar(max)  NULL,
     [GoogleLink] nvarchar(max)  NULL,
     [fixedGuid] nvarchar(max)  NULL,
-    [isVerified] nvarchar(max)  NULL,
-    [FacebookAuth_Id] int  NOT NULL,
-    [ForgetPassword_Id] int  NOT NULL,
-    [UserEarning_Id] int  NOT NULL,
-    [UserReputation_Id] int  NOT NULL
+    [isVerified] nvarchar(max)  NULL
 );
 GO
 
@@ -673,7 +732,7 @@ GO
 
 -- Creating table 'UserRecommendedBy'
 CREATE TABLE [dbo].[UserRecommendedBy] (
-    [Users_Id] int  NOT NULL,
+    [UserRecommendedBy_RecommendedBy_Id] int  NOT NULL,
     [UserRecommendedBy_User_Id] int  NOT NULL
 );
 GO
@@ -916,185 +975,20 @@ ADD CONSTRAINT [PK_MobikwikUserHistories]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Users_Id], [UserRecommendedBy_User_Id] in table 'UserRecommendedBy'
+-- Creating primary key on [UserRecommendedBy_RecommendedBy_Id], [UserRecommendedBy_User_Id] in table 'UserRecommendedBy'
 ALTER TABLE [dbo].[UserRecommendedBy]
 ADD CONSTRAINT [PK_UserRecommendedBy]
-    PRIMARY KEY CLUSTERED ([Users_Id], [UserRecommendedBy_User_Id] ASC);
+    PRIMARY KEY CLUSTERED ([UserRecommendedBy_RecommendedBy_Id], [UserRecommendedBy_User_Id] ASC);
 GO
 
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [CreateTemplateQuestionInfoId] in table 'CreateTemplateSingleQuestionsLists'
-ALTER TABLE [dbo].[CreateTemplateSingleQuestionsLists]
-ADD CONSTRAINT [FK_CreateTemplateQuestionInfoCreateTemplateSingleQuestionsList]
-    FOREIGN KEY ([CreateTemplateQuestionInfoId])
-    REFERENCES [dbo].[CreateTemplateQuestionInfoes]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_CreateTemplateQuestionInfoCreateTemplateSingleQuestionsList'
-CREATE INDEX [IX_FK_CreateTemplateQuestionInfoCreateTemplateSingleQuestionsList]
-ON [dbo].[CreateTemplateSingleQuestionsLists]
-    ([CreateTemplateQuestionInfoId]);
-GO
-
--- Creating foreign key on [CreateTemplateQuestionInfoId] in table 'CreateTemplateeditableInstructionsLists'
-ALTER TABLE [dbo].[CreateTemplateeditableInstructionsLists]
-ADD CONSTRAINT [FK_CreateTemplateQuestionInfoCreateTemplateeditableInstructionsList]
-    FOREIGN KEY ([CreateTemplateQuestionInfoId])
-    REFERENCES [dbo].[CreateTemplateQuestionInfoes]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_CreateTemplateQuestionInfoCreateTemplateeditableInstructionsList'
-CREATE INDEX [IX_FK_CreateTemplateQuestionInfoCreateTemplateeditableInstructionsList]
-ON [dbo].[CreateTemplateeditableInstructionsLists]
-    ([CreateTemplateQuestionInfoId]);
-GO
-
--- Creating foreign key on [CreateTemplateQuestionInfoId] in table 'CreateTemplateImgurImagesLists'
-ALTER TABLE [dbo].[CreateTemplateImgurImagesLists]
-ADD CONSTRAINT [FK_CreateTemplateQuestionInfoCreateTemplateImgurImagesList]
-    FOREIGN KEY ([CreateTemplateQuestionInfoId])
-    REFERENCES [dbo].[CreateTemplateQuestionInfoes]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_CreateTemplateQuestionInfoCreateTemplateImgurImagesList'
-CREATE INDEX [IX_FK_CreateTemplateQuestionInfoCreateTemplateImgurImagesList]
-ON [dbo].[CreateTemplateImgurImagesLists]
-    ([CreateTemplateQuestionInfoId]);
-GO
-
--- Creating foreign key on [CreateTemplateQuestionInfoId] in table 'CreateTemplateListBoxQuestionsLists'
-ALTER TABLE [dbo].[CreateTemplateListBoxQuestionsLists]
-ADD CONSTRAINT [FK_CreateTemplateQuestionInfoCreateTemplateListBoxQuestionsList]
-    FOREIGN KEY ([CreateTemplateQuestionInfoId])
-    REFERENCES [dbo].[CreateTemplateQuestionInfoes]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_CreateTemplateQuestionInfoCreateTemplateListBoxQuestionsList'
-CREATE INDEX [IX_FK_CreateTemplateQuestionInfoCreateTemplateListBoxQuestionsList]
-ON [dbo].[CreateTemplateListBoxQuestionsLists]
-    ([CreateTemplateQuestionInfoId]);
-GO
-
--- Creating foreign key on [CreateTemplateQuestionInfoId] in table 'CreateTemplateModeratingImagesLists'
-ALTER TABLE [dbo].[CreateTemplateModeratingImagesLists]
-ADD CONSTRAINT [FK_CreateTemplateQuestionInfoCreateTemplateModeratingImagesList]
-    FOREIGN KEY ([CreateTemplateQuestionInfoId])
-    REFERENCES [dbo].[CreateTemplateQuestionInfoes]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_CreateTemplateQuestionInfoCreateTemplateModeratingImagesList'
-CREATE INDEX [IX_FK_CreateTemplateQuestionInfoCreateTemplateModeratingImagesList]
-ON [dbo].[CreateTemplateModeratingImagesLists]
-    ([CreateTemplateQuestionInfoId]);
-GO
-
--- Creating foreign key on [CreateTemplateQuestionInfoId] in table 'CreateTemplateMultipleQuestionsLists'
-ALTER TABLE [dbo].[CreateTemplateMultipleQuestionsLists]
-ADD CONSTRAINT [FK_CreateTemplateQuestionInfoCreateTemplateMultipleQuestionsList]
-    FOREIGN KEY ([CreateTemplateQuestionInfoId])
-    REFERENCES [dbo].[CreateTemplateQuestionInfoes]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_CreateTemplateQuestionInfoCreateTemplateMultipleQuestionsList'
-CREATE INDEX [IX_FK_CreateTemplateQuestionInfoCreateTemplateMultipleQuestionsList]
-ON [dbo].[CreateTemplateMultipleQuestionsLists]
-    ([CreateTemplateQuestionInfoId]);
-GO
-
--- Creating foreign key on [CreateTemplateQuestionInfoId] in table 'CreateTemplateTextBoxQuestionsLists'
-ALTER TABLE [dbo].[CreateTemplateTextBoxQuestionsLists]
-ADD CONSTRAINT [FK_CreateTemplateQuestionInfoCreateTemplateTextBoxQuestionsList]
-    FOREIGN KEY ([CreateTemplateQuestionInfoId])
-    REFERENCES [dbo].[CreateTemplateQuestionInfoes]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_CreateTemplateQuestionInfoCreateTemplateTextBoxQuestionsList'
-CREATE INDEX [IX_FK_CreateTemplateQuestionInfoCreateTemplateTextBoxQuestionsList]
-ON [dbo].[CreateTemplateTextBoxQuestionsLists]
-    ([CreateTemplateQuestionInfoId]);
-GO
-
--- Creating foreign key on [UserId] in table 'CreateTemplateQuestionInfoes'
-ALTER TABLE [dbo].[CreateTemplateQuestionInfoes]
-ADD CONSTRAINT [FK_UserCreateTemplateQuestionInfo]
-    FOREIGN KEY ([UserId])
-    REFERENCES [dbo].[Users]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_UserCreateTemplateQuestionInfo'
-CREATE INDEX [IX_FK_UserCreateTemplateQuestionInfo]
-ON [dbo].[CreateTemplateQuestionInfoes]
-    ([UserId]);
-GO
-
--- Creating foreign key on [FacebookAuth_Id] in table 'Users'
-ALTER TABLE [dbo].[Users]
-ADD CONSTRAINT [FK_UserFacebookAuth]
-    FOREIGN KEY ([FacebookAuth_Id])
-    REFERENCES [dbo].[FacebookAuths]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_UserFacebookAuth'
-CREATE INDEX [IX_FK_UserFacebookAuth]
-ON [dbo].[Users]
-    ([FacebookAuth_Id]);
-GO
-
--- Creating foreign key on [UserId] in table 'facebookPageLikeMappings'
-ALTER TABLE [dbo].[facebookPageLikeMappings]
-ADD CONSTRAINT [FK_UserfacebookPageLikeMapping]
-    FOREIGN KEY ([UserId])
-    REFERENCES [dbo].[Users]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_UserfacebookPageLikeMapping'
-CREATE INDEX [IX_FK_UserfacebookPageLikeMapping]
-ON [dbo].[facebookPageLikeMappings]
-    ([UserId]);
-GO
-
--- Creating foreign key on [ForgetPassword_Id] in table 'Users'
-ALTER TABLE [dbo].[Users]
-ADD CONSTRAINT [FK_UserForgetPassword]
-    FOREIGN KEY ([ForgetPassword_Id])
-    REFERENCES [dbo].[ForgetPasswords]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_UserForgetPassword'
-CREATE INDEX [IX_FK_UserForgetPassword]
-ON [dbo].[Users]
-    ([ForgetPassword_Id]);
-GO
-
--- Creating foreign key on [Users_Id] in table 'UserRecommendedBy'
+-- Creating foreign key on [UserRecommendedBy_RecommendedBy_Id] in table 'UserRecommendedBy'
 ALTER TABLE [dbo].[UserRecommendedBy]
 ADD CONSTRAINT [FK_UserRecommendedBy_User]
-    FOREIGN KEY ([Users_Id])
+    FOREIGN KEY ([UserRecommendedBy_RecommendedBy_Id])
     REFERENCES [dbo].[Users]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -1113,111 +1007,6 @@ GO
 CREATE INDEX [IX_FK_UserRecommendedBy_RecommendedBy]
 ON [dbo].[UserRecommendedBy]
     ([UserRecommendedBy_User_Id]);
-GO
-
--- Creating foreign key on [UserId] in table 'UserAlerts'
-ALTER TABLE [dbo].[UserAlerts]
-ADD CONSTRAINT [FK_UserUserAlerts]
-    FOREIGN KEY ([UserId])
-    REFERENCES [dbo].[Users]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_UserUserAlerts'
-CREATE INDEX [IX_FK_UserUserAlerts]
-ON [dbo].[UserAlerts]
-    ([UserId]);
-GO
-
--- Creating foreign key on [UserId] in table 'RecommendedBies'
-ALTER TABLE [dbo].[RecommendedBies]
-ADD CONSTRAINT [FK_UserRecommendedBy1]
-    FOREIGN KEY ([UserId])
-    REFERENCES [dbo].[Users]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_UserRecommendedBy1'
-CREATE INDEX [IX_FK_UserRecommendedBy1]
-ON [dbo].[RecommendedBies]
-    ([UserId]);
-GO
-
--- Creating foreign key on [UserEarning_Id] in table 'Users'
-ALTER TABLE [dbo].[Users]
-ADD CONSTRAINT [FK_UserUserEarning]
-    FOREIGN KEY ([UserEarning_Id])
-    REFERENCES [dbo].[UserEarnings]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_UserUserEarning'
-CREATE INDEX [IX_FK_UserUserEarning]
-ON [dbo].[Users]
-    ([UserEarning_Id]);
-GO
-
--- Creating foreign key on [UserId] in table 'UserEarningHistories'
-ALTER TABLE [dbo].[UserEarningHistories]
-ADD CONSTRAINT [FK_UserUserEarningHistory]
-    FOREIGN KEY ([UserId])
-    REFERENCES [dbo].[Users]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_UserUserEarningHistory'
-CREATE INDEX [IX_FK_UserUserEarningHistory]
-ON [dbo].[UserEarningHistories]
-    ([UserId]);
-GO
-
--- Creating foreign key on [UserId] in table 'UserJobMappings'
-ALTER TABLE [dbo].[UserJobMappings]
-ADD CONSTRAINT [FK_UserUserJobMapping]
-    FOREIGN KEY ([UserId])
-    REFERENCES [dbo].[Users]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_UserUserJobMapping'
-CREATE INDEX [IX_FK_UserUserJobMapping]
-ON [dbo].[UserJobMappings]
-    ([UserId]);
-GO
-
--- Creating foreign key on [UserReputation_Id] in table 'Users'
-ALTER TABLE [dbo].[Users]
-ADD CONSTRAINT [FK_UserUserReputation]
-    FOREIGN KEY ([UserReputation_Id])
-    REFERENCES [dbo].[UserReputations]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_UserUserReputation'
-CREATE INDEX [IX_FK_UserUserReputation]
-ON [dbo].[Users]
-    ([UserReputation_Id]);
-GO
-
--- Creating foreign key on [UserId] in table 'UserReputationMappings'
-ALTER TABLE [dbo].[UserReputationMappings]
-ADD CONSTRAINT [FK_UserUserReputationMapping]
-    FOREIGN KEY ([UserId])
-    REFERENCES [dbo].[Users]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_UserUserReputationMapping'
-CREATE INDEX [IX_FK_UserUserReputationMapping]
-ON [dbo].[UserReputationMappings]
-    ([UserId]);
 GO
 
 -- --------------------------------------------------

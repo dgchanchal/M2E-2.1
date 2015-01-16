@@ -22,7 +22,5 @@ namespace M2E.Models
         public string endTime { get; set; }
         public string expectedDeliveryTime { get; set; }
         public int UserId { get; set; }
-    
-        public virtual User User { get; set; }
     }
 }

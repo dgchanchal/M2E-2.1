@@ -14,17 +14,6 @@ namespace M2E.Models
     
     public partial class User
     {
-        public User()
-        {
-            this.CreateTemplateQuestionInfoes = new HashSet<CreateTemplateQuestionInfo>();
-            this.facebookPageLikeMappings = new HashSet<facebookPageLikeMapping>();
-            this.UserAlerts = new HashSet<UserAlerts>();
-            this.RecommendedBies = new HashSet<RecommendedBy>();
-            this.UserEarningHistories = new HashSet<UserEarningHistory>();
-            this.UserJobMappings = new HashSet<UserJobMapping>();
-            this.UserReputationMappings = new HashSet<UserReputationMapping>();
-        }
-    
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
@@ -45,17 +34,5 @@ namespace M2E.Models
         public string GoogleLink { get; set; }
         public string fixedGuid { get; set; }
         public string isVerified { get; set; }
-    
-        public virtual ICollection<CreateTemplateQuestionInfo> CreateTemplateQuestionInfoes { get; set; }
-        public virtual FacebookAuth FacebookAuth { get; set; }
-        public virtual ICollection<facebookPageLikeMapping> facebookPageLikeMappings { get; set; }
-        public virtual ForgetPassword ForgetPassword { get; set; }
-        public virtual ICollection<UserAlerts> UserAlerts { get; set; }
-        public virtual ICollection<RecommendedBy> RecommendedBies { get; set; }
-        public virtual UserEarning UserEarning { get; set; }
-        public virtual ICollection<UserEarningHistory> UserEarningHistories { get; set; }
-        public virtual ICollection<UserJobMapping> UserJobMappings { get; set; }
-        public virtual UserReputation UserReputation { get; set; }
-        public virtual ICollection<UserReputationMapping> UserReputationMappings { get; set; }
     }
 }

@@ -20,7 +20,5 @@ namespace M2E.Models
         public string facebookId { get; set; }
         public string facebookUsername { get; set; }
         public string AuthToken { get; set; }
-    
-        public virtual User User { get; set; }
     }
 }

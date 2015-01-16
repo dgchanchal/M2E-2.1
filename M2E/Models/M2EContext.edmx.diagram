@@ -44,25 +44,7 @@
         <EntityTypeShape EntityType="M2E.contactUs" Width="1.5" PointX="8.75" PointY="16.5" />
         <EntityTypeShape EntityType="M2E.MobikwikUserPhoneList" Width="1.5" PointX="11.5" PointY="20.25" />
         <EntityTypeShape EntityType="M2E.MobikwikUserHistory" Width="1.5" PointX="9.75" PointY="20.25" />
-        <AssociationConnector Association="M2E.CreateTemplateQuestionInfoCreateTemplateSingleQuestionsList" />
-        <AssociationConnector Association="M2E.CreateTemplateQuestionInfoCreateTemplateeditableInstructionsList" />
-        <AssociationConnector Association="M2E.CreateTemplateQuestionInfoCreateTemplateImgurImagesList" />
-        <AssociationConnector Association="M2E.CreateTemplateQuestionInfoCreateTemplateListBoxQuestionsList" />
-        <AssociationConnector Association="M2E.CreateTemplateQuestionInfoCreateTemplateModeratingImagesList" />
-        <AssociationConnector Association="M2E.CreateTemplateQuestionInfoCreateTemplateMultipleQuestionsList" />
-        <AssociationConnector Association="M2E.CreateTemplateQuestionInfoCreateTemplateTextBoxQuestionsList" />
-        <AssociationConnector Association="M2E.UserCreateTemplateQuestionInfo" />
-        <AssociationConnector Association="M2E.UserFacebookAuth" />
-        <AssociationConnector Association="M2E.UserfacebookPageLikeMapping" />
-        <AssociationConnector Association="M2E.UserForgetPassword" />
         <AssociationConnector Association="M2E.UserRecommendedBy" />
-        <AssociationConnector Association="M2E.UserUserAlerts" />
-        <AssociationConnector Association="M2E.UserRecommendedBy1" />
-        <AssociationConnector Association="M2E.UserUserEarning" />
-        <AssociationConnector Association="M2E.UserUserEarningHistory" />
-        <AssociationConnector Association="M2E.UserUserJobMapping" />
-        <AssociationConnector Association="M2E.UserUserReputation" />
-        <AssociationConnector Association="M2E.UserUserReputationMapping" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

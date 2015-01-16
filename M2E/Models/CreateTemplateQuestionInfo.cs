@@ -14,17 +14,6 @@ namespace M2E.Models
     
     public partial class CreateTemplateQuestionInfo
     {
-        public CreateTemplateQuestionInfo()
-        {
-            this.CreateTemplateSingleQuestionsLists = new HashSet<CreateTemplateSingleQuestionsList>();
-            this.CreateTemplateeditableInstructionsLists = new HashSet<CreateTemplateeditableInstructionsList>();
-            this.CreateTemplateImgurImagesLists = new HashSet<CreateTemplateImgurImagesList>();
-            this.CreateTemplateListBoxQuestionsLists = new HashSet<CreateTemplateListBoxQuestionsList>();
-            this.CreateTemplateModeratingImagesLists = new HashSet<CreateTemplateModeratingImagesList>();
-            this.CreateTemplateMultipleQuestionsLists = new HashSet<CreateTemplateMultipleQuestionsList>();
-            this.CreateTemplateTextBoxQuestionsLists = new HashSet<CreateTemplateTextBoxQuestionsList>();
-        }
-    
         public int Id { get; set; }
         public string username { get; set; }
         public string type { get; set; }
@@ -40,14 +29,5 @@ namespace M2E.Models
         public string payPerUser { get; set; }
         public Nullable<System.DateTime> DateTime { get; set; }
         public int UserId { get; set; }
-    
-        public virtual ICollection<CreateTemplateSingleQuestionsList> CreateTemplateSingleQuestionsLists { get; set; }
-        public virtual ICollection<CreateTemplateeditableInstructionsList> CreateTemplateeditableInstructionsLists { get; set; }
-        public virtual ICollection<CreateTemplateImgurImagesList> CreateTemplateImgurImagesLists { get; set; }
-        public virtual ICollection<CreateTemplateListBoxQuestionsList> CreateTemplateListBoxQuestionsLists { get; set; }
-        public virtual ICollection<CreateTemplateModeratingImagesList> CreateTemplateModeratingImagesLists { get; set; }
-        public virtual ICollection<CreateTemplateMultipleQuestionsList> CreateTemplateMultipleQuestionsLists { get; set; }
-        public virtual ICollection<CreateTemplateTextBoxQuestionsList> CreateTemplateTextBoxQuestionsLists { get; set; }
-        public virtual User User { get; set; }
     }
 }

@@ -25,7 +25,5 @@ namespace M2E.Models
         public string userType { get; set; }
         public string currency { get; set; }
         public int UserId { get; set; }
-    
-        public virtual User User { get; set; }
     }
 }
