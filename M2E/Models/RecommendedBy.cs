@@ -14,11 +14,20 @@ namespace M2E.Models
     
     public partial class RecommendedBy
     {
+        public RecommendedBy()
+        {
+            this.Users = new HashSet<User>();
+        }
+    
         public int Id { get; set; }
         public string RecommendedTo { get; set; }
         public string RecommendedFrom { get; set; }
         public Nullable<System.DateTime> DateTime { get; set; }
         public string isValid { get; set; }
         public string RecommendedFromUsername { get; set; }
+        public int UserId { get; set; }
+    
+        public virtual ICollection<User> Users { get; set; }
+        public virtual User User { get; set; }
     }
 }

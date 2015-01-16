@@ -24,5 +24,8 @@ namespace M2E.Models
         public string assignTime { get; set; }
         public string completedAt { get; set; }
         public string referenceKey { get; set; }
+        public int CreateTemplateQuestionInfoId { get; set; }
+    
+        public virtual CreateTemplateQuestionInfo CreateTemplateQuestionInfo { get; set; }
     }
 }

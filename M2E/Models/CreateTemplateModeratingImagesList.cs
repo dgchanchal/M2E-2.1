@@ -22,5 +22,8 @@ namespace M2E.Models
         public string referenceKey { get; set; }
         public string deletehash { get; set; }
         public string link { get; set; }
+        public int CreateTemplateQuestionInfoId { get; set; }
+    
+        public virtual CreateTemplateQuestionInfo CreateTemplateQuestionInfo { get; set; }
     }
 }

@@ -24,5 +24,8 @@ namespace M2E.Models
         public string messageFrom { get; set; }
         public string messageTo { get; set; }
         public string AlertSeen { get; set; }
+        public int UserId { get; set; }
+    
+        public virtual User User { get; set; }
     }
 }

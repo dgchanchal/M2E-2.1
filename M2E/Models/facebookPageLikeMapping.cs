@@ -20,5 +20,8 @@ namespace M2E.Models
         public System.DateTime DateTime { get; set; }
         public string PageId { get; set; }
         public string UserFacebookId { get; set; }
+        public int UserId { get; set; }
+    
+        public virtual User User { get; set; }
     }
 }

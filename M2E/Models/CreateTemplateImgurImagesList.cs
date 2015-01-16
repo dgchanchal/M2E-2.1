@@ -26,5 +26,8 @@ namespace M2E.Models
         public string imgurDeleteHash { get; set; }
         public string imgurLink { get; set; }
         public Nullable<int> alocatedCount { get; set; }
+        public int CreateTemplateQuestionInfoId { get; set; }
+    
+        public virtual CreateTemplateQuestionInfo CreateTemplateQuestionInfo { get; set; }
     }
 }

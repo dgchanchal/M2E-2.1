@@ -18,5 +18,7 @@ namespace M2E.Models
         public string username { get; set; }
         public string ReputationScore { get; set; }
         public string UserBadge { get; set; }
+    
+        public virtual User User { get; set; }
     }
 }

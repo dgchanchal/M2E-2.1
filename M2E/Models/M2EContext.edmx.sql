@@ -1,9 +1,9 @@
 
 -- --------------------------------------------------
--- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
+-- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/18/2014 11:23:50
--- Generated from EDMX file: F:\Pcongo_SVN_New\branches\M2E-2.0\M2E\Models\M2EContext.edmx
+-- Date Created: 01/16/2015 17:07:57
+-- Generated from EDMX file: C:\svn\pcongo_svn_16012015\M2E\Models\M2EContext.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -175,7 +175,8 @@ CREATE TABLE [dbo].[CreateTemplateeditableInstructionsLists] (
     [assignedTo] nvarchar(max)  NOT NULL,
     [assignTime] nvarchar(max)  NOT NULL,
     [completedAt] nvarchar(max)  NOT NULL,
-    [referenceKey] nvarchar(max)  NOT NULL
+    [referenceKey] nvarchar(max)  NOT NULL,
+    [CreateTemplateQuestionInfoId] int  NOT NULL
 );
 GO
 
@@ -212,7 +213,8 @@ CREATE TABLE [dbo].[CreateTemplateImgurImagesLists] (
     [imgurId] nvarchar(max)  NOT NULL,
     [imgurDeleteHash] nvarchar(max)  NOT NULL,
     [imgurLink] nvarchar(max)  NOT NULL,
-    [alocatedCount] int  NULL
+    [alocatedCount] int  NULL,
+    [CreateTemplateQuestionInfoId] int  NOT NULL
 );
 GO
 
@@ -228,7 +230,8 @@ CREATE TABLE [dbo].[CreateTemplateListBoxQuestionsLists] (
     [assignTime] nvarchar(max)  NOT NULL,
     [completedAt] nvarchar(max)  NOT NULL,
     [Number] nvarchar(max)  NOT NULL,
-    [referenceKey] nvarchar(max)  NOT NULL
+    [referenceKey] nvarchar(max)  NOT NULL,
+    [CreateTemplateQuestionInfoId] int  NOT NULL
 );
 GO
 
@@ -241,7 +244,8 @@ CREATE TABLE [dbo].[CreateTemplateModeratingImagesLists] (
     [completedAt] nvarchar(max)  NOT NULL,
     [referenceKey] nvarchar(max)  NOT NULL,
     [deletehash] nvarchar(max)  NOT NULL,
-    [link] nvarchar(max)  NOT NULL
+    [link] nvarchar(max)  NOT NULL,
+    [CreateTemplateQuestionInfoId] int  NOT NULL
 );
 GO
 
@@ -257,7 +261,8 @@ CREATE TABLE [dbo].[CreateTemplateMultipleQuestionsLists] (
     [assignTime] nvarchar(max)  NOT NULL,
     [completedAt] nvarchar(max)  NOT NULL,
     [Number] nvarchar(max)  NOT NULL,
-    [referenceKey] nvarchar(max)  NOT NULL
+    [referenceKey] nvarchar(max)  NOT NULL,
+    [CreateTemplateQuestionInfoId] int  NOT NULL
 );
 GO
 
@@ -276,7 +281,8 @@ CREATE TABLE [dbo].[CreateTemplateQuestionInfoes] (
     [title] nvarchar(max)  NOT NULL,
     [subType] nvarchar(max)  NOT NULL,
     [payPerUser] nvarchar(max)  NOT NULL,
-    [DateTime] datetime  NULL
+    [DateTime] datetime  NULL,
+    [UserId] int  NOT NULL
 );
 GO
 
@@ -292,7 +298,8 @@ CREATE TABLE [dbo].[CreateTemplateSingleQuestionsLists] (
     [assignTime] nvarchar(max)  NOT NULL,
     [completedAt] nvarchar(max)  NOT NULL,
     [Number] nvarchar(max)  NOT NULL,
-    [referenceKey] nvarchar(max)  NOT NULL
+    [referenceKey] nvarchar(max)  NOT NULL,
+    [CreateTemplateQuestionInfoId] int  NOT NULL
 );
 GO
 
@@ -308,7 +315,8 @@ CREATE TABLE [dbo].[CreateTemplateTextBoxQuestionsLists] (
     [assignTime] nvarchar(max)  NOT NULL,
     [completedAt] nvarchar(max)  NOT NULL,
     [Number] nvarchar(max)  NOT NULL,
-    [referenceKey] nvarchar(max)  NOT NULL
+    [referenceKey] nvarchar(max)  NOT NULL,
+    [CreateTemplateQuestionInfoId] int  NOT NULL
 );
 GO
 
@@ -330,7 +338,8 @@ CREATE TABLE [dbo].[facebookPageLikeMappings] (
     [username] nvarchar(max)  NOT NULL,
     [DateTime] datetime  NOT NULL,
     [PageId] nvarchar(max)  NOT NULL,
-    [UserFacebookId] nvarchar(max)  NOT NULL
+    [UserFacebookId] nvarchar(max)  NOT NULL,
+    [UserId] int  NOT NULL
 );
 GO
 
@@ -380,7 +389,8 @@ CREATE TABLE [dbo].[RecommendedBies] (
     [RecommendedFrom] nvarchar(max)  NOT NULL,
     [DateTime] datetime  NULL,
     [isValid] nvarchar(max)  NULL,
-    [RecommendedFromUsername] nvarchar(max)  NOT NULL
+    [RecommendedFromUsername] nvarchar(max)  NOT NULL,
+    [UserId] int  NOT NULL
 );
 GO
 
@@ -438,7 +448,8 @@ CREATE TABLE [dbo].[UserJobMappings] (
     [startTime] nvarchar(max)  NOT NULL,
     [status] nvarchar(max)  NOT NULL,
     [endTime] nvarchar(max)  NOT NULL,
-    [expectedDeliveryTime] nvarchar(max)  NOT NULL
+    [expectedDeliveryTime] nvarchar(max)  NOT NULL,
+    [UserId] int  NOT NULL
 );
 GO
 
@@ -487,7 +498,8 @@ CREATE TABLE [dbo].[UserReputationMappings] (
     [subType] nvarchar(max)  NOT NULL,
     [description] nvarchar(max)  NOT NULL,
     [DateTime] datetime  NULL,
-    [reputation] nvarchar(max)  NOT NULL
+    [reputation] nvarchar(max)  NOT NULL,
+    [UserId] int  NOT NULL
 );
 GO
 
@@ -521,7 +533,11 @@ CREATE TABLE [dbo].[Users] (
     [LinkedinLink] nvarchar(max)  NULL,
     [GoogleLink] nvarchar(max)  NULL,
     [fixedGuid] nvarchar(max)  NULL,
-    [isVerified] nvarchar(max)  NULL
+    [isVerified] nvarchar(max)  NULL,
+    [FacebookAuth_Id] int  NOT NULL,
+    [ForgetPassword_Id] int  NOT NULL,
+    [UserEarning_Id] int  NOT NULL,
+    [UserReputation_Id] int  NOT NULL
 );
 GO
 
@@ -575,7 +591,8 @@ CREATE TABLE [dbo].[UserEarningHistories] (
     [amount] nvarchar(max)  NOT NULL,
     [dateTime] datetime  NOT NULL,
     [userType] nvarchar(max)  NOT NULL,
-    [currency] nvarchar(max)  NOT NULL
+    [currency] nvarchar(max)  NOT NULL,
+    [UserId] int  NOT NULL
 );
 GO
 
@@ -606,7 +623,8 @@ CREATE TABLE [dbo].[UserAlerts] (
     [iconUrl] nvarchar(max)  NOT NULL,
     [messageFrom] nvarchar(max)  NOT NULL,
     [messageTo] nvarchar(max)  NOT NULL,
-    [AlertSeen] nvarchar(max)  NOT NULL
+    [AlertSeen] nvarchar(max)  NOT NULL,
+    [UserId] int  NOT NULL
 );
 GO
 
@@ -650,6 +668,13 @@ CREATE TABLE [dbo].[MobikwikUserHistories] (
     [nickName] nvarchar(max)  NOT NULL,
     [amount] nvarchar(max)  NOT NULL,
     [dateTime] datetime  NOT NULL
+);
+GO
+
+-- Creating table 'UserRecommendedBy'
+CREATE TABLE [dbo].[UserRecommendedBy] (
+    [Users_Id] int  NOT NULL,
+    [UserRecommendedBy_User_Id] int  NOT NULL
 );
 GO
 
@@ -891,9 +916,309 @@ ADD CONSTRAINT [PK_MobikwikUserHistories]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
+-- Creating primary key on [Users_Id], [UserRecommendedBy_User_Id] in table 'UserRecommendedBy'
+ALTER TABLE [dbo].[UserRecommendedBy]
+ADD CONSTRAINT [PK_UserRecommendedBy]
+    PRIMARY KEY CLUSTERED ([Users_Id], [UserRecommendedBy_User_Id] ASC);
+GO
+
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
+
+-- Creating foreign key on [CreateTemplateQuestionInfoId] in table 'CreateTemplateSingleQuestionsLists'
+ALTER TABLE [dbo].[CreateTemplateSingleQuestionsLists]
+ADD CONSTRAINT [FK_CreateTemplateQuestionInfoCreateTemplateSingleQuestionsList]
+    FOREIGN KEY ([CreateTemplateQuestionInfoId])
+    REFERENCES [dbo].[CreateTemplateQuestionInfoes]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CreateTemplateQuestionInfoCreateTemplateSingleQuestionsList'
+CREATE INDEX [IX_FK_CreateTemplateQuestionInfoCreateTemplateSingleQuestionsList]
+ON [dbo].[CreateTemplateSingleQuestionsLists]
+    ([CreateTemplateQuestionInfoId]);
+GO
+
+-- Creating foreign key on [CreateTemplateQuestionInfoId] in table 'CreateTemplateeditableInstructionsLists'
+ALTER TABLE [dbo].[CreateTemplateeditableInstructionsLists]
+ADD CONSTRAINT [FK_CreateTemplateQuestionInfoCreateTemplateeditableInstructionsList]
+    FOREIGN KEY ([CreateTemplateQuestionInfoId])
+    REFERENCES [dbo].[CreateTemplateQuestionInfoes]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CreateTemplateQuestionInfoCreateTemplateeditableInstructionsList'
+CREATE INDEX [IX_FK_CreateTemplateQuestionInfoCreateTemplateeditableInstructionsList]
+ON [dbo].[CreateTemplateeditableInstructionsLists]
+    ([CreateTemplateQuestionInfoId]);
+GO
+
+-- Creating foreign key on [CreateTemplateQuestionInfoId] in table 'CreateTemplateImgurImagesLists'
+ALTER TABLE [dbo].[CreateTemplateImgurImagesLists]
+ADD CONSTRAINT [FK_CreateTemplateQuestionInfoCreateTemplateImgurImagesList]
+    FOREIGN KEY ([CreateTemplateQuestionInfoId])
+    REFERENCES [dbo].[CreateTemplateQuestionInfoes]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CreateTemplateQuestionInfoCreateTemplateImgurImagesList'
+CREATE INDEX [IX_FK_CreateTemplateQuestionInfoCreateTemplateImgurImagesList]
+ON [dbo].[CreateTemplateImgurImagesLists]
+    ([CreateTemplateQuestionInfoId]);
+GO
+
+-- Creating foreign key on [CreateTemplateQuestionInfoId] in table 'CreateTemplateListBoxQuestionsLists'
+ALTER TABLE [dbo].[CreateTemplateListBoxQuestionsLists]
+ADD CONSTRAINT [FK_CreateTemplateQuestionInfoCreateTemplateListBoxQuestionsList]
+    FOREIGN KEY ([CreateTemplateQuestionInfoId])
+    REFERENCES [dbo].[CreateTemplateQuestionInfoes]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CreateTemplateQuestionInfoCreateTemplateListBoxQuestionsList'
+CREATE INDEX [IX_FK_CreateTemplateQuestionInfoCreateTemplateListBoxQuestionsList]
+ON [dbo].[CreateTemplateListBoxQuestionsLists]
+    ([CreateTemplateQuestionInfoId]);
+GO
+
+-- Creating foreign key on [CreateTemplateQuestionInfoId] in table 'CreateTemplateModeratingImagesLists'
+ALTER TABLE [dbo].[CreateTemplateModeratingImagesLists]
+ADD CONSTRAINT [FK_CreateTemplateQuestionInfoCreateTemplateModeratingImagesList]
+    FOREIGN KEY ([CreateTemplateQuestionInfoId])
+    REFERENCES [dbo].[CreateTemplateQuestionInfoes]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CreateTemplateQuestionInfoCreateTemplateModeratingImagesList'
+CREATE INDEX [IX_FK_CreateTemplateQuestionInfoCreateTemplateModeratingImagesList]
+ON [dbo].[CreateTemplateModeratingImagesLists]
+    ([CreateTemplateQuestionInfoId]);
+GO
+
+-- Creating foreign key on [CreateTemplateQuestionInfoId] in table 'CreateTemplateMultipleQuestionsLists'
+ALTER TABLE [dbo].[CreateTemplateMultipleQuestionsLists]
+ADD CONSTRAINT [FK_CreateTemplateQuestionInfoCreateTemplateMultipleQuestionsList]
+    FOREIGN KEY ([CreateTemplateQuestionInfoId])
+    REFERENCES [dbo].[CreateTemplateQuestionInfoes]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CreateTemplateQuestionInfoCreateTemplateMultipleQuestionsList'
+CREATE INDEX [IX_FK_CreateTemplateQuestionInfoCreateTemplateMultipleQuestionsList]
+ON [dbo].[CreateTemplateMultipleQuestionsLists]
+    ([CreateTemplateQuestionInfoId]);
+GO
+
+-- Creating foreign key on [CreateTemplateQuestionInfoId] in table 'CreateTemplateTextBoxQuestionsLists'
+ALTER TABLE [dbo].[CreateTemplateTextBoxQuestionsLists]
+ADD CONSTRAINT [FK_CreateTemplateQuestionInfoCreateTemplateTextBoxQuestionsList]
+    FOREIGN KEY ([CreateTemplateQuestionInfoId])
+    REFERENCES [dbo].[CreateTemplateQuestionInfoes]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CreateTemplateQuestionInfoCreateTemplateTextBoxQuestionsList'
+CREATE INDEX [IX_FK_CreateTemplateQuestionInfoCreateTemplateTextBoxQuestionsList]
+ON [dbo].[CreateTemplateTextBoxQuestionsLists]
+    ([CreateTemplateQuestionInfoId]);
+GO
+
+-- Creating foreign key on [UserId] in table 'CreateTemplateQuestionInfoes'
+ALTER TABLE [dbo].[CreateTemplateQuestionInfoes]
+ADD CONSTRAINT [FK_UserCreateTemplateQuestionInfo]
+    FOREIGN KEY ([UserId])
+    REFERENCES [dbo].[Users]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserCreateTemplateQuestionInfo'
+CREATE INDEX [IX_FK_UserCreateTemplateQuestionInfo]
+ON [dbo].[CreateTemplateQuestionInfoes]
+    ([UserId]);
+GO
+
+-- Creating foreign key on [FacebookAuth_Id] in table 'Users'
+ALTER TABLE [dbo].[Users]
+ADD CONSTRAINT [FK_UserFacebookAuth]
+    FOREIGN KEY ([FacebookAuth_Id])
+    REFERENCES [dbo].[FacebookAuths]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserFacebookAuth'
+CREATE INDEX [IX_FK_UserFacebookAuth]
+ON [dbo].[Users]
+    ([FacebookAuth_Id]);
+GO
+
+-- Creating foreign key on [UserId] in table 'facebookPageLikeMappings'
+ALTER TABLE [dbo].[facebookPageLikeMappings]
+ADD CONSTRAINT [FK_UserfacebookPageLikeMapping]
+    FOREIGN KEY ([UserId])
+    REFERENCES [dbo].[Users]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserfacebookPageLikeMapping'
+CREATE INDEX [IX_FK_UserfacebookPageLikeMapping]
+ON [dbo].[facebookPageLikeMappings]
+    ([UserId]);
+GO
+
+-- Creating foreign key on [ForgetPassword_Id] in table 'Users'
+ALTER TABLE [dbo].[Users]
+ADD CONSTRAINT [FK_UserForgetPassword]
+    FOREIGN KEY ([ForgetPassword_Id])
+    REFERENCES [dbo].[ForgetPasswords]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserForgetPassword'
+CREATE INDEX [IX_FK_UserForgetPassword]
+ON [dbo].[Users]
+    ([ForgetPassword_Id]);
+GO
+
+-- Creating foreign key on [Users_Id] in table 'UserRecommendedBy'
+ALTER TABLE [dbo].[UserRecommendedBy]
+ADD CONSTRAINT [FK_UserRecommendedBy_User]
+    FOREIGN KEY ([Users_Id])
+    REFERENCES [dbo].[Users]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [UserRecommendedBy_User_Id] in table 'UserRecommendedBy'
+ALTER TABLE [dbo].[UserRecommendedBy]
+ADD CONSTRAINT [FK_UserRecommendedBy_RecommendedBy]
+    FOREIGN KEY ([UserRecommendedBy_User_Id])
+    REFERENCES [dbo].[RecommendedBies]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserRecommendedBy_RecommendedBy'
+CREATE INDEX [IX_FK_UserRecommendedBy_RecommendedBy]
+ON [dbo].[UserRecommendedBy]
+    ([UserRecommendedBy_User_Id]);
+GO
+
+-- Creating foreign key on [UserId] in table 'UserAlerts'
+ALTER TABLE [dbo].[UserAlerts]
+ADD CONSTRAINT [FK_UserUserAlerts]
+    FOREIGN KEY ([UserId])
+    REFERENCES [dbo].[Users]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserUserAlerts'
+CREATE INDEX [IX_FK_UserUserAlerts]
+ON [dbo].[UserAlerts]
+    ([UserId]);
+GO
+
+-- Creating foreign key on [UserId] in table 'RecommendedBies'
+ALTER TABLE [dbo].[RecommendedBies]
+ADD CONSTRAINT [FK_UserRecommendedBy1]
+    FOREIGN KEY ([UserId])
+    REFERENCES [dbo].[Users]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserRecommendedBy1'
+CREATE INDEX [IX_FK_UserRecommendedBy1]
+ON [dbo].[RecommendedBies]
+    ([UserId]);
+GO
+
+-- Creating foreign key on [UserEarning_Id] in table 'Users'
+ALTER TABLE [dbo].[Users]
+ADD CONSTRAINT [FK_UserUserEarning]
+    FOREIGN KEY ([UserEarning_Id])
+    REFERENCES [dbo].[UserEarnings]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserUserEarning'
+CREATE INDEX [IX_FK_UserUserEarning]
+ON [dbo].[Users]
+    ([UserEarning_Id]);
+GO
+
+-- Creating foreign key on [UserId] in table 'UserEarningHistories'
+ALTER TABLE [dbo].[UserEarningHistories]
+ADD CONSTRAINT [FK_UserUserEarningHistory]
+    FOREIGN KEY ([UserId])
+    REFERENCES [dbo].[Users]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserUserEarningHistory'
+CREATE INDEX [IX_FK_UserUserEarningHistory]
+ON [dbo].[UserEarningHistories]
+    ([UserId]);
+GO
+
+-- Creating foreign key on [UserId] in table 'UserJobMappings'
+ALTER TABLE [dbo].[UserJobMappings]
+ADD CONSTRAINT [FK_UserUserJobMapping]
+    FOREIGN KEY ([UserId])
+    REFERENCES [dbo].[Users]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserUserJobMapping'
+CREATE INDEX [IX_FK_UserUserJobMapping]
+ON [dbo].[UserJobMappings]
+    ([UserId]);
+GO
+
+-- Creating foreign key on [UserReputation_Id] in table 'Users'
+ALTER TABLE [dbo].[Users]
+ADD CONSTRAINT [FK_UserUserReputation]
+    FOREIGN KEY ([UserReputation_Id])
+    REFERENCES [dbo].[UserReputations]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserUserReputation'
+CREATE INDEX [IX_FK_UserUserReputation]
+ON [dbo].[Users]
+    ([UserReputation_Id]);
+GO
+
+-- Creating foreign key on [UserId] in table 'UserReputationMappings'
+ALTER TABLE [dbo].[UserReputationMappings]
+ADD CONSTRAINT [FK_UserUserReputationMapping]
+    FOREIGN KEY ([UserId])
+    REFERENCES [dbo].[Users]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserUserReputationMapping'
+CREATE INDEX [IX_FK_UserUserReputationMapping]
+ON [dbo].[UserReputationMappings]
+    ([UserId]);
+GO
 
 -- --------------------------------------------------
 -- Script has ended

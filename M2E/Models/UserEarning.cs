@@ -22,5 +22,7 @@ namespace M2E.Models
         public string currency { get; set; }
         public Nullable<System.DateTime> LastUpdated { get; set; }
         public string userType { get; set; }
+    
+        public virtual User User { get; set; }
     }
 }

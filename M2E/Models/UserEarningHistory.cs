@@ -24,5 +24,8 @@ namespace M2E.Models
         public System.DateTime dateTime { get; set; }
         public string userType { get; set; }
         public string currency { get; set; }
+        public int UserId { get; set; }
+    
+        public virtual User User { get; set; }
     }
 }

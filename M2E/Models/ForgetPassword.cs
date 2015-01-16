@@ -17,5 +17,7 @@ namespace M2E.Models
         public int Id { get; set; }
         public string Username { get; set; }
         public string guid { get; set; }
+    
+        public virtual User User { get; set; }
     }
 }
