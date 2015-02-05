@@ -13,20 +13,22 @@ namespace M2E.Models.Swagger
         public string resourcePath { get; set; }
         public string[] produces { get; set; }
         public List<SwaggerAuthApis> apis { get; set; }
-        public SwaggerAuthModels models { get; set; }
+        public Dictionary<string, SwaggerAuthModelsLoyaltyProfileBean> models { get; set; }
     }
 
-    public class SwaggerAuthModels
-    {
-        //public Dictionary<string,SwaggerAuthModelsValue> 
-        public SwaggerAuthModelsLoyaltyProfileBean LoyaltyProfileBean { get; set; }
-    }
+    //public class SwaggerAuthModels
+    //{
+    //    //public Dictionary<string, SwaggerAuthModelsLoyaltyProfileBean> test { get; set; } 
+    //    //public SwaggerAuthModelsLoyaltyProfileBean LoyaltyProfileBean { get; set; }
+
+    //}
 
     public class SwaggerAuthModelsLoyaltyProfileBean
     {
         public string id { get; set; }
         public string[] required { get; set; }
-        public SwaggerAuthModelsLoyaltyProfileBeanProperties properties { get; set; }
+        //public SwaggerAuthModelsLoyaltyProfileBeanProperties properties { get; set; }
+        public Dictionary<string, SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName> properties { get; set; }
     }
 
     public class SwaggerAuthModelsLoyaltyProfileBeanProperties

@@ -357,6 +357,7 @@
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ResponseModel.cs" />
+    <Compile Include="Models\Swagger\SwaggerApiCommonDetail.cs" />
     <Compile Include="Models\Swagger\SwaggerAuth.cs" />
     <Compile Include="Models\ThirdPartyLogin.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
@@ -1804,7 +1805,6 @@
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="json1.json" />
     <None Include="Properties\PublishProfiles\M2E.pubxml" />
     <Content Include="SwaggerUI\lib\.DS_Store" />
     <None Include="Template\AdminLTE-master\ajax\dashboard-boxrefresh-demo.php" />

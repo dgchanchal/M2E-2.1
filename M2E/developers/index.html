@@ -42,7 +42,7 @@
       url = document.URL;
 	  var parts = url.split("#");
 	  if(/Auth/i.test(parent)){
-	      url = parts[0] + "showJsonConfig";
+	      url = parts[0] + "showJsonConfigAuth";
 	  }
 	  else if(/Logout/i.test(parent)){
 	  url = parts[0] +"config/api-console-logout";
