@@ -1,0 +1,256 @@
+{
+	"apiVersion": "1.0.0",
+	"swaggerVersion": "1.2",
+	"basePath": "https://pp-core-api-poker221.ivycomptech.co.in/login-v2",
+	"resourcePath": "/PlayerDetails",
+	"produces": ["application/json",
+	"application/xml"],
+	"apis": [{
+		"path": "/inPlayDetail/{Account_Name}",
+		"operations": [{
+			"method": "GET",
+			"summary": "Player Balance Detail.",
+			"notes": "Player Balance Detail API Description.",
+			"items": {
+				
+			},
+			"nickname": "balance",
+			"authorizations": {
+				
+			},
+			"parameters": [{
+				"name": "Account_Name",
+				"description": "Account Name.",
+				"required": true,
+				"type": "string",
+				"paramType": "path",
+				"allowMultiple": false,
+				"defaultValue": ""				
+			}],
+			"responseMessages": [{
+				"code": "200",
+				"message": "The request has succeeded"
+			},
+			{
+				"code": "400",
+				"message": "Bad Request-The request could not be understood by the server due to malformed syntax."
+			},
+			{
+				"code": "500",
+				"message": "Authentication Service Exception"
+			},
+			{
+				"code": "A-511",
+				"message": "Invalid Access Credentials."
+			},
+			{
+				"code": "A-512",
+				"message": "Invalid Access Token. User will be blocked after 3 failed attempts."
+			},
+			{
+				"code": "B-510",
+				"message": "User has been blocked temporarily."
+			}],
+			"deprecated": "true"
+		}]
+	},
+	{
+		"path": "/secured/bonus/bonusHistory/{Account_Name}",
+		"operations": [{
+			"method": "GET",
+			"summary": "Player Bonus History.",
+			"notes": "Player Bonus History API Description.",
+			"items": {
+				
+			},
+			"nickname": "bonus",
+			"authorizations": {
+				
+			},
+			"parameters": [{
+				"name": "Account_Name",
+				"description": "Account Name.",
+				"required": true,
+				"type": "string",
+				"paramType": "path",
+				"allowMultiple": false,
+				"defaultValue": ""				
+			}],
+			"responseMessages": [{
+				"code": "200",
+				"message": "The request has succeeded"
+			},
+			{
+				"code": "400",
+				"message": "Bad Request-The request could not be understood by the server due to malformed syntax."
+			},
+			{
+				"code": "500",
+				"message": "Authentication Service Exception"
+			},
+			{
+				"code": "A-511",
+				"message": "Invalid Access Credentials."
+			},
+			{
+				"code": "A-512",
+				"message": "Invalid Access Token. User will be blocked after 3 failed attempts."
+			},
+			{
+				"code": "B-510",
+				"message": "User has been blocked temporarily."
+			}],
+			"deprecated": "true"
+		}]
+	},
+	{
+		"path": "/loyaltyProfile/{Account_Name}",
+		"operations": [{
+			"method": "GET",
+			"summary": "Player Loyalty Profile.",
+			"notes": "Player Loyalty Profile API Description.",
+			"items": {
+				
+			},
+			"nickname": "loyality",
+			"authorizations": {
+				
+			},
+			"parameters": [{
+				"name": "Account_Name",
+				"description": "Account Name.",
+				"required": true,
+				"type": "string",
+				"paramType": "path",
+				"allowMultiple": false,
+				"defaultValue": ""				
+			}],
+			"responseMessages": [{
+				"code": "200",
+				"message": "The request has succeeded"
+			},
+			{
+				"code": "400",
+				"message": "Bad Request-The request could not be understood by the server due to malformed syntax."
+			},
+			{
+				"code": "500",
+				"message": "Authentication Service Exception"
+			},
+			{
+				"code": "A-511",
+				"message": "Invalid Access Credentials."
+			},
+			{
+				"code": "A-512",
+				"message": "Invalid Access Token. User will be blocked after 3 failed attempts."
+			},
+			{
+				"code": "B-510",
+				"message": "User has been blocked temporarily."
+			}],
+			"deprecated": "true"
+		}]
+	},
+	{
+		"path": "/fundXferHistory/{Account_Name}",
+		"operations": [{
+			"method": "GET",
+			"summary": "Fund Transfer History.",
+			"notes": "Fund Transfer History API Description.",
+			"items": {
+				
+			},
+			"nickname": "transfer",
+			"authorizations": {
+				
+			},
+			"parameters": [{
+				"name": "Account_Name",
+				"description": "Account Name.",
+				"required": true,
+				"type": "string",
+				"paramType": "path",
+				"allowMultiple": false,
+				"defaultValue": ""				
+			}],
+			"responseMessages": [{
+				"code": "200",
+				"message": "The request has succeeded"
+			},
+			{
+				"code": "400",
+				"message": "Bad Request-The request could not be understood by the server due to malformed syntax."
+			},
+			{
+				"code": "500",
+				"message": "Authentication Service Exception"
+			},
+			{
+				"code": "A-511",
+				"message": "Invalid Access Credentials."
+			},
+			{
+				"code": "A-512",
+				"message": "Invalid Access Token. User will be blocked after 3 failed attempts."
+			},
+			{
+				"code": "B-510",
+				"message": "User has been blocked temporarily."
+			}],
+			"deprecated": "true"
+		}]
+	},
+	{
+		"path": "/gamingTxnHistory/{Account_Name}",
+		"operations": [{
+			"method": "GET",
+			"summary": "Gaming Transfer History.",
+			"notes": "Gaming Transfer History API Description.",
+			"items": {
+				
+			},
+			"nickname": "transfer_history",
+			"authorizations": {
+				
+			},
+			"parameters": [{
+				"name": "Account_Name",
+				"description": "Account Name.",
+				"required": true,
+				"type": "string",
+				"paramType": "path",
+				"allowMultiple": false,
+				"defaultValue": ""				
+			}],
+			"responseMessages": [{
+				"code": "200",
+				"message": "The request has succeeded"
+			},
+			{
+				"code": "400",
+				"message": "Bad Request-The request could not be understood by the server due to malformed syntax."
+			},
+			{
+				"code": "500",
+				"message": "Authentication Service Exception"
+			},
+			{
+				"code": "A-511",
+				"message": "Invalid Access Credentials."
+			},
+			{
+				"code": "A-512",
+				"message": "Invalid Access Token. User will be blocked after 3 failed attempts."
+			},
+			{
+				"code": "B-510",
+				"message": "User has been blocked temporarily."
+			}],
+			"deprecated": "true"
+		}]
+	}],
+	"models": {
+	
+	}
+}

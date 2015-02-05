@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bwin API Console</title>
+  <link href='//fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'/>
+  <link href='css/reset.css' media='screen' rel='stylesheet' type='text/css'/>
+  <link href='css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
+  <link href='css/reset.css' media='print' rel='stylesheet' type='text/css'/>
+  <link href='css/screen.css' media='print' rel='stylesheet' type='text/css'/>
+  <script type="text/javascript" src="lib/shred.bundle.js"></script>
+  <script src='lib/jquery-1.8.0.min.js' type='text/javascript'></script>
+  <script src='lib/jquery.slideto.min.js' type='text/javascript'></script>
+  <script src='lib/jquery.wiggle.min.js' type='text/javascript'></script>
+  <script src='lib/jquery.ba-bbq.min.js' type='text/javascript'></script>
+  <script src='lib/handlebars-1.0.0.js' type='text/javascript'></script>
+  <script src='lib/underscore-min.js' type='text/javascript'></script>
+  <script src='lib/backbone-min.js' type='text/javascript'></script>
+  <script src='lib/swagger.js' type='text/javascript'></script>
+  <script src='swagger-ui.js' type='text/javascript'></script>
+  <script src='lib/highlight.7.3.pack.js' type='text/javascript'></script>
+  
+  
+  <!-- From instagram START-->
+  	<link href="css/developer-main.css" type="text/css" rel="stylesheet">
+	<link href="css/fonts.css" rel="stylesheet">
+	<!-- <script src="jquery.js" type="text/javascript"></script> -->
+    <!--<script src="lib/bluebar.js" type="text/javascript"></script>-->
+    <script src="lib/navigation.js" type="text/javascript"></script>
+
+  <!-- enabling this will enable oauth2 implicit scope support -->
+  <script src='lib/swagger-oauth.js' type='text/javascript'></script>
+
+  <script type="text/javascript">
+  function openSwagger(parent, nickname,level){
+  if(level==1){
+	 var pos, url;
+	 if(nickname=='')
+	 pos='list';
+	 else{
+	 pos='full';
+	 }
+      url = document.URL;
+	  var parts = url.split("#");
+	  if(/Auth/i.test(parent)){
+	  url = parts[0] + "config/api-console-auth";
+	  }
+	  else if(/Logout/i.test(parent)){
+	  url = parts[0] +"config/api-console-logout";
+	  }
+	  else if(/Bonus/i.test(parent)){
+	  url = parts[0] +"config/api-console-bonus";
+	  }
+	  else if(/Loyalty/i.test(parent)){
+	  url = parts[0] +"config/api-console-loyalty";
+	  }
+	   else if(/Wallet/i.test(parent)){
+	  url = parts[0] +"config/api-console-wallet";
+	  }
+	 // alert('url: '+ url);
+   //   var parts = url.split("/resource/");
+	  window.swaggerUi = new SwaggerUi({
+      url: url,
+      dom_id: "swagger-ui-container",
+      supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
+      onComplete: function(swaggerApi, swaggerUi){
+        log("Loaded SwaggerUI");
+
+        if(typeof initOAuth == "function") {
+          /*
+          initOAuth({
+            clientId: "your-client-id",
+            realm: "your-realms",
+            appName: "your-app-name"
+          });
+          */
+        }
+        $('pre code').each(function(i, e) {
+          hljs.highlightBlock(e)
+        });
+      },
+      onFailure: function(data) {
+        log("Unable to Load SwaggerUI");
+      },
+      docExpansion: pos,
+      sorter : "method"
+    });
+
+    $('#input_apiKey').change(function() {
+      var key = $('#input_apiKey')[0].value;
+      log("key: " + key);
+      if(key && key.trim() != "") {
+        log("added key " + key);
+        window.authorizations.add("key", new ApiKeyAuthorization("api_key", key, "query"));
+      }
+    })
+    window.swaggerUi.load();
+	}
+	else{
+	Docs.collapseOperationsForResource(parent);
+	Docs.expandOperation($('#' + parent + "_" + nickname + "_content"));
+	}
+  }
+    $(function () {
+	
+	
+
+	//$(".apiList").click(function(){
+	//var frame_id = 'Api-iframe'; 
+	//window.document.getElementById(frame_id).src=this.href;
+	//window.document.getElementById(frame_id).contentWindow.location.reload(true);
+	//});
+	/*$(".apiList").click(function(){
+	 var frame_id = 'Api-iframe';
+    if(window.document.getElementById(frame_id).location ) {  
+        window.document.getElementById(frame_id).location.reload(true);
+    } else if (window.document.getElementById(frame_id).contentWindow.location ) {
+        window.document.getElementById(frame_id).contentWindow.location.reload(true);
+    } else if (window.document.getElementById(frame_id).src){
+        window.document.getElementById(frame_id).src = window.document.getElementById(frame_id).src;
+    } else {
+        alert("Sorry, unable to reload that frame!");
+    }
+	});*/
+	$(".sidemenu_main > li > a").on("click",function(){
+		$(".sidebar-content li").removeClass("active");
+		$(".sidemenu_main .submenu").addClass("hide");
+		$(this).parents("li").addClass("active");
+		$(this).parents("li").children(".submenu").removeClass("hide");
+		$(".mainContentWrapper").removeClass("show");
+		$("#"+$(this).attr("id")+"_container").addClass("show");
+	});
+	
+	$(".sidemenu_main .submenu a").on("click",function(){
+		$(".sidebar-content .submenu li").removeClass("active");
+		$(".sidemenu_main .submenu .submenu").addClass("hide");
+		$(this).parents("li").addClass("active");
+		$(this).parents("li").children(".submenu").removeClass("hide");
+		$(".subContentWrapper").removeClass("show");
+		$("#"+$(this).attr("id")+"_container").addClass("show");
+	});
+
+	var date = new Date();
+	
+	for(i=0; i<7;i++){
+		date.setDate(date.getDate()-1);
+		var months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+		$("#prevday_"+i).text(""+months[date.getMonth()]+" "+(date.getDate()<10?"0"+date.getDate():date.getDate()));
+		
+	}
+  });
+	
+  </script>
+</head>
+
+<body class="swagger-section">
+        <div class="root">
+            <div class="page">
+                        	<div class="logoparent">
+                            	<img src="images/bwinparty_small.png"/>
+                            </div>
+                        <header class="top-bar" style="display:none;">
+            <div class="wrapper">
+                <!-- <hgroup>
+                    <div class="logo"><a href="#">Instagram</a></div>
+                    
+                </hgroup>-->
+
+                
+
+               <!-- <div class="top-bar-right account-state" id="top_bar_right">
+                    <ul class="top-bar-actions" id="top_bar_actions"><li class="manage-clients link-settings"><a class="">Manage Clients<i></i></a></li>
+                        
+                        <li id="link_profile" class="link-signin">
+                                <a>
+                                <i></i>
+                                <strong>Log in</strong>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div> -->
+            </div>
+        </header> <!-- .top-bar -->
+                    
+                
+
+                
+    <div class="sidebar">
+        <div class="wrapper">
+            <nav class="sidebar-nav">
+                <div class="sidebar-content">
+                
+    
+
+
+
+<ul class="sidemenu_main">
+    <li class="active">
+        <a id="overview" href="#" class="menuItem level_1">
+            
+            Overview
+            
+            <i class="disclosure"></i>
+            
+        </a>
+        
+    </li>
+  <!--  <li>
+        <a id="APIConsole" href="#" class="menuItem level_1">
+            
+            API Console
+            
+            <i class="disclosure"></i>
+            
+        </a>
+        
+    </li>-->
+    <li>
+        <a id="endpoints" href="#" class="collapsible level_1" onclick="openSwagger('Authorization','authentication',1)" >
+            
+            API Console
+            
+            <i class="disclosure"></i>
+            
+        </a>
+        <ul class="submenu level_2 hide">
+                <li><a href="#" onclick="openSwagger('Authorization','authentication',1)" class="apiList" id="authContent">Authorization</a></li>
+				 <li><a href="#"  onclick="openSwagger('Bonus','',1)" class="apiList" id="authContent">Bonus</a>
+				<ul class="submenu level_3 hide">
+                <li><a href="#" onclick="openSwagger('Bonus','bonustypes',2)"  class="apiList" id="authContent">Types</a></li>
+                <li><a href="#"  onclick="openSwagger('Bonus','bonushistory',2)" class="apiList" id="authContent">History</a></li>
+               </ul>
+				</li>
+				<li><a href="#"  onclick="openSwagger('Loyalty','loyalty',1)" class="apiList" id="authContent">Loyalty</a></li>
+				<li><a href="#"  onclick="openSwagger('Wallet','',1)" class="apiList" id="authContent">Wallet</a>
+				<ul class="submenu level_3 hide">
+                <li><a href="#" onclick="openSwagger('Wallet','fund_history',2)"  class="apiList" id="authContent">Fund History</a></li>
+                <li><a href="#"  onclick="openSwagger('Wallet','gaming_history',2)" class="apiList" id="authContent">Gaming History</a></li>
+				<li><a href="#"  onclick="openSwagger('Wallet','inplay_details',2)" class="apiList" id="authContent">Inplay Details</a></li>
+               </ul>
+			   </li>
+				<!-- <li><a href="#"  onclick="openSwagger('Logout','logout',1)" class="apiList" id="authContent">Logout</a></li> -->
+				
+        </ul>
+    </li>
+    <li>
+    	<a id="apiStatus" href="#" class="menuItem level_1">
+            
+            API Status
+            
+            <i class="disclosure"></i>
+            
+        </a>
+    </li>
+    
+</ul>
+
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="main">
+        <div class="wrapper">
+            <section class="nav-page-content" role="main">
+            	<div id="overview_container" class="mainContentWrapper show">
+                    <div class="introduction-wrapper">
+                        <div class="introduction">
+                            <h1>Hello Developers.</h1>
+                
+                            <p>The bwin.party API sandbox is an exciting 
+                step forward towards making it easier for application developers to seemlessly integrate 
+                with the bwin.party platform. We created it so that you can surface the amazing content 
+                bwin users share every second, in fun and innovative ways.</p>
+                
+                            <p>Build something great.</p>
+                
+                           <!-- <div class="cta">
+                                <a class="button">Register Your Application</a>
+                                <span class="after-register">then <a>dive into the documentation</a></span>
+                            </div> -->
+                        </div>
+                   	</div>
+            
+                  <!--  <section id="getting_started" class="three-step">
+                        <h2>Getting Started</h2>
+                
+                        <ol class="gettingStartedList">
+                             <li class="step-1">
+                                 <h3><a>Register</a></h3>
+                                 <p>We'll assign an OAuth client_id and client_secret for each of your applications.</p>
+                             </li>
+                             <li class="step-2">
+                                 <h3><a>Authenticate</a></h3>
+                                 <p>Have our user <a>authenticate and authorize your application</a> with bwin API platform.</p>
+                             </li>
+                             <li class="step-3">
+                                 <h3><a>Start making requests!</a></h3>
+                                 <p>Make requests to our <a>API Endpoints</a> with your authenticated OAuth credentials.</p>
+                              </li>
+                          </ol>
+                    </section> -->
+                
+                    <section class="terms">
+                        <h2>API Terms of Use</h2>
+                
+                        <p>Before you start using the API, we have a few guidelines that we'd like to tell you about. Please make sure to read the full <a>API Terms of Use.</a> Here's what you'll read about:</p>
+                
+                        <ol>
+                            <li>bwin users own their media. It's your responsibility to make sure that you respect that right.</li>
+                            <li>You cannot use the bwin.party name in your application.</li>
+                            <li>You cannot use the bwin.party API to crawl or store users' media without their express consent.</li>
+                            <li>You cannot replicate the core user experience of bwin.party</li>
+                            <li>Do not abuse the API. Too many requests too quickly will get your access turned off</li>
+                        </ol>
+                    </section>
+            	</div>
+              <!--  <div id="APIConsole_container" class="mainContentWrapper"></div> -->
+                <div id="endpoints_container" class="mainContentWrapper">
+                <div id="authContent_container" class="subContentWrapper">
+               <!-- <div id="message-bar" class="swagger-ui-wrap">&nbsp;</div> -->
+               <!-- <div id="swagger-ui-container" class="swagger-ui-wrap" ></div> -->
+				<!--div id="iframediv" style="height:800px; width:100%">
+				<iframe  name="api-iframe" id="Api-iframe" style="height:100%; width:100%"></iframe> 
+                </div-->
+				<div id="message-bar" class="swagger-ui-wrap">&nbsp;</div>
+				<div id="swagger-ui-container" class="swagger-ui-wrap"></div>
+
+</div>
+				
+</div><div id="apiStatus_container" class="mainContentWrapper">
+                	<h3 style="margin-top: 30px; font-size: 13.5pt;">Status History</h3>
+                    <p>	Bwin.party Web Services keeps a running log of all service interruptions that we
+						publish in the table below for the previous 7 days.                
+	  				</p>
+                    <div class="statusTableWrapper">
+                    	<table class="statusTable" border="0" cellpadding="0" cellspacing="0">
+                        	<tr>
+                            	<th>&nbsp;</th>
+                            	<th id="prevday_0" class="prevDateHeader alignCenter"></th>
+                            	<th id="prevday_1" class="prevDateHeader alignCenter"></th>
+                            	<th id="prevday_2" class="prevDateHeader alignCenter"></th>
+                            	<th id="prevday_3" class="prevDateHeader alignCenter"></th>
+                            	<th id="prevday_4" class="prevDateHeader alignCenter"></th>
+                            	<th id="prevday_5" class="prevDateHeader alignCenter"></th>
+                            	<th id="prevday_6" class="prevDateHeader alignCenter"></th>
+                            </tr>
+                        	<tr>
+                            	<td class="apiLabelCol">Authentication (Authentication/doLogin/{channel}/{lang})</td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            </tr>
+                        	<tr>
+                            	<td class="apiLabelCol">Bonus-Types (bonus/v1/types)</td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            </tr>
+                        	<tr>
+                            	<td class="apiLabelCol">Bonus-History (bonus/v1/history)</td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            </tr>
+                        	<tr>
+                            	<td class="apiLabelCol">Loyalty (loyalty/v1/profile)</td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            </tr>
+                        	<tr>
+                            	<td class="apiLabelCol">Wallet-FundHistory (wallet/v1/fundXferHistory)</td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            </tr>
+                        	<tr>
+                            	<td class="apiLabelCol">Wallet-GamingHistory (wallet/v1/gamingTxnHistory)</td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            </tr>
+                        	<tr>
+                            	<td class="apiLabelCol">Wallet-InplayDetails (wallet/v1/getInplayDetail)</td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            </tr>
+                        	<!-- <tr>
+                            	<td class="apiLabelCol">Logout/logout</td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            	<td class="healthIndicatorCell"><img src="images/status0.gif" alt="" /></td>
+                            </tr> -->
+                        </table>
+                    </div>
+                    
+                      <div class="legendParent">
+                        <table style="width: 100%">
+                          <tbody><tr>
+                            <td style="width: 24px"><img src="images/status0.gif"></td>
+                            <td>Service is operating normally</td>
+            
+                            <td style="width: 24px"><img src="images/status2.gif"></td>
+                            <td>Performance issues</td>
+            
+                            <td style="width: 24px"><img src="images/status3.gif"></td>
+                            <td>Service disruption</td>
+                          </tr>
+                        </tbody></table>
+                      </div>
+                </div>
+            </section>
+        </div> <!-- .main -->
+    </div> <!-- .main -->
+
+
+            </div> <!-- .page -->
+
+            
+            <footer class="page-footer" role="contentinfo">
+                <div class="wrapper">
+                   <!-- <nav>
+                        <ul>
+                            <li><a>About us</a></li>
+                            <li><a>Support</a></li>
+                            <li><a>Blog</a></li>
+                            <li><a>Privacy</a></li>
+                            <li><a>Terms</a></li>
+                        </ul>
+                    </nav> -->
+                    <p class="copyright">&copy 2014 bwin.party</p>
+                </div>
+            </footer>
+            
+    </div> <!-- .root -->
+    
+
+
+</body>
+</html>

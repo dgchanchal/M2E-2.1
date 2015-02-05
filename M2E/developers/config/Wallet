@@ -1,0 +1,149 @@
+{
+	"apiVersion": "1.0.0",
+	"swaggerVersion": "1.2",
+	"basePath": "http://api.ivycomptech.co.in:8080/mobilefirstapi",
+	"resourcePath": "/Wallet",
+	"produces": ["application/json",
+	"application/xml"],
+	"apis": [{
+		"path": "/wallet/v1/fundXferHistory",
+		"operations": [{
+			"method": "POST",
+			"summary": "Fund transfer history",
+			"notes": "Fund transfer history",
+			"items": {
+				
+			},
+			"nickname": "fund_history",
+			"authorizations": {
+				
+			},
+			"parameters": [{
+				"name": "body",
+				"description": "accountName,product,brand,start date,enddate",
+				"required": true,
+				"type": "ProductInfoDetails",
+				"paramType": "body",
+				"allowMultiple": false,
+				"defaultValue": ""
+			}],
+			"responseMessages": [{
+				"code": "200",
+				"message": "The request has succeeded"
+			}],
+			"deprecated": "true"
+		}],
+		"models": {
+			
+		}
+	},
+	{
+		"path": "/wallet/v1/gamingTxnHistory",
+		"operations": [{
+			"method": "POST",
+			"summary": "Gaming transactions history.",
+			"notes": "Gaming transactions history",
+			"items": {
+				
+			},
+			"nickname": "gaming_history",
+			"authorizations": {
+				
+			},
+			"parameters": [{
+				"name": "body",
+				"description": "accountName,product,brand,start date,enddate",
+				"required": true,
+				"type": "ProductInfoDetails",
+				"paramType": "body",
+				"allowMultiple": false,
+				"defaultValue": ""
+			}],
+			"responseMessages": [{
+				"code": "200",
+				"message": "The request has succeeded"
+			}],
+			"deprecated": "true"
+		}],
+		"models": {
+			
+		}
+	},
+	{
+		"path": "/wallet/v1/getInplayDetail",
+		"operations": [{
+			"method": "POST",
+			"summary": "Inplay wallet details",
+			"notes": "Inplay wallet details",
+			"items": {
+				
+			},
+			"nickname": "inplay_details",
+			"authorizations": {
+				
+			},
+			"parameters": [{
+				"name": "body",
+				"description": "FrontEnd,product,brand,accountName",
+				"required": true,
+				"type": "InplayDetail",
+				"paramType": "body",
+				"allowMultiple": false,
+				"defaultValue": ""
+			}],
+			"responseMessages": [{
+				"code": "200",
+				"message": "The request has succeeded"
+			}],
+			"deprecated": "true"
+		}]
+	}],
+	"models": {
+		"InplayDetail": {
+			"id": "InplayDetail",
+			"required": ["accountName",
+			"product",
+			"brand",
+			"fe"],
+			"properties": {
+				"accountName": {
+					"type": "string"
+				},
+				"product": {
+					"type": "string"
+				},
+				"brand": {
+					"type": "string"
+				},
+				"fe": {
+					"type": "string"
+				}
+			}
+		},
+		"ProductInfoDetails": {
+			"id": "ProductInfoDetails",
+			"required": ["accountName",
+			"productId",
+			"brandId",
+			"startDate",
+			"endDate"],
+			"properties": {
+				"accountName": {
+					"type": "string"
+				},
+				"productId": {
+					"type": "string"
+				},
+				"brandId": {
+					"type": "string"
+				},
+				"startDate": {
+					"type": "string"
+				},
+				"endDate": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}

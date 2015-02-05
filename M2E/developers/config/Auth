@@ -1,0 +1,99 @@
+{
+	"apiVersion": "1.0.0",
+	"swaggerVersion": "1.2",
+	"basePath": "https://pp-core-api-poker221.ivycomptech.co.in/login-v2",
+	"resourcePath": "/Authentication",
+	"produces": ["application/json",
+	"application/xml"],
+	"apis": [{
+		"path": "/doLogin/{channel}/{lang}",
+		"operations": [{
+			"method": "POST",
+			"summary": "Authentication API",
+			"notes": "Authentication API Description. <br> This is a POST request which expects parameters in request body like Username, Passowrd etc..",
+			"items": {
+				
+			},
+			"nickname": "authentication",
+			"authorizations": {
+				
+			},
+			"parameters": [{
+				"name": "channel",
+				"description": "Environment Channel.",
+				"required": true,
+				"type": "string",
+				"paramType": "path",
+				"allowMultiple": false,
+				"defaultValue": "WC",
+				"enum": ["WC",
+				"Android",
+				"iOS"]
+			},
+			{
+				"name": "lang",
+				"description": "Locale Details.",
+				"required": true,
+				"type": "string",
+				"paramType": "path",
+				"allowMultiple": false,
+				"defaultValue": "en_US",
+				"enum": ["en_US",
+				"en_UK",
+				"en_IN"]
+			},
+			{
+				"name": "body",
+				"description": "User Credentials/Details",
+				"required": true,
+				"type": "UserDetails",
+				"paramType": "body",
+				"allowMultiple": false,
+				"defaultValue": ""
+			}],
+			"responseMessages": [{
+				"code": "200",
+				"message": "The request has succeeded"
+			},
+			{
+				"code": "400",
+				"message": "Bad Request-The request could not be understood by the server due to malformed syntax."
+			},
+			{
+				"code": "500",
+				"message": "Authentication Service Exception"
+			},
+			{
+				"code": "A-511",
+				"message": "Invalid Access Credentials."
+			},
+			{
+				"code": "A-512",
+				"message": "Invalid Access Token. User will be blocked after 3 failed attempts."
+			},
+			{
+				"code": "B-510",
+				"message": "User has been blocked temporarily."
+			}],
+			"deprecated": "true"
+		}]
+	}],
+	"models": {
+		"UserDetails": {
+      "id": "UserDetails",
+      "required": [
+        "userName",
+        "password"
+      ],
+      "properties": {
+        "userName": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+       
+      }
+    }
+	}
+}
