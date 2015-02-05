@@ -29,6 +29,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\M2E.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -78,6 +79,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dll\GaDotNet.Common.dll</HintPath>
     </Reference>
+    <Reference Include="Glimpse.AspNet">
+      <HintPath>..\packages\Glimpse.AspNet.1.8.0\lib\net40\Glimpse.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.Core">
+      <HintPath>..\packages\Glimpse.1.8.6\lib\net40\Glimpse.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.Mvc4">
+      <HintPath>..\packages\Glimpse.Mvc4.1.5.3\lib\net40\Glimpse.Mvc4.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dll\log4net.dll</HintPath>
@@ -112,6 +122,9 @@
     </Reference>
     <Reference Include="Quartz">
       <HintPath>..\packages\Quartz.2.3\lib\net40\Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="Swagger.Net">
+      <HintPath>..\packages\Swagger.Net.0.5.5\lib\net40\Swagger.Net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -173,8 +186,12 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.5.1\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\SwaggerNet.cs" />
     <Compile Include="CommonMethods\dbContextException.cs" />
     <Compile Include="CommonMethods\forgetPasswordValidationEmail.cs" />
     <Compile Include="CommonMethods\sendAccountCreationValidationEmail.cs" />
@@ -191,6 +208,7 @@
     <Compile Include="DAO\ProjectDAO.cs" />
     <Compile Include="Encryption\AES.cs" />
     <Compile Include="Encryption\Encryption.cs" />
+    <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1036,6 +1054,20 @@
     <Content Include="dll\Owin.dll" />
     <Content Include="Global.asax" />
     <Content Include="Models\M2EContext.edmx.sql" />
+    <Content Include="SwaggerUI\css\screen.css" />
+    <Content Include="SwaggerUI\images\pet_store_api.png" />
+    <Content Include="SwaggerUI\images\wordnik_api.png" />
+    <Content Include="SwaggerUI\index.html" />
+    <Content Include="SwaggerUI\lib\backbone-min.js" />
+    <Content Include="SwaggerUI\lib\handlebars.runtime-1.0.0.beta.6.js" />
+    <Content Include="SwaggerUI\lib\jquery.ba-bbq.min.js" />
+    <Content Include="SwaggerUI\lib\jquery.min.js" />
+    <Content Include="SwaggerUI\lib\jquery.slideto.min.js" />
+    <Content Include="SwaggerUI\lib\jquery.wiggle.min.js" />
+    <Content Include="SwaggerUI\lib\swagger.js" />
+    <Content Include="SwaggerUI\lib\underscore-min.js" />
+    <Content Include="SwaggerUI\swagger-ui.js" />
+    <Content Include="SwaggerUI\swagger-ui.min.js" />
     <Content Include="Template\AdminLTE-master\.gitignore" />
     <Content Include="Template\AdminLTE-master\css\AdminLTE.css" />
     <Content Include="Template\AdminLTE-master\css\bootstrap-slider\slider.css" />
@@ -1707,7 +1739,9 @@
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="json1.json" />
     <None Include="Properties\PublishProfiles\M2E.pubxml" />
+    <Content Include="SwaggerUI\lib\.DS_Store" />
     <None Include="Template\AdminLTE-master\ajax\dashboard-boxrefresh-demo.php" />
     <None Include="Template\AdminLTE-master\fonts\fontawesome-webfont.eot" />
     <None Include="Template\AdminLTE-master\fonts\fontawesome-webfont.svg" />
