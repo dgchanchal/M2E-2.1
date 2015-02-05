@@ -41,10 +41,10 @@
 			"accountName"],
 			"properties": {
 				"brand": {
-					"type": "testing"
+					"type": "string"
 				},
 				"accountName": {
-					"type": "value"
+					"type": "string"
 				}
 			}
 		}

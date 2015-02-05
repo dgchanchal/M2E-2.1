@@ -30,6 +30,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\M2E.XML</DocumentationFile>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -123,7 +124,8 @@
     <Reference Include="Quartz">
       <HintPath>..\packages\Quartz.2.3\lib\net40\Quartz.dll</HintPath>
     </Reference>
-    <Reference Include="Swagger.Net">
+    <Reference Include="Swagger.Net, Version=0.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Swagger.Net.0.5.5\lib\net40\Swagger.Net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -186,7 +188,8 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="WebActivator">
+    <Reference Include="WebActivator, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WebActivator.1.5.1\lib\net40\WebActivator.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -199,6 +202,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\DevelopersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MobileController.cs" />
     <Compile Include="Controllers\SocialAuthController.cs" />
@@ -353,6 +357,7 @@
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ResponseModel.cs" />
+    <Compile Include="Models\Swagger\SwaggerAuth.cs" />
     <Compile Include="Models\ThirdPartyLogin.cs">
       <DependentUpon>M2EContext.tt</DependentUpon>
     </Compile>
@@ -1045,6 +1050,48 @@
     <Content Include="App\third-Party\toastmessage\images\success.png" />
     <Content Include="App\third-Party\toastmessage\images\warning.png" />
     <Content Include="App\third-Party\toastmessage\js\jquery.toastmessage.js" />
+    <Content Include="developers\APIS.html" />
+    <Content Include="developers\css\developer-main.css" />
+    <Content Include="developers\css\fonts.css" />
+    <Content Include="developers\css\reset.css" />
+    <Content Include="developers\css\screen.css" />
+    <Content Include="developers\images\api-INTEGRATION.png" />
+    <Content Include="developers\images\Bwinparty.png" />
+    <Content Include="developers\images\bwinparty_small.png" />
+    <Content Include="developers\images\explorer_icons.png" />
+    <Content Include="developers\images\glyph-assets.png" />
+    <Content Include="developers\images\gradient32.gif" />
+    <Content Include="developers\images\gradient90.gif" />
+    <Content Include="developers\images\introduction-bg.jpg" />
+    <Content Include="developers\images\logo_small.png" />
+    <Content Include="developers\images\nav-active-arrow.png" />
+    <Content Include="developers\images\nav-shadow.png" />
+    <Content Include="developers\images\pet_store_api.png" />
+    <Content Include="developers\images\status0.gif" />
+    <Content Include="developers\images\status2.gif" />
+    <Content Include="developers\images\status3.gif" />
+    <Content Include="developers\images\threesteps.png" />
+    <Content Include="developers\images\throbber.gif" />
+    <Content Include="developers\images\wordnik_api.png" />
+    <Content Include="developers\index.html" />
+    <Content Include="developers\lib\backbone-min.js" />
+    <Content Include="developers\lib\bluebar.js" />
+    <Content Include="developers\lib\handlebars-1.0.0.js" />
+    <Content Include="developers\lib\highlight.7.3.pack.js" />
+    <Content Include="developers\lib\jquery-1.8.0.min.js" />
+    <Content Include="developers\lib\jquery.ba-bbq.min.js" />
+    <Content Include="developers\lib\jquery.js" />
+    <Content Include="developers\lib\jquery.slideto.min.js" />
+    <Content Include="developers\lib\jquery.wiggle.min.js" />
+    <Content Include="developers\lib\navigation.js" />
+    <Content Include="developers\lib\shred.bundle.js" />
+    <Content Include="developers\lib\shred\content.js" />
+    <Content Include="developers\lib\swagger-oauth.js" />
+    <Content Include="developers\lib\swagger.js" />
+    <Content Include="developers\lib\underscore-min.js" />
+    <Content Include="developers\o2c.html" />
+    <Content Include="developers\swagger-ui.js" />
+    <Content Include="developers\swagger-ui.min.js" />
     <Content Include="dll\GaDotNet.Common.dll" />
     <Content Include="dll\log4net.dll" />
     <Content Include="dll\Microsoft.AspNet.SignalR.Core.dll" />
@@ -1736,6 +1783,24 @@
       <LastGenOutput>M2EContext.cs</LastGenOutput>
     </Content>
     <Content Include="packages.config" />
+    <Content Include="developers\config\api-console" />
+    <Content Include="developers\config\api-console-auth" />
+    <Content Include="developers\config\api-console-bonus" />
+    <Content Include="developers\config\api-console-logout" />
+    <Content Include="developers\config\api-console-loyalty" />
+    <Content Include="developers\config\api-console-playerdetails" />
+    <Content Include="developers\config\api-console-wallet" />
+    <Content Include="developers\config\Auth" />
+    <Content Include="developers\config\Authorization" />
+    <Content Include="developers\config\Bonus" />
+    <Content Include="developers\config\Logout" />
+    <Content Include="developers\config\Loyalty" />
+    <Content Include="developers\config\PlayerDetails" />
+    <Content Include="developers\config\Wallet" />
+    <Content Include="developers\css\fonts\proximanova-bold-webfont.ttf" />
+    <Content Include="developers\css\fonts\proximanova-bold-webfont.woff" />
+    <Content Include="developers\css\fonts\proximanova-reg-webfont.ttf" />
+    <Content Include="developers\css\fonts\proximanova-reg-webfont.woff" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
