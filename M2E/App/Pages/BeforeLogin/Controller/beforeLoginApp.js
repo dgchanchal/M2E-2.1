@@ -65,6 +65,7 @@ define([appLocation.preLogin], function (app) {
             FAQ: "FAQs",
             contactUs: "Contact Us",
             TnC: "Terms, Privacy & Cookies",
+            developers:"Developers Section",
             aboutus: "About Us",
             home: "Home",
             footerMost: "Crowd Automation, All rights reserved"
