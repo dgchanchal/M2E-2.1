@@ -62,6 +62,8 @@ namespace M2E.Controllers
             return Json(response);
         }
 
+
+        //swagger implemented..
         [HttpPost]
         public JsonResult Login(LoginRequest req)
         {
@@ -174,27 +176,7 @@ namespace M2E.Controllers
             }
             bool isValid = new TokenManager().Logout(headers.AuthToken);
         }
-
-        //public void asyncLogoutThread( object a)
-        //{
-        //    HttpRequestBase RequestData = a as HttpRequestBase;
-        //    var headers = new HeaderManager(RequestData);
-        //    M2ESession session = TokenManager.getLogoutSessionInfo(headers.AuthToken);
-        //    if (session != null)
-        //    {
-        //        var user = _db.Users.SingleOrDefault(x => x.Username == session.UserName);
-        //        user.KeepMeSignedIn = "false";
-        //        try
-        //        {
-        //            _db.SaveChanges();
-        //        }
-        //        catch (DbEntityValidationException e)
-        //        {
-        //            DbContextException.LogDbContextException(e);
-        //        }
-        //    }
-        //    bool isValid = new TokenManager().Logout(headers.AuthToken);
-        //}
+       
 
         [HttpPost]
         public JsonResult GetUsernameFromSessionId()
@@ -203,7 +185,9 @@ namespace M2E.Controllers
             var response = new ResponseModel<string> { Status = 200, Message = "success", Payload = TokenManager.GetUsernameFromSessionId(headers) };
             return Json(response);
         }
+        
 
+        //swagger implemented..
         [HttpPost]
         public JsonResult CreateAccount(RegisterationRequest req)
         {

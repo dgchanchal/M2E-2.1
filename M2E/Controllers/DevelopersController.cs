@@ -158,6 +158,7 @@ namespace M2E.Controllers
             var apiDetailsList = new List<SwaggerApiCommonDetail>();            
             apiDetailsList.Add(showJsonConfigAuthAuthenticationAPIInfo());
             apiDetailsList.Add(showJsonConfigAuthCreateAccountAPIInfo());
+            apiDetailsList.Add(showJsonConfigAuthValidateAccountAPIInfo());
             var swagger = showJsonConfigCommon(apiDetailsList);   
             return Json(swagger, JsonRequestBehavior.AllowGet);
         }
@@ -193,10 +194,7 @@ namespace M2E.Controllers
                 type = "authModel"
             };
 
-            var responseMessage = new ResponseMessageModel();
-            responseMessage.code = "200";
-            responseMessage.message = "success api";
-
+            
             var LoyaltyProfileBean = new SwaggerAuthModelsLoyaltyProfileBean
             {
                 id = parameters.type,
@@ -218,7 +216,18 @@ namespace M2E.Controllers
 
             operationModel.parameters = new List<parametersModel> { parameters };
 
-            operationModel.ResponseMessage = new List<ResponseMessageModel> { responseMessage };
+            var responseMessage200 = new ResponseMessageModel { code = "200", message = "Successfully login" };
+            var responseMessage401 = new ResponseMessageModel { code = "401", message = "Unauthorized User" };
+            var responseMessage500 = new ResponseMessageModel { code = "500", message = "Internal Server Error Occured" };
+            var responseMessage403 = new ResponseMessageModel { code = "403", message = "Database Error Occured" };
+
+            operationModel.ResponseMessage = new List<ResponseMessageModel>
+            {
+                responseMessage200,
+                responseMessage401,
+                responseMessage500,
+                responseMessage403
+            };
 
             apiDetails.operations = new List<operationsModel> { operationModel };
             apiDetails.dataType = new List<SwaggerAuthModelsLoyaltyProfileBean> { LoyaltyProfileBean };
@@ -257,10 +266,7 @@ namespace M2E.Controllers
                 type = "createAccountModel"
             };
 
-            var responseMessage = new ResponseMessageModel();
-            responseMessage.code = "200";
-            responseMessage.message = "success api";
-
+            
             var LoyaltyProfileBean = new SwaggerAuthModelsLoyaltyProfileBean
             {
                 id = parameters.type,
@@ -293,6 +299,78 @@ namespace M2E.Controllers
 
             operationModel.parameters = new List<parametersModel> { parameters };
 
+            var responseMessage200 = new ResponseMessageModel { code = "200", message = "Successfully Created Account. Check Email id provided for guid." };
+            var responseMessage409 = new ResponseMessageModel { code = "409", message = "Email ID provided is already registered." };
+            var responseMessage500 = new ResponseMessageModel { code = "500", message = "Internal Server Error Occured." };
+
+
+            operationModel.ResponseMessage = new List<ResponseMessageModel>
+            {
+                responseMessage200,
+                responseMessage409,
+                responseMessage500
+            };
+
+            apiDetails.operations = new List<operationsModel> { operationModel };
+            apiDetails.dataType = new List<SwaggerAuthModelsLoyaltyProfileBean> { LoyaltyProfileBean };
+
+            return apiDetails;
+        }
+
+        public SwaggerApiCommonDetail showJsonConfigAuthValidateAccountAPIInfo()
+        {
+            var apiDetails = new SwaggerApiCommonDetail
+            {
+                basePath = "http://www.cautom.com/ValidateAccount",
+                resourcePath = "/ValidateAccount",
+                produces = new string[2] { "application/json", "application/xml" }
+            };
+
+            //apiDetails.apiPath = "/Login";
+
+            var operationModel = new operationsModel
+            {
+                method = "POST",
+                apiPath = "/ValidateAccount",
+                summary = "Cautom Validate Account API",
+                notes = "Cautom Validate Account Creation",
+                nickname = "validateAccountCreation"
+            };
+
+            var parameters = new parametersModel
+            {
+                name = "validateAccountCreation",
+                description = "Cautom Validate Account API",
+                required = true,
+                paramType = "body",
+                allowMultiple = false,
+                defaultValue = "",
+                type = "validateAccountModel"
+            };
+
+            var responseMessage = new ResponseMessageModel();
+            responseMessage.code = "200";
+            responseMessage.message = "success api";
+
+            var LoyaltyProfileBean = new SwaggerAuthModelsLoyaltyProfileBean
+            {
+                id = parameters.type,
+                //required = new string[4]
+            };
+
+            //{"userName":"sum_kumar12@yahoo.co.in","guid":"7e1befc7-8185-4f84-bbab-aa754c615eac"}
+            LoyaltyProfileBean.required = new string[2];
+            LoyaltyProfileBean.required[0] = "userName";
+            LoyaltyProfileBean.required[1] = "guid";
+            
+
+            LoyaltyProfileBean.properties = new Dictionary<string, SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName>();
+            LoyaltyProfileBean.properties["userName"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "sum_kumar12@yahoo.co.in" };
+            LoyaltyProfileBean.properties["guid"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "7e1befc7-8185-4f84-bbab-aa754c615eac" };
+            
+
+            operationModel.parameters = new List<parametersModel> { parameters };
+
             operationModel.ResponseMessage = new List<ResponseMessageModel> { responseMessage };
 
             apiDetails.operations = new List<operationsModel> { operationModel };
@@ -300,6 +378,7 @@ namespace M2E.Controllers
 
             return apiDetails;
         }
+
         public SwaggerAuth showJsonConfigCommon(List<SwaggerApiCommonDetail> apiDetailsList)
         {
             
@@ -313,12 +392,13 @@ namespace M2E.Controllers
             };
             int upperCounter = 0;
             swagger.apis = new List<SwaggerAuthApis>();
-                
+            swagger.models = new Dictionary<string, SwaggerAuthModelsLoyaltyProfileBean>();
+            swagger.produces = new string[apiDetailsList[0].produces.Length];
             foreach (var apiDetails in apiDetailsList)
             {
                 
                 int producesCounter = 0;
-                swagger.produces = new string[apiDetails.produces.Length];
+                
                 foreach (var produces in apiDetails.produces)
                 {
                     
@@ -375,12 +455,13 @@ namespace M2E.Controllers
                     
 
                     swagger.apis[upperCounter].operations[operationCounter].responseMessages = new List<SwaggerAuthApisOperationsResponseMessages>();
-                    var swaggerApisOperationsResponseMessage = new SwaggerAuthApisOperationsResponseMessages();
-                    swagger.apis[upperCounter].operations[operationCounter].responseMessages.Add(swaggerApisOperationsResponseMessage);
+                    
 
                     int ResponseMessageCounter = 0;
                     foreach (var ResponseMessage in operations.ResponseMessage)
                     {
+                        var swaggerApisOperationsResponseMessage = new SwaggerAuthApisOperationsResponseMessages();
+                        swagger.apis[upperCounter].operations[operationCounter].responseMessages.Add(swaggerApisOperationsResponseMessage);
                         swagger.apis[upperCounter].operations[operationCounter].responseMessages[ResponseMessageCounter] = new SwaggerAuthApisOperationsResponseMessages
                         {
                             code = ResponseMessage.code,
@@ -396,8 +477,7 @@ namespace M2E.Controllers
 
                 foreach (var dataType in apiDetails.dataType)
                 {
-                    
-                    swagger.models = new Dictionary<string, SwaggerAuthModelsLoyaltyProfileBean>();
+                                        
                     swagger.models[dataType.id] = dataType;
                 }
                 

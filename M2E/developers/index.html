@@ -75,7 +75,7 @@
           */
         }
         $('pre code').each(function(i, e) {
-          hljs.highlightBlock(e)
+            hljs.highlightBlock(e);
         });
       },
       onFailure: function(data) {
@@ -85,20 +85,22 @@
       sorter : "method"
     });
 
-    $('#input_apiKey').change(function() {
-      var key = $('#input_apiKey')[0].value;
-      log("key: " + key);
-      if(key && key.trim() != "") {
-        log("added key " + key);
-        window.authorizations.add("key", new ApiKeyAuthorization("api_key", key, "query"));
-      }
-    })
+      $('#input_apiKey').change(function() {
+          var key = $('#input_apiKey')[0].value;
+          log("key: " + key);
+          if (key && key.trim() != "") {
+              log("added key " + key);
+              window.authorizations.add("key", new ApiKeyAuthorization("api_key", key, "query"));
+          }
+      });
     window.swaggerUi.load();
 	}
 	else{
 	Docs.collapseOperationsForResource(parent);
 	Docs.expandOperation($('#' + parent + "_" + nickname + "_content"));
-	}
+  }
+
+
   }
     $(function () {
 	
@@ -224,7 +226,10 @@
             
         </a>
         <ul class="submenu level_2 hide">
-                <li><a href="#" onclick="openSwagger('Authorization','authentication',1)" class="apiList" id="authContent">Authorization</a></li>
+            <li>
+                <a href="#" onclick="openSwagger('Authorization','authentication',1)" class="apiList" id="authContent">Authentication</a>            
+                
+            </li>
 				 <li><a href="#"  onclick="openSwagger('Bonus','',1)" class="apiList" id="authContent">Bonus</a>
 				<ul class="submenu level_3 hide">
                 <li><a href="#" onclick="openSwagger('Bonus','bonustypes',2)"  class="apiList" id="authContent">Types</a></li>
@@ -269,8 +274,8 @@
                 
                             <p>The cautom API sandbox is an exciting 
                 step forward towards making it easier for application developers to seemlessly integrate 
-                with the bwin.party platform. We created it so that you can surface the amazing content 
-                bwin users share every second, in fun and innovative ways.</p>
+                with the cautom platform. We created it so that you can surface the amazing content 
+                cautom users share every second, in fun and innovative ways.</p>
                 
                             <p>Build something great.</p>
                 
@@ -291,7 +296,7 @@
                              </li>
                              <li class="step-2">
                                  <h3><a>Authenticate</a></h3>
-                                 <p>Have our user <a>authenticate and authorize your application</a> with bwin API platform.</p>
+                                 <p>Have our user <a>authenticate and authorize your application</a> with cautom API platform.</p>
                              </li>
                              <li class="step-3">
                                  <h3><a>Start making requests!</a></h3>
@@ -307,9 +312,9 @@
                 
                         <ol>
                             <li>cautom users own their media. It's your responsibility to make sure that you respect that right.</li>
-                            <li>You cannot use the bwin.party name in your application.</li>
-                            <li>You cannot use the bwin.party API to crawl or store users' media without their express consent.</li>
-                            <li>You cannot replicate the core user experience of bwin.party</li>
+                            <li>You cannot use the cautom name in your application.</li>
+                            <li>You cannot use the cautom API to crawl or store users' media without their express consent.</li>
+                            <li>You cannot replicate the core user experience of cautom.party</li>
                             <li>Do not abuse the API. Too many requests too quickly will get your access turned off</li>
                         </ol>
                     </section>
