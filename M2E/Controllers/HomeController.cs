@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Validation;
 using System.Globalization;
 using System.Linq;
 using System.Web.Http.Controllers;
@@ -33,7 +34,7 @@ namespace M2E.Controllers
             return View();
         }
 
-        public ActionResult BeforeLoginUserProjectDetailsService()
+        public JsonResult BeforeLoginUserProjectDetailsService()
         {            
             string totalProjects = "152";
             string successRate = "94.2";
@@ -41,15 +42,27 @@ namespace M2E.Controllers
             string projectCategories = "37";
             var response = new ResponseModel<BeforeLoginUserProjectDetailsModel>();
             response.Status = 200;
+            BeforeLoginUserProjectDetailsModel beforeLoginUserProjectDetailsServiceDataModelService;
             response.Message = "success";
-            var beforeLoginUserProjectDetailsServiceData = new BeforeLoginUserProjectDetailsModel
+            try
             {
-                TotalUsers = _db.Users.Count().ToString(CultureInfo.InvariantCulture),
-                TotalProjects = new ProjectDAO().totalAvailableProjects(),
-                SuccessRate = "94.3",
-                ProjectCategories = "35"
-            };
-            response.Payload = beforeLoginUserProjectDetailsServiceData;
+                beforeLoginUserProjectDetailsServiceDataModelService = new BeforeLoginUserProjectDetailsModel
+                {
+                    TotalUsers = _db.Users.Count().ToString(CultureInfo.InvariantCulture),
+                    TotalProjects = new ProjectDAO().totalAvailableProjects(),
+                    SuccessRate = "94.3",
+                    ProjectCategories = "35"
+                };
+            }
+            catch (DbEntityValidationException e)
+            {
+                DbContextException.LogDbContextException(e);
+                response.Status = 500;
+                response.Message = "Internal Server Error !!!";
+                return Json(response, JsonRequestBehavior.AllowGet);
+            }
+
+            response.Payload = beforeLoginUserProjectDetailsServiceDataModelService;
             return Json(response, JsonRequestBehavior.AllowGet);
         }
 

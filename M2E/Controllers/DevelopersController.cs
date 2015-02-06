@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
+using System.Web.Http.Description;
 using System.Web.Mvc;
 using M2E.CommonMethods;
 using M2E.Models;
@@ -161,6 +162,8 @@ namespace M2E.Controllers
             apiDetailsList.Add(showJsonConfigAuthValidateAccountAPIInfo());
             apiDetailsList.Add(showJsonConfigAuthResendValidationCodeAPIInfo());
             apiDetailsList.Add(showJsonConfigAuthForgetPasswordAPIInfo());
+            apiDetailsList.Add(showJsonConfigAuthResetPasswordAPIInfo());
+            apiDetailsList.Add(showJsonConfigAuthContactUsAPIInfo());
             var swagger = showJsonConfigCommon(apiDetailsList);   
             return Json(swagger, JsonRequestBehavior.AllowGet);
         }
@@ -474,9 +477,9 @@ namespace M2E.Controllers
             {
                 method = "GET",
                 apiPath = "/ForgetPassword/{emailId}",
-                summary = "Cautom ResendValidationCode Account API",
-                notes = "Cautom ResendValidationCode Account Creation",
-                nickname = "resendValidationCode"
+                summary = "Cautom ForgetPassword Account API",
+                notes = "Cautom ForgetPassword Account Creation",
+                nickname = "forgetPassword"
             };
 
             var parameters = new parametersModel
@@ -507,6 +510,157 @@ namespace M2E.Controllers
             };
 
             apiDetails.operations = new List<operationsModel> { operationModel };            
+
+            return apiDetails;
+        }
+
+        public SwaggerApiCommonDetail showJsonConfigAuthResetPasswordAPIInfo()
+        {
+            var apiDetails = new SwaggerApiCommonDetail
+            {
+                basePath = "http://www.cautom.com/Auth/ResetPassword",
+                resourcePath = "/ResetPassword",
+                produces = new string[2] { "application/json", "application/xml" }
+            };
+
+            //apiDetails.apiPath = "/Login";
+
+            var operationModel = new operationsModel
+            {
+                method = "POST",
+                apiPath = "/ResetPassword",
+                summary = "Cautom ResetPassword Account API",
+                notes = "Cautom ResetPassword Account Creation - You need to have UserKey and Guid sent to your registered email id to reset password.",
+                nickname = "resetPassword"
+            };
+
+            var parameters = new parametersModel
+            {
+                name = "resetPassword",
+                description = "Cautom ResetPassword Account API",
+                required = true,
+                paramType = "body",
+                allowMultiple = false,
+                defaultValue = "",
+                type = "resetPassword"
+            };
+
+
+            operationModel.parameters = new List<parametersModel> { parameters };
+
+            var responseMessage200 = new ResponseMessageModel { code = "200", message = "Password reset link sent to registered Email ID." };
+            var responseMessage402 = new ResponseMessageModel { code = "402", message = "Link Expired." };
+            var responseMessage500 = new ResponseMessageModel { code = "500", message = "Internal Server Error." };
+            var responseMessage404 = new ResponseMessageModel { code = "404", message = "User Doesn't exists." };
+
+            var LoyaltyProfileBean = new SwaggerAuthModelsLoyaltyProfileBean
+            {
+                id = parameters.type,
+                //required = new string[4]
+            };
+            //{"Username":"635588348252269728","Guid":"1f267a9f-863f-488c-8bd1-6fcd65b99c09","Password":"password"}
+            LoyaltyProfileBean.required = new string[8];
+            LoyaltyProfileBean.required[0] = "Username";
+            LoyaltyProfileBean.required[1] = "Guid";
+            LoyaltyProfileBean.required[2] = "Password";
+            
+
+            LoyaltyProfileBean.properties = new Dictionary<string, SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName>();
+            LoyaltyProfileBean.properties["Username"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "635588348252269728" };
+            LoyaltyProfileBean.properties["Guid"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "1f267a9f-863f-488c-8bd1-6fcd65b99c09" };
+            LoyaltyProfileBean.properties["Password"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "NewPassword" };
+            
+
+            operationModel.ResponseMessage = new List<ResponseMessageModel>
+            {
+                responseMessage200,
+                responseMessage500,
+                responseMessage404,
+                responseMessage402
+            };
+
+            apiDetails.operations = new List<operationsModel> { operationModel };
+            apiDetails.dataType = new List<SwaggerAuthModelsLoyaltyProfileBean> { LoyaltyProfileBean };
+
+
+            return apiDetails;
+        }
+
+        public SwaggerApiCommonDetail showJsonConfigAuthContactUsAPIInfo()
+        {
+            var apiDetails = new SwaggerApiCommonDetail
+            {
+                basePath = "http://www.cautom.com/Auth/ContactUs",
+                resourcePath = "/ContactUs",
+                produces = new string[2] { "application/json", "application/xml" }
+            };
+
+            //apiDetails.apiPath = "/Login";
+
+            var operationModel = new operationsModel
+            {
+                method = "POST",
+                apiPath = "/ContactUs",
+                summary = "Cautom ContactUs API",
+                notes = "Cautom ContactUs API.",
+                nickname = "ContactUs"
+            };
+
+            var parameters = new parametersModel
+            {
+                name = "contactUs",
+                description = "Cautom ContactUs API",
+                required = true,
+                paramType = "body",
+                allowMultiple = false,
+                defaultValue = "",
+                type = "contactUs"
+            };
+
+
+            operationModel.parameters = new List<parametersModel> { parameters };
+
+            var responseMessage200 = new ResponseMessageModel { code = "200", message = "Password reset link sent to registered Email ID." };
+            
+            var responseMessage500 = new ResponseMessageModel { code = "500", message = "Internal Server Error." };
+            var responseMessage404 = new ResponseMessageModel { code = "404", message = "User Doesn't exists." };
+
+            var LoyaltyProfileBean = new SwaggerAuthModelsLoyaltyProfileBean
+            {
+                id = parameters.type,
+                //required = new string[4]
+            };
+            //{"Name":"sumit chourasia","Email":"sumitchourasia91@gmail.com","Phone":"9538700019",
+            //"Type":"Support related","Message":"A testing contact us message","SendMeACopy":true}
+            LoyaltyProfileBean.required = new string[8];
+            LoyaltyProfileBean.required[0] = "Name";
+            LoyaltyProfileBean.required[1] = "Email";
+            LoyaltyProfileBean.required[2] = "Phone";
+            LoyaltyProfileBean.required[0] = "Type";
+            LoyaltyProfileBean.required[1] = "Message";
+            LoyaltyProfileBean.required[2] = "SendMeACopy";
+
+
+            LoyaltyProfileBean.properties = new Dictionary<string, SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName>();
+            LoyaltyProfileBean.properties["Name"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "YourName" };
+            LoyaltyProfileBean.properties["Email"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "youremail@domain.com" };
+            LoyaltyProfileBean.properties["Phone"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "9538700019" };
+            LoyaltyProfileBean.properties["Type"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "Support related" };
+            LoyaltyProfileBean.properties["Message"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "A testing contact us message" };
+            LoyaltyProfileBean.properties["SendMeACopy"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "true" };
+
+
+            operationModel.ResponseMessage = new List<ResponseMessageModel>
+            {
+                responseMessage200,
+                responseMessage500,
+                responseMessage404
+               
+            };
+
+            apiDetails.operations = new List<operationsModel> { operationModel };
+            apiDetails.dataType = new List<SwaggerAuthModelsLoyaltyProfileBean> { LoyaltyProfileBean };
+
 
             return apiDetails;
         }

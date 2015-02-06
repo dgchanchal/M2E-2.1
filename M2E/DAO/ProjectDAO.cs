@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using M2E.Common.Logger;
@@ -18,6 +19,15 @@ namespace M2E.DAO
 
         public string totalAvailableProjects()
         {
+            try
+            {
+                string test = (_db.CreateTemplateQuestionInfoes.Count() + _db.CreateTemplateFacebookLikes.Count()).ToString(CultureInfo.InvariantCulture);
+            }
+            catch (DbEntityValidationException e)
+            {
+                DbContextException.LogDbContextException(e);
+                
+            }
             return (_db.CreateTemplateQuestionInfoes.Count() + _db.CreateTemplateFacebookLikes.Count()).ToString(CultureInfo.InvariantCulture);
         }
     }

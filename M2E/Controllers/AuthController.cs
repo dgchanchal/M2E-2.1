@@ -197,23 +197,27 @@ namespace M2E.Controllers
             return Json(webRegisterService.WebRegisterService(req, Request));
         }
 
+        //swagger done
         [HttpPost]
         public JsonResult ValidateAccount(ValidateAccountRequest req)
         {
             return Json(new AuthService().ValidateAccountService(req));
         }
 
+        //swagger done
         [HttpPost]
         public JsonResult ResendValidationCode(ValidateAccountRequest req)
         {
             return Json(new AuthService().ResendValidationCodeService(req, Request));
         }
 
+        //swagger done
         public JsonResult ForgetPassword(string id)
         {
             return Json(new AuthService().ForgetPasswordService(id, Request),JsonRequestBehavior.AllowGet);
         }
 
+        //swagger done
         [HttpPost]
         public JsonResult ResetPassword(ResetPasswordRequest req)
         {

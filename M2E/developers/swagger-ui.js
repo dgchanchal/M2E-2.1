@@ -2011,6 +2011,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     OperationView.prototype.toggleOperationContent = function() {
       var elem;
       elem = $('#' + Docs.escapeResourceName(this.model.parentId) + "_" + this.model.nickname + "_content");
+      //alert(Docs.escapeResourceName(this.model.parentId) + "   " + this.model.nickname);
       if (elem.is(':visible')) {
         return Docs.collapseOperation(elem);
       } else {
