@@ -155,12 +155,20 @@ namespace M2E.Controllers
 
         public JsonResult showJsonConfigAuthAuthentication()
         {
-            var apiDetailsList = new List<SwaggerApiCommonDetail>();
+            var apiDetailsList = new List<SwaggerApiCommonDetail>();            
+            apiDetailsList.Add(showJsonConfigAuthAuthenticationAPIInfo());
+            apiDetailsList.Add(showJsonConfigAuthCreateAccountAPIInfo());
+            var swagger = showJsonConfigCommon(apiDetailsList);   
+            return Json(swagger, JsonRequestBehavior.AllowGet);
+        }
+
+        public SwaggerApiCommonDetail showJsonConfigAuthAuthenticationAPIInfo()
+        {
             var apiDetails = new SwaggerApiCommonDetail
             {
                 basePath = "http://www.cautom.com/Auth",
-                resourcePath = "/Loyalty",
-                produces = new string[2] {"application/json", "application/xml"}
+                resourcePath = "/Auth",
+                produces = new string[2] { "application/json", "application/xml" }
             };
 
             //apiDetails.apiPath = "/Login";
@@ -192,38 +200,106 @@ namespace M2E.Controllers
             var LoyaltyProfileBean = new SwaggerAuthModelsLoyaltyProfileBean
             {
                 id = parameters.type,
-                required = new string[2]
+                required = new string[4]
             };
-            LoyaltyProfileBean.required = new string[2];
-            LoyaltyProfileBean.required[0] = "UserName";
+
+            //{"Username":"sumitchourasia91@gmail.com","Password":"password","Type":"web","KeepMeSignedInCheckBox":true}
+
+            LoyaltyProfileBean.required = new string[4];
+            LoyaltyProfileBean.required[0] = "Username";
             LoyaltyProfileBean.required[1] = "Password";
+            LoyaltyProfileBean.required[2] = "Type";
+            LoyaltyProfileBean.required[3] = "KeepMeSignedInCheckBox";
             LoyaltyProfileBean.properties = new Dictionary<string, SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName>();
-            LoyaltyProfileBean.properties["brand"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "testing" };
-            LoyaltyProfileBean.properties["accountName"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "string" };
-            //LoyaltyProfileBean["Brand"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() {type = "testing"};
-            //{
-            //    brand = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesBrand { type = "testing" },
-            //    accountName = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName { type = "value" }
-            //};
+            LoyaltyProfileBean.properties["Username"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "sumitchourasia91@gmail.com" };
+            LoyaltyProfileBean.properties["Password"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "password" };
+            LoyaltyProfileBean.properties["Type"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "web" };
+            LoyaltyProfileBean.properties["KeepMeSignedInCheckBox"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "true" };
+
+            operationModel.parameters = new List<parametersModel> { parameters };
+
+            operationModel.ResponseMessage = new List<ResponseMessageModel> { responseMessage };
+
+            apiDetails.operations = new List<operationsModel> { operationModel };
+            apiDetails.dataType = new List<SwaggerAuthModelsLoyaltyProfileBean> { LoyaltyProfileBean };
             
-            //swagger.models["LoyaltyProfileBean"] = LoyaltyProfileBean;
-
-            operationModel.parameters = new List<parametersModel>();
-            operationModel.parameters.Add(parameters);
-
-            operationModel.ResponseMessage = new List<ResponseMessageModel>();
-            operationModel.ResponseMessage.Add(responseMessage);
-
-            apiDetails.operations = new List<operationsModel>();
-            apiDetails.operations.Add(operationModel);
-            apiDetails.dataType = new List<SwaggerAuthModelsLoyaltyProfileBean>();
-            apiDetails.dataType.Add(LoyaltyProfileBean);
-            apiDetailsList.Add(apiDetails);
-
-            var swagger = showJsonConfigCommon(apiDetailsList);   
-            return Json(swagger, JsonRequestBehavior.AllowGet);
+            return apiDetails;
         }
 
+        public SwaggerApiCommonDetail showJsonConfigAuthCreateAccountAPIInfo()
+        {
+            var apiDetails = new SwaggerApiCommonDetail
+            {
+                basePath = "http://www.cautom.com/CreateAccount",
+                resourcePath = "/CreateAccount",
+                produces = new string[2] { "application/json", "application/xml" }
+            };
+
+            //apiDetails.apiPath = "/Login";
+
+            var operationModel = new operationsModel
+            {
+                method = "POST",
+                apiPath = "/CreateAccount",
+                summary = "Cautom Create Account API",
+                notes = "Cautom Account Creation",
+                nickname = "accountCreation"
+            };
+
+            var parameters = new parametersModel
+            {
+                name = "accountCreation",
+                description = "Cautom Create Account API",
+                required = true,
+                paramType = "body",
+                allowMultiple = false,
+                defaultValue = "",
+                type = "createAccountModel"
+            };
+
+            var responseMessage = new ResponseMessageModel();
+            responseMessage.code = "200";
+            responseMessage.message = "success api";
+
+            var LoyaltyProfileBean = new SwaggerAuthModelsLoyaltyProfileBean
+            {
+                id = parameters.type,
+                //required = new string[4]
+            };
+
+            //{"FirstName":"sumit","LastName":"chourasia","Username":"useyouruniqueid@domain.com",
+            //"Password":"password","CompanyName":"myCompany","Type":"client","Source":"web","Referral":"NA"}
+
+            LoyaltyProfileBean.required = new string[8];
+            LoyaltyProfileBean.required[0] = "FirstName";
+            LoyaltyProfileBean.required[1] = "LastName";
+            LoyaltyProfileBean.required[2] = "Username";
+            LoyaltyProfileBean.required[3] = "Password";
+            LoyaltyProfileBean.required[4] = "CompanyName";
+            LoyaltyProfileBean.required[5] = "Type";
+            LoyaltyProfileBean.required[6] = "Source";
+            LoyaltyProfileBean.required[7] = "Referral";
+
+            LoyaltyProfileBean.properties = new Dictionary<string, SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName>();
+            LoyaltyProfileBean.properties["FirstName"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "Sumit" };
+            LoyaltyProfileBean.properties["LastName"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "Chourasia" };
+            LoyaltyProfileBean.properties["Username"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "useyouruniqueid@domain.com" };
+            LoyaltyProfileBean.properties["Password"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "password" };
+            LoyaltyProfileBean.properties["CompanyName"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "myCompanyName" };
+            LoyaltyProfileBean.properties["Type"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "client" };
+            LoyaltyProfileBean.properties["Source"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "web" };
+            LoyaltyProfileBean.properties["Referral"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "NA" };
+
+
+            operationModel.parameters = new List<parametersModel> { parameters };
+
+            operationModel.ResponseMessage = new List<ResponseMessageModel> { responseMessage };
+
+            apiDetails.operations = new List<operationsModel> { operationModel };
+            apiDetails.dataType = new List<SwaggerAuthModelsLoyaltyProfileBean> { LoyaltyProfileBean };
+
+            return apiDetails;
+        }
         public SwaggerAuth showJsonConfigCommon(List<SwaggerApiCommonDetail> apiDetailsList)
         {
             
@@ -236,6 +312,8 @@ namespace M2E.Controllers
                 //produces = new string[2]
             };
             int upperCounter = 0;
+            swagger.apis = new List<SwaggerAuthApis>();
+                
             foreach (var apiDetails in apiDetailsList)
             {
                 
@@ -247,9 +325,7 @@ namespace M2E.Controllers
                     swagger.produces[producesCounter] = produces;
                     producesCounter++;
                 }
-
-
-                swagger.apis = new List<SwaggerAuthApis>();
+                
                 var swaggerApis = new SwaggerAuthApis();
                 swagger.apis.Add(swaggerApis);
 
