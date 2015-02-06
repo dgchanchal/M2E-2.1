@@ -1102,20 +1102,6 @@
     <Content Include="dll\Owin.dll" />
     <Content Include="Global.asax" />
     <Content Include="Models\M2EContext.edmx.sql" />
-    <Content Include="SwaggerUI\css\screen.css" />
-    <Content Include="SwaggerUI\images\pet_store_api.png" />
-    <Content Include="SwaggerUI\images\wordnik_api.png" />
-    <Content Include="SwaggerUI\index.html" />
-    <Content Include="SwaggerUI\lib\backbone-min.js" />
-    <Content Include="SwaggerUI\lib\handlebars.runtime-1.0.0.beta.6.js" />
-    <Content Include="SwaggerUI\lib\jquery.ba-bbq.min.js" />
-    <Content Include="SwaggerUI\lib\jquery.min.js" />
-    <Content Include="SwaggerUI\lib\jquery.slideto.min.js" />
-    <Content Include="SwaggerUI\lib\jquery.wiggle.min.js" />
-    <Content Include="SwaggerUI\lib\swagger.js" />
-    <Content Include="SwaggerUI\lib\underscore-min.js" />
-    <Content Include="SwaggerUI\swagger-ui.js" />
-    <Content Include="SwaggerUI\swagger-ui.min.js" />
     <Content Include="Template\AdminLTE-master\.gitignore" />
     <Content Include="Template\AdminLTE-master\css\AdminLTE.css" />
     <Content Include="Template\AdminLTE-master\css\bootstrap-slider\slider.css" />
@@ -1806,7 +1792,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\PublishProfiles\M2E.pubxml" />
-    <Content Include="SwaggerUI\lib\.DS_Store" />
     <None Include="Template\AdminLTE-master\ajax\dashboard-boxrefresh-demo.php" />
     <None Include="Template\AdminLTE-master\fonts\fontawesome-webfont.eot" />
     <None Include="Template\AdminLTE-master\fonts\fontawesome-webfont.svg" />

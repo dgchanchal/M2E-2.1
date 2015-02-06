@@ -159,6 +159,8 @@ namespace M2E.Controllers
             apiDetailsList.Add(showJsonConfigAuthAuthenticationAPIInfo());
             apiDetailsList.Add(showJsonConfigAuthCreateAccountAPIInfo());
             apiDetailsList.Add(showJsonConfigAuthValidateAccountAPIInfo());
+            apiDetailsList.Add(showJsonConfigAuthResendValidationCodeAPIInfo());
+            apiDetailsList.Add(showJsonConfigAuthForgetPasswordAPIInfo());
             var swagger = showJsonConfigCommon(apiDetailsList);   
             return Json(swagger, JsonRequestBehavior.AllowGet);
         }
@@ -167,7 +169,7 @@ namespace M2E.Controllers
         {
             var apiDetails = new SwaggerApiCommonDetail
             {
-                basePath = "http://www.cautom.com/Auth",
+                basePath = "http://" + Request.Url.Authority + "/Auth",
                 resourcePath = "/Auth",
                 produces = new string[2] { "application/json", "application/xml" }
             };
@@ -185,7 +187,7 @@ namespace M2E.Controllers
 
             var parameters = new parametersModel
             {
-                name = "authentication",
+                name = "body",
                 description = "Cautom Auth API",
                 required = true,
                 paramType = "body",
@@ -239,7 +241,7 @@ namespace M2E.Controllers
         {
             var apiDetails = new SwaggerApiCommonDetail
             {
-                basePath = "http://www.cautom.com/CreateAccount",
+                basePath = "http://www.cautom.com/Auth/CreateAccount",
                 resourcePath = "/CreateAccount",
                 produces = new string[2] { "application/json", "application/xml" }
             };
@@ -257,7 +259,7 @@ namespace M2E.Controllers
 
             var parameters = new parametersModel
             {
-                name = "accountCreation",
+                name = "body",
                 description = "Cautom Create Account API",
                 required = true,
                 paramType = "body",
@@ -321,7 +323,7 @@ namespace M2E.Controllers
         {
             var apiDetails = new SwaggerApiCommonDetail
             {
-                basePath = "http://www.cautom.com/ValidateAccount",
+                basePath = "http://www.cautom.com/Auth/ValidateAccount",
                 resourcePath = "/ValidateAccount",
                 produces = new string[2] { "application/json", "application/xml" }
             };
@@ -339,7 +341,7 @@ namespace M2E.Controllers
 
             var parameters = new parametersModel
             {
-                name = "validateAccountCreation",
+                name = "body",
                 description = "Cautom Validate Account API",
                 required = true,
                 paramType = "body",
@@ -347,11 +349,7 @@ namespace M2E.Controllers
                 defaultValue = "",
                 type = "validateAccountModel"
             };
-
-            var responseMessage = new ResponseMessageModel();
-            responseMessage.code = "200";
-            responseMessage.message = "success api";
-
+            
             var LoyaltyProfileBean = new SwaggerAuthModelsLoyaltyProfileBean
             {
                 id = parameters.type,
@@ -371,10 +369,144 @@ namespace M2E.Controllers
 
             operationModel.parameters = new List<parametersModel> { parameters };
 
-            operationModel.ResponseMessage = new List<ResponseMessageModel> { responseMessage };
+            var responseMessage200 = new ResponseMessageModel { code = "200", message = "Email Id Successfully validated" };
+            var responseMessage500 = new ResponseMessageModel { code = "500", message = "Internal Server Error." };
+            var responseMessage405 = new ResponseMessageModel { code = "405", message = "Account Already Validated." };
+            var responseMessage402 = new ResponseMessageModel { code = "402", message = "Link Expired." };
+
+            operationModel.ResponseMessage = new List<ResponseMessageModel>
+            {
+                responseMessage200,
+                responseMessage500,
+                responseMessage405,
+                responseMessage402
+            };
 
             apiDetails.operations = new List<operationsModel> { operationModel };
             apiDetails.dataType = new List<SwaggerAuthModelsLoyaltyProfileBean> { LoyaltyProfileBean };
+
+            return apiDetails;
+        }
+
+        public SwaggerApiCommonDetail showJsonConfigAuthResendValidationCodeAPIInfo()
+        {
+            var apiDetails = new SwaggerApiCommonDetail
+            {
+                basePath = "http://www.cautom.com/Auth/ValidateAccount",
+                resourcePath = "/ResendValidationCode",
+                produces = new string[2] { "application/json", "application/xml" }
+            };
+
+            //apiDetails.apiPath = "/Login";
+
+            var operationModel = new operationsModel
+            {
+                method = "POST",
+                apiPath = "/ResendValidationCode",
+                summary = "Cautom ResendValidationCode Account API",
+                notes = "Cautom ResendValidationCode Account Creation",
+                nickname = "resendValidationCode"
+            };
+
+            var parameters = new parametersModel
+            {
+                name = "body",
+                description = "Cautom ResendValidationCode Account API",
+                required = true,
+                paramType = "body",
+                allowMultiple = false,
+                defaultValue = "",
+                type = "resendValidationCode"
+            };
+
+            
+
+            var LoyaltyProfileBean = new SwaggerAuthModelsLoyaltyProfileBean
+            {
+                id = parameters.type,
+                //required = new string[4]
+            };
+
+            //{"userName":"sum_kumar12@yahoo.co.in","guid":"7e1befc7-8185-4f84-bbab-aa754c615eac"}
+            LoyaltyProfileBean.required = new string[2];
+            LoyaltyProfileBean.required[0] = "userName";
+            LoyaltyProfileBean.required[1] = "guid";
+
+
+            LoyaltyProfileBean.properties = new Dictionary<string, SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName>();
+            LoyaltyProfileBean.properties["userName"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "sum_kumar12@yahoo.co.in" };
+            LoyaltyProfileBean.properties["guid"] = new SwaggerAuthModelsLoyaltyProfileBeanPropertiesAccountName() { type = "7e1befc7-8185-4f84-bbab-aa754c615eac" };
+
+
+            operationModel.parameters = new List<parametersModel> { parameters };
+
+            var responseMessage200 = new ResponseMessageModel { code = "200", message = "Validation link successfully sent to registered Email ID." };
+            var responseMessage402 = new ResponseMessageModel { code = "402", message = "Email ID already Validated." };
+            var responseMessage500 = new ResponseMessageModel { code = "500", message = "Internal Server Error." };
+            var responseMessage404 = new ResponseMessageModel { code = "404", message = "Email Id Doesn't exists." };
+
+            operationModel.ResponseMessage = new List<ResponseMessageModel>
+            {
+                responseMessage200,
+                responseMessage500,
+                responseMessage404,
+                responseMessage402
+            };
+
+            apiDetails.operations = new List<operationsModel> { operationModel };
+            apiDetails.dataType = new List<SwaggerAuthModelsLoyaltyProfileBean> { LoyaltyProfileBean };
+
+            return apiDetails;
+        }
+
+        public SwaggerApiCommonDetail showJsonConfigAuthForgetPasswordAPIInfo()
+        {
+            var apiDetails = new SwaggerApiCommonDetail
+            {
+                basePath = "http://www.cautom.com/Auth/ForgetPassword",
+                resourcePath = "/ForgetPassword",
+                produces = new string[2] { "application/json", "application/xml" }
+            };
+
+            //apiDetails.apiPath = "/Login";
+
+            var operationModel = new operationsModel
+            {
+                method = "GET",
+                apiPath = "/ForgetPassword/{emailId}",
+                summary = "Cautom ResendValidationCode Account API",
+                notes = "Cautom ResendValidationCode Account Creation",
+                nickname = "resendValidationCode"
+            };
+
+            var parameters = new parametersModel
+            {
+                name = "emailId",
+                description = "Cautom ForgetPassword Account API",
+                required = true,
+                paramType = "path",
+                allowMultiple = false,
+                defaultValue = "",
+                type = "forgetPassword"
+            };
+
+
+            operationModel.parameters = new List<parametersModel> { parameters };
+
+            var responseMessage200 = new ResponseMessageModel { code = "200", message = "Password reset link sent to registered Email ID." };
+            var responseMessage402 = new ResponseMessageModel { code = "402", message = "Account not Validated yet." };
+            var responseMessage500 = new ResponseMessageModel { code = "500", message = "Internal Server Error." };
+            var responseMessage404 = new ResponseMessageModel { code = "404", message = "User Doesn't exists." };
+
+            operationModel.ResponseMessage = new List<ResponseMessageModel>
+            {
+                responseMessage200,
+                responseMessage500,
+                responseMessage404,
+                responseMessage402
+            };
+
+            apiDetails.operations = new List<operationsModel> { operationModel };            
 
             return apiDetails;
         }
@@ -474,12 +606,15 @@ namespace M2E.Controllers
                     operationCounter++;
                 }
 
-
-                foreach (var dataType in apiDetails.dataType)
+                if (apiDetails.dataType != null)
                 {
-                                        
-                    swagger.models[dataType.id] = dataType;
+                    foreach (var dataType in apiDetails.dataType)
+                    {
+
+                        swagger.models[dataType.id] = dataType;
+                    }
                 }
+                
                 
 
                 upperCounter++;

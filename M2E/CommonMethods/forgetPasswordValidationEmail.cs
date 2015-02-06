@@ -64,7 +64,7 @@ namespace M2E.CommonMethods
             htmlBody.Append("<h3 style=\"font-weight:normal; margin: 20px 0;\">Change your Password</h3>");
             htmlBody.Append("<p style=\"font-size:12px; line-height:18px;\">");
             htmlBody.Append("Message for User. <br /><br />");
-            htmlBody.Append("Email: " + toMail + "");
+            //htmlBody.Append("Email: " + toMail + "");
             htmlBody.Append("</p>");
             htmlBody.Append("<p style=\"font-size:12px; line-height:18px;\">");
             htmlBody.Append("<a href=\"http://" + requestUrlAuthority + "/#" + "resetpassword/" + toMail + "/" + guid + "\"> Click here to change your Password </a>");
