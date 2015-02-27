@@ -205,6 +205,7 @@
     <Compile Include="Controllers\DevelopersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MobileController.cs" />
+    <Compile Include="Controllers\SkillController.cs" />
     <Compile Include="Controllers\SocialAuthController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -1680,6 +1681,11 @@
     <Content Include="Template\UI_Template\css\slick_rsfp.css" />
     <Content Include="Template\UI_Template\css\slick_sf.css" />
     <Content Include="Template\UI_Template\css\slick_sfp.css" />
+    <Content Include="Views\Skill\controller.js" />
+    <Content Include="Views\Skill\greybg.png" />
+    <Content Include="Views\Skill\index.html" />
+    <Content Include="Views\Skill\jquery.js" />
+    <Content Include="Views\Skill\main.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1854,6 +1860,8 @@
     <None Include="Views\Client\Index.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Skill\Index.cshtml" />
+    <Content Include="Views\Skill\activity.json" />
     <None Include="Views\SocialAuth\FBLogin.cshtml" />
     <None Include="Views\SocialAuth\GoogleLogin.cshtml" />
     <None Include="Views\SocialAuth\LinkedinLogin.cshtml" />
