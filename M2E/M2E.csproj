@@ -1681,11 +1681,11 @@
     <Content Include="Template\UI_Template\css\slick_rsfp.css" />
     <Content Include="Template\UI_Template\css\slick_sf.css" />
     <Content Include="Template\UI_Template\css\slick_sfp.css" />
-    <Content Include="Views\Skill\controller.js" />
-    <Content Include="Views\Skill\greybg.png" />
-    <Content Include="Views\Skill\index.html" />
-    <Content Include="Views\Skill\jquery.js" />
-    <Content Include="Views\Skill\main.css" />
+    <Content Include="App\third-Party\skill\controller.js" />
+    <Content Include="App\third-Party\skill\greybg.png" />
+    <Content Include="App\third-Party\skill\index.html" />
+    <Content Include="App\third-Party\skill\jquery.js" />
+    <Content Include="App\third-Party\skill\main.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1861,7 +1861,7 @@
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Skill\Index.cshtml" />
-    <Content Include="Views\Skill\activity.json" />
+    <Content Include="App\third-Party\skill\activity.json" />
     <None Include="Views\SocialAuth\FBLogin.cshtml" />
     <None Include="Views\SocialAuth\GoogleLogin.cshtml" />
     <None Include="Views\SocialAuth\LinkedinLogin.cshtml" />
