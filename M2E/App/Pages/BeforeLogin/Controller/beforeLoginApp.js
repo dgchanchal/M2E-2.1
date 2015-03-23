@@ -61,7 +61,7 @@ define([appLocation.preLogin], function (app) {
             requester: "Crowd Automation Requester",
             accepter: "Crowd Automation Accepter",
             knowMore: "Learn more about",
-            impLinks: "Important Links",
+            impLinks: window.madetoearn.i18n.beforeLoginMasterPageFooterImportantLinks,
             FAQ: window.madetoearn.i18n.beforeLoginMasterPageFAQ,
             contactUs: window.madetoearn.i18n.beforeLoginMasterPageContactUs,
             TnC: window.madetoearn.i18n.beforeLoginMasterPageTnC,
