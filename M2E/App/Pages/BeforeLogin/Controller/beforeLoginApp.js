@@ -73,7 +73,19 @@ define([appLocation.preLogin], function (app) {
 
         $rootScope.beforeLoginFooterFAQList = [];
         if (getParameterByName("lang") == "hi_in") {
-            $rootScope.beforeLoginFooterFAQList[0] = {Question:"",Link:""};
+            $rootScope.beforeLoginFooterFAQList[0] = { Question: FAQAccepterList[0].question_hi, Link: FAQAccepterList[0].id };
+            $rootScope.beforeLoginFooterFAQList[1] = { Question: FAQAccepterPayList[2].question_hi, Link: FAQAccepterPayList[2].id };
+            $rootScope.beforeLoginFooterFAQList[2] = { Question: FAQOverviewList[1].question_hi, Link: FAQOverviewList[1].id };
+            $rootScope.beforeLoginFooterFAQList[3] = { Question: FAQRequesterCITRelatedtList[1].question_hi, Link: FAQRequesterCITRelatedtList[1].id };
+            $rootScope.beforeLoginFooterFAQList[4] = { Question: FAQAccepterPayList[1].question_hi, Link: FAQAccepterPayList[1].id };
+            $rootScope.beforeLoginFooterFAQList[5] = { Question: FAQRequesterCITRelatedtList[0].question_hi, Link: FAQRequesterCITRelatedtList[0].id };
+        } else {
+            $rootScope.beforeLoginFooterFAQList[0] = { Question: FAQAccepterList[0].question, Link: FAQAccepterList[0].id };
+            $rootScope.beforeLoginFooterFAQList[1] = { Question: FAQAccepterPayList[2].question, Link: FAQAccepterPayList[2].id };
+            $rootScope.beforeLoginFooterFAQList[2] = { Question: FAQOverviewList[1].question, Link: FAQOverviewList[1].id };
+            $rootScope.beforeLoginFooterFAQList[3] = { Question: FAQRequesterCITRelatedtList[1].question, Link: FAQRequesterCITRelatedtList[1].id };
+            $rootScope.beforeLoginFooterFAQList[4] = { Question: FAQAccepterPayList[1].question, Link: FAQAccepterPayList[1].id };
+            $rootScope.beforeLoginFooterFAQList[5] = { Question: FAQRequesterCITRelatedtList[0].question, Link: FAQRequesterCITRelatedtList[0].id };
         }
 
         if (mobileDevice || isAndroidDevice) {

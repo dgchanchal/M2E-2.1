@@ -172,12 +172,12 @@
                                     <h4 ng-bind="beforeLoginFooterInfo.FAQ"></h4>
                                 </header>
                                 <ul class="list-links">
-                                    <li><a Class="googleAnalytics" ga-category="BeforeLogin" ga-event="TermsAndPrivacy_Footer_Button" ga-label="Click" style="cursor: pointer;" ng-click="FAQscrollTo('joinCautom')">How can I join Crowd Automation?</a></li>
-                                    <li><a Class="googleAnalytics" ga-category="BeforeLogin" ga-event="TermsAndPrivacy_Footer_Button" ga-label="Click" style="cursor: pointer;" ng-click="FAQscrollTo('HowDoIGetPaid')">How do I get paid?</a></li>
-                                    <li><a Class="googleAnalytics" ga-category="BeforeLogin" ga-event="TermsAndPrivacy_Footer_Button" ga-label="Click" style="cursor: pointer;" ng-click="FAQscrollTo('CITs')">What is a CIT?</a></li>
-                                    <li><a Class="googleAnalytics" ga-category="BeforeLogin" ga-event="TermsAndPrivacy_Footer_Button" ga-label="Click" style="cursor: pointer;" ng-click="FAQscrollTo('citStart')">How do I create a CIT?</a></li>
-                                    <li><a Class="googleAnalytics" ga-category="BeforeLogin" ga-event="TermsAndPrivacy_Footer_Button" ga-label="Click" style="cursor: pointer;" ng-click="FAQscrollTo('TrackingSystem')">Do you have a tracking system?</a></li>
-                                    <li><a Class="googleAnalytics" ga-category="BeforeLogin" ga-event="TermsAndPrivacy_Footer_Button" ga-label="Click" style="cursor: pointer;" ng-click="FAQscrollTo('requesterStart')">How do I get started as a Requester?</a></li>
+                                    <li><a class="googleAnalytics" ga-category="BeforeLogin" ga-event="TermsAndPrivacy_Footer_Button" ga-label="Click" style="cursor: pointer;" ng-click="FAQscrollTo('{{beforeLoginFooterFAQList[0].Link}}')" ng-bind="beforeLoginFooterFAQList[0].Question"></a></li>
+                                    <li><a class="googleAnalytics" ga-category="BeforeLogin" ga-event="TermsAndPrivacy_Footer_Button" ga-label="Click" style="cursor: pointer;" ng-click="FAQscrollTo('{{beforeLoginFooterFAQList[1].Link}}')" ng-bind="beforeLoginFooterFAQList[1].Question"></a></li>
+                                    <li><a class="googleAnalytics" ga-category="BeforeLogin" ga-event="TermsAndPrivacy_Footer_Button" ga-label="Click" style="cursor: pointer;" ng-click="FAQscrollTo('{{beforeLoginFooterFAQList[2].Link}}')" ng-bind="beforeLoginFooterFAQList[2].Question"></a></li>
+                                    <li><a class="googleAnalytics" ga-category="BeforeLogin" ga-event="TermsAndPrivacy_Footer_Button" ga-label="Click" style="cursor: pointer;" ng-click="FAQscrollTo('{{beforeLoginFooterFAQList[3].Link}}')" ng-bind="beforeLoginFooterFAQList[3].Question"></a></li>
+                                    <li><a class="googleAnalytics" ga-category="BeforeLogin" ga-event="TermsAndPrivacy_Footer_Button" ga-label="Click" style="cursor: pointer;" ng-click="FAQscrollTo('{{beforeLoginFooterFAQList[4].Link}}')" ng-bind="beforeLoginFooterFAQList[4].Question"></a></li>
+                                    <li><a class="googleAnalytics" ga-category="BeforeLogin" ga-event="TermsAndPrivacy_Footer_Button" ga-label="Click" style="cursor: pointer;" ng-click="FAQscrollTo('{{beforeLoginFooterFAQList[5].Link}}')" ng-bind="beforeLoginFooterFAQList[5].Question"></a></li>
                                 </ul>
                             </aside>
                         </div>

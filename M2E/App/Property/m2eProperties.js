@@ -100,7 +100,9 @@ var FAQOverviewList = [
             },
             {
                 className: "div_heading2",
-                id: "CITs", question: "What is a " + userConstants.task_abb + "?",
+                id: "CITs",
+                question: "What is a " + userConstants.task_abb + "?",
+                question_hi: userConstants.task_abb + " क्या है ?",
                 answer: "Each question " + clientConstants.name + " asks through our application is a <b>" + userConstants.task + "</b>, or <b>" + userConstants.task_abb + "</b>. " +
                 "A " + userConstants.task + " contains all of the information an " + userConstants.name_abb + " needs to answer the question, including information about how the question is shown to the " + userConstants.name_abb + " and what " +
                     "kinds of answers would be considered valid. " + "<p class='div_c'>Each " + userConstants.task_abb + " has a reward, an amount of money " + clientConstants.name_abb + " pay to the " + userConstants.name_abb + " that successfully completes " +
@@ -206,7 +208,9 @@ var FAQRequesterPaymentList = [
 var FAQRequesterCITRelatedtList = [
             {
                 className: "div_heading1",
-                id: "requesterStart", question: "How do I get started as a " + clientConstants.name_abb + "? ",
+                id: "requesterStart",
+                question: "How do I get started as a " + clientConstants.name_abb + "? ",
+                question_hi: "मैं कैसे एक " + clientConstants.name_abb + " के रूप में शुरू कर सकते हैं? ",
                 answer: "The three steps to getting started are 1) signing up on cautom, 2) design your " + userConstants.task_abb + "s, and 3) publishing a " + userConstants.task_abb + ". So, if you haven't already, sign up as a " + companyConstants.name + " -be sure to add your details and a payment method." +
                     "<p>Now it's time to categorize your " + userConstants.task_abb + "s. Decide your project-category and pick a suitable sub-categorize to your project. Outline your goals in instructions textbox, add the skills you're looking for in Batch, and your desired deadline in deadline box. By thinking through and articulating your needs, you make it easier to design an effective " + userConstants.task_abb + " and explain your " + userConstants.task_abb + " to others.</p>" +
                     "<p>Every sub-categorize of " + userConstants.task_abb + "s has its own help section. This help section will explain how to design, publish, and manage your " + userConstants.task_abb + "s. Help section contains instructions, guidelines and videos which can help you design an effective " + userConstants.task_abb + "s. </p>" +
@@ -219,7 +223,9 @@ var FAQRequesterCITRelatedtList = [
             },
             {
                 className: "div_heading2",
-                id: "citStart", question: "How do I create a " + userConstants.task_abb + "?",
+                id: "citStart",
+                question: "How do I create a " + userConstants.task_abb + "?",
+                question_hi: "मैं एक कैसे बनाऊँ " + userConstants.task_abb + "?",
                 answer: "Every sub-categorize of " + userConstants.task_abb + "s has its own help section. This help section will explain how to design, publish, and manage your " + userConstants.task_abb + "s. Help section contains instructions, guidelines and videos which can help you design an effective " + userConstants.task_abb + "s. "
             },
             {
@@ -248,7 +254,9 @@ var FAQRequesterCITRelatedtList = [
 var FAQAccepterList = [
             {
                 className: "div_heading1",
-                id: "HowToJoinCautom", question: "How can I join Crowd Automation?",
+                id: "HowToJoinCautom",
+                question: "How can I join Crowd Automation?",
+                question_hi: "कैसे मैं भीड़ स्वचालन शामिल हो सकता है?",
                 answer: "It's pretty simple. Go to www.cautom.com, now if you are a new Crowd Automation Requester, please visit <a class='undeline_anchor' href='#/signup/client'>Crowd Automation Requester</a> section, like millions of students want to register please visit <a class='undeline_anchor' href='#/signup/user'>Crowd Automation Accepter</a> section." +
                     "<p>now if you are already a Crowd Automation Requester or " + userConstants.name_abb + " please visit <a class='undeline_anchor' href='#/login'>login</a> section.</p>"
             },
@@ -300,12 +308,16 @@ var FAQAccepterPayList = [
             },
             {
                 className: "div_heading8",
-                id: "TrackingSystem", question: "Do you have a tracking system?",
+                id: "TrackingSystem",
+                question: "Do you have a tracking system?",
+                question_hi: "क्या आपके पास है एक ट्रैकिंग प्रणाली?",
                 answer: "We have a very sophisticated tracking system that monitors your work performance. Based on he rating our system gives you more jobs will be assigned."
             },
             {
                 className: "div_heading9",
-                id: "HowDoIGetPaid", question: "How do I get paid?",
+                id: "HowDoIGetPaid",
+                question: "How do I get paid?",
+                question_hi: "मैं भुगतान कैसे पाऊं?",
                 answer: "Your submitted task once approves by " + clientConstants.name_abb + ", money will automatically transfer to your earnings balance displayed on both your home page and Get Paid page. " +
                 "If you are a new " + userConstants.name_abb + ", first you need to verify your account by submitting government issued identity card. Once your total earning crosses 100 Rs, you can withdraw your earning to your bank account. Below 100 Rs, you can recharge your moblie bills."
             },
