@@ -1,13 +1,35 @@
 ﻿window.madetoearn = window.madetoearn || {};
 window.madetoearn.i18n = {
-   
+
+    "cautom": "Cautom",
+    "crowdAutomation": "Crowd Automation",
+
     // before login master page
-    "beforeLoginCompanyTitle":"Crowd Automation",
-    "beforeLoginMasterPageAboutM2E": "About us?",
-    "beforeLoginMasterPageSignIn": "Log In",
-    "beforeLoginMasterPageContactUs": "Contact us",
-    "beforeLoginMasterPageFAQ": "FAQ",
-    "beforeLoginMasterPageTnC": "Terms & Privacy",
+    "beforeLoginCompanyTitle": "Crowd Automation",
+    "beforeLoginMasterPageSignUpAs": "Sign up as",
+    "beforeLoginMasterPageRequester": "Requester",
+    "beforeLoginMasterPageAccepter": "Accepter",
+    "beforeLoginMasterPageAboutUs": "About us",
+    "beforeLoginMasterPageLogin": "Login",
+    "beforeLoginMasterPageSignUpRequester": "Signup - Requester",
+    "beforeLoginMasterPageSignUpAccepter": "Signup - Accepter",
+    "beforeLoginMasterPageFeedback": "Feedback",
+    "beforeLoginMasterPageMore": "More",
+    "beforeLoginMasterPageFollowUs": "Follow Us",
+    "beforeLoginMasterPageLikeUsOnFacebook": "Like us on Facebook",
+    "beforeLoginMasterPageFindusinGoogleCircles": "Find us in Google Circles",
+    "beforeLoginMasterPageFollowusonTwitter": "Follow us on Twitter",
+    "beforeLoginMasterPageSubscribeourchannelonYoutube": "Subscribe our channel on Youtube",
+    "beforeLoginMasterPageConnectwithusonLinkedin": "Connect with us on Linkedin",
+    "beforeLoginMasterPageKnowMore": "Learn more about",
+    "beforeLoginMasterPageFooterRequester": "Crowd Automation Requester",
+    "beforeLoginMasterPageFooterAccepter": "Crowd Automation Accepter",
+    "beforeLoginMasterPageFooterDevelopers": "Developers",
+    "beforeLoginMasterPageHome": "Home",
+    "beforeLoginMasterPageFAQ": "FAQs",
+    "beforeLoginMasterPageContactUs": "Contact Us",
+    "beforeLoginMasterPageTnC": "Terms, Privacy & Cookies",
+    "beforeLoginMasterPageFooterMost": "Crowd Automation, All rights reserved",
 
     //beflore login index page
     "beforeLoginIndexPageM2EText": "Crowd Automation",

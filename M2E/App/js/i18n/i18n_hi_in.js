@@ -1,13 +1,35 @@
 ﻿window.madetoearn = window.madetoearn || {};
 window.madetoearn.i18n = {
     
+    "cautom": "Cautom",
+    "crowdAutomation": "Crowd Automation",
+
     // before login master page
-    "beforeLoginCompanyTitle": "बिंदास कमाएँ",
-    "beforeLoginMasterPageAboutM2E": "What is M2E?",
-    "beforeLoginMasterPageSignIn": "Sign In",
+    "beforeLoginCompanyTitle": "भीड़ स्वचालन",
+    "beforeLoginMasterPageSignUpAs": "खाता बनाएं",
+    "beforeLoginMasterPageRequester": "निवेदक",
+    "beforeLoginMasterPageAccepter": "उपयोगकर्ता",
+    "beforeLoginMasterPageAboutUs": "हमारे बारे में",
+    "beforeLoginMasterPageLogin": "लॉग इन करें",
+    "beforeLoginMasterPageSignUpRequester": "पंजीकरण - निवेदक",
+    "beforeLoginMasterPageSignUpAccepter": "पंजीकरण - उपयोगकर्ता",
+    "beforeLoginMasterPageFeedback": "सुझाव",
+    "beforeLoginMasterPageMore": "ज्यादा",
+    "beforeLoginMasterPageFollowUs": "हमारा अनुसरण",
+    "beforeLoginMasterPageLikeUsOnFacebook": "फेसबुक पर हमे पसन्द करो",
+    "beforeLoginMasterPageFindusinGoogleCircles": "गूगल सर्किलों में हमें पता लगाएं",
+    "beforeLoginMasterPageFollowusonTwitter": "हमें ट्विटर पर फ़ॉलो करें",
+    "beforeLoginMasterPageSubscribeourchannelonYoutube": "यूट्यूब पर हमारे चैनल की सदस्यता लें",
+    "beforeLoginMasterPageConnectwithusonLinkedin": "लिंक्डिन पर हमसे जुड़ें",
+    "beforeLoginMasterPageKnowMore": "और अधिक जानें",
+    "beforeLoginMasterPageFooterRequester": "भीड़ स्वचालन निवेदक",
+    "beforeLoginMasterPageFooterAccepter": "भीड़ स्वचालन उपयोगकर्ता",
+    "beforeLoginMasterPageFooterDevelopers": "डेवलपर्स",
+    "beforeLoginMasterPageHome": "प्रारंभिक",
+    "beforeLoginMasterPageFAQ": "सामान्य प्रश्न",
     "beforeLoginMasterPageContactUs": "हमसे संपर्क करें",
-    "beforeLoginMasterPageFAQ": "पूछे जाने वाले प्रश्न",
-    "beforeLoginMasterPageTnC": "शर्तें और गोपनीयता",
+    "beforeLoginMasterPageTnC": "शर्तें, गोपनीयता और कुकीज़",
+    "beforeLoginMasterPageFooterMost": "भीड़ स्वचालन, सभी अधिकार सुरक्षित",
 
     //beflore login index page
     "beforeLoginIndexPageM2EText": "बिंदास कमाएँ",

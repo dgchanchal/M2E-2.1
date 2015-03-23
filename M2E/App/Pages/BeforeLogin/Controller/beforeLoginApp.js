@@ -56,20 +56,26 @@ define([appLocation.preLogin], function (app) {
         _.defer(function () { $scope.$apply(); });
         $rootScope.IsMobileDevice = (mobileDevice || isAndroidDevice) ? true : false;
         $rootScope.logoImage = { url: logoImage };
-        $('title').html("index"); //TODO: change the title so cann't be tracked in log
+        //$('title').html("index"); //TODO: change the title so cann't be tracked in log
         $rootScope.beforeLoginFooterInfo = {
             requester: "Crowd Automation Requester",
             accepter: "Crowd Automation Accepter",
             knowMore: "Learn more about",
             impLinks: "Important Links",
-            FAQ: "FAQs",
-            contactUs: "Contact Us",
-            TnC: "Terms, Privacy & Cookies",
+            FAQ: window.madetoearn.i18n.beforeLoginMasterPageFAQ,
+            contactUs: window.madetoearn.i18n.beforeLoginMasterPageContactUs,
+            TnC: window.madetoearn.i18n.beforeLoginMasterPageTnC,
             developers:"Developers Section",
-            aboutus: "About Us",
-            home: "Home",
-            footerMost: "Crowd Automation, All rights reserved"
+            aboutus: window.madetoearn.i18n.beforeLoginMasterPageAboutUs,
+            home: window.madetoearn.i18n.beforeLoginMasterPageHome,
+            footerMost: window.madetoearn.i18n.beforeLoginMasterPageFooterMost
         };
+
+        $rootScope.beforeLoginFooterFAQList = [];
+        if (getParameterByName("lang") == "hi_in") {
+            $rootScope.beforeLoginFooterFAQList[0] = {Question:"",Link:""};
+        }
+
         if (mobileDevice || isAndroidDevice) {
             $rootScope.headeClassName = "headerSize-Mobile";
         }

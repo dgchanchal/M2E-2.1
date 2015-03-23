@@ -31,9 +31,9 @@
         <link href="../../App/third-Party/sidr-package/stylesheets/jquery.sidr.dark.css" rel="stylesheet" type="text/css">
 
         <script src="../../App/js/jquery.min.js"></script>
-		<script src="../../../App/js/jquery.cookie.js" type="text/javascript"></script>
-        <script src="../../App/Property/m2eProperties.js" type="text/javascript"></script>
+        <script src="../../../App/js/jquery.cookie.js" type="text/javascript"></script>
         <script src="../../App/js/m2ei18n.js"></script>
+        <script src="../../App/Property/m2eProperties.js" type="text/javascript"></script>
         <script src="../../App/js/googleAnalytics.js"></script>        
 
         <script src="../../App/js/jquery.signalR-1.0.1.min.js" type="text/javascript"></script>
@@ -83,10 +83,10 @@
                 </a>
                 <nav id="nav2">
                     <ul>
-                        <li class="text-blacki">Sign up as</li>
-                        <li><a href="#/signup/client" class="text-requester"> Requester</a>  |  <a href="#/signup/user" class="text-accepter">Accepter</a></li>
-                        <li><a href="#/AboutUs">About us</a></li>
-                        <li><a href="#/login">Login</a></li>
+                        <li class="text-blacki" data-i18n="beforeLoginMasterPageSignUpAs"></li>
+                        <li><a href="#/signup/client" class="text-requester" data-i18n="beforeLoginMasterPageRequester"></a>  |  <a href="#/signup/user" class="text-accepter" data-i18n="beforeLoginMasterPageAccepter"></a></li>
+                        <li><a href="#/AboutUs" data-i18n="beforeLoginMasterPageAboutUs"></a></li>
+                        <li><a href="#/login" data-i18n="beforeLoginMasterPageLogin"></a></li>
                     </ul>
                 </nav>
                 <a id="responsive-menu-button" class="menu_anchor">                        
@@ -94,12 +94,12 @@
                 </a>
                     <nav  id="nav_mobi">
                         <ul>
-                            <li><a href="#/login">Login</a></li>
-                            <li><a href="#/signup/client">Signup - Requester</a></li>
-                            <li><a href="#/signup/user">Signup - Accepter</a></li>
-                            <li><a href="#/AboutUs">About Us</a></li>
-                            <li><a href="#/contactus">Feedback</a></li>
-                            <li><a href="#">More</a></li>
+                            <li><a href="#/login" data-i18n="beforeLoginMasterPageLogin"></a></li>
+                            <li><a href="#/signup/client" data-i18n="beforeLoginMasterPageSignUpRequester"></a></li>
+                            <li><a href="#/signup/user" data-i18n="beforeLoginMasterPageSignUpAccepter"></a></li>
+                            <li><a href="#/AboutUs" data-i18n="beforeLoginMasterPageAboutUs"></a></li>
+                            <li><a href="#/contactus" data-i18n="beforeLoginMasterPageFeedback"></a></li>
+                            <li><a href="#" data-i18n="beforeLoginMasterPageMore"></a></li>
                         </ul>
                     </nav>
             </div>
@@ -125,14 +125,14 @@
                         <div class="col-md-3 col-sm-12">
                             <aside>
                                 <header>
-                                    <h4>Follow Us</h4>
+                                    <h4 data-i18n="beforeLoginMasterPageFollowUs"></h4>
                                 </header>
                                 <span class="sb">
-                                    <a href="" class="fb entypo-facebook googleAnalytics"><span class="slick-tip right bg_uni_inputBox">Like us on Facebook</span></a>
-                                    <a class="gc googleAnalytics" href=""><i class="fa fa-google-plus"></i><span class="slick-tip right bg_uni_inputBox">Find us in Google Circles</span></a>
-                                    <a class="tw googleAnalytics" href=""><i class="fa fa-twitter"></i><span class="slick-tip right bg_uni_inputBox">Follow us on Twitter</span></a>
-                                    <a class="gc googleAnalytics" href=""><i class="fa fa-youtube"></i><span class="slick-tip right bg_uni_inputBox">Subscribe our channel on Youtube</span></a>
-                                    <a class="in googleAnalytics" href=""><i class="fa fa-linkedin"></i><span class="slick-tip right bg_uni_inputBox">Connect with us on Linkedin</span></a>
+                                    <a href="" class="fb entypo-facebook googleAnalytics"><span class="slick-tip right bg_uni_inputBox" data-i18n="beforeLoginMasterPageLikeUsOnFacebook"></span></a>
+                                    <a class="gc googleAnalytics" href=""><i class="fa fa-google-plus"></i><span class="slick-tip right bg_uni_inputBox" data-i18n="beforeLoginMasterPageFindusinGoogleCircles"></span></a>
+                                    <a class="tw googleAnalytics" href=""><i class="fa fa-twitter"></i><span class="slick-tip right bg_uni_inputBox" data-i18n="beforeLoginMasterPageFollowusonTwitter"></span></a>
+                                    <a class="gc googleAnalytics" href=""><i class="fa fa-youtube"></i><span class="slick-tip right bg_uni_inputBox" data-i18n="beforeLoginMasterPageSubscribeourchannelonYoutube"></span></a>
+                                    <a class="in googleAnalytics" href=""><i class="fa fa-linkedin"></i><span class="slick-tip right bg_uni_inputBox" data-i18n="beforeLoginMasterPageConnectwithusonLinkedin"></span></a>
                                 </span>
                             </aside>
                         </div>
@@ -140,12 +140,12 @@
                         <div class="col-md-3 col-sm-4">
                             <aside>
                                 <header>
-                                    <h4 ng-bind="beforeLoginFooterInfo.knowMore"></h4>
+                                    <h4 data-i18n="beforeLoginMasterPageKnowMore"></h4>
                                 </header>
                                 <ul class="list-links">
-                                    <li><a Class="googleAnalytics" ga-category="BeforeLogin" ga-event="KnowMoreAboutRequester_Footer_Button" ga-label="Click" href="#/RequesterDetails" ng-bind="beforeLoginFooterInfo.requester"></a></li>
-                                    <li><a Class="googleAnalytics" ga-category="BeforeLogin" ga-event="KnowMoreAboutAccepyter_Footer_Button" ga-label="Click" href="#/AccepterDetails" ng-bind="beforeLoginFooterInfo.accepter"></a></li>
-                                    <li><a class="googleAnalytics" ga-category="BeforeLogin" ga-event="developers" ga-label="Click" href="/developers/" ng-bind="beforeLoginFooterInfo.developers"></a></li>
+                                    <li><a class="googleAnalytics" ga-category="BeforeLogin" ga-event="KnowMoreAboutRequester_Footer_Button" ga-label="Click" href="#/RequesterDetails" data-i18n="beforeLoginMasterPageFooterRequester"></a></li>
+                                    <li><a class="googleAnalytics" ga-category="BeforeLogin" ga-event="KnowMoreAboutAccepyter_Footer_Button" ga-label="Click" href="#/AccepterDetails" data-i18n="beforeLoginMasterPageFooterAccepter"></a></li>
+                                    <li><a class="googleAnalytics" ga-category="BeforeLogin" ga-event="developers" ga-label="Click" href="/developers/" data-i18n="beforeLoginMasterPageFooterDevelopers"></a></li>
                                 </ul>
                             </aside>
                         </div>
@@ -187,7 +187,8 @@
             <section id="footer-bottom">
                 <div class="container">
                     <div class="footer-inner">
-                        <div class="copyright">&copy; <span ng-bind="beforeLoginFooterInfo.footerMost"></span></div>
+                        
+                        <div class="copyright"> Choose Language : <a href="?lang=en#">English</a> | <a href="?lang=hi_in#">हिन्दी</a> &nbsp; &copy; <br /><span ng-bind="beforeLoginFooterInfo.footerMost"></span></div>
                     </div>
                 </div>
             </section>
