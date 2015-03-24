@@ -15,15 +15,16 @@ var popWindow = {
     width:800,
     height:480
 };
-var userType  = {
+var userType = {
     requester: "requester",
     accepter: "accepter"
-}
+};
 
 var M2EConstants = {
     userType_user: "user",
-    userType_client:"client"
-}
+    userType_client: "client"
+};
+
 var TemplateInfoModel = {
                
         type_survey : "survey",
@@ -58,12 +59,12 @@ var TemplateInfoModel = {
 };
 
 var clientConstants = {
-    name: window.madetoearn.i18n.beforeLoginMasterPageFooterRequester,
+    name: "Crowd Automation Requester",
     name_abb: "Requester"
 };
 var companyConstants = {
-    name: window.madetoearn.i18n.cautom,
-    fullName: window.madetoearn.i18n.crowdAutomation,
+    name: "Cautom",
+    fullName: "Crowd Automation",
     supportEmail: "support@cautom.com"
 };
 var userConstants = {
